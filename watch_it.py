@@ -71,6 +71,10 @@ def recompile(event=None):
     if ret != 0:
         subprocess.call(["noti", "-t", "Compilation Failed!"])
         subprocess.call(["zsh", "-c", "source ~/.zshrc; boing-boing"])
+    else:
+        fpath = "..."+args[0][-45:]
+        subprocess.call(["noti", "-m", f"Compiled {fpath}", "-t", "Moonscript(moonc): OK"])
+
     stop = time.time()
 
     LAST_RECOMPILE_TIME = stop - start
