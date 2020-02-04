@@ -1,37 +1,32 @@
 -- TODO:
 --
--- 1. make mouse click switch the tag
--- 2. make it hidden, just show after desktop change
--- 3. make it partially hidden, show fully on mouseover
--- 4. make showing and hiding animated (sliding)
+-- 1. make mouse click switch the tag!
+-- 2. make it hidden, just show after desktop change - DONE
+-- 3. make it partially hidden, show fully on mouseover - DONE
+-- 4. make showing and hiding animated (sliding) - DONE
+-- 5. cleanups and refactoring
+-- 6. finishing writing a post for the blog
 --
 
--- TODO: dedup
-filter_in = (set) ->
-  (t) ->
-    tn = t.name
-    for n in *set
-      if tn == tostring(n)
-        return true
-    return false
+{:filter_in, :gtimer} = require "util"
 
 
 -- TODO: doesn't work, I think it's because the background widget is on top?
-mouse_callback = (x) ->
-  naughty.notification {text: gs(x)}
-  -- log "callback", ...
+-- mouse_callback = (x) ->
+--   log "callback", x
+--   naughty.notification {text: gs(x)}
 
-
-taglist_buttons = awful.util.table.join(
-  awful.button({ }, 1, mouse_callback),
-  awful.button({ modkey }, 1, mouse_callback),
-  awful.button({ }, 2, mouse_callback),
-  awful.button({ modkey }, 2, mouse_callback),
-  awful.button({ }, 3, mouse_callback),
-  awful.button({ modkey }, 3, mouse_callback),
-  awful.button({ }, 4, mouse_callback),
-  awful.button({ }, 5, mouse_callback)
-)
+taglist_buttons = {}
+-- awful.util.table.join(
+--   awful.button({ }, 1, mouse_callback),
+--   awful.button({ modkey }, 1, mouse_callback),
+--   awful.button({ }, 2, mouse_callback),
+--   awful.button({ modkey }, 2, mouse_callback),
+--   awful.button({ }, 3, mouse_callback),
+--   awful.button({ modkey }, 3, mouse_callback),
+--   awful.button({ }, 4, mouse_callback),
+--   awful.button({ }, 5, mouse_callback)
+-- )
 
 
 make_widget = (s, btns) ->
@@ -45,6 +40,7 @@ make_widget = (s, btns) ->
     buttons: taglist_buttons
   }
 
+token = {}
 
 make_wibox_container = () ->    -- Create a taglist widget
   wb = wibox {ontop: true}
@@ -58,9 +54,11 @@ make_wibox_container = () ->    -- Create a taglist widget
 
 my_wibox = nil
 
-get_wb = () ->
-  my_wibox
-
+get_wb = () -> my_wibox
+set_wb = (val, tok) ->
+  unless tok == token
+    return "operation not permited"
+  my_wibox = val
 
 local slide
 
@@ -79,74 +77,74 @@ setup = (wb, widget) ->
   }
   wb\connect_signal "mouse::enter", -> slide("in")
   wb\connect_signal "mouse::leave", -> slide("out")
-  my_wibox = wb
   wb.visible = true
+  set_wb(wb, token)
   wb
 
 
 -- Animations
 --------------------------------------------------------------------------------
 
-colors = {
-  "#919191", "#A67E7E", "#AE6E6E", "#C45C5C", "#D84444", "#F02020", "#F90606"
-}
+colors = {"#919191", "#A67E7E", "#AE6E6E", "#C45C5C", "#D84444", "#F02020", "#F90606"}
 
-
--- blink_borders = (timer) ->
---   for _ = 1, 15
---     for c in *colors
---       get_wb()\get_children_by_id("bg")[1].border_color = c
---       coroutine.yield()
-
---     for x = #colors,1,-1
---       c = colors[x]
---       get_wb()\get_children_by_id("bg")[1].border_color = c
---       coroutine.yield()
-
---   timer\stop()
---   return
-init = 1820
-state = {
-  init: init
-  last: init + 75
-}
+slide_conf = do
+  init = 1820
+  {
+    init: init
+    last: init + 75
+    step_time: 0.05
+  }
 
 timers = {
   slide_timer: nil
   blink_timer: nil
 }
 
+-----
+
+-- just to get a feel of how to use coros within awsome for animation
+blink_borders = (timer, rep = 5) ->
+  for _ = 1, rep
+    for c in *colors
+      get_wb()\get_children_by_id("bg")[1].border_color = c
+      yield()
+
+    for x = #colors,1,-1
+      c = colors[x]
+      get_wb()\get_children_by_id("bg")[1].border_color = c
+      yield()
+  timer\stop()
+
+blink_demo = (wb) ->
+  ub = coroutine.wrap(blink_borders)
+  timer1 = gtimer 0.05, -> ub(timer1)
+
+--------------------------------------------------------------------------------
+
+-- cancel any sliding animation and display widget fully on screen
 show = () ->
   if timers.slide_timer
     timers.slide_timer\stop!
     timers.slide_timer = nil
-  get_wb()\geometry({x: state.init})
+  get_wb()\geometry({x: slide_conf.init})
+
+
 
 slide_out = () ->
-  s = copy(state)
+  s = copy(slide_conf)
   current_x = get_wb()\geometry().x
   init = current_x
   for x = init,s.last,2
     get_wb()\geometry({x: x})
-    -- naughty.notification {text: "out #{last}, #{init}, 2"}
     yield()
 
+
 slide_in = () ->
-  s = copy(state)
+  s = copy(slide_conf)
   last = get_wb()\geometry().x
   for x = last,s.init,-2
     get_wb()\geometry({x: x})
-    -- naughty.notification {text: "in #{last}, #{init}, -2"}
     yield()
-
-
--- TODO: move to utils
-gtimer = (t, callback, opts) ->
-  args = merge {
-    timeout: t, callback: callback
-    call_now: true, autostart: true,
-  }, opts or {}
-  gears.timer args
 
 
 slide = (arg) ->
@@ -159,16 +157,10 @@ slide = (arg) ->
   else
     coroutine.wrap(slide_out)
 
-  timers.slide_timer = gtimer 0.05, -> generator()
+  timers.slide_timer = gtimer slide_conf.step_time, -> generator()
 
-
--- start_stepping = (wb) ->
---   ub = coroutine.wrap(blink_borders)
---   up = coroutine.wrap(slide_animation)
---   timer1 = gtimer 0.05, -> ub(timer1)
---   timer2 = gtimer 0.05, -> up(timer2)
 
 
 {
-  :gtimer, :show, :slide, :make_wibox_container, :make_widget, :setup, :get_wb, :colors, demo: -> start_stepping(get_wb())
+  :gtimer, :show, :slide, :make_wibox_container, :make_widget, :setup, :get_wb, :colors, :blink_demo, :set_wb
 }

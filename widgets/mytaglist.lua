@@ -1,29 +1,9 @@
-local filter_in
-filter_in = function(set)
-  return function(t)
-    local tn = t.name
-    for _index_0 = 1, #set do
-      local n = set[_index_0]
-      if tn == tostring(n) then
-        return true
-      end
-    end
-    return false
-  end
+local filter_in, gtimer
+do
+  local _obj_0 = require("util")
+  filter_in, gtimer = _obj_0.filter_in, _obj_0.gtimer
 end
-local mouse_callback
-mouse_callback = function(x)
-  return naughty.notification({
-    text = gs(x)
-  })
-end
-local taglist_buttons = awful.util.table.join(awful.button({ }, 1, mouse_callback), awful.button({
-  modkey
-}, 1, mouse_callback), awful.button({ }, 2, mouse_callback), awful.button({
-  modkey
-}, 2, mouse_callback), awful.button({ }, 3, mouse_callback), awful.button({
-  modkey
-}, 3, mouse_callback), awful.button({ }, 4, mouse_callback), awful.button({ }, 5, mouse_callback))
+local taglist_buttons = { }
 local make_widget
 make_widget = function(s, btns)
   return wibox.widget({
@@ -63,6 +43,7 @@ make_widget = function(s, btns)
     buttons = taglist_buttons
   })
 end
+local token = { }
 local make_wibox_container
 make_wibox_container = function()
   local wb = wibox({
@@ -79,6 +60,13 @@ local my_wibox = nil
 local get_wb
 get_wb = function()
   return my_wibox
+end
+local set_wb
+set_wb = function(val, tok)
+  if not (tok == token) then
+    return "operation not permited"
+  end
+  my_wibox = val
 end
 local slide
 local setup
@@ -101,8 +89,8 @@ setup = function(wb, widget)
   wb:connect_signal("mouse::leave", function()
     return slide("out")
   end)
-  my_wibox = wb
   wb.visible = true
+  set_wb(wb, token)
   return wb
 end
 local colors = {
@@ -114,15 +102,45 @@ local colors = {
   "#F02020",
   "#F90606"
 }
-local init = 1820
-local state = {
-  init = init,
-  last = init + 75
-}
+local slide_conf
+do
+  local init = 1820
+  slide_conf = {
+    init = init,
+    last = init + 75,
+    step_time = 0.05
+  }
+end
 local timers = {
   slide_timer = nil,
   blink_timer = nil
 }
+local blink_borders
+blink_borders = function(timer, rep)
+  if rep == nil then
+    rep = 5
+  end
+  for _ = 1, rep do
+    for _index_0 = 1, #colors do
+      local c = colors[_index_0]
+      get_wb():get_children_by_id("bg")[1].border_color = c
+      yield()
+    end
+    for x = #colors, 1, -1 do
+      local c = colors[x]
+      get_wb():get_children_by_id("bg")[1].border_color = c
+      yield()
+    end
+  end
+  return timer:stop()
+end
+local blink_demo
+blink_demo = function(wb)
+  local ub = coroutine.wrap(blink_borders)
+  local timer1 = gtimer(0.05, function()
+    return ub(timer1)
+  end)
+end
 local show
 show = function()
   if timers.slide_timer then
@@ -130,14 +148,14 @@ show = function()
     timers.slide_timer = nil
   end
   return get_wb():geometry({
-    x = state.init
+    x = slide_conf.init
   })
 end
 local slide_out
 slide_out = function()
-  local s = copy(state)
+  local s = copy(slide_conf)
   local current_x = get_wb():geometry().x
-  init = current_x
+  local init = current_x
   for x = init, s.last, 2 do
     get_wb():geometry({
       x = x
@@ -147,7 +165,7 @@ slide_out = function()
 end
 local slide_in
 slide_in = function()
-  local s = copy(state)
+  local s = copy(slide_conf)
   local last = get_wb():geometry().x
   for x = last, s.init, -2 do
     get_wb():geometry({
@@ -155,16 +173,6 @@ slide_in = function()
     })
     yield()
   end
-end
-local gtimer
-gtimer = function(t, callback, opts)
-  local args = merge({
-    timeout = t,
-    callback = callback,
-    call_now = true,
-    autostart = true
-  }, opts or { })
-  return gears.timer(args)
 end
 slide = function(arg)
   if timers.slide_timer then
@@ -177,7 +185,7 @@ slide = function(arg)
   else
     generator = coroutine.wrap(slide_out)
   end
-  timers.slide_timer = gtimer(0.05, function()
+  timers.slide_timer = gtimer(slide_conf.step_time, function()
     return generator()
   end)
 end
@@ -190,7 +198,6 @@ return {
   setup = setup,
   get_wb = get_wb,
   colors = colors,
-  demo = function()
-    return start_stepping(get_wb())
-  end
+  blink_demo = blink_demo,
+  set_wb = set_wb
 }

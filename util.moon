@@ -19,40 +19,39 @@ net_widgets = require "net_widgets"
 helpers = require "helpers"
 
 
-mod = {}
 
-mod.run_nmtui = ->
+run_nmtui = ->
   spawn.with_shell("urxvt256c-ml -e nmtui")
 
 
-
-mod.bat_tooltip_fun = ->
+bat_tooltip_fun = ->
   state, percent, time, wear, curpower = unpack(vicious.widgets.bat("$1", "BAT0"))
   "State:      #{i(state)}
 Percent:    #{percent}
 Remaining:  #{time}"
 
 
-mod.dbg = (...) -> helpers.dbg(...)
+dbg = (...) -> helpers.dbg(...)
 
-mod.wup = -> mouse.object.get_current_widget!
+wup = -> mouse.object.get_current_widget!
 
-mod.show_widget_under_pointer = ->
+
+show_widget_under_pointer = ->
   naughty.notify {
     text: tostring(mouse.object.get_current_widget! or "<none>") .. "\n",
     title: "Widget Under Pointer\n"
   }
 
 
-mod.mypop = nil
+mypop = nil
 
-mod.pop = ->
+pop = ->
   -- widget = wibox.widget.textbox()
   -- widget\set_text("dafdsfsfd")
   widget = wibox.widget.imagebox("/home/cji/Downloads/Nightingale.png")
   -- widget = {}
 
-  mod.mypop = awful.popup {
+  mypop = awful.popup {
       widget: wibox.container.constraint(widget, "max", 400, 400),
       border_color: '#777777',
       border_width: 2,
@@ -61,16 +60,16 @@ mod.pop = ->
       shape: gears.shape.rounded_rect
   }
 
-  mod.mypop
+  mypop
 
-mod.start = ->
+start = ->
   t = timer {
     timeout: 20
     autostart: true
     call_now: false
     callback: ->
-      mod.mypop.visible = false
-      mod.mypop = nil
+      mypop.visible = false
+      mypop = nil
   }
   t\start!
   t
@@ -79,8 +78,17 @@ mod.start = ->
   -- memwidget = nil
 
 
+gtimer = (t, callback, opts) ->
+  args = merge {
+    timeout: t, callback: callback
+    call_now: true, autostart: true,
+  }, opts or {}
+  require("gears.timer")(args)
+
+
+
 -- find_topbar_widget(vstate.volume_widget)
-mod.find_topbar_widget = (wb = screen[1].mywibox, wdg) ->
+find_topbar_widget = (wb = screen[1].mywibox, wdg) ->
   traverse = (hi) ->
     if hi\get_widget() == wdg
       return hi
@@ -95,5 +103,29 @@ mod.find_topbar_widget = (wb = screen[1].mywibox, wdg) ->
   x, y, w, h = gears.matrix.transform_rectangle(res\get_matrix_to_device(), 0, 0, res\get_size())
   x, y, w, h
 
--- _G["find_widget"]mod.find_topbar_widget
-mod
+-- _G["find_widget"]find_topbar_widget
+
+filter_in = (set) ->
+  (t) ->
+    tn = t.name
+    for n in *set
+      if tn == tostring(n)
+        return true
+    return false
+
+
+
+
+{
+  :run_nmtui,
+  :dbg,
+  :bat_tooltip_fun,
+  :wup,
+  :show_widget_under_pointer,
+  :mypop,
+  :pop,
+  :start,
+  :gtimer,
+  :find_topbar_widget,
+  :filter_in
+}
