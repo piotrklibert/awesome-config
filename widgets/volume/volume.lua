@@ -1,3 +1,4 @@
+local i = require("inspect")
 local wibox = require("wibox")
 local watch = require("awful.widget.watch")
 local spawn = require("awful.spawn")
@@ -10,40 +11,45 @@ local dpi = require("beautiful").xresources.apply_dpi
 local ml = require("ml")
 local str = require("std.string")
 local mo = require("moses")
-local debug_show
-debug_show = function(what)
-  return naughty.notify({
-    icon_size = dpi(22),
-    title = "Debug",
-    position = "top_right",
-    timeout = 5,
-    hover_timeout = 0.5,
-    width = 600,
-    text = tostring(what)
-  })
-end
 wibox = require("wibox")
 local placement = require("awful.placement")
 local x = (require("naughty.widget._default"))
+local notif_margins
+notif_margins = function()
+  local margins = wibox.container.margin()
+  margins:set_margins(beautiful.notification_margin or 4)
+  rawset(margins, "set_notification", function()
+    if notif.margin then
+      return margins:set_margins(notif.margin)
+    end
+  end)
+  return margins
+end
 local make_notification_widget
 make_notification_widget = function(txt)
   local wb = wibox({
     ontop = true
   })
-  wb.x = 1600
-  wb.y = 40
+  wb.x = 1450
+  wb.y = 32
   wb.height = 45
   wb.width = 120
   wb:setup({
     {
-      id = "text",
-      text = txt,
-      widget = wibox.widget.textbox
+      {
+        id = "text",
+        text = txt,
+        widget = wibox.widget.textbox
+      },
+      left = 10,
+      top = 5,
+      bottom = 5,
+      widget = wibox.container.margin
     },
-    left = 10,
-    top = 5,
-    bottom = 5,
-    widget = wibox.container.margin
+    border_color = "#4B6063",
+    border_width = 1,
+    border_strategy = "inner",
+    widget = wibox.container.background
   })
   wb.visible = true
   return wb
@@ -151,7 +157,11 @@ local state = {
     layout = wibox.container.margin(_, 1, 1, 5, 5)
   }),
   popup_create = function(self)
-    self.notification_widget = make_notification_widget(tostring(self.volume) .. "%")
+    local txt = tostring(self.volume) .. "%"
+    if self.is_muted then
+      txt = "muted"
+    end
+    self.notification_widget = make_notification_widget(txt)
   end,
   popup_destroy = function(self)
     self.notification_widget.visible = false
@@ -230,6 +240,7 @@ check_icons_path = function()
     })
   end
 end
+_G["vstate"] = state
 local make_volume_widget
 make_volume_widget = function()
   check_icons_path()

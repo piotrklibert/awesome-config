@@ -28,7 +28,7 @@ mod.run_nmtui = ->
 
 mod.bat_tooltip_fun = ->
   state, percent, time, wear, curpower = unpack(vicious.widgets.bat("$1", "BAT0"))
-  "State:      #{_i(state)}
+  "State:      #{i(state)}
 Percent:    #{percent}
 Remaining:  #{time}"
 
@@ -78,4 +78,22 @@ mod.start = ->
   -- memwidget.visible = false
   -- memwidget = nil
 
+
+-- find_topbar_widget(vstate.volume_widget)
+mod.find_topbar_widget = (wb = screen[1].mywibox, wdg) ->
+  traverse = (hi) ->
+    if hi\get_widget() == wdg
+      return hi
+
+    for n, child in ipairs(hi\get_children()) do
+      log "child #{n}"
+      if r = traverse(child)
+        return r
+    return nil
+
+  res = traverse(wb._drawable._widget_hierarchy)
+  x, y, w, h = gears.matrix.transform_rectangle(res\get_matrix_to_device(), 0, 0, res\get_size())
+  x, y, w, h
+
+-- _G["find_widget"]mod.find_topbar_widget
 mod

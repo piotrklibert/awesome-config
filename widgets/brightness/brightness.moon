@@ -58,7 +58,6 @@ get_brightness = () ->
 set_brightness = (percent) ->
   bval, _ = modf(tonumber(percent) / 100 * 19200)
   cmd = "sudo bash -c 'echo #{bval} >#{PATH}'"
-  -- naughty.notify {text: "#{cmd}"}
   state\setting_start!
   end_fun = () -> state\setting_end()
   pspawn(cmd)--\next(end_fun)\catch(end_fun)
@@ -81,7 +80,7 @@ worker = () ->
 
     state.widget = wibox.widget {
       brightness_icon,
-      brightness_text,
+      -- brightness_text,
       layout: wibox.layout.fixed.horizontal,
     }
 

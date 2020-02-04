@@ -9,10 +9,72 @@ package.path = "/home/cji/portless/lua/Penlight/lua/?/init.lua;"     .. package.
 package.path = "/home/cji/portless/lua/Penlight/lua/?/;"             .. package.path
 package.path = "/home/cji/.config/awesome/widgets/?/init.lua;"       .. package.path
 package.path = "/home/cji/.config/awesome/widgets/?/?.lua;"          .. package.path
+package.path = "/home/cji/portless/lua/moonscript/?.lua;"            .. package.path
 -- package.cpath = package.cpath .. ";/home/cji/portless/lua/?.lua;/home/cji/portless/lua/lua-openssl/openssl.so"
 
-inspect = require("inspect")
-_i = inspect
+dofile("/home/cji/portless/lua/moonscript/runtime/init.lua")
+
+
+function script_path()
+   local str = debug.getinfo(2, "S").source:sub(2)
+   return str:match("(.*/)")
+end
+
+pwd = script_path()
+
+
+_log = require "log".new(
+  -- maximum log level
+  "trace",
+  -- Writer
+  require 'log.writer.list'.new(               -- multi writers:
+    -- require 'log.writer.console.color'.new(),  -- * console color
+    require 'log.writer.file.roll'.new(        -- * roll files
+        script_path() .. '/logs/',                                --   log dir
+      'events.log',                            --   current log name
+      10,                                      --   count files
+      10*1024*1024*1024                             --   max file size in bytes
+    )
+  ),
+  -- Formatter
+  require "log.formatter.concat".new()
+)
+
+
+function __log(...)
+    _log.debug(...)
+end
+
+
+_G["_log"] = _log
+_G["log"] = setmetatable({}, {
+    __call = function (t, ...) return __log(...) end,
+    __index = function (t, k) return _log[k] end
+})
+
+
+log(script_path())
+log.error("+some", "error+")
+
+
+capi = {
+    client = client,
+    screen = screen,
+    mouse = mouse,
+    dbus = dbus,
+    event = event,
+    ewmh = ewmh,
+    mousegrabber = mousegrabber,
+    property = property,
+    root = root,
+    selection = selection,
+    spawn = spawn,
+    stack = stack,
+    strut = strut,
+    systray = systray,
+    xkb = xkb
+}
+
 
 -- Standard awesome library
 gears = require("gears")
@@ -22,7 +84,6 @@ require("awful.autofocus")
 Promise = require "promise"
 Promise.async = gears.timer.delayed_call
 
--- Widget and layout library
 wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
@@ -33,15 +94,14 @@ naughty = require("naughty")
 local menubar = require("menubar")
 
 local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
-_i = require "inspect"
+i = require "inspect"
 
 helpers = require("helpers")
 vicious = require("vicious")
-mouse = require("awful.mouse")
+-- mouse = require("awful.mouse")
+
 local net_widgets = require("net_widgets")
 
 ---
@@ -70,7 +130,7 @@ do
 
         naughty.notify({ preset = naughty.config.presets.critical,
                          title = "Oops, an error happened!",
-                         text = tostring(err) })
+                         text = inspect(err) })
         in_error = false
     end)
 end
@@ -121,10 +181,13 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end },
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mymainmenu = awful.menu({
+    items = {
+        { "restart", awesome.restart },
+        { "awesome", myawesomemenu, beautiful.awesome_icon },
+        { "open terminal", terminal }
+    }
+})
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -146,7 +209,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock("%H:%M:%S", 1)
+mytextclock = wibox.widget.textclock("%b %d, %H:%M:%S", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -207,16 +270,18 @@ root.buttons(gears.table.join(
         -- awful.key({         "Shift"   }, "XF86AudioLowerVolume", function() awful.util.spawn("pavolume voldown") end),
         -- awful.key({                   }, "XF86AudioMute", function() awful.util.spawn("pavolume mutetoggle") end),
 
+
+tags = require "tags"
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",    hotkeys_popup.show_help, {description="show help", group="awesome"}),
+    awful.key({ modkey, "Shift" }, "p", function () naughty.notify{text=inspect(mouse.coords())} end, {description="", group="awesome"}),
+    awful.key({ modkey,         }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
 
-    awful.key({ altkey, "Control" }, "Up",   awful.tag.viewprev,      {description = "view previous", group = "tag"}),
-    awful.key({ altkey, "Control" }, "Down", awful.tag.viewnext,      {description = "view next", group = "tag"}),
-
-    -- TODO: 3x3 shape of the tags (virtual desktops)
-    awful.key({ altkey, "Control" }, "Left",  awful.tag.viewprev,      {description = "view previous", group = "tag"}),
-    awful.key({ altkey, "Control" }, "Right", awful.tag.viewnext,      {description = "view next", group = "tag"}),
+    awful.key({altkey, "Control"}, "Up", tags.tag_up, {description = "view previous", group = "tag"}),
+    awful.key({altkey, "Control"}, "Down", tags.tag_down, {description = "view next", group = "tag"}),
+    awful.key({altkey, "Control"}, "Left", tags.tag_left, {description = "view previous", group = "tag"}),
+    awful.key({altkey, "Control"}, "Right", tags.tag_right, {description = "view next", group = "tag"}),
 
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
     --           {description = "view previous", group = "tag"}),
@@ -334,7 +399,6 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
-
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "Left",   helpers.client_sideline_left,
               {description = "sideline left", group = "tag"}),
@@ -456,23 +520,26 @@ clientbuttons = gears.table.join(
 root.keys(globalkeys)
 -- }}}
 
+
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
+
+default_rules = {
+    border_width = beautiful.border_width,
+    border_color = beautiful.border_normal,
+    focus = awful.client.focus.filter,
+    raise = true,
+    keys = clientkeys,
+    buttons = clientbuttons,
+    screen = awful.screen.preferred,
+    placement = awful.placement.no_overlap+awful.placement.no_offscreen
+}
+
 awful.rules.rules = {
     -- All clients will match this rule.
-    { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
-     }
-    },
-    { rule_any = { class = {"discord", "slack", "Slack"}, name = "Discord" },
-      properties = { tag = "4", floating = true }},
+    { rule = { }, properties = default_rules },
+    { rule_any = { class = {"slack", "Slack"}}, properties = { tag = "9", floating = true } },
+    { rule_any = { class = {"discord"}, name = "Discord"}, properties = { tag = "4", floating = true } },
 
     -- Floating clients.
     { rule_any = {
@@ -482,23 +549,13 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {"Arandr", "xtightvncviewer"},
-
         -- Note that the name property shown in xprop might be set slightly after creation of the client
         -- and the name shown there might not match defined rules here.
-        name = {
-          "Event Tester",  -- xev.
-        },
-        role = {
-          "AlarmWindow",  -- Thunderbird's calendar.
-          "ConfigManager",  -- Thunderbird's about:config.
-          "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
-        }
-      }, properties = { floating = true }}
+        name = {"Event Tester"},
+        role = {"pop-up"}
+      }, properties = { floating = true } },
 
-    -- Add titlebars to normal clients and dialogs
-    -- { rule_any = {type = { "normal", "dialog" }
-    --   }, properties = { titlebars_enabled = true }
-    -- },
+    -- { rule = {floating = true}, properties = { titlebars_enabled = true } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
@@ -523,6 +580,8 @@ end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
+                          log(i(c))
+
     -- buttons for the titlebar
     local buttons = gears.table.join(
         awful.button({ }, 1, function()
@@ -537,7 +596,7 @@ client.connect_signal("request::titlebars", function(c)
 
     local tb = awful.titlebar(c, {font="10"})
     local title_text = awful.titlebar.widget.titlewidget(c)
-    title_text.font = 'sans 9'
+    title_text.font = 'sans 12'
     tb:setup({
         { -- Left
             awful.titlebar.widget.iconwidget(c),
@@ -564,6 +623,10 @@ client.connect_signal("request::titlebars", function(c)
     })
     return tb
 end)
+
+-- client.connect_signal("property::floating", function (c) log("prop floating", c,
+--                           c.floating) if c.floating then
+--                           c:emit_signal("request::titlebar") else c.titlebars_enabled = nil end end)
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal("mouse::enter", function(c)

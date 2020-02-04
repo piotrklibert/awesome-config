@@ -71,7 +71,6 @@ worker = function()
   })
   state.widget = wibox.widget({
     brightness_icon,
-    brightness_text,
     layout = wibox.layout.fixed.horizontal
   })
   local update_widget

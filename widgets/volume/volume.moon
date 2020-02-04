@@ -1,3 +1,4 @@
+i = require"inspect"
 wibox = require("wibox")
 watch = require("awful.widget.watch")
 spawn = require("awful.spawn")
@@ -14,40 +15,46 @@ str = require "std.string"
 mo = require "moses"
 
 
-debug_show = (what) ->
-    naughty.notify {
-      icon_size: dpi(22),
-      title: "Debug",
-      position: "top_right",
-      timeout: 5,
-      hover_timeout: 0.5,
-      width: 600,
-      text: tostring(what)
-    }
 
 wibox = require "wibox"
 placement = require("awful.placement")
 x = (require("naughty.widget._default"))
 
+notif_margins = () ->
+    margins = wibox.container.margin()
+    margins\set_margins(beautiful.notification_margin or 4)
+
+    rawset(margins, "set_notification", () ->
+        if notif.margin
+            margins\set_margins(notif.margin))
+    margins
+
+
 
 make_notification_widget = (txt) ->
   wb = wibox {ontop: true}
-  wb.x = 1600
-  wb.y = 40
+  wb.x = 1450
+  wb.y = 32
   wb.height = 45
   wb.width = 120
   wb\setup {
     {
-      id: "text",
-      text: txt
-      widget: wibox.widget.textbox,
+      {
+        id: "text",
+        text: txt
+        widget: wibox.widget.textbox,
+      },
+      left: 10
+      top: 5
+      bottom: 5
+      widget: wibox.container.margin
     }
-    left: 10
-    top: 5
-    bottom: 5
-    widget: wibox.container.margin
+    border_color: "#4B6063"
+    border_width: 1
+    border_strategy: "inner"
+    widget: wibox.container.background
   }
-  -- placement.no_offscreen(wb)
+  -- placement.next_to(wb, {preferred_positions: "bottom", preferred_anchors: "middle", geometry: capi.screen[1].geometry})
   wb.visible = true
   wb
 
@@ -117,15 +124,13 @@ state = {
   }
 
   popup_create: =>
-    @notification_widget = make_notification_widget "#{@volume}%"
-    -- if @notification_widget then @popup_destroy!
-    -- @notification_widget = notify make_notification_spec {
-    --   text: tostring(@volume),
-    --   icon: @icon
-    -- }
+    txt = "#{@volume}%"
+    if @is_muted
+      txt = "muted"
+    @notification_widget = make_notification_widget txt
+
 
   popup_destroy: =>
-    -- naughty.destroy(@notification_widget)
     @notification_widget.visible = false
     @notification_widget = nil
 
@@ -136,6 +141,7 @@ state = {
     @volume   = tonumber(vol)
     @icon     = choose_icon(if not @is_muted then @volume else nil)
 
+
   update_widgets: =>
     @volume_widget.icon.image = @icon
     if @notification_widget
@@ -144,8 +150,6 @@ state = {
         txt = "muted"
 
       @notification_widget\get_children_by_id("text")[1].text = txt
-      -- @notification_widget.iconbox.image = @icon
-      -- naughty.replace_text(@notification_widget, "Volume", tostring(@volume))
 
   handle_mouse: (_, _, _, button) =>
     if button == 3
@@ -172,7 +176,7 @@ check_icons_path = () ->
       preset: naughty.config.presets.critical
     }
 
-
+_G["vstate"] = state
 make_volume_widget = () ->
   check_icons_path!
 

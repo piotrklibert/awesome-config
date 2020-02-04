@@ -16,7 +16,7 @@ mod.run_nmtui = function()
 end
 mod.bat_tooltip_fun = function()
   local state, percent, time, wear, curpower = unpack(vicious.widgets.bat("$1", "BAT0"))
-  return "State:      " .. tostring(_i(state)) .. "\nPercent:    " .. tostring(percent) .. "\nRemaining:  " .. tostring(time)
+  return "State:      " .. tostring(i(state)) .. "\nPercent:    " .. tostring(percent) .. "\nRemaining:  " .. tostring(time)
 end
 mod.dbg = function(...)
   return helpers.dbg(...)
@@ -55,5 +55,29 @@ mod.start = function()
   })
   t:start()
   return t
+end
+mod.find_topbar_widget = function(wb, wdg)
+  if wb == nil then
+    wb = screen[1].mywibox
+  end
+  local traverse
+  traverse = function(hi)
+    if hi:get_widget() == wdg then
+      return hi
+    end
+    for n, child in ipairs(hi:get_children()) do
+      log("child " .. tostring(n))
+      do
+        local r = traverse(child)
+        if r then
+          return r
+        end
+      end
+    end
+    return nil
+  end
+  local res = traverse(wb._drawable._widget_hierarchy)
+  local x, y, w, h = gears.matrix.transform_rectangle(res:get_matrix_to_device(), 0, 0, res:get_size())
+  return x, y, w, h
 end
 return mod

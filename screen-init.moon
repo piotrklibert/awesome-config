@@ -175,10 +175,10 @@ beautiful = require("beautiful")
 gears = require("gears")
 
 set_wallpaper = (screen) ->
-  if beautiful.wallpaper
-    wallpaper = beautiful.wallpaper
-  wallpaper = wallpaper(screen) if type(wallpaper) == "function"
-  gears.wallpaper.maximized(wallpaper, screen, true)
+  gears.wallpaper.maximized("/home/cji/Downloads/mirai-nikki1.jpg", screen, true)
+
+
+mtl = require("widgets.mytaglist")
 
 
 initialize = ->
@@ -189,7 +189,11 @@ initialize = ->
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4" }, s, awful.layout.layouts[1])
+    awful.tag({
+      "1", "2", "3",
+      "4", "5", "6",
+      "7", "8", "9"
+    }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -204,15 +208,11 @@ initialize = ->
         awful.button({ }, 5, () -> awful.layout.inc(-1))
       )
     )
-    -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen: s,
-        filter: awful.widget.taglist.filter.all,
-        buttons: taglist_buttons
-    }
 
-    -- local www = wibox.widget.textbox()
-    -- www.create_callback = function () util.dbg("adasd") end
+    wb = mtl.make_wibox_container(s)
+    mtl.setup(wb, mtl.make_widget(s, taglist_buttons))
+
+    s.mytaglist = nil
 
     -- tasklist
     s.mytasklist = make_tasklist(s, tasklist_buttons)
@@ -265,20 +265,25 @@ initialize = ->
 
 
     vicious.register(pbar, vicious.widgets.bat, "$2", 61, "BAT0")
-    --
-
-
     -- Create the wibox
     s.mywibox = awful.wibar({ position: "top", screen: s, height: 30  })
 
     month_calendar = awful.widget.calendar_popup.month()
     month_calendar\attach( mytextclock, "tr" )
 
+
+    gears.timer.delayed_call ->
+      tag = require "awful.tag"
+      tag.viewnone()
+      screen[1].tags[5].selected = true
+
+
     -- Add widgets to the wibox
     s.mywibox\setup {
         layout: wibox.layout.align.horizontal,
         { -- Left widgets
             layout: wibox.layout.fixed.horizontal,
+            s.mylayoutbox,
             mylauncher,
             s.mytaglist,
             s.mypromptbox,
@@ -292,12 +297,7 @@ initialize = ->
                 valign: "center", halign: "center",
                 widget: wibox.container.place,
             },
-            wibox.widget {
-                forced_width:15,
-                make_sep(10),
-                valign: "center", halign: "center",
-                widget: wibox.container.place
-            },
+            wibox.widget {forced_width: 20},
             wibox.widget {
                 s.cpuwidget,
                 wibox.widget {forced_width:30},
@@ -306,14 +306,22 @@ initialize = ->
                 forced_width: 215
             },
             make_therm_widget(),
-            -- mykeyboardlayout,
-            wibox.widget.systray(),
+            wibox.widget {forced_width: 30},
             s.batwidget,
             net_widgets.wireless({interface:"wlp5s0", onclick: util.run_nmtui}),
-            require("volume")(),
             require("brightness")(),
-            mytextclock,
-            s.mylayoutbox,
+            require("volume")(),
+            wibox.widget {
+              wibox.widget {forced_width: 30},
+              mytextclock,
+              wibox.widget {forced_width: 30},
+              layout: wibox.layout.fixed.horizontal
+            },
+            wibox.widget {
+              wibox.widget.systray(),
+              wibox.widget {forced_width: 12},
+              layout: wibox.layout.fixed.horizontal
+            }
         },
     }
 
