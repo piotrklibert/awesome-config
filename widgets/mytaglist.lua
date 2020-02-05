@@ -152,19 +152,19 @@ show = function()
   })
 end
 local slide_out
-slide_out = function()
+slide_out = function(timer)
   local s = copy(slide_conf)
-  local current_x = get_wb():geometry().x
-  local init = current_x
+  local init = get_wb():geometry().x
   for x = init, s.last, 2 do
     get_wb():geometry({
       x = x
     })
     yield()
   end
+  return timer:stop()
 end
 local slide_in
-slide_in = function()
+slide_in = function(timer)
   local s = copy(slide_conf)
   local last = get_wb():geometry().x
   for x = last, s.init, -2 do
@@ -173,20 +173,23 @@ slide_in = function()
     })
     yield()
   end
+  return timer:stop()
 end
 slide = function(arg)
   if timers.slide_timer then
     timers.slide_timer:stop()
     timers.slide_timer = nil
   end
+  local wrap
+  wrap = coro.wrap
   local generator
   if arg == "in" then
-    generator = coroutine.wrap(slide_in)
+    generator = wrap(slide_in)
   else
-    generator = coroutine.wrap(slide_out)
+    generator = wrap(slide_out)
   end
   timers.slide_timer = gtimer(slide_conf.step_time, function()
-    return generator()
+    return generator(timers.slide_timer)
   end)
 end
 return {

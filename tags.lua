@@ -34,7 +34,8 @@ wrap_show_taglist = function(f)
     slide_out_timer = gtimer(4, (function()
       return slide("out")
     end), {
-      call_now = false
+      call_now = false,
+      single_shot = true
     })
   end
 end

@@ -56,6 +56,7 @@ my_wibox = nil
 
 get_wb = () -> my_wibox
 set_wb = (val, tok) ->
+  -- doesn't really serve any purpose, I just had an idea and wanted test it out
   unless tok == token
     return "operation not permited"
   my_wibox = val
@@ -129,35 +130,34 @@ show = () ->
   get_wb()\geometry({x: slide_conf.init})
 
 
-
-slide_out = () ->
+-- slide_in and slide_out will act as coroutines bodies, see slide
+slide_out = (timer) ->
   s = copy(slide_conf)
-  current_x = get_wb()\geometry().x
-  init = current_x
+  init = get_wb()\geometry().x
   for x = init,s.last,2
     get_wb()\geometry({x: x})
     yield()
+  timer\stop!
 
-
-slide_in = () ->
+slide_in = (timer) ->
   s = copy(slide_conf)
   last = get_wb()\geometry().x
   for x = last,s.init,-2
     get_wb()\geometry({x: x})
     yield()
+  timer\stop!
 
 
+-- stop and clear the timer if it's stepping, then create a fresh coroutine for
+-- sliding in or out and register it with Awsome event loop (via `gears.timer`)
 slide = (arg) ->
   if timers.slide_timer
     timers.slide_timer\stop!
     timers.slide_timer = nil
-
-  generator = if arg == "in"
-    coroutine.wrap(slide_in)
-  else
-    coroutine.wrap(slide_out)
-
-  timers.slide_timer = gtimer slide_conf.step_time, -> generator()
+  {:wrap} = coro
+  generator = if arg == "in" then wrap(slide_in) else wrap(slide_out)
+  timers.slide_timer = gtimer slide_conf.step_time, ->
+    generator(timers.slide_timer)
 
 
 

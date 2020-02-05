@@ -23,7 +23,7 @@ wrap_show_taglist = (f) ->
       slide_out_timer\stop()
       slide_out_timer = nil
 
-    slide_out_timer = gtimer 4, (-> slide("out")), {call_now: false}
+    slide_out_timer = gtimer 4, (-> slide("out")), {call_now: false, single_shot: true}
 
 -- defaults work in up and down directions, ie. calling tag_up on tag with label 2 will move to 8
 tag_up   = wrap_show_taglist (t) -> tag.viewidx(-3)
