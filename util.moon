@@ -105,9 +105,9 @@ find_topbar_widget = (wb = screen[1].mywibox, wdg) ->
 
 -- _G["find_widget"]find_topbar_widget
 
-filter_in = (set) ->
+filter_in = (set, trans = ident) ->
   (t) ->
-    tn = t.name
+    tn = trans(t)
     for n in *set
       if tn == tostring(n)
         return true

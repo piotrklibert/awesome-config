@@ -98,9 +98,12 @@ find_topbar_widget = function(wb, wdg)
   return x, y, w, h
 end
 local filter_in
-filter_in = function(set)
+filter_in = function(set, trans)
+  if trans == nil then
+    trans = ident
+  end
   return function(t)
-    local tn = t.name
+    local tn = trans(t)
     for _index_0 = 1, #set do
       local n = set[_index_0]
       if tn == tostring(n) then

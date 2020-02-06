@@ -9,18 +9,6 @@ u = require "util"
 
 
 
-taglist_buttons = awful.util.table.join(
-  awful.button({ }, 1, awful.tag.viewonly),
-  awful.button({ modkey }, 1, awful.client.movetotag),
-  awful.button({ }, 2, awful.tag.viewtoggle),
-  awful.button({ modkey }, 2, awful.client.toggletag),
-  awful.button({ }, 3, (t) -> customization.func.tag_action_menu(t)),
-  awful.button({ modkey }, 3, awful.tag.delete),
-  awful.button({ }, 4, (t) -> awful.tag.viewprev(awful.tag.getscreen(t))),
-  awful.button({ }, 5, (t) -> awful.tag.viewnext(awful.tag.getscreen(t)))
-)
-
-
 
 make_layoutbox = (screen) ->
   lb = awful.widget.layoutbox(screen)
@@ -197,8 +185,9 @@ initialize = ->
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
+
+    -- Create an imagebox widget which will contain an icon indicating which
+    -- layout we're using. We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox\buttons(
       gears.table.join(
@@ -210,7 +199,7 @@ initialize = ->
     )
 
     wb = mtl.make_wibox_container(s)
-    mtl.setup(wb, mtl.make_widget(s, taglist_buttons))
+    mtl.setup(wb, mtl.make_widget(s))
 
     s.mytaglist = nil
 

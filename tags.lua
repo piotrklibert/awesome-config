@@ -1,16 +1,9 @@
 local awful = require("awful")
 local tag = require("awful.tag")
-local filter_in
-filter_in = function(set)
-  return function(tn)
-    for _index_0 = 1, #set do
-      local n = set[_index_0]
-      if tostring(tn) == tostring(n) then
-        return true
-      end
-    end
-    return false
-  end
+local gtimer, filter_in
+do
+  local _obj_0 = require("util")
+  gtimer, filter_in = _obj_0.gtimer, _obj_0.filter_in
 end
 local get_tags
 get_tags = function()
@@ -20,10 +13,10 @@ local slide_out_timer = nil
 local wrap_show_taglist
 wrap_show_taglist = function(f)
   return function(...)
-    local show, slide, gtimer
+    local show, slide
     do
       local _obj_0 = require("widgets.mytaglist")
-      show, slide, gtimer = _obj_0.show, _obj_0.slide, _obj_0.gtimer
+      show, slide = _obj_0.show, _obj_0.slide
     end
     show()
     f(...)
@@ -31,12 +24,13 @@ wrap_show_taglist = function(f)
       slide_out_timer:stop()
       slide_out_timer = nil
     end
-    slide_out_timer = gtimer(4, (function()
-      return slide("out")
-    end), {
+    local opts = {
       call_now = false,
       single_shot = true
-    })
+    }
+    slide_out_timer = gtimer(4, (function()
+      return slide("out")
+    end), opts)
   end
 end
 local tag_up = wrap_show_taglist(function(t)
@@ -45,7 +39,7 @@ end)
 local tag_down = wrap_show_taglist(function(t)
   return tag.viewidx(3)
 end)
-local tag_left = wrap_show_taglist(function(t, ...)
+local tag_left = wrap_show_taglist(function(t)
   local n = tonumber(tag.selected().name)
   if filter_in({
     1,

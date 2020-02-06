@@ -3,7 +3,6 @@ do
   local _obj_0 = require("util")
   filter_in, gtimer = _obj_0.filter_in, _obj_0.gtimer
 end
-local taglist_buttons = { }
 local make_widget
 make_widget = function(s, btns)
   return wibox.widget({
@@ -13,9 +12,9 @@ make_widget = function(s, btns)
         1,
         2,
         3
-      }, {
-        buttons = taglist_buttons
-      })
+      }, function(x)
+        return x.name
+      end)
     }),
     awful.widget.taglist({
       screen = s,
@@ -23,9 +22,9 @@ make_widget = function(s, btns)
         4,
         5,
         6
-      }, {
-        buttons = taglist_buttons
-      })
+      }, function(x)
+        return x.name
+      end)
     }),
     awful.widget.taglist({
       screen = s,
@@ -33,9 +32,9 @@ make_widget = function(s, btns)
         7,
         8,
         9
-      }, {
-        buttons = taglist_buttons
-      })
+      }, function(x)
+        return x.name
+      end)
     }),
     spacing = 6,
     id = "grid",
@@ -43,7 +42,6 @@ make_widget = function(s, btns)
     buttons = taglist_buttons
   })
 end
-local token = { }
 local make_wibox_container
 make_wibox_container = function()
   local wb = wibox({
@@ -56,6 +54,7 @@ make_wibox_container = function()
   wb.width = 95
   return wb
 end
+local token = { }
 local my_wibox = nil
 local get_wb
 get_wb = function()

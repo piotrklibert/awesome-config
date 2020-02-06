@@ -4,19 +4,6 @@ local wibox = require("wibox")
 local naughty = require("naughty")
 local h = require("helpers")
 local u = require("util")
-local taglist_buttons = awful.util.table.join(awful.button({ }, 1, awful.tag.viewonly), awful.button({
-  modkey
-}, 1, awful.client.movetotag), awful.button({ }, 2, awful.tag.viewtoggle), awful.button({
-  modkey
-}, 2, awful.client.toggletag), awful.button({ }, 3, function(t)
-  return customization.func.tag_action_menu(t)
-end), awful.button({
-  modkey
-}, 3, awful.tag.delete), awful.button({ }, 4, function(t)
-  return awful.tag.viewprev(awful.tag.getscreen(t))
-end), awful.button({ }, 5, function(t)
-  return awful.tag.viewnext(awful.tag.getscreen(t))
-end))
 local make_layoutbox
 make_layoutbox = function(screen)
   local lb = awful.widget.layoutbox(screen)
@@ -249,7 +236,7 @@ initialize = function()
       return awful.layout.inc(-1)
     end)))
     local wb = mtl.make_wibox_container(s)
-    mtl.setup(wb, mtl.make_widget(s, taglist_buttons))
+    mtl.setup(wb, mtl.make_widget(s))
     s.mytaglist = nil
     s.mytasklist = make_tasklist(s, tasklist_buttons)
     s.cpuwidget = make_cpu_widget()

@@ -15,32 +15,31 @@
 -- mouse_callback = (x) ->
 --   log "callback", x
 --   naughty.notification {text: gs(x)}
-
-taglist_buttons = {}
--- awful.util.table.join(
---   awful.button({ }, 1, mouse_callback),
---   awful.button({ modkey }, 1, mouse_callback),
---   awful.button({ }, 2, mouse_callback),
---   awful.button({ modkey }, 2, mouse_callback),
---   awful.button({ }, 3, mouse_callback),
---   awful.button({ modkey }, 3, mouse_callback),
---   awful.button({ }, 4, mouse_callback),
---   awful.button({ }, 5, mouse_callback)
+-- taglist_buttons = awful.util.table.join(
+--   awful.button({ }, 1, awful.tag.viewonly),
+--   awful.button({ modkey }, 1, awful.client.movetotag),
+--   awful.button({ }, 2, awful.tag.viewtoggle),
+--   awful.button({ modkey }, 2, awful.client.toggletag),
+--   awful.button({ }, 3, (t) -> customization.func.tag_action_menu(t)),
+--   awful.button({ modkey }, 3, awful.tag.delete),
+--   awful.button({ }, 4, (t) -> awful.tag.viewprev(awful.tag.getscreen(t))),
+--   awful.button({ }, 5, (t) -> awful.tag.viewnext(awful.tag.getscreen(t)))
 -- )
 
 
 make_widget = (s, btns) ->
   wibox.widget {
-    awful.widget.taglist {screen: s, filter: filter_in {1, 2, 3}, buttons: taglist_buttons}
-    awful.widget.taglist {screen: s, filter: filter_in {4, 5, 6}, buttons: taglist_buttons}
-    awful.widget.taglist {screen: s, filter: filter_in {7, 8, 9}, buttons: taglist_buttons}
+    awful.widget.taglist {screen: s, filter: filter_in {1, 2, 3}, (x) -> x.name} -- buttons: taglist_buttons
+    awful.widget.taglist {screen: s, filter: filter_in {4, 5, 6}, (x) -> x.name} -- buttons: taglist_buttons
+    awful.widget.taglist {screen: s, filter: filter_in {7, 8, 9}, (x) -> x.name} -- buttons: taglist_buttons
     spacing: 6
     id: "grid"
     layout: wibox.layout.fixed.vertical
     buttons: taglist_buttons
   }
 
-token = {}
+
+
 
 make_wibox_container = () ->    -- Create a taglist widget
   wb = wibox {ontop: true}
@@ -52,16 +51,22 @@ make_wibox_container = () ->    -- Create a taglist widget
   wb
 
 
+token = {}
 my_wibox = nil
 
-get_wb = () -> my_wibox
+
+get_wb = () ->
+  my_wibox
+
 set_wb = (val, tok) ->
   -- doesn't really serve any purpose, I just had an idea and wanted test it out
   unless tok == token
     return "operation not permited"
   my_wibox = val
 
+
 local slide
+
 
 setup = (wb, widget) ->
   wb\setup {
