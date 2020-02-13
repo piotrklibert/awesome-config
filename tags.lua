@@ -51,6 +51,8 @@ local tag_left = wrap_show_taglist(function(t)
     return tag.viewidx(-1)
   end
 end)
+local dbg
+dbg = require("util").dbg
 local tag_right = wrap_show_taglist(function(t)
   local n = tonumber(tag.selected().name)
   if filter_in({

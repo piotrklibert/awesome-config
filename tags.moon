@@ -43,9 +43,11 @@ tag_left = wrap_show_taglist (t) ->
     tag.viewidx(2)
   else
     tag.viewidx(-1)
+{:dbg} = require"util"
 
 tag_right = wrap_show_taglist (t) ->
   n = tonumber tag.selected().name
+  -- dbg("#{n} #{type(n)} #{filter_in({3, 6, 9})(n)}")
   if filter_in({3, 6, 9})(n)
     tag.viewidx(-2)
   else

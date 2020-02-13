@@ -9,10 +9,11 @@ package.path = "/home/cji/portless/lua/Penlight/lua/?/init.lua;"     .. package.
 package.path = "/home/cji/portless/lua/Penlight/lua/?/;"             .. package.path
 package.path = "/home/cji/.config/awesome/widgets/?/init.lua;"       .. package.path
 package.path = "/home/cji/.config/awesome/widgets/?/?.lua;"          .. package.path
-package.path = "/home/cji/portless/lua/moonscript/?.lua;"            .. package.path
+package.path = "/home/cji/priv/moonscript/awesomescript/?.lua;"      .. package.path
 -- package.cpath = package.cpath .. ";/home/cji/portless/lua/?.lua;/home/cji/portless/lua/lua-openssl/openssl.so"
 
-dofile("/home/cji/portless/lua/moonscript/runtime/init.lua")
+-- TODO: use require("posix").setenv to set PROJECT_ROOT!
+dofile("/home/cji/priv/moonscript/awesomescript/runtime/init.lua")
 
 
 function script_path()

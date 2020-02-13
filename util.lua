@@ -106,7 +106,7 @@ filter_in = function(set, trans)
     local tn = trans(t)
     for _index_0 = 1, #set do
       local n = set[_index_0]
-      if tn == tostring(n) then
+      if tostring(tn) == tostring(n) then
         return true
       end
     end

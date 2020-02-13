@@ -109,7 +109,7 @@ filter_in = (set, trans = ident) ->
   (t) ->
     tn = trans(t)
     for n in *set
-      if tn == tostring(n)
+      if tostring(tn) == tostring(n)
         return true
     return false
 
