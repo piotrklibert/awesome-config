@@ -8,4 +8,4 @@ In SVG:
 ![](./haxemindmap.svg)
 
 In PNG:
-![](./haxemindmap.svg)
+![](./haxemindmap.png)
