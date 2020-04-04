@@ -2,4 +2,10 @@
 
 Also uses MoonScript and Haxe.
 
+#### Haxe mind map / infographic
+
+In SVG:
+![](./haxemindmap.svg)
+
+In PNG:
 ![](./haxemindmap.svg)
