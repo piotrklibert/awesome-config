@@ -153,6 +153,7 @@ altkey = "Mod1"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts =  {
     -- awful.layout.suit.tile,
+    awful.layout.suit.floating,
     awful.layout.suit.tile.right,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -160,7 +161,6 @@ awful.layout.layouts =  {
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
-    awful.layout.suit.floating,
     -- awful.layout.suit.spiral.dwindle,
     -- awful.layout.suit .max,
     -- awful.layout.suit.max.fullscreen,
@@ -257,7 +257,6 @@ screen_init.initialize()
 
 
 -- }}}
-
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
     awful.button({ }, 3, function () mymainmenu:toggle() end),
@@ -274,10 +273,16 @@ root.buttons(gears.table.join(
 
 tags = require "tags"
 
+local function run_rxvt()
+    awful.spawn.spawn("urxvt256c-ml")
+end
+
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey, "Shift" }, "p", function () naughty.notify{text=inspect(mouse.coords())} end, {description="", group="awesome"}),
+    awful.key({ modkey, "Shift" }, "p", function () naughty.notify{text=inspect(capi.mouse.coords())} end, {description="", group="awesome"}),
     awful.key({ modkey,         }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
+    awful.key({ modkey,         }, "q", run_rxvt, {description="open terminal", group="system"}),
 
     awful.key({altkey, "Control"}, "Up", tags.tag_up, {description = "view previous", group = "tag"}),
     awful.key({altkey, "Control"}, "Down", tags.tag_down, {description = "view next", group = "tag"}),
@@ -503,7 +508,15 @@ for i = 1, 9 do
     )
 end
 
+
+
 clientbuttons = gears.table.join(
+    awful.button({ modkey, "Shift" }, 3, function ()
+            naughty = require"naughty";
+            local props = io.popen("bash -c 'xprop -len 25 -id $(xdotool getactivewindow)'");
+            naughty.notify({text = props:read("*a"), timeout = 10})
+    end),
+
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
     end),
@@ -559,8 +572,8 @@ awful.rules.rules = {
     -- { rule = {floating = true}, properties = { titlebars_enabled = true } },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    { rule = { class = "emacs" }, properties = { tag = "5" } },
+    { rule = { class = "URxvt" }, properties = { maximized = true } },
 }
 -- }}}
 

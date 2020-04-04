@@ -266,6 +266,49 @@ initialize = ->
       tag.viewnone()
       screen[1].tags[5].selected = true
 
+    make_stats_widget = ->
+      w = {
+          image: "/home/cji/portless/lua/awesome-config/analytics.png",
+          resize: true,
+          widget: wibox.widget.imagebox,
+          forced_width: 25
+      }
+      w = {
+        w,
+        left: 2
+        top: 2
+        bottom: 2
+        right: 2
+        widget: wibox.container.margin
+      }
+      -- w = {
+      --   w,
+      --   bg: '#0000ff',
+      --   opacity: 0.3
+      --   widget: wibox.container.background
+      -- }
+      w = {
+        w,
+        top: 5
+        bottom: 3
+        widget: wibox.container.margin
+      }
+      w = wibox.widget w
+      wg = nil
+      {:make_notification_widget} =  require "util"
+      clb_in = ->
+        txt = io.popen("du  ~/Downloads/history/")\read("*a")
+        txt ..= "\n"..io.popen("df -h | grep /dev")\read("*a")
+        wg = make_notification_widget txt, {x: 1291, y: 41, width: 530, height: 200}, (opacity: 1), {font: "monospace 12", align: "left", valign: "top"}
+
+      clb_out = ->
+        if wg
+          wg.visible = false
+          wg = nil
+      w\connect_signal("mouse::enter", clb_in)
+      w\connect_signal("mouse::leave", clb_out)
+      w
+
 
     -- Add widgets to the wibox
     s.mywibox\setup {
@@ -295,7 +338,8 @@ initialize = ->
                 forced_width: 215
             },
             make_therm_widget(),
-            wibox.widget {forced_width: 30},
+            make_stats_widget(),
+            -- wibox.widget {forced_width: 30},
             s.batwidget,
             net_widgets.wireless({interface:"wlp5s0", onclick: util.run_nmtui}),
             require("brightness")(),

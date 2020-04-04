@@ -314,6 +314,60 @@ initialize = function()
       tag.viewnone()
       screen[1].tags[5].selected = true
     end)
+    local make_stats_widget
+    make_stats_widget = function()
+      local w = {
+        image = "/home/cji/portless/lua/awesome-config/analytics.png",
+        resize = true,
+        widget = wibox.widget.imagebox,
+        forced_width = 25
+      }
+      w = {
+        w,
+        left = 2,
+        top = 2,
+        bottom = 2,
+        right = 2,
+        widget = wibox.container.margin
+      }
+      w = {
+        w,
+        top = 5,
+        bottom = 3,
+        widget = wibox.container.margin
+      }
+      w = wibox.widget(w)
+      local wg = nil
+      local make_notification_widget
+      make_notification_widget = require("util").make_notification_widget
+      local clb_in
+      clb_in = function()
+        local txt = io.popen("du  ~/Downloads/history/"):read("*a")
+        txt = txt .. ("\n" .. io.popen("df -h | grep /dev"):read("*a"))
+        wg = make_notification_widget(txt, {
+          x = 1291,
+          y = 41,
+          width = 530,
+          height = 200
+        }, ({
+          opacity = 1
+        }), {
+          font = "monospace 12",
+          align = "left",
+          valign = "top"
+        })
+      end
+      local clb_out
+      clb_out = function()
+        if wg then
+          wg.visible = false
+          wg = nil
+        end
+      end
+      w:connect_signal("mouse::enter", clb_in)
+      w:connect_signal("mouse::leave", clb_out)
+      return w
+    end
     return s.mywibox:setup({
       layout = wibox.layout.align.horizontal,
       {
@@ -346,9 +400,7 @@ initialize = function()
           forced_width = 215
         }),
         make_therm_widget(),
-        wibox.widget({
-          forced_width = 30
-        }),
+        make_stats_widget(),
         s.batwidget,
         net_widgets.wireless({
           interface = "wlp5s0",

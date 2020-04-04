@@ -40,7 +40,6 @@ make_widget = (s, btns) ->
 
 
 
-
 make_wibox_container = () ->    -- Create a taglist widget
   wb = wibox {ontop: true}
   wb.opacity = 0.7

@@ -103,7 +103,6 @@ find_topbar_widget = (wb = screen[1].mywibox, wdg) ->
   x, y, w, h = gears.matrix.transform_rectangle(res\get_matrix_to_device(), 0, 0, res\get_size())
   x, y, w, h
 
--- _G["find_widget"]find_topbar_widget
 
 filter_in = (set, trans = ident) ->
   (t) ->
@@ -114,9 +113,66 @@ filter_in = (set, trans = ident) ->
     return false
 
 
+wibox = require "wibox"
+placement = require("awful.placement")
+-- x = (require("naughty.widget._default"))
+
+notif_margins = () ->
+    margins = wibox.container.margin()
+    margins\set_margins(beautiful.notification_margin or 4)
+
+    rawset(margins, "set_notification", () ->
+        if notif.margin
+            margins\set_margins(notif.margin))
+    margins
+
+
+
+make_notification_widget = (txt, geom, wbox_args, txt_args) ->
+  args = {ontop: true, opacity: 0.7}
+  if is_table(wbox_args)
+    merge args, wbox_args
+  wb = wibox(args)
+
+  g = if is_table(geom)
+    geom
+  else
+    {x: 1530, y: 32, height: 45, width: 90}
+
+  for attr, value in pairs(g)
+    wb[ attr ] = value
+
+  txt = {
+    id: "text",
+    text: txt
+    widget: wibox.widget.textbox,
+  }
+
+  if is_table(txt_args)
+    merge txt, txt_args
+
+  wb\setup {
+    {
+      txt,
+      left: 10
+      top: 5
+      bottom: 5
+      widget: wibox.container.margin
+    }
+    border_color: "#4B6063"
+    border_width: 1
+    border_strategy: "inner"
+    widget: wibox.container.background
+  }
+
+  wb.visible = true
+  wb
+
+_G["fff"] = make_notification_widget
 
 
 {
+  :make_notification_widget,
   :run_nmtui,
   :dbg,
   :bat_tooltip_fun,

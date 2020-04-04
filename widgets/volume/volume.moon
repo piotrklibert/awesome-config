@@ -15,50 +15,7 @@ str = require "std.string"
 mo = require "moses"
 
 
-
-wibox = require "wibox"
-placement = require("awful.placement")
-x = (require("naughty.widget._default"))
-
-notif_margins = () ->
-    margins = wibox.container.margin()
-    margins\set_margins(beautiful.notification_margin or 4)
-
-    rawset(margins, "set_notification", () ->
-        if notif.margin
-            margins\set_margins(notif.margin))
-    margins
-
-
-
-make_notification_widget = (txt) ->
-  wb = wibox {ontop: true}
-  wb.x = 1450
-  wb.y = 32
-  wb.height = 45
-  wb.width = 120
-  wb\setup {
-    {
-      {
-        id: "text",
-        text: txt
-        widget: wibox.widget.textbox,
-      },
-      left: 10
-      top: 5
-      bottom: 5
-      widget: wibox.container.margin
-    }
-    border_color: "#4B6063"
-    border_width: 1
-    border_strategy: "inner"
-    widget: wibox.container.background
-  }
-  -- placement.next_to(wb, {preferred_positions: "bottom", preferred_anchors: "middle", geometry: capi.screen[1].geometry})
-  wb.visible = true
-  wb
-
-_G["fff"] = make_notification_widget
+{:make_notification_widget} =  require "util"
 
 
 volume_to_icons = {
@@ -127,7 +84,7 @@ state = {
     txt = "#{@volume}%"
     if @is_muted
       txt = "muted"
-    @notification_widget = make_notification_widget txt
+    @notification_widget = make_notification_widget txt, {x: 1500, y: 32, height: 45, width: 90}
 
 
   popup_destroy: =>

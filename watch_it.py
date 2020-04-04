@@ -67,7 +67,7 @@ def recompile(event=None):
         args = [os.getcwd() + "/" + x for x in glob("*.moon")]
 
     start = time.time()
-    ret = subprocess.call(["../moonscript/bin/moonc"] + args)
+    ret = subprocess.call(["/home/cji/priv/moonscript/awesomescript/bin/moonc"] + args)
     if ret != 0:
         subprocess.call(["noti", "-t", "Compilation Failed!"])
         subprocess.call(["zsh", "-c", "source ~/.zshrc; boing-boing"])
@@ -91,7 +91,7 @@ if __name__ == "__main__":
     wm.add_watch(os.getcwd(), mask, rec=True)
     wm.add_watch(os.getcwd()+"/widgets/volume/", mask, rec=True)
     wm.add_watch(os.getcwd()+"/widgets/brightness/", mask, rec=True)
-    wm.add_watch("/home/cji/portless/lua/moonscript/bin/moonc", mask, rec=True)
+    wm.add_watch("/home/cji/privmoonscript/awesomescript/bin/moonc", mask, rec=True)
 
     notifier = ino.Notifier(wm, make_handler(patterns, recompile))
 

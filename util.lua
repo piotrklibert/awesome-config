@@ -113,7 +113,70 @@ filter_in = function(set, trans)
     return false
   end
 end
+wibox = require("wibox")
+local placement = require("awful.placement")
+local notif_margins
+notif_margins = function()
+  local margins = wibox.container.margin()
+  margins:set_margins(beautiful.notification_margin or 4)
+  rawset(margins, "set_notification", function()
+    if notif.margin then
+      return margins:set_margins(notif.margin)
+    end
+  end)
+  return margins
+end
+local make_notification_widget
+make_notification_widget = function(txt, geom, wbox_args, txt_args)
+  local args = {
+    ontop = true,
+    opacity = 0.7
+  }
+  if is_table(wbox_args) then
+    merge(args, wbox_args)
+  end
+  local wb = wibox(args)
+  local g
+  if is_table(geom) then
+    g = geom
+  else
+    g = {
+      x = 1530,
+      y = 32,
+      height = 45,
+      width = 90
+    }
+  end
+  for attr, value in pairs(g) do
+    wb[attr] = value
+  end
+  txt = {
+    id = "text",
+    text = txt,
+    widget = wibox.widget.textbox
+  }
+  if is_table(txt_args) then
+    merge(txt, txt_args)
+  end
+  wb:setup({
+    {
+      txt,
+      left = 10,
+      top = 5,
+      bottom = 5,
+      widget = wibox.container.margin
+    },
+    border_color = "#4B6063",
+    border_width = 1,
+    border_strategy = "inner",
+    widget = wibox.container.background
+  })
+  wb.visible = true
+  return wb
+end
+_G["fff"] = make_notification_widget
 return {
+  make_notification_widget = make_notification_widget,
   run_nmtui = run_nmtui,
   dbg = dbg,
   bat_tooltip_fun = bat_tooltip_fun,
