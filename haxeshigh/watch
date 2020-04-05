@@ -1,0 +1,15 @@
+#! /bin/bash
+
+f="/home/cji/portless/lua/awesome-config/haxeshigh/finished"
+
+while true; do
+    find . ! -iname '.*.hx' -iname '*.hx' | xargs inotifywait -e modify
+    rm out.lua finished || true
+    haxe main.hxml
+    cat out.lua | awesome-client
+    if [ ! -f $f ]; then
+        noti -t "Compilation failed!"
+    else
+        noti -t "Compilation ok! $(wc -l out.lua)"
+    fi
+done

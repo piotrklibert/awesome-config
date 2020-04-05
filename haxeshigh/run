@@ -1,0 +1,16 @@
+#! /bin/bash
+
+set -e
+
+f="/home/cji/portless/lua/awesome-config/haxeshigh/finished"
+
+rm out.lua finished || true
+haxe main.hxml
+(cat out.lua | awesome-client)
+echo 'o = require"out"; o.Main.mkLua(); ' | awesome-client
+
+if [ ! -f $f ]; then
+    noti -t "Compilation failed!" -m "$(wc -l out.lua)"
+else
+    noti -t "Compilation ok!" -m "$(wc -l out.lua)"
+fi

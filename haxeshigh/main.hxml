@@ -1,0 +1,10 @@
+-cp src
+-dce full
+-D analyzer-module
+-D analyzer-optimize
+-D analyzer-user-var-fusion
+-L tink_core
+-L tink_lang
+-lua out.lua
+-m Main
+Main.hx
