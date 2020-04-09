@@ -1,10 +1,20 @@
--cp src
 -dce full
 -D analyzer-module
+-D analyzer-modusfsdfsdf
 -D analyzer-optimize
 -D analyzer-user-var-fusion
--L tink_core
--L tink_lang
--lua out.lua
+
+--each
+
+-cp src
+-lua build/loader.lua
 -m Main
 Main.hx
+
+--next
+
+-cp src
+-L tink_core
+-L tink_lang
+-lua build/app.lua
+app.Taglist

@@ -1,7 +1,7 @@
-package ut;
+package utils;
 
-import ex.Inspect;
-import ex.Naughty;
+import lib.Inspect;
+import awful.Naughty;
 
 
 @:nullSafety(Strict)

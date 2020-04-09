@@ -1,21 +1,11 @@
-package ex;
+package awful;
 
-import lua.Lua;
-import lua.Table;
-import lua.Io;
-import lua.NativeIterator;
-
-import ex.Naughty;
-import ex.Inspect;
-import ex.Spawn;
-
-import ut.Utils as U;
 import haxe.extern.Rest;
 import tink.core.Callback;
 // typedef Callback<V> = V -> Void;
 
 typedef TimerArgs = {
-  var ?timeout: Int;
+  var ?timeout: Float;
   var ?autostart: Bool;
   var ?call_now: Bool;
   var ?callback: Callback<Void>;
@@ -34,19 +24,12 @@ extern class Timer {
   function stop(): Void;
   function again(): Void;
 
-  inline static function callAfter(n: Int, c: Callback<Void>): Timer {
-    return new Timer({
-        timeout: n, callback: c,
-        autostart: true,
-        single_shot: true
-      });
+  // TODO: return a promise from here
+  inline static function callAfter(n: Float, c: Callback<Void>): Timer {
+    return new Timer({timeout: n, callback: c, autostart: true, single_shot: true});
   }
 
-  inline static function callInterval(n: Int, c: Callback<Void>): Timer {
-    return new Timer({
-        timeout: n, callback: c,
-        autostart: true,
-        single_shot: false
-      });
+  inline static function callInterval(n: Float, c: Callback<Void>): Timer {
+    return new Timer({timeout: n, callback: c, autostart: true, single_shot: false});
   }
 }

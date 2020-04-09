@@ -1,4 +1,4 @@
-package ex;
+package awful;
 
 
 import Utils as U;
@@ -10,7 +10,7 @@ import haxe.extern.Rest;
 extern class Client {
   static function next(i: Int, ?sel: Client, ?stacked: Bool = false): Client;
   static function cycle(clockwise, s, ?stacked: Bool = false): Client;
-  static function getmarked();
+  static function getmarked(): Client;
   static function restore(s);
   static function iterate(filter, start, s);
 

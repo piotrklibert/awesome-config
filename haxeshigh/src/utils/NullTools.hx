@@ -1,4 +1,4 @@
-package ut;
+package utils;
 
 class NullTools {
   public static inline function sure<T>(value:Null<T>):T {

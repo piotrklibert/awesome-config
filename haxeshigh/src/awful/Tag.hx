@@ -1,8 +1,9 @@
-package ex;
+package awful;
+
 import lua.Lua;
 import lua.Table;
 
-@:native("awful.tag")
+@:luaRequire("awful.tag")
 extern class Tag {
 
   // Create a set of tags and attach it to a screen.

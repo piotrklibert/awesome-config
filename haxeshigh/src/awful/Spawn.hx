@@ -1,4 +1,5 @@
-package ex;
+package awful
+;
 import lua.Lua;
 import lua.Table;
 import haxe.ds.Either;

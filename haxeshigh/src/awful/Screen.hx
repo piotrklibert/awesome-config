@@ -1,4 +1,5 @@
-package ex;
+package awful;
+
 import haxe.Constraints;
 import haxe.extern.Rest;
 
@@ -27,8 +28,6 @@ extern class Screen {
   static function disconnect_for_each_screen(func: Function): Void;
 
   static var primary: Screen;
-
-
 
   // Get the number of instances.
   function instances(): Int;
