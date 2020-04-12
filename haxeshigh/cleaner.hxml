@@ -9,9 +9,9 @@
 -D analyzer-purity_inference
 
 -cp src
-
+-lua build/cleaner.lua
 -L tink_core
 -L tink_lang
--lua build/app.lua
+-m Cleaner
 
-app.Taglist
+Cleaner.hx

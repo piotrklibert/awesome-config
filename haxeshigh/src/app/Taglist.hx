@@ -6,7 +6,7 @@ import lua.Table;
 import haxe.ds.Option;
 
 import awful.*;
-import utils.Common;
+import utils.Common as Utils;   // TODO: remove
 import utils.lua.Common;
 
 using utils.OptionTools;
@@ -14,6 +14,8 @@ using utils.OptionTools;
 
 typedef Log = utils.FileLogger;
 
+
+// TODO:
 class WidgetDesc {
   public final widgets: Array<Any>;
   public final options: {};
@@ -23,26 +25,55 @@ class WidgetDesc {
   }
 }
 
-@:nullSafety(Strict)
+
 @:expose
+@:nullSafety(Strict)
+class TaglistManager {
+  static var taglist: Option<Taglist> = None;
+
+  public static function enable() {
+    switch taglist {
+      case None:
+        taglist = Some((new Taglist()).enable());
+      case Some(tl):
+        taglist = Some(tl.enable());
+    }
+    return taglist;
+  }
+
+  public static function disable() {
+    switch taglist {
+      case None:
+        throw "TaglistManager: Tried to call .disable(), but .enable() was not called before";
+      case Some(tl): {
+          tl.disable();
+          taglist = None;
+        }
+    }
+  }
+}
+
+
+@:expose
+@:nullSafety(Strict)
 class Taglist {
   public var my_wibox: Option<Wibox> = None;
 
-  public function new() {
-
-  }
+  public function new() {}
 
   public function enable() {
     if (my_wibox == None) {
       my_wibox = Some(mkWibox());
     }
     setup(my_wibox.sure(), mkWidget(Screen.focused()));
+    return this;
   }
 
   public function disable() {
     final wb = my_wibox.sure();
     wb.visible = false;
     my_wibox = None;
+    return this;
   }
 
 
@@ -62,7 +93,7 @@ class Taglist {
       });
     setupTable[1] = widgetTable;
 
-    final anim = new TaglistAnimation(this);
+    final anim = new TaglistAnimator(this);
     wibox.setup(setupTable);
     wibox.connect_signal("mouse::enter", () -> anim.slide("in"));
     wibox.connect_signal("mouse::leave", () -> anim.slide("out"));
@@ -85,12 +116,28 @@ class Taglist {
   }
 
   private static function mkWidget(s: Screen): Widget {
-    final _filter = Utils.filterIn.bind(_, (x) -> x.name);
-    final ret: LuaTable = cast Table.fromArray([
-        Widget.taglist({screen: s, filter: _filter(["1", "2", "3"])}),
-        Widget.taglist({screen: s, filter: _filter(["4", "5", "6"])}),
-        Widget.taglist({screen: s, filter: _filter(["7", "8", "9"])}),
-      ]);
+    Log.log("mkWidget");
+    function makeTaglist(screen: Screen, filter: Dynamic): AnyTable untyped {
+      final tbl = Utils.mkLua();
+      tbl.screen = screen;
+      tbl.filter = filter;
+      return tbl;
+    }
+    inline function tl(x) return untyped Widget["taglist"](x);
+    final keyFunc = (x) -> x.name;
+    final ret: AnyTable = Utils.mkLua();
+
+    ret[1] = tl(makeTaglist(s, Utils.filterIn(["1", "2", "3"], keyFunc)));
+    ret[2] = tl(makeTaglist(s, Utils.filterIn(["4", "5", "6"], keyFunc)));
+    ret[3] = tl(makeTaglist(s, Utils.filterIn(["7", "8", "9"], keyFunc)));
+
+
+    // final _filter = Utils.filterIn.bind(_, (x) -> x.name);
+    // final ret: LuaTable = cast Table.fromArray([
+    //     Widget.taglist({screen: s, filter: _filter(["1", "2", "3"])}),
+    //     Widget.taglist({screen: s, filter: _filter(["4", "5", "6"])}),
+    //     Widget.taglist({screen: s, filter: _filter(["7", "8", "9"])}),
+    //   ]);
     ret.spacing = 6;
     ret.id = "grid";
     ret.layout = Wibox.layout.fixed.vertical;
@@ -98,75 +145,4 @@ class Taglist {
 
     return Widget.widget(ret);
   }
-}
-
-@:tink
-class TaglistAnimation {
-  @:nullSafety(Off)
-  public var generator: (Timer) -> Void;
-  public final my_wibox: Wibox;
-
-  public function new(t: Taglist) {
-    switch (t.my_wibox) {
-      case Some(wb): my_wibox = wb;
-      case None: throw "Cannot animate nonexistent widget";
-    }
-  };
-
-  public final timers = new Timers();
-
-
-  private static inline function mkConf() {
-    final init = 1820;
-    return {
-      init: init,
-      last: init + 75,
-      step_time: 0.05
-    }
-  }
-  public static final slideConf = mkConf();
-
-  public function show() {
-    if (timers.slide_timer != None) {
-      timers.slide_timer.sure().stop();
-    }
-    my_wibox.geometry({x: slideConf.init});
-  }
-
-  public function slideOut(timer: Timer) {
-    for (x += 2 in my_wibox.x...slideConf.last) {
-      my_wibox.geometry({x: x});
-      Coroutine.yield();
-    }
-    timer.stop();
-  }
-
-  public function slideIn(timer: Timer) {
-    for (x -= 2 in my_wibox.x...slideConf.init) {
-      my_wibox.geometry({x: x});
-      Coroutine.yield();
-    }
-    timer.stop();
-  }
-
-  public function slide(arg: String) {
-    if (timers.slide_timer != None) {
-      timers.slide_timer.sure().stop();
-      timers.slide_timer = None;
-    }
-
-    generator = Coroutine.wrap(if (arg == "in") slideIn else slideOut);
-    timers.slide_timer = Some(
-      Timer.callInterval(
-        slideConf.step_time,
-        function (t) generator(timers.slide_timer.sure())
-      )
-    );
-  }
-}
-
-
-class Timers {
-  public var slide_timer: Option<Timer> = None;
-  public function new() {}
 }

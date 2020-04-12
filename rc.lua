@@ -277,12 +277,16 @@ local function run_rxvt()
     awful.spawn.spawn("urxvt256c-ml")
 end
 
+local function screenshot()
+    awful.spawn.with_shell("import $(date +screenshot_%Y-%m-%d_%H%M.png)")
+end
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey, "Shift" }, "p", function () naughty.notify{text=inspect(capi.mouse.coords())} end, {description="", group="awesome"}),
     awful.key({ modkey,         }, "s", hotkeys_popup.show_help, {description="show help", group="awesome"}),
     awful.key({ modkey,         }, "q", run_rxvt, {description="open terminal", group="system"}),
+    awful.key({ }, "Print", screenshot, {description="screenshot", group="system"}),
 
     awful.key({altkey, "Control"}, "Up", tags.tag_up, {description = "view previous", group = "tag"}),
     awful.key({altkey, "Control"}, "Down", tags.tag_down, {description = "view next", group = "tag"}),

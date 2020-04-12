@@ -1,15 +1,30 @@
 #! /bin/bash
 
-f="/home/cji/portless/lua/awesome-config/haxeshigh/finished"
+logDir="/home/cji/portless/lua/awesome-config/haxeshigh/logs/"
+logFile="$logDir/build.log"
 
 while true; do
     find . ! -iname '.*.hx' -iname '*.hx' | xargs inotifywait -e modify
-    rm out.lua finished || true
-    haxe main.hxml
-    cat out.lua | awesome-client
-    if [ ! -f $f ]; then
-        noti -t "Compilation failed!"
+
+    (>$logFile 2>&1 make build)
+    if [ $? != 0  ]; then
+        noti -t 'Compilation failed!!' -m "$(cat $logFile)"
+        continue
     else
-        noti -t "Compilation ok! $(wc -l out.lua)"
+        # noti -t 'Compilation ok!' -m "$(wc -l build/*)"
+    fi
+
+    (>>$logFile 2>&1 make clean)
+    if [ $? != 0 ]; then
+        noti -t "Cleanup failed!" -m "$(cat $logDir/std.log)"
+    else
+        # noti -t "Cleanup ok!" -m "$(cat $logDir/std.log)"
+    fi
+
+    (>>$logFile 2>&1 make load)
+    if [ $? != 0 ]; then
+        noti -t "Loading failed!" -m "$(cat $logDir/std.log)"
+    else
+        # noti -t "Loaded ok!" -m "$(cat $logDir/std.log)"
     fi
 done

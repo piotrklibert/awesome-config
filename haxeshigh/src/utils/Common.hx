@@ -5,6 +5,8 @@ import lua.Table;
 import haxe.ds.StringMap;
 
 import utils.lua.Common;
+import lua.Package;
+using StringTools;
 
 typedef Log = utils.FileLogger;
 
@@ -12,7 +14,7 @@ typedef KeyFunc<T> = (Dynamic) -> T;
 
 
 
-class Utils {
+class Common {
   public static var ident: KeyFunc<Dynamic> = (x) -> x;
 
   @:nullSafety(Strict)
@@ -25,7 +27,7 @@ class Utils {
     }
   }
 
-  public static function mkLua(){
+  public static function mkLua() {
     return untyped __lua__("{}");
   }
 
@@ -33,6 +35,7 @@ class Utils {
     // StringMaps on Lua are built around a table stored in .h key
     return untyped map.h;
   };
+
 
   public static function structToTable(s: Dynamic): LuaTable {
     final obj: LuaTable = mkLua();
@@ -42,9 +45,9 @@ class Utils {
     return obj;
   }
 
-
-// typedef StringTable<V> = Table<String, V>
-// typedef MixedTable<V> = Table<Either<String, Int>, V>;
-
-
+  public static function check_path() {
+    if ( !Package.path.contains("haxeshigh/build") ) {
+      Package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/build/?.lua;" + Package.path;
+    }
+  }
 }

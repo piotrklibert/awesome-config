@@ -52,14 +52,19 @@ local Enum = _hx_e();
 local _hx_exports = _hx_exports or {}
 _hx_exports["app"] = _hx_exports["app"] or _hx_e()
 local Array = _hx_e()
+local Date = _hx_e()
+local DateTools = _hx_e()
 __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Math = _hx_e()
 local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
+local StringTools = _hx_e()
 local Sys = _hx_e()
+__haxe_ds_Option = _hx_e()
+__app_TaglistManager = _hx_e()
 __app_Taglist = _hx_e()
-__app_TaglistAnimation = _hx_e()
+__app_TaglistAnimator = _hx_e()
 __app_Timers = _hx_e()
 __awful_Screen = _G.require("awful.screen")
 __awful_Timer = _G.require("gears.timer")
@@ -68,7 +73,6 @@ __awful_Widget = _G.require("awful.widget")
 __haxe_EntryPoint = _hx_e()
 __haxe_MainEvent = _hx_e()
 __haxe_MainLoop = _hx_e()
-__haxe_ds_Option = _hx_e()
 __haxe_io_Bytes = _hx_e()
 __haxe_io_Encoding = _hx_e()
 __haxe_io_Error = _hx_e()
@@ -80,7 +84,7 @@ __lua_UserData = _hx_e()
 __lua_lib_luasocket_Socket = _G.require("socket")
 __sys_io_File = _hx_e()
 __sys_io_FileOutput = _hx_e()
-__utils_Utils = _hx_e()
+__utils_Common = _hx_e()
 __utils_FileLogger = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -401,6 +405,232 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
+Date.new = function(year,month,day,hour,min,sec) 
+  local self = _hx_new(Date.prototype)
+  Date.super(self,year,month,day,hour,min,sec)
+  return self
+end
+Date.super = function(self,year,month,day,hour,min,sec) 
+  self.t = _G.os.time(_hx_o({__fields__={year=true,month=true,day=true,hour=true,min=true,sec=true},year=year,month=month + 1,day=day,hour=hour,min=min,sec=sec}));
+  self.d = _G.os.date("*t", self.t);
+  self.dUTC = _G.os.date("!*t", self.t);
+end
+Date.prototype = _hx_a();
+Date.prototype.getTime = function(self) 
+  do return self.t * 1000 end
+end
+Date.prototype.getHours = function(self) 
+  do return self.d.hour end
+end
+Date.prototype.getMinutes = function(self) 
+  do return self.d.min end
+end
+Date.prototype.getSeconds = function(self) 
+  do return self.d.sec end
+end
+Date.prototype.getFullYear = function(self) 
+  do return self.d.year end
+end
+Date.prototype.getMonth = function(self) 
+  do return self.d.month - 1 end
+end
+Date.prototype.getDate = function(self) 
+  do return self.d.day end
+end
+Date.prototype.getDay = function(self) 
+  do return self.d.wday - 1 end
+end
+
+DateTools.new = {}
+DateTools.__format_get = function(d,e) 
+  local e1 = e;
+  if (e1) == "%" then 
+    do return "%" end;
+  elseif (e1) == "A" then 
+    do return DateTools.DAY_NAMES[d:getDay()] end;
+  elseif (e1) == "B" then 
+    do return DateTools.MONTH_NAMES[d:getMonth()] end;
+  elseif (e1) == "C" then 
+    do return StringTools.lpad(Std.string(Std.int(d:getFullYear() / 100)), "0", 2) end;
+  elseif (e1) == "D" then 
+    do return DateTools.__format(d, "%m/%d/%y") end;
+  elseif (e1) == "F" then 
+    do return DateTools.__format(d, "%Y-%m-%d") end;
+  elseif (e1) == "I" or (e1) == "l" then 
+    local hour = _G.math.fmod(d:getHours(), 12);
+    do return StringTools.lpad(Std.string((function() 
+      local _hx_1
+      if (hour == 0) then 
+      _hx_1 = 12; else 
+      _hx_1 = hour; end
+      return _hx_1
+    end )()), (function() 
+      local _hx_2
+      if (e == "I") then 
+      _hx_2 = "0"; else 
+      _hx_2 = " "; end
+      return _hx_2
+    end )(), 2) end;
+  elseif (e1) == "M" then 
+    do return StringTools.lpad(Std.string(d:getMinutes()), "0", 2) end;
+  elseif (e1) == "R" then 
+    do return DateTools.__format(d, "%H:%M") end;
+  elseif (e1) == "S" then 
+    do return StringTools.lpad(Std.string(d:getSeconds()), "0", 2) end;
+  elseif (e1) == "T" then 
+    do return DateTools.__format(d, "%H:%M:%S") end;
+  elseif (e1) == "Y" then 
+    do return Std.string(d:getFullYear()) end;
+  elseif (e1) == "a" then 
+    do return DateTools.DAY_SHORT_NAMES[d:getDay()] end;
+  elseif (e1) == "b" or (e1) == "h" then 
+    do return DateTools.MONTH_SHORT_NAMES[d:getMonth()] end;
+  elseif (e1) == "d" then 
+    do return StringTools.lpad(Std.string(d:getDate()), "0", 2) end;
+  elseif (e1) == "e" then 
+    do return Std.string(d:getDate()) end;
+  elseif (e1) == "H" or (e1) == "k" then 
+    do return StringTools.lpad(Std.string(d:getHours()), (function() 
+      local _hx_3
+      if (e == "H") then 
+      _hx_3 = "0"; else 
+      _hx_3 = " "; end
+      return _hx_3
+    end )(), 2) end;
+  elseif (e1) == "m" then 
+    do return StringTools.lpad(Std.string(d:getMonth() + 1), "0", 2) end;
+  elseif (e1) == "n" then 
+    do return "\n" end;
+  elseif (e1) == "p" then 
+    if (d:getHours() > 11) then 
+      do return "PM" end;
+    else
+      do return "AM" end;
+    end;
+  elseif (e1) == "r" then 
+    do return DateTools.__format(d, "%I:%M:%S %p") end;
+  elseif (e1) == "s" then 
+    do return Std.string(Std.int(d:getTime() / 1000)) end;
+  elseif (e1) == "t" then 
+    do return "\t" end;
+  elseif (e1) == "u" then 
+    local t = d:getDay();
+    if (t == 0) then 
+      do return "7" end;
+    else
+      do return Std.string(t) end;
+    end;
+  elseif (e1) == "w" then 
+    do return Std.string(d:getDay()) end;
+  elseif (e1) == "y" then 
+    do return StringTools.lpad(Std.string(_G.math.fmod(d:getFullYear(), 100)), "0", 2) end;else
+  _G.error(Std.string(Std.string("Date.format %") .. Std.string(e)) .. Std.string("- not implemented yet."),0); end;
+end
+DateTools.__format = function(d,f) 
+  local r_b = ({});
+  local p = 0;
+  while (true) do 
+    local startIndex = p;
+    if (startIndex == nil) then 
+      startIndex = 1;
+    else
+      startIndex = startIndex + 1;
+    end;
+    local r = __lua_lib_luautf8_Utf8.find(f, "%", startIndex, true);
+    local np = (function() 
+      local _hx_1
+      if ((r ~= nil) and (r > 0)) then 
+      _hx_1 = r - 1; else 
+      _hx_1 = -1; end
+      return _hx_1
+    end )();
+    if (np < 0) then 
+      break;
+    end;
+    local len = np - p;
+    local part;
+    if (len == nil) then 
+      local pos = p;
+      local len1 = nil;
+      len1 = __lua_lib_luautf8_Utf8.len(f);
+      if (pos < 0) then 
+        pos = __lua_lib_luautf8_Utf8.len(f) + pos;
+      end;
+      if (pos < 0) then 
+        pos = 0;
+      end;
+      part = __lua_lib_luautf8_Utf8.sub(f, pos + 1, pos + len1);
+    else
+      local pos1 = p;
+      local len2 = len;
+      if ((len == nil) or (len > (pos1 + __lua_lib_luautf8_Utf8.len(f)))) then 
+        len2 = __lua_lib_luautf8_Utf8.len(f);
+      else
+        if (len < 0) then 
+          len2 = __lua_lib_luautf8_Utf8.len(f) + len;
+        end;
+      end;
+      if (pos1 < 0) then 
+        pos1 = __lua_lib_luautf8_Utf8.len(f) + pos1;
+      end;
+      if (pos1 < 0) then 
+        pos1 = 0;
+      end;
+      part = __lua_lib_luautf8_Utf8.sub(f, pos1 + 1, pos1 + len2);
+    end;
+    _G.table.insert(r_b, part);
+    local pos2 = np + 1;
+    local len3 = 1;
+    if (1 > (pos2 + __lua_lib_luautf8_Utf8.len(f))) then 
+      len3 = __lua_lib_luautf8_Utf8.len(f);
+    end;
+    if (pos2 < 0) then 
+      pos2 = __lua_lib_luautf8_Utf8.len(f) + pos2;
+    end;
+    if (pos2 < 0) then 
+      pos2 = 0;
+    end;
+    _G.table.insert(r_b, Std.string(DateTools.__format_get(d, __lua_lib_luautf8_Utf8.sub(f, pos2 + 1, pos2 + len3))));
+    p = np + 2;
+  end;
+  local len4 = __lua_lib_luautf8_Utf8.len(f) - p;
+  local part1;
+  if (len4 == nil) then 
+    local pos3 = p;
+    local len5 = nil;
+    len5 = __lua_lib_luautf8_Utf8.len(f);
+    if (pos3 < 0) then 
+      pos3 = __lua_lib_luautf8_Utf8.len(f) + pos3;
+    end;
+    if (pos3 < 0) then 
+      pos3 = 0;
+    end;
+    part1 = __lua_lib_luautf8_Utf8.sub(f, pos3 + 1, pos3 + len5);
+  else
+    local pos4 = p;
+    local len6 = len4;
+    if ((len4 == nil) or (len4 > (pos4 + __lua_lib_luautf8_Utf8.len(f)))) then 
+      len6 = __lua_lib_luautf8_Utf8.len(f);
+    else
+      if (len4 < 0) then 
+        len6 = __lua_lib_luautf8_Utf8.len(f) + len4;
+      end;
+    end;
+    if (pos4 < 0) then 
+      pos4 = __lua_lib_luautf8_Utf8.len(f) + pos4;
+    end;
+    if (pos4 < 0) then 
+      pos4 = 0;
+    end;
+    part1 = __lua_lib_luautf8_Utf8.sub(f, pos4 + 1, pos4 + len6);
+  end;
+  _G.table.insert(r_b, part1);
+  do return _G.table.concat(r_b) end;
+end
+DateTools.format = function(d,f) 
+  do return DateTools.__format(d, f) end;
+end
+
 Math.new = {}
 Math.isNaN = function(f) 
   do return f ~= f end;
@@ -602,9 +832,51 @@ Std.int = function(x)
   end;
 end
 
+StringTools.new = {}
+StringTools.lpad = function(s,c,l) 
+  if (__lua_lib_luautf8_Utf8.len(c) <= 0) then 
+    do return s end;
+  end;
+  local buf_b = ({});
+  local buf_length = 0;
+  l = l - __lua_lib_luautf8_Utf8.len(s);
+  while (buf_length < l) do 
+    local str = Std.string(c);
+    _G.table.insert(buf_b, str);
+    buf_length = buf_length + __lua_lib_luautf8_Utf8.len(str);
+  end;
+  _G.table.insert(buf_b, Std.string(s));
+  do return _G.table.concat(buf_b) end;
+end
+
 Sys.new = {}
 Sys.time = function() 
   do return __lua_lib_luasocket_Socket.gettime() end;
+end
+
+__haxe_ds_Option.Some = function(v) local _x = _hx_tab_array({[0]="Some",0,v,__enum__=__haxe_ds_Option}, 3); return _x; end 
+__haxe_ds_Option.None = _hx_tab_array({[0]="None",1,__enum__ = __haxe_ds_Option},2)
+
+
+__app_TaglistManager.new = {}
+_hx_exports["app"]["TaglistManager"] = __app_TaglistManager
+__app_TaglistManager.enable = function() 
+  local _g = __app_TaglistManager.taglist;
+  local tmp = _g[1];
+  if (tmp) == 0 then 
+    __app_TaglistManager.taglist = __haxe_ds_Option.Some(_g[2]:enable());
+  elseif (tmp) == 1 then 
+    __app_TaglistManager.taglist = __haxe_ds_Option.Some(__app_Taglist.new():enable()); end;
+  do return __app_TaglistManager.taglist end;
+end
+__app_TaglistManager.disable = function() 
+  local _g = __app_TaglistManager.taglist;
+  local tmp = _g[1];
+  if (tmp) == 0 then 
+    _g[2]:disable();
+    __app_TaglistManager.taglist = __haxe_ds_Option.None;
+  elseif (tmp) == 1 then 
+    _G.error("TaglistManager: Tried to call .disable(), but .enable() was not called before",0); end;
 end
 
 __app_Taglist.new = function() 
@@ -620,26 +892,27 @@ __app_Taglist.mkWibox = function()
   do return __awful_Wibox(__app_Taglist.wibox_config) end;
 end
 __app_Taglist.mkWidget = function(s) 
-  local t = function(x) 
+  __utils_FileLogger.log("mkWidget");
+  local makeTaglist = function(screen,filter) 
+    local tbl = __utils_Common.mkLua();
+    tbl.screen = screen;
+    tbl.filter = filter;
+    do return tbl end;
+  end;
+  local keyFunc = function(x) 
     do return x.name end;
   end;
-  local _filter = function(s1) 
-    do return __utils_Utils.filterIn(s1, t) end;
-  end;
-  local arr = _hx_tab_array({[0]=__awful_Widget.taglist(_hx_o({__fields__={screen=true,filter=true},screen=s,filter=function(_,...) return _filter(_hx_tab_array({[0]="1", "2", "3"}, 3))(...) end})), __awful_Widget.taglist(_hx_o({__fields__={screen=true,filter=true},screen=s,filter=function(_,...) return _filter(_hx_tab_array({[0]="4", "5", "6"}, 3))(...) end})), __awful_Widget.taglist(_hx_o({__fields__={screen=true,filter=true},screen=s,filter=function(_,...) return _filter(_hx_tab_array({[0]="7", "8", "9"}, 3))(...) end}))}, 3);
-  local ret = ({});
-  local _g = 0;
-  local _g1 = arr.length;
-  while (_g < _g1) do 
-    _g = _g + 1;
-    local idx = _g - 1;
-    ret[idx + 1] = arr[idx];
-  end;
-  local ret1 = ret;
-  ret1.spacing = 6;
-  ret1.id = "grid";
-  ret1.layout = __awful_Wibox.layout.fixed.vertical;
-  do return __awful_Wibox.widget(ret1) end;
+  local ret = __utils_Common.mkLua();
+  local x1 = makeTaglist(s, __utils_Common.filterIn(_hx_tab_array({[0]="1", "2", "3"}, 3), keyFunc));
+  ret[1] = __awful_Widget.taglist(x1);
+  local x2 = makeTaglist(s, __utils_Common.filterIn(_hx_tab_array({[0]="4", "5", "6"}, 3), keyFunc));
+  ret[2] = __awful_Widget.taglist(x2);
+  local x3 = makeTaglist(s, __utils_Common.filterIn(_hx_tab_array({[0]="7", "8", "9"}, 3), keyFunc));
+  ret[3] = __awful_Widget.taglist(x3);
+  ret.spacing = 6;
+  ret.id = "grid";
+  ret.layout = __awful_Wibox.layout.fixed.vertical;
+  do return __awful_Wibox.widget(ret) end;
 end
 __app_Taglist.prototype = _hx_a();
 __app_Taglist.prototype.enable = function(self) 
@@ -654,6 +927,7 @@ __app_Taglist.prototype.enable = function(self)
   elseif (tmp1) == 1 then 
     _G.error("None in OptionTools.sure() call",0); end;
   self:setup(tmp, __app_Taglist.mkWidget(__awful_Screen.focused()));
+  do return self end
 end
 __app_Taglist.prototype.disable = function(self) 
   local value = self.my_wibox;
@@ -665,13 +939,14 @@ __app_Taglist.prototype.disable = function(self)
     _G.error("None in OptionTools.sure() call",0); end;
   wb.visible = false;
   self.my_wibox = __haxe_ds_Option.None;
+  do return self end
 end
 __app_Taglist.prototype.setup = function(self,wibox,widget) 
-  local widgetTable = __utils_Utils.structToTable(_hx_o({__fields__={margins=true,layout=true},margins=15,layout=__awful_Wibox.container.margin}));
+  local widgetTable = __utils_Common.structToTable(_hx_o({__fields__={margins=true,layout=true},margins=15,layout=__awful_Wibox.container.margin}));
   widgetTable[1] = widget;
-  local setupTable = __utils_Utils.structToTable(_hx_o({__fields__={id=true,border_color=true,border_width=true,border_strategy=true,widget=true},id="bg",border_color="#919191",border_width=1,border_strategy="inner",widget=__awful_Wibox.container.background}));
+  local setupTable = __utils_Common.structToTable(_hx_o({__fields__={id=true,border_color=true,border_width=true,border_strategy=true,widget=true},id="bg",border_color="#919191",border_width=1,border_strategy="inner",widget=__awful_Wibox.container.background}));
   setupTable[1] = widgetTable;
-  local anim = __app_TaglistAnimation.new(self);
+  local anim = __app_TaglistAnimator.new(self);
   wibox:setup(setupTable);
   wibox:connect_signal("mouse::enter", function() 
     anim:slide("in");
@@ -685,12 +960,12 @@ __app_Taglist.prototype.setup = function(self,wibox,widget)
   do return wibox end
 end
 
-__app_TaglistAnimation.new = function(t) 
-  local self = _hx_new(__app_TaglistAnimation.prototype)
-  __app_TaglistAnimation.super(self,t)
+__app_TaglistAnimator.new = function(t) 
+  local self = _hx_new(__app_TaglistAnimator.prototype)
+  __app_TaglistAnimator.super(self,t)
   return self
 end
-__app_TaglistAnimation.super = function(self,t) 
+__app_TaglistAnimator.super = function(self,t) 
   self.timers = __app_Timers.new();
   local _g = t.my_wibox;
   local tmp = _g[1];
@@ -699,11 +974,11 @@ __app_TaglistAnimation.super = function(self,t)
   elseif (tmp) == 1 then 
     _G.error("Cannot animate nonexistent widget",0); end;
 end
-__app_TaglistAnimation.prototype = _hx_a();
-__app_TaglistAnimation.prototype.slideOut = function(self,timer) 
+__app_TaglistAnimator.prototype = _hx_a();
+__app_TaglistAnimator.prototype.slideOut = function(self,timer) 
   local start = self.my_wibox.x;
   local iterator_x_cur = 0;
-  local iterator_x_max = _G.math.ceil((__app_TaglistAnimation.slideConf.last - start) / 2);
+  local iterator_x_max = _G.math.ceil((__app_TaglistAnimator.slideConf.last - start) / 2);
   while (iterator_x_cur < iterator_x_max) do 
     iterator_x_cur = iterator_x_cur + 1;
     self.my_wibox:geometry(_hx_o({__fields__={x=true},x=start + ((iterator_x_cur - 1) * 2)}));
@@ -711,8 +986,8 @@ __app_TaglistAnimation.prototype.slideOut = function(self,timer)
   end;
   timer:stop();
 end
-__app_TaglistAnimation.prototype.slideIn = function(self,timer) 
-  local _end = __app_TaglistAnimation.slideConf.init;
+__app_TaglistAnimator.prototype.slideIn = function(self,timer) 
+  local _end = __app_TaglistAnimator.slideConf.init;
   local iterator_x_cur = _G.math.ceil((self.my_wibox.x - _end) / 2);
   while (iterator_x_cur > 0) do 
     iterator_x_cur = iterator_x_cur - 1;
@@ -721,7 +996,7 @@ __app_TaglistAnimation.prototype.slideIn = function(self,timer)
   end;
   timer:stop();
 end
-__app_TaglistAnimation.prototype.slide = function(self,arg) 
+__app_TaglistAnimator.prototype.slide = function(self,arg) 
   local _gthis = self;
   if (self.timers.slide_timer ~= __haxe_ds_Option.None) then 
     local value = self.timers.slide_timer;
@@ -741,7 +1016,7 @@ __app_TaglistAnimation.prototype.slide = function(self,arg)
     _hx_1 = _hx_bind(self,self.slideOut); end
     return _hx_1
   end )());
-  local tmp2 = __awful_Timer.new(_hx_o({__fields__={timeout=true,callback=true,autostart=true,single_shot=true},timeout=__app_TaglistAnimation.slideConf.step_time,callback=function(t) 
+  local tmp2 = __awful_Timer.new(_hx_o({__fields__={timeout=true,callback=true,autostart=true,single_shot=true},timeout=__app_TaglistAnimator.slideConf.step_time,callback=function(t) 
     local _gthis1 = _gthis.generator;
     local value1 = _gthis.timers.slide_timer;
     local tmp3;
@@ -897,10 +1172,6 @@ __haxe_MainLoop.tick = function()
   end;
   do return wait end;
 end
-
-__haxe_ds_Option.Some = function(v) local _x = _hx_tab_array({[0]="Some",0,v,__enum__=__haxe_ds_Option}, 3); return _x; end 
-__haxe_ds_Option.None = _hx_tab_array({[0]="None",1,__enum__ = __haxe_ds_Option},2)
-
 
 __haxe_io_Bytes.new = function(length,b) 
   local self = _hx_new(__haxe_io_Bytes.prototype)
@@ -1159,6 +1430,22 @@ __sys_io_File.append = function(path,binary)
   end;
   do return __sys_io_FileOutput.new(_G.io.open(path, "a")) end;
 end
+__sys_io_File.write = function(path,binary) 
+  if (binary == nil) then 
+    binary = true;
+  end;
+  local fh = _G.io.open(path, (function() 
+    local _hx_1
+    if (binary) then 
+    _hx_1 = "wb"; else 
+    _hx_1 = "w"; end
+    return _hx_1
+  end )());
+  if (fh == nil) then 
+    _G.error(Std.string("Invalid path : ") .. Std.string(path),0);
+  end;
+  do return __sys_io_FileOutput.new(fh) end;
+end
 
 __sys_io_FileOutput.new = function(f) 
   local self = _hx_new(__sys_io_FileOutput.prototype)
@@ -1185,15 +1472,15 @@ end
 __sys_io_FileOutput.__super__ = __haxe_io_Output
 setmetatable(__sys_io_FileOutput.prototype,{__index=__haxe_io_Output.prototype})
 
-__utils_Utils.new = {}
-__utils_Utils.ident = function(x) 
+__utils_Common.new = {}
+__utils_Common.ident = function(x) 
   do return x end;
 end
-__utils_Utils.filterIn = function(s,t) 
+__utils_Common.filterIn = function(s,t) 
   local tt = (function() 
     local _hx_1
     if (t == nil) then 
-    _hx_1 = __utils_Utils.ident; else 
+    _hx_1 = __utils_Common.ident; else 
     _hx_1 = t; end
     return _hx_1
   end )();
@@ -1204,11 +1491,11 @@ __utils_Utils.filterIn = function(s,t)
     do return s:indexOf(tmp) ~= -1 end;
   end end;
 end
-__utils_Utils.mkLua = function() 
+__utils_Common.mkLua = function() 
   do return {} end;
 end
-__utils_Utils.structToTable = function(s) 
-  local obj = __utils_Utils.mkLua();
+__utils_Common.structToTable = function(s) 
+  local obj = __utils_Common.mkLua();
   local _g = 0;
   local _g1 = Reflect.fields(s);
   while (_g < _g1.length) do 
@@ -1221,9 +1508,23 @@ end
 
 __utils_FileLogger.new = {}
 __utils_FileLogger.log = function(obj) 
-  local file = __sys_io_File.append(__utils_FileLogger.path);
-  file:writeString(Std.string(__lib_Inspect.inspect(obj)) .. Std.string("\n\n"));
-  file:close();
+  if (__utils_FileLogger.outFile == nil) then 
+    __utils_FileLogger.outFile = __sys_io_File.write(__utils_FileLogger.path);
+  end;
+  local t = _G.os.time() * 1000;
+  local d = _hx_e();
+  _G.setmetatable(d, _hx_o({__fields__={__index=true},__index=Date.prototype}));
+  d.t = t / 1000;
+  d.d = _G.os.date("*t", Std.int(d.t));
+  d.dUTC = _G.os.date("!*t", Std.int(d.t));
+  local timestamp = DateTools.format(d, "%F[%T] ");
+  local value = __utils_FileLogger.outFile;
+  if (value == nil) then 
+    _G.error("null pointer in .sure() call",0);
+  end;
+  value:writeString(Std.string(Std.string(timestamp) .. Std.string(__lib_Inspect.inspect(obj))) .. Std.string("\n"));
+  value:close();
+  __utils_FileLogger.outFile = __sys_io_File.append(__utils_FileLogger.path);
 end
 _hx_bit_clamp = function(v)
   if v <= 2147483647 and v >= -2147483648 then
@@ -1251,9 +1552,19 @@ end
 _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
+  DateTools.DAY_SHORT_NAMES = _hx_tab_array({[0]="Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}, 7);
+  
+  DateTools.DAY_NAMES = _hx_tab_array({[0]="Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}, 7);
+  
+  DateTools.MONTH_SHORT_NAMES = _hx_tab_array({[0]="Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}, 12);
+  
+  DateTools.MONTH_NAMES = _hx_tab_array({[0]="January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}, 12);
+  
+  __app_TaglistManager.taglist = __haxe_ds_Option.None;
+  
   __app_Taglist.wibox_config = _hx_o({__fields__={ontop=true,opacity=true,x=true,y=true,height=true,width=true},ontop=true,opacity=0.7,x=1820,y=440,height=115,width=95});
   
-  __app_TaglistAnimation.slideConf = _hx_o({__fields__={init=true,last=true,step_time=true},init=1820,last=1895,step_time=0.05});
+  __app_TaglistAnimator.slideConf = _hx_o({__fields__={init=true,last=true,step_time=true},init=1820,last=1895,step_time=0.05});
   
   __haxe_EntryPoint.pending = Array.new();
   
