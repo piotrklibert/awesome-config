@@ -19,6 +19,12 @@ wrap_show_taglist = function(f)
       show, slide = _obj_0.show, _obj_0.slide
     end
     show()
+    do
+      local a = _G.App
+      if a then
+        a:show()
+      end
+    end
     f(...)
     if slide_out_timer then
       slide_out_timer:stop()
@@ -31,6 +37,12 @@ wrap_show_taglist = function(f)
     slide_out_timer = gtimer(4, (function()
       return slide("out")
     end), opts)
+    do
+      local a = _G.App
+      if a then
+        return a:autoHide(4)
+      end
+    end
   end
 end
 local tag_up = wrap_show_taglist(function(t)

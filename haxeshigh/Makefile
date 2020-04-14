@@ -29,3 +29,9 @@ clean: build
 .PHONY: load
 load: build
 	(cat build/loader.lua | awesome-client)
+
+.PHONY: checkstyle
+checkstyle:
+	haxelib run checkstyle --nostyle \
+		-s src/app -s src/utils \
+		-c checkstyle.json

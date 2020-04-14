@@ -11,20 +11,21 @@ while true; do
         noti -t 'Compilation failed!!' -m "$(cat $logFile)"
         continue
     else
-        # noti -t 'Compilation ok!' -m "$(wc -l build/*)"
+        echo ok # noti -t 'Compilation ok!' -m "$(wc -l build/*)"
     fi
 
     (>>$logFile 2>&1 make clean)
     if [ $? != 0 ]; then
         noti -t "Cleanup failed!" -m "$(cat $logDir/std.log)"
     else
-        # noti -t "Cleanup ok!" -m "$(cat $logDir/std.log)"
+        echo ok # noti -t "Cleanup ok!" -m "$(cat $logDir/std.log)"
     fi
 
     (>>$logFile 2>&1 make load)
     if [ $? != 0 ]; then
         noti -t "Loading failed!" -m "$(cat $logDir/std.log)"
     else
-        # noti -t "Loaded ok!" -m "$(cat $logDir/std.log)"
+        echo ok # noti -t "Loaded ok!" -m "$(cat $logDir/std.log)"
     fi
+    echo 'Cleanup&loading completed!'
 done

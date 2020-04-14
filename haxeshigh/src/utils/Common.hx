@@ -1,48 +1,50 @@
 package utils;
 
-import lua.Lua;
 import lua.Table;
-import haxe.ds.StringMap;
-
-import utils.lua.Common;
 import lua.Package;
+import haxe.ds.StringMap;
+import utils.lua.LuaTools.LuaTable;
+
 using StringTools;
+
+
+typedef Named = {
+  var name(default, null): String;
+};
 
 typedef Log = utils.FileLogger;
 
-typedef KeyFunc<T> = (Dynamic) -> T;
+typedef KeyFun<T> = (Named) -> T;
+typedef FilterFun<T> = (T) -> Bool;
 
 
-
+@:nullSafety(Strict)
 class Common {
-  public static var ident: KeyFunc<Dynamic> = (x) -> x;
+  static final ident: KeyFun<Dynamic> = (x) -> x;
 
-  @:nullSafety(Strict)
-  public static function filterIn<T>(s: Array<T>, ?t: KeyFunc<T>) {
-    final tt: KeyFunc<T> = (t == null ? ident : t);
-    return function (x: Dynamic): Bool {
-      Log.log(Lua.type(x));
-      Log.log(tt(x));
-      return s.indexOf(tt(x)) != -1;
+  public static function filterIn<T: Named>(s: Array<T>, ?t: KeyFun<T>): FilterFun<T> {
+    final transform: KeyFun<T> = (t == null ? ident : t);
+    return function (x: T): Bool {
+      return s.indexOf(transform(x)) != -1;
     }
   }
 
-  public static function mkLua() {
+  public static function mkLua(): LuaTable {
     return untyped __lua__("{}");
   }
 
+  /**
+  StringMaps on Lua are built around a table stored in .h key
+  **/
   public static inline function mapToTable<T>(map: StringMap<T>): LuaTable {
-    // StringMaps on Lua are built around a table stored in .h key
     return untyped map.h;
   };
 
-
+  /**
+  Same as Table.fromDynamic, but returns LuaTable instead of Table.
+  **/
   public static function structToTable(s: Dynamic): LuaTable {
-    final obj: LuaTable = mkLua();
-    for(i in Reflect.fields(s)) untyped {
-      obj[i] = s[i];
-    }
-    return obj;
+    return Table.fromDynamic(s);
   }
 
   public static function check_path() {

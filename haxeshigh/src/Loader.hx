@@ -7,8 +7,8 @@ import utils.lua.Globals;
 import utils.Common as Utils;
 
 
-// typedef Log = utils.NaughtyLogger;
-typedef Log = utils.FileLogger;
+typedef Log = utils.NaughtyLogger;
+// typedef Log = utils.FileLogger;
 
 
 @:expose

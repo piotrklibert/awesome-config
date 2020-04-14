@@ -14,6 +14,8 @@ wrap_show_taglist = (f) ->
   (...) ->
     {:show, :slide} = require("widgets.mytaglist")
     show()
+    if a = _G.App
+      a\show()
     f(...)
     if slide_out_timer
       slide_out_timer\stop()
@@ -21,6 +23,9 @@ wrap_show_taglist = (f) ->
 
     opts = {call_now: false, single_shot: true}
     slide_out_timer = gtimer 4, (-> slide("out")), opts
+    if a = _G.App
+      a\autoHide(4)
+
 
 
 -- Note: we're working with a 3x3 grid (think tic-tac-toe board):

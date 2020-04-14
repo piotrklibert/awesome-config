@@ -4,6 +4,7 @@ import lua.Package;
 import utils.lua.Globals;
 
 typedef Log = utils.NaughtyLogger;
+// typedef Log = utils.FileLogger;
 
 
 @:expose
@@ -12,8 +13,6 @@ class Cleaner {
     Log.log("Taglist cleanup...");
 
     try {
-      Log.log(Globals.Mgr);
-      // untyped Globals.Mgr["disable"]();
       Globals.Mgr.disable();
       Globals.App = null;
       Globals.Mgr = null;
@@ -21,7 +20,6 @@ class Cleaner {
     catch (ex: Any) {
       Log.raw(ex);
     }
-
 
     Package.loaded.app = null;
     Package.loaded.loader = null;

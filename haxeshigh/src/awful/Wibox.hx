@@ -18,6 +18,7 @@ typedef WiboxArgs = {
   var ?height: Int;                // The height.
 }
 
+
 @:luaRequire("wibox")
 extern class Wibox {
   var visible: Bool;              // Visibility.
@@ -34,7 +35,11 @@ extern class Wibox {
 
   public static var layout: {fixed: Dynamic};
   public static var container: {margin: Int, background: Background};
+
+
   public static function widget(table: LuaTable): Widget;
+
+
   public function setup(table: LuaTable): Void;
   public function connect_signal(s: String, f: Function): Void;
 

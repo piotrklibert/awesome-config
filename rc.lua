@@ -10,11 +10,11 @@ package.path = "/home/cji/portless/lua/Penlight/lua/?/;"             .. package.
 package.path = "/home/cji/.config/awesome/widgets/?/init.lua;"       .. package.path
 package.path = "/home/cji/.config/awesome/widgets/?/?.lua;"          .. package.path
 package.path = "/home/cji/priv/moonscript/awesomescript/?.lua;"      .. package.path
+
 -- package.cpath = package.cpath .. ";/home/cji/portless/lua/?.lua;/home/cji/portless/lua/lua-openssl/openssl.so"
 
 -- TODO: use require("posix").setenv to set PROJECT_ROOT!
 dofile("/home/cji/priv/moonscript/awesomescript/runtime/init.lua")
-
 
 function script_path()
    local str = debug.getinfo(2, "S").source:sub(2)
@@ -658,3 +658,4 @@ client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 end)
 -- }}}
+dofile("/home/cji/portless/lua/awesome-config/haxeshigh/build/loader.lua")

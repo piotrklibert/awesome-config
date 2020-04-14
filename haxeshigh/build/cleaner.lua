@@ -385,7 +385,6 @@ Cleaner.main = function()
   __utils_NaughtyLogger.log("Taglist cleanup...");
   local _hx_status, _hx_result = pcall(function() 
   
-      __utils_NaughtyLogger.log(_G.Mgr);
       _G.Mgr.disable();
       _G.App = nil;
       _G.Mgr = nil;

@@ -51,25 +51,16 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 local Array = _hx_e()
-local Date = _hx_e()
-local DateTools = _hx_e()
 __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Loader = _hx_e()
 local Math = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
-local StringTools = _hx_e()
-__haxe_io_Bytes = _hx_e()
-__haxe_io_Encoding = _hx_e()
-__haxe_io_Error = _hx_e()
-__haxe_io_Output = _hx_e()
+__awful_Naughty = _G.require("naughty")
 __lib_Inspect = _G.require("inspect")
 __lua_Boot = _hx_e()
-__lua_UserData = _hx_e()
-__sys_io_File = _hx_e()
-__sys_io_FileOutput = _hx_e()
 __utils_Common = _hx_e()
-__utils_FileLogger = _hx_e()
+__utils_NaughtyLogger = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -389,240 +380,14 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
-Date.new = function(year,month,day,hour,min,sec) 
-  local self = _hx_new(Date.prototype)
-  Date.super(self,year,month,day,hour,min,sec)
-  return self
-end
-Date.super = function(self,year,month,day,hour,min,sec) 
-  self.t = _G.os.time(_hx_o({__fields__={year=true,month=true,day=true,hour=true,min=true,sec=true},year=year,month=month + 1,day=day,hour=hour,min=min,sec=sec}));
-  self.d = _G.os.date("*t", self.t);
-  self.dUTC = _G.os.date("!*t", self.t);
-end
-Date.prototype = _hx_a();
-Date.prototype.getTime = function(self) 
-  do return self.t * 1000 end
-end
-Date.prototype.getHours = function(self) 
-  do return self.d.hour end
-end
-Date.prototype.getMinutes = function(self) 
-  do return self.d.min end
-end
-Date.prototype.getSeconds = function(self) 
-  do return self.d.sec end
-end
-Date.prototype.getFullYear = function(self) 
-  do return self.d.year end
-end
-Date.prototype.getMonth = function(self) 
-  do return self.d.month - 1 end
-end
-Date.prototype.getDate = function(self) 
-  do return self.d.day end
-end
-Date.prototype.getDay = function(self) 
-  do return self.d.wday - 1 end
-end
-
-DateTools.new = {}
-DateTools.__format_get = function(d,e) 
-  local e1 = e;
-  if (e1) == "%" then 
-    do return "%" end;
-  elseif (e1) == "A" then 
-    do return DateTools.DAY_NAMES[d:getDay()] end;
-  elseif (e1) == "B" then 
-    do return DateTools.MONTH_NAMES[d:getMonth()] end;
-  elseif (e1) == "C" then 
-    do return StringTools.lpad(Std.string(Std.int(d:getFullYear() / 100)), "0", 2) end;
-  elseif (e1) == "D" then 
-    do return DateTools.__format(d, "%m/%d/%y") end;
-  elseif (e1) == "F" then 
-    do return DateTools.__format(d, "%Y-%m-%d") end;
-  elseif (e1) == "I" or (e1) == "l" then 
-    local hour = _G.math.fmod(d:getHours(), 12);
-    do return StringTools.lpad(Std.string((function() 
-      local _hx_1
-      if (hour == 0) then 
-      _hx_1 = 12; else 
-      _hx_1 = hour; end
-      return _hx_1
-    end )()), (function() 
-      local _hx_2
-      if (e == "I") then 
-      _hx_2 = "0"; else 
-      _hx_2 = " "; end
-      return _hx_2
-    end )(), 2) end;
-  elseif (e1) == "M" then 
-    do return StringTools.lpad(Std.string(d:getMinutes()), "0", 2) end;
-  elseif (e1) == "R" then 
-    do return DateTools.__format(d, "%H:%M") end;
-  elseif (e1) == "S" then 
-    do return StringTools.lpad(Std.string(d:getSeconds()), "0", 2) end;
-  elseif (e1) == "T" then 
-    do return DateTools.__format(d, "%H:%M:%S") end;
-  elseif (e1) == "Y" then 
-    do return Std.string(d:getFullYear()) end;
-  elseif (e1) == "a" then 
-    do return DateTools.DAY_SHORT_NAMES[d:getDay()] end;
-  elseif (e1) == "b" or (e1) == "h" then 
-    do return DateTools.MONTH_SHORT_NAMES[d:getMonth()] end;
-  elseif (e1) == "d" then 
-    do return StringTools.lpad(Std.string(d:getDate()), "0", 2) end;
-  elseif (e1) == "e" then 
-    do return Std.string(d:getDate()) end;
-  elseif (e1) == "H" or (e1) == "k" then 
-    do return StringTools.lpad(Std.string(d:getHours()), (function() 
-      local _hx_3
-      if (e == "H") then 
-      _hx_3 = "0"; else 
-      _hx_3 = " "; end
-      return _hx_3
-    end )(), 2) end;
-  elseif (e1) == "m" then 
-    do return StringTools.lpad(Std.string(d:getMonth() + 1), "0", 2) end;
-  elseif (e1) == "n" then 
-    do return "\n" end;
-  elseif (e1) == "p" then 
-    if (d:getHours() > 11) then 
-      do return "PM" end;
-    else
-      do return "AM" end;
-    end;
-  elseif (e1) == "r" then 
-    do return DateTools.__format(d, "%I:%M:%S %p") end;
-  elseif (e1) == "s" then 
-    do return Std.string(Std.int(d:getTime() / 1000)) end;
-  elseif (e1) == "t" then 
-    do return "\t" end;
-  elseif (e1) == "u" then 
-    local t = d:getDay();
-    if (t == 0) then 
-      do return "7" end;
-    else
-      do return Std.string(t) end;
-    end;
-  elseif (e1) == "w" then 
-    do return Std.string(d:getDay()) end;
-  elseif (e1) == "y" then 
-    do return StringTools.lpad(Std.string(_G.math.fmod(d:getFullYear(), 100)), "0", 2) end;else
-  _G.error(Std.string(Std.string("Date.format %") .. Std.string(e)) .. Std.string("- not implemented yet."),0); end;
-end
-DateTools.__format = function(d,f) 
-  local r_b = ({});
-  local p = 0;
-  while (true) do 
-    local startIndex = p;
-    if (startIndex == nil) then 
-      startIndex = 1;
-    else
-      startIndex = startIndex + 1;
-    end;
-    local r = __lua_lib_luautf8_Utf8.find(f, "%", startIndex, true);
-    local np = (function() 
-      local _hx_1
-      if ((r ~= nil) and (r > 0)) then 
-      _hx_1 = r - 1; else 
-      _hx_1 = -1; end
-      return _hx_1
-    end )();
-    if (np < 0) then 
-      break;
-    end;
-    local len = np - p;
-    local part;
-    if (len == nil) then 
-      local pos = p;
-      local len1 = nil;
-      len1 = __lua_lib_luautf8_Utf8.len(f);
-      if (pos < 0) then 
-        pos = __lua_lib_luautf8_Utf8.len(f) + pos;
-      end;
-      if (pos < 0) then 
-        pos = 0;
-      end;
-      part = __lua_lib_luautf8_Utf8.sub(f, pos + 1, pos + len1);
-    else
-      local pos1 = p;
-      local len2 = len;
-      if ((len == nil) or (len > (pos1 + __lua_lib_luautf8_Utf8.len(f)))) then 
-        len2 = __lua_lib_luautf8_Utf8.len(f);
-      else
-        if (len < 0) then 
-          len2 = __lua_lib_luautf8_Utf8.len(f) + len;
-        end;
-      end;
-      if (pos1 < 0) then 
-        pos1 = __lua_lib_luautf8_Utf8.len(f) + pos1;
-      end;
-      if (pos1 < 0) then 
-        pos1 = 0;
-      end;
-      part = __lua_lib_luautf8_Utf8.sub(f, pos1 + 1, pos1 + len2);
-    end;
-    _G.table.insert(r_b, part);
-    local pos2 = np + 1;
-    local len3 = 1;
-    if (1 > (pos2 + __lua_lib_luautf8_Utf8.len(f))) then 
-      len3 = __lua_lib_luautf8_Utf8.len(f);
-    end;
-    if (pos2 < 0) then 
-      pos2 = __lua_lib_luautf8_Utf8.len(f) + pos2;
-    end;
-    if (pos2 < 0) then 
-      pos2 = 0;
-    end;
-    _G.table.insert(r_b, Std.string(DateTools.__format_get(d, __lua_lib_luautf8_Utf8.sub(f, pos2 + 1, pos2 + len3))));
-    p = np + 2;
-  end;
-  local len4 = __lua_lib_luautf8_Utf8.len(f) - p;
-  local part1;
-  if (len4 == nil) then 
-    local pos3 = p;
-    local len5 = nil;
-    len5 = __lua_lib_luautf8_Utf8.len(f);
-    if (pos3 < 0) then 
-      pos3 = __lua_lib_luautf8_Utf8.len(f) + pos3;
-    end;
-    if (pos3 < 0) then 
-      pos3 = 0;
-    end;
-    part1 = __lua_lib_luautf8_Utf8.sub(f, pos3 + 1, pos3 + len5);
-  else
-    local pos4 = p;
-    local len6 = len4;
-    if ((len4 == nil) or (len4 > (pos4 + __lua_lib_luautf8_Utf8.len(f)))) then 
-      len6 = __lua_lib_luautf8_Utf8.len(f);
-    else
-      if (len4 < 0) then 
-        len6 = __lua_lib_luautf8_Utf8.len(f) + len4;
-      end;
-    end;
-    if (pos4 < 0) then 
-      pos4 = __lua_lib_luautf8_Utf8.len(f) + pos4;
-    end;
-    if (pos4 < 0) then 
-      pos4 = 0;
-    end;
-    part1 = __lua_lib_luautf8_Utf8.sub(f, pos4 + 1, pos4 + len6);
-  end;
-  _G.table.insert(r_b, part1);
-  do return _G.table.concat(r_b) end;
-end
-DateTools.format = function(d,f) 
-  do return DateTools.__format(d, f) end;
-end
-
 Loader.new = {}
 _hx_exports["Loader"] = Loader
 Loader.main = function() 
-  __utils_FileLogger.log("Loading Taglist...");
+  __utils_NaughtyLogger.log("Loading Taglist...");
   __utils_Common.check_path();
   _G.Mgr = _G.require("app").app.TaglistManager;
   _G.App = _G.Mgr.enable();
-  __utils_FileLogger.log("Loaded!");
+  __utils_NaughtyLogger.log("Loaded!");
 end
 
 Math.new = {}
@@ -811,107 +576,6 @@ Std.int = function(x)
   end;
 end
 
-StringTools.new = {}
-StringTools.lpad = function(s,c,l) 
-  if (__lua_lib_luautf8_Utf8.len(c) <= 0) then 
-    do return s end;
-  end;
-  local buf_b = ({});
-  local buf_length = 0;
-  l = l - __lua_lib_luautf8_Utf8.len(s);
-  while (buf_length < l) do 
-    local str = Std.string(c);
-    _G.table.insert(buf_b, str);
-    buf_length = buf_length + __lua_lib_luautf8_Utf8.len(str);
-  end;
-  _G.table.insert(buf_b, Std.string(s));
-  do return _G.table.concat(buf_b) end;
-end
-
-__haxe_io_Bytes.new = function(length,b) 
-  local self = _hx_new(__haxe_io_Bytes.prototype)
-  __haxe_io_Bytes.super(self,length,b)
-  return self
-end
-__haxe_io_Bytes.super = function(self,length,b) 
-  self.length = length;
-  self.b = b;
-end
-__haxe_io_Bytes.ofString = function(s,encoding) 
-  local _g = _hx_tab_array({}, 0);
-  local _g1 = 0;
-  local _g2 = _G.string.len(s);
-  while (_g1 < _g2) do 
-    _g1 = _g1 + 1;
-    _g:push(_G.string.byte(s, (_g1 - 1) + 1));
-  end;
-  do return __haxe_io_Bytes.new(_g.length, _g) end;
-end
-__haxe_io_Bytes.prototype = _hx_a();
-__haxe_io_Bytes.prototype.getString = function(self,pos,len,encoding) 
-  local tmp = encoding == nil;
-  if (((pos < 0) or (len < 0)) or ((pos + len) > self.length)) then 
-    _G.error(__haxe_io_Error.OutsideBounds,0);
-  end;
-  if ((self.b.length - pos) <= __lua_Boot.MAXSTACKSIZE) then 
-    local _end = Math.min(self.b.length, pos + len) - 1;
-    do return _G.string.char(_hx_table.unpack(self.b, pos, _end)) end;
-  else
-    local tbl = ({});
-    local _g = pos;
-    local _g1 = pos + len;
-    while (_g < _g1) do 
-      _g = _g + 1;
-      local idx = _g - 1;
-      _G.table.insert(tbl, _G.string.char(self.b[idx]));
-    end;
-    do return _G.table.concat(tbl, "") end;
-  end;
-end
-
-__haxe_io_Encoding.UTF8 = _hx_tab_array({[0]="UTF8",0,__enum__ = __haxe_io_Encoding},2)
-
-__haxe_io_Encoding.RawNative = _hx_tab_array({[0]="RawNative",1,__enum__ = __haxe_io_Encoding},2)
-
-
-__haxe_io_Error.Blocked = _hx_tab_array({[0]="Blocked",0,__enum__ = __haxe_io_Error},2)
-
-__haxe_io_Error.Overflow = _hx_tab_array({[0]="Overflow",1,__enum__ = __haxe_io_Error},2)
-
-__haxe_io_Error.OutsideBounds = _hx_tab_array({[0]="OutsideBounds",2,__enum__ = __haxe_io_Error},2)
-
-__haxe_io_Error.Custom = function(e) local _x = _hx_tab_array({[0]="Custom",3,e,__enum__=__haxe_io_Error}, 3); return _x; end 
-
-__haxe_io_Output.new = {}
-__haxe_io_Output.prototype = _hx_a();
-__haxe_io_Output.prototype.writeByte = function(self,c) 
-  _G.error("Not implemented",0);
-end
-__haxe_io_Output.prototype.writeBytes = function(self,s,pos,len) 
-  if (((pos < 0) or (len < 0)) or ((pos + len) > s.length)) then 
-    _G.error(__haxe_io_Error.OutsideBounds,0);
-  end;
-  local b = s.b;
-  local k = len;
-  while (k > 0) do 
-    self:writeByte(b[pos]);
-    pos = pos + 1;
-    k = k - 1;
-  end;
-  do return len end
-end
-__haxe_io_Output.prototype.writeFullBytes = function(self,s,pos,len) 
-  while (len > 0) do 
-    local k = self:writeBytes(s, pos, len);
-    pos = pos + k;
-    len = len - k;
-  end;
-end
-__haxe_io_Output.prototype.writeString = function(self,s,encoding) 
-  local b = __haxe_io_Bytes.ofString(s, encoding);
-  self:writeFullBytes(b, 0, b.length);
-end
-
 __lua_Boot.new = {}
 __lua_Boot.isArray = function(o) 
   if (_G.type(o) == "table") then 
@@ -1074,57 +738,6 @@ __lua_Boot.fieldIterator = function(o)
   end}) end;
 end
 
-__lua_UserData.new = {}
-
-__sys_io_File.new = {}
-__sys_io_File.append = function(path,binary) 
-  if (binary == nil) then 
-    binary = true;
-  end;
-  do return __sys_io_FileOutput.new(_G.io.open(path, "a")) end;
-end
-__sys_io_File.write = function(path,binary) 
-  if (binary == nil) then 
-    binary = true;
-  end;
-  local fh = _G.io.open(path, (function() 
-    local _hx_1
-    if (binary) then 
-    _hx_1 = "wb"; else 
-    _hx_1 = "w"; end
-    return _hx_1
-  end )());
-  if (fh == nil) then 
-    _G.error(Std.string("Invalid path : ") .. Std.string(path),0);
-  end;
-  do return __sys_io_FileOutput.new(fh) end;
-end
-
-__sys_io_FileOutput.new = function(f) 
-  local self = _hx_new(__sys_io_FileOutput.prototype)
-  __sys_io_FileOutput.super(self,f)
-  return self
-end
-__sys_io_FileOutput.super = function(self,f) 
-  if (f == nil) then 
-    _G.error(Std.string("Invalid filehandle : ") .. Std.string(Std.string(f)),0);
-  end;
-  self.f = f;
-end
-__sys_io_FileOutput.prototype = _hx_a();
-__sys_io_FileOutput.prototype.writeByte = function(self,c) 
-  self.f:write(__lua_lib_luautf8_Utf8.char(c));
-end
-__sys_io_FileOutput.prototype.writeBytes = function(self,s,pos,len) 
-  self.f:write(s:getString(pos, len));
-  do return s.length end
-end
-__sys_io_FileOutput.prototype.close = function(self) 
-  self.f:close();
-end
-__sys_io_FileOutput.__super__ = __haxe_io_Output
-setmetatable(__sys_io_FileOutput.prototype,{__index=__haxe_io_Output.prototype})
-
 __utils_Common.new = {}
 __utils_Common.check_path = function() 
   local r = __lua_lib_luautf8_Utf8.find(_G.package.path, "haxeshigh/build", 1, true);
@@ -1139,25 +752,9 @@ __utils_Common.check_path = function()
   end;
 end
 
-__utils_FileLogger.new = {}
-__utils_FileLogger.log = function(obj) 
-  if (__utils_FileLogger.outFile == nil) then 
-    __utils_FileLogger.outFile = __sys_io_File.write(__utils_FileLogger.path);
-  end;
-  local t = _G.os.time() * 1000;
-  local d = _hx_e();
-  _G.setmetatable(d, _hx_o({__fields__={__index=true},__index=Date.prototype}));
-  d.t = t / 1000;
-  d.d = _G.os.date("*t", Std.int(d.t));
-  d.dUTC = _G.os.date("!*t", Std.int(d.t));
-  local timestamp = DateTools.format(d, "%F[%T] ");
-  local value = __utils_FileLogger.outFile;
-  if (value == nil) then 
-    _G.error("null pointer in .sure() call",0);
-  end;
-  value:writeString(Std.string(Std.string(timestamp) .. Std.string(__lib_Inspect.inspect(obj))) .. Std.string("\n"));
-  value:close();
-  __utils_FileLogger.outFile = __sys_io_File.append(__utils_FileLogger.path);
+__utils_NaughtyLogger.new = {}
+__utils_NaughtyLogger.log = function(x) 
+  __awful_Naughty.notify(_hx_o({__fields__={text=true},text=__lib_Inspect.inspect(x)}));
 end
 _hx_bit_clamp = function(v)
   if v <= 2147483647 and v >= -2147483648 then
@@ -1185,35 +782,10 @@ end
 _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
-  DateTools.DAY_SHORT_NAMES = _hx_tab_array({[0]="Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"}, 7);
-  
-  DateTools.DAY_NAMES = _hx_tab_array({[0]="Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}, 7);
-  
-  DateTools.MONTH_SHORT_NAMES = _hx_tab_array({[0]="Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}, 12);
-  
-  DateTools.MONTH_NAMES = _hx_tab_array({[0]="January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"}, 12);
-  
-  __lua_Boot.MAXSTACKSIZE = 1000;
-  
   __lua_Boot.hiddenFields = {__id__=true, hx__closures=true, super=true, prototype=true, __fields__=true, __ifields__=true, __class__=true, __properties__=true}
   
-  __utils_FileLogger.path = "/home/cji/portless/lua/awesome-config/haxeshigh/logs/std.log";
-  
   
 end
-
-_hx_table = {}
-_hx_table.pack = _G.table.pack or function(...)
-    return {...}
-end
-_hx_table.unpack = _G.table.unpack or _G.unpack
-_hx_table.maxn = _G.table.maxn or function(t)
-  local maxn=0;
-  for i in pairs(t) do
-    maxn=type(i)=='number'and i>maxn and i or maxn
-  end
-  return maxn
-end;
 
 _hx_wrap_if_string_field = function(o, fld)
   if _G.type(o) == 'string' then
