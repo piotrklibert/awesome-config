@@ -1473,7 +1473,6 @@ __taglist_Pkg.new = function()
   return self
 end
 __taglist_Pkg.super = function(self) 
-  self.app = nil;
   self.name = "taglist";
   __pkg_PackageBase.super(self);
 end
@@ -1486,7 +1485,8 @@ __taglist_Pkg.prototype = _hx_a();
 __taglist_Pkg.prototype.load = function(self) 
   local _hx_status, _hx_result = pcall(function() 
   
-      self.app = __taglist_TaglistManager.enable();
+      ((function() 
+      _G.App = __taglist_TaglistManager.enable(); return _G.App end)()):autoHide(4);
     return _hx_pcall_default
   end)
   if not _hx_status and _hx_result == "_hx_pcall_break" then
@@ -1505,10 +1505,7 @@ __taglist_Pkg.prototype.stop = function(self)
 end
 __taglist_Pkg.prototype.unload = function(self) 
   __taglist_TaglistManager.disable();
-  self.app = nil;
   _G.App = nil;
-  _G.Mgr = nil;
-  _G.TaglistModule = nil;
 end
 __taglist_Pkg.__super__ = __pkg_PackageBase
 setmetatable(__taglist_Pkg.prototype,{__index=__pkg_PackageBase.prototype})

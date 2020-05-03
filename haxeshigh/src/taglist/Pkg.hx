@@ -1,37 +1,27 @@
 package taglist;
 
-import lua.Table;
-import haxe.ds.Option;
-import haxe.extern.Rest;
+import pkg.PackageBase;
 
-import awful.*;
 import utils.Common;
-import utils.lua.LuaTools;
-
-using Lambda;
-using utils.OptionTools;
-using utils.lua.LuaTools;
-using StringTools;
-
-import lua.Package;
 import utils.lua.Globals;
 import taglist.Taglist.TaglistManager;
 
-import pkg.PackageBase;
 
 
 @:expose
 class Pkg extends PackageBase implements PackageDefinition {
   public final name = "taglist";
 
-  public static function instance()
-    return new Pkg();
-
-  public var app: Null<taglist.Taglist> = null;
+  // for easier access from Lua side
+  public static function instance() return new Pkg();
 
   public function load() {
     try {
-      this.app = TaglistManager.enable();
+      // The `Globals.App` reference is used in awesome-config/tags.moon when
+      // assigning keyboard shortcuts, to show/hide the widget after desktop
+      // change.
+      final app = Globals.App = TaglistManager.enable();
+      app.autoHide(4);
     }
     catch(ex: Dynamic) {
       Log.log("Error loading taglist module: " + Std.string(ex));
@@ -43,12 +33,6 @@ class Pkg extends PackageBase implements PackageDefinition {
 
   public function unload() {
     TaglistManager.disable();
-    this.app = null;
-    untyped {
-      // Globals.Mgr.disable();
-      Globals.App = null;
-      Globals.Mgr = null;
-      Globals.TaglistModule = null;
-    }
+    Globals.App = null;
   }
 }
