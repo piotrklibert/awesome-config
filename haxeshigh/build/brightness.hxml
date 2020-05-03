@@ -9,9 +9,10 @@
 -D analyzer-purity_inference
 
 -cp src
--lua build/loader.lua
+
 -L tink_core
 -L tink_lang
--m Loader
 
-Loader.hx
+-lua output/hx_brightness.lua
+
+brightness.BrightnessWidget

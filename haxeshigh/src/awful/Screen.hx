@@ -5,6 +5,8 @@ import haxe.extern.Rest;
 
 @:luaRequire("awful.screen")
 extern class Screen {
+  final selected_tag: awful.Tag;
+
   // 	Return the screen index corresponding to the given (pixel) coordinates.
   static function getbycoord(x: Int, y: Int): Int;
 

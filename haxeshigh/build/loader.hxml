@@ -8,10 +8,16 @@
 -D analyzer-fusion
 -D analyzer-purity_inference
 
--cp src
 
+-D clear
+-D load=fromFile
+# -D load=brightness
+
+
+-cp src
+-lua output/loader.lua
 -L tink_core
 -L tink_lang
--lua build/app.lua
+-m Loader
 
-app.Taglist
+Loader.hx

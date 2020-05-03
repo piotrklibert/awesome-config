@@ -1,42 +1,67 @@
--------------------------------------------------
--- Brightness Widget for Awesome Window Manager
--- Shows the brightness level of the laptop display
--- More details could be found here:
--- https://github.com/streetturtle/awesome-wm-widgets/tree/master/brightness-widget
+package brightness;
 
--- @author Pavel Makhov
--- @copyright 2017-2019 Pavel Makhov
--------------------------------------------------
+import lua.Table;
+import haxe.ds.Option;
+import haxe.extern.Rest;
+
+import awful.*;
+import utils.Common;
+import utils.lua.LuaTools;
+
+import brightness.Module;
+
+using Lambda;
+using utils.OptionTools;
+using utils.lua.LuaTools;
+
+
+// typedef Log = utils.FileLogger;
+
+
+// typedef State = {
+//   var ?widget: awful.Widget;
+//   var ?inProgress: Boolean;
+//   var ?brightness: Int;
+//   var ?set_brightness: (Int) -> Void;
+//   var ?setter_promise;
+//   var ?setting_start: () -> Void;
+//   var ?setting_end: () -> Void
+// }
+
+
+@:expose
+class BrightnessWidget {
+  public static final PATH_TO_ICON = "/home/cji/.config/awesome/widgets/brightness/br-wid-1.png";
+
+  public function new(){
+
+  }
+/*
 import min, max, modf from math
 wibox = require("wibox")
-watch = require("awful.widget.watch")
 spawn = require("awful.spawn")
 naughty = require "naughty"
 
 Promise = require "promise"
 
-mo = require "moses"
 str = require "std.string"
-ml = require "ml"
 
-FONT = "mono 14"
-PATH_TO_ICON = "/home/cji/.config/awesome/widgets/brightness/br-wid-1.png"
 
 PATH = "/sys/class/backlight/intel_backlight/brightness"
 
 
 state = {
   widget: nil
-  in_progress: nil
+  inProgress: nil
   brightness: nil
   set_brightness: (@brightness) =>
   setter_promise: nil
   setting_start: () =>
     -- naughty.notify({text: "1"})
-    @in_progress = true
+    @inProgress = true
   setting_end: () =>
     -- naughty.notify({text: "0"})
-    @in_progress = false
+    @inProgress = false
 }
 
 
@@ -46,13 +71,14 @@ pspawn = (cmd) ->
   spawn.easy_async cmd, (_out, _err, _, _ret) ->
     -- naughty.notify {text: "resolved"}
     p\resolve()
-    state.in_progress = false
+    state.inProgress = false
   p
 
 
 get_brightness = () ->
   brightness_level = str.trim(io.open(PATH, "r")\read("*all"))
   modf(tonumber(brightness_level) / 19200 * 100)
+
 
 
 set_brightness = (percent) ->
@@ -85,11 +111,11 @@ worker = () ->
     }
 
     update_widget = () ->
-      -- state.in_progress = false
+      -- state.inProgress = false
       brightness_text\set_text(" " .. get_brightness! .. "%")
 
     handle_mouse = (_, _, _, button) ->
-      if state.in_progress
+      if state.inProgress
         state.setter_promise\next(() ->
           update_widget!
           handle_mouse(_, _, _, button))
@@ -106,7 +132,7 @@ worker = () ->
           return
       promise\next(() ->
         state.brightness = get_brightness!
-        state.in_progress = false
+        state.inProgress = false
       )
     state.widget\connect_signal "button::press", handle_mouse
 
@@ -117,3 +143,7 @@ worker = () ->
 
 
 worker
+
+*/
+
+}

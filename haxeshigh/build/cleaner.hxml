@@ -8,8 +8,12 @@
 -D analyzer-fusion
 -D analyzer-purity_inference
 
+-D clear
+-D load=fromFile
+# -D load=brightness
+
 -cp src
--lua build/cleaner.lua
+-lua output/cleaner.lua
 -L tink_core
 -L tink_lang
 -m Cleaner

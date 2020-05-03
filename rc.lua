@@ -55,7 +55,6 @@ _G["log"] = setmetatable({}, {
 
 
 log(script_path())
-log.error("+some", "error+")
 
 
 capi = {
@@ -658,4 +657,5 @@ client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 end)
 -- }}}
-dofile("/home/cji/portless/lua/awesome-config/haxeshigh/build/loader.lua")
+
+dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/loader.lua")

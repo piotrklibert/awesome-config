@@ -1,14 +1,17 @@
-package app;
+package taglist;
 
 import lua.Table;
 import haxe.ds.Option;
+import haxe.extern.Rest;
 
 import awful.*;
 import utils.Common;
 import utils.lua.LuaTools;
+import taglist.Pkg;
 
 using Lambda;
 using utils.OptionTools;
+using utils.lua.LuaTools;
 
 
 typedef Log = utils.FileLogger;
@@ -27,8 +30,15 @@ class TaglistRow {
     final conf = LuaTools.table();
     conf.screen = s;
     conf.filter = this.makeFilterFun();
+    final button = awful.Button.make(cast {}, 1, function (x: Dynamic) {
+        final sel = Screen.focused().selected_tag;
+        Tag.viewtoggle(x);
+        Tag.viewtoggle(sel);
+      });
+    conf.buttons = Table.fromArray([button]);
     return Widget.taglist(conf);
   }
+
 
   function makeFilterFun() {
     return function (tag: tink.core.Named<Any>) {
@@ -69,7 +79,7 @@ class TaglistManager {
 @:expose
 @:nullSafety(Strict)
 class Taglist {
-  public var my_wibox: Option<Wibox> = None;
+  public var tagListBox: Option<Wibox> = None;
   var animator: Option<TaglistAnimator> = None;
 
 
@@ -97,18 +107,18 @@ class Taglist {
 
   public function enable() {
     // TODO: refactor (as prop?)
-    if (my_wibox == None) {
-      my_wibox = Some(new Wibox(wiboxConfig));
+    if ( tagListBox == None) {
+       tagListBox = Some(new Wibox(wiboxConfig));
     }
-    setup(my_wibox.sure(), mkWidget(Screen.focused()));
+    setup( tagListBox.sure(), mkWidget(Screen.focused()));
     return this;
   }
 
   public function disable() {
     this.animator = None;
-    final wb = my_wibox.sure();
+    final wb = tagListBox.sure();
     wb.visible = false;
-    my_wibox = None;
+    tagListBox = None;
     return this;
   }
 
@@ -129,8 +139,9 @@ class Taglist {
     setupTable[1] = widgetTable;
 
     this.animator = Some(new TaglistAnimator(this));
+
     wibox.setup(setupTable);
-    wibox.connect_signal("mouse::enter", () -> this.animator.sure().slide("in"));
+    wibox.connect_signal("mouse::enter", () -> this.animator.sure().show());
     wibox.connect_signal("mouse::leave", () -> this.animator.sure().slide("out"));
     wibox.visible = true;
 
@@ -139,19 +150,22 @@ class Taglist {
 
 
   static function mkWidget(s: Screen): Widget {
-    final ret = Table.fromDynamic({
-      id: "grid", spacing: 6,
-      layout: Wibox.layout.fixed.vertical
-    });
-
     final rows = [
       new TaglistRow(["1", "2", "3"]),
       new TaglistRow(["4", "5", "6"]),
       new TaglistRow(["7", "8", "9"]),
     ];
 
+    // final rows = Table.fromArray(rows.map((x) -> x.toLua(s)));
+
+    final ret = {
+      id: "grid",
+      spacing: 6,
+      layout: Wibox.layout.fixed.vertical
+    }
+
     for (row in rows)
-      Table.insert(ret, row.toLua(s));
+      LuaTools.add(ret.asTable(), row.toLua(s));
 
     return Widget.widget(ret);
   }

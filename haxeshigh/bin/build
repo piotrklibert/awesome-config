@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+ARG="$1"
+
+hxml_file="build/$ARG.hxml"
+
+cp $hxml_file ./
+if haxe $ARG.hxml; then
+    rm $ARG.hxml
+    echo "ok"
+else
+    echo 'Compilation failed!'
+    exit -1
+fi

@@ -36,9 +36,15 @@ extern class Wibox {
   public static var layout: {fixed: Dynamic};
   public static var container: {margin: Int, background: Background};
 
-
+  @:native("widget")
   public static function widget(table: LuaTable): Widget;
 
+  // public static inline function widget<T>(a: Array<T>, opts: Any): Widget {
+  //   switch (T) {
+  //     case Int:
+  //       return 2;
+  //   }
+  // }
 
   public function setup(table: LuaTable): Void;
   public function connect_signal(s: String, f: Function): Void;

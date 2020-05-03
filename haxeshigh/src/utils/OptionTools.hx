@@ -21,7 +21,7 @@ class OptionTools {
     switch (value) {
       case Some(v): func(v);
       default:
-      }
+    }
     return value;
   }
 

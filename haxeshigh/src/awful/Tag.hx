@@ -5,6 +5,7 @@ import lua.Table;
 
 @:luaRequire("awful.tag")
 extern class Tag {
+  final name: String;
 
   // Create a set of tags and attach it to a screen.
   @:native("new")

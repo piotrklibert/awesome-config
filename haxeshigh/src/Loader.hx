@@ -3,8 +3,9 @@ using StringTools;
 import lua.Package;
 import lua.Lua;
 
+import pkg.PackageBase;
+import utils.Common;
 import utils.lua.Globals;
-import utils.Common as Utils;
 
 
 typedef Log = utils.NaughtyLogger;
@@ -14,14 +15,17 @@ typedef Log = utils.NaughtyLogger;
 @:expose
 class Loader {
   public static function main() {
-    Log.log("Loading Taglist...");
-
-    Utils.check_path();
-
-    final mod = Lua.require("app").app;
-    Globals.Mgr = mod.TaglistManager;
-    Globals.App = Globals.Mgr.enable();
-
-    Log.log("Loaded!");
+    Common.check_path();
+    final cmd = new PackageCommand();
+    final pkg = cmd.getPackage();
+    try {
+      Log.log('Loader: loading package "${pkg}"...');
+      cmd.PackageManager.load(pkg, true);
+      Log.log('Loader: loading package "${pkg}" finished!');
+    }
+    catch(ex: String) {
+      Log.log('Loader: error loading package "${pkg}"!');
+      Log.log(ex);
+    }
   }
 }

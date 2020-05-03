@@ -205,7 +205,7 @@ local beautiful = require("beautiful")
 local gears = require("gears")
 local set_wallpaper
 set_wallpaper = function(screen)
-  return gears.wallpaper.maximized("/home/cji/Downloads/mirai-nikki1.jpg", screen, true)
+  return gears.wallpaper.maximized("/home/cji/Pictures/mirai-nikki1.jpg", screen, true)
 end
 local mtl = require("widgets.mytaglist")
 local initialize
@@ -406,7 +406,6 @@ initialize = function()
           interface = "wlp5s0",
           onclick = util.run_nmtui
         }),
-        require("brightness")(),
         require("volume")(),
         wibox.widget({
           wibox.widget({

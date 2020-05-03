@@ -4,31 +4,49 @@ all: build minify
 
 
 .PHONY: build
-build: build/app.lua build/cleaner.lua build/loader.lua
+build: output/hx_taglist.lua output/cleaner.lua output/loader.lua output/hx_pkg.lua
 
-build/cleaner.lua: src/Cleaner.hx src/utils/*.hx src/utils/lua/*.hx
-	haxe cleaner.hxml
 
-build/loader.lua: src/Loader.hx src/utils/*.hx src/utils/lua/*.hx
-	haxe loader.hxml
+output/cleaner.lua: src/Cleaner.hx src/utils/*.hx src/utils/lua/*.hx build/cleaner.hxml
+	./bin/build cleaner
 
-build/app.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx
-	haxe main.hxml
+output/loader.lua: src/Loader.hx src/utils/*.hx src/utils/lua/*.hx build/loader.hxml
+	./bin/build loader
+
+output/hx_taglist.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/main.hxml
+	./bin/build main
+
+output/hx_chwin.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/chwin.hxml
+	./bin/build chwin
+
+output/hx_brightness.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/brightness.hxml
+	./bin/build brightness
+
+output/hx_pkg.lua: src/pkg/*.hx src/utils/*.hx src/utils/lua/*.hx build/pkg.hxml
+	./bin/build pkg
+
+
+pkg: output/hx_pkg.lua
+	(cat output/hx_pkg.lua | awesome-client)
+
 
 .PHONY: minify
 minify:
 #   TODO: split to separate rules or use wildcard %
 #	node_modules/luamin/bin/luamin -f build/loader.lua >build/loader_min.lua
 #	node_modules/luamin/bin/luamin -f build/cleaner.lua >build/cleaner_min.lua
-#	node_modules/luamin/bin/luamin -f build/app.lua >build/app_min.lua
+#	node_modules/luamin/bin/luamin -f build/hx_taglist.lua >build/app_min.lua
+
 
 .PHONY: clean
 clean: build
-	(cat build/cleaner.lua | awesome-client)
+	(cat output/cleaner.lua | awesome-client)
+
 
 .PHONY: load
 load: build
-	(cat build/loader.lua | awesome-client)
+	(cat output/loader.lua | awesome-client)
+
 
 .PHONY: checkstyle
 checkstyle:

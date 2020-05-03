@@ -6,7 +6,7 @@ import haxe.ds.StringMap;
 import utils.lua.LuaTools.LuaTable;
 
 using StringTools;
-
+using utils.NullTools;
 
 typedef Named = {
   var name(default, null): String;
@@ -17,16 +17,23 @@ typedef Log = utils.FileLogger;
 typedef KeyFun<T> = (Named) -> T;
 typedef FilterFun<T> = (T) -> Bool;
 
-
+@:expose
 @:nullSafety(Strict)
 class Common {
   static final ident: KeyFun<Dynamic> = (x) -> x;
 
-  public static function filterIn<T: Named>(s: Array<T>, ?t: KeyFun<T>): FilterFun<T> {
-    final transform: KeyFun<T> = (t == null ? ident : t);
-    return function (x: T): Bool {
-      return s.indexOf(transform(x)) != -1;
-    }
+  // public static function filterIn<T: Named>(s: Array<T>, ?t: KeyFun<T>): FilterFun<T> {
+  //   final transform: KeyFun<T> = (t == null ? ident : t);
+  //   return function (x: T): Bool {
+  //     return s.indexOf(transform(x)) != -1;
+  //   }
+  // }
+
+  public static function formatSimpleEx(exception: String): String {
+    final ex = Std.string(exception);
+    // TODO: the fuck?! whyyy? .sure() alone doesn't work! Also, auto-indent is broken here.
+    final formatted = @:nullSafety(Off) ex.split(":").join("\n").sure();
+    return formatted;
   }
 
   public static function mkLua(): LuaTable {
@@ -48,8 +55,8 @@ class Common {
   }
 
   public static function check_path() {
-    if ( !Package.path.contains("haxeshigh/build") ) {
-      Package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/build/?.lua;" + Package.path;
+    if ( !Package.path.contains("haxeshigh/output") ) {
+      Package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;" + Package.path;
     }
   }
 }

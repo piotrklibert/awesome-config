@@ -1,4 +1,4 @@
-package app;
+package taglist;
 
 import haxe.ds.Option;
 import awful.Timer;
@@ -26,9 +26,10 @@ class TaglistAnimator {
   final taglist: Taglist;
 
   @:nullSafety(Off)
-  var my_wibox(get, null): Wibox;
-  function get_my_wibox(): Wibox {
-    switch (this.taglist.my_wibox) {
+  var tagListBox(get, null): Wibox;
+
+  function get_tagListBox(): Wibox {
+    switch (this.taglist.tagListBox) {
       case Some(wb): return wb;
       case None: throw "Cannot animate nonexistent widget";
     }
@@ -66,20 +67,20 @@ class TaglistAnimator {
     if (timers.slide_timer != None) {
       timers.slide_timer.sure().stop();
     }
-    my_wibox.geometry({x: slideConf.init});
+    tagListBox.geometry({x: slideConf.init});
   }
 
   public function slideOut(timer: Timer) {
-    for (x += 2 in my_wibox.x...slideConf.last) {
-      my_wibox.geometry({x: x});
+    for (x += 2 in tagListBox.x...slideConf.last) {
+      tagListBox.geometry({x: x});
       Coroutine.yield();
     }
     timer.stop();
   }
 
   public function slideIn(timer: Timer) {
-    for (x -= 2 in my_wibox.x...slideConf.init) {
-      my_wibox.geometry({x: x});
+    for (x -= 2 in tagListBox.x...slideConf.init) {
+      tagListBox.geometry({x: x});
       Coroutine.yield();
     }
     timer.stop();

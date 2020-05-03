@@ -1,6 +1,10 @@
 using StringTools;
 
 import lua.Package;
+import lua.Lua;
+
+import pkg.PackageBase;
+import utils.Common;
 import utils.lua.Globals;
 
 typedef Log = utils.NaughtyLogger;
@@ -10,20 +14,24 @@ typedef Log = utils.NaughtyLogger;
 @:expose
 class Cleaner {
   public static function main() {
-    Log.log("Taglist cleanup...");
-
+    final cmd = new PackageCommand();
+    final pkg = cmd.getPackage();
+    Log.raw('Cleaner: removing package "${pkg}"...');
     try {
-      Globals.Mgr.disable();
-      Globals.App = null;
-      Globals.Mgr = null;
+      final success = cmd.PackageManager.unload(pkg, true);
+      if (!success)
+        handleError(pkg);
+      else
+        Log.raw('Cleaner: package "${pkg}" removed!');
     }
-    catch (ex: Any) {
-      Log.raw(ex);
+    catch (ex: String) {
+      handleError(pkg, ex);
     }
+  }
 
-    Package.loaded.app = null;
-    Package.loaded.loader = null;
-
-    Log.log("Taglist cleanup OK!");
+  private static function handleError(pkg: String, ex: String = "") {
+    Log.raw('Cleaner: removing package "${pkg}" failed!');
+    if (ex.length > 0)
+      Log.raw("Exception data:\n" + Common.formatSimpleEx(ex));
   }
 }

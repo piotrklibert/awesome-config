@@ -163,7 +163,8 @@ beautiful = require("beautiful")
 gears = require("gears")
 
 set_wallpaper = (screen) ->
-  gears.wallpaper.maximized("/home/cji/Downloads/mirai-nikki1.jpg", screen, true)
+  gears.wallpaper.maximized("/home/cji/Pictures/mirai-nikki1.jpg", screen, true)
+
 
 
 mtl = require("widgets.mytaglist")
@@ -342,7 +343,7 @@ initialize = ->
             -- wibox.widget {forced_width: 30},
             s.batwidget,
             net_widgets.wireless({interface:"wlp5s0", onclick: util.run_nmtui}),
-            require("brightness")(),
+            -- require("brightness_mod").brightness.Mod.start(),
             require("volume")(),
             wibox.widget {
               wibox.widget {forced_width: 30},

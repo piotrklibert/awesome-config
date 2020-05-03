@@ -18,14 +18,14 @@ class FileLogger {
     log(obj);
   }
 
-  public static function log(obj: Any) {
+  public static function log(obj: Any, depth: Int = 2) {
     if (outFile == null)
       outFile = File.write(path);
 
     final timestamp = Date.now().format("%F[%T] ");
     final file = outFile.sure();
 
-    file.writeString(timestamp + Inspect.inspect(obj) + "\n");
+    file.writeString(timestamp + Inspect.inspect(obj, {depth: depth}) + "\n");
     file.close();
     outFile = File.append(path);
   }
