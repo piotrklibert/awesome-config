@@ -1,20 +1,26 @@
 package brightness;
 
-// import utils.Module.Module;
+import pkg.PackageBase;
+import utils.Common;
+import utils.lua.Globals;
 
 typedef Log = utils.NaughtyLogger;
 
 
 
 @:expose
-class Module {
-  private static var mod: Any;
+class Pkg extends PackageBase implements PackageDefinition {
+  public final name = "brightness";
+  public static function instance() return new Pkg();
 
-  public static function unload() {
+  public function start() {}
+  public function stop() {}
+
+  public function unload() {
     Log.log("brightness unload!");
   }
 
-  public static function load() {
+  public function load() {
     Log.log("brightness started!");
     // mod = new brightness.BrightnessWidget.Brightness();
     Log.log("afasadsf");

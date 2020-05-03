@@ -51,20 +51,25 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 _hx_exports["utils"] = _hx_exports["utils"] or _hx_e()
+_hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
 _hx_exports["brightness"] = _hx_exports["brightness"] or _hx_e()
 local Array = _hx_e()
 __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
+local Lambda = _hx_e()
 local Math = _hx_e()
 local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
 __awful_Naughty = _G.require("naughty")
 __brightness_BrightnessWidget = _hx_e()
-__brightness_Module = _hx_e()
+__pkg_PackageBase = _hx_e()
+__pkg_PackageDefinition = _hx_e()
+__brightness_Pkg = _hx_e()
 __haxe_IMap = _hx_e()
 __haxe_ds_StringMap = _hx_e()
 __lib_Inspect = _G.require("inspect")
 __lua_Boot = _hx_e()
+__pkg_PackageManager = _hx_e()
 __utils_Common = _hx_e()
 __utils_NaughtyLogger = _hx_e()
 
@@ -386,6 +391,24 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
+Lambda.new = {}
+Lambda.iter = function(it,f) 
+  local x = it:iterator();
+  while (x:hasNext()) do 
+    f(x:next());
+  end;
+end
+Lambda.find = function(it,f) 
+  local v = it:iterator();
+  while (v:hasNext()) do 
+    local v1 = v:next();
+    if (f(v1)) then 
+      do return v1 end;
+    end;
+  end;
+  do return nil end;
+end
+
 Math.new = {}
 Math.isNaN = function(f) 
   do return f ~= f end;
@@ -620,15 +643,44 @@ __brightness_BrightnessWidget.super = function(self)
 end
 _hx_exports["brightness"]["BrightnessWidget"] = __brightness_BrightnessWidget
 
-__brightness_Module.new = {}
-_hx_exports["brightness"]["Module"] = __brightness_Module
-__brightness_Module.unload = function() 
+__pkg_PackageBase.new = function() 
+  local self = _hx_new()
+  __pkg_PackageBase.super(self)
+  return self
+end
+__pkg_PackageBase.super = function(self) 
+end
+
+__pkg_PackageDefinition.new = {}
+
+__brightness_Pkg.new = function() 
+  local self = _hx_new(__brightness_Pkg.prototype)
+  __brightness_Pkg.super(self)
+  return self
+end
+__brightness_Pkg.super = function(self) 
+  self.name = "brightness";
+  __pkg_PackageBase.super(self);
+end
+_hx_exports["brightness"]["Pkg"] = __brightness_Pkg
+__brightness_Pkg.__interfaces__ = {__pkg_PackageDefinition}
+__brightness_Pkg.instance = function() 
+  do return __brightness_Pkg.new() end;
+end
+__brightness_Pkg.prototype = _hx_a();
+__brightness_Pkg.prototype.start = function(self) 
+end
+__brightness_Pkg.prototype.stop = function(self) 
+end
+__brightness_Pkg.prototype.unload = function(self) 
   __utils_NaughtyLogger.log("brightness unload!");
 end
-__brightness_Module.load = function() 
+__brightness_Pkg.prototype.load = function(self) 
   __utils_NaughtyLogger.log("brightness started!");
   __utils_NaughtyLogger.log("afasadsf");
 end
+__brightness_Pkg.__super__ = __pkg_PackageBase
+setmetatable(__brightness_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
 
 __haxe_IMap.new = {}
 
@@ -804,8 +856,124 @@ __lua_Boot.fieldIterator = function(o)
   end}) end;
 end
 
+__pkg_PackageManager.new = function() 
+  local self = _hx_new(__pkg_PackageManager.prototype)
+  __pkg_PackageManager.super(self)
+  return self
+end
+__pkg_PackageManager.super = function(self) 
+  self.packages = _hx_tab_array({}, 0);
+  self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
+end
+_hx_exports["pkg"]["PackageManager"] = __pkg_PackageManager
+__pkg_PackageManager.main = function() 
+  __utils_Common.check_path();
+  local _g = _G.PackageManager;
+  if (_g == nil) then 
+    __utils_NaughtyLogger.log("PackageManager: no previous manager found, creating new instance.");
+    _G.PackageManager = __pkg_PackageManager.new();
+  else
+    __utils_NaughtyLogger.log("PackageManager: found previous instance, updating.");
+    local mgr = __pkg_PackageManager.new();
+    Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
+    _G.PackageManager = mgr;
+  end;
+  local value = _G.PackageManager;
+  if (value == nil) then 
+    _G.error("null pointer in .sure() call",0);
+  end;
+  __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: loaded; ") .. Std.string(value.packages.length)) .. Std.string(" packages available"));
+end
+__pkg_PackageManager.prototype = _hx_a();
+__pkg_PackageManager.prototype.clear = function(self) 
+  self.packages:resize(0);
+end
+__pkg_PackageManager.prototype.load = function(self,name,require) 
+  if (require == nil) then 
+    require = false;
+  end;
+  local pkg1 = Lambda.find(self.packages, function(o) 
+    do return o.name == name end;
+  end);
+  if (pkg1 == nil) then 
+    if (not require) then 
+      __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: Error - ") .. Std.string(name)) .. Std.string(" not found"));
+      do return false end;
+    else
+      self:addPackage(name);
+      self:load(name);
+    end;
+  else
+    pkg1:load();
+  end;
+  do return true end
+end
+__pkg_PackageManager.prototype.unload = function(self,name,remove) 
+  if (remove == nil) then 
+    remove = false;
+  end;
+  local pkg1 = Lambda.find(self.packages, function(o) 
+    do return o.name == name end;
+  end);
+  if (pkg1 == nil) then 
+    __utils_NaughtyLogger.log(Std.string(Std.string("[PackageManager] unloading error: package \"") .. Std.string(name)) .. Std.string("\" not found"));
+    do return false end;
+  else
+    local pkg2 = pkg1;
+    if (remove) then 
+      self.packages:remove(pkg2);
+      _G.package.loaded[Std.string("hx_") .. Std.string(pkg2.name)] = nil;
+    end;
+    pkg2:unload();
+  end;
+  do return true end
+end
+__pkg_PackageManager.prototype.addPackage = function(self,pkgName) 
+  local mod = Reflect.field(_G.require(Std.string("hx_") .. Std.string(pkgName)), pkgName);
+  self:add(mod.Pkg.instance());
+end
+__pkg_PackageManager.prototype.add = function(self,x) 
+  local name = x.name;
+  if (Lambda.find(self.packages, function(o) 
+    do return o.name == name end;
+  end) == nil) then 
+    self.packages:push(x);
+  else
+    __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already present"));
+  end;
+end
+
 __utils_Common.new = {}
 _hx_exports["utils"]["Common"] = __utils_Common
+__utils_Common.formatSimpleEx = function(exception) 
+  local ex = Std.string(exception);
+  local idx = 1;
+  local ret = _hx_tab_array({}, 0);
+  while (idx ~= nil) do 
+    local newidx = 0;
+    if (__lua_lib_luautf8_Utf8.len(":") > 0) then 
+      newidx = __lua_lib_luautf8_Utf8.find(ex, ":", idx, true);
+    else
+      if (idx >= __lua_lib_luautf8_Utf8.len(ex)) then 
+        newidx = nil;
+      else
+        newidx = idx + 1;
+      end;
+    end;
+    if (newidx ~= nil) then 
+      ret:push(__lua_lib_luautf8_Utf8.sub(ex, idx, newidx - 1));
+      idx = newidx + __lua_lib_luautf8_Utf8.len(":");
+    else
+      ret:push(__lua_lib_luautf8_Utf8.sub(ex, idx, __lua_lib_luautf8_Utf8.len(ex)));
+      idx = nil;
+    end;
+  end;
+  local value = ret:join("\n");
+  if (value == nil) then 
+    _G.error("null pointer in .sure() call",0);
+  end;
+  do return value end;
+end
 __utils_Common.mkLua = function() 
   do return {} end;
 end
@@ -875,6 +1043,21 @@ local _hx_static_init = function()
   end;
   
   
+end
+
+_hx_bind = function(o,m)
+  if m == nil then return nil end;
+  local f;
+  if o._hx__closures == nil then
+    _G.rawset(o, '_hx__closures', {});
+  else
+    f = o._hx__closures[m];
+  end
+  if (f == nil) then
+    f = function(...) return m(o, ...) end;
+    o._hx__closures[m] = f;
+  end
+  return f;
 end
 
 _hx_wrap_if_string_field = function(o, fld)

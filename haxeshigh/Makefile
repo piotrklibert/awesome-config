@@ -4,7 +4,7 @@ all: build
 
 
 .PHONY: build
-build: output/hx_taglist.lua output/cleaner.lua output/loader.lua output/hx_pkg.lua
+build: output/hx_taglist.lua output/cleaner.lua output/loader.lua output/hx_pkg.lua output/hx_brightness.lua
 
 
 output/cleaner.lua: src/Cleaner.hx src/utils/*.hx src/utils/lua/*.hx build/cleaner.hxml

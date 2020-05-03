@@ -8,11 +8,12 @@ import awful.*;
 import utils.Common;
 import utils.lua.LuaTools;
 
-import brightness.Module;
+import brightness.Pkg;
 
 using Lambda;
 using utils.OptionTools;
 using utils.lua.LuaTools;
+
 
 
 // typedef Log = utils.FileLogger;
