@@ -1,9 +1,0 @@
-$OPTIONS
-
-$LIBRARIES
-
--cp src
-
--lua output/chwin.lua
-
-chwin.Mod
