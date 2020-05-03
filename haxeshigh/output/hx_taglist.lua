@@ -1482,6 +1482,10 @@ __taglist_Pkg.instance = function()
   do return __taglist_Pkg.new() end;
 end
 __taglist_Pkg.prototype = _hx_a();
+__taglist_Pkg.prototype.start = function(self) 
+end
+__taglist_Pkg.prototype.stop = function(self) 
+end
 __taglist_Pkg.prototype.load = function(self) 
   local _hx_status, _hx_result = pcall(function() 
   
@@ -1498,10 +1502,6 @@ __taglist_Pkg.prototype.load = function(self)
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
-end
-__taglist_Pkg.prototype.start = function(self) 
-end
-__taglist_Pkg.prototype.stop = function(self) 
 end
 __taglist_Pkg.prototype.unload = function(self) 
   __taglist_TaglistManager.disable();

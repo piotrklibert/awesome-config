@@ -4,7 +4,15 @@ ARG="$1"
 
 hxml_file="build/$ARG.hxml"
 
-cp $hxml_file ./
+export LIBRARIES="$(cat build/include/libs.txt)"
+export OPTIONS="$(cat build/include/opts.txt)"
+
+# cp $hxml_file ./
+
+cat $hxml_file | envsubst > $ARG.hxml
+printf "Executing ./$ARG.hxml\n\t:::\n"
+cat $ARG.hxml
+printf "\t:::\n\n"
 if haxe $ARG.hxml; then
     rm $ARG.hxml
     echo "ok"

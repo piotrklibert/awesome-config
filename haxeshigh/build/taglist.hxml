@@ -1,0 +1,9 @@
+$OPTIONS
+
+$LIBRARIES
+
+-cp src
+
+-lua output/hx_taglist.lua
+
+taglist.Taglist

@@ -658,4 +658,5 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 
+dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/hx_pkg.lua")
 dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/loader.lua")

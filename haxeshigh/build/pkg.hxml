@@ -1,19 +1,9 @@
--dce full
--D analyzer-module
--D analyzer-optimize
--D analyzer-user-var-fusion
--D analyzer-const_propagation
--D analyzer-copy_propagation
--D analyzer-local_dce
--D analyzer-fusion
--D analyzer-purity_inference
+$OPTIONS
+
+$LIBRARIES
 
 -cp src
 
--L tink_core
--L tink_lang
-
 -lua output/hx_pkg.lua
 -m pkg.PackageManager
-
 pkg.PackageManager

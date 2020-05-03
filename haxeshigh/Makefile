@@ -1,6 +1,6 @@
 
 .PHONY: all
-all: build minify
+all: build
 
 
 .PHONY: build
@@ -13,8 +13,8 @@ output/cleaner.lua: src/Cleaner.hx src/utils/*.hx src/utils/lua/*.hx build/clean
 output/loader.lua: src/Loader.hx src/utils/*.hx src/utils/lua/*.hx build/loader.hxml
 	./bin/build loader
 
-output/hx_taglist.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/main.hxml
-	./bin/build main
+output/hx_taglist.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/taglist.hxml
+	./bin/build taglist
 
 output/hx_chwin.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/chwin.hxml
 	./bin/build chwin
@@ -26,16 +26,10 @@ output/hx_pkg.lua: src/pkg/*.hx src/utils/*.hx src/utils/lua/*.hx build/pkg.hxml
 	./bin/build pkg
 
 
+
+.PHONY: pkg
 pkg: output/hx_pkg.lua
 	(cat output/hx_pkg.lua | awesome-client)
-
-
-.PHONY: minify
-minify:
-#   TODO: split to separate rules or use wildcard %
-#	node_modules/luamin/bin/luamin -f build/loader.lua >build/loader_min.lua
-#	node_modules/luamin/bin/luamin -f build/cleaner.lua >build/cleaner_min.lua
-#	node_modules/luamin/bin/luamin -f build/hx_taglist.lua >build/app_min.lua
 
 
 .PHONY: clean
@@ -53,3 +47,12 @@ checkstyle:
 	haxelib run checkstyle --nostyle \
 		-s src/app -s src/utils \
 		-c checkstyle.json
+
+
+
+# .PHONY: minify
+# minify:
+#   TODO: split to separate rules or use wildcard %
+#	node_modules/luamin/bin/luamin -f build/loader.lua >build/loader_min.lua
+#	node_modules/luamin/bin/luamin -f build/cleaner.lua >build/cleaner_min.lua
+#	node_modules/luamin/bin/luamin -f build/hx_taglist.lua >build/app_min.lua

@@ -15,6 +15,9 @@ class Pkg extends PackageBase implements PackageDefinition {
   // for easier access from Lua side
   public static function instance() return new Pkg();
 
+  public function start() {}
+  public function stop() {}
+
   public function load() {
     try {
       // The `Globals.App` reference is used in awesome-config/tags.moon when
@@ -27,9 +30,6 @@ class Pkg extends PackageBase implements PackageDefinition {
       Log.log("Error loading taglist module: " + Std.string(ex));
     }
   }
-
-  public function start() {}
-  public function stop() {}
 
   public function unload() {
     TaglistManager.disable();

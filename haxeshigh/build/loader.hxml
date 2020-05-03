@@ -1,23 +1,11 @@
--dce full
--D analyzer-module
--D analyzer-optimize
--D analyzer-user-var-fusion
--D analyzer-const_propagation
--D analyzer-copy_propagation
--D analyzer-local_dce
--D analyzer-fusion
--D analyzer-purity_inference
+$OPTIONS
 
-
--D clear
--D load=fromFile
-# -D load=brightness
+$LIBRARIES
 
 
 -cp src
 -lua output/loader.lua
--L tink_core
--L tink_lang
+
 -m Loader
 
 Loader.hx
