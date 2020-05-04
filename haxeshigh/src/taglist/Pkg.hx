@@ -12,7 +12,7 @@ import taglist.Taglist.TaglistManager;
 class Pkg extends PackageBase implements PackageDefinition {
   public final name = "taglist";
 
-  // for easier access from Lua side
+  // for easier access from Lua side - to fix later
   public static function instance() return new Pkg();
 
   public function start() {}

@@ -896,17 +896,17 @@ __pkg_PackageManager.prototype.load = function(self,name,require)
     do return o.name == name end;
   end);
   if (pkg1 == nil) then 
-    if (not require) then 
-      __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: Error - ") .. Std.string(name)) .. Std.string(" not found"));
-      do return false end;
+    if (require) then 
+      self:requirePkg(name);
+      do return self:load(name, false) end;
     else
-      self:addPackage(name);
-      self:load(name);
+      __utils_NaughtyLogger.log(Std.string(Std.string("[PackageManager] loading ERROR: ") .. Std.string(name)) .. Std.string(" not found!"));
+      do return false end;
     end;
   else
     pkg1:load();
+    do return true end;
   end;
-  do return true end
 end
 __pkg_PackageManager.prototype.unload = function(self,name,remove) 
   if (remove == nil) then 
@@ -916,28 +916,30 @@ __pkg_PackageManager.prototype.unload = function(self,name,remove)
     do return o.name == name end;
   end);
   if (pkg1 == nil) then 
-    __utils_NaughtyLogger.log(Std.string(Std.string("[PackageManager] unloading error: package \"") .. Std.string(name)) .. Std.string("\" not found"));
+    __utils_NaughtyLogger.log(Std.string(Std.string("[PackageManager] ERROR unloading package: \"") .. Std.string(name)) .. Std.string("\" not found!"));
     do return false end;
   else
-    local pkg2 = pkg1;
     if (remove) then 
-      self.packages:remove(pkg2);
-      _G.package.loaded[Std.string("hx_") .. Std.string(pkg2.name)] = nil;
+      self:remove(pkg1);
     end;
-    pkg2:unload();
+    pkg1:unload();
+    do return true end;
   end;
-  do return true end
 end
-__pkg_PackageManager.prototype.addPackage = function(self,pkgName) 
+__pkg_PackageManager.prototype.requirePkg = function(self,pkgName) 
   local mod = Reflect.field(_G.require(Std.string("hx_") .. Std.string(pkgName)), pkgName);
   self:add(mod.Pkg.instance());
 end
-__pkg_PackageManager.prototype.add = function(self,x) 
-  local name = x.name;
+__pkg_PackageManager.prototype.remove = function(self,pkg1) 
+  self.packages:remove(pkg1);
+  _G.package.loaded[Std.string("hx_") .. Std.string(pkg1.name)] = nil;
+end
+__pkg_PackageManager.prototype.add = function(self,pkg1) 
+  local name = pkg1.name;
   if (Lambda.find(self.packages, function(o) 
     do return o.name == name end;
   end) == nil) then 
-    self.packages:push(x);
+    self.packages:push(pkg1);
   else
     __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already present"));
   end;

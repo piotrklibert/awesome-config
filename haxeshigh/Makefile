@@ -13,13 +13,10 @@ output/cleaner.lua: src/Cleaner.hx src/utils/*.hx src/utils/lua/*.hx build/clean
 output/loader.lua: src/Loader.hx src/utils/*.hx src/utils/lua/*.hx build/loader.hxml
 	./bin/build loader
 
-output/hx_taglist.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/taglist.hxml
+output/hx_taglist.lua: src/taglist/*.hx src/utils/*.hx src/utils/lua/*.hx build/taglist.hxml
 	./bin/build taglist
 
-output/hx_chwin.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/chwin.hxml
-	./bin/build chwin
-
-output/hx_brightness.lua: src/*/*.hx src/utils/*.hx src/utils/lua/*.hx build/brightness.hxml
+output/hx_brightness.lua: src/brightness/*.hx src/utils/*.hx src/utils/lua/*.hx build/brightness.hxml
 	./bin/build brightness
 
 output/hx_pkg.lua: src/pkg/*.hx src/utils/*.hx src/utils/lua/*.hx build/pkg.hxml
