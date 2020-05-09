@@ -4,28 +4,38 @@ logDir="/home/cji/portless/lua/awesome-config/haxeshigh/logs/"
 logFile="$logDir/build.log"
 
 while true; do
+    echo "Watch started: $(date)"
     find . ! -iname '.*.hx' -iname '*.hx' | xargs inotifywait -e modify
+    echo "...file changed!"
 
-    (>$logFile 2>&1 make build)
+    # make build
+    # (>$logFile 2>&1 make build)
+    res="$(2>&1 make build)"
     if [ $? != 0  ]; then
-        noti -t 'Compilation failed!!' -m "$(cat $logFile)"
+        noti -t 'Compilation failed!!' -m "$res"
+        printf "%s\n" "$res"
+        echo
         continue
     else
-        echo ok # noti -t 'Compilation ok!' -m "$(wc -l build/*)"
+        noti -t 'Compilation ok!' -m "$(cat tmp/diff)"
+        printf "%s\n" "$res"
+        echo "Compilation OK, restarting watch..."
+        echo
+        continue
     fi
 
-    (>>$logFile 2>&1 make clean)
-    if [ $? != 0 ]; then
-        noti -t "Cleanup failed!" -m "$(cat $logDir/std.log)"
-    else
-        echo ok # noti -t "Cleanup ok!" -m "$(cat $logDir/std.log)"
-    fi
+    # (>>$logFile 2>&1 make clean)
+    # if [ $? != 0 ]; then
+    #     noti -t "Cleanup failed!" -m "$(cat $logDir/std.log)"
+    # else
+    #     echo ok # noti -t "Cleanup ok!" -m "$(cat $logDir/std.log)"
+    # fi
 
-    (>>$logFile 2>&1 make load)
-    if [ $? != 0 ]; then
-        noti -t "Loading failed!" -m "$(cat $logDir/std.log)"
-    else
-        echo ok # noti -t "Loaded ok!" -m "$(cat $logDir/std.log)"
-    fi
-    echo 'Cleanup&loading completed!'
+    # (>>$logFile 2>&1 make load)
+    # if [ $? != 0 ]; then
+    #     noti -t "Loading failed!" -m "$(cat $logDir/std.log)"
+    # else
+    #     echo ok # noti -t "Loaded ok!" -m "$(cat $logDir/std.log)"
+    # fi
+    # echo 'Cleanup&loading completed!'
 done

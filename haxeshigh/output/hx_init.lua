@@ -50,27 +50,29 @@ local Class = _hx_e();
 local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
+_hx_exports["utils"] = _hx_exports["utils"] or _hx_e()
 _hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
+_hx_exports["log"] = _hx_exports["log"] or _hx_e()
 local Array = _hx_e()
-local Cleaner = _hx_e()
-local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
+__lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Lambda = _hx_e()
 local Math = _hx_e()
 local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
-local StringTools = _hx_e()
-local __awful_Naughty = _G.require("naughty")
-local __lib_Inspect = _G.require("inspect")
-local __log_Log = _hx_e()
-local __lua_Boot = _hx_e()
-local __lua_UserData = _hx_e()
-local __lua_Thread = _hx_e()
-local __pkg_PackageCommand = _hx_e()
-local __pkg_PackageDefinition = _hx_e()
-local __pkg_PackageManager = _hx_e()
-local __sys_io_File = _hx_e()
-local __utils_Common = _hx_e()
+__awful_Naughty = _G.require("naughty")
+__haxe_IMap = _hx_e()
+__haxe_Log = _hx_e()
+__haxe_ds_StringMap = _hx_e()
+__init_Init = _hx_e()
+__lib_Inspect = _G.require("inspect")
+__log_Log = _hx_e()
+__lua_Boot = _hx_e()
+__lua_UserData = _hx_e()
+__lua_Thread = _hx_e()
+__pkg_PackageDefinition = _hx_e()
+__pkg_PackageManager = _hx_e()
+__utils_Common = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -393,45 +395,6 @@ end
 
 Array.prototype.__class__ =  Array
 
-Cleaner.new = {}
-_hx_exports["Cleaner"] = Cleaner
-Cleaner.__name__ = true
-Cleaner.main = function() 
-  local cmd = __pkg_PackageCommand.new();
-  local pkg1 = cmd:getPackage();
-  __log_Log.log(Std.string(Std.string("Cleaner: removing package \"") .. Std.string(pkg1)) .. Std.string("\"..."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Cleaner.hx",lineNumber=17,className="Cleaner",methodName="main"}));
-  local _hx_status, _hx_result = pcall(function() 
-  
-      if (not cmd.PackageManager:unload(pkg1, true)) then 
-        Cleaner.handleError(pkg1);
-      else
-        __log_Log.log(Std.string(Std.string("Cleaner: package \"") .. Std.string(pkg1)) .. Std.string("\" removed!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Cleaner.hx",lineNumber=23,className="Cleaner",methodName="main"}));
-      end;
-    return _hx_pcall_default
-  end)
-  if not _hx_status and _hx_result == "_hx_pcall_break" then
-  elseif not _hx_status then 
-  
-    local _hx_1 = _hx_result
-    if( __lua_Boot.__instanceof(_hx_1,String) ) then 
-      local ex = _hx_1
-      Cleaner.handleError(pkg1, ex);
-    else _G.error(_hx_1)
-    end
-  elseif _hx_result ~= _hx_pcall_default then
-    return _hx_result
-  end;
-end
-Cleaner.handleError = function(pkg,ex) 
-  if (ex == nil) then 
-    ex = "";
-  end;
-  __log_Log.log(Std.string(Std.string("Cleaner: removing package \"") .. Std.string(pkg)) .. Std.string("\" failed!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Cleaner.hx",lineNumber=31,className="Cleaner",methodName="handleError"}));
-  if (__lua_lib_luautf8_Utf8.len(ex) > 0) then 
-    __log_Log.log(Std.string("Exception data:\n") .. Std.string(__utils_Common.formatSimpleEx(ex)), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Cleaner.hx",lineNumber=33,className="Cleaner",methodName="handleError"}));
-  end;
-end
-
 Lambda.new = {}
 Lambda.__name__ = true
 Lambda.iter = function(it,f) 
@@ -509,20 +472,6 @@ Reflect.fields = function(o)
     end;
     do return _g end;
   end;
-end
-Reflect.copy = function(o) 
-  if (o == nil) then 
-    do return nil end;
-  end;
-  local o2 = _hx_e();
-  local _g = 0;
-  local _g1 = Reflect.fields(o);
-  while (_g < _g1.length) do 
-    local f = _g1[_g];
-    _g = _g + 1;
-    o2[f] = Reflect.field(o, f);
-  end;
-  do return o2 end;
 end
 
 String.new = function(string) 
@@ -696,96 +645,64 @@ Std.int = function(x)
   end;
 end
 
-StringTools.new = {}
-StringTools.__name__ = true
-StringTools.isSpace = function(s,pos) 
-  if (((__lua_lib_luautf8_Utf8.len(s) == 0) or (pos < 0)) or (pos >= __lua_lib_luautf8_Utf8.len(s))) then 
-    do return false end;
+__haxe_IMap.new = {}
+__haxe_IMap.__name__ = true
+
+__haxe_Log.new = {}
+__haxe_Log.__name__ = true
+__haxe_Log.formatOutput = function(v,infos) 
+  local str = Std.string(v);
+  if (infos == nil) then 
+    do return str end;
   end;
-  local c = __lua_lib_luautf8_Utf8.byte(s, pos + 1);
-  if (not ((c > 8) and (c < 14))) then 
-    do return c == 32 end;
-  else
-    do return true end;
+  local pstr = Std.string(Std.string(infos.fileName) .. Std.string(":")) .. Std.string(infos.lineNumber);
+  if (infos.customParams ~= nil) then 
+    local _g = 0;
+    local _g1 = infos.customParams;
+    while (_g < _g1.length) do 
+      local v1 = _g1[_g];
+      _g = _g + 1;
+      str = Std.string(str) .. Std.string((Std.string(", ") .. Std.string(Std.string(v1))));
+    end;
   end;
+  do return Std.string(Std.string(pstr) .. Std.string(": ")) .. Std.string(str) end;
 end
-StringTools.ltrim = function(s) 
-  local l = __lua_lib_luautf8_Utf8.len(s);
-  local r = 0;
-  while ((r < l) and StringTools.isSpace(s, r)) do 
-    r = r + 1;
-  end;
-  if (r > 0) then 
-    local pos = r;
-    local len = l - r;
-    if ((len == nil) or (len > (pos + __lua_lib_luautf8_Utf8.len(s)))) then 
-      len = __lua_lib_luautf8_Utf8.len(s);
-    else
-      if (len < 0) then 
-        len = __lua_lib_luautf8_Utf8.len(s) + len;
-      end;
-    end;
-    if (pos < 0) then 
-      pos = __lua_lib_luautf8_Utf8.len(s) + pos;
-    end;
-    if (pos < 0) then 
-      pos = 0;
-    end;
-    do return __lua_lib_luautf8_Utf8.sub(s, pos + 1, pos + len) end;
-  else
-    do return s end;
-  end;
+__haxe_Log.trace = function(v,infos) 
+  local str = __haxe_Log.formatOutput(v, infos);
+  _hx_print(str);
 end
-StringTools.rtrim = function(s) 
-  local l = __lua_lib_luautf8_Utf8.len(s);
-  local r = 0;
-  while ((r < l) and StringTools.isSpace(s, (l - r) - 1)) do 
-    r = r + 1;
-  end;
-  if (r > 0) then 
-    local len = l - r;
-    if ((len == nil) or (len > __lua_lib_luautf8_Utf8.len(s))) then 
-      len = __lua_lib_luautf8_Utf8.len(s);
-    else
-      if (len < 0) then 
-        len = __lua_lib_luautf8_Utf8.len(s) + len;
-      end;
-    end;
-    do return __lua_lib_luautf8_Utf8.sub(s, 1, len) end;
-  else
-    do return s end;
-  end;
+
+__haxe_ds_StringMap.new = function() 
+  local self = _hx_new(__haxe_ds_StringMap.prototype)
+  __haxe_ds_StringMap.super(self)
+  return self
 end
-StringTools.trim = function(s) 
-  do return StringTools.ltrim(StringTools.rtrim(s)) end;
+__haxe_ds_StringMap.super = function(self) 
+  self.h = ({});
+end
+__haxe_ds_StringMap.__name__ = true
+__haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
+__haxe_ds_StringMap.prototype = _hx_a();
+
+__haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
+
+__init_Init.new = {}
+__init_Init.__name__ = true
+__init_Init.main = function() 
+  __haxe_Log.trace = __log_Log.log;
 end
 
 __log_Log.new = {}
+_hx_exports["log"]["Log"] = __log_Log
 __log_Log.__name__ = true
-__log_Log.display = function(s,opts) 
-  if (opts == nil) then 
-    opts = _hx_e();
-  end;
-  local value = Reflect.copy(__log_Log.defaults);
-  if (value == nil) then 
-    _G.error("null pointer in .sure() call",0);
-  end;
-  local _g = 0;
-  local _g1 = Reflect.fields(opts);
-  while (_g < _g1.length) do 
-    local f = _g1[_g];
-    _g = _g + 1;
-    value[f] = Reflect.field(opts, f);
-  end;
-  value.text = s;
-  __awful_Naughty.notify(value);
+__log_Log.display = function(s) 
+  __awful_Naughty.notify(_hx_o({__fields__={fg=true,bg=true,text=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",text=s,icon="/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",width=520,position="bottom_right",timeout=20,hover_timeout=0}));
 end
 __log_Log.formatInfos = function(i) 
   if (i == nil) then 
     do return "    ERROR: no pos info!\n" end;
   else
-    local i1 = i;
-    do return _G.table.concat(({Std.string(Std.string(Std.string("    ") .. Std.string(i1.fileName)) .. Std.string(":")) .. Std.string(i1.lineNumber),Std.string(Std.string(Std.string("    ") .. Std.string(i1.className)) .. Std.string(".")) .. Std.string(i1.methodName)}), "\n") end;
+    do return _hx_tab_array({[0]=Std.string(Std.string(Std.string("    ") .. Std.string(i.fileName)) .. Std.string(":")) .. Std.string(i.lineNumber), Std.string(Std.string(Std.string("    ") .. Std.string(i.className)) .. Std.string(".")) .. Std.string(i.methodName)}, 2):join("\n") end;
   end;
 end
 __log_Log.log = function(x,infos) 
@@ -797,11 +714,10 @@ __log_Log.log = function(x,infos)
     return _hx_1
   end )();
   if (_hx_tmp.length == 1) then 
-    local s = _hx_tmp[0];
-    local infos1 = __log_Log.formatInfos(infos);
-    __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos1)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"));
+    local _g = _hx_tmp[0];
+    __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(__log_Log.formatInfos(infos))) .. Std.string("\n    -----------------------\n\n")) .. Std.string(_g)) .. Std.string("\n"));
   else
-    __log_Log.log(__lib_Inspect.inspect(x, ({depth = 2})), infos);
+    __log_Log.log(__lib_Inspect.inspect(x, _hx_o({__fields__={depth=true},depth=2})), infos);
   end;
 end
 
@@ -1068,23 +984,6 @@ __lua_UserData.__name__ = true
 __lua_Thread.new = {}
 __lua_Thread.__name__ = true
 
-__pkg_PackageCommand.new = function() 
-  local self = _hx_new(__pkg_PackageCommand.prototype)
-  __pkg_PackageCommand.super(self)
-  return self
-end
-__pkg_PackageCommand.super = function(self) 
-  self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
-  self.PackageManager = _hx_funcToField(_G.PackageManager);
-end
-__pkg_PackageCommand.__name__ = true
-__pkg_PackageCommand.prototype = _hx_a();
-__pkg_PackageCommand.prototype.getPackage = function(self) 
-  do return StringTools.trim(__sys_io_File.getContent(self.argFilePath)) end
-end
-
-__pkg_PackageCommand.prototype.__class__ =  __pkg_PackageCommand
-
 __pkg_PackageDefinition.new = {}
 __pkg_PackageDefinition.__name__ = true
 __pkg_PackageDefinition.prototype = _hx_a();
@@ -1106,10 +1005,10 @@ __pkg_PackageManager.main = function()
   __utils_Common.check_path();
   local _g = _G.PackageManager;
   if (_g == nil) then 
-    __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=100,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=96,className="pkg.PackageManager",methodName="main"}));
     _G.PackageManager = __pkg_PackageManager.new();
   else
-    __log_Log.log("Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=103,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.log("Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=99,className="pkg.PackageManager",methodName="main"}));
     local mgr = __pkg_PackageManager.new();
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
     _G.PackageManager = mgr;
@@ -1118,31 +1017,25 @@ __pkg_PackageManager.main = function()
   if (value == nil) then 
     _G.error("null pointer in .sure() call",0);
   end;
-  __log_Log.log(Std.string(Std.string("Loaded! ") .. Std.string(value.packages.length)) .. Std.string(" packages available."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
+  __log_Log.log(Std.string(Std.string("Loaded! ") .. Std.string(value.packages.length)) .. Std.string(" packages available."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=106,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_a();
 __pkg_PackageManager.prototype.clear = function(self) 
   self.packages:resize(0);
 end
-__pkg_PackageManager.prototype.findByName = function(self,name) 
-  do return Lambda.find(self.packages, function(o) 
-    do return o.name == name end;
-  end) end
-end
 __pkg_PackageManager.prototype.load = function(self,name,require) 
   if (require == nil) then 
     require = false;
   end;
-  local name1 = name;
   local pkg1 = Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
+    do return o.name == name end;
   end);
   if (pkg1 == nil) then 
     if (require) then 
       self:requirePkg(name);
       do return self:load(name, false) end;
     else
-      __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=39,className="pkg.PackageManager",methodName="load"}));
+      __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=35,className="pkg.PackageManager",methodName="load"}));
       do return false end;
     end;
   else
@@ -1154,12 +1047,11 @@ __pkg_PackageManager.prototype.unload = function(self,name,remove)
   if (remove == nil) then 
     remove = false;
   end;
-  local name1 = name;
   local pkg1 = Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
+    do return o.name == name end;
   end);
   if (pkg1 == nil) then 
-    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=55,className="pkg.PackageManager",methodName="unload"}));
+    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=51,className="pkg.PackageManager",methodName="unload"}));
     do return false end;
   else
     if (remove) then 
@@ -1179,31 +1071,19 @@ __pkg_PackageManager.prototype.remove = function(self,pkg1)
 end
 __pkg_PackageManager.prototype.add = function(self,pkg1) 
   local name = pkg1.name;
-  local name1 = name;
   if (Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
+    do return o.name == name end;
   end) == nil) then 
     self.packages:push(pkg1);
   else
-    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=88,className="pkg.PackageManager",methodName="add"}));
+    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=84,className="pkg.PackageManager",methodName="add"}));
   end;
 end
 
 __pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
 
-__sys_io_File.new = {}
-__sys_io_File.__name__ = true
-__sys_io_File.getContent = function(path) 
-  local f = _G.io.open(path, "r");
-  if (f == nil) then 
-    _G.error(Std.string("Invalid path : ") .. Std.string(path),0);
-  end;
-  local s = f:read("*all");
-  f:close();
-  do return s end;
-end
-
 __utils_Common.new = {}
+_hx_exports["utils"]["Common"] = __utils_Common
 __utils_Common.__name__ = true
 __utils_Common.formatSimpleEx = function(exception) 
   local ex = Std.string(exception);
@@ -1233,6 +1113,23 @@ __utils_Common.formatSimpleEx = function(exception)
     _G.error("null pointer in .sure() call",0);
   end;
   do return value end;
+end
+__utils_Common.mkLua = function() 
+  do return {} end;
+end
+__utils_Common.mapToTable = function(map) 
+  do return map.h end;
+end
+__utils_Common.structToTable = function(s) 
+  local ret = ({});
+  local _g = 0;
+  local _g1 = Reflect.fields(s);
+  while (_g < _g1.length) do 
+    local f = _g1[_g];
+    _g = _g + 1;
+    ret[f] = Reflect.field(s, f);
+  end;
+  do return ret end;
 end
 __utils_Common.check_path = function() 
   local r = __lua_lib_luautf8_Utf8.find(_G.package.path, "haxeshigh/output", 1, true);
@@ -1272,9 +1169,11 @@ end
 _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",icon="/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",width=520,position="bottom_right",timeout=20,hover_timeout=0});
-  
   __lua_Boot.hiddenFields = {__id__=true, hx__closures=true, super=true, prototype=true, __fields__=true, __ifields__=true, __class__=true, __properties__=true}
+  
+  __utils_Common.ident = function(x) 
+    do return x end;
+  end;
   
   
   String.__name__ = true;
@@ -1296,15 +1195,7 @@ _hx_bind = function(o,m)
   return f;
 end
 
-_hx_funcToField = function(f)
-  if type(f) == 'function' then
-    return function(self,...)
-      return f(...)
-    end
-  else
-    return f
-  end
-end
+_hx_print = print or (function() end)
 
 _hx_table = {}
 _hx_table.pack = _G.table.pack or function(...)
@@ -1332,5 +1223,5 @@ _hx_wrap_if_string_field = function(o, fld)
 end
 
 _hx_static_init();
-Cleaner.main()
+__init_Init.main()
 return _hx_exports

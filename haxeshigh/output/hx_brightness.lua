@@ -52,6 +52,7 @@ local Enum = _hx_e();
 local _hx_exports = _hx_exports or {}
 _hx_exports["utils"] = _hx_exports["utils"] or _hx_e()
 _hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
+_hx_exports["log"] = _hx_exports["log"] or _hx_e()
 _hx_exports["brightness"] = _hx_exports["brightness"] or _hx_e()
 local Array = _hx_e()
 __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
@@ -68,10 +69,12 @@ __brightness_Pkg = _hx_e()
 __haxe_IMap = _hx_e()
 __haxe_ds_StringMap = _hx_e()
 __lib_Inspect = _G.require("inspect")
+__log_Log = _hx_e()
 __lua_Boot = _hx_e()
+__lua_UserData = _hx_e()
+__lua_Thread = _hx_e()
 __pkg_PackageManager = _hx_e()
 __utils_Common = _hx_e()
-__utils_NaughtyLogger = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -85,6 +88,7 @@ end
 Array.super = function(self) 
   _hx_tab_array(self, 0);
 end
+Array.__name__ = true
 Array.prototype = _hx_a();
 Array.prototype.concat = function(self,a) 
   local _g = _hx_tab_array({}, 0);
@@ -391,7 +395,10 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
+Array.prototype.__class__ =  Array
+
 Lambda.new = {}
+Lambda.__name__ = true
 Lambda.iter = function(it,f) 
   local x = it:iterator();
   while (x:hasNext()) do 
@@ -410,6 +417,7 @@ Lambda.find = function(it,f)
 end
 
 Math.new = {}
+Math.__name__ = true
 Math.isNaN = function(f) 
   do return f ~= f end;
 end
@@ -429,6 +437,7 @@ Math.min = function(a,b)
 end
 
 Reflect.new = {}
+Reflect.__name__ = true
 Reflect.field = function(o,field) 
   if (_G.type(o) == "string") then 
     if (field == "length") then 
@@ -475,6 +484,7 @@ String.new = function(string)
 end
 String.super = function(self,string) 
 end
+String.__name__ = true
 String.__index = function(s,k) 
   if (k == "length") then 
     do return __lua_lib_luautf8_Utf8.len(s) end;
@@ -622,7 +632,10 @@ String.prototype.substr = function(self,pos,len)
   do return __lua_lib_luautf8_Utf8.sub(self, pos + 1, pos + len) end
 end
 
+String.prototype.__class__ =  String
+
 Std.new = {}
+Std.__name__ = true
 Std.string = function(s) 
   do return __lua_Boot.__string_rec(s) end;
 end
@@ -635,23 +648,35 @@ Std.int = function(x)
 end
 
 __brightness_BrightnessWidget.new = function() 
-  local self = _hx_new()
+  local self = _hx_new(__brightness_BrightnessWidget.prototype)
   __brightness_BrightnessWidget.super(self)
   return self
 end
 __brightness_BrightnessWidget.super = function(self) 
 end
 _hx_exports["brightness"]["BrightnessWidget"] = __brightness_BrightnessWidget
+__brightness_BrightnessWidget.__name__ = true
+__brightness_BrightnessWidget.prototype = _hx_a();
+
+__brightness_BrightnessWidget.prototype.__class__ =  __brightness_BrightnessWidget
 
 __pkg_PackageBase.new = function() 
-  local self = _hx_new()
+  local self = _hx_new(__pkg_PackageBase.prototype)
   __pkg_PackageBase.super(self)
   return self
 end
 __pkg_PackageBase.super = function(self) 
 end
+__pkg_PackageBase.__name__ = true
+__pkg_PackageBase.prototype = _hx_a();
+
+__pkg_PackageBase.prototype.__class__ =  __pkg_PackageBase
 
 __pkg_PackageDefinition.new = {}
+__pkg_PackageDefinition.__name__ = true
+__pkg_PackageDefinition.prototype = _hx_a();
+
+__pkg_PackageDefinition.prototype.__class__ =  __pkg_PackageDefinition
 
 __brightness_Pkg.new = function() 
   local self = _hx_new(__brightness_Pkg.prototype)
@@ -663,6 +688,7 @@ __brightness_Pkg.super = function(self)
   __pkg_PackageBase.super(self);
 end
 _hx_exports["brightness"]["Pkg"] = __brightness_Pkg
+__brightness_Pkg.__name__ = true
 __brightness_Pkg.__interfaces__ = {__pkg_PackageDefinition}
 __brightness_Pkg.instance = function() 
   do return __brightness_Pkg.new() end;
@@ -673,28 +699,136 @@ end
 __brightness_Pkg.prototype.stop = function(self) 
 end
 __brightness_Pkg.prototype.unload = function(self) 
-  __utils_NaughtyLogger.log("brightness unload!");
+  __log_Log.log("brightness unload!", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=18,className="brightness.Pkg",methodName="unload"}));
 end
 __brightness_Pkg.prototype.load = function(self) 
-  __utils_NaughtyLogger.log("brightness started!");
-  __utils_NaughtyLogger.log("afasadsf");
+  __log_Log.log("brightness started!", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=22,className="brightness.Pkg",methodName="load"}));
+  __log_Log.log("afasadsf", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=24,className="brightness.Pkg",methodName="load"}));
 end
+
+__brightness_Pkg.prototype.__class__ =  __brightness_Pkg
 __brightness_Pkg.__super__ = __pkg_PackageBase
 setmetatable(__brightness_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
 
 __haxe_IMap.new = {}
+__haxe_IMap.__name__ = true
 
 __haxe_ds_StringMap.new = function() 
-  local self = _hx_new()
+  local self = _hx_new(__haxe_ds_StringMap.prototype)
   __haxe_ds_StringMap.super(self)
   return self
 end
 __haxe_ds_StringMap.super = function(self) 
   self.h = ({});
 end
+__haxe_ds_StringMap.__name__ = true
 __haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
+__haxe_ds_StringMap.prototype = _hx_a();
+
+__haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
+
+__log_Log.new = {}
+_hx_exports["log"]["Log"] = __log_Log
+__log_Log.__name__ = true
+__log_Log.display = function(s) 
+  __awful_Naughty.notify(_hx_o({__fields__={fg=true,bg=true,text=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",text=s,icon="/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",width=520,position="bottom_right",timeout=20,hover_timeout=0}));
+end
+__log_Log.formatInfos = function(i) 
+  if (i == nil) then 
+    do return "    ERROR: no pos info!\n" end;
+  else
+    do return _hx_tab_array({[0]=Std.string(Std.string(Std.string("    ") .. Std.string(i.fileName)) .. Std.string(":")) .. Std.string(i.lineNumber), Std.string(Std.string(Std.string("    ") .. Std.string(i.className)) .. Std.string(".")) .. Std.string(i.methodName)}, 2):join("\n") end;
+  end;
+end
+__log_Log.log = function(x,infos) 
+  local _hx_tmp = (function() 
+    local _hx_1
+    if (__lua_Boot.__instanceof(x, String)) then 
+    _hx_1 = _hx_tab_array({[0]=x}, 1); else 
+    _hx_1 = _hx_tab_array({}, 0); end
+    return _hx_1
+  end )();
+  if (_hx_tmp.length == 1) then 
+    local _g = _hx_tmp[0];
+    __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(__log_Log.formatInfos(infos))) .. Std.string("\n    -----------------------\n\n")) .. Std.string(_g)) .. Std.string("\n"));
+  else
+    __log_Log.log(__lib_Inspect.inspect(x, _hx_o({__fields__={depth=true},depth=2})), infos);
+  end;
+end
 
 __lua_Boot.new = {}
+__lua_Boot.__name__ = true
+__lua_Boot.__instanceof = function(o,cl) 
+  if (cl == nil) then 
+    do return false end;
+  end;
+  local cl1 = cl;
+  if (cl1) == Array then 
+    do return __lua_Boot.isArray(o) end;
+  elseif (cl1) == Bool then 
+    do return _G.type(o) == "boolean" end;
+  elseif (cl1) == Dynamic then 
+    do return o ~= nil end;
+  elseif (cl1) == Float then 
+    do return _G.type(o) == "number" end;
+  elseif (cl1) == Int then 
+    if (_G.type(o) == "number") then 
+      do return _hx_bit_clamp(o) == o end;
+    else
+      do return false end;
+    end;
+  elseif (cl1) == String then 
+    do return _G.type(o) == "string" end;
+  elseif (cl1) == _G.table then 
+    do return _G.type(o) == "table" end;
+  elseif (cl1) == __lua_Thread then 
+    do return _G.type(o) == "thread" end;
+  elseif (cl1) == __lua_UserData then 
+    do return _G.type(o) == "userdata" end;else
+  if (((o ~= nil) and (_G.type(o) == "table")) and (_G.type(cl) == "table")) then 
+    local tmp;
+    if (__lua_Boot.__instanceof(o, Array)) then 
+      tmp = Array;
+    else
+      if (__lua_Boot.__instanceof(o, String)) then 
+        tmp = String;
+      else
+        local cl2 = o.__class__;
+        tmp = (function() 
+          local _hx_1
+          if (cl2 ~= nil) then 
+          _hx_1 = cl2; else 
+          _hx_1 = nil; end
+          return _hx_1
+        end )();
+      end;
+    end;
+    if (__lua_Boot.extendsOrImplements(tmp, cl)) then 
+      do return true end;
+    end;
+    if ((function() 
+      local _hx_2
+      if (cl == Class) then 
+      _hx_2 = o.__name__ ~= nil; else 
+      _hx_2 = false; end
+      return _hx_2
+    end )()) then 
+      do return true end;
+    end;
+    if ((function() 
+      local _hx_3
+      if (cl == Enum) then 
+      _hx_3 = o.__ename__ ~= nil; else 
+      _hx_3 = false; end
+      return _hx_3
+    end )()) then 
+      do return true end;
+    end;
+    do return o.__enum__ == cl end;
+  else
+    do return false end;
+  end; end;
+end
 __lua_Boot.isArray = function(o) 
   if (_G.type(o) == "table") then 
     if ((o.__enum__ == nil) and (_G.getmetatable(o) ~= nil)) then 
@@ -824,6 +958,29 @@ __lua_Boot.__string_rec = function(o,s)
     end;else
   _G.error("Unknown Lua type",0); end;
 end
+__lua_Boot.extendsOrImplements = function(cl1,cl2) 
+  if ((cl1 == nil) or (cl2 == nil)) then 
+    do return false end;
+  else
+    if (cl1 == cl2) then 
+      do return true end;
+    else
+      if (cl1.__interfaces__ ~= nil) then 
+        local intf = cl1.__interfaces__;
+        local _g = 1;
+        local _g1 = _hx_table.maxn(intf) + 1;
+        while (_g < _g1) do 
+          _g = _g + 1;
+          local i = _g - 1;
+          if (__lua_Boot.extendsOrImplements(intf[i], cl2)) then 
+            do return true end;
+          end;
+        end;
+      end;
+    end;
+  end;
+  do return __lua_Boot.extendsOrImplements(cl1.__super__, cl2) end;
+end
 __lua_Boot.fieldIterator = function(o) 
   if (_G.type(o) ~= "table") then 
     do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
@@ -856,6 +1013,12 @@ __lua_Boot.fieldIterator = function(o)
   end}) end;
 end
 
+__lua_UserData.new = {}
+__lua_UserData.__name__ = true
+
+__lua_Thread.new = {}
+__lua_Thread.__name__ = true
+
 __pkg_PackageManager.new = function() 
   local self = _hx_new(__pkg_PackageManager.prototype)
   __pkg_PackageManager.super(self)
@@ -866,14 +1029,15 @@ __pkg_PackageManager.super = function(self)
   self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
 end
 _hx_exports["pkg"]["PackageManager"] = __pkg_PackageManager
+__pkg_PackageManager.__name__ = true
 __pkg_PackageManager.main = function() 
   __utils_Common.check_path();
   local _g = _G.PackageManager;
   if (_g == nil) then 
-    __utils_NaughtyLogger.log("PackageManager: no previous manager found, creating new instance.");
+    __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=94,className="pkg.PackageManager",methodName="main"}));
     _G.PackageManager = __pkg_PackageManager.new();
   else
-    __utils_NaughtyLogger.log("PackageManager: found previous instance, updating.");
+    __log_Log.log("Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=97,className="pkg.PackageManager",methodName="main"}));
     local mgr = __pkg_PackageManager.new();
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
     _G.PackageManager = mgr;
@@ -882,7 +1046,7 @@ __pkg_PackageManager.main = function()
   if (value == nil) then 
     _G.error("null pointer in .sure() call",0);
   end;
-  __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: loaded; ") .. Std.string(value.packages.length)) .. Std.string(" packages available"));
+  __log_Log.log(Std.string(Std.string("Loaded! ") .. Std.string(value.packages.length)) .. Std.string(" packages available."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=104,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_a();
 __pkg_PackageManager.prototype.clear = function(self) 
@@ -900,7 +1064,7 @@ __pkg_PackageManager.prototype.load = function(self,name,require)
       self:requirePkg(name);
       do return self:load(name, false) end;
     else
-      __utils_NaughtyLogger.log(Std.string(Std.string("[PackageManager] loading ERROR: ") .. Std.string(name)) .. Std.string(" not found!"));
+      __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=35,className="pkg.PackageManager",methodName="load"}));
       do return false end;
     end;
   else
@@ -916,7 +1080,7 @@ __pkg_PackageManager.prototype.unload = function(self,name,remove)
     do return o.name == name end;
   end);
   if (pkg1 == nil) then 
-    __utils_NaughtyLogger.log(Std.string(Std.string("[PackageManager] ERROR unloading package: \"") .. Std.string(name)) .. Std.string("\" not found!"));
+    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=51,className="pkg.PackageManager",methodName="unload"}));
     do return false end;
   else
     if (remove) then 
@@ -941,12 +1105,15 @@ __pkg_PackageManager.prototype.add = function(self,pkg1)
   end) == nil) then 
     self.packages:push(pkg1);
   else
-    __utils_NaughtyLogger.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already present"));
+    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=82,className="pkg.PackageManager",methodName="add"}));
   end;
 end
 
+__pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
+
 __utils_Common.new = {}
 _hx_exports["utils"]["Common"] = __utils_Common
+__utils_Common.__name__ = true
 __utils_Common.formatSimpleEx = function(exception) 
   local ex = Std.string(exception);
   local idx = 1;
@@ -1005,11 +1172,6 @@ __utils_Common.check_path = function()
     _G.package.path = Std.string("/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;") .. Std.string(_G.package.path);
   end;
 end
-
-__utils_NaughtyLogger.new = {}
-__utils_NaughtyLogger.log = function(x) 
-  __awful_Naughty.notify(_hx_o({__fields__={text=true},text=__lib_Inspect.inspect(x)}));
-end
 _hx_bit_clamp = function(v)
   if v <= 2147483647 and v >= -2147483648 then
     if v > 0 then return _G.math.floor(v)
@@ -1045,6 +1207,8 @@ local _hx_static_init = function()
   end;
   
   
+  String.__name__ = true;
+  Array.__name__ = true;
 end
 
 _hx_bind = function(o,m)
@@ -1061,6 +1225,19 @@ _hx_bind = function(o,m)
   end
   return f;
 end
+
+_hx_table = {}
+_hx_table.pack = _G.table.pack or function(...)
+    return {...}
+end
+_hx_table.unpack = _G.table.unpack or _G.unpack
+_hx_table.maxn = _G.table.maxn or function(t)
+  local maxn=0;
+  for i in pairs(t) do
+    maxn=type(i)=='number'and i>maxn and i or maxn
+  end
+  return maxn
+end;
 
 _hx_wrap_if_string_field = function(o, fld)
   if _G.type(o) == 'string' then

@@ -6,10 +6,8 @@ import lua.Lua;
 import pkg.PackageBase;
 import utils.Common;
 import utils.lua.Globals;
+import log.Log;
 
-
-typedef Log = utils.NaughtyLogger;
-// typedef Log = utils.FileLogger;
 
 
 @:expose
@@ -23,6 +21,7 @@ class Loader {
       cmd.PackageManager.load(pkg, true);
       Log.log('Loader: loading package "${pkg}" finished!');
     }
+
     catch(ex: String) {
       Log.log('Loader: error loading package "${pkg}"!');
       Log.log(ex);
