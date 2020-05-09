@@ -4,6 +4,8 @@ import lua.Table;
 import lua.Package;
 import haxe.ds.StringMap;
 import utils.lua.LuaTools.LuaTable;
+import log.Log;
+
 
 using StringTools;
 using utils.NullTools;
@@ -12,12 +14,11 @@ typedef Named = {
   var name(default, null): String;
 };
 
-typedef Log = utils.FileLogger;
 
 typedef KeyFun<T> = (Named) -> T;
 typedef FilterFun<T> = (T) -> Bool;
 
-@:expose
+// @:expose
 @:nullSafety(Strict)
 class Common {
   static final ident: KeyFun<Dynamic> = (x) -> x;
@@ -31,7 +32,7 @@ class Common {
 
   public static function formatSimpleEx(exception: String): String {
     final ex = Std.string(exception);
-    // TODO: the fuck?! whyyy? .sure() alone doesn't work! Also, auto-indent is broken here.
+    // TODO: the fuck?! whyyy? .sure() alone doesnt work! Also, auto-indent is broken here.
     final formatted = @:nullSafety(Off) ex.split(":").join("\n").sure();
     return formatted;
   }
@@ -54,6 +55,7 @@ class Common {
     return Table.fromDynamic(s);
   }
 
+  @:nullSafety(Off)
   public static function check_path() {
     if ( !Package.path.contains("haxeshigh/output") ) {
       Package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;" + Package.path;

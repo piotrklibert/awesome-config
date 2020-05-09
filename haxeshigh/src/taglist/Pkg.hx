@@ -5,12 +5,14 @@ import pkg.PackageBase;
 import utils.Common;
 import utils.lua.Globals;
 import taglist.Taglist.TaglistManager;
+import log.Log;
 
-
+using utils.lua.Macro;
 
 @:expose
 class Pkg extends PackageBase implements PackageDefinition {
   public final name = "taglist";
+  public static final ver = Macro.timestamp();
 
   // for easier access from Lua side - to fix later
   public static function instance() return new Pkg();

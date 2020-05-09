@@ -3,9 +3,7 @@ package brightness;
 import pkg.PackageBase;
 import utils.Common;
 import utils.lua.Globals;
-
-typedef Log = utils.NaughtyLogger;
-
+import log.Log;
 
 
 @:expose

@@ -34,6 +34,7 @@ abstract ATable<V>(MixedTable<V>) {
 }
 
 
+
 class LuaTools {
   public static function aTest() {
     final x: ATable<Int> = [3];

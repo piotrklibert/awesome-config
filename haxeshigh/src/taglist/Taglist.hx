@@ -8,13 +8,12 @@ import awful.*;
 import utils.Common;
 import utils.lua.LuaTools;
 import taglist.Pkg;
+import log.Log;
 
 using Lambda;
 using utils.OptionTools;
 using utils.lua.LuaTools;
 
-
-typedef Log = utils.FileLogger;
 
 
 class TaglistRow {

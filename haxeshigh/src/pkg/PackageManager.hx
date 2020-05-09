@@ -11,10 +11,7 @@ import utils.lua.Globals;
 import pkg.PackageBase.PackageDefinition;
 import utils.Common;
 using utils.NullTools;
-
-
-typedef Log = utils.NaughtyLogger;
-
+import log.Log;
 
 
 @:expose
@@ -31,11 +28,15 @@ class PackageManager {
     this.packages.resize(0);
   }
 
+  inline function findByName(name: String): Null<PackageDefinition> {
+    return this.packages.find(o -> (o.name == name));
+  }
+
   public function load(name: String, require: Bool = false): Bool {
-    final pkg = this.packages.find(o -> (o.name == name));
+    final pkg = findByName(name);
     switch [pkg, require] {
       case [null, false]:
-        Log.log('[PackageManager] loading ERROR: ${name} not found!');
+        Log.log('ERROR: ${name} not found!');
         return false;
       case [null, true]:
         // try to read/require the package, then try loading it again
@@ -48,10 +49,10 @@ class PackageManager {
   }
 
   public function unload(name: String, remove: Bool = false) {
-    final pkg = this.packages.find(o -> (o.name == name));
+    final pkg = findByName(name);
     switch [pkg, remove] {
       case [null, _]:
-        Log.log('[PackageManager] ERROR unloading package: "${name}" not found!');
+        Log.log('ERROR: "${name}" not found!');
         return false;
       case [pkg, remove]:
         if (remove) this.remove(pkg);
@@ -60,12 +61,14 @@ class PackageManager {
     }
   }
 
+
   public function requirePkg(pkgName: String) {
     final mod = Reflect.field(Lua.require("hx_" + pkgName), pkgName);
     untyped {
       this.add(mod.Pkg["instance"]());
     }
   }
+
 
   private function remove(pkg: PackageDefinition) {
     // Unload the module so that next `require` will reload it from disk.
@@ -78,11 +81,11 @@ class PackageManager {
 
   private function add(pkg: PackageDefinition) {
     final name = pkg.name;
-    if (this.packages.find(o -> (o.name == name)) == null) {
+    if (findByName(name) == null) {
       this.packages.push(pkg);
     }
     else {
-      Log.log('PackageManager: package "${name}" already present');
+      Log.log('PackageManager: package "${name}" already exists.');
     }
   }
 
@@ -94,16 +97,16 @@ class PackageManager {
     Common.check_path();
     switch Globals.PackageManager {
       case null:
-        Log.log("PackageManager: no previous manager found, creating new instance.");
+        Log.log("No previous PackageManager found, creating new instance...");
         Globals.PackageManager = new PackageManager();
       case prev:
-        Log.log("PackageManager: found previous instance, updating.");
+        Log.log("Found previous PackageManager instance, updating...");
         final mgr = new PackageManager();
         prev.packages.iter(mgr.packages.push);
         Globals.PackageManager = mgr;
     }
     final mgr = Globals.PackageManager.sure();
     final len = mgr.packages.length;
-    Log.log('PackageManager: loaded; ${len} packages available');
+    Log.log('Loaded! ${len} packages available.');
   }
 }

@@ -48,7 +48,7 @@ extern class Naughty {
   static function replace_text(notification: AnyTable, new_title: String, new_text: String): Void;
   static function notify(args: NaughtyOptions): AnyTable;
 
-  var notifications: Array<Dynamic>;
+  static var notifications: Array<Dynamic>;
 }
 
 
