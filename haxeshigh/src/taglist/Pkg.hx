@@ -3,7 +3,7 @@ package taglist;
 import pkg.PackageBase;
 
 import utils.Common;
-import utils.lua.Globals;
+import lib.Globals;
 import taglist.Taglist.TaglistManager;
 import log.Log;
 

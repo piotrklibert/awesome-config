@@ -7,7 +7,7 @@ import sys.io.File;
 using Lambda;
 using StringTools;
 
-import utils.lua.Globals;
+import lib.Globals;
 import pkg.PackageBase.PackageDefinition;
 import utils.Common;
 using utils.NullTools;
@@ -23,6 +23,13 @@ class PackageManager {
     "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
 
   public final packages: Array<PackageDefinition> = [];
+
+
+  @todo
+  public function reload(mod: String, ?hard: Bool = false) {
+
+  }
+
 
   public function clear() {
     this.packages.resize(0);

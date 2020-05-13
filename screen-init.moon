@@ -167,7 +167,7 @@ set_wallpaper = (screen) ->
 
 
 
-mtl = require("widgets.mytaglist")
+-- mtl = require("widgets.mytaglist")
 
 
 initialize = ->
@@ -199,8 +199,8 @@ initialize = ->
       )
     )
 
-    wb = mtl.make_wibox_container(s)
-    mtl.setup(wb, mtl.make_widget(s))
+    -- wb = mtl.make_wibox_container(s)
+    -- mtl.setup(wb, mtl.make_widget(s))
 
     s.mytaglist = nil
 

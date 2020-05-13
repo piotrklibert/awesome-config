@@ -5,7 +5,7 @@ import lua.Lua;
 
 import pkg.PackageBase;
 import utils.Common;
-import utils.lua.Globals;
+import lib.Globals;
 import log.Log;
 
 

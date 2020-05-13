@@ -92,7 +92,9 @@ class TaglistAnimator {
       timers.slide_timer = None;
     }
 
-    final generator = Coroutine.wrap(if (arg == "in") slideIn else slideOut);
+    final generator = Coroutine.wrap(
+      if (arg == "in") slideIn else slideOut
+    );
     timers.slide_timer = Some(
       Timer.callInterval(
         slideConf.step_time,

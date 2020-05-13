@@ -1,7 +1,7 @@
 package pkg;
 
 import haxe.Constraints;
-import utils.lua.Globals;
+import lib.Globals;
 
 using StringTools;
 

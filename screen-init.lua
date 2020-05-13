@@ -207,7 +207,6 @@ local set_wallpaper
 set_wallpaper = function(screen)
   return gears.wallpaper.maximized("/home/cji/Pictures/mirai-nikki1.jpg", screen, true)
 end
-local mtl = require("widgets.mytaglist")
 local initialize
 initialize = function()
   screen.connect_signal("property::geometry", set_wallpaper)
@@ -235,8 +234,6 @@ initialize = function()
     end), awful.button({ }, 5, function()
       return awful.layout.inc(-1)
     end)))
-    local wb = mtl.make_wibox_container(s)
-    mtl.setup(wb, mtl.make_widget(s))
     s.mytaglist = nil
     s.mytasklist = make_tasklist(s, tasklist_buttons)
     s.cpuwidget = make_cpu_widget()
