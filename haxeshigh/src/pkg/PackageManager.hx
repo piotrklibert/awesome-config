@@ -1,17 +1,17 @@
 package pkg;
 
-import lua.Package;
 import lua.Lua;
+import lua.Package;
 import sys.io.File;
-
-using Lambda;
-using StringTools;
 
 import lib.Globals;
 import pkg.PackageBase.PackageDefinition;
 import utils.Common;
-using utils.NullTools;
 import log.Log;
+
+using Lambda;
+using StringTools;
+using utils.NullTools;
 
 
 @:expose
@@ -25,9 +25,9 @@ class PackageManager {
   public final packages: Array<PackageDefinition> = [];
 
 
-  @todo
-  public function reload(mod: String, ?hard: Bool = false) {
-
+  public function reload(mod: String, ?hard: Bool = true) {
+    this.unload(mod, hard);
+    this.load(mod, hard);
   }
 
 
@@ -35,7 +35,7 @@ class PackageManager {
     this.packages.resize(0);
   }
 
-  inline function findByName(name: String): Null<PackageDefinition> {
+  function findByName(name: String): Null<PackageDefinition> {
     return this.packages.find(o -> (o.name == name));
   }
 
@@ -104,16 +104,16 @@ class PackageManager {
     Common.check_path();
     switch Globals.PackageManager {
       case null:
-        Log.log("No previous PackageManager found, creating new instance...");
+        Log.info("No previous PackageManager found, creating new instance...");
         Globals.PackageManager = new PackageManager();
       case prev:
-        Log.log("Found previous PackageManager instance, updating...");
+        Log.info("PKGMAN: Found previous PackageManager instance, updating...");
         final mgr = new PackageManager();
         prev.packages.iter(mgr.packages.push);
         Globals.PackageManager = mgr;
     }
     final mgr = Globals.PackageManager.sure();
     final len = mgr.packages.length;
-    Log.log('Loaded! ${len} packages available.');
+    Log.info('PKGMAN: Loaded! We have ${len} packages.');
   }
 }

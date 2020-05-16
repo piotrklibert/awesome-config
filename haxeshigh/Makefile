@@ -6,23 +6,24 @@ build: output/hx_init.lua \
 	output/hx_brightness.lua \
 	output/cleaner.lua
 
+common = src/log/*.hx src/utils/*.hx src/utils/lua/*.hx src/awful/*.hx src/awful/*/*.hx src/awful/*/*/*.hx
 
-output/cleaner.lua: src/log/*.hx src/Cleaner.hx src/utils/*.hx src/utils/lua/*.hx build/cleaner.hxml
+output/cleaner.lua: src/Cleaner.hx build/cleaner.hxml $(common)
 	./bin/build cleaner
 
-output/loader.lua: src/log/*.hx src/Loader.hx src/utils/*.hx src/utils/lua/*.hx build/loader.hxml
+output/loader.lua: src/Loader.hx build/loader.hxml $(common)
 	./bin/build loader
 
-output/hx_taglist.lua: src/log/*.hx src/taglist/*.hx src/utils/*.hx src/utils/lua/*.hx build/taglist.hxml
+output/hx_taglist.lua: src/taglist/*.hx build/taglist.hxml $(common)
 	./bin/build taglist
 
-output/hx_brightness.lua: src/log/*.hx src/brightness/*.hx src/utils/*.hx src/utils/lua/*.hx build/brightness.hxml
+output/hx_brightness.lua: src/brightness/*.hx build/brightness.hxml $(common)
 	./bin/build brightness
 
-output/hx_pkg.lua: src/log/*.hx src/pkg/*.hx src/utils/*.hx src/utils/lua/*.hx build/pkg.hxml
+output/hx_pkg.lua: src/pkg/*.hx build/pkg.hxml $(common)
 	./bin/build pkg
 
-output/hx_init.lua: src/log/*.hx src/init/*.hx src/utils/*.hx src/utils/lua/*.hx build/init.hxml
+output/hx_init.lua: src/init/*.hx build/init.hxml $(common)
 	./bin/build init
 
 

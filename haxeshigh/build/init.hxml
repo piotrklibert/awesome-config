@@ -5,6 +5,5 @@ $LIBRARIES
 -cp src
 
 -lua output/hx_init.lua
--m init.Init
 
-init.Init
+init.Pkg

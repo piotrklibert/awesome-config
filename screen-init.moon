@@ -212,10 +212,10 @@ initialize = ->
     ---
 
     s.batwidget = wibox.widget.progressbar()
-    s.batwidget\set_width(50)
-    s.batwidget\set_height(3)
+    s.batwidget.forced_width = 50
+    s.batwidget.forced_height = 3
 
-    batbox = wibox.layout.constraint(
+    batbox = wibox.container.constraint(
         wibox.widget {
             {
                 max_value: 1,
@@ -223,7 +223,7 @@ initialize = ->
                 border_width: 0.5, border_color: "#000000",
                 color: {type: "linear", from: {0, 0}, to: {0, 30}, stops: {{0, "#AECF96"}, {1, "#FF5656"}}},
             },
-             direction: "east", color: beautiful.fg_widget,
+            direction: "east", color: beautiful.fg_widget,
             layout: wibox.container.place
         },
         "min", 2, 3)
@@ -310,6 +310,10 @@ initialize = ->
       w\connect_signal("mouse::leave", clb_out)
       w
 
+    PackageManager\load("brightness", true)
+    brightness = PackageManager\findByName("brightness")
+    brightness\start()
+    brightnessWidget = brightness.widget\w()
 
     -- Add widgets to the wibox
     s.mywibox\setup {
@@ -343,7 +347,7 @@ initialize = ->
             -- wibox.widget {forced_width: 30},
             s.batwidget,
             net_widgets.wireless({interface:"wlp5s0", onclick: util.run_nmtui}),
-            -- require("brightness_mod").brightness.Mod.start(),
+            brightnessWidget,
             require("volume")(),
             wibox.widget {
               wibox.widget {forced_width: 30},

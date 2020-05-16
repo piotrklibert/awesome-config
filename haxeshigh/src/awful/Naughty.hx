@@ -12,7 +12,7 @@ typedef NaughtyOptions = {
   var ?fg: String;            // `beautiful.notification_fg` or `beautiful.fg_focus` or `'#ffffff'` Foreground color. (default)
   var ?font: String;          // `beautiful.notification_font` or `beautiful.font` or `awesome.font` Notification font. (default)
   var ?height: Int;           // `beautiful.notification_height` or auto Popup height. (default)
-  var ?hover_timeout: Int;    // Delay in seconds after which hovered popup disappears. (optional)
+  var ?hover_timeout: Float;    // Delay in seconds after which hovered popup disappears. (optional)
   var ?icon: String;          // Path to icon. (optional)
   var ?icon_size: Int;        // Desired icon size in px. (optional)
   var ?ignore_suspend: Bool;  // false If set to true this notification will be shown even if notifications are suspended via naughty.suspend. (default)
@@ -46,6 +46,8 @@ extern class Naughty {
   static function get_next_notification_id(): Int;
   static function reset_timeout(notification: AnyTable, new_timeout: Int): Void;
   static function replace_text(notification: AnyTable, new_title: String, new_text: String): Void;
+
+  @:overload(function (o: AnyTable): AnyTable {})
   static function notify(args: NaughtyOptions): AnyTable;
 
   static var notifications: Array<Dynamic>;

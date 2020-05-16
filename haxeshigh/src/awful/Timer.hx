@@ -14,6 +14,9 @@ typedef TimerArgs = {
 
 @:luaRequire("gears.timer")
 extern class Timer {
+  var started: Bool;
+  var timeout: Int;
+
   static function start_new(timeout: Int, callback: Callback<Void>): Timer;
   static function weak_start_new(timeout: Int, callback: Callback<Void>): Timer;
   static function delayed_call(callback: Callback<Void>, args: Rest<Dynamic>): Void;

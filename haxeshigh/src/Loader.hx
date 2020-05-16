@@ -17,14 +17,14 @@ class Loader {
     final cmd = new PackageCommand();
     final pkg = cmd.getPackage();
     try {
-      Log.log('Loader: loading package "${pkg}"...');
+      Log.debug('Loader: loading package "${pkg}"...');
       cmd.PackageManager.load(pkg, true);
-      Log.log('Loader: loading package "${pkg}" finished!');
+      Log.info('Loader: loading package "${pkg}" finished!');
     }
 
     catch(ex: String) {
-      Log.log('Loader: error loading package "${pkg}"!');
-      Log.log(ex);
+      Log.error('Loader: error loading package "${pkg}"!');
+      Log.debug(ex);
     }
   }
 }

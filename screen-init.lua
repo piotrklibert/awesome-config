@@ -238,9 +238,9 @@ initialize = function()
     s.mytasklist = make_tasklist(s, tasklist_buttons)
     s.cpuwidget = make_cpu_widget()
     s.batwidget = wibox.widget.progressbar()
-    s.batwidget:set_width(50)
-    s.batwidget:set_height(3)
-    local batbox = wibox.layout.constraint(wibox.widget({
+    s.batwidget.forced_width = 50
+    s.batwidget.forced_height = 3
+    local batbox = wibox.container.constraint(wibox.widget({
       {
         max_value = 1,
         widget = s.batwidget,
@@ -365,6 +365,10 @@ initialize = function()
       w:connect_signal("mouse::leave", clb_out)
       return w
     end
+    PackageManager:load("brightness", true)
+    local brightness = PackageManager:findByName("brightness")
+    brightness:start()
+    local brightnessWidget = brightness.widget:w()
     return s.mywibox:setup({
       layout = wibox.layout.align.horizontal,
       {
@@ -403,6 +407,7 @@ initialize = function()
           interface = "wlp5s0",
           onclick = util.run_nmtui
         }),
+        brightnessWidget,
         require("volume")(),
         wibox.widget({
           wibox.widget({

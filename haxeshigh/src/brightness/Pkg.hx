@@ -1,26 +1,39 @@
 package brightness;
 
 import pkg.PackageBase;
-import utils.Common;
-import utils.lua.Globals;
 import log.Log;
+import utils.lua.Macro as M;
+import brightness.BrightnessWidget;
+
+using utils.NullTools;
 
 
 @:expose
+@:nullSafety(Strict)
 class Pkg extends PackageBase implements PackageDefinition {
   public final name = "brightness";
+  public static final ver = M.timestamp();
   public static function instance() return new Pkg();
 
-  public function start() {}
-  public function stop() {}
+  public var widget: Null<BrightnessWidget> = null;
+
+  public function start() {
+    if (this.widget == null)
+      this.widget = new BrightnessWidget();
+  }
+
+  public function stop() {
+    final wb = NullTools.sure(this.widget);
+    // wb.visible = false;
+    this.widget = null;
+  }
 
   public function unload() {
-    Log.log("brightness unload!");
+    try this.stop() catch (_){}
+    Log.info('BRIGHTNESS($ver): unload!');
   }
 
   public function load() {
-    Log.log("brightness started!");
-    // mod = new brightness.BrightnessWidget.Brightness();
-    Log.log("afasadsf");
+    Log.info('BRIGHTNESS($ver) loaded!');
   }
 }

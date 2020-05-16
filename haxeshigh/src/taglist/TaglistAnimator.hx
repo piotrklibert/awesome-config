@@ -47,7 +47,7 @@ class TaglistAnimator {
   @:keep
   public function autoHide(n: Float) {
     if (timers.hide_timer != None) {
-      timers.hide_timer.sure().stop();
+      resetTimer(timers.hide_timer.sure());
       timers.hide_timer = None;
     }
     timers.hide_timer = Some(Timer.callAfter(4, () -> slide("out")));
@@ -65,7 +65,7 @@ class TaglistAnimator {
   @:keep
   public function show() {
     if (timers.slide_timer != None) {
-      timers.slide_timer.sure().stop();
+      resetTimer(timers.slide_timer.sure());
     }
     tagListBox.geometry({x: slideConf.init});
   }
@@ -75,20 +75,23 @@ class TaglistAnimator {
       tagListBox.geometry({x: x});
       Coroutine.yield();
     }
-    timer.stop();
+    resetTimer(timer);
   }
+
 
   public function slideIn(timer: Timer) {
     for (x -= 2 in tagListBox.x...slideConf.init) {
       tagListBox.geometry({x: x});
       Coroutine.yield();
     }
-    timer.stop();
+    resetTimer(timer);
   }
-
+  function resetTimer(timer: Timer) {
+    if (timer.started) timer.stop();
+  }
   public function slide(arg: String) {
     if (timers.slide_timer != None) {
-      timers.slide_timer.sure().stop();
+      resetTimer(timers.slide_timer.sure());
       timers.slide_timer = None;
     }
 

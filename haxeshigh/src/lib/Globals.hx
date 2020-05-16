@@ -9,16 +9,10 @@ package lib;
     would kind of defeat the purpose... :)
 **/
 
-@:luaDotMethod
-extern class ExMgr {
-  function enable(): Dynamic;
-  function disable(): Void;
-}
-
 
 @:native("_G")
 extern class Globals implements Dynamic {
-  public static var Mgr: ExMgr;
-  public static var App: Dynamic;
+  public static var Taglist: Dynamic;
+
   public static var PackageManager: Null<pkg.PackageManager>;
 }

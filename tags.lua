@@ -13,32 +13,15 @@ local slide_out_timer = nil
 local wrap_show_taglist
 wrap_show_taglist = function(f)
   return function(...)
-    local show, slide
     do
-      local _obj_0 = require("widgets.mytaglist")
-      show, slide = _obj_0.show, _obj_0.slide
-    end
-    show()
-    do
-      local a = _G.App
+      local a = _G.Taglist
       if a then
         a:show()
       end
     end
     f(...)
-    if slide_out_timer then
-      slide_out_timer:stop()
-      slide_out_timer = nil
-    end
-    local opts = {
-      call_now = false,
-      single_shot = true
-    }
-    slide_out_timer = gtimer(4, (function()
-      return slide("out")
-    end), opts)
     do
-      local a = _G.App
+      local a = _G.Taglist
       if a then
         return a:autoHide(4)
       end
@@ -52,7 +35,7 @@ local tag_down = wrap_show_taglist(function(t)
   return tag.viewidx(3)
 end)
 local tag_left = wrap_show_taglist(function(t)
-  local n = tonumber(tag.selected().name)
+  local n = tonumber(screen[1].selected_tag.name)
   if filter_in({
     1,
     4,
@@ -66,7 +49,7 @@ end)
 local dbg
 dbg = require("util").dbg
 local tag_right = wrap_show_taglist(function(t)
-  local n = tonumber(tag.selected().name)
+  local n = tonumber(screen[1].selected_tag.name)
   if filter_in({
     3,
     6,

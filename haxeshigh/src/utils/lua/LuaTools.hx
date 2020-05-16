@@ -6,51 +6,66 @@ using lua.PairTools;
 import haxe.extern.EitherType;
 
 
+typedef TTable<T,U> = lua.Table<T, U>;
+typedef TAnyTable = AnyTable;
 
 typedef StringTable<V> = Table<String, V>;
 typedef IntTable<V> = Table<Int, V>;
+typedef TableKey = EitherType<String, Int>;
+typedef MixedTable<V> = Table<TableKey, V>;
 
-typedef MixedTable<V> = Table<EitherType<String, Int>, V>;
-
-typedef LuaTable = MixedTable<Dynamic>;
+typedef TMacro = utils.lua.Macro;
 
 
-abstract ATable<V>(MixedTable<V>) {
-  public inline function new(t: MixedTable<V>) {
-    this = t;
+abstract LuaTable(AnyTable) from MixedTable<Any> from AnyTable to AnyTable {
+
+  public function fields() {
+    return Reflect.fields(this);
+  }
+
+  public function merge(other: LuaTable) {
+    for (f in Reflect.fields(other))
+      untyped this[f] = other[f];
+    return this;
+  }
+
+
+  // Accessors
+  @:op([])
+  public function arrayRead(n: TableKey)
+    return untyped this[n];
+
+  @:op([])
+  public function arrayWrite(n: TableKey, val: Any)
+    return untyped this[n] = val;
+
+  @:op(a.b)
+  public function fieldRead(name: String)
+    return untyped this[name];
+
+  @:op(a.b)
+  public function fieldWrite(name: String, val: Any)
+    return untyped this[name] = val;
+
+
+  // Implicit casts (order matters)
+  @:from
+  static public inline function fromMap<K, V>(m: haxe.ds.Map<K, V>): LuaTable {
+    // StringMaps on Lua are built around a table stored in .h key
+    return untyped m.h;
   }
 
   @:from
-  static public function fromArray<T>(a: Array<T>) {
-    return cast Table.fromArray(a);
+  static public inline function fromArray(arr: Array<Dynamic>): LuaTable {
+    return lua.Table.fromArray(arr);
   }
 
-  @:to
-  public function toTable<K, V>(): Table<K, V> {
-    return cast this;
+  @:from
+  static public function fromObject(obj: Null<{}>): LuaTable {
+    return [for(f in Reflect.fields(obj)) f => Reflect.field(obj, f)];
   }
-
-
 }
 
-
-
 class LuaTools {
-  public static function aTest() {
-    final x: ATable<Int> = [3];
-    Table.insert(x, 3);
-  }
-
-  public static function table(): LuaTable {
-    return untyped __lua__("{}");
-  }
-
-  public static inline function asTable(o: Dynamic): LuaTable {
-    return cast o;
-  }
-
-  public static inline function add(t: LuaTable, o: Dynamic): Void {
-    Table.insert(cast t, o);
-  }
 
 }

@@ -178,15 +178,38 @@ local Bool = _hx_e();
 local Class = _hx_e();
 local Enum = _hx_e();
 
+local _hx_exports = _hx_exports or {}
+_hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
+_hx_exports["log"] = _hx_exports["log"] or _hx_e()
+_hx_exports["init"] = _hx_exports["init"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
+local Lambda = _hx_e()
 local Math = _hx_e()
+local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
-local __haxe_Log = _hx_e()
+local __awful_Naughty = _G.require("naughty")
+local __awful_Screen = _G.require("awful.screen")
+local __awful_Wibox = _G.require("wibox")
+local __haxe_Exception = _hx_e()
+local __haxe_NativeStackTrace = _hx_e()
+local __haxe_ValueException = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
-local __init_Init = _hx_e()
+local __pkg_PackageBase = _hx_e()
+local __pkg_PackageDefinition = _hx_e()
+local __init_Pkg = _hx_e()
+local __init_Transcript = _hx_e()
+local __lib_Inspect = _G.require("inspect")
+__log_LogLevel = _hx_e()
+local __log_Log = _hx_e()
+local __lua_Boot = _hx_e()
+local __lua_UserData = _hx_e()
+local __lua_PairTools = _hx_e()
+local __lua_Thread = _hx_e()
+local __pkg_PackageManager = _hx_e()
+local __utils_Common = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -200,6 +223,7 @@ end
 Array.super = function(self) 
   _hx_tab_array(self, 0);
 end
+Array.__name__ = true
 Array.prototype = _hx_e();
 Array.prototype.concat = function(self,a) 
   local _g = _hx_tab_array({}, 0);
@@ -508,7 +532,29 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
+Array.prototype.__class__ =  Array
+
+Lambda.new = {}
+Lambda.__name__ = true
+Lambda.iter = function(it,f) 
+  local x = it:iterator();
+  while (x:hasNext()) do 
+    f(x:next());
+  end;
+end
+Lambda.find = function(it,f) 
+  local v = it:iterator();
+  while (v:hasNext()) do 
+    local v = v:next();
+    if (f(v)) then 
+      do return v end;
+    end;
+  end;
+  do return nil end;
+end
+
 Math.new = {}
+Math.__name__ = true
 Math.isNaN = function(f) 
   do return f ~= f end;
 end
@@ -527,6 +573,61 @@ Math.min = function(a,b)
   end;
 end
 
+Reflect.new = {}
+Reflect.__name__ = true
+Reflect.field = function(o,field) 
+  if (_G.type(o) == "string") then 
+    if (field == "length") then 
+      do return _hx_wrap_if_string_field(o,'length') end;
+    else
+      do return String.prototype[field] end;
+    end;
+  else
+    local _hx_status, _hx_result = pcall(function() 
+    
+        do return o[field] end;
+      return _hx_pcall_default
+    end)
+    if not _hx_status and _hx_result == "_hx_pcall_break" then
+    elseif not _hx_status then 
+      local _g = _hx_result;
+      do return nil end;
+    elseif _hx_result ~= _hx_pcall_default then
+      return _hx_result
+    end;
+  end;
+end
+Reflect.fields = function(o) 
+  local _hx_continue_1 = false;
+  while (true) do repeat 
+    if (_G.type(o) == "string") then 
+      o = String.prototype;
+      break;
+    else
+      do return _hx_field_arr(o) end;
+    end;until true
+    if _hx_continue_1 then 
+    _hx_continue_1 = false;
+    break;
+    end;
+    
+  end;
+end
+Reflect.copy = function(o) 
+  if (o == nil) then 
+    do return nil end;
+  end;
+  local o2 = _hx_e();
+  local _g = 0;
+  local _g1 = Reflect.fields(o);
+  while (_g < _g1.length) do 
+    local f = _g1[_g];
+    _g = _g + 1;
+    o2[f] = Reflect.field(o, f);
+  end;
+  do return o2 end;
+end
+
 String.new = function(string) 
   local self = _hx_new(String.prototype)
   String.super(self,string)
@@ -535,6 +636,7 @@ String.new = function(string)
 end
 String.super = function(self,string) 
 end
+String.__name__ = true
 String.__index = function(s,k) 
   if (k == "length") then 
     do return __lua_lib_luautf8_Utf8.len(s) end;
@@ -704,7 +806,10 @@ String.prototype.substr = function(self,pos,len)
   do return __lua_lib_luautf8_Utf8.sub(self, pos + 1, pos + len) end
 end
 
+String.prototype.__class__ =  String
+
 Std.new = {}
+Std.__name__ = true
 Std.string = function(s) 
   do return _hx_tostring(s, 0) end;
 end
@@ -716,28 +821,93 @@ Std.int = function(x)
   end;
 end
 
-__haxe_Log.new = {}
-__haxe_Log.formatOutput = function(v,infos) 
-  local str = Std.string(v);
-  if (infos == nil) then 
-    do return str end;
+__haxe_Exception.new = function(message,previous,native) 
+  local self = _hx_new(__haxe_Exception.prototype)
+  __haxe_Exception.super(self,message,previous,native)
+  return self
+end
+__haxe_Exception.super = function(self,message,previous,native) 
+  self.__skipStack = 0;
+  self.__exceptionMessage = message;
+  self.__previousException = previous;
+  if (native ~= nil) then 
+    self.__nativeException = native;
+    self.__nativeStack = __haxe_NativeStackTrace.exceptionStack();
+  else
+    self.__nativeException = self;
+    self.__nativeStack = __haxe_NativeStackTrace.callStack();
+    self.__skipStack = 1;
   end;
-  local pstr = Std.string(Std.string(infos.fileName) .. Std.string(":")) .. Std.string(infos.lineNumber);
-  if (infos.customParams ~= nil) then 
-    local _g = 0;
-    local _g1 = infos.customParams;
-    while (_g < _g1.length) do 
-      local v = _g1[_g];
-      _g = _g + 1;
-      str = Std.string(str) .. Std.string((Std.string(", ") .. Std.string(Std.string(v))));
+end
+__haxe_Exception.__name__ = true
+__haxe_Exception.thrown = function(value) 
+  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
+    do return value:get_native() end;
+  else
+    local e = __haxe_ValueException.new(value);
+    e.__skipStack = e.__skipStack + 1;
+    do return e end;
+  end;
+end
+__haxe_Exception.prototype = _hx_e();
+__haxe_Exception.prototype.get_native = function(self) 
+  do return self.__nativeException end
+end
+
+__haxe_Exception.prototype.__class__ =  __haxe_Exception
+
+__haxe_NativeStackTrace.new = {}
+__haxe_NativeStackTrace.__name__ = true
+__haxe_NativeStackTrace.saveStack = function(exception) 
+end
+__haxe_NativeStackTrace.callStack = function() 
+  local _g = debug.traceback();
+  if (_g == nil) then 
+    do return _hx_tab_array({}, 0) end;
+  else
+    local idx = 1;
+    local ret = _hx_tab_array({}, 0);
+    while (idx ~= nil) do 
+      local newidx = 0;
+      if (__lua_lib_luautf8_Utf8.len("\n") > 0) then 
+        newidx = __lua_lib_luautf8_Utf8.find(_g, "\n", idx, true);
+      else
+        if (idx >= __lua_lib_luautf8_Utf8.len(_g)) then 
+          newidx = nil;
+        else
+          newidx = idx + 1;
+        end;
+      end;
+      if (newidx ~= nil) then 
+        ret:push(__lua_lib_luautf8_Utf8.sub(_g, idx, newidx - 1));
+        idx = newidx + __lua_lib_luautf8_Utf8.len("\n");
+      else
+        ret:push(__lua_lib_luautf8_Utf8.sub(_g, idx, __lua_lib_luautf8_Utf8.len(_g)));
+        idx = nil;
+      end;
     end;
+    do return ret:slice(3) end;
   end;
-  do return Std.string(Std.string(pstr) .. Std.string(": ")) .. Std.string(str) end;
 end
-__haxe_Log.trace = function(v,infos) 
-  local str = __haxe_Log.formatOutput(v, infos);
-  _hx_print(str);
+__haxe_NativeStackTrace.exceptionStack = function() 
+  do return _hx_tab_array({}, 0) end;
 end
+
+__haxe_ValueException.new = function(value,previous,native) 
+  local self = _hx_new(__haxe_ValueException.prototype)
+  __haxe_ValueException.super(self,value,previous,native)
+  return self
+end
+__haxe_ValueException.super = function(self,value,previous,native) 
+  __haxe_Exception.super(self,Std.string(value),previous,native);
+  self.value = value;
+end
+__haxe_ValueException.__name__ = true
+__haxe_ValueException.prototype = _hx_e();
+
+__haxe_ValueException.prototype.__class__ =  __haxe_ValueException
+__haxe_ValueException.__super__ = __haxe_Exception
+setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
 
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
@@ -748,6 +918,7 @@ __haxe_iterators_ArrayIterator.super = function(self,array)
   self.current = 0;
   self.array = array;
 end
+__haxe_iterators_ArrayIterator.__name__ = true
 __haxe_iterators_ArrayIterator.prototype = _hx_e();
 __haxe_iterators_ArrayIterator.prototype.hasNext = function(self) 
   do return self.current < self.array.length end
@@ -762,18 +933,464 @@ __haxe_iterators_ArrayIterator.prototype.next = function(self)
    end)()] end
 end
 
+__haxe_iterators_ArrayIterator.prototype.__class__ =  __haxe_iterators_ArrayIterator
+
 __haxe_iterators_ArrayKeyValueIterator.new = function(array) 
-  local self = _hx_new()
+  local self = _hx_new(__haxe_iterators_ArrayKeyValueIterator.prototype)
   __haxe_iterators_ArrayKeyValueIterator.super(self,array)
   return self
 end
 __haxe_iterators_ArrayKeyValueIterator.super = function(self,array) 
   self.array = array;
 end
+__haxe_iterators_ArrayKeyValueIterator.__name__ = true
+__haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
-__init_Init.new = {}
-__init_Init.main = function() 
-  __haxe_Log.trace("Init!", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Init.hx",lineNumber=17,className="init.Init",methodName="main"}));
+__haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
+
+__pkg_PackageBase.new = function() 
+  local self = _hx_new(__pkg_PackageBase.prototype)
+  __pkg_PackageBase.super(self)
+  return self
+end
+__pkg_PackageBase.super = function(self) 
+end
+__pkg_PackageBase.__name__ = true
+__pkg_PackageBase.prototype = _hx_e();
+
+__pkg_PackageBase.prototype.__class__ =  __pkg_PackageBase
+
+__pkg_PackageDefinition.new = {}
+__pkg_PackageDefinition.__name__ = true
+__pkg_PackageDefinition.prototype = _hx_e();
+
+__pkg_PackageDefinition.prototype.__class__ =  __pkg_PackageDefinition
+
+__init_Pkg.new = function() 
+  local self = _hx_new(__init_Pkg.prototype)
+  __init_Pkg.super(self)
+  return self
+end
+__init_Pkg.super = function(self) 
+  self.name = "init";
+  __pkg_PackageBase.super(self);
+end
+_hx_exports["init"]["Pkg"] = __init_Pkg
+__init_Pkg.__name__ = true
+__init_Pkg.__interfaces__ = {__pkg_PackageDefinition}
+__init_Pkg.instance = function() 
+  do return __init_Pkg.new() end;
+end
+__init_Pkg.prototype = _hx_e();
+__init_Pkg.prototype.start = function(self) 
+end
+__init_Pkg.prototype.stop = function(self) 
+end
+__init_Pkg.prototype.unload = function(self) 
+  __log_Log.log(Std.string(Std.string("INIT(") .. Std.string(__init_Pkg.ver)) .. Std.string("): unload!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Pkg.hx",lineNumber=28,className="init.Pkg",methodName="unload"}));
+end
+__init_Pkg.prototype.load = function(self) 
+  __log_Log.log(Std.string(Std.string("INIT(") .. Std.string(__init_Pkg.ver)) .. Std.string(") loaded!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Pkg.hx",lineNumber=32,className="init.Pkg",methodName="load"}));
+end
+
+__init_Pkg.prototype.__class__ =  __init_Pkg
+__init_Pkg.__super__ = __pkg_PackageBase
+setmetatable(__init_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
+
+__init_Transcript.new = {}
+_hx_exports["init"]["Transcript"] = __init_Transcript
+__init_Transcript.__name__ = true
+__init_Transcript.get_wibox = function(s) 
+  if (s == nil) then 
+    s = __awful_Screen.focused();
+  end;
+  local wb = __awful_Wibox(__init_Transcript.wiboxConfig);
+  if (wb == nil) then 
+    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+  end;
+  __init_Transcript.setup(wb, __init_Transcript.mkWidget(s));
+  do return wb end;
+end
+__init_Transcript.setup = function(wibox,widget) 
+  local _tmp_0 = ({widget});
+  _tmp_0.margins = 15;
+  _tmp_0.layout = __awful_Wibox.container.margin;
+  local widgetTable = _tmp_0;
+  local _tmp_1 = ({widgetTable});
+  _tmp_1.id = "bg";
+  _tmp_1.border_color = "#919191";
+  _tmp_1.border_width = 1;
+  _tmp_1.border_strategy = "inner";
+  _tmp_1.widget = __awful_Wibox.container.background;
+  local setupTable = _tmp_1;
+  local prev_coords = _hx_o({__fields__={x=true,y=true},x=0,y=0});
+  local is_pressed = false;
+  wibox:setup(setupTable);
+  wibox:connect_signal("button::press", function() 
+    is_pressed = true;
+    local t = __lua_PairTools.copy(mouse.coords());
+    prev_coords = _hx_o(t);
+  end);
+  wibox:connect_signal("button::release", function() 
+    is_pressed = false;
+  end);
+  wibox:connect_signal("mouse::move", function() 
+    local t = __lua_PairTools.copy(mouse.coords());
+    local coords = _hx_o(t);
+    if (is_pressed) then 
+      local wibox1 = wibox;
+      wibox1.x = wibox1.x + (coords.x - prev_coords.x);
+      local wibox = wibox;
+      wibox.y = wibox.y + (coords.y - prev_coords.y);
+    end;
+    widget:set_markup(__init_Transcript.makeText(coords));
+    prev_coords = coords;
+  end);
+  wibox.visible = true;
+  do return wibox end;
+end
+__init_Transcript.makeText = function(pos) 
+  if (pos == nil) then 
+    pos = _hx_e();
+  end;
+  if (pos.x == nil) then 
+    pos.x = 0;
+  end;
+  if (pos.y == nil) then 
+    pos.y = 0;
+  end;
+  do return Std.string(Std.string(Std.string(Std.string(Std.string(Std.string("<span foreground=\"blue\">") .. Std.string(__init_Transcript.ver)) .. Std.string("</span> <b>")) .. Std.string(pos.x)) .. Std.string("x")) .. Std.string(pos.y)) .. Std.string("</b>!!!") end;
+end
+__init_Transcript.mkWidget = function(s) 
+  local ret = _hx_o({__fields__={markup=true,align=true,valign=true,widget=true},markup=__init_Transcript.makeText(),align="center",valign="center",widget=wibox.widget.textbox});
+  do return __awful_Wibox.widget(ret) end;
+end
+_hxClasses["log.LogLevel"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Debug","Info","Warn","Error"},4)}
+__log_LogLevel = _hxClasses["log.LogLevel"];
+__log_LogLevel.Debug = _hx_tab_array({[0]="Debug",0,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Info = _hx_tab_array({[0]="Info",1,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Warn = _hx_tab_array({[0]="Warn",2,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Error = _hx_tab_array({[0]="Error",3,__enum__ = __log_LogLevel},2)
+
+
+__log_Log.new = {}
+_hx_exports["log"]["Log"] = __log_Log
+__log_Log.__name__ = true
+__log_Log.display = function(s,opts) 
+  if (opts == nil) then 
+    opts = _hx_e();
+  end;
+  local value = Reflect.copy(__log_Log.defaults);
+  if (value == nil) then 
+    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+  end;
+  local _g = 0;
+  local _g1 = Reflect.fields(opts);
+  while (_g < _g1.length) do 
+    local f = _g1[_g];
+    _g = _g + 1;
+    value[f] = Reflect.field(opts, f);
+  end;
+  value.text = s;
+  __awful_Naughty.notify(value);
+end
+__log_Log.formatInfos = function(i) 
+  if (i == nil) then 
+    do return "    ERROR: no pos info!\n" end;
+  else
+    local i = i;
+    do return _G.table.concat(({Std.string(Std.string(Std.string("    ") .. Std.string(i.fileName)) .. Std.string(":")) .. Std.string(i.lineNumber),Std.string(Std.string(Std.string("    ") .. Std.string(i.className)) .. Std.string(".")) .. Std.string(i.methodName)}), "\n") end;
+  end;
+end
+__log_Log.debug = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="green"}), infos);
+end
+__log_Log.info = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="blue"}), infos);
+end
+__log_Log.warn = function(x,infos) 
+  __log_Log.log(x, _hx_e(), infos);
+end
+__log_Log.error = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="red"}), infos);
+end
+__log_Log.log = function(x,opts,infos) 
+  local _hx_continue_1 = false;
+  while (true) do repeat 
+    if (opts == nil) then 
+      opts = _hx_e();
+    end;
+    local _hx_tmp = (function() 
+      local _hx_1
+      if (__lua_Boot.__instanceof(x, String)) then 
+      _hx_1 = _hx_tab_array({[0]=x}, 1); else 
+      _hx_1 = _hx_tab_array({}, 0); end
+      return _hx_1
+    end )();
+    if (_hx_tmp.length == 1) then 
+      local s = _hx_tmp[0];
+      local infos = __log_Log.formatInfos(infos);
+      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"), opts);
+    else
+      x = __lib_Inspect.inspect(x, ({depth = 2}));
+      break;
+    end;
+    do return end;until true
+    if _hx_continue_1 then 
+    _hx_continue_1 = false;
+    break;
+    end;
+    
+  end;
+end
+
+__lua_Boot.new = {}
+__lua_Boot.__name__ = true
+__lua_Boot.__instanceof = function(o,cl) 
+  if (cl == nil) then 
+    do return false end;
+  end;
+  local cl1 = cl;
+  if (cl1) == Array then 
+    do return __lua_Boot.isArray(o) end;
+  elseif (cl1) == Bool then 
+    do return _G.type(o) == "boolean" end;
+  elseif (cl1) == Dynamic then 
+    do return o ~= nil end;
+  elseif (cl1) == Float then 
+    do return _G.type(o) == "number" end;
+  elseif (cl1) == Int then 
+    if (_G.type(o) == "number") then 
+      do return _hx_bit_clamp(o) == o end;
+    else
+      do return false end;
+    end;
+  elseif (cl1) == String then 
+    do return _G.type(o) == "string" end;
+  elseif (cl1) == _G.table then 
+    do return _G.type(o) == "table" end;
+  elseif (cl1) == __lua_Thread then 
+    do return _G.type(o) == "thread" end;
+  elseif (cl1) == __lua_UserData then 
+    do return _G.type(o) == "userdata" end;else
+  if (((o ~= nil) and (_G.type(o) == "table")) and (_G.type(cl) == "table")) then 
+    local tmp;
+    if (__lua_Boot.__instanceof(o, Array)) then 
+      tmp = Array;
+    else
+      if (__lua_Boot.__instanceof(o, String)) then 
+        tmp = String;
+      else
+        local cl = o.__class__;
+        tmp = (function() 
+          local _hx_1
+          if (cl ~= nil) then 
+          _hx_1 = cl; else 
+          _hx_1 = nil; end
+          return _hx_1
+        end )();
+      end;
+    end;
+    if (__lua_Boot.extendsOrImplements(tmp, cl)) then 
+      do return true end;
+    end;
+    if ((function() 
+      local _hx_2
+      if (cl == Class) then 
+      _hx_2 = o.__name__ ~= nil; else 
+      _hx_2 = false; end
+      return _hx_2
+    end )()) then 
+      do return true end;
+    end;
+    if ((function() 
+      local _hx_3
+      if (cl == Enum) then 
+      _hx_3 = o.__ename__ ~= nil; else 
+      _hx_3 = false; end
+      return _hx_3
+    end )()) then 
+      do return true end;
+    end;
+    do return o.__enum__ == cl end;
+  else
+    do return false end;
+  end; end;
+end
+__lua_Boot.isArray = function(o) 
+  if (_G.type(o) == "table") then 
+    if ((o.__enum__ == nil) and (_G.getmetatable(o) ~= nil)) then 
+      do return _G.getmetatable(o).__index == Array.prototype end;
+    else
+      do return false end;
+    end;
+  else
+    do return false end;
+  end;
+end
+__lua_Boot.extendsOrImplements = function(cl1,cl2) 
+  while (true) do 
+    if ((cl1 == nil) or (cl2 == nil)) then 
+      do return false end;
+    else
+      if (cl1 == cl2) then 
+        do return true end;
+      else
+        if (cl1.__interfaces__ ~= nil) then 
+          local intf = cl1.__interfaces__;
+          local _g = 1;
+          local _g1 = _hx_table.maxn(intf) + 1;
+          while (_g < _g1) do 
+            _g = _g + 1;
+            local i = _g - 1;
+            if (__lua_Boot.extendsOrImplements(intf[i], cl2)) then 
+              do return true end;
+            end;
+          end;
+        end;
+      end;
+    end;
+    cl1 = cl1.__super__;
+  end;
+end
+
+__lua_UserData.new = {}
+__lua_UserData.__name__ = true
+
+__lua_PairTools.new = {}
+__lua_PairTools.__name__ = true
+__lua_PairTools.copy = function(table1) 
+  local ret = ({});
+  for k,v in _G.pairs(table1) do ret[k] = v end;
+  do return ret end;
+end
+
+__lua_Thread.new = {}
+__lua_Thread.__name__ = true
+
+__pkg_PackageManager.new = function() 
+  local self = _hx_new(__pkg_PackageManager.prototype)
+  __pkg_PackageManager.super(self)
+  return self
+end
+__pkg_PackageManager.super = function(self) 
+  self.packages = _hx_tab_array({}, 0);
+  self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
+end
+_hx_exports["pkg"]["PackageManager"] = __pkg_PackageManager
+__pkg_PackageManager.__name__ = true
+__pkg_PackageManager.main = function() 
+  __utils_Common.check_path();
+  local _g = _G.PackageManager;
+  if (_g == nil) then 
+    __log_Log.info("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
+    _G.PackageManager = __pkg_PackageManager.new();
+  else
+    __log_Log.info("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
+    local mgr = __pkg_PackageManager.new();
+    Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
+    _G.PackageManager = mgr;
+  end;
+  local value = _G.PackageManager;
+  if (value == nil) then 
+    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+  end;
+  __log_Log.info(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
+end
+__pkg_PackageManager.prototype = _hx_e();
+__pkg_PackageManager.prototype.reload = function(self,mod,hard) 
+  if (hard == nil) then 
+    hard = true;
+  end;
+  self:unload(mod, hard);
+  self:load(mod, hard);
+end
+__pkg_PackageManager.prototype.clear = function(self) 
+  self.packages:resize(0);
+end
+__pkg_PackageManager.prototype.findByName = function(self,name) 
+  do return Lambda.find(self.packages, function(o) 
+    do return o.name == name end;
+  end) end
+end
+__pkg_PackageManager.prototype.load = function(self,name,require) 
+  if (require == nil) then 
+    require = false;
+  end;
+  local _hx_continue_1 = false;
+  while (true) do repeat 
+    local pkg = self:findByName(name);
+    if (pkg == nil) then 
+      if (require) then 
+        self:requirePkg(name);
+        require = false;
+        break;
+      else
+        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
+        do return false end;
+      end;
+    else
+      pkg:load();
+      do return true end;
+    end;until true
+    if _hx_continue_1 then 
+    _hx_continue_1 = false;
+    break;
+    end;
+    
+  end;
+end
+__pkg_PackageManager.prototype.unload = function(self,name,remove) 
+  if (remove == nil) then 
+    remove = false;
+  end;
+  local pkg = self:findByName(name);
+  if (pkg == nil) then 
+    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
+    do return false end;
+  else
+    if (remove) then 
+      self:remove(pkg);
+    end;
+    pkg:unload();
+    do return true end;
+  end;
+end
+__pkg_PackageManager.prototype.requirePkg = function(self,pkgName) 
+  local mod = Reflect.field(_G.require(Std.string("hx_") .. Std.string(pkgName)), pkgName);
+  self:add(mod.Pkg.instance());
+end
+__pkg_PackageManager.prototype.remove = function(self,pkg) 
+  self.packages:remove(pkg);
+  _G.package.loaded[Std.string("hx_") .. Std.string(pkg.name)] = nil;
+end
+__pkg_PackageManager.prototype.add = function(self,pkg) 
+  local name = pkg.name;
+  if (self:findByName(name) == nil) then 
+    self.packages:push(pkg);
+  else
+    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
+  end;
+end
+
+__pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
+
+__utils_Common.new = {}
+__utils_Common.__name__ = true
+__utils_Common.check_path = function() 
+  local r = __lua_lib_luautf8_Utf8.find(_G.package.path, "haxeshigh/output", 1, true);
+  if ((function() 
+    local _hx_1
+    if ((r ~= nil) and (r > 0)) then 
+    _hx_1 = r - 1; else 
+    _hx_1 = -1; end
+    return _hx_1
+  end )() == -1) then 
+    _G.package.path = Std.string("/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;") .. Std.string(_G.package.path);
+  end;
 end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
@@ -806,10 +1423,59 @@ _hx_array_mt.__index = Array.prototype
 
 local _hx_static_init = function()
   
-  __init_Init = {fuck = 9}
+  String.__name__ = true;
+  Array.__name__ = true;__init_Pkg.ver = "1589656807";
+  
+  __init_Transcript.wiboxConfig = ({ontop = true, opacity = 0.9, x = 120, y = 440, height = 115, width = 495});
+  
+  __init_Transcript.ver = "1589656807";
+  
+  __log_Log.level = __log_LogLevel.Debug;
+  
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,opacity=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",opacity=0.85,font="mono 10",icon="/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
+  
+  
 end
 
-_hx_print = print or (function() end)
+_hx_bind = function(o,m)
+  if m == nil then return nil end;
+  local f;
+  if o._hx__closures == nil then
+    _G.rawset(o, '_hx__closures', {});
+  else
+    f = o._hx__closures[m];
+  end
+  if (f == nil) then
+    f = function(...) return m(o, ...) end;
+    o._hx__closures[m] = f;
+  end
+  return f;
+end
+
+_hx_table = {}
+_hx_table.pack = _G.table.pack or function(...)
+    return {...}
+end
+_hx_table.unpack = _G.table.unpack or _G.unpack
+_hx_table.maxn = _G.table.maxn or function(t)
+  local maxn=0;
+  for i in pairs(t) do
+    maxn=type(i)=='number'and i>maxn and i or maxn
+  end
+  return maxn
+end;
+
+_hx_wrap_if_string_field = function(o, fld)
+  if _G.type(o) == 'string' then
+    if fld == 'length' then
+      return _G.string.len(o)
+    else
+      return String.prototype[fld]
+    end
+  else
+    return o[fld]
+  end
+end
 
 _hx_static_init();
-__init_Init.main()
+return _hx_exports

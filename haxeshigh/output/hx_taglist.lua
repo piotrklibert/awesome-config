@@ -181,6 +181,7 @@ local Enum = _hx_e();
 local _hx_exports = _hx_exports or {}
 _hx_exports["taglist"] = _hx_exports["taglist"] or _hx_e()
 _hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
+_hx_exports["log"] = _hx_exports["log"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Lambda = _hx_e()
@@ -198,7 +199,6 @@ local __awful_Widget = _G.require("awful.widget")
 local __haxe_IMap = _hx_e()
 local __haxe_EntryPoint = _hx_e()
 local __haxe_Exception = _hx_e()
-local __haxe_Log = _hx_e()
 local __haxe_MainEvent = _hx_e()
 local __haxe_MainLoop = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
@@ -208,7 +208,7 @@ local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 local __lib_Inspect = _G.require("inspect")
-local __log__Log_Tbl_Impl_ = _hx_e()
+__log_LogLevel = _hx_e()
 local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
 local __lua_Thread = _hx_e()
@@ -218,14 +218,15 @@ local __pkg_PackageDefinition = _hx_e()
 local __pkg_PackageBase = _hx_e()
 local __pkg_PackageManager = _hx_e()
 local __taglist_Pkg = _hx_e()
-local __taglist_TaglistRow = _hx_e()
 local __taglist_TaglistManager = _hx_e()
+local __taglist_TaglistRow = _hx_e()
 local __taglist_Taglist = _hx_e()
 local __taglist_TaglistAnimator = _hx_e()
 local __taglist_Timers = _hx_e()
 local __tink_core__Callback_Callback_Impl_ = _hx_e()
 local __tink_core_NamedWith = _hx_e()
 local __utils_Common = _hx_e()
+local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -922,30 +923,6 @@ end
 
 __haxe_Exception.prototype.__class__ =  __haxe_Exception
 
-__haxe_Log.new = {}
-__haxe_Log.__name__ = true
-__haxe_Log.formatOutput = function(v,infos) 
-  local str = Std.string(v);
-  if (infos == nil) then 
-    do return str end;
-  end;
-  local pstr = Std.string(Std.string(infos.fileName) .. Std.string(":")) .. Std.string(infos.lineNumber);
-  if (infos.customParams ~= nil) then 
-    local _g = 0;
-    local _g1 = infos.customParams;
-    while (_g < _g1.length) do 
-      local v = _g1[_g];
-      _g = _g + 1;
-      str = Std.string(str) .. Std.string((Std.string(", ") .. Std.string(Std.string(v))));
-    end;
-  end;
-  do return Std.string(Std.string(pstr) .. Std.string(": ")) .. Std.string(str) end;
-end
-__haxe_Log.trace = function(v,infos) 
-  local str = __haxe_Log.formatOutput(v, infos);
-  _hx_print(str);
-end
-
 __haxe_MainEvent.new = function(f,p) 
   local self = _hx_new(__haxe_MainEvent.prototype)
   __haxe_MainEvent.super(self,f,p)
@@ -1178,30 +1155,19 @@ __haxe_iterators_ArrayKeyValueIterator.__name__ = true
 __haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
 __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
+_hxClasses["log.LogLevel"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Debug","Info","Warn","Error"},4)}
+__log_LogLevel = _hxClasses["log.LogLevel"];
+__log_LogLevel.Debug = _hx_tab_array({[0]="Debug",0,__enum__ = __log_LogLevel},2)
 
-__log__Log_Tbl_Impl_.new = {}
-__log__Log_Tbl_Impl_.__name__ = true
-__log__Log_Tbl_Impl_.fieldRead = function(this1,name) 
-  do return this1[name] end;
-end
-__log__Log_Tbl_Impl_.fromDynamic = function(obj) 
-  local _g = __haxe_ds_StringMap.new();
-  local _g1 = 0;
-  local _g2 = Reflect.fields(obj);
-  while (_g1 < _g2.length) do 
-    local f = _g2[_g1];
-    _g1 = _g1 + 1;
-    local value = Reflect.field(obj, f);
-    if (value == nil) then 
-      _g.h[f] = __haxe_ds_StringMap.tnull;
-    else
-      _g.h[f] = value;
-    end;
-  end;
-  do return _g.h end;
-end
+__log_LogLevel.Info = _hx_tab_array({[0]="Info",1,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Warn = _hx_tab_array({[0]="Warn",2,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Error = _hx_tab_array({[0]="Error",3,__enum__ = __log_LogLevel},2)
+
 
 __log_Log.new = {}
+_hx_exports["log"]["Log"] = __log_Log
 __log_Log.__name__ = true
 __log_Log.display = function(s,opts) 
   if (opts == nil) then 
@@ -1229,9 +1195,24 @@ __log_Log.formatInfos = function(i)
     do return _G.table.concat(({Std.string(Std.string(Std.string("    ") .. Std.string(i.fileName)) .. Std.string(":")) .. Std.string(i.lineNumber),Std.string(Std.string(Std.string("    ") .. Std.string(i.className)) .. Std.string(".")) .. Std.string(i.methodName)}), "\n") end;
   end;
 end
-__log_Log.log = function(x,infos) 
+__log_Log.debug = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="green"}), infos);
+end
+__log_Log.info = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="blue"}), infos);
+end
+__log_Log.warn = function(x,infos) 
+  __log_Log.log(x, _hx_e(), infos);
+end
+__log_Log.error = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="red"}), infos);
+end
+__log_Log.log = function(x,opts,infos) 
   local _hx_continue_1 = false;
   while (true) do repeat 
+    if (opts == nil) then 
+      opts = _hx_e();
+    end;
     local _hx_tmp = (function() 
       local _hx_1
       if (__lua_Boot.__instanceof(x, String)) then 
@@ -1242,7 +1223,7 @@ __log_Log.log = function(x,infos)
     if (_hx_tmp.length == 1) then 
       local s = _hx_tmp[0];
       local infos = __log_Log.formatInfos(infos);
-      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"));
+      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"), opts);
     else
       x = __lib_Inspect.inspect(x, ({depth = 2}));
       break;
@@ -1254,10 +1235,6 @@ __log_Log.log = function(x,infos)
     end;
     
   end;
-end
-__log_Log.logEx = function(x,opts,infos) 
-  local omg = __log__Log_Tbl_Impl_.fromDynamic(__log_Log.defaults);
-  __haxe_Log.trace(__log__Log_Tbl_Impl_.fieldRead(omg, "fg"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/log/Log.hx",lineNumber=93,className="log.Log",methodName="logEx"}));
 end
 
 __lua_Boot.new = {}
@@ -1409,10 +1386,10 @@ __pkg_PackageManager.main = function()
   __utils_Common.check_path();
   local _g = _G.PackageManager;
   if (_g == nil) then 
-    __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.info("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
     _G.PackageManager = __pkg_PackageManager.new();
   else
-    __log_Log.log("Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.info("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
     local mgr = __pkg_PackageManager.new();
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
     _G.PackageManager = mgr;
@@ -1421,13 +1398,15 @@ __pkg_PackageManager.main = function()
   if (value == nil) then 
     _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
   end;
-  __log_Log.log(Std.string(Std.string("Loaded! ") .. Std.string(value.packages.length)) .. Std.string(" packages available."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
+  __log_Log.info(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_e();
 __pkg_PackageManager.prototype.reload = function(self,mod,hard) 
   if (hard == nil) then 
-    hard = false;
+    hard = true;
   end;
+  self:unload(mod, hard);
+  self:load(mod, hard);
 end
 __pkg_PackageManager.prototype.clear = function(self) 
   self.packages:resize(0);
@@ -1443,18 +1422,14 @@ __pkg_PackageManager.prototype.load = function(self,name,require)
   end;
   local _hx_continue_1 = false;
   while (true) do repeat 
-    local pkg = Lambda.find(self.packages, (function(name) 
-      do return function(o) 
-        do return o.name == name[0] end;
-      end end;
-    end)(_hx_tab_array({[0]=name}, 1)));
+    local pkg = self:findByName(name);
     if (pkg == nil) then 
       if (require) then 
         self:requirePkg(name);
         require = false;
         break;
       else
-        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
+        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
         do return false end;
       end;
     else
@@ -1472,12 +1447,9 @@ __pkg_PackageManager.prototype.unload = function(self,name,remove)
   if (remove == nil) then 
     remove = false;
   end;
-  local name1 = name;
-  local pkg = Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
-  end);
+  local pkg = self:findByName(name);
   if (pkg == nil) then 
-    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
+    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
     do return false end;
   else
     if (remove) then 
@@ -1497,13 +1469,10 @@ __pkg_PackageManager.prototype.remove = function(self,pkg)
 end
 __pkg_PackageManager.prototype.add = function(self,pkg) 
   local name = pkg.name;
-  local name1 = name;
-  if (Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
-  end) == nil) then 
+  if (self:findByName(name) == nil) then 
     self.packages:push(pkg);
   else
-    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
+    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
   end;
 end
 
@@ -1533,25 +1502,52 @@ __taglist_Pkg.prototype.load = function(self)
   local _hx_status, _hx_result = pcall(function() 
   
       ((function() 
-      _G.App = __taglist_TaglistManager.enable(); return _G.App end)()):autoHide(4);
+      _G.Taglist = __taglist_TaglistManager.enable(); return _G.Taglist end)()):autoHide(4);
     return _hx_pcall_default
   end)
   if not _hx_status and _hx_result == "_hx_pcall_break" then
   elseif not _hx_status then 
     local _g = _hx_result;
-    __log_Log.log(Std.string("Error loading taglist module: ") .. Std.string(Std.string(__haxe_Exception.caught(_g):unwrap())), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/taglist/Pkg.hx",lineNumber=32,className="taglist.Pkg",methodName="load"}));
+    __log_Log.log(Std.string("Error loading taglist module: ") .. Std.string(Std.string(__haxe_Exception.caught(_g):unwrap())), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/taglist/Pkg.hx",lineNumber=32,className="taglist.Pkg",methodName="load"}));
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
 end
 __taglist_Pkg.prototype.unload = function(self) 
   __taglist_TaglistManager.disable();
-  _G.App = nil;
+  _G.Taglist = nil;
 end
 
 __taglist_Pkg.prototype.__class__ =  __taglist_Pkg
 __taglist_Pkg.__super__ = __pkg_PackageBase
 setmetatable(__taglist_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
+
+__taglist_TaglistManager.new = {}
+_hx_exports["taglist"]["TaglistManager"] = __taglist_TaglistManager
+__taglist_TaglistManager.__name__ = true
+__taglist_TaglistManager.enable = function() 
+  local _g = __taglist_TaglistManager.taglist;
+  local tmp = _g[1];
+  if (tmp) == 0 then 
+    __taglist_TaglistManager.taglist = __haxe_ds_Option.Some(_g[2]:enable());
+  elseif (tmp) == 1 then 
+    __taglist_TaglistManager.taglist = __haxe_ds_Option.Some(__taglist_Taglist.new():enable()); end;
+  local value = __taglist_TaglistManager.taglist;
+  local tmp = value[1];
+  if (tmp) == 0 then 
+    do return value[2] end;
+  elseif (tmp) == 1 then 
+    _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
+end
+__taglist_TaglistManager.disable = function() 
+  local _g = __taglist_TaglistManager.taglist;
+  local tmp = _g[1];
+  if (tmp) == 0 then 
+    _g[2]:disable();
+    __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
+  elseif (tmp) == 1 then 
+    _G.error(__haxe_Exception.thrown("TaglistManager: Tried to call .disable(), but .enable() was not called before"),0); end;
+end
 
 __taglist_TaglistRow.new = function(tags) 
   local self = _hx_new(__taglist_TaglistRow.prototype)
@@ -1583,33 +1579,6 @@ __taglist_TaglistRow.prototype.makeFilterFun = function(self)
 end
 
 __taglist_TaglistRow.prototype.__class__ =  __taglist_TaglistRow
-
-__taglist_TaglistManager.new = {}
-_hx_exports["taglist"]["TaglistManager"] = __taglist_TaglistManager
-__taglist_TaglistManager.__name__ = true
-__taglist_TaglistManager.enable = function() 
-  local _g = __taglist_TaglistManager.taglist;
-  local tmp = _g[1];
-  if (tmp) == 0 then 
-    __taglist_TaglistManager.taglist = __haxe_ds_Option.Some(_g[2]:enable());
-  elseif (tmp) == 1 then 
-    __taglist_TaglistManager.taglist = __haxe_ds_Option.Some(__taglist_Taglist.new():enable()); end;
-  local value = __taglist_TaglistManager.taglist;
-  local tmp = value[1];
-  if (tmp) == 0 then 
-    do return value[2] end;
-  elseif (tmp) == 1 then 
-    _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
-end
-__taglist_TaglistManager.disable = function() 
-  local _g = __taglist_TaglistManager.taglist;
-  local tmp = _g[1];
-  if (tmp) == 0 then 
-    _g[2]:disable();
-    __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
-  elseif (tmp) == 1 then 
-    _G.error(__haxe_Exception.thrown("TaglistManager: Tried to call .disable(), but .enable() was not called before"),0); end;
-end
 
 __taglist_Taglist.new = function() 
   local self = _hx_new(__taglist_Taglist.prototype)
@@ -1656,7 +1625,7 @@ __taglist_Taglist.prototype.show = function(self)
 end
 __taglist_Taglist.prototype.enable = function(self) 
   if (self.tagListBox == __haxe_ds_Option.None) then 
-    self.tagListBox = __haxe_ds_Option.Some(__awful_Wibox(__taglist_Taglist.wiboxConfig));
+    self.tagListBox = __haxe_ds_Option.Some(__awful_Wibox(__utils_lua__LuaTools_LuaTable_Impl_.fromObject(__taglist_Taglist.wiboxConfig)));
   end;
   local value = self.tagListBox;
   local tmp;
@@ -1683,17 +1652,17 @@ __taglist_Taglist.prototype.disable = function(self)
 end
 __taglist_Taglist.prototype.setup = function(self,wibox,widget) 
   local _gthis = self;
-  local tmp_2 = ({widget});
-  tmp_2.margins = 15;
-  tmp_2.layout = __awful_Wibox.container.margin;
-  local widgetTable = tmp_2;
-  local tmp_2 = ({widgetTable});
-  tmp_2.id = "bg";
-  tmp_2.border_color = "#919191";
-  tmp_2.border_width = 1;
-  tmp_2.border_strategy = "inner";
-  tmp_2.widget = __awful_Wibox.container.background;
-  local setupTable = tmp_2;
+  local _tmp_0 = ({widget});
+  _tmp_0.margins = 15;
+  _tmp_0.layout = __awful_Wibox.container.margin;
+  local widgetTable = _tmp_0;
+  local _tmp_1 = ({widgetTable});
+  _tmp_1.id = "bg";
+  _tmp_1.border_color = "#919191";
+  _tmp_1.border_width = 1;
+  _tmp_1.border_strategy = "inner";
+  _tmp_1.widget = __awful_Wibox.container.background;
+  local setupTable = _tmp_1;
   self.animator = __haxe_ds_Option.Some(__taglist_TaglistAnimator.new(self));
   wibox:setup(setupTable);
   wibox:connect_signal("mouse::enter", function() 
@@ -1755,7 +1724,7 @@ __taglist_TaglistAnimator.prototype.autoHide = function(self,n)
       tmp = value[2];
     elseif (tmp1) == 1 then 
       _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
-    tmp:stop();
+    self:resetTimer(tmp);
     self.timers.hide_timer = __haxe_ds_Option.None;
   end;
   local tmp = __awful_Timer.new(_hx_o({__fields__={timeout=true,callback=true,autostart=true,single_shot=true},timeout=4,callback=__tink_core__Callback_Callback_Impl_.fromNiladic(function() 
@@ -1772,7 +1741,7 @@ __taglist_TaglistAnimator.prototype.show = function(self)
       tmp = value[2];
     elseif (tmp1) == 1 then 
       _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
-    tmp:stop();
+    self:resetTimer(tmp);
   end;
   self:get_tagListBox():geometry(_hx_o({__fields__={x=true},x=__taglist_TaglistAnimator.slideConf.init}));
 end
@@ -1785,7 +1754,7 @@ __taglist_TaglistAnimator.prototype.slideOut = function(self,timer)
     self:get_tagListBox():geometry(_hx_o({__fields__={x=true},x=start + ((iterator_x_cur - 1) * 2)}));
     _G.coroutine.yield();
   end;
-  timer:stop();
+  self:resetTimer(timer);
 end
 __taglist_TaglistAnimator.prototype.slideIn = function(self,timer) 
   local start = self:get_tagListBox().x;
@@ -1796,7 +1765,12 @@ __taglist_TaglistAnimator.prototype.slideIn = function(self,timer)
     self:get_tagListBox():geometry(_hx_o({__fields__={x=true},x=_end + (iterator_x_cur * 2)}));
     _G.coroutine.yield();
   end;
-  timer:stop();
+  self:resetTimer(timer);
+end
+__taglist_TaglistAnimator.prototype.resetTimer = function(self,timer) 
+  if (timer.started) then 
+    timer:stop();
+  end;
 end
 __taglist_TaglistAnimator.prototype.slide = function(self,arg) 
   local _gthis = self;
@@ -1808,7 +1782,7 @@ __taglist_TaglistAnimator.prototype.slide = function(self,arg)
       tmp = value[2];
     elseif (tmp1) == 1 then 
       _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
-    tmp:stop();
+    self:resetTimer(tmp);
     self.timers.slide_timer = __haxe_ds_Option.None;
   end;
   local generator = _G.coroutine.wrap((function() 
@@ -1884,6 +1858,25 @@ __utils_Common.check_path = function()
     _G.package.path = Std.string("/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;") .. Std.string(_G.package.path);
   end;
 end
+
+__utils_lua__LuaTools_LuaTable_Impl_.new = {}
+__utils_lua__LuaTools_LuaTable_Impl_.__name__ = true
+__utils_lua__LuaTools_LuaTable_Impl_.fromObject = function(obj) 
+  local _g = __haxe_ds_StringMap.new();
+  local _g1 = 0;
+  local _g2 = Reflect.fields(obj);
+  while (_g1 < _g2.length) do 
+    local f = _g2[_g1];
+    _g1 = _g1 + 1;
+    local value = Reflect.field(obj, f);
+    if (value == nil) then 
+      _g.h[f] = __haxe_ds_StringMap.tnull;
+    else
+      _g.h[f] = value;
+    end;
+  end;
+  do return _g.h end;
+end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -1922,15 +1915,15 @@ local _hx_static_init = function()
   
   __haxe_ds_StringMap.tnull = ({});
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",icon="/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",width=520,position="bottom_right",timeout=20,hover_timeout=0});
+  __log_Log.level = __log_LogLevel.Debug;
   
-  __pkg_PackageManager.__meta__ = _hx_o({__fields__={fields=true},fields=_hx_o({__fields__={reload=true},reload=_hx_o({__fields__={todo=true},todo=nil})})});
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,opacity=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",opacity=0.85,font="mono 10",icon="/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
   
-  __taglist_Pkg.ver = Std.string(1.589365735e+12);
+  __taglist_Pkg.ver = "1589642852";
   
   __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
   
-  __taglist_Taglist.wiboxConfig = _hx_o({__fields__={x=true,y=true,height=true,width=true,ontop=true,opacity=true},x=1820,y=440,height=115,width=95,ontop=true,opacity=0.7});
+  __taglist_Taglist.wiboxConfig = _hx_o({__fields__={x=true,y=true,height=true,width=true,ontop=true,opacity=true},x=1820,y=240,height=115,width=95,ontop=true,opacity=0.7});
   
   __taglist_TaglistAnimator.slideConf = _hx_o({__fields__={init=true,last=true,step_time=true},init=1820,last=1895,step_time=0.05});
   
@@ -1961,8 +1954,6 @@ _hx_funcToField = function(f)
     return f
   end
 end
-
-_hx_print = print or (function() end)
 
 _hx_table = {}
 _hx_table.pack = _G.table.pack or function(...)

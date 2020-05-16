@@ -22,10 +22,10 @@ class Pkg extends PackageBase implements PackageDefinition {
 
   public function load() {
     try {
-      // The `Globals.App` reference is used in awesome-config/tags.moon when
-      // assigning keyboard shortcuts, to show/hide the widget after desktop
-      // change.
-      final app = Globals.App = TaglistManager.enable();
+      // The `Globals.Taglist` reference is used in awesome-config/tags.moon
+      // when assigning keyboard shortcuts, to show/hide the widget after
+      // desktop change.
+      final app = Globals.Taglist = TaglistManager.enable();
       app.autoHide(4);
     }
     catch(ex: Dynamic) {
@@ -35,6 +35,6 @@ class Pkg extends PackageBase implements PackageDefinition {
 
   public function unload() {
     TaglistManager.disable();
-    Globals.App = null;
+    Globals.Taglist = null;
   }
 }

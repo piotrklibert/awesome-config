@@ -16,6 +16,33 @@ using utils.lua.LuaTools;
 import utils.lua.Macro as M;
 
 
+@:expose
+@:nullSafety(Strict)
+class TaglistManager {
+  static var taglist: Option<Taglist> = None;
+
+  public static function enable(): Taglist {
+    switch taglist {
+      case None:
+        taglist = Some((new Taglist()).enable());
+      case Some(tl):
+        taglist = Some(tl.enable());
+    }
+    return taglist.sure();
+  }
+
+  public static function disable() {
+    switch taglist {
+      case None:
+        throw "TaglistManager: Tried to call .disable(), but .enable() was not called before";
+      case Some(tl): {
+          tl.disable();
+          taglist = None;
+        }
+    }
+  }
+}
+
 
 class TaglistRow {
   final tags: Array<String>;
@@ -49,34 +76,6 @@ class TaglistRow {
 
 @:expose
 @:nullSafety(Strict)
-class TaglistManager {
-  static var taglist: Option<Taglist> = None;
-
-  public static function enable(): Taglist {
-    switch taglist {
-      case None:
-        taglist = Some((new Taglist()).enable());
-      case Some(tl):
-        taglist = Some(tl.enable());
-    }
-    return taglist.sure();
-  }
-
-  public static function disable() {
-    switch taglist {
-      case None:
-        throw "TaglistManager: Tried to call .disable(), but .enable() was not called before";
-      case Some(tl): {
-          tl.disable();
-          taglist = None;
-        }
-    }
-  }
-}
-
-
-@:expose
-@:nullSafety(Strict)
 class Taglist {
   public var tagListBox: Option<Wibox> = None;
   var animator: Option<TaglistAnimator> = None;
@@ -87,10 +86,9 @@ class Taglist {
   public function show() this.animator.sure().show();
 
   static final wiboxConfig: Wibox.WiboxArgs = {
-    x: 1820, y: 440, height: 115, width: 95,
+    x: 1820, y: 240, height: 115, width: 95,
     ontop: true, opacity: 0.7,
   }
-
 
   public function enable() {
     if (tagListBox == None) {

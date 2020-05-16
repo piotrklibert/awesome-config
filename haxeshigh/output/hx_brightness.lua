@@ -180,6 +180,7 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 _hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
+_hx_exports["log"] = _hx_exports["log"] or _hx_e()
 _hx_exports["brightness"] = _hx_exports["brightness"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
@@ -188,30 +189,35 @@ local Math = _hx_e()
 local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
+local StringTools = _hx_e()
+local __awful_AwfulTools = _hx_e()
 local __awful_Naughty = _G.require("naughty")
-local __awful_Screen = _G.require("awful.screen")
+local __awful_Spawn = _G.require("awful.spawn")
 local __awful_Wibox = _G.require("wibox")
+__brightness_State = _hx_e()
+local __haxecontracts_HaxeContracts = _hx_e()
 local __brightness_BrightnessWidget = _hx_e()
 local __pkg_PackageBase = _hx_e()
 local __pkg_PackageDefinition = _hx_e()
 local __brightness_Pkg = _hx_e()
 local __haxe_IMap = _hx_e()
 local __haxe_Exception = _hx_e()
-local __haxe_Log = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
 local __haxe_ValueException = _hx_e()
-__haxe_ds_Option = _hx_e()
+__haxe_ds_Either = _hx_e()
 local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 local __lib_Inspect = _G.require("inspect")
-local __log__Log_Tbl_Impl_ = _hx_e()
+__log_LogLevel = _hx_e()
 local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
 local __lua_UserData = _hx_e()
 local __lua_Thread = _hx_e()
 local __pkg_PackageManager = _hx_e()
+local __sys_io_File = _hx_e()
 local __utils_Common = _hx_e()
+local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -567,6 +573,13 @@ Math.isFinite = function(f)
     do return false end;
   end;
 end
+Math.max = function(a,b) 
+  if (Math.isNaN(a) or Math.isNaN(b)) then 
+    do return (0/0) end;
+  else
+    do return _G.math.max(a, b) end;
+  end;
+end
 Math.min = function(a,b) 
   if (Math.isNaN(a) or Math.isNaN(b)) then 
     do return (0/0) end;
@@ -822,6 +835,127 @@ Std.int = function(x)
     do return _hx_bit_clamp(x) end;
   end;
 end
+Std.parseInt = function(x) 
+  if (x == nil) then 
+    do return nil end;
+  end;
+  local hexMatch = _G.string.match(x, "^[ \t\r\n]*([%-+]*0[xX][%da-fA-F]*)");
+  if (hexMatch ~= nil) then 
+    local sign;
+    local _g = __lua_lib_luautf8_Utf8.byte(hexMatch, 1);
+    if (_g) == 43 then 
+      sign = 1;
+    elseif (_g) == 45 then 
+      sign = -1;else
+    sign = 0; end;
+    local pos = (function() 
+      local _hx_1
+      if (sign == 0) then 
+      _hx_1 = 2; else 
+      _hx_1 = 3; end
+      return _hx_1
+    end )();
+    local len = nil;
+    len = __lua_lib_luautf8_Utf8.len(hexMatch);
+    if (pos < 0) then 
+      pos = __lua_lib_luautf8_Utf8.len(hexMatch) + pos;
+    end;
+    if (pos < 0) then 
+      pos = 0;
+    end;
+    do return (function() 
+      local _hx_2
+      if (sign == -1) then 
+      _hx_2 = -1; else 
+      _hx_2 = 1; end
+      return _hx_2
+    end )() * _G.tonumber(__lua_lib_luautf8_Utf8.sub(hexMatch, pos + 1, pos + len), 16) end;
+  else
+    local intMatch = _G.string.match(x, "^ *[%-+]?%d*");
+    if (intMatch ~= nil) then 
+      do return _G.tonumber(intMatch) end;
+    else
+      do return nil end;
+    end;
+  end;
+end
+
+StringTools.new = {}
+StringTools.__name__ = true
+StringTools.isSpace = function(s,pos) 
+  if (((__lua_lib_luautf8_Utf8.len(s) == 0) or (pos < 0)) or (pos >= __lua_lib_luautf8_Utf8.len(s))) then 
+    do return false end;
+  end;
+  local c = __lua_lib_luautf8_Utf8.byte(s, pos + 1);
+  if (not ((c > 8) and (c < 14))) then 
+    do return c == 32 end;
+  else
+    do return true end;
+  end;
+end
+StringTools.ltrim = function(s) 
+  local l = __lua_lib_luautf8_Utf8.len(s);
+  local r = 0;
+  while ((r < l) and StringTools.isSpace(s, r)) do 
+    r = r + 1;
+  end;
+  if (r > 0) then 
+    local pos = r;
+    local len = l - r;
+    if ((len == nil) or (len > (pos + __lua_lib_luautf8_Utf8.len(s)))) then 
+      len = __lua_lib_luautf8_Utf8.len(s);
+    else
+      if (len < 0) then 
+        len = __lua_lib_luautf8_Utf8.len(s) + len;
+      end;
+    end;
+    if (pos < 0) then 
+      pos = __lua_lib_luautf8_Utf8.len(s) + pos;
+    end;
+    if (pos < 0) then 
+      pos = 0;
+    end;
+    do return __lua_lib_luautf8_Utf8.sub(s, pos + 1, pos + len) end;
+  else
+    do return s end;
+  end;
+end
+StringTools.rtrim = function(s) 
+  local l = __lua_lib_luautf8_Utf8.len(s);
+  local r = 0;
+  while ((r < l) and StringTools.isSpace(s, (l - r) - 1)) do 
+    r = r + 1;
+  end;
+  if (r > 0) then 
+    local len = l - r;
+    if ((len == nil) or (len > __lua_lib_luautf8_Utf8.len(s))) then 
+      len = __lua_lib_luautf8_Utf8.len(s);
+    else
+      if (len < 0) then 
+        len = __lua_lib_luautf8_Utf8.len(s) + len;
+      end;
+    end;
+    do return __lua_lib_luautf8_Utf8.sub(s, 1, len) end;
+  else
+    do return s end;
+  end;
+end
+StringTools.trim = function(s) 
+  do return StringTools.ltrim(StringTools.rtrim(s)) end;
+end
+
+__awful_AwfulTools.new = {}
+__awful_AwfulTools.__name__ = true
+__awful_AwfulTools.makeWidget = function(children,properties) 
+  do return __awful_Wibox.widget(__utils_lua__LuaTools_LuaTable_Impl_.merge(children, properties)) end;
+end
+_hxClasses["brightness.State"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="InProgress","Ready"},2)}
+__brightness_State = _hxClasses["brightness.State"];
+__brightness_State.InProgress = function(val) local _x = _hx_tab_array({[0]="InProgress",0,val,__enum__=__brightness_State}, 3); return _x; end 
+__brightness_State.Ready = function(val) local _x = _hx_tab_array({[0]="Ready",1,val,__enum__=__brightness_State}, 3); return _x; end 
+
+__haxecontracts_HaxeContracts.new = {}
+__haxecontracts_HaxeContracts.__name__ = true
 
 __brightness_BrightnessWidget.new = function() 
   local self = _hx_new(__brightness_BrightnessWidget.prototype)
@@ -829,10 +963,76 @@ __brightness_BrightnessWidget.new = function()
   return self
 end
 __brightness_BrightnessWidget.super = function(self) 
+  self.state = __brightness_State.Ready(self:get_brightness());
 end
 _hx_exports["brightness"]["BrightnessWidget"] = __brightness_BrightnessWidget
 __brightness_BrightnessWidget.__name__ = true
+__brightness_BrightnessWidget.__interfaces__ = {__haxecontracts_HaxeContracts}
 __brightness_BrightnessWidget.prototype = _hx_e();
+__brightness_BrightnessWidget.prototype.get_brightness = function(self) 
+  local val = Std.parseInt(StringTools.trim(__sys_io_File.getContent(__brightness_BrightnessWidget.BACKLIGHT_PATH)));
+  if (val == nil) then 
+    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+  end;
+  do return Std.int((val / 19200) * 100) end
+end
+__brightness_BrightnessWidget.prototype.set_brightness = function(self,percent) 
+  local _gthis = self;
+  if (not ((percent > 0) and (percent < 100))) then 
+    do return -1 end;
+  end;
+  local val = Std.int((percent / 100) * 19200);
+  self.state = __brightness_State.InProgress(percent);
+  __awful_Spawn.easy_async(Std.string(Std.string(Std.string(Std.string("sudo bash -c \"echo ") .. Std.string(val)) .. Std.string(" >")) .. Std.string(__brightness_BrightnessWidget.BACKLIGHT_PATH)) .. Std.string("\""), function(_) 
+    local tmp = _gthis:get_brightness();
+    _gthis.state = __brightness_State.Ready(tmp);
+  end);
+  do return val end
+end
+__brightness_BrightnessWidget.prototype.w = function(self) 
+  local _gthis = self;
+  local brightness_text = wibox.widget.textbox();
+  brightness_text:set_font(__brightness_BrightnessWidget.FONT);
+  local brightness_text1 = brightness_text;
+  local tmp = Std.string(Std.string(" ") .. Std.string(self:get_brightness())) .. Std.string("%");
+  brightness_text1:set_text(tmp);
+  local icon = ({image = __brightness_BrightnessWidget.PATH_TO_ICON, resize = false, widget = wibox.widget.imagebox, forced_width = 25});
+  local arr = _hx_tab_array({[0]=icon}, 1);
+  local ret = ({});
+  local _g = 0;
+  local _g1 = arr.length;
+  while (_g < _g1) do 
+    _g = _g + 1;
+    local idx = _g - 1;
+    ret[idx + 1] = arr[idx];
+  end;
+  local brightness_icon = __awful_AwfulTools.makeWidget(ret, __utils_lua__LuaTools_LuaTable_Impl_.fromObject(_hx_o({__fields__={top=true,widget=true},top=5,widget=wibox.container.margin})));
+  local arr = _hx_tab_array({[0]=brightness_icon, brightness_text}, 2);
+  local ret = ({});
+  local _g = 0;
+  local _g1 = arr.length;
+  while (_g < _g1) do 
+    _g = _g + 1;
+    local idx = _g - 1;
+    ret[idx + 1] = arr[idx];
+  end;
+  local widget = __awful_AwfulTools.makeWidget(ret, __utils_lua__LuaTools_LuaTable_Impl_.fromObject(_hx_o({__fields__={layout=true,id=true},layout=wibox.layout.fixed.horizontal,id="brightness"})));
+  widget:connect_signal("button::press", function(_,_1,_2,button) 
+    if (_gthis.state[0] == "InProgress") then 
+      do return end;
+    end;
+    local percent = _gthis:get_brightness();
+    local button = button;
+    if (button) == 4 then 
+      brightness_text:set_text(Std.string(Std.string(" ") .. Std.string((percent + 5))) .. Std.string("%"));
+      _gthis:set_brightness(Math.min(percent + 5, 100));
+    elseif (button) == 5 then 
+      brightness_text:set_text(Std.string(Std.string(" ") .. Std.string((percent - 5))) .. Std.string("%"));
+      _gthis:set_brightness(Math.max(percent - 5, 0));else
+    do return end; end;
+  end);
+  do return widget end
+end
 
 __brightness_BrightnessWidget.prototype.__class__ =  __brightness_BrightnessWidget
 
@@ -860,6 +1060,7 @@ __brightness_Pkg.new = function()
   return self
 end
 __brightness_Pkg.super = function(self) 
+  self.widget = nil;
   self.name = "brightness";
   __pkg_PackageBase.super(self);
 end
@@ -869,52 +1070,34 @@ __brightness_Pkg.__interfaces__ = {__pkg_PackageDefinition}
 __brightness_Pkg.instance = function() 
   do return __brightness_Pkg.new() end;
 end
-__brightness_Pkg.mkWidget = function(s) 
-  local ret = _hx_o({__fields__={markup=true,align=true,valign=true,widget=true},markup="This <i>is</i> a <b>textbox</b>!!!",align="center",valign="center",widget=wibox.widget.textbox});
-  do return __awful_Wibox.widget(ret) end;
-end
 __brightness_Pkg.prototype = _hx_e();
-__brightness_Pkg.prototype.enable = function(self) 
-  local wb = __awful_Wibox(__brightness_Pkg.wiboxConfig);
-  if (wb == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
-  end;
-  self:setup(wb, __brightness_Pkg.mkWidget(__awful_Screen.focused()));
-  do return self end
-end
-__brightness_Pkg.prototype.disable = function(self) 
-  __brightness_Pkg.widget:sure().visible = false;
-  __brightness_Pkg.widget = __haxe_ds_Option.None;
-  do return self end
-end
-__brightness_Pkg.prototype.setup = function(self,wibox,widget) 
-  local tmp_2 = ({widget});
-  tmp_2.margins = 15;
-  tmp_2.layout = __awful_Wibox.container.margin;
-  local widgetTable = tmp_2;
-  local tmp_2 = ({widgetTable});
-  tmp_2.id = "bg";
-  tmp_2.border_color = "#919191";
-  tmp_2.border_width = 1;
-  tmp_2.border_strategy = "inner";
-  tmp_2.widget = __awful_Wibox.container.background;
-  local setupTable = tmp_2;
-  wibox:setup(setupTable);
-  wibox.visible = true;
-  do return wibox end
-end
 __brightness_Pkg.prototype.start = function(self) 
-  if (__brightness_Pkg.widget == nil) then 
-    __brightness_Pkg.widget = __brightness_Pkg.mkWidget(__awful_Screen.focused());
+  if (self.widget == nil) then 
+    self.widget = __brightness_BrightnessWidget.new();
   end;
 end
 __brightness_Pkg.prototype.stop = function(self) 
+  if (self.widget == nil) then 
+    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+  end;
+  self.widget = nil;
 end
 __brightness_Pkg.prototype.unload = function(self) 
-  __log_Log.log("brightness unload!", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=83,className="brightness.Pkg",methodName="unload"}));
+  local _hx_status, _hx_result = pcall(function() 
+  
+      self:stop();
+    return _hx_pcall_default
+  end)
+  if not _hx_status and _hx_result == "_hx_pcall_break" then
+  elseif not _hx_status then 
+    local _g = _hx_result;
+  elseif _hx_result ~= _hx_pcall_default then
+    return _hx_result
+  end;
+  __log_Log.info(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=33,className="brightness.Pkg",methodName="unload"}));
 end
 __brightness_Pkg.prototype.load = function(self) 
-  __log_Log.log("brightness started!", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=87,className="brightness.Pkg",methodName="load"}));
+  __log_Log.info(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string(") loaded!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=37,className="brightness.Pkg",methodName="load"}));
 end
 
 __brightness_Pkg.prototype.__class__ =  __brightness_Pkg
@@ -958,30 +1141,6 @@ __haxe_Exception.prototype.get_native = function(self)
 end
 
 __haxe_Exception.prototype.__class__ =  __haxe_Exception
-
-__haxe_Log.new = {}
-__haxe_Log.__name__ = true
-__haxe_Log.formatOutput = function(v,infos) 
-  local str = Std.string(v);
-  if (infos == nil) then 
-    do return str end;
-  end;
-  local pstr = Std.string(Std.string(infos.fileName) .. Std.string(":")) .. Std.string(infos.lineNumber);
-  if (infos.customParams ~= nil) then 
-    local _g = 0;
-    local _g1 = infos.customParams;
-    while (_g < _g1.length) do 
-      local v = _g1[_g];
-      _g = _g + 1;
-      str = Std.string(str) .. Std.string((Std.string(", ") .. Std.string(Std.string(v))));
-    end;
-  end;
-  do return Std.string(Std.string(pstr) .. Std.string(": ")) .. Std.string(str) end;
-end
-__haxe_Log.trace = function(v,infos) 
-  local str = __haxe_Log.formatOutput(v, infos);
-  _hx_print(str);
-end
 
 __haxe_NativeStackTrace.new = {}
 __haxe_NativeStackTrace.__name__ = true
@@ -1035,11 +1194,10 @@ __haxe_ValueException.prototype = _hx_e();
 __haxe_ValueException.prototype.__class__ =  __haxe_ValueException
 __haxe_ValueException.__super__ = __haxe_Exception
 setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
-_hxClasses["haxe.ds.Option"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Some","None"},2)}
-__haxe_ds_Option = _hxClasses["haxe.ds.Option"];
-__haxe_ds_Option.Some = function(v) local _x = _hx_tab_array({[0]="Some",0,v,__enum__=__haxe_ds_Option}, 3); return _x; end 
-__haxe_ds_Option.None = _hx_tab_array({[0]="None",1,__enum__ = __haxe_ds_Option},2)
-
+_hxClasses["haxe.ds.Either"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Left","Right"},2)}
+__haxe_ds_Either = _hxClasses["haxe.ds.Either"];
+__haxe_ds_Either.Left = function(v) local _x = _hx_tab_array({[0]="Left",0,v,__enum__=__haxe_ds_Either}, 3); return _x; end 
+__haxe_ds_Either.Right = function(v) local _x = _hx_tab_array({[0]="Right",1,v,__enum__=__haxe_ds_Either}, 3); return _x; end 
 
 __haxe_ds_StringMap.new = function() 
   local self = _hx_new(__haxe_ds_StringMap.prototype)
@@ -1093,30 +1251,19 @@ __haxe_iterators_ArrayKeyValueIterator.__name__ = true
 __haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
 __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
+_hxClasses["log.LogLevel"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Debug","Info","Warn","Error"},4)}
+__log_LogLevel = _hxClasses["log.LogLevel"];
+__log_LogLevel.Debug = _hx_tab_array({[0]="Debug",0,__enum__ = __log_LogLevel},2)
 
-__log__Log_Tbl_Impl_.new = {}
-__log__Log_Tbl_Impl_.__name__ = true
-__log__Log_Tbl_Impl_.fieldRead = function(this1,name) 
-  do return this1[name] end;
-end
-__log__Log_Tbl_Impl_.fromDynamic = function(obj) 
-  local _g = __haxe_ds_StringMap.new();
-  local _g1 = 0;
-  local _g2 = Reflect.fields(obj);
-  while (_g1 < _g2.length) do 
-    local f = _g2[_g1];
-    _g1 = _g1 + 1;
-    local value = Reflect.field(obj, f);
-    if (value == nil) then 
-      _g.h[f] = __haxe_ds_StringMap.tnull;
-    else
-      _g.h[f] = value;
-    end;
-  end;
-  do return _g.h end;
-end
+__log_LogLevel.Info = _hx_tab_array({[0]="Info",1,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Warn = _hx_tab_array({[0]="Warn",2,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Error = _hx_tab_array({[0]="Error",3,__enum__ = __log_LogLevel},2)
+
 
 __log_Log.new = {}
+_hx_exports["log"]["Log"] = __log_Log
 __log_Log.__name__ = true
 __log_Log.display = function(s,opts) 
   if (opts == nil) then 
@@ -1144,9 +1291,24 @@ __log_Log.formatInfos = function(i)
     do return _G.table.concat(({Std.string(Std.string(Std.string("    ") .. Std.string(i.fileName)) .. Std.string(":")) .. Std.string(i.lineNumber),Std.string(Std.string(Std.string("    ") .. Std.string(i.className)) .. Std.string(".")) .. Std.string(i.methodName)}), "\n") end;
   end;
 end
-__log_Log.log = function(x,infos) 
+__log_Log.debug = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="green"}), infos);
+end
+__log_Log.info = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="blue"}), infos);
+end
+__log_Log.warn = function(x,infos) 
+  __log_Log.log(x, _hx_e(), infos);
+end
+__log_Log.error = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="red"}), infos);
+end
+__log_Log.log = function(x,opts,infos) 
   local _hx_continue_1 = false;
   while (true) do repeat 
+    if (opts == nil) then 
+      opts = _hx_e();
+    end;
     local _hx_tmp = (function() 
       local _hx_1
       if (__lua_Boot.__instanceof(x, String)) then 
@@ -1157,7 +1319,7 @@ __log_Log.log = function(x,infos)
     if (_hx_tmp.length == 1) then 
       local s = _hx_tmp[0];
       local infos = __log_Log.formatInfos(infos);
-      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"));
+      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"), opts);
     else
       x = __lib_Inspect.inspect(x, ({depth = 2}));
       break;
@@ -1169,10 +1331,6 @@ __log_Log.log = function(x,infos)
     end;
     
   end;
-end
-__log_Log.logEx = function(x,opts,infos) 
-  local omg = __log__Log_Tbl_Impl_.fromDynamic(__log_Log.defaults);
-  __haxe_Log.trace(__log__Log_Tbl_Impl_.fieldRead(omg, "fg"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/log/Log.hx",lineNumber=93,className="log.Log",methodName="logEx"}));
 end
 
 __lua_Boot.new = {}
@@ -1306,10 +1464,10 @@ __pkg_PackageManager.main = function()
   __utils_Common.check_path();
   local _g = _G.PackageManager;
   if (_g == nil) then 
-    __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.info("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
     _G.PackageManager = __pkg_PackageManager.new();
   else
-    __log_Log.log("Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.info("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
     local mgr = __pkg_PackageManager.new();
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
     _G.PackageManager = mgr;
@@ -1318,13 +1476,15 @@ __pkg_PackageManager.main = function()
   if (value == nil) then 
     _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
   end;
-  __log_Log.log(Std.string(Std.string("Loaded! ") .. Std.string(value.packages.length)) .. Std.string(" packages available."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
+  __log_Log.info(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_e();
 __pkg_PackageManager.prototype.reload = function(self,mod,hard) 
   if (hard == nil) then 
-    hard = false;
+    hard = true;
   end;
+  self:unload(mod, hard);
+  self:load(mod, hard);
 end
 __pkg_PackageManager.prototype.clear = function(self) 
   self.packages:resize(0);
@@ -1340,18 +1500,14 @@ __pkg_PackageManager.prototype.load = function(self,name,require)
   end;
   local _hx_continue_1 = false;
   while (true) do repeat 
-    local pkg = Lambda.find(self.packages, (function(name) 
-      do return function(o) 
-        do return o.name == name[0] end;
-      end end;
-    end)(_hx_tab_array({[0]=name}, 1)));
+    local pkg = self:findByName(name);
     if (pkg == nil) then 
       if (require) then 
         self:requirePkg(name);
         require = false;
         break;
       else
-        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
+        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
         do return false end;
       end;
     else
@@ -1369,12 +1525,9 @@ __pkg_PackageManager.prototype.unload = function(self,name,remove)
   if (remove == nil) then 
     remove = false;
   end;
-  local name1 = name;
-  local pkg = Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
-  end);
+  local pkg = self:findByName(name);
   if (pkg == nil) then 
-    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
+    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
     do return false end;
   else
     if (remove) then 
@@ -1394,17 +1547,26 @@ __pkg_PackageManager.prototype.remove = function(self,pkg)
 end
 __pkg_PackageManager.prototype.add = function(self,pkg) 
   local name = pkg.name;
-  local name1 = name;
-  if (Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
-  end) == nil) then 
+  if (self:findByName(name) == nil) then 
     self.packages:push(pkg);
   else
-    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
+    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
   end;
 end
 
 __pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
+
+__sys_io_File.new = {}
+__sys_io_File.__name__ = true
+__sys_io_File.getContent = function(path) 
+  local f = _G.io.open(path, "r");
+  if (f == nil) then 
+    _G.error(__haxe_Exception.thrown(Std.string("Invalid path : ") .. Std.string(path)),0);
+  end;
+  local s = f:read("*all");
+  f:close();
+  do return s end;
+end
 
 __utils_Common.new = {}
 __utils_Common.__name__ = true
@@ -1419,6 +1581,38 @@ __utils_Common.check_path = function()
   end )() == -1) then 
     _G.package.path = Std.string("/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;") .. Std.string(_G.package.path);
   end;
+end
+
+__utils_lua__LuaTools_LuaTable_Impl_.new = {}
+__utils_lua__LuaTools_LuaTable_Impl_.__name__ = true
+__utils_lua__LuaTools_LuaTable_Impl_.merge = function(this1,other) 
+  local _g = 0;
+  local _g1 = Reflect.fields(other);
+  while (_g < _g1.length) do 
+    local f = _g1[_g];
+    _g = _g + 1;
+    this1[f] = __utils_lua__LuaTools_LuaTable_Impl_.arrayRead(other, f);
+  end;
+  do return this1 end;
+end
+__utils_lua__LuaTools_LuaTable_Impl_.arrayRead = function(this1,n) 
+  do return this1[n] end;
+end
+__utils_lua__LuaTools_LuaTable_Impl_.fromObject = function(obj) 
+  local _g = __haxe_ds_StringMap.new();
+  local _g1 = 0;
+  local _g2 = Reflect.fields(obj);
+  while (_g1 < _g2.length) do 
+    local f = _g2[_g1];
+    _g1 = _g1 + 1;
+    local value = Reflect.field(obj, f);
+    if (value == nil) then 
+      _g.h[f] = __haxe_ds_StringMap.tnull;
+    else
+      _g.h[f] = value;
+    end;
+  end;
+  do return _g.h end;
 end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
@@ -1452,15 +1646,19 @@ _hx_array_mt.__index = Array.prototype
 local _hx_static_init = function()
   
   String.__name__ = true;
-  Array.__name__ = true;__brightness_BrightnessWidget.PATH_TO_ICON = "/home/cji/.config/awesome/widgets/brightness/br-wid-1.png";
+  Array.__name__ = true;__brightness_BrightnessWidget.PATH_TO_ICON = "/home/cji/.config/awesome/haxeshigh/res/br-wid-1.png";
   
-  __brightness_Pkg.wiboxConfig = _hx_o({__fields__={ontop=true,opacity=true,x=true,y=true,height=true,width=true},ontop=true,opacity=0.7,x=1020,y=440,height=115,width=95});
+  __brightness_BrightnessWidget.FONT = "mono 12";
+  
+  __brightness_BrightnessWidget.BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
+  
+  __brightness_Pkg.ver = "1589642388";
   
   __haxe_ds_StringMap.tnull = ({});
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",icon="/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",width=520,position="bottom_right",timeout=20,hover_timeout=0});
+  __log_Log.level = __log_LogLevel.Debug;
   
-  __pkg_PackageManager.__meta__ = _hx_o({__fields__={fields=true},fields=_hx_o({__fields__={reload=true},reload=_hx_o({__fields__={todo=true},todo=nil})})});
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,opacity=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",opacity=0.85,font="mono 10",icon="/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
   
   
 end
@@ -1479,8 +1677,6 @@ _hx_bind = function(o,m)
   end
   return f;
 end
-
-_hx_print = print or (function() end)
 
 _hx_table = {}
 _hx_table.pack = _G.table.pack or function(...)

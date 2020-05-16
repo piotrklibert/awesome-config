@@ -180,6 +180,7 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 _hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
+_hx_exports["log"] = _hx_exports["log"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Lambda = _hx_e()
@@ -190,16 +191,13 @@ local String = _hx_e()
 local Std = _hx_e()
 local StringTools = _hx_e()
 local __awful_Naughty = _G.require("naughty")
-local __haxe_IMap = _hx_e()
 local __haxe_Exception = _hx_e()
-local __haxe_Log = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
 local __haxe_ValueException = _hx_e()
-local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 local __lib_Inspect = _G.require("inspect")
-local __log__Log_Tbl_Impl_ = _hx_e()
+__log_LogLevel = _hx_e()
 local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
 local __lua_UserData = _hx_e()
@@ -561,9 +559,9 @@ Loader.main = function()
   local pkg = cmd:getPackage();
   local _hx_status, _hx_result = pcall(function() 
   
-      __log_Log.log(Std.string(Std.string("Loader: loading package \"") .. Std.string(pkg)) .. Std.string("\"..."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=20,className="Loader",methodName="main"}));
+      __log_Log.debug(Std.string(Std.string("Loader: loading package \"") .. Std.string(pkg)) .. Std.string("\"..."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=20,className="Loader",methodName="main"}));
       cmd.PackageManager:load(pkg, true);
-      __log_Log.log(Std.string(Std.string("Loader: loading package \"") .. Std.string(pkg)) .. Std.string("\" finished!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=22,className="Loader",methodName="main"}));
+      __log_Log.info(Std.string(Std.string("Loader: loading package \"") .. Std.string(pkg)) .. Std.string("\" finished!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=22,className="Loader",methodName="main"}));
     return _hx_pcall_default
   end)
   if not _hx_status and _hx_result == "_hx_pcall_break" then
@@ -571,8 +569,8 @@ Loader.main = function()
     local _g = _hx_result;
     local _g1 = __haxe_Exception.caught(_g):unwrap();
     if (__lua_Boot.__instanceof(_g1, String)) then 
-      __log_Log.log(Std.string(Std.string("Loader: error loading package \"") .. Std.string(pkg)) .. Std.string("\"!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=26,className="Loader",methodName="main"}));
-      __log_Log.log(_g1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=27,className="Loader",methodName="main"}));
+      __log_Log.error(Std.string(Std.string("Loader: error loading package \"") .. Std.string(pkg)) .. Std.string("\"!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=26,className="Loader",methodName="main"}));
+      __log_Log.debug(_g1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/Loader.hx",lineNumber=27,className="Loader",methodName="main"}));
     else
       _G.error(_g,0);
     end;
@@ -913,9 +911,6 @@ StringTools.trim = function(s)
   do return StringTools.ltrim(StringTools.rtrim(s)) end;
 end
 
-__haxe_IMap.new = {}
-__haxe_IMap.__name__ = true
-
 __haxe_Exception.new = function(message,previous,native) 
   local self = _hx_new(__haxe_Exception.prototype)
   __haxe_Exception.super(self,message,previous,native)
@@ -960,30 +955,6 @@ __haxe_Exception.prototype.get_native = function(self)
 end
 
 __haxe_Exception.prototype.__class__ =  __haxe_Exception
-
-__haxe_Log.new = {}
-__haxe_Log.__name__ = true
-__haxe_Log.formatOutput = function(v,infos) 
-  local str = Std.string(v);
-  if (infos == nil) then 
-    do return str end;
-  end;
-  local pstr = Std.string(Std.string(infos.fileName) .. Std.string(":")) .. Std.string(infos.lineNumber);
-  if (infos.customParams ~= nil) then 
-    local _g = 0;
-    local _g1 = infos.customParams;
-    while (_g < _g1.length) do 
-      local v = _g1[_g];
-      _g = _g + 1;
-      str = Std.string(str) .. Std.string((Std.string(", ") .. Std.string(Std.string(v))));
-    end;
-  end;
-  do return Std.string(Std.string(pstr) .. Std.string(": ")) .. Std.string(str) end;
-end
-__haxe_Log.trace = function(v,infos) 
-  local str = __haxe_Log.formatOutput(v, infos);
-  _hx_print(str);
-end
 
 __haxe_NativeStackTrace.new = {}
 __haxe_NativeStackTrace.__name__ = true
@@ -1041,20 +1012,6 @@ __haxe_ValueException.prototype.__class__ =  __haxe_ValueException
 __haxe_ValueException.__super__ = __haxe_Exception
 setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
 
-__haxe_ds_StringMap.new = function() 
-  local self = _hx_new(__haxe_ds_StringMap.prototype)
-  __haxe_ds_StringMap.super(self)
-  return self
-end
-__haxe_ds_StringMap.super = function(self) 
-  self.h = ({});
-end
-__haxe_ds_StringMap.__name__ = true
-__haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
-__haxe_ds_StringMap.prototype = _hx_e();
-
-__haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
-
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -1093,30 +1050,19 @@ __haxe_iterators_ArrayKeyValueIterator.__name__ = true
 __haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
 __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
+_hxClasses["log.LogLevel"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Debug","Info","Warn","Error"},4)}
+__log_LogLevel = _hxClasses["log.LogLevel"];
+__log_LogLevel.Debug = _hx_tab_array({[0]="Debug",0,__enum__ = __log_LogLevel},2)
 
-__log__Log_Tbl_Impl_.new = {}
-__log__Log_Tbl_Impl_.__name__ = true
-__log__Log_Tbl_Impl_.fieldRead = function(this1,name) 
-  do return this1[name] end;
-end
-__log__Log_Tbl_Impl_.fromDynamic = function(obj) 
-  local _g = __haxe_ds_StringMap.new();
-  local _g1 = 0;
-  local _g2 = Reflect.fields(obj);
-  while (_g1 < _g2.length) do 
-    local f = _g2[_g1];
-    _g1 = _g1 + 1;
-    local value = Reflect.field(obj, f);
-    if (value == nil) then 
-      _g.h[f] = __haxe_ds_StringMap.tnull;
-    else
-      _g.h[f] = value;
-    end;
-  end;
-  do return _g.h end;
-end
+__log_LogLevel.Info = _hx_tab_array({[0]="Info",1,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Warn = _hx_tab_array({[0]="Warn",2,__enum__ = __log_LogLevel},2)
+
+__log_LogLevel.Error = _hx_tab_array({[0]="Error",3,__enum__ = __log_LogLevel},2)
+
 
 __log_Log.new = {}
+_hx_exports["log"]["Log"] = __log_Log
 __log_Log.__name__ = true
 __log_Log.display = function(s,opts) 
   if (opts == nil) then 
@@ -1144,9 +1090,24 @@ __log_Log.formatInfos = function(i)
     do return _G.table.concat(({Std.string(Std.string(Std.string("    ") .. Std.string(i.fileName)) .. Std.string(":")) .. Std.string(i.lineNumber),Std.string(Std.string(Std.string("    ") .. Std.string(i.className)) .. Std.string(".")) .. Std.string(i.methodName)}), "\n") end;
   end;
 end
-__log_Log.log = function(x,infos) 
+__log_Log.debug = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="green"}), infos);
+end
+__log_Log.info = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="blue"}), infos);
+end
+__log_Log.warn = function(x,infos) 
+  __log_Log.log(x, _hx_e(), infos);
+end
+__log_Log.error = function(x,infos) 
+  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="red"}), infos);
+end
+__log_Log.log = function(x,opts,infos) 
   local _hx_continue_1 = false;
   while (true) do repeat 
+    if (opts == nil) then 
+      opts = _hx_e();
+    end;
     local _hx_tmp = (function() 
       local _hx_1
       if (__lua_Boot.__instanceof(x, String)) then 
@@ -1157,7 +1118,7 @@ __log_Log.log = function(x,infos)
     if (_hx_tmp.length == 1) then 
       local s = _hx_tmp[0];
       local infos = __log_Log.formatInfos(infos);
-      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"));
+      __log_Log.display(Std.string(Std.string(Std.string(Std.string("") .. Std.string(infos)) .. Std.string("\n    -----------------------\n\n")) .. Std.string(s)) .. Std.string("\n"), opts);
     else
       x = __lib_Inspect.inspect(x, ({depth = 2}));
       break;
@@ -1169,10 +1130,6 @@ __log_Log.log = function(x,infos)
     end;
     
   end;
-end
-__log_Log.logEx = function(x,opts,infos) 
-  local omg = __log__Log_Tbl_Impl_.fromDynamic(__log_Log.defaults);
-  __haxe_Log.trace(__log__Log_Tbl_Impl_.fieldRead(omg, "fg"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/log/Log.hx",lineNumber=93,className="log.Log",methodName="logEx"}));
 end
 
 __lua_Boot.new = {}
@@ -1329,10 +1286,10 @@ __pkg_PackageManager.main = function()
   __utils_Common.check_path();
   local _g = _G.PackageManager;
   if (_g == nil) then 
-    __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.info("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
     _G.PackageManager = __pkg_PackageManager.new();
   else
-    __log_Log.log("Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
+    __log_Log.info("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
     local mgr = __pkg_PackageManager.new();
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
     _G.PackageManager = mgr;
@@ -1341,13 +1298,15 @@ __pkg_PackageManager.main = function()
   if (value == nil) then 
     _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
   end;
-  __log_Log.log(Std.string(Std.string("Loaded! ") .. Std.string(value.packages.length)) .. Std.string(" packages available."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
+  __log_Log.info(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_e();
 __pkg_PackageManager.prototype.reload = function(self,mod,hard) 
   if (hard == nil) then 
-    hard = false;
+    hard = true;
   end;
+  self:unload(mod, hard);
+  self:load(mod, hard);
 end
 __pkg_PackageManager.prototype.clear = function(self) 
   self.packages:resize(0);
@@ -1363,18 +1322,14 @@ __pkg_PackageManager.prototype.load = function(self,name,require)
   end;
   local _hx_continue_1 = false;
   while (true) do repeat 
-    local pkg = Lambda.find(self.packages, (function(name) 
-      do return function(o) 
-        do return o.name == name[0] end;
-      end end;
-    end)(_hx_tab_array({[0]=name}, 1)));
+    local pkg = self:findByName(name);
     if (pkg == nil) then 
       if (require) then 
         self:requirePkg(name);
         require = false;
         break;
       else
-        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
+        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
         do return false end;
       end;
     else
@@ -1392,12 +1347,9 @@ __pkg_PackageManager.prototype.unload = function(self,name,remove)
   if (remove == nil) then 
     remove = false;
   end;
-  local name1 = name;
-  local pkg = Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
-  end);
+  local pkg = self:findByName(name);
   if (pkg == nil) then 
-    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
+    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
     do return false end;
   else
     if (remove) then 
@@ -1417,13 +1369,10 @@ __pkg_PackageManager.prototype.remove = function(self,pkg)
 end
 __pkg_PackageManager.prototype.add = function(self,pkg) 
   local name = pkg.name;
-  local name1 = name;
-  if (Lambda.find(self.packages, function(o) 
-    do return o.name == name1 end;
-  end) == nil) then 
+  if (self:findByName(name) == nil) then 
     self.packages:push(pkg);
   else
-    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
+    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
   end;
 end
 
@@ -1487,11 +1436,9 @@ _hx_array_mt.__index = Array.prototype
 local _hx_static_init = function()
   
   String.__name__ = true;
-  Array.__name__ = true;__haxe_ds_StringMap.tnull = ({});
+  Array.__name__ = true;__log_Log.level = __log_LogLevel.Debug;
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",icon="/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",width=520,position="bottom_right",timeout=20,hover_timeout=0});
-  
-  __pkg_PackageManager.__meta__ = _hx_o({__fields__={fields=true},fields=_hx_o({__fields__={reload=true},reload=_hx_o({__fields__={todo=true},todo=nil})})});
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,opacity=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",opacity=0.85,font="mono 10",icon="/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
   
   
 end
@@ -1520,8 +1467,6 @@ _hx_funcToField = function(f)
     return f
   end
 end
-
-_hx_print = print or (function() end)
 
 _hx_table = {}
 _hx_table.pack = _G.table.pack or function(...)

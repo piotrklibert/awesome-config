@@ -1,13 +1,12 @@
 package log;
 
-import utils.lua.Globals;
 import awful.Naughty;
 import lib.Inspect;
 
 using utils.NullTools;
-using utils.lua.Macro;
+using utils.lua.LuaTools;
 
-// TODO:
+
 enum LogLevel {
   Debug;
   Info;
@@ -16,26 +15,22 @@ enum LogLevel {
 }
 
 
-abstract Tbl(lua.Table.AnyTable) {
-  @:from
-  static public inline function fromMap<K, V>(m: haxe.ds.Map<K, V>): Tbl {
-    return untyped m.h;
-  }
-}
-
-
-// @:expose
 @:tink
+@:expose
 @:nullSafety(Strict)
 class Log {
+  static final level = Debug;
+
   static final defaults = {
-        fg: "white",
-        bg: "#96413F",
-        icon: "/home/cji/portless/lua/awesome-config/haxeshigh/bang2.png",
-        width: 520,
-        position: "bottom_right",
-        timeout: 20,
-        hover_timeout: 0,
+    fg: "white",
+    bg: "#96413F",
+    opacity: 0.85,
+    font: "mono 10",
+    icon: "/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",
+    width: 720,
+    position: "bottom_right",
+    timeout: 20,
+    hover_timeout: 0.2,
   };
 
   static function display(s: String, opts: NaughtyOptions = {}) {
@@ -51,20 +46,40 @@ class Log {
   static function formatInfos(i: Null<haxe.PosInfos>): String {
     switch i {
       case null: return "    ERROR: no pos info!\n";
-      case i: return lua.Table.concat([
-        '    ${i.fileName}:${i.lineNumber}',
-        '    ${i.className}.${i.methodName}'
+      case i:
+        return lua.Table.concat([
+          '    ${i.fileName}:${i.lineNumber}',
+          '    ${i.className}.${i.methodName}'
         ].asTable(), "\n");
     }
   }
 
-  public static function log(x: Any, ?infos: haxe.PosInfos): Void {
+  public static function debug(x: Any, ?infos: haxe.PosInfos): Void {
+    final o = {bg: "green"};
+    log(x, o, infos);
+  }
+
+  public static function info(x: Any, ?infos: haxe.PosInfos): Void {
+    final o = {bg: "blue"};
+    log(x, o, infos);
+  }
+
+  public static function warn(x: Any, ?infos: haxe.PosInfos): Void {
+    log(x, {}, infos);
+  }
+
+  public static function error(x: Any, ?infos: haxe.PosInfos): Void {
+    final o = {bg: "red"};
+    log(x, o, infos);
+  }
+
+  public static function log(x: Any, ?opts: NaughtyOptions = {}, ?infos: haxe.PosInfos): Void {
     switch x {
       case (s : String):
         final infos = formatInfos(infos);
-        display('${infos}\n    -----------------------\n\n${s}\n');
+      display('${infos}\n    -----------------------\n\n${s}\n', opts);
       default:
-        log(Inspect.inspect(x, {depth: 2}.asTable()), infos);
+        log(Inspect.inspect(x, {depth: 2}.asTable()), opts, infos);
     }
   }
 }

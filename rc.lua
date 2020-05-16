@@ -251,6 +251,7 @@ local tasklist_buttons = gears.table.join(
                                               awful.client.focus.byidx(-1)
                                           end))
 
+dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/hx_pkg.lua")
 
 screen_init.initialize()
 
@@ -556,7 +557,7 @@ awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { }, properties = default_rules },
     { rule_any = { class = {"slack", "Slack"}}, properties = { tag = "9", floating = true } },
-    { rule_any = { class = {"discord"}, name = "Discord"}, properties = { tag = "4", floating = true } },
+    { rule_any = { class = {"discord"}, name = {"Discord"}}, properties = { tag = "4", floating = true } },
 
     -- Floating clients.
     { rule_any = {
@@ -658,5 +659,4 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 
-dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/hx_pkg.lua")
 dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/loader.lua")

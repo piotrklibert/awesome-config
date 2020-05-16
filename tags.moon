@@ -12,18 +12,10 @@ slide_out_timer = nil
 
 wrap_show_taglist = (f) ->
   (...) ->
-    {:show, :slide} = require("widgets.mytaglist")
-    show()
-    if a = _G.App
+    if a = _G.Taglist
       a\show()
     f(...)
-    if slide_out_timer
-      slide_out_timer\stop()
-      slide_out_timer = nil
-
-    opts = {call_now: false, single_shot: true}
-    slide_out_timer = gtimer 4, (-> slide("out")), opts
-    if a = _G.App
+    if a = _G.Taglist
       a\autoHide(4)
 
 
@@ -43,7 +35,7 @@ tag_down = wrap_show_taglist (t) ->
   tag.viewidx(3)
 
 tag_left = wrap_show_taglist (t) ->
-  n = tonumber tag.selected().name
+  n = tonumber screen[1].selected_tag.name
   if filter_in({1, 4, 7})(n)
     tag.viewidx(2)
   else
@@ -51,7 +43,7 @@ tag_left = wrap_show_taglist (t) ->
 {:dbg} = require"util"
 
 tag_right = wrap_show_taglist (t) ->
-  n = tonumber tag.selected().name
+  n = tonumber screen[1].selected_tag.name
   -- dbg("#{n} #{type(n)} #{filter_in({3, 6, 9})(n)}")
   if filter_in({3, 6, 9})(n)
     tag.viewidx(-2)

@@ -1,5 +1,6 @@
 package brightness;
 
+// TODO: cleanup
 import lua.Table;
 import haxe.ds.Option;
 import haxe.extern.Rest;
@@ -7,144 +8,96 @@ import haxe.extern.Rest;
 import awful.*;
 import utils.Common;
 import utils.lua.LuaTools;
-
+import utils.lua.Macro as M;
+import log.Log;
 import brightness.Pkg;
+import haxecontracts.*;
 
 using Lambda;
 using utils.OptionTools;
+using utils.NullTools;
 using utils.lua.LuaTools;
 
 
 
-// typedef Log = utils.FileLogger;
-
-
-// typedef State = {
-//   var ?widget: awful.Widget;
-//   var ?inProgress: Boolean;
-//   var ?brightness: Int;
-//   var ?set_brightness: (Int) -> Void;
-//   var ?setter_promise;
-//   var ?setting_start: () -> Void;
-//   var ?setting_end: () -> Void
-// }
-
-
-@:expose
-class BrightnessWidget {
-  public static final PATH_TO_ICON = "/home/cji/.config/awesome/widgets/brightness/br-wid-1.png";
-
-  public function new(){
-
-  }
-/*
-import min, max, modf from math
-wibox = require("wibox")
-spawn = require("awful.spawn")
-naughty = require "naughty"
-
-Promise = require "promise"
-
-str = require "std.string"
-
-
-PATH = "/sys/class/backlight/intel_backlight/brightness"
-
-
-state = {
-  widget: nil
-  inProgress: nil
-  brightness: nil
-  set_brightness: (@brightness) =>
-  setter_promise: nil
-  setting_start: () =>
-    -- naughty.notify({text: "1"})
-    @inProgress = true
-  setting_end: () =>
-    -- naughty.notify({text: "0"})
-    @inProgress = false
+enum State {
+  InProgress(val: Float);
+  Ready(val: Float);
 }
 
 
-pspawn = (cmd) ->
-  p = Promise.new()
-  state.setter_promise = p
-  spawn.easy_async cmd, (_out, _err, _, _ret) ->
-    -- naughty.notify {text: "resolved"}
-    p\resolve()
-    state.inProgress = false
-  p
+@:expose
+@:nullSafety(Strict)
+class BrightnessWidget implements  haxecontracts.HaxeContracts {
+  public static final PATH_TO_ICON = "/home/cji/.config/awesome/haxeshigh/res/br-wid-1.png";
+  public static final FONT = "mono 12";
+  public static final BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
+
+  var state: State;
+  var widget: Null<awful.Widget>;
+
+  public function new(){
+    state = Ready(get_brightness());
+  }
+
+  public function get_brightness() {
+    final val = Std.parseInt(StringTools.trim(sys.io.File.getContent(BACKLIGHT_PATH)));
+    return Std.int(val.sure() / 19200 * 100);
+  }
 
 
-get_brightness = () ->
-  brightness_level = str.trim(io.open(PATH, "r")\read("*all"))
-  modf(tonumber(brightness_level) / 19200 * 100)
+  public function set_brightness(percent: Float) {
+    if (!(percent > 0 && percent < 100)) return -1;
+    final val = Std.int(percent / 100 * 19200);
+    final cmd = 'sudo bash -c "echo ${val} >${BACKLIGHT_PATH}"';
+    state = InProgress(percent);
+    Spawn.easy_async(cmd, function (_) { state = Ready(get_brightness()); });
+    return val;
+  }
 
 
+  public function w() {
+    final brightness_text = untyped __call__("wibox.widget.textbox");
+    brightness_text.set_font(FONT);
+    brightness_text.set_text(' ${get_brightness()}%');
 
-set_brightness = (percent) ->
-  bval, _ = modf(tonumber(percent) / 100 * 19200)
-  cmd = "sudo bash -c 'echo #{bval} >#{PATH}'"
-  state\setting_start!
-  end_fun = () -> state\setting_end()
-  pspawn(cmd)--\next(end_fun)\catch(end_fun)
+    final icon = M.asTable({
+      image: PATH_TO_ICON,
+      resize: false,
+      widget: untyped __lua__("wibox.widget.imagebox"),
+      forced_width: 25
+    });
 
+    final brightness_icon = AwfulTools.makeWidget(
+      [ icon ],
+      { top: 5,
+        widget: untyped __lua__("wibox.container.margin") }
+    );
 
-worker = () ->
-    brightness_text = wibox.widget.textbox()
-    brightness_text\set_font(font)
+    final widget = AwfulTools.makeWidget(
+      [ brightness_icon,
+        brightness_text ],
+      { layout: untyped __lua__("wibox.layout.fixed.horizontal"),
+        id: "brightness" }
+    );
 
-    brightness_icon = wibox.widget {
-        {
-            image: PATH_TO_ICON,
-            resize: false,
-            widget: wibox.widget.imagebox,
-            forced_width: 25
-        },
-        top: 5,
-        widget: wibox.container.margin
-    }
+    widget.connect_signal("button::press", function (_, _, _, button) {
+        if (Type.enumConstructor(state) == "InProgress")
+          return;
+        final percent = get_brightness();
+        switch (button) {
+          case 4:
+            brightness_text.set_text(" " + (percent + 5) + "%");
+            set_brightness(Math.min(percent + 5, 100));
+          case 5:
+            brightness_text.set_text(" " + (percent - 5) + "%");
+            set_brightness(Math.max(percent - 5, 0));
+          case _:
+            return;
+        }
+      }
+    );
 
-    state.widget = wibox.widget {
-      brightness_icon,
-      -- brightness_text,
-      layout: wibox.layout.fixed.horizontal,
-    }
-
-    update_widget = () ->
-      -- state.inProgress = false
-      brightness_text\set_text(" " .. get_brightness! .. "%")
-
-    handle_mouse = (_, _, _, button) ->
-      if state.inProgress
-        state.setter_promise\next(() ->
-          update_widget!
-          handle_mouse(_, _, _, button))
-        return
-      percent = get_brightness!
-      promise = switch button
-        when 4
-          brightness_text\set_text(" " .. (percent + 5) .. "%")
-          set_brightness min(percent + 5, 100)
-        when 5
-          brightness_text\set_text(" " .. (percent - 5) .. "%")
-          set_brightness max(percent - 5, 0)
-        else
-          return
-      promise\next(() ->
-        state.brightness = get_brightness!
-        state.inProgress = false
-      )
-    state.widget\connect_signal "button::press", handle_mouse
-
-    gears.timer {timeout: 1, call_now: true, autostart: true, callback: update_widget}
-
-    return state.widget
-
-
-
-worker
-
-*/
-
+    return widget;
+  }
 }
