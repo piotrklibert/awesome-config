@@ -972,26 +972,9 @@ __brightness_BrightnessWidget.prototype.w = function(self)
   local tmp = Std.string(Std.string(" ") .. Std.string(self:get_brightness())) .. Std.string("%");
   brightness_text1:set_text(tmp);
   local icon = ({image = __brightness_BrightnessWidget.PATH_TO_ICON, resize = false, widget = wibox.widget.imagebox, forced_width = 25});
-  local arr = _hx_tab_array({[0]=icon}, 1);
-  local ret = ({});
-  local _g = 0;
-  local _g1 = arr.length;
-  while (_g < _g1) do 
-    _g = _g + 1;
-    local idx = _g - 1;
-    ret[idx + 1] = arr[idx];
-  end;
-  local brightness_icon = __awful_AwfulTools.makeWidget(ret, __utils_lua__LuaTools_LuaTable_Impl_.fromObject(_hx_o({__fields__={top=true,widget=true},top=5,widget=wibox.container.margin})));
-  local arr = _hx_tab_array({[0]=brightness_icon, brightness_text}, 2);
-  local ret = ({});
-  local _g = 0;
-  local _g1 = arr.length;
-  while (_g < _g1) do 
-    _g = _g + 1;
-    local idx = _g - 1;
-    ret[idx + 1] = arr[idx];
-  end;
-  local widget = __awful_AwfulTools.makeWidget(ret, __utils_lua__LuaTools_LuaTable_Impl_.fromObject(_hx_o({__fields__={layout=true,id=true},layout=wibox.layout.fixed.horizontal,id="brightness"})));
+  local brightness_icon = __awful_AwfulTools.makeWidget(({icon}), ({top = 5, widget = wibox.container.margin}));
+  local t = ({brightness_icon,brightness_text});
+  local widget = __awful_AwfulTools.makeWidget(t, ({layout = wibox.layout.fixed.horizontal, id = "brightness"}));
   widget:connect_signal("button::press", function(_,_1,_2,button) 
     if (_gthis.state[0] == "InProgress") then 
       do return end;
@@ -1458,22 +1441,6 @@ end
 __utils_lua__LuaTools_LuaTable_Impl_.arrayRead = function(this1,n) 
   do return this1[n] end;
 end
-__utils_lua__LuaTools_LuaTable_Impl_.fromObject = function(obj) 
-  local _g = __haxe_ds_StringMap.new();
-  local _g1 = 0;
-  local _g2 = Reflect.fields(obj);
-  while (_g1 < _g2.length) do 
-    local f = _g2[_g1];
-    _g1 = _g1 + 1;
-    local value = Reflect.field(obj, f);
-    if (value == nil) then 
-      _g.h[f] = __haxe_ds_StringMap.tnull;
-    else
-      _g.h[f] = value;
-    end;
-  end;
-  do return _g.h end;
-end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -1513,7 +1480,7 @@ local _hx_static_init = function()
   
   __brightness_BrightnessWidget.BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
   
-  __brightness_Pkg.ver = "1590003837";
+  __brightness_Pkg.ver = "1590078227";
   
   __haxe_ds_StringMap.tnull = ({});
   

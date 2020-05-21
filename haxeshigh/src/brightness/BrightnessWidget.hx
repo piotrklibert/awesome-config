@@ -69,16 +69,15 @@ class BrightnessWidget implements haxecontracts.HaxeContracts {
     });
 
     final brightness_icon = AwfulTools.makeWidget(
-      [ icon ],
+      [ icon ].asTable(),
       { top: 5,
-        widget: untyped __lua__("wibox.container.margin") }
+        widget: untyped __lua__("wibox.container.margin") }.asTable()
     );
-
+    final t: LuaTable = M.asTable([ brightness_icon, brightness_text ]);
     final widget = AwfulTools.makeWidget(
-      [ brightness_icon,
-        brightness_text ],
+      t,
       { layout: untyped __lua__("wibox.layout.fixed.horizontal"),
-        id: "brightness" }
+        id: "brightness" }.asTable()
     );
 
     widget.connect_signal("button::press", function (_, _, _, button) {

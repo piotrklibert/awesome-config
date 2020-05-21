@@ -25,10 +25,10 @@ class Pkg extends PackageBase implements PackageDefinition {
   }
 
   public function unload() {
-    Log.log('INIT($ver): unload!');
+    Log.info('INIT($ver): unload!');
   }
 
   public function load() {
-    Log.log('INIT($ver) loaded!');
+    Log.info('INIT($ver) loaded!!!');
   }
 }

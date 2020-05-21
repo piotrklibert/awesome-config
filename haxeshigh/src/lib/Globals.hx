@@ -1,5 +1,5 @@
 package lib;
-
+import log.Log;
 
 
 /**
@@ -13,6 +13,6 @@ package lib;
 @:native("_G")
 extern class Globals implements Dynamic {
   public static var Taglist: Dynamic;
-
   public static var PackageManager: Null<pkg.PackageManager>;
+  public static var Logger: Null<Class<Log>>;
 }

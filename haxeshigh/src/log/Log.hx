@@ -2,31 +2,42 @@ package log;
 
 import awful.Naughty;
 import lib.Inspect;
+import lib.Globals;
 
 using utils.NullTools;
 using utils.lua.LuaTools;
 
 
-enum LogLevel {
-  Debug;
-  Info;
-  Warn;
-  Error;
+enum abstract LogLevel(String) {
+  var Debug;
+  var Info;
+  var Warn;
+  var Error;
 }
+
+// #ff8080  - lososiowy
+// #55ffff  -  mietowy
 
 
 @:tink
-@:expose
 @:nullSafety(Strict)
 class Log {
   static final level = Debug;
+  static final backgrounds = [
+    Debug => "#45cf65",
+    Info => "#55aaff", // #5555ff
+    Warn => "#ffff7f",
+    Error => "#b91e1e",
+  ];
+  static final res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
 
   static final defaults = {
-    fg: "white",
+    // fg: "white",
+    fg: "black",
     bg: "#96413F",
-    opacity: 0.85,
+    // opacity: 0.85,
     font: "mono 10",
-    icon: "/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",
+    icon: '${res_path}/bang2.png',
     width: 720,
     position: "bottom_right",
     timeout: 20,
@@ -54,32 +65,41 @@ class Log {
     }
   }
 
-  public static function debug(x: Any, ?infos: haxe.PosInfos): Void {
-    final o = {bg: "green"};
-    log(x, o, infos);
+  @:keep
+  public static inline function debug(x: Any, ?infos: haxe.PosInfos): Void {
+    final opts = {bg: backgrounds[Debug], icon: '${res_path}/debug4.png'};
+    log(x, opts, infos);
   }
 
-  public static function info(x: Any, ?infos: haxe.PosInfos): Void {
-    final o = {bg: "blue"};
-    log(x, o, infos);
+  @:keep
+  public static inline function info(x: Any, ?infos: haxe.PosInfos): Void {
+    final opts = {bg: backgrounds[Info], icon: '${res_path}/debug2.png'};
+    log(x, opts, infos);
   }
 
-  public static function warn(x: Any, ?infos: haxe.PosInfos): Void {
-    log(x, {}, infos);
+  @:keep
+  public static inline function warn(x: Any, ?infos: haxe.PosInfos): Void {
+    final opts = {bg: backgrounds[Warn], icon: '${res_path}/warn2.png'};
+    log(x, opts, infos);
   }
 
-  public static function error(x: Any, ?infos: haxe.PosInfos): Void {
-    final o = {bg: "red"};
-    log(x, o, infos);
+  @:keep
+  public static inline function error(x: Any, ?infos: haxe.PosInfos): Void {
+    final opts = {bg: backgrounds[Error], icon: '${res_path}/error2.png'};
+    log(x, opts, infos);
   }
 
   public static function log(x: Any, ?opts: NaughtyOptions = {}, ?infos: haxe.PosInfos): Void {
     switch x {
       case (s : String):
         final infos = formatInfos(infos);
-      display('${infos}\n    -----------------------\n\n${s}\n', opts);
+        display('${infos}\n    -----------------------\n\n${s}\n', opts);
       default:
         log(Inspect.inspect(x, {depth: 2}.asTable()), opts, infos);
     }
+  }
+
+  @:keep public static function __init__() {
+    Globals.Logger = Log;
   }
 }

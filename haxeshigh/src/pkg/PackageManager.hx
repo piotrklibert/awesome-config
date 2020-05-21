@@ -14,7 +14,9 @@ using StringTools;
 using utils.NullTools;
 
 
-@:expose
+#if pkg
+@:keep
+#end
 @:nullSafety(Strict)
 class PackageManager {
   private function new() {}
