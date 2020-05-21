@@ -179,12 +179,9 @@ local Class = _hx_e();
 local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
-_hx_exports["pkg"] = _hx_exports["pkg"] or _hx_e()
-_hx_exports["log"] = _hx_exports["log"] or _hx_e()
 _hx_exports["brightness"] = _hx_exports["brightness"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
-local Lambda = _hx_e()
 local Math = _hx_e()
 local Reflect = _hx_e()
 local String = _hx_e()
@@ -209,14 +206,11 @@ local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 local __lib_Inspect = _G.require("inspect")
-__log_LogLevel = _hx_e()
 local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
 local __lua_UserData = _hx_e()
 local __lua_Thread = _hx_e()
-local __pkg_PackageManager = _hx_e()
 local __sys_io_File = _hx_e()
-local __utils_Common = _hx_e()
 local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -541,25 +535,6 @@ Array.prototype.resize = function(self,len)
 end
 
 Array.prototype.__class__ =  Array
-
-Lambda.new = {}
-Lambda.__name__ = true
-Lambda.iter = function(it,f) 
-  local x = it:iterator();
-  while (x:hasNext()) do 
-    f(x:next());
-  end;
-end
-Lambda.find = function(it,f) 
-  local v = it:iterator();
-  while (v:hasNext()) do 
-    local v = v:next();
-    if (f(v)) then 
-      do return v end;
-    end;
-  end;
-  do return nil end;
-end
 
 Math.new = {}
 Math.__name__ = true
@@ -978,7 +953,7 @@ __brightness_BrightnessWidget.prototype.get_brightness = function(self)
 end
 __brightness_BrightnessWidget.prototype.set_brightness = function(self,percent) 
   local _gthis = self;
-  if (not ((percent > 0) and (percent < 100))) then 
+  if (not ((percent >= 0) and (percent <= 100))) then 
     do return -1 end;
   end;
   local val = Std.int((percent / 100) * 19200);
@@ -1024,10 +999,14 @@ __brightness_BrightnessWidget.prototype.w = function(self)
     local percent = _gthis:get_brightness();
     local button = button;
     if (button) == 4 then 
-      brightness_text:set_text(Std.string(Std.string(" ") .. Std.string((percent + 5))) .. Std.string("%"));
+      local brightness_text = brightness_text;
+      local tmp = Std.string(Std.string(" ") .. Std.string(Math.min(percent + 5, 100))) .. Std.string("%");
+      brightness_text:set_text(tmp);
       _gthis:set_brightness(Math.min(percent + 5, 100));
     elseif (button) == 5 then 
-      brightness_text:set_text(Std.string(Std.string(" ") .. Std.string((percent - 5))) .. Std.string("%"));
+      local brightness_text = brightness_text;
+      local tmp = Std.string(Std.string(" ") .. Std.string(Math.max(percent - 5, 0))) .. Std.string("%");
+      brightness_text:set_text(tmp);
       _gthis:set_brightness(Math.max(percent - 5, 0));else
     do return end; end;
   end);
@@ -1050,9 +1029,6 @@ __pkg_PackageBase.prototype.__class__ =  __pkg_PackageBase
 
 __pkg_PackageDefinition.new = {}
 __pkg_PackageDefinition.__name__ = true
-__pkg_PackageDefinition.prototype = _hx_e();
-
-__pkg_PackageDefinition.prototype.__class__ =  __pkg_PackageDefinition
 
 __brightness_Pkg.new = function() 
   local self = _hx_new(__brightness_Pkg.prototype)
@@ -1094,10 +1070,10 @@ __brightness_Pkg.prototype.unload = function(self)
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
-  __log_Log.info(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=33,className="brightness.Pkg",methodName="unload"}));
+  __log_Log.log(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=33,className="brightness.Pkg",methodName="unload"}));
 end
 __brightness_Pkg.prototype.load = function(self) 
-  __log_Log.info(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string(") loaded!"), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=37,className="brightness.Pkg",methodName="load"}));
+  __log_Log.log(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string(") loaded!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=37,className="brightness.Pkg",methodName="load"}));
 end
 
 __brightness_Pkg.prototype.__class__ =  __brightness_Pkg
@@ -1106,6 +1082,9 @@ setmetatable(__brightness_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
 
 __haxe_IMap.new = {}
 __haxe_IMap.__name__ = true
+__haxe_IMap.prototype = _hx_e();
+
+__haxe_IMap.prototype.__class__ =  __haxe_IMap
 
 __haxe_Exception.new = function(message,previous,native) 
   local self = _hx_new(__haxe_Exception.prototype)
@@ -1210,6 +1189,20 @@ end
 __haxe_ds_StringMap.__name__ = true
 __haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
 __haxe_ds_StringMap.prototype = _hx_e();
+__haxe_ds_StringMap.prototype.set = function(self,key,value) 
+  if (value == nil) then 
+    self.h[key] = __haxe_ds_StringMap.tnull;
+  else
+    self.h[key] = value;
+  end;
+end
+__haxe_ds_StringMap.prototype.get = function(self,key) 
+  local ret = self.h[key];
+  if (ret == __haxe_ds_StringMap.tnull) then 
+    ret = nil;
+  end;
+  do return ret end
+end
 
 __haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
 
@@ -1251,19 +1244,8 @@ __haxe_iterators_ArrayKeyValueIterator.__name__ = true
 __haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
 __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
-_hxClasses["log.LogLevel"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Debug","Info","Warn","Error"},4)}
-__log_LogLevel = _hxClasses["log.LogLevel"];
-__log_LogLevel.Debug = _hx_tab_array({[0]="Debug",0,__enum__ = __log_LogLevel},2)
-
-__log_LogLevel.Info = _hx_tab_array({[0]="Info",1,__enum__ = __log_LogLevel},2)
-
-__log_LogLevel.Warn = _hx_tab_array({[0]="Warn",2,__enum__ = __log_LogLevel},2)
-
-__log_LogLevel.Error = _hx_tab_array({[0]="Error",3,__enum__ = __log_LogLevel},2)
-
 
 __log_Log.new = {}
-_hx_exports["log"]["Log"] = __log_Log
 __log_Log.__name__ = true
 __log_Log.display = function(s,opts) 
   if (opts == nil) then 
@@ -1292,16 +1274,16 @@ __log_Log.formatInfos = function(i)
   end;
 end
 __log_Log.debug = function(x,infos) 
-  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="green"}), infos);
+  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Debug"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug4.png")}), infos);
 end
 __log_Log.info = function(x,infos) 
-  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="blue"}), infos);
+  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), infos);
 end
 __log_Log.warn = function(x,infos) 
-  __log_Log.log(x, _hx_e(), infos);
+  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Warn"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/warn2.png")}), infos);
 end
 __log_Log.error = function(x,infos) 
-  __log_Log.log(x, _hx_o({__fields__={bg=true},bg="red"}), infos);
+  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Error"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/error2.png")}), infos);
 end
 __log_Log.log = function(x,opts,infos) 
   local _hx_continue_1 = false;
@@ -1449,113 +1431,6 @@ __lua_UserData.__name__ = true
 __lua_Thread.new = {}
 __lua_Thread.__name__ = true
 
-__pkg_PackageManager.new = function() 
-  local self = _hx_new(__pkg_PackageManager.prototype)
-  __pkg_PackageManager.super(self)
-  return self
-end
-__pkg_PackageManager.super = function(self) 
-  self.packages = _hx_tab_array({}, 0);
-  self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
-end
-_hx_exports["pkg"]["PackageManager"] = __pkg_PackageManager
-__pkg_PackageManager.__name__ = true
-__pkg_PackageManager.main = function() 
-  __utils_Common.check_path();
-  local _g = _G.PackageManager;
-  if (_g == nil) then 
-    __log_Log.info("No previous PackageManager found, creating new instance...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=107,className="pkg.PackageManager",methodName="main"}));
-    _G.PackageManager = __pkg_PackageManager.new();
-  else
-    __log_Log.info("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
-    local mgr = __pkg_PackageManager.new();
-    Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
-    _G.PackageManager = mgr;
-  end;
-  local value = _G.PackageManager;
-  if (value == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
-  end;
-  __log_Log.info(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=117,className="pkg.PackageManager",methodName="main"}));
-end
-__pkg_PackageManager.prototype = _hx_e();
-__pkg_PackageManager.prototype.reload = function(self,mod,hard) 
-  if (hard == nil) then 
-    hard = true;
-  end;
-  self:unload(mod, hard);
-  self:load(mod, hard);
-end
-__pkg_PackageManager.prototype.clear = function(self) 
-  self.packages:resize(0);
-end
-__pkg_PackageManager.prototype.findByName = function(self,name) 
-  do return Lambda.find(self.packages, function(o) 
-    do return o.name == name end;
-  end) end
-end
-__pkg_PackageManager.prototype.load = function(self,name,require) 
-  if (require == nil) then 
-    require = false;
-  end;
-  local _hx_continue_1 = false;
-  while (true) do repeat 
-    local pkg = self:findByName(name);
-    if (pkg == nil) then 
-      if (require) then 
-        self:requirePkg(name);
-        require = false;
-        break;
-      else
-        __log_Log.log(Std.string(Std.string("ERROR: ") .. Std.string(name)) .. Std.string(" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=46,className="pkg.PackageManager",methodName="load"}));
-        do return false end;
-      end;
-    else
-      pkg:load();
-      do return true end;
-    end;until true
-    if _hx_continue_1 then 
-    _hx_continue_1 = false;
-    break;
-    end;
-    
-  end;
-end
-__pkg_PackageManager.prototype.unload = function(self,name,remove) 
-  if (remove == nil) then 
-    remove = false;
-  end;
-  local pkg = self:findByName(name);
-  if (pkg == nil) then 
-    __log_Log.log(Std.string(Std.string("ERROR: \"") .. Std.string(name)) .. Std.string("\" not found!"), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=62,className="pkg.PackageManager",methodName="unload"}));
-    do return false end;
-  else
-    if (remove) then 
-      self:remove(pkg);
-    end;
-    pkg:unload();
-    do return true end;
-  end;
-end
-__pkg_PackageManager.prototype.requirePkg = function(self,pkgName) 
-  local mod = Reflect.field(_G.require(Std.string("hx_") .. Std.string(pkgName)), pkgName);
-  self:add(mod.Pkg.instance());
-end
-__pkg_PackageManager.prototype.remove = function(self,pkg) 
-  self.packages:remove(pkg);
-  _G.package.loaded[Std.string("hx_") .. Std.string(pkg.name)] = nil;
-end
-__pkg_PackageManager.prototype.add = function(self,pkg) 
-  local name = pkg.name;
-  if (self:findByName(name) == nil) then 
-    self.packages:push(pkg);
-  else
-    __log_Log.log(Std.string(Std.string("PackageManager: package \"") .. Std.string(name)) .. Std.string("\" already exists."), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=95,className="pkg.PackageManager",methodName="add"}));
-  end;
-end
-
-__pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
-
 __sys_io_File.new = {}
 __sys_io_File.__name__ = true
 __sys_io_File.getContent = function(path) 
@@ -1566,21 +1441,6 @@ __sys_io_File.getContent = function(path)
   local s = f:read("*all");
   f:close();
   do return s end;
-end
-
-__utils_Common.new = {}
-__utils_Common.__name__ = true
-__utils_Common.check_path = function() 
-  local r = __lua_lib_luautf8_Utf8.find(_G.package.path, "haxeshigh/output", 1, true);
-  if ((function() 
-    local _hx_1
-    if ((r ~= nil) and (r > 0)) then 
-    _hx_1 = r - 1; else 
-    _hx_1 = -1; end
-    return _hx_1
-  end )() == -1) then 
-    _G.package.path = Std.string("/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;") .. Std.string(_G.package.path);
-  end;
 end
 
 __utils_lua__LuaTools_LuaTable_Impl_.new = {}
@@ -1646,36 +1506,39 @@ _hx_array_mt.__index = Array.prototype
 local _hx_static_init = function()
   
   String.__name__ = true;
-  Array.__name__ = true;__brightness_BrightnessWidget.PATH_TO_ICON = "/home/cji/.config/awesome/haxeshigh/res/br-wid-1.png";
+  Array.__name__ = true;
+  _G.Logger = __log_Log;__brightness_BrightnessWidget.PATH_TO_ICON = "/home/cji/.config/awesome/haxeshigh/res/br-wid-1.png";
   
   __brightness_BrightnessWidget.FONT = "mono 12";
   
   __brightness_BrightnessWidget.BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
   
-  __brightness_Pkg.ver = "1589642388";
+  __brightness_Pkg.ver = "1590003837";
   
   __haxe_ds_StringMap.tnull = ({});
   
-  __log_Log.level = __log_LogLevel.Debug;
+  __log_Log.backgrounds = (function() 
+    local _hx_1
+    
+    local _g = __haxe_ds_StringMap.new();
+    
+    _g:set("Debug", "#45cf65");
+    
+    _g:set("Info", "#55aaff");
+    
+    _g:set("Warn", "#ffff7f");
+    
+    _g:set("Error", "#b91e1e");
+    
+    _hx_1 = _g;
+    return _hx_1
+  end )();
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,opacity=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="white",bg="#96413F",opacity=0.85,font="mono 10",icon="/home/cji/portless/lua/awesome-config/haxeshigh/res/bang2.png",width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
+  __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
+  
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
   
   
-end
-
-_hx_bind = function(o,m)
-  if m == nil then return nil end;
-  local f;
-  if o._hx__closures == nil then
-    _G.rawset(o, '_hx__closures', {});
-  else
-    f = o._hx__closures[m];
-  end
-  if (f == nil) then
-    f = function(...) return m(o, ...) end;
-    o._hx__closures[m] = f;
-  end
-  return f;
 end
 
 _hx_table = {}

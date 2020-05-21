@@ -28,7 +28,7 @@ enum State {
 
 @:expose
 @:nullSafety(Strict)
-class BrightnessWidget implements  haxecontracts.HaxeContracts {
+class BrightnessWidget implements haxecontracts.HaxeContracts {
   public static final PATH_TO_ICON = "/home/cji/.config/awesome/haxeshigh/res/br-wid-1.png";
   public static final FONT = "mono 12";
   public static final BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
@@ -47,7 +47,7 @@ class BrightnessWidget implements  haxecontracts.HaxeContracts {
 
 
   public function set_brightness(percent: Float) {
-    if (!(percent > 0 && percent < 100)) return -1;
+    if (!(percent >= 0 && percent <= 100)) return -1;
     final val = Std.int(percent / 100 * 19200);
     final cmd = 'sudo bash -c "echo ${val} >${BACKLIGHT_PATH}"';
     state = InProgress(percent);
@@ -87,17 +87,16 @@ class BrightnessWidget implements  haxecontracts.HaxeContracts {
         final percent = get_brightness();
         switch (button) {
           case 4:
-            brightness_text.set_text(" " + (percent + 5) + "%");
+            brightness_text.set_text(" " + Math.min(percent + 5, 100) + "%");
             set_brightness(Math.min(percent + 5, 100));
           case 5:
-            brightness_text.set_text(" " + (percent - 5) + "%");
+            brightness_text.set_text(" " + Math.max(percent - 5, 0) + "%");
             set_brightness(Math.max(percent - 5, 0));
           case _:
             return;
         }
       }
     );
-
     return widget;
   }
 }

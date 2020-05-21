@@ -6,6 +6,13 @@ build: output/hx_init.lua \
 	output/hx_brightness.lua \
 	output/cleaner.lua
 
+.PHONY: rebuild
+rebuild:
+	touch build/*
+	make build
+
+
+
 common = src/log/*.hx src/utils/*.hx src/utils/lua/*.hx src/awful/*.hx src/awful/*/*.hx src/awful/*/*/*.hx
 
 output/cleaner.lua: src/Cleaner.hx build/cleaner.hxml $(common)

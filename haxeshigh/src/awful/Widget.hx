@@ -30,11 +30,11 @@ typedef WidgetOpts = {
 
 
 @:luaRequire("awful.widget")
-extern class Widget implements Dynamic {
+extern class Widget extends awful.widget.Base implements Dynamic {
   static function taglist(o: Any): Dynamic;
 
 
   static inline function widget(args: Dynamic): Widget {
-    return Wibox.widget(args);
+    return Wibox.makeWidget(args);
   }
 }

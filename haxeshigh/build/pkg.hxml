@@ -6,5 +6,6 @@ $LIBRARIES
 
 -lua output/hx_pkg.lua
 -m pkg.PackageManager
+-D pkg
 
 pkg.PackageManager

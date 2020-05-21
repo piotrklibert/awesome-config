@@ -33,8 +33,29 @@ typedef WiboxArgs = {
 }
 
 
+// draw_to_cairo_context = <function 1>,
+// draw_to_image_surface = <function 2>,
+// draw_to_svg_file = <function 3>,
+
+typedef WidgetsModule = {
+  background: Class<Widget> ,
+  base: Class<Widget> ,
+  calendar: Class<Widget> ,
+  checkbox: Class<Widget> ,
+  graph: Class<Widget> ,
+  imagebox: Class<Widget> ,
+  piechart: Class<Widget> ,
+  progressbar: Class<Widget> ,
+  separator: Class<Widget> ,
+  slider: Class<Widget> ,
+  systray: Class<Widget> ,
+  textbox: Class<Widget> ,
+  textclock: Class<Widget> ,
+}
+
+
 @:luaRequire("wibox")
-extern class Wibox {
+extern class Wibox extends Widget {
   var visible: Bool;              // Visibility.
   var opacity: Float;             // The opacity, between 0 and 1. (default 1)
   var type: String;               // The window type (desktop, normal, dock).
@@ -47,12 +68,12 @@ extern class Wibox {
   @:overload(function (o: WiboxArgs): Wibox {})
   public function new(tbl: LuaTable);
 
+
   public static var layout: {fixed: Dynamic};
   public static var container: {margin: Int, background: Background};
-
+  public static var widget: WidgetsModule;
   @:native("widget")
-  public static function widget(table: LuaTable): Widget;
-
+  public static function makeWidget(t: LuaTable): Widget;
 
 
   public function setup(table: LuaTable): Void;
