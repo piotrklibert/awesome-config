@@ -19,12 +19,12 @@ typedef TMacro = utils.lua.Macro;
 
 abstract LuaTable(AnyTable) from MixedTable<Any> from AnyTable to AnyTable {
 
-  public function fields() {
+  public inline function fields() {
     return Reflect.fields(this);
   }
 
   public function merge(other: LuaTable) {
-    for (f in Reflect.fields(other))
+    for (f in other.fields())
       untyped this[f] = other[f];
     return this;
   }
@@ -48,7 +48,7 @@ abstract LuaTable(AnyTable) from MixedTable<Any> from AnyTable to AnyTable {
     return untyped this[name] = val;
 
 
-  // Implicit casts (order matters)
+  // Implicit casts (order matters!!)
   @:from
   static public inline function fromMap<K, V>(m: haxe.ds.Map<K, V>): LuaTable {
     // StringMaps on Lua are built around a table stored in .h key

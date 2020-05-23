@@ -1480,7 +1480,7 @@ local _hx_static_init = function()
   
   __brightness_BrightnessWidget.BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
   
-  __brightness_Pkg.ver = "1590078227";
+  __brightness_Pkg.ver = "1590234962";
   
   __haxe_ds_StringMap.tnull = ({});
   

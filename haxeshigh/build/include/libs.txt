@@ -4,3 +4,4 @@
 -L thx.core
 
 -L HaxeContracts
+-L safety

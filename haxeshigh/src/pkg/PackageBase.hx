@@ -27,8 +27,7 @@ interface PackageDefinition {
   public function unload(): Void;
 }
 
-// @:generic
-// class PackageBase<T: Constructible<() -> Void> > {
 class PackageBase {
+  // Can only be constructed by the subclasses
   private function new(){}
 }

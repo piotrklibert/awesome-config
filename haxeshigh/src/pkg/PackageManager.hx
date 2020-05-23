@@ -41,7 +41,7 @@ class PackageManager {
     return this.packages.find(o -> (o.name == name));
   }
 
-  public function load(name: String, require: Bool = false): Bool {
+  public final function load(name: String, require: Bool = false): Bool {
     final pkg = findByName(name);
     switch [pkg, require] {
       case [null, false]:
@@ -57,7 +57,8 @@ class PackageManager {
     }
   }
 
-  public function unload(name: String, remove: Bool = false) {
+
+  public final function unload(name: String, remove: Bool = false) {
     final pkg = findByName(name);
     switch [pkg, remove] {
       case [null, _]:

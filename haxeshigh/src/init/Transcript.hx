@@ -73,7 +73,7 @@ class Transcript {
   public static final ver = M.timestamp();
 
   static function makeText(pos: Point = {x: 0, y: 0}) {
-    return '<span foreground="blue">$ver</span> <b>${pos.x}x${pos.y}</b>!!!';
+    return '<span foreground="blue">$ver</span>\n<b>${pos.x}x${pos.y}</b>!!!';
   }
 
 

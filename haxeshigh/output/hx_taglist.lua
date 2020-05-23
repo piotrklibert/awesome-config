@@ -1797,7 +1797,7 @@ local _hx_static_init = function()
   
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
   
-  __taglist_Pkg.ver = "1590078225";
+  __taglist_Pkg.ver = "1590234960";
   
   __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
   
