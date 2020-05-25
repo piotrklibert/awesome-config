@@ -1,0 +1,11 @@
+$OPTIONS
+
+$LIBRARIES
+
+-cp src
+
+-lua output/hx_battery.lua
+
+-m battery.Pkg
+
+battery.Pkg
