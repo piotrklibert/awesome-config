@@ -6,4 +6,6 @@ $LIBRARIES
 
 -lua output/hx_brightness.lua
 
+-m brightness.Pkg
+
 brightness.BrightnessWidget

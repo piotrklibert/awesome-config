@@ -1006,6 +1006,8 @@ end
 _hx_exports["init"]["Pkg"] = __init_Pkg
 __init_Pkg.__name__ = true
 __init_Pkg.__interfaces__ = {__pkg_PackageDefinition}
+__init_Pkg.main = function() 
+end
 __init_Pkg.instance = function() 
   do return __init_Pkg.new() end;
 end
@@ -1331,11 +1333,11 @@ local _hx_static_init = function()
   Array.__name__ = true;
   _G.Logger = __log_Log;__haxe_ds_StringMap.tnull = ({});
   
-  __init_Pkg.ver = "1590255546";
+  __init_Pkg.ver = "1590443480";
   
   __init_Transcript.wiboxConfig = ({ontop = true, opacity = 0.9, x = 120, y = 440, height = 115, width = 495});
   
-  __init_Transcript.ver = "1590255546";
+  __init_Transcript.ver = "1590443480";
   
   __log_Log.backgrounds = (function() 
     local _hx_1

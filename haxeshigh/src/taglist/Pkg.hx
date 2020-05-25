@@ -10,7 +10,9 @@ import log.Log;
 using utils.lua.Macro;
 
 @:expose
+@:keep
 class Pkg extends PackageBase implements PackageDefinition {
+  @:keep static function main() {}
   public final name = "taglist";
   public static final ver = Macro.timestamp();
 

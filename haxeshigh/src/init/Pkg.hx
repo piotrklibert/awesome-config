@@ -4,7 +4,6 @@ import log.Log;
 import pkg.PackageBase;
 import utils.lua.Macro as M;
 
-// using utils.NullTools;
 using Safety;
 
 import init.Transcript;
@@ -13,6 +12,7 @@ import init.Transcript;
 @:expose
 @:nullSafety(Strict)
 class Pkg extends PackageBase implements PackageDefinition {
+  @:keep static function main() {}
   public final name = "init";
   public static final ver = M.timestamp();
   public static function instance() return new Pkg();
@@ -21,8 +21,7 @@ class Pkg extends PackageBase implements PackageDefinition {
 
   public function start() {
     if (widget == null) widget = init.Transcript.get_wibox();
-    final w = widget.unsafe();
-    w.visible = true;
+    widget.visible = true;
   }
 
   public function stop() {

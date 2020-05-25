@@ -11,6 +11,7 @@ using utils.NullTools;
 @:expose
 @:nullSafety(Strict)
 class Pkg extends PackageBase implements PackageDefinition {
+  @:keep static function main() {}
   public final name = "brightness";
   public static final ver = M.timestamp();
   public static function instance() return new Pkg();
