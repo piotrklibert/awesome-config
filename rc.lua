@@ -183,9 +183,11 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({
     items = {
-        { "restart", awesome.restart },
         { "awesome", myawesomemenu, beautiful.awesome_icon },
-        { "open terminal", terminal }
+        { "Emacs", "emacs --no-desktop" },
+        { "Firefox", "firefox" },
+        { "open terminal", terminal },
+        { "restart", awesome.restart },
     }
 })
 

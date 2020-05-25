@@ -4,6 +4,7 @@ build: output/hx_init.lua \
 	output/hx_pkg.lua \
 	output/hx_taglist.lua \
 	output/hx_brightness.lua \
+	output/hx_battery.lua \
 	output/cleaner.lua
 
 .PHONY: rebuild
@@ -33,6 +34,8 @@ output/hx_pkg.lua: src/pkg/*.hx build/pkg.hxml $(common)
 output/hx_init.lua: src/init/*.hx build/init.hxml $(common)
 	./bin/build init
 
+output/hx_battery.lua: src/battery/*.hx build/battery.hxml $(common)
+	./bin/build battery
 
 
 
@@ -44,6 +47,9 @@ pkg: output/hx_pkg.lua
 init: output/hx_init.lua
 	(cat output/hx_init.lua | awesome-client)
 
+.PHONY: battery
+battery: output/hx_battery.lua
+	(cat output/hx_battery.lua | awesome-client)
 
 .PHONY: clean
 clean: build

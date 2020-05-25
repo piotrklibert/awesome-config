@@ -10,6 +10,7 @@
 
 -L tink_core
 -L tink_lang
+-L safety
 
 -cp src
 
