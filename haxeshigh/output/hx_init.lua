@@ -4,7 +4,7 @@ local _hx_hidden = {__id__=true, hx__closures=true, super=true, prototype=true, 
 _hx_array_mt = {
     __newindex = function(t,k,v)
         local len = t.length
-        t.length =  k >= len and (k + 1) or len
+        t.length = (type(k) == "number" and k >= len and (k + 1)) or len
         rawset(t,k,v)
     end
 }
@@ -21,7 +21,6 @@ function _hx_tab_array(tab, length)
     tab.length = length
     return setmetatable(tab, _hx_array_mt)
 end
-
 
 
 function _hx_print_class(obj, depth)
@@ -61,7 +60,7 @@ end
 function _hx_tostring(obj, depth)
     if depth == nil then
         depth = 0
-    elseif depth > 5 then
+    elseif depth > 15 then
         return "<...>"
     end
 
@@ -133,7 +132,6 @@ function _hx_error(obj)
         _G.print(debug.traceback());
     end
 end
-
 
 local function _hx_obj_newindex(t,k,v)
     t.__fields__[k] = true
@@ -221,6 +219,9 @@ local __lua_Boot = _hx_e()
 local __lua_UserData = _hx_e()
 local __lua_PairTools = _hx_e()
 local __lua_Thread = _hx_e()
+local __safety_SafetyException = _hx_e()
+local __safety_NullPointerException = _hx_e()
+local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -848,6 +849,12 @@ __haxe_Exception.thrown = function(value)
   end;
 end
 __haxe_Exception.prototype = _hx_e();
+__haxe_Exception.prototype.toString = function(self) 
+  do return self:get_message() end
+end
+__haxe_Exception.prototype.get_message = function(self) 
+  do return self.__exceptionMessage end
+end
 __haxe_Exception.prototype.get_native = function(self) 
   do return self.__nativeException end
 end
@@ -1026,10 +1033,10 @@ end
 __init_Pkg.prototype.unload = function(self) 
   self:stop();
   __init_Pkg.widget = nil;
-  __log_Log.log(Std.string(Std.string("INIT(") .. Std.string(__init_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Pkg.hx",lineNumber=35,className="init.Pkg",methodName="unload"}));
+  __log_Log.log(Std.string(Std.string("INIT(") .. Std.string(__init_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Pkg.hx",lineNumber=34,className="init.Pkg",methodName="unload"}));
 end
 __init_Pkg.prototype.load = function(self) 
-  __log_Log.log(Std.string(Std.string("INIT(") .. Std.string(__init_Pkg.ver)) .. Std.string(") loaded!!!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Pkg.hx",lineNumber=39,className="init.Pkg",methodName="load"}));
+  __log_Log.log(Std.string(Std.string("INIT(") .. Std.string(__init_Pkg.ver)) .. Std.string(") loaded!!!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Pkg.hx",lineNumber=38,className="init.Pkg",methodName="load"}));
 end
 
 __init_Pkg.prototype.__class__ =  __init_Pkg
@@ -1056,15 +1063,15 @@ __init_Transcript.setup = function(wibox,widget)
   _tmp_0.layout = __awful_Wibox.container.margin;
   local widgetTable = _tmp_0;
   local _tmp_1 = ({widgetTable});
+  _tmp_1.widget = __awful_Wibox.container.background;
   _tmp_1.id = "bg";
   _tmp_1.border_color = "#919191";
   _tmp_1.border_width = 1;
   _tmp_1.border_strategy = "inner";
-  _tmp_1.widget = __awful_Wibox.container.background;
-  local setupTable = _tmp_1;
+  local setupTable = __awful_Wibox.widget(_tmp_1);
   local prev_coords = _hx_o({__fields__={x=true,y=true},x=0,y=0});
   local is_pressed = false;
-  wibox:setup(setupTable);
+  wibox:setup(__utils_lua__LuaTools_LuaTable_Impl_.fromObject(setupTable));
   wibox:connect_signal("button::press", function() 
     is_pressed = true;
     local t = __lua_PairTools.copy(mouse.coords());
@@ -1113,7 +1120,7 @@ __log_Log.display = function(s,opts)
   end;
   local value = Reflect.copy(__log_Log.defaults);
   if (value == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   end;
   local _g = 0;
   local _g1 = Reflect.fields(opts);
@@ -1298,6 +1305,55 @@ end
 
 __lua_Thread.new = {}
 __lua_Thread.__name__ = true
+
+__safety_SafetyException.new = function(message,previous,native) 
+  local self = _hx_new(__safety_SafetyException.prototype)
+  __safety_SafetyException.super(self,message,previous,native)
+  return self
+end
+__safety_SafetyException.super = function(self,message,previous,native) 
+  __haxe_Exception.super(self,message,previous,native);
+end
+__safety_SafetyException.__name__ = true
+__safety_SafetyException.prototype = _hx_e();
+
+__safety_SafetyException.prototype.__class__ =  __safety_SafetyException
+__safety_SafetyException.__super__ = __haxe_Exception
+setmetatable(__safety_SafetyException.prototype,{__index=__haxe_Exception.prototype})
+
+__safety_NullPointerException.new = function(message,previous,native) 
+  local self = _hx_new(__safety_NullPointerException.prototype)
+  __safety_NullPointerException.super(self,message,previous,native)
+  return self
+end
+__safety_NullPointerException.super = function(self,message,previous,native) 
+  __safety_SafetyException.super(self,message,previous,native);
+end
+__safety_NullPointerException.__name__ = true
+__safety_NullPointerException.prototype = _hx_e();
+
+__safety_NullPointerException.prototype.__class__ =  __safety_NullPointerException
+__safety_NullPointerException.__super__ = __safety_SafetyException
+setmetatable(__safety_NullPointerException.prototype,{__index=__safety_SafetyException.prototype})
+
+__utils_lua__LuaTools_LuaTable_Impl_.new = {}
+__utils_lua__LuaTools_LuaTable_Impl_.__name__ = true
+__utils_lua__LuaTools_LuaTable_Impl_.fromObject = function(obj) 
+  local _g = __haxe_ds_StringMap.new();
+  local _g1 = 0;
+  local _g2 = Reflect.fields(obj);
+  while (_g1 < _g2.length) do 
+    local f = _g2[_g1];
+    _g1 = _g1 + 1;
+    local value = Reflect.field(obj, f);
+    if (value == nil) then 
+      _g.h[f] = __haxe_ds_StringMap.tnull;
+    else
+      _g.h[f] = value;
+    end;
+  end;
+  do return _g.h end;
+end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -1333,11 +1389,11 @@ local _hx_static_init = function()
   Array.__name__ = true;
   _G.Logger = __log_Log;__haxe_ds_StringMap.tnull = ({});
   
-  __init_Pkg.ver = "1590443480";
+  __init_Pkg.ver = "1591273798";
   
   __init_Transcript.wiboxConfig = ({ontop = true, opacity = 0.9, x = 120, y = 440, height = 115, width = 495});
   
-  __init_Transcript.ver = "1590443480";
+  __init_Transcript.ver = "1591273797";
   
   __log_Log.backgrounds = (function() 
     local _hx_1
@@ -1358,7 +1414,7 @@ local _hx_static_init = function()
   
   __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
   
 end

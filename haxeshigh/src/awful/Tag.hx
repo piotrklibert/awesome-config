@@ -1,7 +1,11 @@
 package awful;
 
+#if !macro
 import lua.Lua;
 import lua.Table;
+#else
+typedef AnyTable = Dynamic;
+#end
 
 @:luaRequire("awful.tag")
 extern class Tag {

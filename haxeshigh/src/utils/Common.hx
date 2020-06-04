@@ -5,9 +5,8 @@ import lua.Package;
 
 import log.Log;
 import utils.lua.LuaTools.LuaTable;
-
 using StringTools;
-using utils.NullTools;
+using Safety;
 
 
 typedef Named = {
@@ -28,9 +27,14 @@ class Common {
 
   public static function formatSimpleEx(exception: String): String {
     final ex = Std.string(exception);
-    // TODO: the fuck?! whyyy? .sure() alone doesnt work! Also, auto-indent is broken here.
-    final formatted = @:nullSafety(Off) ex.split(":").join("\n").sure();
-    return formatted;
+    try {
+      @:nullSafety(Off)
+      return ex.split(":").join("\n");
+    }
+    catch (ex2) {
+      // trace(ex2);
+      return "<error formatting error>";
+    }
   }
 
   @:nullSafety(Off)

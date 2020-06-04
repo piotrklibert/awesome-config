@@ -4,7 +4,7 @@ local _hx_hidden = {__id__=true, hx__closures=true, super=true, prototype=true, 
 _hx_array_mt = {
     __newindex = function(t,k,v)
         local len = t.length
-        t.length =  k >= len and (k + 1) or len
+        t.length = (type(k) == "number" and k >= len and (k + 1)) or len
         rawset(t,k,v)
     end
 }
@@ -21,7 +21,6 @@ function _hx_tab_array(tab, length)
     tab.length = length
     return setmetatable(tab, _hx_array_mt)
 end
-
 
 
 function _hx_print_class(obj, depth)
@@ -61,7 +60,7 @@ end
 function _hx_tostring(obj, depth)
     if depth == nil then
         depth = 0
-    elseif depth > 5 then
+    elseif depth > 15 then
         return "<...>"
     end
 
@@ -133,7 +132,6 @@ function _hx_error(obj)
         _G.print(debug.traceback());
     end
 end
-
 
 local function _hx_obj_newindex(t,k,v)
     t.__fields__[k] = true
@@ -214,6 +212,8 @@ local __lua_UserData = _hx_e()
 local __lua_Thread = _hx_e()
 local __pkg_PackageDefinition = _hx_e()
 local __pkg_PackageManager = _hx_e()
+local __safety_SafetyException = _hx_e()
+local __safety_NullPointerException = _hx_e()
 local __utils_Common = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -861,6 +861,12 @@ __haxe_Exception.thrown = function(value)
   end;
 end
 __haxe_Exception.prototype = _hx_e();
+__haxe_Exception.prototype.toString = function(self) 
+  do return self:get_message() end
+end
+__haxe_Exception.prototype.get_message = function(self) 
+  do return self.__exceptionMessage end
+end
 __haxe_Exception.prototype.get_native = function(self) 
   do return self.__nativeException end
 end
@@ -995,7 +1001,7 @@ __log_Log.display = function(s,opts)
   end;
   local value = Reflect.copy(__log_Log.defaults);
   if (value == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   end;
   local _g = 0;
   local _g1 = Reflect.fields(opts);
@@ -1285,6 +1291,36 @@ end
 
 __pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
 
+__safety_SafetyException.new = function(message,previous,native) 
+  local self = _hx_new(__safety_SafetyException.prototype)
+  __safety_SafetyException.super(self,message,previous,native)
+  return self
+end
+__safety_SafetyException.super = function(self,message,previous,native) 
+  __haxe_Exception.super(self,message,previous,native);
+end
+__safety_SafetyException.__name__ = true
+__safety_SafetyException.prototype = _hx_e();
+
+__safety_SafetyException.prototype.__class__ =  __safety_SafetyException
+__safety_SafetyException.__super__ = __haxe_Exception
+setmetatable(__safety_SafetyException.prototype,{__index=__haxe_Exception.prototype})
+
+__safety_NullPointerException.new = function(message,previous,native) 
+  local self = _hx_new(__safety_NullPointerException.prototype)
+  __safety_NullPointerException.super(self,message,previous,native)
+  return self
+end
+__safety_NullPointerException.super = function(self,message,previous,native) 
+  __safety_SafetyException.super(self,message,previous,native);
+end
+__safety_NullPointerException.__name__ = true
+__safety_NullPointerException.prototype = _hx_e();
+
+__safety_NullPointerException.prototype.__class__ =  __safety_NullPointerException
+__safety_NullPointerException.__super__ = __safety_SafetyException
+setmetatable(__safety_NullPointerException.prototype,{__index=__safety_SafetyException.prototype})
+
 __utils_Common.new = {}
 __utils_Common.__name__ = true
 __utils_Common.check_path = function() 
@@ -1353,7 +1389,7 @@ local _hx_static_init = function()
   
   __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
   
 end

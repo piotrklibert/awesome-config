@@ -4,8 +4,10 @@ import awful.Naughty;
 import lib.Inspect;
 import lib.Globals;
 
-using utils.NullTools;
-using utils.lua.LuaTools;
+import utils.lua.Macro;
+import utils.lua.Macro.castTable as A;
+
+using Safety;
 
 
 enum abstract LogLevel(String) {
@@ -40,7 +42,8 @@ class Log {
     icon: '${res_path}/bang2.png',
     width: 720,
     position: "bottom_right",
-    timeout: 20,
+    timeout: 12,
+    // timeout: 2,
     hover_timeout: 0.2,
   };
 
@@ -58,10 +61,10 @@ class Log {
     switch i {
       case null: return "    ERROR: no pos info!\n";
       case i:
-        return lua.Table.concat([
+        return lua.Table.concat(A([
           '    ${i.fileName}:${i.lineNumber}',
           '    ${i.className}.${i.methodName}'
-        ].asTable(), "\n");
+        ]), "\n");
     }
   }
 
@@ -89,17 +92,19 @@ class Log {
     log(x, opts, infos);
   }
 
+  @:keep
   public static function log(x: Any, ?opts: NaughtyOptions = {}, ?infos: haxe.PosInfos): Void {
-    switch x {
+    switch (x) {
       case (s : String):
         final infos = formatInfos(infos);
         display('${infos}\n    -----------------------\n\n${s}\n', opts);
       default:
-        log(Inspect.inspect(x, {depth: 2}.asTable()), opts, infos);
+        log(Inspect.inspect(x, Macro.asUntypedTable({depth: 2})), opts, infos);
     }
   }
 
-  @:keep public static function __init__() {
+  @:keep
+  public static function __init__() {
     Globals.Logger = Log;
   }
 }

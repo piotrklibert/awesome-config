@@ -4,7 +4,7 @@ local _hx_hidden = {__id__=true, hx__closures=true, super=true, prototype=true, 
 _hx_array_mt = {
     __newindex = function(t,k,v)
         local len = t.length
-        t.length =  k >= len and (k + 1) or len
+        t.length = (type(k) == "number" and k >= len and (k + 1)) or len
         rawset(t,k,v)
     end
 }
@@ -21,7 +21,6 @@ function _hx_tab_array(tab, length)
     tab.length = length
     return setmetatable(tab, _hx_array_mt)
 end
-
 
 
 function _hx_print_class(obj, depth)
@@ -61,7 +60,7 @@ end
 function _hx_tostring(obj, depth)
     if depth == nil then
         depth = 0
-    elseif depth > 5 then
+    elseif depth > 15 then
         return "<...>"
     end
 
@@ -134,7 +133,6 @@ function _hx_error(obj)
     end
 end
 
-
 local function _hx_obj_newindex(t,k,v)
     t.__fields__[k] = true
     rawset(t,k,v)
@@ -194,15 +192,17 @@ local Enum = _hx_e();
 
 local _hx_exports = _hx_exports or {}
 _hx_exports["battery"] = _hx_exports["battery"] or _hx_e()
+_hx_exports["utils"] = _hx_exports["utils"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Math = _hx_e()
 local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
-local __awful_AwfulTools = _hx_e()
 local __awful_Naughty = _G.require("naughty")
 local __awful_Wibox = _G.require("wibox")
+local __awful_gears_GShape = _G.require("gears.shape")
+local __utils_WidgetPreview = _hx_e()
 local __battery_Battery = _hx_e()
 local __pkg_PackageBase = _hx_e()
 local __pkg_PackageDefinition = _hx_e()
@@ -210,7 +210,6 @@ local __battery_Pkg = _hx_e()
 local __haxe_IMap = _hx_e()
 local __haxe_Exception = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
-local __haxe_ValueException = _hx_e()
 local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
@@ -218,8 +217,10 @@ local __lib_Inspect = _G.require("inspect")
 local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
 local __lua_UserData = _hx_e()
+local __lua_PairTools = _hx_e()
 local __lua_Thread = _hx_e()
-local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
+local __safety_SafetyException = _hx_e()
+local __safety_NullPointerException = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -812,11 +813,61 @@ Std.int = function(x)
   end;
 end
 
-__awful_AwfulTools.new = {}
-__awful_AwfulTools.__name__ = true
-__awful_AwfulTools.makeWidget = function(children,properties) 
-  do return __awful_Wibox.widget(__utils_lua__LuaTools_LuaTable_Impl_.merge(children, properties)) end;
+__utils_WidgetPreview.new = function(widget) 
+  local self = _hx_new(__utils_WidgetPreview.prototype)
+  __utils_WidgetPreview.super(self,widget)
+  return self
 end
+__utils_WidgetPreview.super = function(self,widget) 
+  self.is_pressed = false;
+  self.wiboxConfig = ({ontop = true, opacity = 1, x = 962, y = 440, height = 115, width = 495, layout = __awful_Wibox.container.margin});
+  self.prev_coords = _hx_o({__fields__={x=true,y=true},x=0,y=0});
+  local _tmp_2 = ({widget});
+  _tmp_2.widget = __awful_Wibox.container.background;
+  _tmp_2.id = "bg";
+  _tmp_2.border_width = 1;
+  _tmp_2.border_color = "#919191";
+  _tmp_2.border_strategy = "inner";
+  self.widget = __awful_Wibox.widget(_tmp_2);
+  self.wibox = __awful_Wibox(self.wiboxConfig);
+  self.wibox.widget = self.widget;
+  self:connect_signals();
+  self.wibox.visible = true;
+end
+_hx_exports["utils"]["WidgetPreview"] = __utils_WidgetPreview
+__utils_WidgetPreview.__name__ = true
+__utils_WidgetPreview.wrap = function(w) 
+  do return __utils_WidgetPreview.new(w) end;
+end
+__utils_WidgetPreview.prototype = _hx_e();
+__utils_WidgetPreview.prototype.connect_signals = function(self) 
+  local _gthis = self;
+  self.wibox:connect_signal("button::press", function() 
+    _gthis.is_pressed = true;
+    local t = __lua_PairTools.copy(mouse.coords());
+    local tmp = _hx_o(t);
+    _gthis.prev_coords = tmp;
+  end);
+  self.wibox:connect_signal("button::release", function() 
+    _gthis.is_pressed = false;
+  end);
+  self.wibox:connect_signal("mouse::move", function() 
+    local t = __lua_PairTools.copy(mouse.coords());
+    local coords = _hx_o(t);
+    if (_gthis.is_pressed) then 
+      local _gthis1 = _gthis.wibox;
+      _gthis1.x = _gthis1.x + (coords.x - _gthis.prev_coords.x);
+      local _gthis1 = _gthis.wibox;
+      _gthis1.y = _gthis1.y + (coords.y - _gthis.prev_coords.y);
+    end;
+    _gthis.prev_coords = coords;
+  end);
+end
+__utils_WidgetPreview.prototype.destroy = function(self) 
+  self.wibox.visible = false;
+end
+
+__utils_WidgetPreview.prototype.__class__ =  __utils_WidgetPreview
 
 __battery_Battery.new = function() 
   local self = _hx_new(__battery_Battery.prototype)
@@ -824,12 +875,29 @@ __battery_Battery.new = function()
   return self
 end
 __battery_Battery.super = function(self) 
-  self.widget = __awful_AwfulTools.makeWidget(({}), ({widget = wibox.widget.progressbar(), forced_width = 50, forced_height = 5}));
+  local pbar = __awful_Wibox.widget(({max_value = 1, value = 0.75, color = "#AECF96", forced_height = 10, forced_width = 100, shape = __awful_gears_GShape.rounded_bar, border_width = 2, border_color = "#AECF96", widget = __awful_Wibox.widget.progressbar}));
+  local _tmp_0 = ({({forced_width = 40, widget = __awful_Wibox.container.background}),(function() 
+    local _hx_1
+    
+    local _tmp_1 = ({({forced_height = 50, widget = __awful_Wibox.container.background}),pbar});
+    
+    _tmp_1.widget = __awful_Wibox.layout.fixed.vertical;
+    
+    _hx_1 = _tmp_1;
+    return _hx_1
+  end )(),({forced_width = 40, widget = __awful_Wibox.container.background})});
+  _tmp_0.layout = __awful_Wibox.layout.align.horizontal;
+  _tmp_0.forced_height = 30;
+  local batwidget = __awful_Wibox.widget(_tmp_0);
+  __utils_WidgetPreview.super(self,batwidget);
 end
+_hx_exports["battery"]["Battery"] = __battery_Battery
 __battery_Battery.__name__ = true
 __battery_Battery.prototype = _hx_e();
 
 __battery_Battery.prototype.__class__ =  __battery_Battery
+__battery_Battery.__super__ = __utils_WidgetPreview
+setmetatable(__battery_Battery.prototype,{__index=__utils_WidgetPreview.prototype})
 
 __pkg_PackageBase.new = function() 
   local self = _hx_new(__pkg_PackageBase.prototype)
@@ -865,17 +933,22 @@ __battery_Pkg.main = function()
 end
 __battery_Pkg.prototype = _hx_e();
 __battery_Pkg.prototype.start = function(self) 
-  if (__battery_Pkg.widget == nil) then 
-    __battery_Pkg.widget = __battery_Battery.new();
+  if (__battery_Pkg.battery == nil) then 
+    __battery_Pkg.battery = __battery_Battery.new();
   end;
 end
 __battery_Pkg.prototype.stop = function(self) 
+  if (__battery_Pkg.battery ~= nil) then 
+    __battery_Pkg.battery:destroy();
+    __battery_Pkg.battery = nil;
+  end;
 end
 __battery_Pkg.prototype.unload = function(self) 
-  __log_Log.log(Std.string(Std.string("Battery(") .. Std.string(__battery_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/battery/Pkg.hx",lineNumber=33,className="battery.Pkg",methodName="unload"}));
+  self:stop();
+  __log_Log.log(Std.string(Std.string("Battery(") .. Std.string(__battery_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/battery/Pkg.hx",lineNumber=35,className="battery.Pkg",methodName="unload"}));
 end
 __battery_Pkg.prototype.load = function(self) 
-  __log_Log.log(Std.string(Std.string("Battery(") .. Std.string(__battery_Pkg.ver)) .. Std.string(") loaded"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/battery/Pkg.hx",lineNumber=38,className="battery.Pkg",methodName="load"}));
+  __log_Log.log(Std.string(Std.string("Battery(") .. Std.string(__battery_Pkg.ver)) .. Std.string(") loaded"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/battery/Pkg.hx",lineNumber=40,className="battery.Pkg",methodName="load"}));
 end
 
 __battery_Pkg.prototype.__class__ =  __battery_Pkg
@@ -907,18 +980,12 @@ __haxe_Exception.super = function(self,message,previous,native)
   end;
 end
 __haxe_Exception.__name__ = true
-__haxe_Exception.thrown = function(value) 
-  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
-    do return value:get_native() end;
-  else
-    local e = __haxe_ValueException.new(value);
-    e.__skipStack = e.__skipStack + 1;
-    do return e end;
-  end;
-end
 __haxe_Exception.prototype = _hx_e();
-__haxe_Exception.prototype.get_native = function(self) 
-  do return self.__nativeException end
+__haxe_Exception.prototype.toString = function(self) 
+  do return self:get_message() end
+end
+__haxe_Exception.prototype.get_message = function(self) 
+  do return self.__exceptionMessage end
 end
 
 __haxe_Exception.prototype.__class__ =  __haxe_Exception
@@ -959,22 +1026,6 @@ end
 __haxe_NativeStackTrace.exceptionStack = function() 
   do return _hx_tab_array({}, 0) end;
 end
-
-__haxe_ValueException.new = function(value,previous,native) 
-  local self = _hx_new(__haxe_ValueException.prototype)
-  __haxe_ValueException.super(self,value,previous,native)
-  return self
-end
-__haxe_ValueException.super = function(self,value,previous,native) 
-  __haxe_Exception.super(self,Std.string(value),previous,native);
-  self.value = value;
-end
-__haxe_ValueException.__name__ = true
-__haxe_ValueException.prototype = _hx_e();
-
-__haxe_ValueException.prototype.__class__ =  __haxe_ValueException
-__haxe_ValueException.__super__ = __haxe_Exception
-setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
 
 __haxe_ds_StringMap.new = function() 
   local self = _hx_new(__haxe_ds_StringMap.prototype)
@@ -1051,7 +1102,7 @@ __log_Log.display = function(s,opts)
   end;
   local value = Reflect.copy(__log_Log.defaults);
   if (value == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   end;
   local _g = 0;
   local _g1 = Reflect.fields(opts);
@@ -1226,24 +1277,46 @@ end
 __lua_UserData.new = {}
 __lua_UserData.__name__ = true
 
+__lua_PairTools.new = {}
+__lua_PairTools.__name__ = true
+__lua_PairTools.copy = function(table1) 
+  local ret = ({});
+  for k,v in _G.pairs(table1) do ret[k] = v end;
+  do return ret end;
+end
+
 __lua_Thread.new = {}
 __lua_Thread.__name__ = true
 
-__utils_lua__LuaTools_LuaTable_Impl_.new = {}
-__utils_lua__LuaTools_LuaTable_Impl_.__name__ = true
-__utils_lua__LuaTools_LuaTable_Impl_.merge = function(this1,other) 
-  local _g = 0;
-  local _g1 = Reflect.fields(other);
-  while (_g < _g1.length) do 
-    local f = _g1[_g];
-    _g = _g + 1;
-    this1[f] = __utils_lua__LuaTools_LuaTable_Impl_.arrayRead(other, f);
-  end;
-  do return this1 end;
+__safety_SafetyException.new = function(message,previous,native) 
+  local self = _hx_new(__safety_SafetyException.prototype)
+  __safety_SafetyException.super(self,message,previous,native)
+  return self
 end
-__utils_lua__LuaTools_LuaTable_Impl_.arrayRead = function(this1,n) 
-  do return this1[n] end;
+__safety_SafetyException.super = function(self,message,previous,native) 
+  __haxe_Exception.super(self,message,previous,native);
 end
+__safety_SafetyException.__name__ = true
+__safety_SafetyException.prototype = _hx_e();
+
+__safety_SafetyException.prototype.__class__ =  __safety_SafetyException
+__safety_SafetyException.__super__ = __haxe_Exception
+setmetatable(__safety_SafetyException.prototype,{__index=__haxe_Exception.prototype})
+
+__safety_NullPointerException.new = function(message,previous,native) 
+  local self = _hx_new(__safety_NullPointerException.prototype)
+  __safety_NullPointerException.super(self,message,previous,native)
+  return self
+end
+__safety_NullPointerException.super = function(self,message,previous,native) 
+  __safety_SafetyException.super(self,message,previous,native);
+end
+__safety_NullPointerException.__name__ = true
+__safety_NullPointerException.prototype = _hx_e();
+
+__safety_NullPointerException.prototype.__class__ =  __safety_NullPointerException
+__safety_NullPointerException.__super__ = __safety_SafetyException
+setmetatable(__safety_NullPointerException.prototype,{__index=__safety_SafetyException.prototype})
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -1277,7 +1350,9 @@ local _hx_static_init = function()
   
   String.__name__ = true;
   Array.__name__ = true;
-  _G.Logger = __log_Log;__battery_Pkg.ver = "1590442016";
+  _G.Logger = __log_Log;__utils_WidgetPreview.ver = "1591273806";
+  
+  __battery_Pkg.ver = "1591273806";
   
   __haxe_ds_StringMap.tnull = ({});
   
@@ -1300,7 +1375,7 @@ local _hx_static_init = function()
   
   __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
   
-  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=20,hover_timeout=0.2});
+  __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/bang2.png"),width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
   
 end

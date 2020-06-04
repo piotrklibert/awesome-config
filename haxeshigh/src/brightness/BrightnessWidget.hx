@@ -1,23 +1,10 @@
 package brightness;
 
-// TODO: cleanup
-import lua.Table;
-import haxe.ds.Option;
-import haxe.extern.Rest;
+import awful.Wibox;
+import awful.Spawn;
+import utils.lua.Macro;
 
-import awful.*;
-import utils.Common;
-import utils.lua.LuaTools;
-import utils.lua.Macro as M;
-import log.Log;
-import brightness.Pkg;
-import haxecontracts.*;
-
-using Lambda;
-using utils.OptionTools;
-using utils.NullTools;
-using utils.lua.LuaTools;
-
+using Safety;
 
 
 enum State {
@@ -28,7 +15,7 @@ enum State {
 
 @:expose
 @:nullSafety(Strict)
-class BrightnessWidget implements haxecontracts.HaxeContracts {
+class BrightnessWidget {
   public static final PATH_TO_ICON = "/home/cji/.config/awesome/haxeshigh/res/br-wid-1.png";
   public static final FONT = "mono 12";
   public static final BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
@@ -36,7 +23,7 @@ class BrightnessWidget implements haxecontracts.HaxeContracts {
   var state: State;
   var widget: Null<awful.Widget>;
 
-  public function new(){
+  public function new() {
     state = Ready(get_brightness());
   }
 
@@ -57,45 +44,45 @@ class BrightnessWidget implements haxecontracts.HaxeContracts {
 
 
   public function w() {
-    final brightness_text = untyped __call__("wibox.widget.textbox");
-    brightness_text.set_font(FONT);
-    brightness_text.set_text(' ${get_brightness()}%');
-
-    final icon = M.asTable({
-      image: PATH_TO_ICON,
-      resize: false,
-      widget: untyped __lua__("wibox.widget.imagebox"),
-      forced_width: 25
+    final brightness_text = Macro.widget({
+      widget: Wibox.widget.textbox,
+      font: FONT,
+      text: ' ${get_brightness()}%'
+    });
+    final widget = Macro.widget({
+      layout: Wibox.layout.fixed.horizontal,
+      id: "brightness",
+      children: [
+        {
+          widget: Wibox.container.margin,
+          top: 5,
+          children: [{
+            widget: Wibox.widget.imagebox,
+            image: PATH_TO_ICON,
+            resize: false,
+            forced_width: 25
+          }]
+        },
+        brightness_text,
+      ]
     });
 
-    final brightness_icon = AwfulTools.makeWidget(
-      [ icon ].asTable(),
-      { top: 5,
-        widget: untyped __lua__("wibox.container.margin") }.asTable()
-    );
-    final t: LuaTable = M.asTable([ brightness_icon, brightness_text ]);
-    final widget = AwfulTools.makeWidget(
-      t,
-      { layout: untyped __lua__("wibox.layout.fixed.horizontal"),
-        id: "brightness" }.asTable()
-    );
-
     widget.connect_signal("button::press", function (_, _, _, button) {
-        if (Type.enumConstructor(state) == "InProgress")
+      if (Type.enumConstructor(state) == "InProgress")
+        return;
+      final percent = get_brightness();
+      switch (button) {
+        case 4:
+          brightness_text.set_text(" " + Math.min(percent + 5, 100) + "%");
+          set_brightness(Math.min(percent + 5, 100));
+        case 5:
+          brightness_text.set_text(" " + Math.max(percent - 5, 0) + "%");
+          set_brightness(Math.max(percent - 5, 0));
+        case _:
           return;
-        final percent = get_brightness();
-        switch (button) {
-          case 4:
-            brightness_text.set_text(" " + Math.min(percent + 5, 100) + "%");
-            set_brightness(Math.min(percent + 5, 100));
-          case 5:
-            brightness_text.set_text(" " + Math.max(percent - 5, 0) + "%");
-            set_brightness(Math.max(percent - 5, 0));
-          case _:
-            return;
-        }
       }
-    );
+    });
+
     return widget;
   }
 }

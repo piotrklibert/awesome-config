@@ -1,7 +1,5 @@
 -L tink_core
--L tink_lang
-
 -L thx.core
-
 -L HaxeContracts
 -L safety
+-L tink_lang

@@ -16,20 +16,22 @@ class Pkg extends PackageBase implements PackageDefinition {
   public static final ver = M.timestamp();
   public static function instance() return new Pkg();
 
-  static var widget: Null<battery.Battery>;
+  public static var battery: Null<battery.Battery>;
 
   public function start() {
-    if (widget == null) widget = new battery.Battery();
-    // widget.visible = true;
+    if (battery == null) battery = new battery.Battery();
+    // battery.visible = true;
   }
 
   public function stop() {
-    // if (widget != null) widget.visible = false;
+    if (battery != null) {
+      battery.destroy();
+      battery = null;
+    }
   }
 
   public function unload() {
-    // this.stop();
-    // widget = null;
+    this.stop();
     Log.info('Battery($ver): unload!');
   }
 
@@ -39,7 +41,5 @@ class Pkg extends PackageBase implements PackageDefinition {
   }
 
 
-  public static function main() {
-
-  }
+  @:keep public static function main() {}
 }

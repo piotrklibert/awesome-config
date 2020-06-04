@@ -1,5 +1,8 @@
 package awful.gears;
 
+import haxe.Constraints;
+
+
 @:luaRequire("gears.shape")
 extern class GShape {
   static final arc: Function;

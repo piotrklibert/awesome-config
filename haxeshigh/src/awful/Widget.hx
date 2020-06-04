@@ -33,7 +33,6 @@ typedef WidgetOpts = {
 extern class Widget extends awful.widget.Base implements Dynamic {
   static function taglist(o: Any): Dynamic;
 
-
   static inline function widget(args: Dynamic): Widget {
     return Wibox.makeWidget(args);
   }

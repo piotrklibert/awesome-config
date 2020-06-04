@@ -13,7 +13,7 @@ using utils.NullTools;
 @:expose
 @:nullSafety(Strict)
 class Transcript {
-  static final wiboxConfig = M.asTable({
+  static final wiboxConfig = M.castTable({
     ontop: true,
     opacity: 0.9,
     x: 120, y: 440,
@@ -30,17 +30,19 @@ class Transcript {
 
 
   public static function setup(wibox: Wibox, widget: Widget): Wibox {
-    final widgetTable = M.withProps([widget], {
-        margins: 15,
-        layout: Wibox.container.margin
+    final widgetTable = M.declareWidget({
+      margins: 15,
+      layout: Wibox.container.margin,
+      children: [widget]
     });
 
-    final setupTable = M.withProps([widgetTable], {
-        id: "bg",
-        border_color: "#919191",
-        border_width: 1,
-        border_strategy: "inner",
-        widget: Wibox.container.background,
+    final setupTable = M.widget({
+      widget: Wibox.container.background,
+      id: "bg",
+      border_color: "#919191",
+      border_width: 1,
+      border_strategy: "inner",
+      children: [widgetTable],
     });
 
     var prev_coords: Point = {x: 0, y: 0};
@@ -86,5 +88,4 @@ class Transcript {
     }
     return Widget.widget(ret);
   }
-
 }

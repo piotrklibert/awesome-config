@@ -58,10 +58,10 @@ class TaglistRow {
         Tag.viewtoggle(x);
         Tag.viewtoggle(sel);
       });
-    final conf = M.asTable2({
+    final conf = M.castTable({
       screen: s,
       filter: this.makeFilterFun(),
-      buttons: M.asTable2([button])
+      buttons: M.castTable([button])
       });
     return Widget.taglist(conf);
   }
@@ -137,7 +137,7 @@ class Taglist {
       new TaglistRow(["7", "8", "9"]),
     ];
 
-    final ret = M.asTable2({
+    final ret = M.castTable({
       id: "grid",
       spacing: 6,
       layout: Wibox.layout.fixed.vertical

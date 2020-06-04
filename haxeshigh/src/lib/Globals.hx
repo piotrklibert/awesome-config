@@ -6,6 +6,9 @@ import log.Log;
 
 @:native("_G")
 extern class Globals implements Dynamic {
+  public static final gtk: Dynamic;
+  public static final lgi: Dynamic;
+
 
   public static function s(obj: Any): Void; // show_summary
   public static function st(obj: Any): Void; // show_summary + tabular
@@ -31,4 +34,6 @@ extern class Globals implements Dynamic {
   public static var Taglist: Dynamic;
   public static var PackageManager: Null<pkg.PackageManager>;
   public static var Logger: Null<Class<Log>>;
+
+  public static function clone<T>(x: T): T;
 }

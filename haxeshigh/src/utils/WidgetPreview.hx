@@ -1,59 +1,63 @@
-package init;
+package utils;
 
-import awful.*;
+// import awful.*;
+import awful.Wibox;
+import awful.Mouse;
 
-import lua.Table;
-import utils.lua.Macro as M;
+import utils.lua.Macro;
+import utils.lua.Macro.castTable as A;
+
 import utils.Common;
+import lib.Globals.clone;
 
-using utils.NullTools;
+using Safety;
 
 
 @:tink
 @:expose
 @:nullSafety(Strict)
 class WidgetPreview {
-  static final wiboxConfig = M.asTable({
+  public static final ver = Macro.timestamp();
+  public static function wrap(w) return new WidgetPreview(w); // Lua compat
+
+  final wiboxConfig = A({
     ontop: true,
-    opacity: 0.9,
-    x: 120, y: 440,
+    opacity: 1,
+    x: 962, y: 440,
     height: 115,
     width: 495,
+    layout: Wibox.container.margin,
   });
 
 
-  public static function get_wibox(?s: Screen = Screen.focused()) {
-    final wb = new Wibox(wiboxConfig);
-    setup(wb.sure(), mkWidget(s));
-    return wb;
+  final widget: awful.Widget;
+  public final wibox: awful.Wibox;
+
+  var prev_coords: Point = {x: 0, y: 0};
+  var is_pressed = false;
+
+  public function new(widget: awful.Widget) {
+    this.widget = Macro.widget({
+      widget: Wibox.container.background,
+      id: "bg",
+      border_width: 1,
+      border_color: "#919191",
+      border_strategy: "inner",
+      children: [widget],
+    });
+    this.wibox = new Wibox(wiboxConfig);
+    this.wibox.widget = this.widget;
+    connect_signals();
+    wibox.visible = true;
   }
 
-
-  public static function setup(wibox: Wibox, widget: Widget): Wibox {
-    final widgetTable = M.withProps([widget], {
-        margins: 15,
-        layout: Wibox.container.margin
-    });
-
-    final setupTable = M.withProps([widgetTable], {
-        id: "bg",
-        border_color: "#919191",
-        border_width: 1,
-        border_strategy: "inner",
-        widget: Wibox.container.background,
-    });
-
-    var prev_coords: Point = {x: 0, y: 0};
-    var is_pressed = false;
-
-    wibox.setup(setupTable);
-
+  function connect_signals() {
     wibox.connect_signal("button::press", function () {
-        is_pressed = true;
-        prev_coords = Mouse.get();
+      is_pressed = true;
+      prev_coords = Mouse.get();
     });
     wibox.connect_signal("button::release", function () {
-        is_pressed = false;
+      is_pressed = false;
     });
     wibox.connect_signal("mouse::move", function () {
         final coords: Point = Mouse.get();
@@ -61,30 +65,11 @@ class WidgetPreview {
           wibox.x += coords.x - prev_coords.x;
           wibox.y += coords.y - prev_coords.y;
         }
-        widget.set_markup(makeText(coords));
         prev_coords = coords;
     });
-
-    wibox.visible = true;
-
-    return wibox;
   }
 
-  public static final ver = M.timestamp();
-
-  static function makeText(pos: Point = {x: 0, y: 0}) {
-    return '<span foreground="blue">$ver</span>\n<b>${pos.x}x${pos.y}</b>!!!';
+  public function destroy() {
+    this.wibox.visible = false;
   }
-
-
-  static function mkWidget(s: Screen): Widget {
-    final ret = {
-      markup: makeText(),
-      align: 'center',
-      valign: 'center',
-      widget: untyped __lua__("wibox.widget.textbox"),
-    }
-    return Widget.widget(ret);
-  }
-
 }
