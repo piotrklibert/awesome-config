@@ -201,10 +201,10 @@ local __awful_Naughty = _G.require("naughty")
 local __haxe_IMap = _hx_e()
 local __haxe_Exception = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
-local __haxe_ValueException = _hx_e()
 local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
+local __haxe_iterators_MapKeyValueIterator = _hx_e()
 local __lib_Inspect = _G.require("inspect")
 local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
@@ -851,24 +851,12 @@ __haxe_Exception.super = function(self,message,previous,native)
   end;
 end
 __haxe_Exception.__name__ = true
-__haxe_Exception.thrown = function(value) 
-  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
-    do return value:get_native() end;
-  else
-    local e = __haxe_ValueException.new(value);
-    e.__skipStack = e.__skipStack + 1;
-    do return e end;
-  end;
-end
 __haxe_Exception.prototype = _hx_e();
 __haxe_Exception.prototype.toString = function(self) 
   do return self:get_message() end
 end
 __haxe_Exception.prototype.get_message = function(self) 
   do return self.__exceptionMessage end
-end
-__haxe_Exception.prototype.get_native = function(self) 
-  do return self.__nativeException end
 end
 
 __haxe_Exception.prototype.__class__ =  __haxe_Exception
@@ -910,22 +898,6 @@ __haxe_NativeStackTrace.exceptionStack = function()
   do return _hx_tab_array({}, 0) end;
 end
 
-__haxe_ValueException.new = function(value,previous,native) 
-  local self = _hx_new(__haxe_ValueException.prototype)
-  __haxe_ValueException.super(self,value,previous,native)
-  return self
-end
-__haxe_ValueException.super = function(self,value,previous,native) 
-  __haxe_Exception.super(self,Std.string(value),previous,native);
-  self.value = value;
-end
-__haxe_ValueException.__name__ = true
-__haxe_ValueException.prototype = _hx_e();
-
-__haxe_ValueException.prototype.__class__ =  __haxe_ValueException
-__haxe_ValueException.__super__ = __haxe_Exception
-setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
-
 __haxe_ds_StringMap.new = function() 
   local self = _hx_new(__haxe_ds_StringMap.prototype)
   __haxe_ds_StringMap.super(self)
@@ -950,6 +922,18 @@ __haxe_ds_StringMap.prototype.get = function(self,key)
     ret = nil;
   end;
   do return ret end
+end
+__haxe_ds_StringMap.prototype.keys = function(self) 
+  local _gthis = self;
+  local next = _G.next;
+  local cur = next(self.h, nil);
+  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
+    local ret = cur;
+    cur = next(_gthis.h, cur);
+    do return ret end;
+  end,hasNext=function(self) 
+    do return cur ~= nil end;
+  end}) end
 end
 
 __haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
@@ -992,6 +976,27 @@ __haxe_iterators_ArrayKeyValueIterator.__name__ = true
 __haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
 __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
+
+__haxe_iterators_MapKeyValueIterator.new = function(map) 
+  local self = _hx_new(__haxe_iterators_MapKeyValueIterator.prototype)
+  __haxe_iterators_MapKeyValueIterator.super(self,map)
+  return self
+end
+__haxe_iterators_MapKeyValueIterator.super = function(self,map) 
+  self.map = map;
+  self.keys = map:keys();
+end
+__haxe_iterators_MapKeyValueIterator.__name__ = true
+__haxe_iterators_MapKeyValueIterator.prototype = _hx_e();
+__haxe_iterators_MapKeyValueIterator.prototype.hasNext = function(self) 
+  do return self.keys:hasNext() end
+end
+__haxe_iterators_MapKeyValueIterator.prototype.next = function(self) 
+  local key = self.keys:next();
+  do return _hx_o({__fields__={value=true,key=true},value=self.map:get(key),key=key}) end
+end
+
+__haxe_iterators_MapKeyValueIterator.prototype.__class__ =  __haxe_iterators_MapKeyValueIterator
 
 __log_Log.new = {}
 __log_Log.__name__ = true
@@ -1191,6 +1196,7 @@ __pkg_PackageManager.new = function()
   return self
 end
 __pkg_PackageManager.super = function(self) 
+  self.widgetCache = __haxe_ds_StringMap.new();
   self.packages = _hx_tab_array({}, 0);
   self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
 end
@@ -1205,13 +1211,25 @@ __pkg_PackageManager.main = function()
     __log_Log.log("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=113,className="pkg.PackageManager",methodName="main"}));
     local mgr = __pkg_PackageManager.new();
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
+    local _g = __haxe_iterators_MapKeyValueIterator.new(_g.widgetCache);
+    while (_g:hasNext()) do 
+      local _g = _g:next();
+      local k = _g.key;
+      local v = _g.value;
+      local _this = mgr.widgetCache;
+      if (v == nil) then 
+        _this.h[k] = __haxe_ds_StringMap.tnull;
+      else
+        _this.h[k] = v;
+      end;
+    end;
     _G.PackageManager = mgr;
   end;
   local value = _G.PackageManager;
   if (value == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   end;
-  __log_Log.log(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=120,className="pkg.PackageManager",methodName="main"}));
+  __log_Log.log(Std.string(Std.string("PKGMAN: Loaded! We have ") .. Std.string(value.packages.length)) .. Std.string(" packages."), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=122,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_e();
 __pkg_PackageManager.prototype.reload = function(self,mod,hard) 

@@ -11,7 +11,7 @@ import log.Log;
 
 using Lambda;
 using StringTools;
-using utils.NullTools;
+using Safety;
 
 
 #if pkg
@@ -25,7 +25,7 @@ class PackageManager {
     "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
 
   public final packages: Array<PackageDefinition> = [];
-
+  public final widgetCache: Map<String, awful.Widget> = [];
 
   public function reload(mod: String, ?hard: Bool = true) {
     this.unload(mod, hard);
@@ -113,6 +113,8 @@ class PackageManager {
         Log.info("PKGMAN: Found previous PackageManager instance, updating...");
         final mgr = new PackageManager();
         prev.packages.iter(mgr.packages.push);
+        for (k => v in prev.widgetCache)
+          mgr.widgetCache[k] = v;
         Globals.PackageManager = mgr;
     }
     final mgr = Globals.PackageManager.sure();

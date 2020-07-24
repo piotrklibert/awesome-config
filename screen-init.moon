@@ -310,11 +310,16 @@ initialize = ->
       w\connect_signal("mouse::leave", clb_out)
       w
 
-    _, brightnessWidget = pcall ->
+    ok, brightnessWidget = pcall ->
       PackageManager\load("brightness", true)
       brightness = PackageManager\findByName("brightness")
       brightness\start()
-      brightness.widget\w()
+      -- print(brightness\get_widget()\w())
+      brightness\get_widget()
+
+    if not ok
+      print(brightnessWidget)
+      brightnessWidget = nil
 
     -- Add widgets to the wibox
     s.mywibox\setup {

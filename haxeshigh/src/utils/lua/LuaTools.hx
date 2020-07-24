@@ -17,7 +17,12 @@ typedef MixedTable<V> = Table<TableKey, V>;
 typedef TMacro = utils.lua.Macro;
 
 
-abstract LuaTable(AnyTable) from MixedTable<Any> from AnyTable to AnyTable {
+abstract LuaTable(AnyTable)
+  from MixedTable<Any>
+  from AnyTable
+  from Table<Any, Any>
+  to AnyTable
+  to Table<Dynamic, Dynamic> {
 
   public inline function fields() {
     return Reflect.fields(this);
@@ -32,7 +37,7 @@ abstract LuaTable(AnyTable) from MixedTable<Any> from AnyTable to AnyTable {
 
   // Accessors
   @:op([])
-  public function arrayRead(n: TableKey)
+  public function arrayRead(n: TableKey): Any
     return untyped this[n];
 
   @:op([])
@@ -40,11 +45,11 @@ abstract LuaTable(AnyTable) from MixedTable<Any> from AnyTable to AnyTable {
     return untyped this[n] = val;
 
   @:op(a.b)
-  public function fieldRead(name: String)
+  public function fieldRead(name: String): Any
     return untyped this[name];
 
   @:op(a.b)
-  public function fieldWrite(name: String, val: Any)
+  public function fieldWrite<T>(name: String, val: T): T
     return untyped this[name] = val;
 
 

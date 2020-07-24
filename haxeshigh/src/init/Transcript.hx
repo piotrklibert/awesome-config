@@ -51,20 +51,20 @@ class Transcript {
     wibox.setup(setupTable);
 
     wibox.connect_signal("button::press", function () {
-        is_pressed = true;
-        prev_coords = Mouse.get();
+      is_pressed = true;
+      prev_coords = Mouse.get();
     });
     wibox.connect_signal("button::release", function () {
-        is_pressed = false;
+      is_pressed = false;
     });
     wibox.connect_signal("mouse::move", function () {
-        final coords: Point = Mouse.get();
-        if (is_pressed) {
-          wibox.x += coords.x - prev_coords.x;
-          wibox.y += coords.y - prev_coords.y;
-        }
-        widget.set_markup(makeText(coords));
-        prev_coords = coords;
+      final coords: Point = Mouse.get();
+      if (is_pressed) {
+        wibox.x += coords.x - prev_coords.x;
+        wibox.y += coords.y - prev_coords.y;
+      }
+      widget.set_markup(makeText(coords));
+      prev_coords = coords;
     });
 
     wibox.visible = true;

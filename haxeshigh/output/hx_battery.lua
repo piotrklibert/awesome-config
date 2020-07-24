@@ -1350,9 +1350,9 @@ local _hx_static_init = function()
   
   String.__name__ = true;
   Array.__name__ = true;
-  _G.Logger = __log_Log;__utils_WidgetPreview.ver = "1591273806";
+  _G.Logger = __log_Log;__utils_WidgetPreview.ver = "1591274335";
   
-  __battery_Pkg.ver = "1591273806";
+  __battery_Pkg.ver = "1591274335";
   
   __haxe_ds_StringMap.tnull = ({});
   

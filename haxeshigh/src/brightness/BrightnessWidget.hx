@@ -1,8 +1,12 @@
 package brightness;
 
 import awful.Wibox;
+import awful.Widget;
 import awful.Spawn;
 import utils.lua.Macro;
+import lib.Globals;
+
+import log.Log;
 
 using Safety;
 
@@ -21,7 +25,9 @@ class BrightnessWidget {
   public static final BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
 
   var state: State;
+  var brightnessWidget: Null<awful.Widget>;
   var widget: Null<awful.Widget>;
+
 
   public function new() {
     state = Ready(get_brightness());
@@ -42,16 +48,15 @@ class BrightnessWidget {
     return val;
   }
 
-
+  // TODO: refactor, handle errors better, fix package definition after
   public function w() {
     final brightness_text = Macro.widget({
       widget: Wibox.widget.textbox,
       font: FONT,
       text: ' ${get_brightness()}%'
     });
-    final widget = Macro.widget({
+    this.brightnessWidget = Macro.widget({
       layout: Wibox.layout.fixed.horizontal,
-      id: "brightness",
       children: [
         {
           widget: Wibox.container.margin,
@@ -66,10 +71,25 @@ class BrightnessWidget {
         brightness_text,
       ]
     });
+    try {
+      // TODO: how to wrap the widget with 'widget' base class, instead of container?
+      this.widget = Macro.widget({
+        id: "brightness",
+        widget: Wibox.container.margin,
+        children: [this.brightnessWidget]
+      });
+    }
+    catch (e: Any) {
+      this.widget = this.brightnessWidget;
+      Log.log("not ok! " + Std.string(e));
+    }
+    this.connect_signals(brightness_text);
+    return this.widget;
+  }
 
-    widget.connect_signal("button::press", function (_, _, _, button) {
-      if (Type.enumConstructor(state) == "InProgress")
-        return;
+  function connect_signals(brightness_text: Widget) {
+    this.widget.sure().connect_signal("button::press", function (_, _, _, button) {
+      if (Type.enumConstructor(state) == "InProgress") return;
       final percent = get_brightness();
       switch (button) {
         case 4:
@@ -82,7 +102,5 @@ class BrightnessWidget {
           return;
       }
     });
-
-    return widget;
   }
 }

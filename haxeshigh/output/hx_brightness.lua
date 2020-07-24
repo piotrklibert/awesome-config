@@ -966,7 +966,6 @@ __brightness_BrightnessWidget.prototype.set_brightness = function(self,percent)
   do return val end
 end
 __brightness_BrightnessWidget.prototype.w = function(self) 
-  local _gthis = self;
   local brightness_text = __awful_Wibox.widget(({widget = __awful_Wibox.widget.textbox, font = __brightness_BrightnessWidget.FONT, text = Std.string(Std.string(" ") .. Std.string(self:get_brightness())) .. Std.string("%")}));
   local _tmp_0 = ({(function() 
     local _hx_1
@@ -981,14 +980,38 @@ __brightness_BrightnessWidget.prototype.w = function(self)
     return _hx_1
   end )(),brightness_text});
   _tmp_0.layout = __awful_Wibox.layout.fixed.horizontal;
-  _tmp_0.id = "brightness";
-  local widget = __awful_Wibox.widget(_tmp_0);
-  widget:connect_signal("button::press", function(_,_1,_2,button) 
+  self.brightnessWidget = __awful_Wibox.widget(_tmp_0);
+  local _hx_status, _hx_result = pcall(function() 
+  
+      local _tmp_2 = ({self.brightnessWidget});
+      _tmp_2.id = "brightness";
+      _tmp_2.widget = __awful_Wibox.container.margin;
+      self.widget = __awful_Wibox.widget(_tmp_2);
+    return _hx_pcall_default
+  end)
+  if not _hx_status and _hx_result == "_hx_pcall_break" then
+  elseif not _hx_status then 
+    local _g = _hx_result;
+    local e = __haxe_Exception.caught(_g):unwrap();
+    self.widget = self.brightnessWidget;
+    __log_Log.log(Std.string("not ok! ") .. Std.string(Std.string(e)), nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/BrightnessWidget.hx",lineNumber=84,className="brightness.BrightnessWidget",methodName="w"}));
+  elseif _hx_result ~= _hx_pcall_default then
+    return _hx_result
+  end;
+  self:connect_signals(brightness_text);
+  do return self.widget end
+end
+__brightness_BrightnessWidget.prototype.connect_signals = function(self,brightness_text) 
+  local _gthis = self;
+  local value = self.widget;
+  if (value == nil) then 
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
+  end;
+  value:connect_signal("button::press", function(_,_1,_2,button) 
     if (_gthis.state[0] == "InProgress") then 
       do return end;
     end;
     local percent = _gthis:get_brightness();
-    local button = button;
     if (button) == 4 then 
       brightness_text:set_text(Std.string(Std.string(" ") .. Std.string(Math.min(percent + 5, 100))) .. Std.string("%"));
       _gthis:set_brightness(Math.min(percent + 5, 100));
@@ -997,7 +1020,6 @@ __brightness_BrightnessWidget.prototype.w = function(self)
       _gthis:set_brightness(Math.max(percent - 5, 0));else
     do return end; end;
   end);
-  do return widget end
 end
 
 __brightness_BrightnessWidget.prototype.__class__ =  __brightness_BrightnessWidget
@@ -1036,6 +1058,13 @@ __brightness_Pkg.instance = function()
   do return __brightness_Pkg.new() end;
 end
 __brightness_Pkg.prototype = _hx_e();
+__brightness_Pkg.prototype.get_widget = function(self) 
+  local value = self.widget;
+  if (value == nil) then 
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
+  end;
+  do return value:w() end
+end
 __brightness_Pkg.prototype.start = function(self) 
   if (self.widget == nil) then 
     self.widget = __brightness_BrightnessWidget.new();
@@ -1043,7 +1072,7 @@ __brightness_Pkg.prototype.start = function(self)
 end
 __brightness_Pkg.prototype.stop = function(self) 
   if (self.widget == nil) then 
-    _G.error(__haxe_Exception.thrown("null pointer in .sure() call"),0);
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   end;
   self.widget = nil;
 end
@@ -1059,10 +1088,10 @@ __brightness_Pkg.prototype.unload = function(self)
   elseif _hx_result ~= _hx_pcall_default then
     return _hx_result
   end;
-  __log_Log.log(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=34,className="brightness.Pkg",methodName="unload"}));
+  __log_Log.log(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string("): unload!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=39,className="brightness.Pkg",methodName="unload"}));
 end
 __brightness_Pkg.prototype.load = function(self) 
-  __log_Log.log(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string(") loaded!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=38,className="brightness.Pkg",methodName="load"}));
+  __log_Log.log(Std.string(Std.string("BRIGHTNESS(") .. Std.string(__brightness_Pkg.ver)) .. Std.string(") loaded!"), _hx_o({__fields__={bg=true,icon=true},bg=__log_Log.backgrounds:get("Info"),icon=Std.string(Std.string("") .. Std.string(__log_Log.res_path)) .. Std.string("/debug2.png")}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=43,className="brightness.Pkg",methodName="load"}));
 end
 
 __brightness_Pkg.prototype.__class__ =  __brightness_Pkg
@@ -1094,6 +1123,13 @@ __haxe_Exception.super = function(self,message,previous,native)
   end;
 end
 __haxe_Exception.__name__ = true
+__haxe_Exception.caught = function(value) 
+  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
+    do return value end;
+  else
+    do return __haxe_ValueException.new(value, nil, value) end;
+  end;
+end
 __haxe_Exception.thrown = function(value) 
   if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
     do return value:get_native() end;
@@ -1104,6 +1140,9 @@ __haxe_Exception.thrown = function(value)
   end;
 end
 __haxe_Exception.prototype = _hx_e();
+__haxe_Exception.prototype.unwrap = function(self) 
+  do return self.__nativeException end
+end
 __haxe_Exception.prototype.toString = function(self) 
   do return self:get_message() end
 end
@@ -1164,6 +1203,9 @@ __haxe_ValueException.super = function(self,value,previous,native)
 end
 __haxe_ValueException.__name__ = true
 __haxe_ValueException.prototype = _hx_e();
+__haxe_ValueException.prototype.unwrap = function(self) 
+  do return self.value end
+end
 
 __haxe_ValueException.prototype.__class__ =  __haxe_ValueException
 __haxe_ValueException.__super__ = __haxe_Exception
@@ -1506,7 +1548,7 @@ local _hx_static_init = function()
   
   __brightness_BrightnessWidget.BACKLIGHT_PATH = "/sys/class/backlight/intel_backlight/brightness";
   
-  __brightness_Pkg.ver = "1591273804";
+  __brightness_Pkg.ver = "1595587170";
   
   __haxe_ds_StringMap.tnull = ({});
   

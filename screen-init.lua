@@ -365,12 +365,16 @@ initialize = function()
       w:connect_signal("mouse::leave", clb_out)
       return w
     end
-    local _, brightnessWidget = pcall(function()
+    local ok, brightnessWidget = pcall(function()
       PackageManager:load("brightness", true)
       local brightness = PackageManager:findByName("brightness")
       brightness:start()
-      return brightness.widget:w()
+      return brightness:get_widget()
     end)
+    if not ok then
+      print(brightnessWidget)
+      brightnessWidget = nil
+    end
     return s.mywibox:setup({
       layout = wibox.layout.align.horizontal,
       {

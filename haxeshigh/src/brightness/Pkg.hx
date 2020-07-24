@@ -5,7 +5,7 @@ import log.Log;
 import utils.lua.Macro as M;
 import brightness.BrightnessWidget;
 
-using utils.NullTools;
+using Safety;
 
 
 @:expose
@@ -18,13 +18,18 @@ class Pkg extends PackageBase implements PackageDefinition {
 
   public var widget: Null<BrightnessWidget> = null;
 
+
+  public function get_widget() {
+    return widget.sure().w();
+  }
+
   public function start() {
     if (this.widget == null)
       this.widget = new BrightnessWidget();
   }
 
   public function stop() {
-    final wb = NullTools.sure(this.widget);
+    final wb = this.widget.sure();
     // wb.visible = false;
     this.widget = null;
   }

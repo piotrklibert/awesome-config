@@ -1389,11 +1389,11 @@ local _hx_static_init = function()
   Array.__name__ = true;
   _G.Logger = __log_Log;__haxe_ds_StringMap.tnull = ({});
   
-  __init_Pkg.ver = "1591273798";
+  __init_Pkg.ver = "1591373386";
   
   __init_Transcript.wiboxConfig = ({ontop = true, opacity = 0.9, x = 120, y = 440, height = 115, width = 495});
   
-  __init_Transcript.ver = "1591273797";
+  __init_Transcript.ver = "1591373386";
   
   __log_Log.backgrounds = (function() 
     local _hx_1
