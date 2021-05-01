@@ -45,6 +45,7 @@ make_tasklist = function(screen, buttons)
     id = "background_role",
     widget = wibox.container.background
   }
+  local utf8 = require("lua-utf8")
   return awful.widget.tasklist({
     screen = screen,
     buttons = buttons,
@@ -79,11 +80,11 @@ make_tasklist = function(screen, buttons)
       nil,
       create_callback = function(self, c, index, objects)
         self:get_children_by_id("clienticon")[1].client = c
-        self:get_children_by_id("title")[1].text = tostring(c.name:sub(1, 40))
+        self:get_children_by_id("title")[1].text = tostring(utf8.sub(c.name, 1, 40))
       end,
       update_callback = function(self, c, index, objects)
         self:get_children_by_id("clienticon")[1].client = c
-        self:get_children_by_id("title")[1].text = tostring(c.name:sub(1, 40))
+        self:get_children_by_id("title")[1].text = tostring(utf8.sub(c.name, 1, 40))
       end,
       layout = wibox.layout.align.vertical
     }
