@@ -13,8 +13,8 @@ rebuild:
 	make build
 
 
-
 common = src/log/*.hx src/utils/*.hx src/utils/lua/*.hx src/awful/*.hx src/awful/*/*.hx src/awful/*/*/*.hx
+
 
 output/cleaner.lua: src/Cleaner.hx build/cleaner.hxml $(common)
 	./bin/build cleaner

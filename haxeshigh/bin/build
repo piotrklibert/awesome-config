@@ -14,8 +14,6 @@ cat $hxml_file | envsubst > $ARG.hxml
 # cat $ARG.hxml
 # printf "\t:::\n\n"
 
-# HAXE=haxe
-
 (wc -l output/*.lua | head -n -1) >tmp/pre
 HAXE="/home/cji/portless/versions/haxe/haxe/haxe"
 if $HAXE $ARG.hxml; then
