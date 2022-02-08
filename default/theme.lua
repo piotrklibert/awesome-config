@@ -12,7 +12,7 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 
 theme.font          = "sans 15"
-theme.wallpaper     = "/home/cji/Downloads/mirai-nikki1.jpg"
+theme.wallpaper     = "/mnt/backup/Downloads/mirai-nikki1.jpg"
 theme.systray_icon_spacing = 4
 
 
