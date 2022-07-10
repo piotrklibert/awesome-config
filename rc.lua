@@ -231,27 +231,6 @@ local taglist_buttons = gears.table.join(
                     awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
                 )
 
-local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
 
 dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/hx_pkg.lua")
 
@@ -514,6 +493,64 @@ for i = 1, 9 do
     )
 end
 
+local keypad = {
+    [7] = 79,
+    [8] = 80,
+    [9] = 81,
+    [4] = 83,
+    [5] = 84,
+    [6] = 85,
+    [1] = 87,
+    [2] = 88,
+    [3] = 89,
+}
+
+for i, key in pairs(keypad) do
+    globalkeys = gears.table.join(globalkeys,
+        -- View tag only.
+        awful.key({ modkey }, "#" .. key,
+                  function ()
+                        local screen = awful.screen.focused()
+                        local tag = screen.tags[i]
+                        if tag then
+                           tag:view_only()
+                        end
+                  end,
+                  {description = "view tag #"..i, group = "tag"}),
+        -- Toggle tag display.
+        awful.key({ modkey, "Control" }, "#" .. key,
+                  function ()
+                      local screen = awful.screen.focused()
+                      local tag = screen.tags[i]
+                      if tag then
+                         awful.tag.viewtoggle(tag)
+                      end
+                  end,
+                  {description = "toggle tag #" .. i, group = "tag"}),
+        -- Move client to tag.
+        awful.key({ modkey, "Shift" }, "#" .. key,
+                  function ()
+                      if client.focus then
+                          local tag = client.focus.screen.tags[i]
+                          if tag then
+                              client.focus:move_to_tag(tag)
+                          end
+                     end
+                  end,
+                  {description = "move focused client to tag #"..i, group = "tag"}),
+        -- Toggle tag on focused client.
+        awful.key({ modkey, "Control", "Shift" }, "#" .. key,
+                  function ()
+                      if client.focus then
+                          local tag = client.focus.screen.tags[i]
+                          if tag then
+                              client.focus:toggle_tag(tag)
+                          end
+                      end
+                  end,
+                  {description = "toggle focused client on tag #" .. i, group = "tag"})
+    )
+end
 
 
 clientbuttons = gears.table.join(
@@ -558,7 +595,7 @@ default_rules = {
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { }, properties = default_rules },
-    { rule_any = { class = {"slack", "Slack"}}, properties = { tag = "9", floating = true } },
+    { rule_any = { class = {"slack", "Slack"}}, properties = { tag = "3", floating = true } },
     { rule_any = { class = {"discord"}, name = {"Discord"}}, properties = { tag = "4", floating = true } },
 
     -- Floating clients.
@@ -575,9 +612,9 @@ awful.rules.rules = {
         role = {"pop-up"}
       }, properties = { floating = true } },
 
+    -- TODO: see if we can do this for non-maximized windows only
     -- { rule = {floating = true}, properties = { titlebars_enabled = true } },
 
-    -- Set Firefox to always map on the tag named "2" on screen 1.
     { rule = { class = "emacs" }, properties = { tag = "5" } },
     { rule = { class = "URxvt" }, properties = { maximized = true } },
 }

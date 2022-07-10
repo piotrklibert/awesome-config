@@ -66,6 +66,7 @@ class TaglistRow {
     return Widget.taglist(conf);
   }
 
+
   function makeFilterFun() {
     return function (tag: tink.core.Named<Any>) {
       return this.tags.has(tag.name);
@@ -132,9 +133,9 @@ class Taglist {
 
   static function mkWidget(s: Screen): Widget {
     final rows = [
-      new TaglistRow(["1", "2", "3"]),
-      new TaglistRow(["4", "5", "6"]),
       new TaglistRow(["7", "8", "9"]),
+      new TaglistRow(["4", "5", "6"]),
+      new TaglistRow(["1", "2", "3"]),
     ];
 
     final ret = M.castTable({

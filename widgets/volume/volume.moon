@@ -4,7 +4,6 @@ watch = require("awful.widget.watch")
 spawn = require("awful.spawn")
 naughty = require("naughty")
 beautiful = require("beautiful")
-notify = require("naughty.notification")
 gears = require("gears")
 
 
@@ -15,7 +14,45 @@ str = require "std.string"
 mo = require "moses"
 
 
-{:make_notification_widget} =  require "util"
+make_notification_widget = (txt, geom, wbox_args, txt_args) ->
+  args = {ontop: true, opacity: 0.7}
+  if is_table(wbox_args)
+    merge args, wbox_args
+  wb = wibox(args)
+
+  g = if is_table(geom)
+    geom
+  else
+    {x: 1530, y: 32, height: 45, width: 90}
+
+  for attr, value in pairs(g)
+    wb[ attr ] = value
+
+  txt = {
+    id: "text",
+    text: txt
+    widget: wibox.widget.textbox,
+  }
+
+  if is_table(txt_args)
+    merge txt, txt_args
+
+  wb\setup {
+    {
+      txt,
+      left: 10
+      top: 5
+      bottom: 5
+      widget: wibox.container.margin
+    }
+    border_color: "#4B6063"
+    border_width: 1
+    border_strategy: "inner"
+    widget: wibox.container.background
+  }
+
+  wb.visible = true
+  wb
 
 
 volume_to_icons = {
@@ -71,14 +108,7 @@ state = {
   is_muted: false
   icon: choose_icon(100)
   notification_widget: nil
-  volume_widget: wibox.widget {
-      {
-          id: "icon", resize: true,
-          image: choose_icon(100),
-          widget: wibox.widget.imagebox,
-      },
-      layout: wibox.container.margin(_, 1, 1, 5, 5),
-  }
+  volume_widget: nil
 
   popup_create: =>
     txt = "#{@volume}%"
@@ -119,6 +149,15 @@ state = {
 
   init: =>
     this = @
+
+    @volume_widget = wibox.widget {
+      {
+        id: "icon", resize: true,
+        image: choose_icon(100),
+        widget: wibox.widget.imagebox,
+      },
+      layout: wibox.container.margin(_, 1, 1, 5, 5),
+    }
     @volume_widget\connect_signal("button::press", this\handle_mouse)
     @volume_widget\connect_signal("mouse::enter",  this\popup_create)
     @volume_widget\connect_signal("mouse::leave",  this\popup_destroy)

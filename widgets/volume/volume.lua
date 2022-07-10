@@ -119,12 +119,12 @@ local state = {
     if self.is_muted then
       txt = "muted"
     end
-    self.notification_widget = make_notification_widget(txt, {
-      x = 1500,
-      y = 32,
-      height = 45,
-      width = 90
-    })
+    -- self.notification_widget = make_notification_widget(txt, {
+    --   x = 1500,
+    --   y = 32,
+    --   height = 45,
+    --   width = 90
+    -- })
   end,
   popup_destroy = function(self)
     self.notification_widget.visible = false
@@ -170,27 +170,27 @@ local state = {
   end,
   init = function(self)
     local this = self
-    self.volume_widget:connect_signal("button::press", (function()
-      local _base_0 = this
-      local _fn_0 = _base_0.handle_mouse
-      return function(...)
-        return _fn_0(_base_0, ...)
-      end
-    end)())
-    self.volume_widget:connect_signal("mouse::enter", (function()
-      local _base_0 = this
-      local _fn_0 = _base_0.popup_create
-      return function(...)
-        return _fn_0(_base_0, ...)
-      end
-    end)())
-    return self.volume_widget:connect_signal("mouse::leave", (function()
-      local _base_0 = this
-      local _fn_0 = _base_0.popup_destroy
-      return function(...)
-        return _fn_0(_base_0, ...)
-      end
-    end)())
+    -- self.volume_widget:connect_signal("button::press", (function()
+    --   local _base_0 = this
+    --   local _fn_0 = _base_0.handle_mouse
+    --   return function(...)
+    --     return _fn_0(_base_0, ...)
+    --   end
+    -- end)())
+    -- self.volume_widget:connect_signal("mouse::enter", (function()
+    --   local _base_0 = this
+    --   local _fn_0 = _base_0.popup_create
+    --   return function(...)
+    --     return _fn_0(_base_0, ...)
+    --   end
+    -- end)())
+    -- return self.volume_widget:connect_signal("mouse::leave", (function()
+    --   local _base_0 = this
+    --   local _fn_0 = _base_0.popup_destroy
+    --   return function(...)
+    --     return _fn_0(_base_0, ...)
+    --   end
+    -- end)())
   end
 }
 local check_icons_path
