@@ -5,3 +5,4 @@ haxeshigh/node_modules/
 haxeshigh/logs/
 haxeshigh/tmp/
 logs
+/haxeshigh/shadow/

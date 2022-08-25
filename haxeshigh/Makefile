@@ -34,31 +34,42 @@ output/hx_pkg.lua: src/pkg/*.hx build/pkg.hxml $(common)
 output/hx_init.lua: src/init/*.hx build/init.hxml $(common)
 	./bin/build init
 
+output/hx_volume.lua: src/volume/*.hx build/volume.hxml $(common)
+	./bin/build volume
+
 output/hx_battery.lua: src/battery/*.hx build/battery.hxml $(common)
 	./bin/build battery
 
 
+.PHONY: test
+test:
+	./bin/build test
+
 
 .PHONY: pkg
 pkg: output/hx_pkg.lua
-	(cat output/hx_pkg.lua | awesome-client)
+	awesome-client "dofile('`pwd`/output/hx_pkg.lua')"
 
 .PHONY: init
 init: output/hx_init.lua
-	(cat output/hx_init.lua | awesome-client)
+	awesome-client "dofile('`pwd`/output/hx_init.lua')"
+
+.PHONY: volume
+volume: output/hx_volume.lua
+	awesome-client "dofile('`pwd`/output/hx_volume.lua')"
+
 
 .PHONY: battery
 battery: output/hx_battery.lua
-	(cat output/hx_battery.lua | awesome-client)
+	awesome-client "dofile('`pwd`/output/hx_battery.lua')"
 
 .PHONY: clean
 clean: build
-	(cat output/cleaner.lua | awesome-client)
-
+	awesome-client "dofile('`pwd`/output/cleaner.lua')"
 
 .PHONY: load
 load: build
-	(cat output/loader.lua | awesome-client)
+	awesome-client "dofile('`pwd`/output/loader.lua')"
 
 
 .PHONY: checkstyle

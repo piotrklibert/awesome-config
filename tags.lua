@@ -54,7 +54,7 @@ local tag_right = wrap_show_taglist(function(t)
     3,
     6,
     9
-  })(n) then
+              })(n or {}) then
     return tag.viewidx(-2)
   else
     return tag.viewidx(1)

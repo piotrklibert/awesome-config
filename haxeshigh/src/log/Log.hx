@@ -68,31 +68,31 @@ class Log {
     }
   }
 
-  @:keep
+  // @:keep
   public static inline function debug(x: Any, ?infos: haxe.PosInfos): Void {
     final opts = {bg: backgrounds[Debug], icon: '${res_path}/debug4.png'};
     log(x, opts, infos);
   }
 
-  @:keep
+  // @:keep
   public static inline function info(x: Any, ?infos: haxe.PosInfos): Void {
     final opts = {bg: backgrounds[Info], icon: '${res_path}/debug2.png'};
     log(x, opts, infos);
   }
 
-  @:keep
+  // @:keep
   public static inline function warn(x: Any, ?infos: haxe.PosInfos): Void {
     final opts = {bg: backgrounds[Warn], icon: '${res_path}/warn2.png'};
     log(x, opts, infos);
   }
 
-  @:keep
+  // @:keep
   public static inline function error(x: Any, ?infos: haxe.PosInfos): Void {
     final opts = {bg: backgrounds[Error], icon: '${res_path}/error2.png'};
     log(x, opts, infos);
   }
 
-  @:keep
+  // @:keep
   public static function log(x: Any, ?opts: NaughtyOptions = {}, ?infos: haxe.PosInfos): Void {
     switch (x) {
       case (s : String):
@@ -103,8 +103,10 @@ class Log {
     }
   }
 
-  @:keep
-  public static function __init__() {
-    Globals.Logger = Log;
-  }
+  // @:keep
+  // public static function __init__() {
+  //   untyped {
+  //     Globals.Logger = Log;
+  //   }
+  // }
 }

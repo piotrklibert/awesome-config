@@ -8,4 +8,4 @@ $LIBRARIES
 
 -m init.Init
 
-init.Pkg
+init.Init

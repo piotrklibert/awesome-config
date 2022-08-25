@@ -1,7 +1,7 @@
 package awful;
 
 
-import Utils as U;
+import Utils;
 import haxe.extern.Rest;
 
 

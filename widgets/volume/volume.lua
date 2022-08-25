@@ -41,6 +41,9 @@ choose_icon = function(vol)
   if not vol or vol <= 0 then
     return tostring(path_to_icons) .. "/audio-volume-muted-symbolic-red.svg"
   end
+  if vol > 100 then
+      return tostring(path_to_icons) .. "/audio-volume-high-symbolic.svg"
+  end
   local icon_name = nil
   for _index_0 = 1, #volume_to_icons do
     local _des_0 = volume_to_icons[_index_0]
@@ -127,8 +130,8 @@ local state = {
     -- })
   end,
   popup_destroy = function(self)
-    self.notification_widget.visible = false
-    self.notification_widget = nil
+    -- self.notification_widget.visible = false
+    -- self.notification_widget = nil
   end,
   set_volume = function(self, stdout)
     local muted, vol
@@ -157,6 +160,7 @@ local state = {
     end
   end,
   handle_mouse = function(self, _, _, _, button)
+      print("asdasdasd")
     do
       spawn.easy_async(cmd_for_button(button), function(_)
         do
@@ -170,27 +174,27 @@ local state = {
   end,
   init = function(self)
     local this = self
-    -- self.volume_widget:connect_signal("button::press", (function()
-    --   local _base_0 = this
-    --   local _fn_0 = _base_0.handle_mouse
-    --   return function(...)
-    --     return _fn_0(_base_0, ...)
-    --   end
-    -- end)())
-    -- self.volume_widget:connect_signal("mouse::enter", (function()
-    --   local _base_0 = this
-    --   local _fn_0 = _base_0.popup_create
-    --   return function(...)
-    --     return _fn_0(_base_0, ...)
-    --   end
-    -- end)())
-    -- return self.volume_widget:connect_signal("mouse::leave", (function()
-    --   local _base_0 = this
-    --   local _fn_0 = _base_0.popup_destroy
-    --   return function(...)
-    --     return _fn_0(_base_0, ...)
-    --   end
-    -- end)())
+    self.volume_widget:connect_signal("button::press", (function()
+      local _base_0 = this
+      local _fn_0 = _base_0.handle_mouse
+      return function(...)
+        return _fn_0(_base_0, ...)
+      end
+    end)())
+    self.volume_widget:connect_signal("mouse::enter", (function()
+      local _base_0 = this
+      local _fn_0 = _base_0.popup_create
+      return function(...)
+        return _fn_0(_base_0, ...)
+      end
+    end)())
+    return self.volume_widget:connect_signal("mouse::leave", (function()
+      local _base_0 = this
+      local _fn_0 = _base_0.popup_destroy
+      return function(...)
+        return _fn_0(_base_0, ...)
+      end
+    end)())
   end
 }
 local check_icons_path
@@ -206,6 +210,7 @@ end
 _G["vstate"] = state
 local make_volume_widget
 make_volume_widget = function()
+    print("fuck that")
   check_icons_path()
   state:init()
   watch(GET_VOLUME_CMD, 1, function(_widget, out)

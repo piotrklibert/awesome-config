@@ -8,10 +8,12 @@
 -D analyzer-fusion
 -D analyzer-purity_inference
 
--L tink_core
--L tink_lang
--L safety
--L thx.core
--L HaxeContracts
+$LIBRARIES
 
 -cp src
+
+-lua output/hx_volume.lua
+
+-m volume.Volume
+
+volume.Volume

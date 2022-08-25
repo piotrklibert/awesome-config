@@ -198,8 +198,17 @@ local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Math = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
+local Sys = _hx_e()
+local __awful_Naughty = _G.require("naughty")
+local __haxe_EntryPoint = _hx_e()
+local __haxe_Log = _hx_e()
+local __haxe_MainEvent = _hx_e()
+local __haxe_MainLoop = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
+local __lib_Inspect = _G.require("inspect")
+local __lua_lib_luv_Misc = _G.require("luv")
+local __volume_GT = _G.require("gears.table")
 local __volume_Volume = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -725,6 +734,182 @@ Std.int = function(x)
   end;
 end
 
+Sys.new = {}
+Sys.time = function() 
+  local _hx_1_stamp_seconds, _hx_1_stamp_microseconds = __lua_lib_luv_Misc.gettimeofday();
+  do return _hx_1_stamp_seconds + (_hx_1_stamp_microseconds / 1000000) end;
+end
+
+__haxe_EntryPoint.new = {}
+__haxe_EntryPoint.processEvents = function() 
+  while (true) do 
+    local f = __haxe_EntryPoint.pending:shift();
+    if (f == nil) then 
+      break;
+    end;
+    f();
+  end;
+  local time = __haxe_MainLoop.tick();
+  if (not __haxe_MainLoop.hasEvents() and (__haxe_EntryPoint.threadCount == 0)) then 
+    do return -1 end;
+  end;
+  do return time end;
+end
+__haxe_EntryPoint.run = function() 
+  while (true) do 
+    local nextTick = __haxe_EntryPoint.processEvents();
+    if (_hx_luv.loop_alive()) then 
+      if (nextTick < 0) then 
+        _hx_luv.run("once");
+      else
+        _hx_luv.run("nowait");
+      end;
+    else
+      if (nextTick < 0) then 
+        break;
+      end;
+      local tmp = nextTick > 0;
+    end;
+  end;
+end
+
+__haxe_Log.new = {}
+__haxe_Log.formatOutput = function(v,infos) 
+  local str = Std.string(v);
+  if (infos == nil) then 
+    do return str end;
+  end;
+  local pstr = infos.fileName .. ":" .. Std.string(infos.lineNumber);
+  if (infos.customParams ~= nil) then 
+    local _g = 0;
+    local _g1 = infos.customParams;
+    while (_g < _g1.length) do 
+      local v = _g1[_g];
+      _g = _g + 1;
+      str = str .. (", " .. Std.string(v));
+    end;
+  end;
+  do return pstr .. ": " .. str end;
+end
+__haxe_Log.trace = function(v,infos) 
+  local str = __haxe_Log.formatOutput(v, infos);
+  _hx_print(str);
+end
+
+__haxe_MainEvent.new = function(f,p) 
+  local self = _hx_new()
+  __haxe_MainEvent.super(self,f,p)
+  return self
+end
+__haxe_MainEvent.super = function(self,f,p) 
+  self.isBlocking = true;
+  self.f = _hx_funcToField(f);
+  self.priority = p;
+  self.nextRun = -_G.math.huge;
+end
+
+__haxe_MainLoop.new = {}
+__haxe_MainLoop.hasEvents = function() 
+  local p = __haxe_MainLoop.pending;
+  while (p ~= nil) do 
+    if (p.isBlocking) then 
+      do return true end;
+    end;
+    p = p.next;
+  end;
+  do return false end;
+end
+__haxe_MainLoop.sortEvents = function() 
+  local list = __haxe_MainLoop.pending;
+  if (list == nil) then 
+    do return end;
+  end;
+  local insize = 1;
+  local nmerges;
+  local psize = 0;
+  local qsize = 0;
+  local p;
+  local q;
+  local e;
+  local tail;
+  while (true) do 
+    p = list;
+    list = nil;
+    tail = nil;
+    nmerges = 0;
+    while (p ~= nil) do 
+      nmerges = nmerges + 1;
+      q = p;
+      psize = 0;
+      local _g = 0;
+      local _g1 = insize;
+      while (_g < _g1) do 
+        _g = _g + 1;
+        psize = psize + 1;
+        q = q.next;
+        if (q == nil) then 
+          break;
+        end;
+      end;
+      qsize = insize;
+      while ((psize > 0) or ((qsize > 0) and (q ~= nil))) do 
+        if (psize == 0) then 
+          e = q;
+          q = q.next;
+          qsize = qsize - 1;
+        else
+          if (((qsize == 0) or (q == nil)) or ((p.priority > q.priority) or ((p.priority == q.priority) and (p.nextRun <= q.nextRun)))) then 
+            e = p;
+            p = p.next;
+            psize = psize - 1;
+          else
+            e = q;
+            q = q.next;
+            qsize = qsize - 1;
+          end;
+        end;
+        if (tail ~= nil) then 
+          tail.next = e;
+        else
+          list = e;
+        end;
+        e.prev = tail;
+        tail = e;
+      end;
+      p = q;
+    end;
+    tail.next = nil;
+    if (nmerges <= 1) then 
+      break;
+    end;
+    insize = insize * 2;
+  end;
+  list.prev = nil;
+  __haxe_MainLoop.pending = list;
+end
+__haxe_MainLoop.tick = function() 
+  __haxe_MainLoop.sortEvents();
+  local e = __haxe_MainLoop.pending;
+  local now = Sys.time();
+  local wait = 1e9;
+  while (e ~= nil) do 
+    local next = e.next;
+    local wt = e.nextRun - now;
+    if (wt <= 0) then 
+      wait = 0;
+      if (e.f ~= nil) then 
+        e:f();
+      end;
+    else
+      if (wait > wt) then 
+        wait = wt;
+      end;
+    end;
+    e = next;
+  end;
+  do return wait end;
+end
+
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -759,6 +944,43 @@ end
 
 __volume_Volume.new = {}
 __volume_Volume.main = function() 
+  local s = "zażółć gęślą jaźń";
+  local tmp = __haxe_Log.trace;
+  local tmp1 = ({2,3,4});
+  tmp(__lib_Inspect.inspect(__volume_GT.join(_hx_o({__fields__={aa=true},aa=3}), tmp1, _hx_e())), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/volume/Volume.hx",lineNumber=35,className="volume.Volume",methodName="main"}));
+  local tmp = ({text = (function() 
+    local _hx_1
+    
+    local pos = 0;
+    
+    local len = 3;
+    
+    if ((function() 
+      local _hx_2
+      if (len ~= nil) then 
+      _hx_2 = len > (pos + __lua_lib_luautf8_Utf8.len(s)); else 
+      _hx_2 = true; end
+      return _hx_2
+    end )()) then 
+      len = __lua_lib_luautf8_Utf8.len(s);
+    else
+      if (len < 0) then 
+        len = __lua_lib_luautf8_Utf8.len(s) + len;
+      end;
+    end;
+    
+    if (pos < 0) then 
+      pos = __lua_lib_luautf8_Utf8.len(s) + pos;
+    end;
+    
+    if (pos < 0) then 
+      pos = 0;
+    end;
+    
+    _hx_1 = __lua_lib_luautf8_Utf8.sub(s, pos + 1, pos + len);
+    return _hx_1
+  end )()});
+  __awful_Naughty.notify(tmp);
 end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
@@ -798,11 +1020,28 @@ else
   }
 end
 local _hx_static_init = function()
+  __haxe_EntryPoint.pending = Array.new();
+  
+  __haxe_EntryPoint.threadCount = 0;
+  
   
 end
+
+_hx_funcToField = function(f)
+  if type(f) == 'function' then
+    return function(self,...)
+      return f(...)
+    end
+  else
+    return f
+  end
+end
+
+_hx_print = print or (function() end)
 
 _hx_static_init();
 _G.xpcall(function() 
   __volume_Volume.main();
+  __haxe_EntryPoint.run();
   _hx_luv.run();
 end, _hx_error)

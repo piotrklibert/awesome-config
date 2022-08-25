@@ -121,4 +121,7 @@ class PackageManager {
     final len = mgr.packages.length;
     Log.info('PKGMAN: Loaded! We have ${len} packages.');
   }
+
+  @:keep
+  public function toString() return "<PackageManager>";
 }

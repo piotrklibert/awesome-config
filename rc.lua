@@ -1,19 +1,12 @@
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
-pcall(require, "luarocks.loader")
-package.path = "/home/cji/portless/lua/?.lua;"                       .. package.path
-package.path = "/home/cji/portless/lua/?/init.lua;"                  .. package.path
-package.path = "/home/cji/portless/lua/?/?.lua;"                     .. package.path
-package.path = "/home/cji/portless/lua/Microlight/?.lua;"            .. package.path
-package.path = "/home/cji/portless/lua/Penlight/lua/?/init.lua;"     .. package.path
-package.path = "/home/cji/portless/lua/Penlight/lua/?/;"             .. package.path
-package.path = "/home/cji/.config/awesome/widgets/?/init.lua;"       .. package.path
-package.path = "/home/cji/.config/awesome/widgets/?/?.lua;"          .. package.path
-package.path = "/home/cji/priv/moonscript/awesomescript/?.lua;"      .. package.path
+require("luarocks.loader")
+package.cpath = "/usr/local/lib/lua/5.1/lgi/?.so;"      .. package.cpath
 
--- package.cpath = package.cpath .. ";/home/cji/portless/lua/?.lua;/home/cji/portless/lua/lua-openssl/openssl.so"
+package.path = "/usr/local/share/awesome/lib/?.lua;/usr/local/share/awesome/lib/?/init.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua;/usr/local/share/luajit-2.1.0-beta3/?.lua;./?.lua;/etc/xdg/awesome/?.lua;/etc/xdg/awesome/?/init.lua;/home/cji/.config/awesome/?.lua;/home/cji/.config/awesome/?/init.lua;/home/cji/.config/awesome/widgets/?/?.lua;/home/cji/.config/awesome/widgets/?/init.lua;/home/cji/.luarocks/lib/lua/5.1/?.so;/home/cji/.luarocks/lib/lua/5.1/lgi/?.so;/home/cji/.luarocks/share/lua/5.1/?.lua;/home/cji/.luarocks/share/lua/5.1/?/init.lua;/home/cji/portless/lua/?.lua;/home/cji/portless/lua/?/?.lua;/home/cji/portless/lua/?/init.lua;/home/cji/portless/lua/Microlight/?.lua;/home/cji/portless/lua/Penlight/lua/?/;/home/cji/portless/lua/Penlight/lua/?/init.lua;/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;/home/cji/priv/moonscript/awesomescript/?.lua;/home/cji/priv/moonscript/awesomescript/?.lua;/home/cji/priv/moonscript/awesomescript/vendor/?.lua;/home/cji/priv/moonscript/awesomescript/vendor/?/init.lua;/home/cji/priv/moonscript/awesomescript/vendor/readline/?.lua"
 
--- TODO: use require("posix").setenv to set PROJECT_ROOT!
+package.cpath = package.cpath .. ";/home/cji/portless/lua/?.lua"
+
 dofile("/home/cji/priv/moonscript/awesomescript/runtime/init.lua")
 
 function script_path()
@@ -22,28 +15,28 @@ function script_path()
 end
 
 pwd = script_path()
+print(pwd)
 
-
-_log = require "log".new(
-  -- maximum log level
-  "trace",
-  -- Writer
-  require 'log.writer.list'.new(               -- multi writers:
-    -- require 'log.writer.console.color'.new(),  -- * console color
-    require 'log.writer.file.roll'.new(        -- * roll files
-        script_path() .. '/logs/',                                --   log dir
-      'events.log',                            --   current log name
-      10,                                      --   count files
-      10*1024*1024*1024                             --   max file size in bytes
-    )
-  ),
-  -- Formatter
-  require "log.formatter.concat".new()
-)
+-- _log = require "log".new(
+--   -- maximum log level
+--   "trace",
+--   -- Writer
+--   require 'log.writer.list'.new(               -- multi writers:
+--     -- require 'log.writer.console.color'.new(),  -- * console color
+--     require 'log.writer.file.roll'.new(        -- * roll files
+--         script_path() .. '/logs/',                                --   log dir
+--       'events.log',                            --   current log name
+--       10,                                      --   count files
+--       10*1024*1024*1024                             --   max file size in bytes
+--     )
+--   ),
+--   -- Formatter
+--   require "log.formatter.concat".new()
+-- )
 
 
 function __log(...)
-    _log.debug(...)
+    -- _log.debug(...)
 end
 
 
@@ -82,7 +75,7 @@ awful = require("awful")
 require("awful.autofocus")
 
 Promise = require "promise"
-Promise.async = gears.timer.delayed_call
+--Promise.async = gears.timer.delayed_call
 
 wibox = require("wibox")
 -- Theme handling library
@@ -245,11 +238,11 @@ root.buttons(gears.table.join(
     awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
-        -- awful.key({                   }, "XF86AudioRaiseVolume", function() awful.util.spawn("pavolume volup") end),
-        -- awful.key({                   }, "XF86AudioLowerVolume", function() awful.util.spawn("pavolume voldown") end),
+        -- awful.key({                   }, "XF86AudioRaiseVolume", function() awful.util.spawn("pamixer -i 5") end),
+        -- awful.key({                   }, "XF86AudioLowerVolume", function() awful.util.spawn("pamixer -d 5") end),
         -- awful.key({         "Shift"   }, "XF86AudioRaiseVolume", function() awful.util.spawn("pavolume volup --nolimit") end),
         -- awful.key({         "Shift"   }, "XF86AudioLowerVolume", function() awful.util.spawn("pavolume voldown") end),
-        -- awful.key({                   }, "XF86AudioMute", function() awful.util.spawn("pavolume mutetoggle") end),
+        -- awful.key({                   }, "XF86AudioMute", function() awful.util.spawn("pamixer -t") end),
 
 
 tags = require "tags"
@@ -269,10 +262,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,         }, "q", run_rxvt, {description="open terminal", group="system"}),
     awful.key({ }, "Print", screenshot, {description="screenshot", group="system"}),
 
-    awful.key({altkey, "Control"}, "Up", tags.tag_up, {description = "view previous", group = "tag"}),
-    awful.key({altkey, "Control"}, "Down", tags.tag_down, {description = "view next", group = "tag"}),
-    awful.key({altkey, "Control"}, "Left", tags.tag_left, {description = "view previous", group = "tag"}),
-    awful.key({altkey, "Control"}, "Right", tags.tag_right, {description = "view next", group = "tag"}),
+    awful.key({altkey, "Control"}, "Up",    function () Switcher.tag_up() end, {description = "view previous", group = "tag"}),
+    awful.key({altkey, "Control"}, "Down",  function () Switcher.tag_down() end, {description = "view next", group = "tag"}),
+    awful.key({altkey, "Control"}, "Left",  function () Switcher.tag_left() end, {description = "view previous", group = "tag"}),
+    awful.key({altkey, "Control"}, "Right", function () Switcher.tag_right() end, {description = "view next", group = "tag"}),
 
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
     --           {description = "view previous", group = "tag"}),
@@ -597,6 +590,7 @@ awful.rules.rules = {
     { rule = { }, properties = default_rules },
     { rule_any = { class = {"slack", "Slack"}}, properties = { tag = "3", floating = true } },
     { rule_any = { class = {"discord"}, name = {"Discord"}}, properties = { tag = "4", floating = true } },
+    { rule = { name = "fuck"}, properties = { floating = true, x = 350, y=320 } },
 
     -- Floating clients.
     { rule_any = {

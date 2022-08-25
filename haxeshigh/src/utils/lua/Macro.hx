@@ -17,6 +17,23 @@ class Macro {
     return macro (untyped __lua_table__($e{x}) : lua.Table.AnyTable);
   }
 
+  public static macro function T(x: Expr) {
+    return macro (untyped __lua_table__($e{x}) : lua.Table.AnyTable);
+  }
+
+  public static macro function A(x: Expr) {
+    return macro (untyped __lua_table__($e{x}) : lua.Table.AnyTable);
+  }
+
+  public static macro function TA(x: Expr, y: Expr) {
+    return macro (untyped __lua_table__($e{x}, $e{y}) : lua.Table.AnyTable);
+  }
+
+  public static macro function AT(x: Expr, y: Expr) {
+    return macro (untyped __lua_table__($e{y}, $e{x}) : lua.Table.AnyTable);
+  }
+
+
   // pair
   public static macro function P(obj1, obj2) {
     // trace(obj1, obj2);
@@ -77,6 +94,9 @@ class Macro {
     }
   }
 
+  public static macro function withArray(props: Expr, ?array: Expr) {
+    return macro withProps($e{array}, $e{props});
+  }
   public static macro function withProps(array: Expr, ?props: Expr) {
     switch [array.expr, props] {
       case [EObjectDecl(_), null]:

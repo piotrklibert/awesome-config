@@ -1,5 +1,5 @@
 package lib;
-import log.Log;
+// import log.Log;
 
 
 
@@ -33,7 +33,7 @@ extern class Globals implements Dynamic {
 
   public static var Taglist: Dynamic;
   public static var PackageManager: Null<pkg.PackageManager>;
-  public static var Logger: Null<Class<Log>>;
+  // public static var Logger: Null<Class<Log>>;
 
   public static function clone<T>(x: T): T;
 }

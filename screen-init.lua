@@ -274,24 +274,9 @@ initialize = function()
         border_color = "#000000",
         color = {
           type = "linear",
-          from = {
-            0,
-            0
-          },
-          to = {
-            0,
-            30
-          },
-          stops = {
-            {
-              0,
-              "#AECF96"
-            },
-            {
-              1,
-              "#FF5656"
-            }
-          }
+          from = {0, 0},
+          to = {0, 30},
+          stops = {{0, "#AECF96"}, {1, "#FF5656"}}
         }
       },
       direction = "east",
@@ -391,12 +376,14 @@ initialize = function()
       w:connect_signal("mouse::leave", clb_out)
       return w
     end
+
     local ok, brightnessWidget = pcall(function()
       PackageManager:load("brightness", true)
       local brightness = PackageManager:findByName("brightness")
       brightness:start()
       return brightness:get_widget()
     end)
+
     if not ok then
       print(brightnessWidget)
       brightnessWidget = nil
@@ -462,6 +449,8 @@ initialize = function()
     })
   end)
 end
+
+
 return {
   make_layoutbox = make_layoutbox,
   make_tasklist = make_tasklist,

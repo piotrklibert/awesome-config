@@ -10,7 +10,7 @@ using utils.NullTools;
 
 
 @:tink
-@:expose
+// @:expose
 @:nullSafety(Strict)
 class Transcript {
   static final wiboxConfig = M.castTable({

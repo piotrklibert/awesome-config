@@ -14,7 +14,7 @@ using Lambda;
 using utils.OptionTools;
 using utils.lua.LuaTools;
 import utils.lua.Macro as M;
-
+import taglist.Switcher;
 
 @:expose
 @:nullSafety(Strict)
@@ -54,10 +54,11 @@ class TaglistRow {
 
   function makeTaglist(s: Screen): LuaTable {
     final button = awful.Button.make(cast {}, 1, function (x: Dynamic) {
-        final sel = Screen.focused().selected_tag;
-        Tag.viewtoggle(x);
-        Tag.viewtoggle(sel);
-      });
+      trace("asdasda");
+      final sel = Screen.focused().selected_tag;
+      Tag.viewtoggle(x);
+      Tag.viewtoggle(sel);
+    });
     final conf = M.castTable({
       screen: s,
       filter: this.makeFilterFun(),
@@ -80,7 +81,9 @@ class TaglistRow {
 class Taglist {
   public var tagListBox: Option<Wibox> = None;
   var animator: Option<TaglistAnimator> = None;
-
+  public static function __init__() {
+    untyped __lua__("_G.Switcher = {0}", Switcher);
+  }
   public function new() {}
 
   public function autoHide() this.animator.sure().autoHide(4);
@@ -109,9 +112,9 @@ class Taglist {
 
   public function setup(wibox: Wibox, widget: Widget): Wibox {
     final widgetTable = M.withProps([widget], {
-        margins: 15,
-        layout: Wibox.container.margin,
-      });
+      margins: 15,
+      layout: Wibox.container.margin,
+    });
 
     final setupTable = M.withProps([widgetTable], {
       id: "bg",
@@ -121,7 +124,7 @@ class Taglist {
       widget: Wibox.container.background,
       });
 
-    this.animator = Some(new TaglistAnimator(this));
+    this.animator = Some(new TaglistAnimatorImpl(this));
 
     wibox.setup(setupTable);
     wibox.connect_signal("mouse::enter", () -> this.animator.sure().show());
@@ -142,7 +145,7 @@ class Taglist {
       id: "grid",
       spacing: 6,
       layout: Wibox.layout.fixed.vertical
-      });
+    });
 
     for (row in rows)
       Table.insert(cast ret, row.toLua(s));

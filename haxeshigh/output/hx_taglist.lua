@@ -212,6 +212,7 @@ local __awful_Wibox = _G.require("wibox")
 local __haxe_IMap = _hx_e()
 local __haxe_EntryPoint = _hx_e()
 local __haxe_Exception = _hx_e()
+local __haxe_Log = _hx_e()
 local __haxe_MainEvent = _hx_e()
 local __haxe_MainLoop = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
@@ -228,13 +229,17 @@ local __lua_UserData = _hx_e()
 local __lua_lib_luv_Misc = _G.require("luv")
 local __pkg_PackageDefinition = _hx_e()
 local __pkg_PackageBase = _hx_e()
+local __pkg_PackageManager = _hx_e()
 local __safety_SafetyException = _hx_e()
 local __safety_NullPointerException = _hx_e()
 local __taglist_Pkg = _hx_e()
+local __taglist_Tag = _G.require("awful.tag")
+local __taglist_Switcher = _hx_e()
 local __taglist_TaglistManager = _hx_e()
 local __taglist_TaglistRow = _hx_e()
 local __taglist_Taglist = _hx_e()
 local __taglist_TaglistAnimator = _hx_e()
+local __taglist_TaglistAnimatorImpl = _hx_e()
 local __taglist_Timers = _hx_e()
 local __tink_core_NamedWith = _hx_e()
 local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
@@ -836,6 +841,50 @@ Std.int = function(x)
     do return _hx_bit_clamp(x) end;
   end;
 end
+Std.parseInt = function(x) 
+  if (x == nil) then 
+    do return nil end;
+  end;
+  local hexMatch = _G.string.match(x, "^[ \t\r\n]*([%-+]*0[xX][%da-fA-F]*)");
+  if (hexMatch ~= nil) then 
+    local sign;
+    local _g = __lua_lib_luautf8_Utf8.byte(hexMatch, 1);
+    if (_g) == 43 then 
+      sign = 1;
+    elseif (_g) == 45 then 
+      sign = -1;else
+    sign = 0; end;
+    local pos = (function() 
+      local _hx_1
+      if (sign == 0) then 
+      _hx_1 = 2; else 
+      _hx_1 = 3; end
+      return _hx_1
+    end )();
+    local len = nil;
+    len = __lua_lib_luautf8_Utf8.len(hexMatch);
+    if (pos < 0) then 
+      pos = __lua_lib_luautf8_Utf8.len(hexMatch) + pos;
+    end;
+    if (pos < 0) then 
+      pos = 0;
+    end;
+    do return (function() 
+      local _hx_2
+      if (sign == -1) then 
+      _hx_2 = -1; else 
+      _hx_2 = 1; end
+      return _hx_2
+    end )() * _G.tonumber(__lua_lib_luautf8_Utf8.sub(hexMatch, pos + 1, pos + len), 16) end;
+  else
+    local intMatch = _G.string.match(x, "^ *[%-+]?%d*");
+    if (intMatch ~= nil) then 
+      do return _G.tonumber(intMatch) end;
+    else
+      do return nil end;
+    end;
+  end;
+end
 
 Sys.new = {}
 Sys.__name__ = true
@@ -931,6 +980,30 @@ __haxe_Exception.prototype.get_native = function(self)
 end
 
 __haxe_Exception.prototype.__class__ =  __haxe_Exception
+
+__haxe_Log.new = {}
+__haxe_Log.__name__ = true
+__haxe_Log.formatOutput = function(v,infos) 
+  local str = Std.string(v);
+  if (infos == nil) then 
+    do return str end;
+  end;
+  local pstr = infos.fileName .. ":" .. Std.string(infos.lineNumber);
+  if (infos.customParams ~= nil) then 
+    local _g = 0;
+    local _g1 = infos.customParams;
+    while (_g < _g1.length) do 
+      local v = _g1[_g];
+      _g = _g + 1;
+      str = str .. (", " .. Std.string(v));
+    end;
+  end;
+  do return pstr .. ": " .. str end;
+end
+__haxe_Log.trace = function(v,infos) 
+  local str = __haxe_Log.formatOutput(v, infos);
+  _hx_print(str);
+end
 
 __haxe_MainEvent.new = function(f,p) 
   local self = _hx_new(__haxe_MainEvent.prototype)
@@ -1197,34 +1270,6 @@ __log_Log.formatInfos = function(i)
     do return _G.table.concat(({"    " .. i.fileName .. ":" .. Std.string(i.lineNumber),"    " .. i.className .. "." .. i.methodName}), "\n") end;
   end;
 end
-__log_Log.debug = function(x,infos) 
-  local ret = __log_Log.backgrounds.h["Debug"];
-  if (ret == __haxe_ds_StringMap.tnull) then 
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug4.png"}), infos);
-end
-__log_Log.info = function(x,infos) 
-  local ret = __log_Log.backgrounds.h["Info"];
-  if (ret == __haxe_ds_StringMap.tnull) then 
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), infos);
-end
-__log_Log.warn = function(x,infos) 
-  local ret = __log_Log.backgrounds.h["Warn"];
-  if (ret == __haxe_ds_StringMap.tnull) then 
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/warn2.png"}), infos);
-end
-__log_Log.error = function(x,infos) 
-  local ret = __log_Log.backgrounds.h["Error"];
-  if (ret == __haxe_ds_StringMap.tnull) then 
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/error2.png"}), infos);
-end
 __log_Log.log = function(x,opts,infos) 
   local _hx_continue_1 = false;
   while (true) do repeat 
@@ -1386,6 +1431,21 @@ __pkg_PackageBase.prototype = _hx_e();
 
 __pkg_PackageBase.prototype.__class__ =  __pkg_PackageBase
 
+__pkg_PackageManager.new = function() 
+  local self = _hx_new(__pkg_PackageManager.prototype)
+  __pkg_PackageManager.super(self)
+  return self
+end
+__pkg_PackageManager.super = function(self) 
+end
+__pkg_PackageManager.__name__ = true
+__pkg_PackageManager.prototype = _hx_e();
+__pkg_PackageManager.prototype.toString = function(self) 
+  do return "<PackageManager>" end
+end
+
+__pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
+
 __safety_SafetyException.new = function(message,previous,native) 
   local self = _hx_new(__safety_SafetyException.prototype)
   __safety_SafetyException.super(self,message,previous,native)
@@ -1462,6 +1522,50 @@ __taglist_Pkg.prototype.__class__ =  __taglist_Pkg
 __taglist_Pkg.__super__ = __pkg_PackageBase
 setmetatable(__taglist_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
 
+__taglist_Switcher.new = {}
+_hx_exports["taglist"]["Switcher"] = __taglist_Switcher
+__taglist_Switcher.__name__ = true
+__taglist_Switcher.tag_up = function() 
+  __taglist_Switcher.move(3);
+end
+__taglist_Switcher.tag_down = function() 
+  __taglist_Switcher.move(-3);
+end
+__taglist_Switcher.tag_left = function() 
+  local value = Std.parseInt(__taglist_Tag.selected().name);
+  if (value == nil) then 
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
+  end;
+  if (_hx_tab_array({[0]=1, 4, 7}, 3):contains(value)) then 
+    __taglist_Switcher.move(2);
+  else
+    __taglist_Switcher.move(-1);
+  end;
+end
+__taglist_Switcher.tag_right = function() 
+  local value = Std.parseInt(__taglist_Tag.selected().name);
+  if (value == nil) then 
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
+  end;
+  if (_hx_tab_array({[0]=3, 6, 9}, 3):contains(value)) then 
+    __taglist_Switcher.move(-2);
+  else
+    __taglist_Switcher.move(1);
+  end;
+end
+__taglist_Switcher.move = function(dest) 
+  local value = _G.Taglist.animator;
+  local animator;
+  local animator1 = value[1];
+  if (animator1) == 0 then 
+    animator = value[2];
+  elseif (animator1) == 1 then 
+    _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
+  animator:show();
+  __taglist_Tag.viewidx(dest);
+  animator:autoHide(4);
+end
+
 __taglist_TaglistManager.new = {}
 _hx_exports["taglist"]["TaglistManager"] = __taglist_TaglistManager
 __taglist_TaglistManager.__name__ = true
@@ -1504,6 +1608,7 @@ __taglist_TaglistRow.prototype.toLua = function(self,s)
 end
 __taglist_TaglistRow.prototype.makeTaglist = function(self,s) 
   local button = awful.button(_hx_e(), 1, function(x) 
+    __haxe_Log.trace("asdasda", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/taglist/Taglist.hx",lineNumber=57,className="taglist.TaglistRow",methodName="makeTaglist"}));
     local sel = __awful_Screen.focused().selected_tag;
     __awful_Tag.viewtoggle(x);
     __awful_Tag.viewtoggle(sel);
@@ -1603,7 +1708,7 @@ __taglist_Taglist.prototype.setup = function(self,wibox,widget)
   _tmp_1.border_strategy = "inner";
   _tmp_1.widget = __awful_Wibox.container.background;
   local setupTable = _tmp_1;
-  self.animator = __haxe_ds_Option.Some(__taglist_TaglistAnimator.new(self));
+  self.animator = __haxe_ds_Option.Some(__taglist_TaglistAnimatorImpl.new(self));
   wibox:setup(setupTable);
   wibox:connect_signal("mouse::enter", function() 
     local value = _gthis.animator;
@@ -1633,18 +1738,25 @@ end
 
 __taglist_Taglist.prototype.__class__ =  __taglist_Taglist
 
-__taglist_TaglistAnimator.new = function(t) 
-  local self = _hx_new(__taglist_TaglistAnimator.prototype)
-  __taglist_TaglistAnimator.super(self,t)
+__taglist_TaglistAnimator.new = {}
+__taglist_TaglistAnimator.__name__ = true
+__taglist_TaglistAnimator.prototype = _hx_e();
+
+__taglist_TaglistAnimator.prototype.__class__ =  __taglist_TaglistAnimator
+
+__taglist_TaglistAnimatorImpl.new = function(t) 
+  local self = _hx_new(__taglist_TaglistAnimatorImpl.prototype)
+  __taglist_TaglistAnimatorImpl.super(self,t)
   return self
 end
-__taglist_TaglistAnimator.super = function(self,t) 
+__taglist_TaglistAnimatorImpl.super = function(self,t) 
   self.timers = __taglist_Timers.new();
   self.taglist = t;
 end
-__taglist_TaglistAnimator.__name__ = true
-__taglist_TaglistAnimator.prototype = _hx_e();
-__taglist_TaglistAnimator.prototype.get_tagListBox = function(self) 
+__taglist_TaglistAnimatorImpl.__name__ = true
+__taglist_TaglistAnimatorImpl.__interfaces__ = {__taglist_TaglistAnimator}
+__taglist_TaglistAnimatorImpl.prototype = _hx_e();
+__taglist_TaglistAnimatorImpl.prototype.get_tagListBox = function(self) 
   local _g = self.taglist.tagListBox;
   local tmp = _g[1];
   if (tmp) == 0 then 
@@ -1652,9 +1764,9 @@ __taglist_TaglistAnimator.prototype.get_tagListBox = function(self)
   elseif (tmp) == 1 then 
     _G.error(__haxe_Exception.thrown("Cannot animate nonexistent widget"),0); end;
 end
-__taglist_TaglistAnimator.prototype.disable = function(self) 
+__taglist_TaglistAnimatorImpl.prototype.disable = function(self) 
 end
-__taglist_TaglistAnimator.prototype.autoHide = function(self,n) 
+__taglist_TaglistAnimatorImpl.prototype.autoHide = function(self,n) 
   local _gthis = self;
   if (self.timers.hide_timer ~= __haxe_ds_Option.None) then 
     local value = self.timers.hide_timer;
@@ -1675,7 +1787,7 @@ __taglist_TaglistAnimator.prototype.autoHide = function(self,n)
   end;
   self.timers.hide_timer = __haxe_ds_Option.Some(__awful_Timer.new(_hx_o({__fields__={timeout=true,callback=true,autostart=true,single_shot=true},timeout=4,callback=tmp,autostart=true,single_shot=true})));
 end
-__taglist_TaglistAnimator.prototype.show = function(self) 
+__taglist_TaglistAnimatorImpl.prototype.show = function(self) 
   if (self.timers.slide_timer ~= __haxe_ds_Option.None) then 
     local value = self.timers.slide_timer;
     local tmp;
@@ -1686,12 +1798,12 @@ __taglist_TaglistAnimator.prototype.show = function(self)
       _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
     self:resetTimer(tmp);
   end;
-  self:get_tagListBox():geometry(_hx_o({__fields__={x=true},x=__taglist_TaglistAnimator.slideConf.init}));
+  self:get_tagListBox():geometry(_hx_o({__fields__={x=true},x=__taglist_TaglistAnimatorImpl.slideConf.init}));
 end
-__taglist_TaglistAnimator.prototype.slideOut = function(self,timer) 
+__taglist_TaglistAnimatorImpl.prototype.slideOut = function(self,timer) 
   local start = self:get_tagListBox().x;
   local iterator_x_cur = 0;
-  local iterator_x_max = _G.math.ceil((__taglist_TaglistAnimator.slideConf.last - start) / 2);
+  local iterator_x_max = _G.math.ceil((__taglist_TaglistAnimatorImpl.slideConf.last - start) / 2);
   while (iterator_x_cur < iterator_x_max) do 
     iterator_x_cur = iterator_x_cur + 1;
     self:get_tagListBox():geometry(_hx_o({__fields__={x=true},x=start + ((iterator_x_cur - 1) * 2)}));
@@ -1699,9 +1811,9 @@ __taglist_TaglistAnimator.prototype.slideOut = function(self,timer)
   end;
   self:resetTimer(timer);
 end
-__taglist_TaglistAnimator.prototype.slideIn = function(self,timer) 
+__taglist_TaglistAnimatorImpl.prototype.slideIn = function(self,timer) 
   local start = self:get_tagListBox().x;
-  local _end = __taglist_TaglistAnimator.slideConf.init;
+  local _end = __taglist_TaglistAnimatorImpl.slideConf.init;
   local iterator_x_cur = _G.math.ceil((start - _end) / 2);
   while (iterator_x_cur > 0) do 
     iterator_x_cur = iterator_x_cur - 1;
@@ -1710,12 +1822,12 @@ __taglist_TaglistAnimator.prototype.slideIn = function(self,timer)
   end;
   self:resetTimer(timer);
 end
-__taglist_TaglistAnimator.prototype.resetTimer = function(self,timer) 
+__taglist_TaglistAnimatorImpl.prototype.resetTimer = function(self,timer) 
   if (timer.started) then 
     timer:stop();
   end;
 end
-__taglist_TaglistAnimator.prototype.slide = function(self,arg) 
+__taglist_TaglistAnimatorImpl.prototype.slide = function(self,arg) 
   local _gthis = self;
   if (self.timers.slide_timer ~= __haxe_ds_Option.None) then 
     local value = self.timers.slide_timer;
@@ -1735,7 +1847,7 @@ __taglist_TaglistAnimator.prototype.slide = function(self,arg)
     _hx_1 = _hx_bind(self,self.slideOut); end
     return _hx_1
   end )());
-  local tmp = __awful_Timer.new(_hx_o({__fields__={timeout=true,callback=true,autostart=true,single_shot=true},timeout=__taglist_TaglistAnimator.slideConf.step_time,callback=function(t) 
+  local tmp = __awful_Timer.new(_hx_o({__fields__={timeout=true,callback=true,autostart=true,single_shot=true},timeout=__taglist_TaglistAnimatorImpl.slideConf.step_time,callback=function(t) 
     local generator = generator;
     local value = _gthis.timers.slide_timer;
     local tmp;
@@ -1749,7 +1861,7 @@ __taglist_TaglistAnimator.prototype.slide = function(self,arg)
   self.timers.slide_timer = __haxe_ds_Option.Some(tmp);
 end
 
-__taglist_TaglistAnimator.prototype.__class__ =  __taglist_TaglistAnimator
+__taglist_TaglistAnimatorImpl.prototype.__class__ =  __taglist_TaglistAnimatorImpl
 
 __taglist_Timers.new = function() 
   local self = _hx_new(__taglist_Timers.prototype)
@@ -1838,40 +1950,23 @@ local _hx_static_init = function()
   
   String.__name__ = true;
   Array.__name__ = true;
-  _G.Logger = __log_Log;__haxe_EntryPoint.pending = Array.new();
+  _G.Switcher = __taglist_Switcher;__haxe_EntryPoint.pending = Array.new();
   
   __haxe_EntryPoint.threadCount = 0;
   
   __haxe_ds_StringMap.tnull = ({});
   
-  __log_Log.backgrounds = (function() 
-    local _hx_1
-    
-    local _g = __haxe_ds_StringMap.new();
-    
-    _g.h.Debug = "#45cf65";
-    
-    _g.h.Info = "#55aaff";
-    
-    _g.h.Warn = "#ffff7f";
-    
-    _g.h.Error = "#b91e1e";
-    
-    _hx_1 = _g;
-    return _hx_1
-  end )();
-  
   __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
   
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon="" .. __log_Log.res_path .. "/bang2.png",width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
-  __taglist_Pkg.ver = "1644357846";
+  __taglist_Pkg.ver = "1661349971";
   
   __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
   
   __taglist_Taglist.wiboxConfig = _hx_o({__fields__={x=true,y=true,height=true,width=true,ontop=true,opacity=true},x=1820,y=240,height=115,width=95,ontop=true,opacity=0.7});
   
-  __taglist_TaglistAnimator.slideConf = _hx_o({__fields__={init=true,last=true,step_time=true},init=1820,last=1895,step_time=0.05});
+  __taglist_TaglistAnimatorImpl.slideConf = _hx_o({__fields__={init=true,last=true,step_time=true},init=1820,last=1895,step_time=0.05});
   
   
 end
@@ -1900,6 +1995,8 @@ _hx_funcToField = function(f)
     return f
   end
 end
+
+_hx_print = print or (function() end)
 
 _hx_table = {}
 _hx_table.pack = _G.table.pack or function(...)
