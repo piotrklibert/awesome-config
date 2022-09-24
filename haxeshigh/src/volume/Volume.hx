@@ -26,13 +26,15 @@ extern class GT {
 
 class Volume {
 
-  public static function nvm() {
+  public static function nvm(): String {
     return "";
   }
 
+
   public static function main() {
     final s = "zażółć gęślą jaźń";
-    trace(inspect(GT.join({aa: 3}, A([2, 3, 4]), {})));
+    trace(inspect(GT.join({aa: 3}, A([2, 3, 4]), {}), {depth: 2}));
+    trace(inspect(GT.join({aa: 3}, A([2, 3, 4]), {}), {depth: 2}));
     Naughty.notify(T({text: s.substr(0, 3)}));
   }
 }

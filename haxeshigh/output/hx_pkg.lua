@@ -194,7 +194,7 @@ local Class = _hx_e();
 local Enum = _hx_e();
 
 local Array = _hx_e()
-local __lua_lib_luautf8_Utf8 = _G.require("string")
+local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Lambda = _hx_e()
 local Math = _hx_e()
 local Reflect = _hx_e()
@@ -222,43 +222,43 @@ local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_pr
 local _hx_pcall_default = {};
 local _hx_pcall_break = {};
 
-Array.new = function()
+Array.new = function() 
   local self = _hx_new(Array.prototype)
   Array.super(self)
   return self
 end
-Array.super = function(self)
+Array.super = function(self) 
   _hx_tab_array(self, 0);
 end
 Array.__name__ = true
 Array.prototype = _hx_e();
-Array.prototype.concat = function(self,a)
+Array.prototype.concat = function(self,a) 
   local _g = _hx_tab_array({}, 0);
   local _g1 = 0;
-  while (_g1 < self.length) do
+  while (_g1 < self.length) do 
     local i = self[_g1];
     _g1 = _g1 + 1;
     _g:push(i);
   end;
   local _g1 = 0;
-  while (_g1 < a.length) do
+  while (_g1 < a.length) do 
     local i = a[_g1];
     _g1 = _g1 + 1;
     _g:push(i);
   end;
   do return _g end
 end
-Array.prototype.join = function(self,sep)
+Array.prototype.join = function(self,sep) 
   local tbl = ({});
   local _g_current = 0;
-  while (_g_current < self.length) do
+  while (_g_current < self.length) do 
     _g_current = _g_current + 1;
     _G.table.insert(tbl, Std.string(self[_g_current - 1]));
   end;
   do return _G.table.concat(tbl, sep) end
 end
-Array.prototype.pop = function(self)
-  if (self.length == 0) then
+Array.prototype.pop = function(self) 
+  if (self.length == 0) then 
     do return nil end;
   end;
   local ret = self[self.length - 1];
@@ -266,29 +266,29 @@ Array.prototype.pop = function(self)
   self.length = self.length - 1;
   do return ret end
 end
-Array.prototype.push = function(self,x)
+Array.prototype.push = function(self,x) 
   self[self.length] = x;
   do return self.length end
 end
-Array.prototype.reverse = function(self)
+Array.prototype.reverse = function(self) 
   local tmp;
   local i = 0;
-  while (i < Std.int(self.length / 2)) do
+  while (i < Std.int(self.length / 2)) do 
     tmp = self[i];
     self[i] = self[(self.length - i) - 1];
     self[(self.length - i) - 1] = tmp;
     i = i + 1;
   end;
 end
-Array.prototype.shift = function(self)
-  if (self.length == 0) then
+Array.prototype.shift = function(self) 
+  if (self.length == 0) then 
     do return nil end;
   end;
   local ret = self[0];
-  if (self.length == 1) then
+  if (self.length == 1) then 
     self[0] = nil;
   else
-    if (self.length > 1) then
+    if (self.length > 1) then 
       self[0] = self[1];
       _G.table.remove(self, 1);
     end;
@@ -297,38 +297,38 @@ Array.prototype.shift = function(self)
   tmp.length = tmp.length - 1;
   do return ret end
 end
-Array.prototype.slice = function(self,pos,_end)
-  if ((_end == nil) or (_end > self.length)) then
+Array.prototype.slice = function(self,pos,_end) 
+  if ((_end == nil) or (_end > self.length)) then 
     _end = self.length;
   else
-    if (_end < 0) then
+    if (_end < 0) then 
       _end = _G.math.fmod((self.length - (_G.math.fmod(-_end, self.length))), self.length);
     end;
   end;
-  if (pos < 0) then
+  if (pos < 0) then 
     pos = _G.math.fmod((self.length - (_G.math.fmod(-pos, self.length))), self.length);
   end;
-  if ((pos > _end) or (pos > self.length)) then
+  if ((pos > _end) or (pos > self.length)) then 
     do return _hx_tab_array({}, 0) end;
   end;
   local ret = _hx_tab_array({}, 0);
   local _g = pos;
   local _g1 = _end;
-  while (_g < _g1) do
+  while (_g < _g1) do 
     _g = _g + 1;
     ret:push(self[_g - 1]);
   end;
   do return ret end
 end
-Array.prototype.sort = function(self,f)
+Array.prototype.sort = function(self,f) 
   local i = 0;
   local l = self.length;
-  while (i < l) do
+  while (i < l) do 
     local swap = false;
     local j = 0;
     local max = (l - i) - 1;
-    while (j < max) do
-      if (f(self[j], self[j + 1]) > 0) then
+    while (j < max) do 
+      if (f(self[j], self[j + 1]) > 0) then 
         local tmp = self[j + 1];
         self[j + 1] = self[j];
         self[j] = tmp;
@@ -336,17 +336,17 @@ Array.prototype.sort = function(self,f)
       end;
       j = j + 1;
     end;
-    if (not swap) then
+    if (not swap) then 
       break;
     end;
     i = i + 1;
   end;
 end
-Array.prototype.splice = function(self,pos,len)
-  if ((len < 0) or (pos > self.length)) then
+Array.prototype.splice = function(self,pos,len) 
+  if ((len < 0) or (pos > self.length)) then 
     do return _hx_tab_array({}, 0) end;
   else
-    if (pos < 0) then
+    if (pos < 0) then 
       pos = self.length - (_G.math.fmod(-pos, self.length));
     end;
   end;
@@ -354,7 +354,7 @@ Array.prototype.splice = function(self,pos,len)
   local ret = _hx_tab_array({}, 0);
   local _g = pos;
   local _g1 = pos + len;
-  while (_g < _g1) do
+  while (_g < _g1) do 
     _g = _g + 1;
     local i = _g - 1;
     ret:push(self[i]);
@@ -362,7 +362,7 @@ Array.prototype.splice = function(self,pos,len)
   end;
   local _g = pos + len;
   local _g1 = self.length;
-  while (_g < _g1) do
+  while (_g < _g1) do 
     _g = _g + 1;
     local i = _g - 1;
     self[i] = self[i + len];
@@ -370,50 +370,50 @@ Array.prototype.splice = function(self,pos,len)
   self.length = self.length - len;
   do return ret end
 end
-Array.prototype.toString = function(self)
+Array.prototype.toString = function(self) 
   local tbl = ({});
   _G.table.insert(tbl, "[");
   _G.table.insert(tbl, self:join(","));
   _G.table.insert(tbl, "]");
   do return _G.table.concat(tbl, "") end
 end
-Array.prototype.unshift = function(self,x)
+Array.prototype.unshift = function(self,x) 
   local len = self.length;
   local _g = 0;
-  while (_g < len) do
+  while (_g < len) do 
     _g = _g + 1;
     local i = _g - 1;
     self[len - i] = self[(len - i) - 1];
   end;
   self[0] = x;
 end
-Array.prototype.insert = function(self,pos,x)
-  if (pos > self.length) then
+Array.prototype.insert = function(self,pos,x) 
+  if (pos > self.length) then 
     pos = self.length;
   end;
-  if (pos < 0) then
+  if (pos < 0) then 
     pos = self.length + pos;
-    if (pos < 0) then
+    if (pos < 0) then 
       pos = 0;
     end;
   end;
   local cur_len = self.length;
-  while (cur_len > pos) do
+  while (cur_len > pos) do 
     self[cur_len] = self[cur_len - 1];
     cur_len = cur_len - 1;
   end;
   self[pos] = x;
 end
-Array.prototype.remove = function(self,x)
+Array.prototype.remove = function(self,x) 
   local _g = 0;
   local _g1 = self.length;
-  while (_g < _g1) do
+  while (_g < _g1) do 
     _g = _g + 1;
     local i = _g - 1;
-    if (self[i] == x) then
+    if (self[i] == x) then 
       local _g = i;
       local _g1 = self.length - 1;
-      while (_g < _g1) do
+      while (_g < _g1) do 
         _g = _g + 1;
         local j = _g - 1;
         self[j] = self[j + 1];
@@ -425,53 +425,53 @@ Array.prototype.remove = function(self,x)
   end;
   do return false end
 end
-Array.prototype.contains = function(self,x)
+Array.prototype.contains = function(self,x) 
   local _g = 0;
   local _g1 = self.length;
-  while (_g < _g1) do
+  while (_g < _g1) do 
     _g = _g + 1;
-    if (self[_g - 1] == x) then
+    if (self[_g - 1] == x) then 
       do return true end;
     end;
   end;
   do return false end
 end
-Array.prototype.indexOf = function(self,x,fromIndex)
+Array.prototype.indexOf = function(self,x,fromIndex) 
   local _end = self.length;
-  if (fromIndex == nil) then
+  if (fromIndex == nil) then 
     fromIndex = 0;
   else
-    if (fromIndex < 0) then
+    if (fromIndex < 0) then 
       fromIndex = self.length + fromIndex;
-      if (fromIndex < 0) then
+      if (fromIndex < 0) then 
         fromIndex = 0;
       end;
     end;
   end;
   local _g = fromIndex;
-  while (_g < _end) do
+  while (_g < _end) do 
     _g = _g + 1;
     local i = _g - 1;
-    if (x == self[i]) then
+    if (x == self[i]) then 
       do return i end;
     end;
   end;
   do return -1 end
 end
-Array.prototype.lastIndexOf = function(self,x,fromIndex)
-  if ((fromIndex == nil) or (fromIndex >= self.length)) then
+Array.prototype.lastIndexOf = function(self,x,fromIndex) 
+  if ((fromIndex == nil) or (fromIndex >= self.length)) then 
     fromIndex = self.length - 1;
   else
-    if (fromIndex < 0) then
+    if (fromIndex < 0) then 
       fromIndex = self.length + fromIndex;
-      if (fromIndex < 0) then
+      if (fromIndex < 0) then 
         do return -1 end;
       end;
     end;
   end;
   local i = fromIndex;
-  while (i >= 0) do
-    if (self[i] == x) then
+  while (i >= 0) do 
+    if (self[i] == x) then 
       do return i end;
     else
       i = i - 1;
@@ -479,52 +479,52 @@ Array.prototype.lastIndexOf = function(self,x,fromIndex)
   end;
   do return -1 end
 end
-Array.prototype.copy = function(self)
+Array.prototype.copy = function(self) 
   local _g = _hx_tab_array({}, 0);
   local _g1 = 0;
-  while (_g1 < self.length) do
+  while (_g1 < self.length) do 
     local i = self[_g1];
     _g1 = _g1 + 1;
     _g:push(i);
   end;
   do return _g end
 end
-Array.prototype.map = function(self,f)
+Array.prototype.map = function(self,f) 
   local _g = _hx_tab_array({}, 0);
   local _g1 = 0;
-  while (_g1 < self.length) do
+  while (_g1 < self.length) do 
     local i = self[_g1];
     _g1 = _g1 + 1;
     _g:push(f(i));
   end;
   do return _g end
 end
-Array.prototype.filter = function(self,f)
+Array.prototype.filter = function(self,f) 
   local _g = _hx_tab_array({}, 0);
   local _g1 = 0;
-  while (_g1 < self.length) do
+  while (_g1 < self.length) do 
     local i = self[_g1];
     _g1 = _g1 + 1;
-    if (f(i)) then
+    if (f(i)) then 
       _g:push(i);
     end;
   end;
   do return _g end
 end
-Array.prototype.iterator = function(self)
+Array.prototype.iterator = function(self) 
   do return __haxe_iterators_ArrayIterator.new(self) end
 end
-Array.prototype.keyValueIterator = function(self)
+Array.prototype.keyValueIterator = function(self) 
   do return __haxe_iterators_ArrayKeyValueIterator.new(self) end
 end
-Array.prototype.resize = function(self,len)
-  if (self.length < len) then
+Array.prototype.resize = function(self,len) 
+  if (self.length < len) then 
     self.length = len;
   else
-    if (self.length > len) then
+    if (self.length > len) then 
       local _g = len;
       local _g1 = self.length;
-      while (_g < _g1) do
+      while (_g < _g1) do 
         _g = _g + 1;
         self[_g - 1] = nil;
       end;
@@ -537,17 +537,17 @@ Array.prototype.__class__ =  Array
 
 Lambda.new = {}
 Lambda.__name__ = true
-Lambda.iter = function(it,f)
+Lambda.iter = function(it,f) 
   local x = it:iterator();
-  while (x:hasNext()) do
+  while (x:hasNext()) do 
     f(x:next());
   end;
 end
-Lambda.find = function(it,f)
+Lambda.find = function(it,f) 
   local v = it:iterator();
-  while (v:hasNext()) do
+  while (v:hasNext()) do 
     local v = v:next();
-    if (f(v)) then
+    if (f(v)) then 
       do return v end;
     end;
   end;
@@ -556,18 +556,18 @@ end
 
 Math.new = {}
 Math.__name__ = true
-Math.isNaN = function(f)
+Math.isNaN = function(f) 
   do return f ~= f end;
 end
-Math.isFinite = function(f)
-  if (f > -_G.math.huge) then
+Math.isFinite = function(f) 
+  if (f > -_G.math.huge) then 
     do return f < _G.math.huge end;
   else
     do return false end;
   end;
 end
-Math.min = function(a,b)
-  if (Math.isNaN(a) or Math.isNaN(b)) then
+Math.min = function(a,b) 
+  if (Math.isNaN(a) or Math.isNaN(b)) then 
     do return (0/0) end;
   else
     do return _G.math.min(a, b) end;
@@ -576,21 +576,21 @@ end
 
 Reflect.new = {}
 Reflect.__name__ = true
-Reflect.field = function(o,field)
-  if (_G.type(o) == "string") then
-    if (field == "length") then
+Reflect.field = function(o,field) 
+  if (_G.type(o) == "string") then 
+    if (field == "length") then 
       do return _hx_wrap_if_string_field(o,'length') end;
     else
       do return String.prototype[field] end;
     end;
   else
-    local _hx_status, _hx_result = pcall(function()
-
+    local _hx_status, _hx_result = pcall(function() 
+    
         do return o[field] end;
       return _hx_pcall_default
     end)
     if not _hx_status and _hx_result == "_hx_pcall_break" then
-    elseif not _hx_status then
+    elseif not _hx_status then 
       local _g = _hx_result;
       do return nil end;
     elseif _hx_result ~= _hx_pcall_default then
@@ -598,30 +598,30 @@ Reflect.field = function(o,field)
     end;
   end;
 end
-Reflect.fields = function(o)
+Reflect.fields = function(o) 
   local _hx_continue_1 = false;
-  while (true) do repeat
-    if (_G.type(o) == "string") then
+  while (true) do repeat 
+    if (_G.type(o) == "string") then 
       o = String.prototype;
       break;
     else
       do return _hx_field_arr(o) end;
     end;until true
-    if _hx_continue_1 then
+    if _hx_continue_1 then 
     _hx_continue_1 = false;
     break;
     end;
-
+    
   end;
 end
-Reflect.copy = function(o)
-  if (o == nil) then
+Reflect.copy = function(o) 
+  if (o == nil) then 
     do return nil end;
   end;
   local o2 = _hx_e();
   local _g = 0;
   local _g1 = Reflect.fields(o);
-  while (_g < _g1.length) do
+  while (_g < _g1.length) do 
     local f = _g1[_g];
     _g = _g + 1;
     o2[f] = Reflect.field(o, f);
@@ -629,36 +629,36 @@ Reflect.copy = function(o)
   do return o2 end;
 end
 
-String.new = function(string)
+String.new = function(string) 
   local self = _hx_new(String.prototype)
   String.super(self,string)
   self = string
   return self
 end
-String.super = function(self,string)
+String.super = function(self,string) 
 end
 String.__name__ = true
-String.__index = function(s,k)
-  if (k == "length") then
+String.__index = function(s,k) 
+  if (k == "length") then 
     do return __lua_lib_luautf8_Utf8.len(s) end;
   else
     local o = String.prototype;
     local field = k;
-    if ((function()
+    if ((function() 
       local _hx_1
-      if ((_G.type(o) == "string") and ((String.prototype[field] ~= nil) or (field == "length"))) then
-      _hx_1 = true; elseif (o.__fields__ ~= nil) then
-      _hx_1 = o.__fields__[field] ~= nil; else
+      if ((_G.type(o) == "string") and ((String.prototype[field] ~= nil) or (field == "length"))) then 
+      _hx_1 = true; elseif (o.__fields__ ~= nil) then 
+      _hx_1 = o.__fields__[field] ~= nil; else 
       _hx_1 = o[field] ~= nil; end
       return _hx_1
-    end )()) then
+    end )()) then 
       do return String.prototype[k] end;
     else
-      if (String.__oldindex ~= nil) then
-        if (_G.type(String.__oldindex) == "function") then
+      if (String.__oldindex ~= nil) then 
+        if (_G.type(String.__oldindex) == "function") then 
           do return String.prototype.__oldindex(String, s, k) end;
         else
-          if (_G.type(String.__oldindex) == "table") then
+          if (_G.type(String.__oldindex) == "table") then 
             do return String.__oldindex[k] end;
           end;
         end;
@@ -669,93 +669,93 @@ String.__index = function(s,k)
     end;
   end;
 end
-String.indexOfEmpty = function(s,startIndex)
+String.indexOfEmpty = function(s,startIndex) 
   local length = __lua_lib_luautf8_Utf8.len(s);
-  if (startIndex < 0) then
+  if (startIndex < 0) then 
     startIndex = length + startIndex;
-    if (startIndex < 0) then
+    if (startIndex < 0) then 
       startIndex = 0;
     end;
   end;
-  if (startIndex > length) then
+  if (startIndex > length) then 
     do return length end;
   else
     do return startIndex end;
   end;
 end
-String.fromCharCode = function(code)
+String.fromCharCode = function(code) 
   do return __lua_lib_luautf8_Utf8.char(code) end;
 end
 String.prototype = _hx_e();
-String.prototype.toUpperCase = function(self)
+String.prototype.toUpperCase = function(self) 
   do return __lua_lib_luautf8_Utf8.upper(self) end
 end
-String.prototype.toLowerCase = function(self)
+String.prototype.toLowerCase = function(self) 
   do return __lua_lib_luautf8_Utf8.lower(self) end
 end
-String.prototype.indexOf = function(self,str,startIndex)
-  if (startIndex == nil) then
+String.prototype.indexOf = function(self,str,startIndex) 
+  if (startIndex == nil) then 
     startIndex = 1;
   else
     startIndex = startIndex + 1;
   end;
-  if (str == "") then
+  if (str == "") then 
     do return String.prototype.indexOfEmpty(String, self, startIndex - 1) end;
   end;
   local r = __lua_lib_luautf8_Utf8.find(self, str, startIndex, true);
-  if ((r ~= nil) and (r > 0)) then
+  if ((r ~= nil) and (r > 0)) then 
     do return r - 1 end;
   else
     do return -1 end;
   end;
 end
-String.prototype.lastIndexOf = function(self,str,startIndex)
+String.prototype.lastIndexOf = function(self,str,startIndex) 
   local ret = -1;
-  if (startIndex == nil) then
+  if (startIndex == nil) then 
     startIndex = __lua_lib_luautf8_Utf8.len(self);
   end;
-  while (true) do
+  while (true) do 
     local startIndex1 = ret + 1;
-    if (startIndex1 == nil) then
+    if (startIndex1 == nil) then 
       startIndex1 = 1;
     else
       startIndex1 = startIndex1 + 1;
     end;
     local p;
-    if (str == "") then
+    if (str == "") then 
       p = String.prototype.indexOfEmpty(String, self, startIndex1 - 1);
     else
       local r = __lua_lib_luautf8_Utf8.find(self, str, startIndex1, true);
-      p = (function()
+      p = (function() 
         local _hx_1
-        if ((r ~= nil) and (r > 0)) then
-        _hx_1 = r - 1; else
+        if ((r ~= nil) and (r > 0)) then 
+        _hx_1 = r - 1; else 
         _hx_1 = -1; end
         return _hx_1
       end )();
     end;
-    if (((p == -1) or (p > startIndex)) or (p == ret)) then
+    if (((p == -1) or (p > startIndex)) or (p == ret)) then 
       break;
     end;
     ret = p;
   end;
   do return ret end
 end
-String.prototype.split = function(self,delimiter)
+String.prototype.split = function(self,delimiter) 
   local idx = 1;
   local ret = _hx_tab_array({}, 0);
-  while (idx ~= nil) do
+  while (idx ~= nil) do 
     local newidx = 0;
-    if (__lua_lib_luautf8_Utf8.len(delimiter) > 0) then
+    if (__lua_lib_luautf8_Utf8.len(delimiter) > 0) then 
       newidx = __lua_lib_luautf8_Utf8.find(self, delimiter, idx, true);
     else
-      if (idx >= __lua_lib_luautf8_Utf8.len(self)) then
+      if (idx >= __lua_lib_luautf8_Utf8.len(self)) then 
         newidx = nil;
       else
         newidx = idx + 1;
       end;
     end;
-    if (newidx ~= nil) then
+    if (newidx ~= nil) then 
       local match = __lua_lib_luautf8_Utf8.sub(self, idx, newidx - 1);
       ret:push(match);
       idx = newidx + __lua_lib_luautf8_Utf8.len(delimiter);
@@ -766,43 +766,43 @@ String.prototype.split = function(self,delimiter)
   end;
   do return ret end
 end
-String.prototype.toString = function(self)
+String.prototype.toString = function(self) 
   do return self end
 end
-String.prototype.substring = function(self,startIndex,endIndex)
-  if (endIndex == nil) then
+String.prototype.substring = function(self,startIndex,endIndex) 
+  if (endIndex == nil) then 
     endIndex = __lua_lib_luautf8_Utf8.len(self);
   end;
-  if (endIndex < 0) then
+  if (endIndex < 0) then 
     endIndex = 0;
   end;
-  if (startIndex < 0) then
+  if (startIndex < 0) then 
     startIndex = 0;
   end;
-  if (endIndex < startIndex) then
+  if (endIndex < startIndex) then 
     do return __lua_lib_luautf8_Utf8.sub(self, endIndex + 1, startIndex) end;
   else
     do return __lua_lib_luautf8_Utf8.sub(self, startIndex + 1, endIndex) end;
   end;
 end
-String.prototype.charAt = function(self,index)
+String.prototype.charAt = function(self,index) 
   do return __lua_lib_luautf8_Utf8.sub(self, index + 1, index + 1) end
 end
-String.prototype.charCodeAt = function(self,index)
+String.prototype.charCodeAt = function(self,index) 
   do return __lua_lib_luautf8_Utf8.byte(self, index + 1) end
 end
-String.prototype.substr = function(self,pos,len)
-  if ((len == nil) or (len > (pos + __lua_lib_luautf8_Utf8.len(self)))) then
+String.prototype.substr = function(self,pos,len) 
+  if ((len == nil) or (len > (pos + __lua_lib_luautf8_Utf8.len(self)))) then 
     len = __lua_lib_luautf8_Utf8.len(self);
   else
-    if (len < 0) then
+    if (len < 0) then 
       len = __lua_lib_luautf8_Utf8.len(self) + len;
     end;
   end;
-  if (pos < 0) then
+  if (pos < 0) then 
     pos = __lua_lib_luautf8_Utf8.len(self) + pos;
   end;
-  if (pos < 0) then
+  if (pos < 0) then 
     pos = 0;
   end;
   do return __lua_lib_luautf8_Utf8.sub(self, pos + 1, pos + len) end
@@ -812,11 +812,11 @@ String.prototype.__class__ =  String
 
 Std.new = {}
 Std.__name__ = true
-Std.string = function(s)
+Std.string = function(s) 
   do return _hx_tostring(s, 0) end;
 end
-Std.int = function(x)
-  if (not Math.isFinite(x) or Math.isNaN(x)) then
+Std.int = function(x) 
+  if (not Math.isFinite(x) or Math.isNaN(x)) then 
     do return 0 end;
   else
     do return _hx_bit_clamp(x) end;
@@ -829,16 +829,16 @@ __haxe_IMap.prototype = _hx_e();
 
 __haxe_IMap.prototype.__class__ =  __haxe_IMap
 
-__haxe_Exception.new = function(message,previous,native)
+__haxe_Exception.new = function(message,previous,native) 
   local self = _hx_new(__haxe_Exception.prototype)
   __haxe_Exception.super(self,message,previous,native)
   return self
 end
-__haxe_Exception.super = function(self,message,previous,native)
+__haxe_Exception.super = function(self,message,previous,native) 
   self.__skipStack = 0;
   self.__exceptionMessage = message;
   self.__previousException = previous;
-  if (native ~= nil) then
+  if (native ~= nil) then 
     self.__nativeException = native;
     self.__nativeStack = __haxe_NativeStackTrace.exceptionStack();
   else
@@ -849,10 +849,10 @@ __haxe_Exception.super = function(self,message,previous,native)
 end
 __haxe_Exception.__name__ = true
 __haxe_Exception.prototype = _hx_e();
-__haxe_Exception.prototype.toString = function(self)
+__haxe_Exception.prototype.toString = function(self) 
   do return self:get_message() end
 end
-__haxe_Exception.prototype.get_message = function(self)
+__haxe_Exception.prototype.get_message = function(self) 
   do return self.__exceptionMessage end
 end
 
@@ -860,27 +860,27 @@ __haxe_Exception.prototype.__class__ =  __haxe_Exception
 
 __haxe_NativeStackTrace.new = {}
 __haxe_NativeStackTrace.__name__ = true
-__haxe_NativeStackTrace.saveStack = function(exception)
+__haxe_NativeStackTrace.saveStack = function(exception) 
 end
-__haxe_NativeStackTrace.callStack = function()
+__haxe_NativeStackTrace.callStack = function() 
   local _g = debug.traceback();
-  if (_g == nil) then
+  if (_g == nil) then 
     do return _hx_tab_array({}, 0) end;
   else
     local idx = 1;
     local ret = _hx_tab_array({}, 0);
-    while (idx ~= nil) do
+    while (idx ~= nil) do 
       local newidx = 0;
-      if (__lua_lib_luautf8_Utf8.len("\n") > 0) then
+      if (__lua_lib_luautf8_Utf8.len("\n") > 0) then 
         newidx = __lua_lib_luautf8_Utf8.find(_g, "\n", idx, true);
       else
-        if (idx >= __lua_lib_luautf8_Utf8.len(_g)) then
+        if (idx >= __lua_lib_luautf8_Utf8.len(_g)) then 
           newidx = nil;
         else
           newidx = idx + 1;
         end;
       end;
-      if (newidx ~= nil) then
+      if (newidx ~= nil) then 
         local match = __lua_lib_luautf8_Utf8.sub(_g, idx, newidx - 1);
         ret:push(match);
         idx = newidx + __lua_lib_luautf8_Utf8.len("\n");
@@ -892,59 +892,59 @@ __haxe_NativeStackTrace.callStack = function()
     do return ret:slice(3) end;
   end;
 end
-__haxe_NativeStackTrace.exceptionStack = function()
+__haxe_NativeStackTrace.exceptionStack = function() 
   do return _hx_tab_array({}, 0) end;
 end
 
-__haxe_ds_StringMap.new = function()
+__haxe_ds_StringMap.new = function() 
   local self = _hx_new(__haxe_ds_StringMap.prototype)
   __haxe_ds_StringMap.super(self)
   return self
 end
-__haxe_ds_StringMap.super = function(self)
+__haxe_ds_StringMap.super = function(self) 
   self.h = ({});
 end
 __haxe_ds_StringMap.__name__ = true
 __haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
 __haxe_ds_StringMap.prototype = _hx_e();
-__haxe_ds_StringMap.prototype.get = function(self,key)
+__haxe_ds_StringMap.prototype.get = function(self,key) 
   local ret = self.h[key];
-  if (ret == __haxe_ds_StringMap.tnull) then
+  if (ret == __haxe_ds_StringMap.tnull) then 
     ret = nil;
   end;
   do return ret end
 end
-__haxe_ds_StringMap.prototype.keys = function(self)
+__haxe_ds_StringMap.prototype.keys = function(self) 
   local _gthis = self;
   local next = _G.next;
   local cur = next(self.h, nil);
-  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self)
+  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
     local ret = cur;
     cur = next(_gthis.h, cur);
     do return ret end;
-  end,hasNext=function(self)
+  end,hasNext=function(self) 
     do return cur ~= nil end;
   end}) end
 end
 
 __haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
 
-__haxe_iterators_ArrayIterator.new = function(array)
+__haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
   return self
 end
-__haxe_iterators_ArrayIterator.super = function(self,array)
+__haxe_iterators_ArrayIterator.super = function(self,array) 
   self.current = 0;
   self.array = array;
 end
 __haxe_iterators_ArrayIterator.__name__ = true
 __haxe_iterators_ArrayIterator.prototype = _hx_e();
-__haxe_iterators_ArrayIterator.prototype.hasNext = function(self)
+__haxe_iterators_ArrayIterator.prototype.hasNext = function(self) 
   do return self.current < self.array.length end
 end
-__haxe_iterators_ArrayIterator.prototype.next = function(self)
-  do return self.array[(function()
+__haxe_iterators_ArrayIterator.prototype.next = function(self) 
+  do return self.array[(function() 
   local _hx_obj = self;
   local _hx_fld = 'current';
   local _ = _hx_obj[_hx_fld];
@@ -955,12 +955,12 @@ end
 
 __haxe_iterators_ArrayIterator.prototype.__class__ =  __haxe_iterators_ArrayIterator
 
-__haxe_iterators_ArrayKeyValueIterator.new = function(array)
+__haxe_iterators_ArrayKeyValueIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayKeyValueIterator.prototype)
   __haxe_iterators_ArrayKeyValueIterator.super(self,array)
   return self
 end
-__haxe_iterators_ArrayKeyValueIterator.super = function(self,array)
+__haxe_iterators_ArrayKeyValueIterator.super = function(self,array) 
   self.array = array;
 end
 __haxe_iterators_ArrayKeyValueIterator.__name__ = true
@@ -970,20 +970,20 @@ __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_A
 
 __log_Log.new = {}
 __log_Log.__name__ = true
-__log_Log.display = function(s,opts)
-  if (opts == nil) then
+__log_Log.display = function(s,opts) 
+  if (opts == nil) then 
     opts = _hx_e();
   end;
   local value = Reflect.copy(__log_Log.defaults);
   local defs;
-  if (value == nil) then
+  if (value == nil) then 
     _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   else
     defs = value;
   end;
   local _g = 0;
   local _g1 = Reflect.fields(opts);
-  while (_g < _g1.length) do
+  while (_g < _g1.length) do 
     local f = _g1[_g];
     _g = _g + 1;
     defs[f] = Reflect.field(opts, f);
@@ -991,56 +991,28 @@ __log_Log.display = function(s,opts)
   defs.text = s;
   __awful_Naughty.notify(defs);
 end
-__log_Log.formatInfos = function(i)
-  if (i == nil) then
+__log_Log.formatInfos = function(i) 
+  if (i == nil) then 
     do return "    ERROR: no pos info!\n" end;
   else
     local i = i;
     do return _G.table.concat(({"    " .. i.fileName .. ":" .. Std.string(i.lineNumber),"    " .. i.className .. "." .. i.methodName}), "\n") end;
   end;
 end
-__log_Log.debug = function(x,infos)
-  local ret = __log_Log.backgrounds.h["Debug"];
-  if (ret == __haxe_ds_StringMap.tnull) then
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug4.png"}), infos);
-end
-__log_Log.info = function(x,infos)
-  local ret = __log_Log.backgrounds.h["Info"];
-  if (ret == __haxe_ds_StringMap.tnull) then
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), infos);
-end
-__log_Log.warn = function(x,infos)
-  local ret = __log_Log.backgrounds.h["Warn"];
-  if (ret == __haxe_ds_StringMap.tnull) then
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/warn2.png"}), infos);
-end
-__log_Log.error = function(x,infos)
-  local ret = __log_Log.backgrounds.h["Error"];
-  if (ret == __haxe_ds_StringMap.tnull) then
-    ret = nil;
-  end;
-  __log_Log.log(x, _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/error2.png"}), infos);
-end
-__log_Log.log = function(x,opts,infos)
+__log_Log.log = function(x,opts,infos) 
   local _hx_continue_1 = false;
-  while (true) do repeat
-    if (opts == nil) then
+  while (true) do repeat 
+    if (opts == nil) then 
       opts = _hx_e();
     end;
-    local _hx_tmp = (function()
+    local _hx_tmp = (function() 
       local _hx_1
-      if (__lua_Boot.__instanceof(x, String)) then
-      _hx_1 = _hx_tab_array({[0]=x}, 1); else
+      if (__lua_Boot.__instanceof(x, String)) then 
+      _hx_1 = _hx_tab_array({[0]=x}, 1); else 
       _hx_1 = _hx_tab_array({}, 0); end
       return _hx_1
     end )();
-    if (_hx_tmp.length == 1) then
+    if (_hx_tmp.length == 1) then 
       local s = _hx_tmp[0];
       local infos = __log_Log.formatInfos(infos);
       __log_Log.display("" .. infos .. "\n    -----------------------\n\n" .. s .. "\n", opts);
@@ -1049,80 +1021,80 @@ __log_Log.log = function(x,opts,infos)
       break;
     end;
     do return end;until true
-    if _hx_continue_1 then
+    if _hx_continue_1 then 
     _hx_continue_1 = false;
     break;
     end;
-
+    
   end;
 end
 
 __lua_Boot.new = {}
 __lua_Boot.__name__ = true
-__lua_Boot.__instanceof = function(o,cl)
-  if (cl == nil) then
+__lua_Boot.__instanceof = function(o,cl) 
+  if (cl == nil) then 
     do return false end;
   end;
   local cl1 = cl;
-  if (cl1) == Array then
+  if (cl1) == Array then 
     do return __lua_Boot.isArray(o) end;
-  elseif (cl1) == Bool then
+  elseif (cl1) == Bool then 
     do return _G.type(o) == "boolean" end;
-  elseif (cl1) == Dynamic then
+  elseif (cl1) == Dynamic then 
     do return o ~= nil end;
-  elseif (cl1) == Float then
+  elseif (cl1) == Float then 
     do return _G.type(o) == "number" end;
-  elseif (cl1) == Int then
-    if (_G.type(o) == "number") then
+  elseif (cl1) == Int then 
+    if (_G.type(o) == "number") then 
       do return _hx_bit_clamp(o) == o end;
     else
       do return false end;
     end;
-  elseif (cl1) == String then
+  elseif (cl1) == String then 
     do return _G.type(o) == "string" end;
-  elseif (cl1) == _G.table then
+  elseif (cl1) == _G.table then 
     do return _G.type(o) == "table" end;
-  elseif (cl1) == __lua_Thread then
+  elseif (cl1) == __lua_Thread then 
     do return _G.type(o) == "thread" end;
-  elseif (cl1) == __lua_UserData then
+  elseif (cl1) == __lua_UserData then 
     do return _G.type(o) == "userdata" end;else
-  if (((o ~= nil) and (_G.type(o) == "table")) and (_G.type(cl) == "table")) then
+  if (((o ~= nil) and (_G.type(o) == "table")) and (_G.type(cl) == "table")) then 
     local tmp;
-    if (__lua_Boot.__instanceof(o, Array)) then
+    if (__lua_Boot.__instanceof(o, Array)) then 
       tmp = Array;
     else
-      if (__lua_Boot.__instanceof(o, String)) then
+      if (__lua_Boot.__instanceof(o, String)) then 
         tmp = String;
       else
         local cl = o.__class__;
-        tmp = (function()
+        tmp = (function() 
           local _hx_1
-          if (cl ~= nil) then
-          _hx_1 = cl; else
+          if (cl ~= nil) then 
+          _hx_1 = cl; else 
           _hx_1 = nil; end
           return _hx_1
         end )();
       end;
     end;
-    if (__lua_Boot.extendsOrImplements(tmp, cl)) then
+    if (__lua_Boot.extendsOrImplements(tmp, cl)) then 
       do return true end;
     end;
-    if ((function()
+    if ((function() 
       local _hx_2
-      if (cl == Class) then
-      _hx_2 = o.__name__ ~= nil; else
+      if (cl == Class) then 
+      _hx_2 = o.__name__ ~= nil; else 
       _hx_2 = false; end
       return _hx_2
-    end )()) then
+    end )()) then 
       do return true end;
     end;
-    if ((function()
+    if ((function() 
       local _hx_3
-      if (cl == Enum) then
-      _hx_3 = o.__ename__ ~= nil; else
+      if (cl == Enum) then 
+      _hx_3 = o.__ename__ ~= nil; else 
       _hx_3 = false; end
       return _hx_3
-    end )()) then
+    end )()) then 
       do return true end;
     end;
     do return o.__enum__ == cl end;
@@ -1130,9 +1102,9 @@ __lua_Boot.__instanceof = function(o,cl)
     do return false end;
   end; end;
 end
-__lua_Boot.isArray = function(o)
-  if (_G.type(o) == "table") then
-    if ((o.__enum__ == nil) and (_G.getmetatable(o) ~= nil)) then
+__lua_Boot.isArray = function(o) 
+  if (_G.type(o) == "table") then 
+    if ((o.__enum__ == nil) and (_G.getmetatable(o) ~= nil)) then 
       do return _G.getmetatable(o).__index == Array.prototype end;
     else
       do return false end;
@@ -1141,22 +1113,22 @@ __lua_Boot.isArray = function(o)
     do return false end;
   end;
 end
-__lua_Boot.extendsOrImplements = function(cl1,cl2)
-  while (true) do
-    if ((cl1 == nil) or (cl2 == nil)) then
+__lua_Boot.extendsOrImplements = function(cl1,cl2) 
+  while (true) do 
+    if ((cl1 == nil) or (cl2 == nil)) then 
       do return false end;
     else
-      if (cl1 == cl2) then
+      if (cl1 == cl2) then 
         do return true end;
       else
-        if (cl1.__interfaces__ ~= nil) then
+        if (cl1.__interfaces__ ~= nil) then 
           local intf = cl1.__interfaces__;
           local _g = 1;
           local _g1 = _hx_table.maxn(intf) + 1;
-          while (_g < _g1) do
+          while (_g < _g1) do 
             _g = _g + 1;
             local i = _g - 1;
-            if (__lua_Boot.extendsOrImplements(intf[i], cl2)) then
+            if (__lua_Boot.extendsOrImplements(intf[i], cl2)) then 
               do return true end;
             end;
           end;
@@ -1179,30 +1151,30 @@ __pkg_PackageDefinition.prototype = _hx_e();
 
 __pkg_PackageDefinition.prototype.__class__ =  __pkg_PackageDefinition
 
-__pkg_PackageManager.new = function()
+__pkg_PackageManager.new = function() 
   local self = _hx_new(__pkg_PackageManager.prototype)
   __pkg_PackageManager.super(self)
   return self
 end
-__pkg_PackageManager.super = function(self)
+__pkg_PackageManager.super = function(self) 
   self.widgetCache = __haxe_ds_StringMap.new();
   self.packages = _hx_tab_array({}, 0);
   self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
 end
 __pkg_PackageManager.__name__ = true
-__pkg_PackageManager.main = function()
+__pkg_PackageManager.main = function() 
   __utils_Common.check_path();
   local _g = _G.PackageManager;
-  if (_g == nil) then
+  if (_g == nil) then 
     local ret = __log_Log.backgrounds.h["Info"];
-    if (ret == __haxe_ds_StringMap.tnull) then
+    if (ret == __haxe_ds_StringMap.tnull) then 
       ret = nil;
     end;
     __log_Log.log("No previous PackageManager found, creating new instance...", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=110,className="pkg.PackageManager",methodName="main"}));
     _G.PackageManager = __pkg_PackageManager.new();
   else
     local ret = __log_Log.backgrounds.h["Info"];
-    if (ret == __haxe_ds_StringMap.tnull) then
+    if (ret == __haxe_ds_StringMap.tnull) then 
       ret = nil;
     end;
     __log_Log.log("PKGMAN: Found previous PackageManager instance, updating...", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=113,className="pkg.PackageManager",methodName="main"}));
@@ -1210,12 +1182,12 @@ __pkg_PackageManager.main = function()
     Lambda.iter(_g.packages, _hx_bind(mgr.packages,mgr.packages.push));
     local this1 = _g.widgetCache;
     local _g_keys = this1:keys();
-    while (_g_keys:hasNext()) do
+    while (_g_keys:hasNext()) do 
       local key = _g_keys:next();
       local k = key;
       local v = this1:get(key);
       local _this = mgr.widgetCache;
-      if (v == nil) then
+      if (v == nil) then 
         _this.h[k] = __haxe_ds_StringMap.tnull;
       else
         _this.h[k] = v;
@@ -1224,40 +1196,40 @@ __pkg_PackageManager.main = function()
     _G.PackageManager = mgr;
   end;
   local value = _G.PackageManager;
-  if (value == nil) then
+  if (value == nil) then 
     _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
   end;
   local ret = __log_Log.backgrounds.h["Info"];
-  if (ret == __haxe_ds_StringMap.tnull) then
+  if (ret == __haxe_ds_StringMap.tnull) then 
     ret = nil;
   end;
   __log_Log.log("PKGMAN: Loaded! We have " .. Std.string(value.packages.length) .. " packages.", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=122,className="pkg.PackageManager",methodName="main"}));
 end
 __pkg_PackageManager.prototype = _hx_e();
-__pkg_PackageManager.prototype.reload = function(self,mod,hard)
-  if (hard == nil) then
+__pkg_PackageManager.prototype.reload = function(self,mod,hard) 
+  if (hard == nil) then 
     hard = true;
   end;
   self:unload(mod, hard);
   self:load(mod, hard);
 end
-__pkg_PackageManager.prototype.clear = function(self)
+__pkg_PackageManager.prototype.clear = function(self) 
   self.packages:resize(0);
 end
-__pkg_PackageManager.prototype.findByName = function(self,name)
-  do return Lambda.find(self.packages, function(o)
+__pkg_PackageManager.prototype.findByName = function(self,name) 
+  do return Lambda.find(self.packages, function(o) 
     do return o.name == name end;
   end) end
 end
-__pkg_PackageManager.prototype.load = function(self,name,require)
-  if (require == nil) then
+__pkg_PackageManager.prototype.load = function(self,name,require) 
+  if (require == nil) then 
     require = false;
   end;
   local _hx_continue_1 = false;
-  while (true) do repeat
+  while (true) do repeat 
     local pkg = self:findByName(name);
-    if (pkg == nil) then
-      if (require) then
+    if (pkg == nil) then 
+      if (require) then 
         self:requirePkg(name);
         require = false;
         break;
@@ -1269,54 +1241,57 @@ __pkg_PackageManager.prototype.load = function(self,name,require)
       pkg:load();
       do return true end;
     end;until true
-    if _hx_continue_1 then
+    if _hx_continue_1 then 
     _hx_continue_1 = false;
     break;
     end;
-
+    
   end;
 end
-__pkg_PackageManager.prototype.unload = function(self,name,remove)
-  if (remove == nil) then
+__pkg_PackageManager.prototype.unload = function(self,name,remove) 
+  if (remove == nil) then 
     remove = false;
   end;
   local pkg = self:findByName(name);
-  if (pkg == nil) then
+  if (pkg == nil) then 
     __log_Log.log("ERROR: \"" .. name .. "\" not found!", nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=65,className="pkg.PackageManager",methodName="unload"}));
     do return false end;
   else
-    if (remove) then
+    if (remove) then 
       self:remove(pkg);
     end;
     pkg:unload();
     do return true end;
   end;
 end
-__pkg_PackageManager.prototype.requirePkg = function(self,pkgName)
+__pkg_PackageManager.prototype.requirePkg = function(self,pkgName) 
   local mod = Reflect.field(_G.require("hx_" .. pkgName), pkgName);
   self:add(mod.Pkg.instance());
 end
-__pkg_PackageManager.prototype.remove = function(self,pkg)
+__pkg_PackageManager.prototype.remove = function(self,pkg) 
   self.packages:remove(pkg);
   _G.package.loaded["hx_" .. pkg.name] = nil;
 end
-__pkg_PackageManager.prototype.add = function(self,pkg)
+__pkg_PackageManager.prototype.add = function(self,pkg) 
   local name = pkg.name;
-  if (self:findByName(name) == nil) then
+  if (self:findByName(name) == nil) then 
     self.packages:push(pkg);
   else
     __log_Log.log("PackageManager: package \"" .. name .. "\" already exists.", nil, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/pkg/PackageManager.hx",lineNumber=98,className="pkg.PackageManager",methodName="add"}));
   end;
 end
+__pkg_PackageManager.prototype.toString = function(self) 
+  do return "<PackageManager>" end
+end
 
 __pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
 
-__safety_SafetyException.new = function(message,previous,native)
+__safety_SafetyException.new = function(message,previous,native) 
   local self = _hx_new(__safety_SafetyException.prototype)
   __safety_SafetyException.super(self,message,previous,native)
   return self
 end
-__safety_SafetyException.super = function(self,message,previous,native)
+__safety_SafetyException.super = function(self,message,previous,native) 
   __haxe_Exception.super(self,message,previous,native);
 end
 __safety_SafetyException.__name__ = true
@@ -1326,12 +1301,12 @@ __safety_SafetyException.prototype.__class__ =  __safety_SafetyException
 __safety_SafetyException.__super__ = __haxe_Exception
 setmetatable(__safety_SafetyException.prototype,{__index=__haxe_Exception.prototype})
 
-__safety_NullPointerException.new = function(message,previous,native)
+__safety_NullPointerException.new = function(message,previous,native) 
   local self = _hx_new(__safety_NullPointerException.prototype)
   __safety_NullPointerException.super(self,message,previous,native)
   return self
 end
-__safety_NullPointerException.super = function(self,message,previous,native)
+__safety_NullPointerException.super = function(self,message,previous,native) 
   __safety_SafetyException.super(self,message,previous,native);
 end
 __safety_NullPointerException.__name__ = true
@@ -1343,16 +1318,16 @@ setmetatable(__safety_NullPointerException.prototype,{__index=__safety_SafetyExc
 
 __utils_Common.new = {}
 __utils_Common.__name__ = true
-__utils_Common.check_path = function()
+__utils_Common.check_path = function() 
   local s = _G.package.path;
   local r = __lua_lib_luautf8_Utf8.find(s, "haxeshigh/output", 1, true);
-  if ((function()
+  if ((function() 
     local _hx_1
-    if ((r ~= nil) and (r > 0)) then
-    _hx_1 = r - 1; else
+    if ((r ~= nil) and (r > 0)) then 
+    _hx_1 = r - 1; else 
     _hx_1 = -1; end
     return _hx_1
-  end )() == -1) then
+  end )() == -1) then 
     _G.package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;" .. _G.package.path;
   end;
 end
@@ -1394,33 +1369,32 @@ else
   }
 end
 local _hx_static_init = function()
-
+  
   String.__name__ = true;
-  Array.__name__ = true;
-  _G.Logger = __log_Log;__haxe_ds_StringMap.tnull = ({});
-
-  __log_Log.backgrounds = (function()
+  Array.__name__ = true;__haxe_ds_StringMap.tnull = ({});
+  
+  __log_Log.backgrounds = (function() 
     local _hx_2
-
+    
     local _g = __haxe_ds_StringMap.new();
-
+    
     _g.h.Debug = "#45cf65";
-
+    
     _g.h.Info = "#55aaff";
-
+    
     _g.h.Warn = "#ffff7f";
-
+    
     _g.h.Error = "#b91e1e";
-
+    
     _hx_2 = _g;
     return _hx_2
   end )();
-
+  
   __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
-
+  
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon="" .. __log_Log.res_path .. "/bang2.png",width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
-
-
+  
+  
 end
 
 _hx_bind = function(o,m)
@@ -1464,7 +1438,7 @@ _hx_wrap_if_string_field = function(o, fld)
 end
 
 _hx_static_init();
-_G.xpcall(function()
+_G.xpcall(function() 
   __pkg_PackageManager.main();
   _hx_luv.run();
 end, _hx_error)

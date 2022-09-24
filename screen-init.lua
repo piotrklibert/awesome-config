@@ -423,7 +423,7 @@ initialize = function()
         make_stats_widget(),
         s.batwidget,
         net_widgets.wireless({
-          interface = "wlp5s0",
+          interface = os.getenv("WIRELESS_CARD") or "wlp5s0",--"wlp0s20f3", -- ,
           onclick = util.run_nmtui
         }),
         brightnessWidget,

@@ -160,7 +160,7 @@ local state = {
     end
   end,
   handle_mouse = function(self, _, _, _, button)
-      print("asdasdasd")
+      print("asd volume asdasd")
     do
       spawn.easy_async(cmd_for_button(button), function(_)
         do
@@ -210,7 +210,6 @@ end
 _G["vstate"] = state
 local make_volume_widget
 make_volume_widget = function()
-    print("fuck that")
   check_icons_path()
   state:init()
   watch(GET_VOLUME_CMD, 1, function(_widget, out)

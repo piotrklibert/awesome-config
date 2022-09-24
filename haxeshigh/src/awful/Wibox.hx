@@ -61,6 +61,10 @@ typedef Widgets = {
   textclock: Class<Widget> ,
 }
 
+typedef Align = {
+  horizontal: Class<Widget>,
+  vertical: Class<Widget>,
+}
 
 typedef Layouts = {
   align: Class<Widget>,

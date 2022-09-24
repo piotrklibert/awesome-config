@@ -4,6 +4,7 @@ import haxe.Constraints;
 import awful.Screen;
 import awful.Wibox;
 
+
 typedef WidgetOpts = {
   var ?border_width: Int;          // Border width.
   var ?border_color: String;       // Border color.
@@ -24,8 +25,14 @@ typedef WidgetOpts = {
   var ?bg: Dynamic;                // color The background.
   var ?bgimage: Dynamic;           // surface The background image of the drawable.
   var ?fg: Dynamic;                // The foreground (text) color.
-  var ?shape: Dynamic;             // gears.shape The shape.
   var ?input_passthrough: Bool;    // If the inputs are forward to the element below. (default false)
+  var ?shape: Dynamic;             // gears.shape The shape.
+  var ?top: Dynamic;
+  var ?right: Dynamic;
+  var ?left: Dynamic;
+  var ?bottom: Dynamic;
+  var ?forced_width: Dynamic;
+  var ?forced_height: Dynamic;
 }
 
 
