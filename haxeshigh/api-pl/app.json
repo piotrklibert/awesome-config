@@ -1,0 +1,273 @@
+{
+  "kind":"libraries",
+  "name":"pl.app",
+  "mod_name":"app",
+  "inferred":true,
+  "description":"\n See @{01-introduction.md.Application_Support|the Guide}\n\n Dependencies: `pl.utils`, `pl.path`",
+  "file":"/home/cji/portless/Penlight/lua/pl/app.lua",
+  "summary":"Application support functions.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":7,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"return the name of the current script running.",
+      "lineno":16,
+      "retgroups":[{
+          "1":{
+            "text":"string filename",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"script_name",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n The name will be the name as passed on the command line",
+      "ret":["string filename"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"bool"
+          },
+          "nofollow":{
+            "type":"bool"
+          },
+          "base":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"prefixes the current script's path to the Lua module path.",
+      "lineno":34,
+      "retgroups":[{
+          "1":{
+            "text":"the current script's path with a trailing slash",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "g":0
+        }],
+      "args":"(base, nofollow)",
+      "type":"function",
+      "name":"require_here",
+      "parameter":"param",
+      "params":{
+        "1":"base",
+        "2":"nofollow",
+        "map":{
+          "nofollow":" always use the invocation's directory, even if the invoked file is a symlink",
+          "base":" optional base directory (absolute, or relative path)."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Applies to both the source and the binary module paths. It makes it easy for\n the main file of a multi-file program to access its modules in the same directory.\n `base` allows these modules to be put in a specified subdirectory, to allow for\n cleaner deployment and resolve potential conflicts between a script name and its\n library directory.\n\n Note: the path is prefixed, so it is searched first when requiring modules.",
+      "ret":["the current script's path with a trailing slash"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "file":{
+            "type":"string"
+          }
+        },
+        "return":[[],[]]
+      },
+      "summary":"return a suitable path for files private to this application.",
+      "lineno":83,
+      "retgroups":[{
+          "1":{
+            "text":"a full pathname, or nil",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"cannot create directory error",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(file)",
+      "usage":["-- when run from a script called 'testapp' (on Windows):\nlocal app = require 'pl.app'\nprint(app.appfile 'test.txt')\n-- C:\\Documents and Settings\\steve\\.testapp\\test.txt\n"],
+      "type":"function",
+      "name":"appfile",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "file":" a filename (w/out path)"
+        },
+        "1":"file"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n These will look like '~/.SNAME/file', with '~' as with expanduser and\n SNAME is the name of the script without .lua extension.\n If the directory does not exist, it will be created.",
+      "ret":["a full pathname, or nil","cannot create directory error"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"return string indicating operating system.",
+      "lineno":98,
+      "retgroups":[{
+          "1":{
+            "text":"'Windows','OSX' or whatever uname returns (e.g. 'Linux')",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"platform",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["'Windows','OSX' or whatever uname returns (e.g. 'Linux')"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":[],
+        "return":[[],[]]
+      },
+      "summary":"return the full command-line used to invoke this script.",
+      "lineno":119,
+      "retgroups":[{
+          "1":{
+            "text":"command-line",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"name of Lua program used",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "usage":["-- execute:  lua -lluacov -e 'print(_VERSION)' myscript.lua\n\n-- myscript.lua\nprint(require(\"pl.app\").lua())  --> \"lua -lluacov -e 'print(_VERSION)'\", \"lua\"\n"],
+      "type":"function",
+      "name":"lua",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n It will not include the scriptname itself, see `app.script_name`.",
+      "ret":["command-line","name of Lua program used"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"{string}"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":{
+            "type":"tab"
+          },
+          "args":{
+            "type":"{string}"
+          },
+          "flags_with_values":{
+            "type":"tab"
+          },
+          "flags_valid":{
+            "type":"tab"
+          }
+        },
+        "raise":[],
+        "return":[[],[]]
+      },
+      "summary":"parse command-line arguments into flags and parameters.",
+      "lineno":188,
+      "retgroups":[{
+          "1":{
+            "text":"a table of flags (flag=value pairs)",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"an array of parameters",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(args, flags_with_values, flags_valid)",
+      "usage":["-- Simple form:\nlocal flags, params = app.parse_args(nil,\n     { \"hello\", \"world\" },  -- list of flags taking values\n     { \"l\", \"a\", \"b\"})      -- list of allowed flags (value ones will be added)\n\n-- More complex example using aliasses:\nlocal valid = {\n    long = \"l\",           -- if 'l' is specified, it is reported as 'long'\n    new = { \"n\", \"old\" }, -- here both 'n' and 'old' will go into 'new'\n}\nlocal values = {\n    \"value\",   -- will automatically be added to the allowed set of flags\n    \"new\",     -- will mark 'n' and 'old' as requiring a value as well\n}\nlocal flags, params = app.parse_args(nil, values, valid)\n\n-- command:  myapp.lua -l --old:hello --value world param1 param2\n-- will yield:\nflags = {\n    long = true,     -- input from 'l'\n    new = \"hello\",   -- input from 'old'\n    value = \"world\", -- allowed because it was in 'values', note: space separated!\n}\nparams = {\n    [1] = \"param1\"\n    [2] = \"param2\"\n}\n"],
+      "raise":"if args is nil, then the global `args` must be available!",
+      "name":"parse_args",
+      "params":{
+        "1":"args",
+        "2":"flags_with_values",
+        "map":{
+          "args":" an array of strings (default is the global `arg`)",
+          "flags_with_values":" any flags that take values, either list or hash\n table e.g. `{ out=true }` or `{ \"out\" }`.",
+          "flags_valid":" (optional) flags that are valid, either list or hashtable.\n If not given, everything\n will be accepted(everything in `flags_with_values` will automatically be allowed)"
+        },
+        "3":"flags_valid"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "type":"function",
+      "parameter":"param",
+      "ret":["a table of flags (flag=value pairs)","an array of parameters"],
+      "description":"\n Understands GNU-style command-line flags; short (`-f`) and long (`--flag`).\n\n These may be given a value with either '=' or ':' (`-k:2`,`--alpha=3.2`,`-n2`),\n a number value can be given without a space. If the flag is marked\n as having a value, then a space-separated value is also accepted (`-i hello`),\n see the `flags_with_values` argument).\n\n Multiple short args can be combined like so: ( `-abcd`).\n\n When specifying the `flags_valid` parameter, its contents can also contain\n aliasses, to convert short/long flags to the same output name. See the\n example below.\n\n Note: if a flag is repeated, the last value wins."
+    }],
+  "type":"module",
+  "modifiers":[]
+}

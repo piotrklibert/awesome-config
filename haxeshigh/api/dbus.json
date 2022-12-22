@@ -1,0 +1,285 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"dbus",
+  "summary":"awesome D-Bus API",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"dbus",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "parameter":"param",
+      "params":{
+        "1":"bus",
+        "2":"name",
+        "map":{
+          "bus":" A string indicating if we are using system or session bus.",
+          "name":" A string with the name of the D-Bus name to register."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "bus":[],
+          "name":[]
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Register a D-Bus name to receive messages from.",
+      "name":"request_name",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"True if everything worked fine, false otherwise.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "ret":["True if everything worked fine, false otherwise."],
+      "kind":"functions",
+      "args":"(bus, name)",
+      "lineno":639
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"bus",
+        "2":"name",
+        "map":{
+          "bus":" A string indicating if we are using system or session bus.",
+          "name":" A string with the name of the D-Bus name to unregister."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "bus":[],
+          "name":[]
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Release a D-Bus name.",
+      "name":"release_name",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"True if everything worked fine, false otherwise.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "ret":["True if everything worked fine, false otherwise."],
+      "kind":"functions",
+      "args":"(bus, name)",
+      "lineno":656
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"bus",
+        "2":"name",
+        "map":{
+          "bus":" A string indicating if we are using system or session bus.",
+          "name":" A string with the name of the match rule."
+        }
+      },
+      "summary":"Add a match rule to match messages going through the message bus.",
+      "name":"add_match",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "bus":[],
+          "name":[]
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"function",
+      "kind":"functions",
+      "args":"(bus, name)",
+      "tags":[],
+      "lineno":672
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"bus",
+        "2":"name",
+        "map":{
+          "bus":" A string indicating if we are using system or session bus.",
+          "name":" A string with the name of the match rule."
+        }
+      },
+      "summary":"Remove a previously added match rule \"by value\"\n (the most recently-added identical rule gets removed).",
+      "name":"remove_match",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "bus":[],
+          "name":[]
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"function",
+      "kind":"functions",
+      "args":"(bus, name)",
+      "tags":[],
+      "lineno":695
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"interface",
+        "2":"func",
+        "map":{
+          "interface":" A string with the interface name.",
+          "func":" The function to call."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "interface":[],
+          "func":[]
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a signal receiver on the D-Bus.",
+      "name":"connect_signal",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"true on success, nil + error if the signal could not be connected\n because another function is already connected.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "ret":["true on success, nil + error if the signal could not be connected\n because another function is already connected."],
+      "kind":"functions",
+      "args":"(interface, func)",
+      "lineno":719
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"interface",
+        "2":"func",
+        "map":{
+          "interface":" A string with the interface name.",
+          "func":" The function to call."
+        }
+      },
+      "summary":"Remove a signal receiver on the D-Bus.",
+      "name":"disconnect_signal",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "interface":[],
+          "func":[]
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"function",
+      "kind":"functions",
+      "args":"(interface, func)",
+      "tags":[],
+      "lineno":743
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"bus",
+        "2":"path",
+        "3":"interface",
+        "4":"method",
+        "5":"type_1st_arg",
+        "6":"value_1st_arg",
+        "7":"type_2nd_arg",
+        "8":"value_2nd_arg",
+        "map":{
+          "path":" A string with the dbus path.",
+          "value_2nd_arg":" value of 2nd argument\n ... etc",
+          "bus":" A string indicating if we are using system or session bus.",
+          "type_1st_arg":" type of 1st argument",
+          "value_1st_arg":" value of 1st argument",
+          "method":" A string with the dbus method name.",
+          "interface":" A string with the dbus interface.",
+          "type_2nd_arg":" type of 2nd argument"
+        }
+      },
+      "summary":"Emit a signal on the D-Bus.",
+      "name":"emit_signal",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "6":[],
+          "7":[],
+          "8":[],
+          "path":[],
+          "value_2nd_arg":[],
+          "bus":[],
+          "type_1st_arg":[],
+          "value_1st_arg":[],
+          "method":[],
+          "interface":[],
+          "type_2nd_arg":[]
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"function",
+      "kind":"functions",
+      "args":"(bus, path, interface, method, type_1st_arg, value_1st_arg, type_2nd_arg, value_2nd_arg)",
+      "tags":[],
+      "lineno":767
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/dbus.c",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008-2009 Julien Danjou"
+  },
+  "lineno":28
+}

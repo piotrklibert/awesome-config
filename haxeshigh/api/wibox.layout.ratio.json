@@ -1,0 +1,2470 @@
+{
+  "modifiers":{
+    "see":[[]],
+    "author":[[]],
+    "copyright":[],
+    "supermodule":[[]],
+    "usage":[[]]
+  },
+  "description":" Each widget is assigned a\n ratio (percentage) of the total space. Multiple methods are available to\n adjust this ratio.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_defaults_ratio.svg)\n",
+  "type":"layoutmod",
+  "mod_name":"wibox.layout.ratio",
+  "tags":{
+    "author":["Emmanuel Lepage Vallee"],
+    "copyright":"2016 Emmanuel Lepage Vallee",
+    "see":[],
+    "supermodule":["wibox.layout.flex"]
+  },
+  "inferred":true,
+  "kind":"widget_layouts",
+  "summary":"A layout filling all the available space.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.layout.ratio",
+  "see":[{
+      "label":"03-declarative-layout.md",
+      "mod":{
+        "postprocess":<type 'function' is not supported by JSON.>,
+        "kind":"documentation",
+        "display_name":"The Widget system",
+        "section":{
+          "display_name":"Creating and placing widgets using the declarative style",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":{
+            "modules":[<reference cycle>],
+            "args":[],
+            "sections":{
+              "14":"The_default_widgets",
+              "436":"The_different_syntaxes_to_initiate_widgets",
+              "5":"The_default_configuration",
+              "523":"Creating_and_placing_widgets_using_the_declarative_style"
+            },
+            "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+            "items":[<reference cycle>,{
+                "display_name":"The default configuration",
+                "lineno":1,
+                "type":"section",
+                "tags":[],
+                "file":<reference cycle>,
+                "summary":"",
+                "name":"The_default_configuration",
+                "modifiers":[]
+              },{
+                "subparams":[],
+                "parameter":"param",
+                "params":{
+                  "map":[]
+                },
+                "name":"dumbo",
+                "modifiers":{
+                  "param":[],
+                  "return":[]
+                },
+                "kind":"the default configuration ",
+                "type":"function",
+                "section":"The default configuration",
+                "args":"()",
+                "tags":[],
+                "lineno":1
+              },{
+                "display_name":"The default widgets",
+                "lineno":1,
+                "type":"section",
+                "tags":[],
+                "file":<reference cycle>,
+                "summary":"",
+                "name":"The_default_widgets",
+                "modifiers":[]
+              },{
+                "subparams":[],
+                "parameter":"param",
+                "params":{
+                  "map":[]
+                },
+                "name":"dumbo",
+                "modifiers":{
+                  "param":[],
+                  "return":[]
+                },
+                "kind":"the default widgets ",
+                "type":"function",
+                "section":"The default widgets",
+                "args":"()",
+                "tags":[],
+                "lineno":1
+              },{
+                "display_name":"The different syntaxes to initiate widgets",
+                "lineno":1,
+                "type":"section",
+                "tags":[],
+                "file":<reference cycle>,
+                "summary":"",
+                "name":"The_different_syntaxes_to_initiate_widgets",
+                "modifiers":[]
+              },{
+                "subparams":[],
+                "parameter":"param",
+                "params":{
+                  "map":[]
+                },
+                "name":"dumbo",
+                "modifiers":{
+                  "param":[],
+                  "return":[]
+                },
+                "kind":"the different syntaxes to initiate widgets ",
+                "type":"function",
+                "section":"The different syntaxes to initiate widgets",
+                "args":"()",
+                "tags":[],
+                "lineno":1
+              },<reference cycle>,{
+                "subparams":[],
+                "parameter":"param",
+                "params":{
+                  "map":[]
+                },
+                "name":"dumbo",
+                "modifiers":{
+                  "param":[],
+                  "return":[]
+                },
+                "kind":"creating and placing widgets using the declarative style ",
+                "type":"function",
+                "section":"Creating and placing widgets using the declarative style",
+                "args":"()",
+                "tags":[],
+                "lineno":1
+              }],
+            "display_name":"The Widget system"
+          },
+          "summary":"",
+          "name":"Creating_and_placing_widgets_using_the_declarative_style",
+          "modifiers":[]
+        },
+        "body":"# The Widget system\n\nThis document explains how to define, place and manage widgets.\n\n## The default configuration\n\nThis is what the widgets present in the default configuration are named:\n\n\n\n![Usage example](../images/AUTOGEN_awful_popup_defaultconfig.svg)\n\n\n## The default widgets\n\n### Widgets\n\nAwesome provides 2 collections of widgets:\n\n * `wibox.widget`: Generic widgets, containers and layouts\n * `awful.widget`: The Awesome specific widgets\n\n\n<table class='widget_list' border=1>\n <tr style='font-weight: bold;'>\n  <th align='center'>Name</th>\n  <th align='center'>Example</th>\n </tr>\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.calendar.html'>wibox.widget.calendar</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_calendar.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.checkbox.html'>wibox.widget.checkbox</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_checkbox.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.graph.html'>wibox.widget.graph</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_graph.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.imagebox.html'>wibox.widget.imagebox</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_imagebox.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.piechart.html'>wibox.widget.piechart</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_piechart.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.progressbar.html'>wibox.widget.progressbar</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_progressbar.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.separator.html'>wibox.widget.separator</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_separator.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.slider.html'>wibox.widget.slider</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_slider.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.textbox.html'>wibox.widget.textbox</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_textbox.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widgets/wibox.widget.textclock.html'>wibox.widget.textclock</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_widget_defaults_textclock.svg' /></td>\n</tr>\n</table>\n\n\n\n### Containers\n\nA container is a widget that wraps another widget. It can be used to add\ndecorations or to modify the content of the child widget.\n\n<table class='widget_list' border=1>\n <tr style='font-weight: bold;'>\n  <th align='center'>Name</th>\n  <th align='center'>Example</th>\n </tr>\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.arcchart.html'>wibox.container.arcchart</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_arcchart.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.background.html'>wibox.container.background</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_background.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.constraint.html'>wibox.container.constraint</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_constraint.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.margin.html'>wibox.container.margin</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_margin.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.mirror.html'>wibox.container.mirror</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_mirror.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.only_on_screen.html'>wibox.container.only_on_screen</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_only_on_screen.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.place.html'>wibox.container.place</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_place.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.radialprogressbar.html'>wibox.container.radialprogressbar</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_radialprogressbar.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.rotate.html'>wibox.container.rotate</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_rotate.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.scroll.html'>wibox.container.scroll</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_scroll.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_containers/wibox.container.tile.html'>wibox.container.tile</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_container_defaults_tile.svg' /></td>\n</tr>\n</table>\n\n\n\n### Layouts\n\nLayouts are collections of children widgets. They are placed according to\nconfigurable rules.\n\n<table class='widget_list' border=1>\n <tr style='font-weight: bold;'>\n  <th align='center'>Name</th>\n  <th align='center'>Example</th>\n </tr>\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.align.html'>wibox.layout.align</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_align.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.fixed.html'>wibox.layout.fixed</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_fixed.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.flex.html'>wibox.layout.flex</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_flex.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.grid.html'>wibox.layout.grid</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_grid.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.manual.html'>wibox.layout.manual</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_manual.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.ratio.html'>wibox.layout.ratio</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_ratio.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_layouts/wibox.layout.stack.html'>wibox.layout.stack</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_layout_defaults_stack.svg' /></td>\n</tr>\n</table>\n\n\n\n### Awful widgets\n\nThis modules contains the higher level window manager widgets. Since most of them\nare used by the default config, here is how it maps:\n\n\n\n![Usage example](../images/AUTOGEN_awful_wibar_defaultwibar.svg)\n\n\n<table class='widget_list' border=1>\n <tr style='font-weight: bold;'>\n  <th align='center'>Name</th>\n  <th align='center'>Example</th>\n </tr>\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.button.html'>wibox.awidget.button</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_button.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.clienticon.html'>wibox.awidget.clienticon</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_clienticon.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.keyboardlayout.html'>wibox.awidget.keyboardlayout</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_keyboardlayout.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.launcher.html'>wibox.awidget.launcher</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_launcher.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.layoutbox.html'>wibox.awidget.layoutbox</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_layoutbox.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.layoutlist.html'>wibox.awidget.layoutlist</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_layoutlist.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.prompt.html'>wibox.awidget.prompt</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_prompt.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.taglist.html'>wibox.awidget.taglist</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_taglist.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.tasklist.html'>wibox.awidget.tasklist</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_tasklist.svg' /></td>\n</tr>\n\n<tr>\n <td>\n  <a href='../widget_awidgets/wibox.awidget.watch.html'>wibox.awidget.watch</a>\n </td>\n <td><img src='../images/AUTOGEN_wibox_awidget_defaults_watch.svg' /></td>\n</tr>\n</table>\n\n\n\n### Titlebar widgets\n\nThe titlebar comes with some convinient default widgets. It simplify the most\nbasic \"Windows/macOS\" like titlebars.\n\n\n\n![Usage example](../images/AUTOGEN_awful_titlebar_defaulttitlebar.svg)\n\n\nNote that titlebars can also be added on\neach side. This is how \"active\" titlebars (click to resize) can be implemented.\nThe default `rc.lua` does not add active borders:\n\n![](../images/client_geo.svg)\n\n<table class=\"widget_list\" border=\"1\">\n <tr>\n   <th>Widget</th><th>Description</th>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.iconwidget`</td><td>The client icon (see `client.icon`)</td>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.titlewidget`</td><td>The client title (see `client.name`)</td>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.floatingbutton`</td><td> Toggle the floating (toggled) vs. tiling mode (untoggled). </td>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.maximizedbutton`</td><td>Toggle the maximized mode (toggled). Note that this is the<br/>\"full\" maximized mode, not vertical or horizontal maximization.<br/>See `client.maximized`.</td>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.stickybutton`</td><td>When toggled, a client will be displayed in all (screen) tags. See `client.sticky`)</td>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.ontopbutton`</td><td>When toggled, the client will be part of the `ontop` layer (see `client.ontop`).</td>\n </tr>\n <tr>\n  <td>`awful.titlebar.widget.closebutton`</td><td></td>\n </tr>\n <tr>\n  <td>`titlebar.widget.minimizebutton`</td><td></td>\n </tr>\n</table>\n\n### Notification widgets\n\nNotifications also have their own widgets.\n\n<img src=\"../images/AUTOGEN_wibox_nwidget_default.svg\" />\n\nMore information about the notification widgets can be found on the\n`naughty.notification` documentation page.\n\n### The different type of widget boxes (Wibox)\n\nThe Awesome API uses the word \"wibox\" (widget box) to describe an area of the\nscreen filled with widgets. There are many subvariants of wiboxes with\nspecialized roles such as widget bars or tooltips. All variants mostly share the\nsame characteristics, but add some extra features to make those specialized\nwidget boxes easier to work with.\n\n\n\n![Usage example](../images/AUTOGEN_awful_popup_wiboxtypes.svg)\n\n\nThe normal `wibox` is the base class for each of these types. It is extremely\nflexible and allows to place just about anything on the screen. However it\nrequires a lot of repetitive boilerplate code to use directly. For example,\nthe user needs to compute the optimal size by hand or use `awful.placement`.\n\nThe `awful.wibar` specialization allows to attach a `wibox` to a screen edge\nand prevents clients from using this area when tiled.\n\nThe `awful.popup` allows to easily place widgets on the screen. It automatically\nresizes itself to fit the optimal widget size. It also has helper properties\nand methods to make it easy to place it on the screen. It supports absolute\npositioning, relative positioning, and manual positioning.\n\nThe `awful.tooltip` is a very simple `wibox` that allows to display text next\nto an object such as the mouse.\n\nThe `naughty.layout.box` allows to provide custom widgets to use within the\nnotifications.\n\nThe `awful.wallpaper` provides a non-intereactive \"backgroud\" for one or more\n`screen`. While it uses normal widget, it will not automatically be repainted\nif they change. It will also not provide any mouse events.\n\nFinally, the `awful.titlebar`, while not technically a real `wibox`, acts\nexactly the same way and allows to attach widgets on each side of clients.\n\n## The different syntaxes to initiate widgets\n\nAwesome provides 2 totally different API access styles to manage widgets. Both\nsuit different use cases. Under the hood, both produce the\nexact same code. Consider the declarative API to be compiled into the\nimperative syntax when loaded. Also note that in contrast to technologies such\nas QML, it is interpreted only once and isn't automatically updated when\nvalues change.\n\nThe **imperative** widget initialization is similar to QtWidgets, GTK and Win32.\nYou create the object, then set the property and add the widget as a child to\nanother already declared widget. It is quite simple to use but very verbose\nand full of boilerplate code. The imperative API also offers properties both\nwith accessors or directly. It is useful when creating highly dynamic layouts\nwhere widgets are added and removed over the course of their lifecycle.\n\nThe **declarative** syntax resembles HTML style code\nwritten in JSON or YAML. The widget instances are created automatically and\nthe hierarchy is related to the table nesting (indentation). It is preferred\nwhen creating static layouts that won't change over the course of their\nlifecycle.\n\nHere is the same code written in both the imperative and declarative style\n\n**Imperative with accessors**\n\nCode:\n\n    local bg = wibox.container.background()\n    bg:set_bg(\"#ff0000\")\n\n    local tb1 = wibox.widget.textbox()\n    local tb2 = wibox.widget.textbox(\"bar\")\n\n    tb1:set_text(\"foo\")\n    tb2:set_text(\"bar\")\n\n    local l = wibox.layout.fixed.vertical()\n    l:add(tb1)\n    l:add(tb2)\n\n    bg:set_widget(l)\n\n**Imperative with properties**\n\nCode:\n\n    local bg = wibox.container.background()\n    bg.bg = \"#ff0000\"\n\n    local tb1 = wibox.widget.textbox(\"foo\")\n    local tb2 = wibox.widget.textbox(\"bar\")\n\n    tb1.text = \"foo\"\n    tb2.text = \"bar\"\n\n    local l = wibox.layout.fixed.vertical()\n    l:add(tb1)\n    l:add(tb2)\n\n    bg.widget = l\n\n**Declarative**\n\nCode:\n\n    local bg = wibox.widget {\n        {\n            {\n                text = \"foo\",\n                widget = wibox.widget.textbox\n            },\n            {\n                text = \"bar\",\n                widget = wibox.widget.textbox\n            },\n            layout = wibox.layout.fixed.vertical\n        },\n        bg = \"#ff0000\",\n        widget = wibox.container.background\n    }\n\n\nThe Awesome documentation mostly uses the declarative style for consistency,\nbut both are **always** available. Note that each style can be mixed with other\nstyles, but this creates very confusing code and should be avoided.\n\n## Creating and placing widgets using the declarative style\n\nThe examples below explain in detail how to use the declarative layout system.\nThe imperative system is quite self explanatory and the respective widget API\ndocumentation should be enough for most.\n\n### A simple layout\n\n* Display `my_first_widget` only on primary screen\n* Display `my_second_widget` only on screen two\n* Add a background color to `my_fourth_widget`\n* Dispose in a `wibox.layout.fixed.horizontal` layout\n\nCode:\n\n    s.mywibox : setup {\n        {\n            layout = awful.widget.only_on_screen,\n            screen = \"primary\", -- Only display on primary screen\n            my_first_widget,\n        },\n        {\n            layout = awful.widget.only_on_screen,\n            screen = 2, -- Only display on screen 2\n            my_second_widget,\n        },\n        my_third_widget, -- Displayed on all screens\n        { -- Add a background color/pattern for my_fourth_widget\n              my_fourth_widget,\n              bg     = beautiful.bg_focus,\n              widget = wibox.container.background,\n        },\n        layout = wibox.layout.fixed.horizontal,\n    }\n\n\nThis examples uses the `awful.widget.only_on_screen` container to display\nwidgets only on some screens.\n\n### Composite widgets\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_progressbar_encapsulation.svg)\n\n \n     -- The progressbars will be on top of each other\n      local mycpubar1 = wibox.widget {\n         { value  = 0.2, color = grad1,\n             widget = wibox.widget.progressbar },\n         { value  = 0.4, color = grad2,\n             widget = wibox.widget.progressbar },\n         { value  = 0.6, color = grad3,\n             widget = wibox.widget.progressbar },\n         layout = wibox.layout.flex.vertical,\n      }\n     -- Now, add a rotate container, the height will become the width.\n     -- It act as if the `wibox.layout.flex.vertical` was\n     -- `wibox.layout.flex.horizontal`\n      local mycpubar2 = wibox.widget {\n         {\n             { value  = 0.2, color = grad1,\n                 widget = wibox.widget.progressbar },\n             { value  = 0.4, color = grad2,\n                 widget = wibox.widget.progressbar },\n             { value  = 0.6, color = grad3,\n                 widget = wibox.widget.progressbar },\n             layout = wibox.layout.flex.vertical,\n         },\n         direction = 'east',\n         widget    = wibox.container.rotate\n      }\n\n\n### Define widgets inline and place them\n\n* Create a `wibox.widget.textbox` with various properties\n* Force the textbox size using `wibox.layout.constraint`\n* Add a margin around another textbox\n* Add a `wibox.container.background` (for visualization)\n\nCode:\n\n    s.mywibox : setup {\n        {\n            -- Force the textbox to always be 300 pixel long\n            {\n                {\n                    markup = \"<b>Hello World!</b>\",\n                    align  = \"center\",\n                    widget = wibox.widget.textbox\n                },\n                bg     = \"#ff0000\",\n                widget = wibox.container.background,\n            },\n            width    = 300,\n            strategy = \"min\",\n            layout   = wibox.layout.constraint\n        },\n        {\n            -- Add a border around the background\n            {\n                {\n                    markup = \"Foobar\",\n                    widget = wibox.widget.textbox\n                },\n                bg     = \"#0000ff\",\n                widget = wibox.container.background\n            },\n            left   = 10,\n            right  = 10,\n            top    = 1,\n            bottom = 2,\n            layout = wibox.container.margin\n        },\n        layout = wibox.layout.fixed.horizontal,\n    }\n\n\nResult:\n![Example2 screenshot](../images/widgetlayout1.png)\n\n\n### Use a `wibox.layout.align` layout\nThe `wibox.layout.align` is a little different. While most layouts will\nignore any `nil` lines, the `align` layout relies on them so `left`, `middle`\nand `right` can be defined.\n\nCode:\n\n    s.mywibox : setup {\n        my_textbox1, -- Left\n        nil,         -- Nothing in the middle\n        my_textbox2, -- Right\n        layout = wibox.layout.align.horizontal,\n    }\n\n\n\n### Define new widgets\n\nNew trivial widgets can be created directly in the layout declaration. Here\nis a simple circle widget:\n\nCode:\n\n    s.mywibox : setup {\n        fit    = function(self, context, width, height)\n            return height, height -- A square taking the full height\n        end,\n        draw   = function(self, context, cr, width, height)\n            cr:set_source_rgb(1, 0, 0) -- Red\n            cr:arc(height/2, height/2, height/2, 0, math.pi*2)\n            cr:fill()\n        end,\n        layout = wibox.widget.base.make_widget,\n    }\n\nResult:\n![Example4 screenshot](../images/widgetlayout2.png)\n\nFor more information about how to draw widgets, refer to the `Cairo` API:\n\n* [Path](http://cairographics.org/manual/cairo-Paths.html)\n* [Context](http://cairographics.org/manual/cairo-cairo-t.html)\n* [Pattern](http://cairographics.org/manual/cairo-cairo-pattern-t.html)\n* [transformation](http://cairographics.org/manual/cairo-Transformations.html)\n* [Operator](http://cairographics.org/operators/)\n* [Pango text](https://developer.gnome.org/pango/stable/)\n\n\n### Externally defined widgets and layouts\n\nThis is useful when the widget is provided by an external module or when it\nrequires complex manipulations which would make the declaration unreadable.\n\nCode:\n\n    local tb = wibox.widget.textbox()\n    tb:set_markup(\"Hello world! \")\n\n    -- Repeat \"tb\" 3 times\n    s.mywibox : setup {\n        tb,\n        tb,\n        tb,\n        layout = wibox.layout.fixed.horizontal,\n    }\n\n\n\n### Accessing widgets\n\nFor each widget or container, it is possible to add an `identifier` attribute\nso that it can be accessed later.\n\nWidgets defined using `setup` can be accessed using these methods:\n\n* Avoiding the issue by using externally created widgets\n* Using `my_wibox.my_first_widget.my_second_widget` style access\n* Using JavaScript like `my_wibox:get_children_by_id(\"my_second_widget\")[1]`\n\nThe first method mixes the imperative and declarative syntax, and makes the code\nless readable. The second is a little verbose and only works if every node in\nthe chain has a valid identifier. The last one doesn't require long paths,\nbut it is not easy to get a specific instance if multiple widgets have the\nsame identifier.\n\nWARNING: The widget identifier must not use a reserved name. This includes all\nmethod names, existing widget attributes, `layout` and `widget`. Names should\nalso respect the Lua variable conventions (case-sensitive, alphanumeric,\nunderscore characters and non-numeric first character).\n\nCode:\n\n    s.mywibox : setup {\n        {\n            id     = \"second\",\n            widget = wibox.widget.textbox\n        },\n        {\n            id     = \"third\",\n            widget = wibox.widget.textbox\n        },\n        id     = \"first\",\n        layout = wibox.layout.fixed.horizontal,\n    }\n\n    s.mywibox.first.second:set_markup(\"changed!\")\n    s.mywibox:get_children_by_id(\"third\")[1]:set_markup(\"Also changed!\")\n\n\n\n### Extending the system\n\nThis system is very flexible. Each section attribute (the entries with string\nkeys) is directly linked to the layout or widget API. When setting the\nimaginary `myproperty`, it will first check if `set_myproperty` exists. If it\ndoesn't, it will check if there is a `myproperty` method. Finally, it will\njust set the `mywidget.myproperty` directly in case it is used later or\ncaught by a Lua `metatable` (operator overload).\n\nCode:\n\n    -- \"Monkeypatch\" a new function to 3 widget classes to add vicious\n    -- extension support\n    for _, wdg in ipairs {\n        wibox.widget.textbox , wibox.widget.progressbar, wibox.widget.graph\n    } do\n        function wdg:vicious(args)\n            local f = unpack or table.unpack -- Lua 5.1 compat\n            vicious.register(self, f(args))\n        end\n    end\n\n    s.mywibox : setup {\n        {\n            vicious = {vicious.widgets.cpu, \"CPU: $1%\", 3},\n            widget  = wibox.widget.textbox\n        },\n        layout = wibox.layout.fixed.horizontal,\n    }\n\n\nIn this example, the system is extended so that the popular\n[Vicious](https://github.com/vicious-widgets/vicious) extension module can be\nused directly in the layout declaration. This example will update the textbox\nevery 3 seconds to show the CPU usage.\n\n\n### Handling sections\n\nThe system allows sections to be defined externally, then composed into\nthe final layout declaration. Here is an example re-using one of the above\nexample:\n\nCode:\n\n    local circle = {\n        fit    = function(self, context, width, height)\n            return height, height -- A square taking the full height\n        end,\n        draw   = function(self, context, cr, width, height)\n            cr:set_source_rgb(1, 0, 0) -- Red\n            cr:arc(height/2, height/2, height/2, 0, math.pi*2)\n            cr:fill()\n        end,\n        layout = wibox.widget.base.make_widget,\n    }\n\n    -- Define a layout with the imperative syntax\n    local l = wibox.widget.align()\n\n    -- 3 circle\n    s.mywibox : setup {\n        circle,\n        circle,\n        circle,\n        l,\n        layout = wibox.layout.align.horizontal\n    }\n\n    -- This can be done instead\n    local three_circle = {layout = wibox.layout.align.horizontal}\n    for i=1, 3 do\n        table.insert(three_circle, circle)\n    end\n\n    s.mywibox : setup (three_circle)\n\n### Instantiation rules\n\nWhenever it can, Awesome tries to be asynchronous. This can take various form\ndepending on the situation. For example, the `connect_signal` method allows to\nexecute code when an event arrives. `awful.screen.connect_for_each_screen` also\nallows to instantiate various elements when a new screen is added. In the later\ncase, it is why some widgets are added as properties to other objects instead of\nbeing global variables like in previous versions of Awesome.\n\nHowever, there is a case where this isn't enough and another abstract widget has\nto be used. This concept is called the `widget_template` and is an optional\nproperty of many widgets such as the `awful.widget.taglist`,\n`awful.widget.tasklist` and `naughty.layout.box`. These templates are a\n**table** using the exact same syntax as the declarative widgets, but without\nthe `wibox.widget` prefix in front of the curly braces. These templates\nrepresents future widgets that will be created by their parent widget. This is\nnecessary for three reasons:\n\n * The widget must create many instances of the template at different points in\n   time.\n * The widget data is only partially available and other fields must be set\n   at a later time (by the parent widget).\n * The code is highly redundant and some of the logic is delegated to the parent\n   widget to simplify everything.\n",
+        "sections":{
+          "1":{
+            "display_name":"The default configuration",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":{
+              "modules":[<reference cycle>],
+              "args":[],
+              "sections":{
+                "14":"The_default_widgets",
+                "436":"The_different_syntaxes_to_initiate_widgets",
+                "5":"The_default_configuration",
+                "523":"Creating_and_placing_widgets_using_the_declarative_style"
+              },
+              "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+              "items":[<reference cycle>,<reference cycle>,{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default configuration ",
+                  "type":"function",
+                  "section":"The default configuration",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"The default widgets",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_default_widgets",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default widgets ",
+                  "type":"function",
+                  "section":"The default widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"The different syntaxes to initiate widgets",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_different_syntaxes_to_initiate_widgets",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the different syntaxes to initiate widgets ",
+                  "type":"function",
+                  "section":"The different syntaxes to initiate widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"Creating and placing widgets using the declarative style",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"Creating_and_placing_widgets_using_the_declarative_style",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"creating and placing widgets using the declarative style ",
+                  "type":"function",
+                  "section":"Creating and placing widgets using the declarative style",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                }],
+              "display_name":"The Widget system"
+            },
+            "summary":"",
+            "name":"The_default_configuration",
+            "modifiers":[]
+          },
+          "2":{
+            "display_name":"The default widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":{
+              "modules":[<reference cycle>],
+              "args":[],
+              "sections":{
+                "14":"The_default_widgets",
+                "436":"The_different_syntaxes_to_initiate_widgets",
+                "5":"The_default_configuration",
+                "523":"Creating_and_placing_widgets_using_the_declarative_style"
+              },
+              "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+              "items":[<reference cycle>,{
+                  "display_name":"The default configuration",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_default_configuration",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default configuration ",
+                  "type":"function",
+                  "section":"The default configuration",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },<reference cycle>,{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default widgets ",
+                  "type":"function",
+                  "section":"The default widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"The different syntaxes to initiate widgets",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_different_syntaxes_to_initiate_widgets",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the different syntaxes to initiate widgets ",
+                  "type":"function",
+                  "section":"The different syntaxes to initiate widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"Creating and placing widgets using the declarative style",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"Creating_and_placing_widgets_using_the_declarative_style",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"creating and placing widgets using the declarative style ",
+                  "type":"function",
+                  "section":"Creating and placing widgets using the declarative style",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                }],
+              "display_name":"The Widget system"
+            },
+            "summary":"",
+            "name":"The_default_widgets",
+            "modifiers":[]
+          },
+          "3":{
+            "display_name":"The different syntaxes to initiate widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":{
+              "modules":[<reference cycle>],
+              "args":[],
+              "sections":{
+                "14":"The_default_widgets",
+                "436":"The_different_syntaxes_to_initiate_widgets",
+                "5":"The_default_configuration",
+                "523":"Creating_and_placing_widgets_using_the_declarative_style"
+              },
+              "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+              "items":[<reference cycle>,{
+                  "display_name":"The default configuration",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_default_configuration",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default configuration ",
+                  "type":"function",
+                  "section":"The default configuration",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"The default widgets",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_default_widgets",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default widgets ",
+                  "type":"function",
+                  "section":"The default widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },<reference cycle>,{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the different syntaxes to initiate widgets ",
+                  "type":"function",
+                  "section":"The different syntaxes to initiate widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"Creating and placing widgets using the declarative style",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"Creating_and_placing_widgets_using_the_declarative_style",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"creating and placing widgets using the declarative style ",
+                  "type":"function",
+                  "section":"Creating and placing widgets using the declarative style",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                }],
+              "display_name":"The Widget system"
+            },
+            "summary":"",
+            "name":"The_different_syntaxes_to_initiate_widgets",
+            "modifiers":[]
+          },
+          "4":{
+            "display_name":"Creating and placing widgets using the declarative style",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":{
+              "modules":[<reference cycle>],
+              "args":[],
+              "sections":{
+                "14":"The_default_widgets",
+                "436":"The_different_syntaxes_to_initiate_widgets",
+                "5":"The_default_configuration",
+                "523":"Creating_and_placing_widgets_using_the_declarative_style"
+              },
+              "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+              "items":[<reference cycle>,{
+                  "display_name":"The default configuration",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_default_configuration",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default configuration ",
+                  "type":"function",
+                  "section":"The default configuration",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"The default widgets",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_default_widgets",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the default widgets ",
+                  "type":"function",
+                  "section":"The default widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },{
+                  "display_name":"The different syntaxes to initiate widgets",
+                  "lineno":1,
+                  "type":"section",
+                  "tags":[],
+                  "file":<reference cycle>,
+                  "summary":"",
+                  "name":"The_different_syntaxes_to_initiate_widgets",
+                  "modifiers":[]
+                },{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"the different syntaxes to initiate widgets ",
+                  "type":"function",
+                  "section":"The different syntaxes to initiate widgets",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                },<reference cycle>,{
+                  "subparams":[],
+                  "parameter":"param",
+                  "params":{
+                    "map":[]
+                  },
+                  "name":"dumbo",
+                  "modifiers":{
+                    "param":[],
+                    "return":[]
+                  },
+                  "kind":"creating and placing widgets using the declarative style ",
+                  "type":"function",
+                  "section":"Creating and placing widgets using the declarative style",
+                  "args":"()",
+                  "tags":[],
+                  "lineno":1
+                }],
+              "display_name":"The Widget system"
+            },
+            "summary":"",
+            "name":"Creating_and_placing_widgets_using_the_declarative_style",
+            "modifiers":[]
+          },
+          "by_name":{
+            "The_default_widgets":{
+              "display_name":"The default widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":{
+                "modules":[<reference cycle>],
+                "args":[],
+                "sections":{
+                  "14":"The_default_widgets",
+                  "436":"The_different_syntaxes_to_initiate_widgets",
+                  "5":"The_default_configuration",
+                  "523":"Creating_and_placing_widgets_using_the_declarative_style"
+                },
+                "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+                "items":[<reference cycle>,{
+                    "display_name":"The default configuration",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_default_configuration",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default configuration ",
+                    "type":"function",
+                    "section":"The default configuration",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },<reference cycle>,{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default widgets ",
+                    "type":"function",
+                    "section":"The default widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"The different syntaxes to initiate widgets",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_different_syntaxes_to_initiate_widgets",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the different syntaxes to initiate widgets ",
+                    "type":"function",
+                    "section":"The different syntaxes to initiate widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"Creating and placing widgets using the declarative style",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"Creating_and_placing_widgets_using_the_declarative_style",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"creating and placing widgets using the declarative style ",
+                    "type":"function",
+                    "section":"Creating and placing widgets using the declarative style",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  }],
+                "display_name":"The Widget system"
+              },
+              "summary":"",
+              "name":"The_default_widgets",
+              "modifiers":[]
+            },
+            "Creating_and_placing_widgets_using_the_declarative_style":{
+              "display_name":"Creating and placing widgets using the declarative style",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":{
+                "modules":[<reference cycle>],
+                "args":[],
+                "sections":{
+                  "14":"The_default_widgets",
+                  "436":"The_different_syntaxes_to_initiate_widgets",
+                  "5":"The_default_configuration",
+                  "523":"Creating_and_placing_widgets_using_the_declarative_style"
+                },
+                "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+                "items":[<reference cycle>,{
+                    "display_name":"The default configuration",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_default_configuration",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default configuration ",
+                    "type":"function",
+                    "section":"The default configuration",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"The default widgets",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_default_widgets",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default widgets ",
+                    "type":"function",
+                    "section":"The default widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"The different syntaxes to initiate widgets",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_different_syntaxes_to_initiate_widgets",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the different syntaxes to initiate widgets ",
+                    "type":"function",
+                    "section":"The different syntaxes to initiate widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },<reference cycle>,{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"creating and placing widgets using the declarative style ",
+                    "type":"function",
+                    "section":"Creating and placing widgets using the declarative style",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  }],
+                "display_name":"The Widget system"
+              },
+              "summary":"",
+              "name":"Creating_and_placing_widgets_using_the_declarative_style",
+              "modifiers":[]
+            },
+            "The_default_configuration":{
+              "display_name":"The default configuration",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":{
+                "modules":[<reference cycle>],
+                "args":[],
+                "sections":{
+                  "14":"The_default_widgets",
+                  "436":"The_different_syntaxes_to_initiate_widgets",
+                  "5":"The_default_configuration",
+                  "523":"Creating_and_placing_widgets_using_the_declarative_style"
+                },
+                "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+                "items":[<reference cycle>,<reference cycle>,{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default configuration ",
+                    "type":"function",
+                    "section":"The default configuration",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"The default widgets",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_default_widgets",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default widgets ",
+                    "type":"function",
+                    "section":"The default widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"The different syntaxes to initiate widgets",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_different_syntaxes_to_initiate_widgets",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the different syntaxes to initiate widgets ",
+                    "type":"function",
+                    "section":"The different syntaxes to initiate widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"Creating and placing widgets using the declarative style",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"Creating_and_placing_widgets_using_the_declarative_style",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"creating and placing widgets using the declarative style ",
+                    "type":"function",
+                    "section":"Creating and placing widgets using the declarative style",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  }],
+                "display_name":"The Widget system"
+              },
+              "summary":"",
+              "name":"The_default_configuration",
+              "modifiers":[]
+            },
+            "The_different_syntaxes_to_initiate_widgets":{
+              "display_name":"The different syntaxes to initiate widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":{
+                "modules":[<reference cycle>],
+                "args":[],
+                "sections":{
+                  "14":"The_default_widgets",
+                  "436":"The_different_syntaxes_to_initiate_widgets",
+                  "5":"The_default_configuration",
+                  "523":"Creating_and_placing_widgets_using_the_declarative_style"
+                },
+                "filename":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+                "items":[<reference cycle>,{
+                    "display_name":"The default configuration",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_default_configuration",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default configuration ",
+                    "type":"function",
+                    "section":"The default configuration",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"The default widgets",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"The_default_widgets",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the default widgets ",
+                    "type":"function",
+                    "section":"The default widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },<reference cycle>,{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"the different syntaxes to initiate widgets ",
+                    "type":"function",
+                    "section":"The different syntaxes to initiate widgets",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  },{
+                    "display_name":"Creating and placing widgets using the declarative style",
+                    "lineno":1,
+                    "type":"section",
+                    "tags":[],
+                    "file":<reference cycle>,
+                    "summary":"",
+                    "name":"Creating_and_placing_widgets_using_the_declarative_style",
+                    "modifiers":[]
+                  },{
+                    "subparams":[],
+                    "parameter":"param",
+                    "params":{
+                      "map":[]
+                    },
+                    "name":"dumbo",
+                    "modifiers":{
+                      "param":[],
+                      "return":[]
+                    },
+                    "kind":"creating and placing widgets using the declarative style ",
+                    "type":"function",
+                    "section":"Creating and placing widgets using the declarative style",
+                    "args":"()",
+                    "tags":[],
+                    "lineno":1
+                  }],
+                "display_name":"The Widget system"
+              },
+              "summary":"",
+              "name":"The_different_syntaxes_to_initiate_widgets",
+              "modifiers":[]
+            }
+          }
+        },
+        "name":"03-declarative-layout.md",
+        "modifiers":[],
+        "mod_name":"03-declarative-layout.md",
+        "type":"topic",
+        "items":[{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"the default configuration ",
+            "type":"function",
+            "section":"The default configuration",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"the default widgets ",
+            "type":"function",
+            "section":"The default widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"the different syntaxes to initiate widgets ",
+            "type":"function",
+            "section":"The different syntaxes to initiate widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"creating and placing widgets using the declarative style ",
+            "type":"function",
+            "section":"Creating and placing widgets using the declarative style",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "file":"/home/cji/portless/awesome/build/docs/03-declarative-layout.md",
+        "package":"",
+        "tags":[],
+        "lineno":1
+      },
+      "name":""
+    }],
+  "usage":["local w = wibox.widget {\n    generic_widget( &#34first&#34  ),\n    generic_widget( &#34second&#34 ),\n    generic_widget( &#34third&#34  ),\n    layout  = wibox.layout.ratio.horizontal\n}\nw:adjust_ratio(2, 0.44, 0.33, 0.22)\n"],
+  "file":"/home/cji/portless/awesome/build/lib/wibox/layout/ratio.lua",
+  "package":"",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"spacing_widget",
+        "map":{
+          "spacing_widget":""
+        }
+      },
+      "modifiers":{
+        "interface":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "spacing_widget":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "spacing_widget":{
+            "type":"widget"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n By default, no widget is used.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_ratio_spacing_widget.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "interface":["layout"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The widget used to fill the spacing between the layout elements.",
+      "name":"spacing_widget",
+      "kind":"object properties",
+      "usage":["-- Use the separator widget directly\nlocal w1 = wibox.widget {\n    spacing        = 10,\n    spacing_widget = wibox.widget.separator,\n    layout         = wibox.layout.ratio.horizontal\n}\n \n-- Use a standard declarative widget construct\nlocal w2 = wibox.widget {\n    spacing = 10,\n    spacing_widget = {\n        color  = &#34#00ff00&#34,\n        shape  = gears.shape.circle,\n        widget = wibox.widget.separator,\n    },\n    layout = wibox.layout.ratio.horizontal\n}\n \n-- Use composed widgets\nlocal w3 = wibox.widget {\n    spacing = 10,\n    spacing_widget = {\n        {\n            text   = &#34F&#34,\n            widget = wibox.widget.textbox,\n        },\n        bg     = &#34#ff0000&#34,\n        widget = wibox.container.background,\n    },\n    layout = wibox.layout.ratio.horizontal\n}\n \n-- Use negative spacing to create a powerline effect\nlocal w4 = wibox.widget {\n    spacing = -12,\n    spacing_widget = {\n        color  = &#34#ff0000&#34,\n        shape  = gears.shape.powerline,\n        widget = wibox.widget.separator,\n    },\n    layout = wibox.layout.ratio.horizontal\n}\n"],
+      "args":"(spacing_widget)",
+      "type":"property",
+      "lineno":93
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"spacing",
+        "map":{
+          "spacing":" Spacing between widgets."
+        }
+      },
+      "modifiers":{
+        "interface":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "spacing":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "spacing":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_ratio_spacing.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "interface":["layout"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add spacing between each layout widgets.",
+      "name":"spacing",
+      "kind":"object properties",
+      "usage":["for i=1, 5 do\n    local w = wibox.widget {\n        first,\n        second,\n        third,\n        spacing = i*3,\n        layout  = wibox.layout.ratio.horizontal\n    }\nend\n"],
+      "args":"(spacing)",
+      "type":"property",
+      "lineno":115
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"increment",
+        "map":{
+          "index":" The widget index to change",
+          "increment":" An floating point value between -1 and 1 where the\n   end result is within 0 and 1"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "increment":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "increment":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n If the increment produce an invalid ratio (not between 0 and 1), the method\n do nothing.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_ratio_inc_ratio.svg)\n",
+      "tags":[],
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Increase the ratio of \"widget\".",
+      "name":"inc_ratio",
+      "kind":"object methods ",
+      "usage":["local ret = wibox.layout.fixed.vertical()\nlocal w = wibox.widget {\n    first,\n    second,\n    third,\n    layout  = wibox.layout.ratio.horizontal\n}\nfor i=1, 5 do\n    w:inc_ratio(2, 0.1)\nend\n"],
+      "args":"(index, increment)",
+      "type":"method",
+      "lineno":302
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"increment",
+        "map":{
+          "increment":" An floating point value between -1 and 1 where the\n   end result is within 0 and 1",
+          "widget":" The widget to adjust"
+        }
+      },
+      "summary":"Increment the ratio of the first instance of `widget`.",
+      "name":"inc_widget_ratio",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "increment":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "increment":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"\n If the increment produce an invalid ratio (not between 0 and 1), the method\n do nothing.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget, increment)",
+      "tags":[],
+      "lineno":321
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"percent",
+        "map":{
+          "index":" The index of the widget to change",
+          "percent":" An floating point value between 0 and 1"
+        }
+      },
+      "summary":"Set the ratio of the widget at position `index`.",
+      "name":"set_ratio",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "percent":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "percent":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, percent)",
+      "tags":[],
+      "lineno":334
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "map":{
+          "index":" The widget index to query"
+        }
+      },
+      "summary":"Get the ratio at `index`.",
+      "name":"get_ratio",
+      "modifiers":{
+        "return":[{
+            "type":"number"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index)",
+      "tags":[],
+      "lineno":363
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"percent",
+        "map":{
+          "percent":" A floating point value between 0 and 1.",
+          "widget":" The widget to adjust."
+        }
+      },
+      "summary":"Set the ratio of `widget` to `percent`.",
+      "name":"set_widget_ratio",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "percent":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "percent":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget, percent)",
+      "tags":[],
+      "lineno":373
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"before",
+        "3":"itself",
+        "4":"after",
+        "map":{
+          "index":" The index of the widget to change",
+          "before":" The sum of the ratio before the widget",
+          "after":" The sum of the ratio after the widget",
+          "itself":" The ratio for \"widget\""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n The sum of before, itself and after must be 1 or nothing will be done.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_ratio_adjust_ratio.svg)\n",
+      "tags":[],
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Update all widgets to match a set of a ratio.",
+      "name":"adjust_ratio",
+      "kind":"object methods ",
+      "usage":["local ret = wibox.layout.fixed.vertical()\nlocal w = wibox.widget {\n    first,\n    second,\n    third,\n    layout  = wibox.layout.ratio.horizontal\n}\nlocal values = {\n    {0.25, 0.50, 0.25},\n    {0.33, 0.55, 0.12},\n    {0.123, 0.456, 0.789},\n    {0.123, 0, 0.789},\n    {0, 1, 0},\n}\nfor i=1, 5 do\n    w:adjust_ratio(2, unpack(values[i]))\nend\n"],
+      "args":"(index, before, itself, after)",
+      "type":"method",
+      "lineno":410
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"index",
+        "3":"before",
+        "4":"before",
+        "5":"itself",
+        "6":"itself",
+        "7":"after",
+        "8":"after",
+        "map":{
+          "index":" The index of the widget to change",
+          "before":" The sum of the ratio before the widget",
+          "after":" The sum of the ratio after the widget",
+          "itself":" The ratio for \"widget\""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "6":{
+            "type":"number"
+          },
+          "7":{
+            "type":"number"
+          },
+          "8":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "6":{
+            "type":"number"
+          },
+          "7":{
+            "type":"number"
+          },
+          "8":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This method is kept for backwards compatibility, please use `:adjust_ratio` instead.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Update all widgets to match a set of a ratio.",
+      "name":"ajust_ratio",
+      "type":"deprecated",
+      "args":"(index, index, before, before, itself, itself, after, after)",
+      "kind":"deprecated functions",
+      "lineno":457
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"before",
+        "3":"itself",
+        "4":"after",
+        "map":{
+          "after":" The sum of the ratio after the widget",
+          "before":" The sum of the ratio before the widget",
+          "itself":" The ratio for \"widget\"",
+          "widget":" The widget to adjust"
+        }
+      },
+      "summary":"Update all widgets to match a set of a ratio.",
+      "name":"adjust_widget_ratio",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget, before, itself, after)",
+      "tags":[],
+      "lineno":472
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"before",
+        "3":"before",
+        "4":"itself",
+        "5":"itself",
+        "6":"after",
+        "7":"after",
+        "map":{
+          "after":" The sum of the ratio after the widget",
+          "before":" The sum of the ratio before the widget",
+          "itself":" The ratio for \"widget\"",
+          "widget":" The widget to adjust"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "6":{
+            "type":"number"
+          },
+          "7":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "6":{
+            "type":"number"
+          },
+          "7":{
+            "type":"number"
+          },
+          "after":{
+            "type":"number"
+          },
+          "before":{
+            "type":"number"
+          },
+          "itself":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"\n\n This method is kept for backwards compatibility, please use `:adjust_widget_ratio` instead.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Update all widgets to match a set of a ratio.",
+      "name":"ajust_widget_ratio",
+      "type":"deprecated",
+      "args":"(widget, before, before, itself, itself, after, after)",
+      "kind":"deprecated functions",
+      "lineno":488
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets that should be added (must at least be one)"
+        }
+      },
+      "summary":"Add some widgets to the given fixed layout.",
+      "name":"add",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "emitstparam":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(...)",
+      "tags":{
+        "emitstparam":["widget::added widget self The layout."],
+        "emits":["widget::added All new widgets are passed in the parameters."]
+      },
+      "lineno":502
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "map":{
+          "index":" The widget index to remove"
+        }
+      },
+      "summary":"Remove a widget from the layout.",
+      "name":"remove",
+      "modifiers":{
+        "emits":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        },
+        "emitstparam":[[],[],[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index)",
+      "tags":{
+        "emits":["widget::removed"],
+        "emitstparam":["widget::removed widget self The fixed layout.","widget::removed widget widget index The removed widget.","widget::removed number index The removed index."]
+      },
+      "lineno":526
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"widget",
+        "map":{
+          "index":" The position.",
+          "widget":" The widget."
+        }
+      },
+      "summary":"Insert a new widget in the layout at position `index`.",
+      "name":"insert",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "emitstparam":[[],[],[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, widget)",
+      "tags":{
+        "emitstparam":["widget::inserted widget self The ratio layout.","widget::inserted widget widget index The inserted widget.","widget::inserted number count The widget count."],
+        "emits":["widget::inserted"]
+      },
+      "lineno":551
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"inner_fill_strategy",
+        "map":{
+          "inner_fill_strategy":" One of the value listed above."
+        }
+      },
+      "summary":"Set how the space of invisible or `0x0` sized widget is redistributed.",
+      "name":"inner_fill_strategy",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "inner_fill_strategy":{
+            "type":"string"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "inner_fill_strategy":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n Possible values:\n\n * \"default\": Honor the ratio and do not redistribute the space.\n * \"justify\": Distribute the space among remaining widgets.\n * \"center\": Squash remaining widgets and leave equal space on both side.\n * \"inner_spacing\": Add equal spacing between all widgets.\n * \"spacing\": Add equal spacing between all widgets and on the outside.\n * \"left\": Squash remaining widgets and leave empty space on the left.\n * \"right\": Squash remaining widgets and leave empty space on the right.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_ratio_strategy.svg)\n\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(inner_fill_strategy)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":585
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets that should be added to the layout."
+        }
+      },
+      "summary":"Returns a new horizontal ratio layout.",
+      "name":"horizontal",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":" A ratio layout shares the available space.\n equally among all widgets. Widgets can be added via :add(widget).",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(...)",
+      "tags":[],
+      "lineno":623
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets that should be added to the layout."
+        }
+      },
+      "summary":"Returns a new vertical ratio layout.",
+      "name":"vertical",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":" A ratio layout shares the available space.\n equally among all widgets. Widgets can be added via :add(widget).",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(...)",
+      "tags":[],
+      "lineno":631
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"widget2",
+        "map":{
+          "index":" A widget or a widget index",
+          "widget2":" The widget to replace the previous one with"
+        }
+      },
+      "summary":"Set a widget at a specific index, replacing the current one.",
+      "name":"set",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget2":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget2":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, widget2)",
+      "tags":{
+        "emits":["widget::replaced"],
+        "interface":["layout"],
+        "emitstparam":["widget::replaced widget self The layout.","widget::replaced widget widget The inserted widget.","widget::replaced widget previous The previous widget.","widget::replaced number index The replaced index."]
+      },
+      "lineno":649
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"widget2",
+        "3":"recursive",
+        "map":{
+          "widget2":" The widget to replace `widget` with",
+          "widget":" The widget to replace",
+          "recursive":" Recurse into all compatible layouts to\n   find the widget."
+        }
+      },
+      "summary":"Replace the first instance of `widget` in the layout with `widget2`.",
+      "name":"replace_widget",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget, widget2[, recursive=false])",
+      "tags":{
+        "emits":["widget::replaced"],
+        "interface":["layout"],
+        "emitstparam":["widget::replaced widget self The layout.","widget::replaced widget widget index The inserted widget.","widget::replaced widget previous The previous widget.","widget::replaced number index The replaced index."]
+      },
+      "lineno":665
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index1",
+        "2":"index2",
+        "map":{
+          "index2":" The second widget index",
+          "index1":" The first widget index"
+        }
+      },
+      "summary":"Swap 2 widgets in a layout.",
+      "name":"swap",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index2":{
+            "type":"number"
+          },
+          "index1":{
+            "type":"number"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index2":{
+            "type":"number"
+          },
+          "index1":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index1, index2)",
+      "tags":{
+        "emits":["widget::swapped"],
+        "interface":["layout"],
+        "emitstparam":["widget::swapped widget self The layout.","widget::swapped widget widget1 The first widget.","widget::swapped widget widget2 The second widget.","widget::swapped number index1 The first index.","widget::swapped number index1 The second index."]
+      },
+      "lineno":680
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"widget1",
+        "2":"widget2",
+        "3":"recursive",
+        "map":{
+          "widget2":" The second widget",
+          "recursive":" Recurse into all compatible layouts to\n   find the widget.",
+          "widget1":" The first widget"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget1":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget1":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"\n\n If `widget1` is present multiple time, only the first instance is swapped.\n\n Calls `set` internally, so the signal `widget::replaced` is emitted for both\n widgets as well.\n",
+      "tags":{
+        "see":[],
+        "emits":["widget::swapped"],
+        "interface":["layout"],
+        "emitstparam":["widget::swapped widget self The layout.","widget::swapped widget widget1 The first widget.","widget::swapped widget widget2 The second widget.","widget::swapped number index1 The first index.","widget::swapped number index1 The second index."]
+      },
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Swap 2 widgets in a layout.",
+      "name":"swap_widgets",
+      "type":"method",
+      "args":"(widget1, widget2[, recursive=false])",
+      "kind":"object methods ",
+      "lineno":703
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Reset the layout.",
+      "name":"reset",
+      "modifiers":{
+        "emits":[[]],
+        "field":[],
+        "return":[],
+        "emitstparam":[[]],
+        "interface":[[]]
+      },
+      "description":" This removes all widgets from the layout.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "interface":["layout"],
+        "emits":["widget::reset"],
+        "emitstparam":["widget::reset widget self The layout."]
+      },
+      "lineno":709
+    }],
+  "lineno":25
+}

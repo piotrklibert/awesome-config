@@ -1,0 +1,110 @@
+{
+  "kind":"libraries",
+  "name":"pl.config",
+  "mod_name":"config",
+  "inferred":true,
+  "description":"\n  Understands INI files, classic Unix config files, and simple\n delimited columns of values. See @{06-data.md.Reading_Configuration_Files|the Guide}\n\n    # test.config\n    # Read timeout in seconds\n    read.timeout=10\n    # Write timeout in seconds\n    write.timeout=5\n    #acceptable ports\n    ports = 1002,1003,1004\n\n    -- readconfig.lua\n    local config = require 'config'\n    local t = config.read 'test.config'\n    print(pretty.write(t))\n\n    ### output #####\n    {\n      ports = {\n        1002,\n        1003,\n        1004\n      },\n      write_timeout = 5,\n      read_timeout = 10\n    }\n",
+  "file":"/home/cji/portless/Penlight/lua/pl/config.lua",
+  "summary":"Reads configuration files into a Lua table.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":31,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "file":[]
+        }
+      },
+      "summary":"like `io.lines`, but allows for lines to be continued with '`\\`'.",
+      "lineno":56,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator over the lines, or nil",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"error 'not a file-like object' or 'file is nil'",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(file)",
+      "type":"function",
+      "name":"lines",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "file":" a file-like object (anything where read() returns the next line) or a filename.\n Defaults to stardard input."
+        },
+        "1":"file"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["an iterator over the lines, or nil","error 'not a file-like object' or 'file is nil'"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "2":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "file":[],
+          "cnfg":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"read a configuration file into a table",
+      "lineno":105,
+      "retgroups":[{
+          "1":{
+            "text":"a table containing items, or `nil`",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"error message (same as @{config.lines}",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(file[, cnfg])",
+      "type":"function",
+      "name":"read",
+      "parameter":"param",
+      "params":{
+        "1":"file",
+        "2":"cnfg",
+        "map":{
+          "file":" either a file-like object or a string, which must be a filename",
+          "cnfg":" a configuration table that may contain these fields:\n\n  * `smart`  try to deduce what kind of config file we have (default false)\n  * `variabilize` make names into valid Lua identifiers (default true)\n  * `convert_numbers` try to convert values into numbers (default true)\n  * `trim_space` ensure that there is no starting or trailing whitespace with values (default true)\n  * `trim_quotes` remove quotes from strings (default false)\n  * `list_delim` delimiter to use when separating columns (default ',')\n  * `keysep` separator between key and value pairs (default '=')\n"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a table containing items, or `nil`","error message (same as @{config.lines}"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

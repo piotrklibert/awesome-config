@@ -1,0 +1,1140 @@
+{
+  "kind":"manual",
+  "name":"02-arrays.md",
+  "display_name":"Tables and Arrays",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+  "section":{
+    "display_name":"Operations on two-dimensional tables",
+    "name":"Operations_on_two_dimensional_tables",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+      "items":["<reference cycle>",{
+          "display_name":"Python-style Lists",
+          "name":"Python_style_Lists",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"python-style lists ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Python-style Lists",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Map and Set classes",
+          "name":"Map_and_Set_classes",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"map and set classes ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Map and Set classes",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Useful Operations on Tables",
+          "name":"Useful_Operations_on_Tables",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"useful operations on tables ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Useful Operations on Tables",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"operations on two-dimensional tables ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Operations on two-dimensional tables",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Tables and Arrays",
+      "sections":{
+        "516":"Operations_on_two_dimensional_tables",
+        "237":"Useful_Operations_on_Tables",
+        "5":"Python_style_Lists",
+        "148":"Map_and_Set_classes"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Python-style Lists",
+      "name":"Python_style_Lists",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"python-style lists ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Python-style Lists",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Map and Set classes",
+            "name":"Map_and_Set_classes",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"map and set classes ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Map and Set classes",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Useful Operations on Tables",
+            "name":"Useful_Operations_on_Tables",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"useful operations on tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Useful Operations on Tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Operations on two-dimensional tables",
+            "name":"Operations_on_two_dimensional_tables",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"operations on two-dimensional tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Operations on two-dimensional tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Tables and Arrays",
+        "sections":{
+          "516":"Operations_on_two_dimensional_tables",
+          "237":"Useful_Operations_on_Tables",
+          "5":"Python_style_Lists",
+          "148":"Map_and_Set_classes"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"Map and Set classes",
+      "name":"Map_and_Set_classes",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+        "items":["<reference cycle>",{
+            "display_name":"Python-style Lists",
+            "name":"Python_style_Lists",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"python-style lists ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Python-style Lists",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"map and set classes ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Map and Set classes",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Useful Operations on Tables",
+            "name":"Useful_Operations_on_Tables",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"useful operations on tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Useful Operations on Tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Operations on two-dimensional tables",
+            "name":"Operations_on_two_dimensional_tables",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"operations on two-dimensional tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Operations on two-dimensional tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Tables and Arrays",
+        "sections":{
+          "516":"Operations_on_two_dimensional_tables",
+          "237":"Useful_Operations_on_Tables",
+          "5":"Python_style_Lists",
+          "148":"Map_and_Set_classes"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "3":{
+      "display_name":"Useful Operations on Tables",
+      "name":"Useful_Operations_on_Tables",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+        "items":["<reference cycle>",{
+            "display_name":"Python-style Lists",
+            "name":"Python_style_Lists",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"python-style lists ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Python-style Lists",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Map and Set classes",
+            "name":"Map_and_Set_classes",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"map and set classes ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Map and Set classes",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"useful operations on tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Useful Operations on Tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Operations on two-dimensional tables",
+            "name":"Operations_on_two_dimensional_tables",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"operations on two-dimensional tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Operations on two-dimensional tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Tables and Arrays",
+        "sections":{
+          "516":"Operations_on_two_dimensional_tables",
+          "237":"Useful_Operations_on_Tables",
+          "5":"Python_style_Lists",
+          "148":"Map_and_Set_classes"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "4":{
+      "display_name":"Operations on two-dimensional tables",
+      "name":"Operations_on_two_dimensional_tables",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+        "items":["<reference cycle>",{
+            "display_name":"Python-style Lists",
+            "name":"Python_style_Lists",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"python-style lists ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Python-style Lists",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Map and Set classes",
+            "name":"Map_and_Set_classes",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"map and set classes ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Map and Set classes",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Useful Operations on Tables",
+            "name":"Useful_Operations_on_Tables",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"useful operations on tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Useful Operations on Tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"operations on two-dimensional tables ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Operations on two-dimensional tables",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Tables and Arrays",
+        "sections":{
+          "516":"Operations_on_two_dimensional_tables",
+          "237":"Useful_Operations_on_Tables",
+          "5":"Python_style_Lists",
+          "148":"Map_and_Set_classes"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "Python_style_Lists":{
+        "display_name":"Python-style Lists",
+        "name":"Python_style_Lists",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"python-style lists ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Python-style Lists",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Map and Set classes",
+              "name":"Map_and_Set_classes",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"map and set classes ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Map and Set classes",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Useful Operations on Tables",
+              "name":"Useful_Operations_on_Tables",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"useful operations on tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Useful Operations on Tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Operations on two-dimensional tables",
+              "name":"Operations_on_two_dimensional_tables",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"operations on two-dimensional tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Operations on two-dimensional tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Tables and Arrays",
+          "sections":{
+            "516":"Operations_on_two_dimensional_tables",
+            "237":"Useful_Operations_on_Tables",
+            "5":"Python_style_Lists",
+            "148":"Map_and_Set_classes"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Operations_on_two_dimensional_tables":{
+        "display_name":"Operations on two-dimensional tables",
+        "name":"Operations_on_two_dimensional_tables",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+          "items":["<reference cycle>",{
+              "display_name":"Python-style Lists",
+              "name":"Python_style_Lists",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"python-style lists ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Python-style Lists",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Map and Set classes",
+              "name":"Map_and_Set_classes",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"map and set classes ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Map and Set classes",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Useful Operations on Tables",
+              "name":"Useful_Operations_on_Tables",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"useful operations on tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Useful Operations on Tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"operations on two-dimensional tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Operations on two-dimensional tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Tables and Arrays",
+          "sections":{
+            "516":"Operations_on_two_dimensional_tables",
+            "237":"Useful_Operations_on_Tables",
+            "5":"Python_style_Lists",
+            "148":"Map_and_Set_classes"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Map_and_Set_classes":{
+        "display_name":"Map and Set classes",
+        "name":"Map_and_Set_classes",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+          "items":["<reference cycle>",{
+              "display_name":"Python-style Lists",
+              "name":"Python_style_Lists",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"python-style lists ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Python-style Lists",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"map and set classes ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Map and Set classes",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Useful Operations on Tables",
+              "name":"Useful_Operations_on_Tables",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"useful operations on tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Useful Operations on Tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Operations on two-dimensional tables",
+              "name":"Operations_on_two_dimensional_tables",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"operations on two-dimensional tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Operations on two-dimensional tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Tables and Arrays",
+          "sections":{
+            "516":"Operations_on_two_dimensional_tables",
+            "237":"Useful_Operations_on_Tables",
+            "5":"Python_style_Lists",
+            "148":"Map_and_Set_classes"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Useful_Operations_on_Tables":{
+        "display_name":"Useful Operations on Tables",
+        "name":"Useful_Operations_on_Tables",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/02-arrays.md",
+          "items":["<reference cycle>",{
+              "display_name":"Python-style Lists",
+              "name":"Python_style_Lists",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"python-style lists ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Python-style Lists",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Map and Set classes",
+              "name":"Map_and_Set_classes",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"map and set classes ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Map and Set classes",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"useful operations on tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Useful Operations on Tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Operations on two-dimensional tables",
+              "name":"Operations_on_two_dimensional_tables",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"operations on two-dimensional tables ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Operations on two-dimensional tables",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Tables and Arrays",
+          "sections":{
+            "516":"Operations_on_two_dimensional_tables",
+            "237":"Useful_Operations_on_Tables",
+            "5":"Python_style_Lists",
+            "148":"Map_and_Set_classes"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"python-style lists ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Python-style Lists",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"map and set classes ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Map and Set classes",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"useful operations on tables ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Useful Operations on Tables",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"operations on two-dimensional tables ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Operations on two-dimensional tables",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"02-arrays.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Tables and Arrays\n\n<a id=\"list\"/>\n\n### Python-style Lists\n\nOne of the elegant things about Lua is that tables do the job of both lists and\ndicts (as called in Python) or vectors and maps, (as called in C++), and they do\nit efficiently.  However, if we are dealing with 'tables with numerical indices'\nwe may as well call them lists and look for operations which particularly make\nsense for lists. The Penlight `List` class was originally written by Nick Trout\nfor Lua 5.0, and translated to 5.1 and extended by myself.  It seemed that\nborrowing from Python was a good idea, and this eventually grew into Penlight.\n\nHere is an example showing `List` in action; it redefines `__tostring`, so that\nit can print itself out more sensibly:\n\n    > List = require 'pl.List'  --> automatic with require 'pl' <---\n    > l = List()\n    > l:append(10)\n    > l:append(20)\n    > = l\n    {10,20}\n    > l:extend {30,40}\n    {10,20,30,40}\n    > l:insert(1,5)\n    {5,10,20,30,40}\n    > = l:pop()\n    40\n    > = l\n    {5,10,20,30}\n    > = l:index(30)\n    4\n    > = l:contains(30)\n    true\n    > = l:reverse()  ---> note: doesn't make a copy!\n    {30,20,10,5}\n\nAlthough methods like `sort` and `reverse` operate in-place and change the list,\nthey do return the original list. This makes it possible to do _method chaining_,\nlike `ls = ls:append(10):append(20):reverse():append(1)`. But (and this is an\nimportant but) no extra copy is made, so `ls` does not change identity. `List`\nobjects (like tables) are _mutable_, unlike strings. If you want a copy of a\nlist, then `List(ls)` will do the job, i.e. it acts like a copy constructor.\nHowever, if passed any other table, `List` will just set the metatable of the\ntable and _not_ make a copy.\n\nA particular feature of Python lists is _slicing_. This is fully supported in\nthis version of `List`, except we use 1-based indexing. So `List.slice` works\nrather like `string.sub`:\n\n    > l = List {10,20,30,40}\n    > = l:slice(1,1)  ---> note: creates a new list!\n    {10}\n    > = l:slice(2,2)\n    {20}\n    > = l:slice(2,3)\n    {20,30}\n    > = l:slice(2,-2)\n    {20,30}\n    > = l:slice_assign(2,2,{21,22,23})\n    {10,21,22,23,30,40}\n    > = l:chop(1,1)\n    {21,22,23,30,40}\n\nFunctions like `slice_assign` and `chop` modify the list; the first is equivalent\nto Python`l[i1:i2] = seq` and the second to `del l[i1:i2]`.\n\nList objects are ultimately just Lua 'list-like' tables, but they have extra\noperations defined on them, such as equality and concatention.  For regular\ntables, equality is only true if the two tables are _identical objects_, whereas\ntwo lists are equal if they have the same contents, i.e. that `l1[i]==l2[i]` for\nall elements.\n\n    > l1 = List {1,2,3}\n    > l2 = List {1,2,3}\n    > = l1 == l2\n    true\n    > = l1..l2\n    {1,2,3,1,2,3}\n\nThe `List` constructor can be passed a function. If so, it's assumed that this is\nan iterator function that can be repeatedly called to generate a sequence.  One\nsuch function is `io.lines`; the following short, intense little script counts\nthe number of lines in standard input:\n\n    -- linecount.lua\n    require 'pl'\n    ls = List(io.lines())\n    print(#ls)\n\n`List.iterate` captures what `List` considers a sequence. In particular, it can\nalso iterate over all 'characters' in a string:\n\n    > for ch in List.iterate 'help' do io.write(ch,' ') end\n    h e l p >\n\nSince the function `iterate` is used internally by the `List` constructor,\nstrings can be made into lists of character strings very easily.\n\nThere are a number of operations that go beyond the standard Python methods. For\ninstance, you can _partition_ a list into a table of sublists using a function.\nIn the simplest form, you use a predicate (a function returning a boolean value)\nto partition the list into two lists, one of elements matching and another of\nelements not matching. But you can use any function; if we use `type` then the\nkeys will be the standard Lua type names.\n\n    > ls = List{1,2,3,4}\n    > ops = require 'pl.operator'\n    > ls:partition(function(x) return x > 2 end)\n    {false={1,2},true={3,4}}\n    > ls = List{'one',math.sin,List{1},10,20,List{1,2}}\n    > ls:partition(type)\n    {function={function: 00369110},string={one},number={10,20},table={{1},{1,2}}}\n\nThis is one `List` method which returns a table which is not a `List`. Bear in\nmind that you can always call a `List` method on a plain table argument, so\n`List.partition(t,type)` works as expected. But these functions will only operate\non the array part of the table.\n\nThe 'nominal' type of the returned table is `pl.Multimap`, which describes a mapping\nbetween keys and multiple values. This does not mean that `pl.Multimap` is automatically\nloaded whenever you use `partition` (or `List` for that matter); this is one of the\nstandard metatables which are only filled out when the appropriate module is loaded.\nThis allows tables to be tagged appropriately without causing excessive coupling.\n\nStacks occur everywhere in computing. `List` supports stack-like operations;\nthere is already `pop` (remove and return last value) and `append` acts like\n`push` (add a value to the end). `push` is provided as an alias for `append`, and\nthe other stack operation (size) is simply the size operator `#`.  Queues can\nalso be implemented; you use `pop` to take values out of the queue, and `put` to\ninsert a value at the begining.\n\nYou may derive classes from `List`, and since the list-returning methods\nare covariant, the result of `slice` etc will return lists of the derived type,\nnot `List`. For instance, consider the specialization of a `List` type that contains\nnumbers in `tests/test-list.lua`:\n\n    n1 = NA{10,20,30}\n    n2 = NA{1,2,3}\n    ns = n1 + 2*n2\n    asserteq(ns,{12,24,36})\n    min,max = ns:slice(1,2):minmax()\n    asserteq(T(min,max),T(12,24))\n    asserteq(n1:normalize():sum(),1,1e-8)\n\n\n### Map and Set classes\n\nThe `Map` class exposes what Python would call a 'dict' interface, and accesses\nthe hash part of the table. The name 'Map' is used to emphasize the interface,\nnot the implementation; it is an object which maps keys onto values; `m['alice']`\nor the equivalent `m.alice` is the access operation.  This class also provides\nexplicit `set` and `get` methods, which are trivial for regular maps but get\ninteresting when `Map` is subclassed. The other operation is `update`, which\nextends a map by copying the keys and values from another table, perhaps\noverwriting existing keys:\n\n    > Map = require 'pl.Map'\n    > m = Map{one=1,two=2}\n    > m:update {three=3,four=4,two=20}\n    > = m == M{one=1,two=20,three=3,four=4}\n    true\n\nThe method `values` returns a list of the values, and `keys` returns a list of\nthe keys; there is no guarantee of order. `getvalues` is given a list of keys and\nreturns a list of values associated with these keys:\n\n    > m = Map{one=1,two=2,three=3}\n    > = m:getvalues {'one','three'}\n    {1,3}\n    > = m:getvalues(m:keys()) == m:values()\n    true\n\nWhen querying the value of a `Map`, it is best to use the `get` method:\n\n    > print(m:get 'one', m:get 'two')\n    1     2\n\nThe reason is that `m[key]` can be ambiguous; due to the current implementation,\n`m[\"get\"]` will always succeed, because if a value is not present in the map, it\nwill be looked up in the `Map` metatable, which contains a method `get`. There is\ncurrently no simple solution to this annoying restriction.\n\nThere are some useful classes which inherit from `Map`. An `OrderedMap` behaves\nlike a `Map` but keeps its keys in order if you use its `set` method to add keys\nand values.  Like all the 'container' classes in Penlight, it defines an `iter`\nmethod for iterating over its values; this will return the keys and values in the\norder of insertion; the `keys` and `values` methods likewise.\n\nA `MultiMap` allows multiple values to be associated with a given key. So `set`\n(as before) takes a key and a value, but calling it with the same key and a\ndifferent value does not overwrite but adds a new value. `get` (or using `[]`)\nwill return a list of values.\n\nA `Set` can be seen as a special kind of `Map`, where all the values are `true`,\nthe keys are the values, and the order is not important. So in this case\n`Set.values` is defined to return a list of the keys.  Sets can display\nthemselves, and the basic operations like `union` (`+`) and `intersection` (`*`)\nare defined.\n\n    > Set = require 'pl.Set'\n    > = Set{'one','two'} == Set{'two','one'}\n    true\n    > fruit = Set{'apple','banana','orange'}\n    > = fruit['banana']\n    true\n    > = fruit['hazelnut']\n    nil\n    > = fruit:values()\n    {apple,orange,banana}\n    > colours = Set{'red','orange','green','blue'}\n    > = fruit,colours\n    [apple,orange,banana]   [blue,green,orange,red]\n    > = fruit+colours\n    [blue,green,apple,red,orange,banana]\n    > = fruit*colours\n    [orange]\n\nThere are also the functions `Set.difference` and `Set.symmetric_difference`. The\nfirst answers the question 'what fruits are not colours?' and the second 'what\nare fruits and colours but not both?'\n\n    > = fruit - colours\n    [apple,banana]\n    > = fruit ^ colours\n    [blue,green,apple,red,banana]\n\nAdding elements to a set is simply `fruit['peach'] = true` and removing is\n`fruit['apple'] = nil` . To make this simplicity work properly, the `Set` class has no\nmethods - either you use the operator forms or explicitly use `Set.intersect`\netc. In this way we avoid the ambiguity that plagues `Map`.\n\n\n(See `pl.Map` and `pl.Set`)\n\n### Useful Operations on Tables\n\n@lookup pl.tablex\n\nSome notes on terminology: Lua tables are usually _list-like_ (like an array) or\n_map-like_ (like an associative array or dict); they can of course have a\nlist-like and a map-like part. Some of the table operations only make sense for\nlist-like tables, and some only for map-like tables. (The usual Lua terminology\nis the array part and the hash part of the table, which reflects the actual\nimplementation used; it is more accurate to say that a Lua table is an\nassociative map which happens to be particularly efficient at acting like an\narray.)\n\nThe functions provided in `table` provide all the basic manipulations on Lua\ntables, but as we saw with the `List` class, it is useful to build higher-level\noperations on top of those functions. For instance, to copy a table involves this\nkind of loop:\n\n    local res = {}\n    for k,v in pairs(T) do\n        res[k] = v\n    end\n    return res\n\nThe `tablex` module provides this as `copy`, which does a _shallow_ copy of a\ntable. There is also `deepcopy` which goes further than a simple loop in two\nways; first, it also gives the copy the same metatable as the original (so it can\ncopy objects like `List` above) and any nested tables will also be copied, to\narbitrary depth. There is also `icopy` which operates on list-like tables, where\nyou can set optionally set the start index of the source and destination as well.\nIt ensures that any left-over elements will be deleted:\n\n    asserteq(icopy({1,2,3,4,5,6},{20,30}),{20,30})   -- start at 1\n    asserteq(icopy({1,2,3,4,5,6},{20,30},2),{1,20,30}) -- start at 2\n    asserteq(icopy({1,2,3,4,5,6},{20,30},2,2),{1,30}) -- start at 2, copy from 2\n\n(This code from the `tablex` test module shows the use of `pl.test.asserteq`)\n\nWhereas, `move` overwrites but does not delete the rest of the destination:\n\n    asserteq(move({1,2,3,4,5,6},{20,30}),{20,30,3,4,5,6})\n    asserteq(move({1,2,3,4,5,6},{20,30},2),{1,20,30,4,5,6})\n    asserteq(move({1,2,3,4,5,6},{20,30},2,2),{1,30,3,4,5,6})\n\n(The difference is somewhat like that between C's `strcpy` and `memmove`.)\n\nTo summarize, use `copy` or `deepcopy` to make a copy of an arbitrary table. To\ncopy into a map-like table, use `update`; to copy into a list-like table use\n`icopy`, and `move` if you are updating a range in the destination.\n\nTo complete this set of operations, there is `insertvalues` which works like\n`table.insert` except that one provides a table of values to be inserted, and\n`removevalues` which removes a range of values.\n\n    asserteq(insertvalues({1,2,3,4},2,{20,30}),{1,20,30,2,3,4})\n    asserteq(insertvalues({1,2},{3,4}),{1,2,3,4})\n\nAnother example:\n\n    > T = require 'pl.tablex'\n    > t = {10,20,30,40}\n    > = T.removevalues(t,2,3)\n    {10,40}\n    > = T.insertvalues(t,2,{20,30})\n    {10,20,30,40}\n\n\nIn a similar spirit to `deepcopy`, `deepcompare` will take two tables and return\ntrue only if they have exactly the same values and structure.\n\n    > t1 = {1,{2,3},4}\n    > t2 = deepcopy(t1)\n    > = t1 == t2\n    false\n    > = deepcompare(t1,t2)\n    true\n\n`find` will return the index of a given value in a list-like table. Note that\nlike `string.find` you can specify an index to start searching, so that all\ninstances can be found. There is an optional fourth argument, which makes the\nsearch start at the end and go backwards, so we could define `rfind` like so:\n\n    function rfind(t,val,istart)\n        return tablex.find(t,val,istart,true)\n    end\n\n`find` does a linear search, so it can slow down code that depends on it.  If\nefficiency is required for large tables, consider using an _index map_.\n`index_map` will return a table where the keys are the original values of the\nlist, and the associated values are the indices. (It is almost exactly the\nrepresentation needed for a _set_.)\n\n    > t = {'one','two','three'}\n    > = tablex.find(t,'two')\n    2\n    > = tablex.find(t,'four')\n    nil\n    > il = tablex.index_map(t)\n    > = il['two']\n    2\n    > = il.two\n    2\n\nA version of `index_map` called `makeset` is also provided, where the values are\njust `true`. This is useful because two such sets can be compared for equality\nusing `deepcompare`:\n\n    > = deepcompare(makeset {1,2,3},makeset {2,1,3})\n    true\n\nConsider the problem of determining the new employees that have joined in a\nperiod. Assume we have two files of employee names:\n\n    (last-month.txt)\n    smith,john\n    brady,maureen\n    mongale,thabo\n\n    (this-month.txt)\n    smith,john\n    smit,johan\n    brady,maureen\n    mogale,thabo\n    van der Merwe,Piet\n\nTo find out differences, just make the employee lists into sets, like so:\n\n    require 'pl'\n\n    function read_employees(file)\n      local ls = List(io.lines(file)) -- a list of employees\n      return tablex.makeset(ls)\n    end\n\n    last = read_employees 'last-month.txt'\n    this = read_employees 'this-month.txt'\n\n    -- who is in this but not in last?\n    diff = tablex.difference(this,last)\n\n    -- in a set, the keys are the values...\n    for e in pairs(diff) do print(e) end\n\n    --  *output*\n    -- van der Merwe,Piet\n    -- smit,johan\n\nThe `difference` operation is easy to write and read:\n\n    for e in pairs(this) do\n      if not last[e] then\n        print(e)\n      end\n    end\n\nUsing `difference` here is not that it is a tricky thing to code, it is that you\nare stating your intentions clearly to other readers of your code. (And naturally\nto your future self, in six months time.)\n\n`find_if` will search a table using a function. The optional third argument is a\nvalue which will be passed as a second argument to the function. `pl.operator`\nprovides the Lua operators conveniently wrapped as functions, so the basic\ncomparison functions are available:\n\n    > ops = require 'pl.operator'\n    > = tablex.find_if({10,20,30,40},ops.gt,20)\n    3       true\n\nNote that `find_if` will also return the _actual value_ returned by the function,\nwhich of course is usually just  `true` for a boolean function, but any value\nwhich is not `nil` and not `false` can be usefully passed back.\n\n`deepcompare` does a thorough recursive comparison, but otherwise using the\ndefault equality operator. `compare` allows you to specify exactly what function\nto use when comparing two list-like tables, and `compare_no_order` is true if\nthey contain exactly the same elements. Do note that the latter does not need an\nexplicit comparison function - in this case the implementation is actually to\ncompare the two sets, as above:\n\n    > = compare_no_order({1,2,3},{2,1,3})\n    true\n    > = compare_no_order({1,2,3},{2,1,3},'==')\n    true\n\n(Note the special string '==' above; instead of saying `ops.gt` or `ops.eq` we\ncan use the strings '>' or '==' respectively.)\n\n`sort` and `sortv` return iterators that will iterate through the\nsorted elements of a table. `sort` iterates by sorted key order, and\n`sortv` iterates by sorted value order. For example, given a table\nwith names and ages, it is trivial to iterate over the elements:\n\n    > t = {john=27,jane=31,mary=24}\n    > for name,age in tablex.sort(t) do print(name,age) end\n    jane    31\n    john    27\n    mary    24\n    > for name,age in tablex.sortv(t) do print(name,age) end\n    mary    24\n    john    27\n    jane    31\n\nThere are several ways to merge tables in PL. If they are list-like, then see the\noperations defined by `pl.List`, like concatenation. If they are map-like, then\n`merge` provides two basic operations. If the third arg is false, then the result\nonly contains the keys that are in common between the two tables, and if true,\nthen the result contains all the keys of both tables. These are in fact\ngeneralized set union and intersection operations:\n\n    > S1 = {john=27,jane=31,mary=24}\n    > S2 = {jane=31,jones=50}\n    > = tablex.merge(S1, S2, false)\n    {jane=31}\n    > = tablex.merge(S1, S2, true)\n    {mary=24,jane=31,john=27,jones=50}\n\nWhen working with tables, you will often find yourself writing loops like in the\nfirst example. Loops are second nature to programmers, but they are often not the\nmost elegant and self-describing way of expressing an operation. Consider the\n`map` function, which creates a new table by applying a function to each element\nof the original:\n\n    > = map(math.sin, {1,2,3,4})\n    {  0.84,  0.91,  0.14, -0.76}\n    > = map(function(x) return x*x end, {1,2,3,4})\n    {1,4,9,16}\n\n`map` saves you from writing a loop, and the resulting code is often clearer, as\nwell as being shorter. This is not to say that 'loops are bad' (although you will\nhear that from some extremists), just that it's good to capture standard\npatterns. Then the loops you do write will stand out and acquire more significance.\n\n`pairmap` is interesting, because the function works with both the key and the\nvalue.\n\n    > t = {fred=10,bonzo=20,alice=4}\n    > = pairmap(function(k,v) return v end, t)\n    {4,10,20}\n    > = pairmap(function(k,v) return k end, t)\n    {'alice','fred','bonzo'}\n\n(These are common enough operations that the first is defined as `values` and the\nsecond as `keys`.) If the function returns two values, then the _second_ value is\nconsidered to be the new key:\n\n    > = pairmap(t,function(k,v) return v+10, k:upper() end)\n    {BONZO=30,FRED=20,ALICE=14}\n\n`map2` applies a function to two tables:\n\n    > map2(ops.add,{1,2},{10,20})\n    {11,22}\n    > map2('*',{1,2},{10,20})\n    {10,40}\n\nThe various map operations generate tables; `reduce` applies a function of two\narguments over a table and returns the result as a scalar:\n\n    > reduce ('+', {1,2,3})\n    6\n    > reduce ('..', {'one','two','three'})\n    'onetwothree'\n\nFinally, `zip` sews different tables together:\n\n    > = zip({1,2,3},{10,20,30})\n    {{1,10},{2,20},{3,30}}\n\nBrowsing through the documentation, you will find that `tablex` and `List` share\nmethods.  For instance, `tablex.imap` and `List.map` are basically the same\nfunction; they both operate over the array-part of the table and generate another\ntable. This can also be expressed as a _list comprehension_ `C 'f(x) for x' (t)`\nwhich makes the operation more explicit. So why are there different ways to do\nthe same thing? The main reason is that not all tables are Lists: the expression\n`ls:map('#')` will return a _list_ of the lengths of any elements of `ls`. A list\nis a thin wrapper around a table, provided by the metatable `List`. Sometimes you\nmay wish to work with ordinary Lua tables; the `List` interface is not a\ncompulsory way to use Penlight table operations.\n\n### Operations on two-dimensional tables\n\n@lookup pl.array2d\n\nTwo-dimensional tables are of course easy to represent in Lua, for instance\n`{{1,2},{3,4}}` where we store rows as subtables and index like so `A[col][row]`.\nThis is the common representation used by matrix libraries like\n[LuaMatrix](http://lua-users.org/wiki/LuaMatrix). `pl.array2d` does not provide\nmatrix operations, since that is the job for a specialized library, but rather\nprovides generalizations of the higher-level operations provided by `pl.tablex`\nfor one-dimensional arrays.\n\n`iter` is a useful generalization of `ipairs`. (The extra parameter determines\nwhether you want the indices as well.)\n\n    > a = {{1,2},{3,4}}\n    > for i,j,v in array2d.iter(a,true) do print(i,j,v) end\n    1       1       1\n    1       2       2\n    2       1       3\n    2       2       4\n\nNote that you can always convert an arbitrary 2D array into a 'list of lists'\nwith `List(tablex.map(List,a))`\n\n`map` will apply a function over all elements (notice that extra arguments can be\nprovided, so this operation is in effect `function(x) return x-1 end`)\n\n    > array2d.map('-',a,1)\n    {{0,1},{2,3}}\n\n2D arrays are stored as an array of rows, but columns can be extracted:\n\n    > array2d.column(a,1)\n    {1,3}\n\nThere are three equivalents to `tablex.reduce`. You can either reduce along the\nrows (which is the most efficient) or reduce along the columns. Either one will\ngive you a 1D array. And `reduce2` will apply two operations: the first one\nreduces the rows, and the second reduces the result.\n\n    > array2d.reduce_rows('+',a)\n    {3,7}\n    > array2d.reduce_cols('+',a)\n    {4,6}\n    > -- same as tablex.reduce('*',array.reduce_rows('+',a))\n    > array2d.reduce2('*','+',a)\n    21    `\n\n`tablex.map2` applies an operation to two tables, giving another table.\n`array2d.map2` does this for 2D arrays. Note that you have to provide the _rank_\nof the arrays involved, since it's hard to always correctly deduce this from the\ndata:\n\n    > b = {{10,20},{30,40}}\n    > a = {{1,2},{3,4}}\n    > = array2d.map2('+',2,2,a,b)  -- two 2D arrays\n    {{11,22},{33,44}}\n    > = array2d.map2('+',1,2,{10,100},a)  -- 1D, 2D\n    {{11,102},{13,104}}\n    > = array2d.map2('*',2,1,a,{1,-1})  -- 2D, 1D\n    {{1,-2},{3,-4}}\n\nOf course, you are not limited to simple arithmetic. Say we have a 2D array of\nstrings, and wish to print it out with proper right justification. The first step\nis to create all the string lengths by mapping `string.len` over the array, the\nsecond is to reduce this along the columns using `math.max` to get maximum column\nwidths, and last, apply `stringx.rjust` with these widths.\n\n    maxlens = reduce_cols(math.max,map('#',lines))\n    lines = map2(stringx.rjust,2,1,lines,maxlens)\n\nThere is `product` which returns  the _Cartesian product_ of two 1D arrays. The\nresult is a 2D array formed from applying the function to all possible pairs from\nthe two arrays.\n\n    > array2d.product('{}',{1,2},{'a','b'})\n    {{{1,'b'},{2,'a'}},{{1,'a'},{2,'b'}}}\n\nThere is a set of operations which work in-place on 2D arrays. You can\n`swap_rows` and `swap_cols`; the first really is a simple one-liner, but the idea\nhere is to give the operation a name. `remove_row` and `remove_col` are\ngeneralizations of `table.remove`. Likewise, `extract_rows` and `extract_cols`\nare given arrays of indices and discard anything else. So, for instance,\n`extract_cols(A,{2,4})` will leave just columns 2 and 4 in the array.\n\n`List.slice` is often useful on 1D arrays; `slice` does the same thing, but is\ngenerally given a start (row,column) and a end (row,column).\n\n    > A = {{1,2,3},{4,5,6},{7,8,9}}\n    > B = slice(A,1,1,2,2)\n    > write(B)\n     1 2\n     4 5\n    > B = slice(A,2,2)\n    > write(B,nil,'%4.1f')\n     5.0 6.0\n     8.0 9.0\n\nHere `write` is used to print out an array nicely; the second parameter is `nil`,\nwhich is the default (stdout) but can be any file object and the third parameter\nis an optional format (as used in `string.format`).\n\n`parse_range` will take a spreadsheet range like 'A1:B2' or 'R1C1:R2C2' and\nreturn the range as four numbers, which can be passed to `slice`. The rule is\nthat `slice` will return an array of the appropriate shape depending on the\nrange; if a range represents a row or a column, the result is 1D, otherwise 2D.\n\nThis applies to `iter` as well, which can also optionally be given a range:\n\n\n    > for i,j,v in iter(A,true,2,2) do print(i,j,v) end\n    2       2       5\n    2       3       6\n    3       2       8\n    3       3       9\n\n`new` will construct a new 2D array with the given dimensions. You provide an\ninitial value for the elements, which is interpreted as a function if it's\ncallable. With `L` being `utils.string_lambda` we then have the following way to\nmake an _identity matrix_:\n\n    asserteq(\n        array.new(3,3,L'|i,j| i==j and 1 or 0'),\n        {{1,0,0},{0,1,0},{0,0,1}}\n    )\n\nPlease note that most functions in `array2d` are _covariant_, that is, they\nreturn an array of the same type as they receive.  In particular, any objects\ncreated with `data.new` or `matrix.new` will remain data or matrix objects when\nreshaped or sliced, etc.  Data objects have the `array2d` functions available as\nmethods.\n\n\n"
+}

@@ -7,3 +7,4 @@
 -D analyzer-local_dce
 -D analyzer-fusion
 -D analyzer-purity_inference
+--times

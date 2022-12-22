@@ -55,38 +55,6 @@ make_notification_widget = (txt, geom, wbox_args, txt_args) ->
   wb
 
 
-volume_to_icons = {
-  {0, "audio-volume-muted-symbolic-red"}
-  {25, "audio-volume-muted-symbolic"},
-  {50, "audio-volume-low-symbolic"},
-  {75, "audio-volume-medium-symbolic"},
-  {100, "audio-volume-high-symbolic"},
-}
-path_to_icons = "/home/cji/.config/awesome/icons"
-choose_icon = (vol) ->
-  if not vol or vol <= 0
-    return "#{path_to_icons}/audio-volume-muted-symbolic-red.svg"
-  icon_name = nil
-  for {k, v} in *volume_to_icons
-    if vol and (tonumber(vol) <= tonumber(k))
-      icon_name = v
-      break
-  if icon_name
-    "#{path_to_icons}/#{icon_name}.svg"
-  else
-    error("Can't find icon for vol #{vol}")
-
-
-pamixer = "/usr/local/bin/pamixer"
-GET_VOLUME_CMD  = {pamixer, "--get-volume", "--get-mute"}
-INC_VOLUME_CMD  = {pamixer, "-i", "5"}
-DEC_VOLUME_CMD  = {pamixer, "-d", "5"}
-TOGGLE_MUTE_CMD = {pamixer, "-t"}
-cmd_for_button = (btn) ->
-  switch tonumber(btn)
-    when 4 then INC_VOLUME_CMD
-    when 5 then DEC_VOLUME_CMD
-    when 1 then TOGGLE_MUTE_CMD
 
 
 
@@ -104,11 +72,6 @@ make_notification_spec = (attrs) ->
 
 
 state = {
-  volume: 100
-  is_muted: false
-  icon: choose_icon(100)
-  notification_widget: nil
-  volume_widget: nil
 
   popup_create: =>
     txt = "#{@volume}%"

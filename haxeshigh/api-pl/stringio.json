@@ -1,0 +1,72 @@
+{
+  "kind":"libraries",
+  "name":"pl.stringio",
+  "mod_name":"stringio",
+  "inferred":true,
+  "description":" <br>\n\n    f = stringio.open(text)\n    l1 = f:read()  -- read first line\n    n,m = f:read ('*n','*n') -- read two numbers\n    for line in f:lines() do print(line) end -- iterate over all lines\n    f = stringio.create()\n    f:write('hello')\n    f:write('dolly')\n    assert(f:value(),'hellodolly')\n\n See  @{03-strings.md.File_style_I_O_on_Strings|the Guide}.",
+  "file":"/home/cji/portless/Penlight/lua/pl/stringio.lua",
+  "summary":"Reading and writing strings using file-like objects.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":15,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":[],
+        "usage":[[]]
+      },
+      "summary":"create a file-like object which can be used to construct a string.",
+      "lineno":142,
+      "args":"()",
+      "usage":["f = create(); f:write('hello, dolly\\n'); print(f:value())\n"],
+      "section":"function",
+      "name":"create",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n The resulting object has an extra `value()` method for\n retrieving the string value.  Implements `file:write`, `file:seek`, `file:lines`,\n plus an extra `writef` method which works like `utils.printf`.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "s":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"create a file-like object for reading from a given string.",
+      "lineno":150,
+      "args":"(s)",
+      "usage":["fs = open '20 10'; x,y = f:read ('*n','*n'); assert(x == 20 and y == 10)\n"],
+      "section":"function",
+      "name":"open",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "s":" The input string."
+        },
+        "1":"s"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Implements `file:read`.",
+      "type":"function"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

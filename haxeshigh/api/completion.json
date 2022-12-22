@@ -1,0 +1,196 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"completion",
+  "summary":"Completion module.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.completion",
+  "modifiers":{
+    "copyright":[],
+    "author":[[],[]]
+  },
+  "description":"\n\n This module store a set of function using shell to complete commands name.\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"src",
+        "map":{
+          "src":" The bash completion source file, /etc/bash_completion by default."
+        }
+      },
+      "summary":"Enable programmable bash completion in awful.completion.bash at the price of\n a slight overhead.",
+      "name":"awful.completion.bashcomp_load",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "src":[]
+        },
+        "field":{
+          "1":[],
+          "src":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(src)",
+      "tags":[],
+      "lineno":36
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"command",
+        "2":"cur_pos",
+        "3":"ncomp",
+        "4":"shell",
+        "map":{
+          "cur_pos":" The cursor position.",
+          "ncomp":" The element number to complete.",
+          "shell":" The shell to use for completion.\n   Supports \"bash\" and \"zsh\".",
+          "command":" The command line."
+        }
+      },
+      "summary":"Use shell completion system to complete commands and filenames.",
+      "name":"awful.completion.shell",
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          },{
+            "type":"number"
+          },{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"based on SHELL",
+            "type":"string",
+            "opt":"based on SHELL"
+          },
+          "cur_pos":{
+            "type":"number"
+          },
+          "ncomp":{
+            "type":"number"
+          },
+          "shell":{
+            "optchain":"based on SHELL",
+            "type":"string",
+            "opt":"based on SHELL"
+          },
+          "command":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"based on SHELL",
+            "type":"string",
+            "opt":"based on SHELL"
+          },
+          "cur_pos":{
+            "type":"number"
+          },
+          "ncomp":{
+            "type":"number"
+          },
+          "shell":{
+            "optchain":"based on SHELL",
+            "type":"string",
+            "opt":"based on SHELL"
+          },
+          "command":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(command, cur_pos, ncomp[, shell=based on SHELL])",
+      "tags":[],
+      "lineno":75
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "2":"cur_pos",
+        "3":"ncomp",
+        "4":"keywords",
+        "map":{
+          "cur_pos":" The current cursor position.",
+          "text":" The current text the user had typed yet.",
+          "keywords":" The keywords table uised for completion.",
+          "ncomp":" The number of yet requested completion using current text."
+        }
+      },
+      "summary":"Run a generic completion.",
+      "name":"awful.completion.generic",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "cur_pos":[],
+          "text":[],
+          "keywords":[],
+          "ncomp":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "cur_pos":[],
+          "text":[],
+          "keywords":[],
+          "ncomp":[]
+        }
+      },
+      "description":"\n For this function to run properly the awful.completion.keyword table should\n be fed up with all keywords. The completion is run against these keywords.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(text, cur_pos, ncomp, keywords)",
+      "tags":[],
+      "lineno":198
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/lib/awful/completion.lua",
+  "package":"awful",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;","Sébastien Gross &lt;seb-awesome@chezwam.org&gt;"],
+    "copyright":"2008 Julien Danjou, Sébastien Gross"
+  },
+  "lineno":12
+}

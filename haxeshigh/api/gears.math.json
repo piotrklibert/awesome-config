@@ -1,0 +1,164 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "mod_name":"gears.math",
+  "summary":"Math module for gears.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.math",
+  "modifiers":[],
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"set",
+        "map":{
+          "set":" A set."
+        }
+      },
+      "summary":"Return all subsets of a specific set.",
+      "name":"subsets",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "set":[]
+        },
+        "field":{
+          "1":[],
+          "set":[]
+        }
+      },
+      "description":"\n This function, giving a set, will return all subset it.\n For example, if we consider a set with value { 10, 15, 34 },\n it will return a table containing 2^n set:\n { }, { 10 }, { 15 }, { 34 }, { 10, 15 }, { 10, 34 }, etc.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(set)",
+      "tags":[],
+      "lineno":43
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"i",
+        "map":{
+          "i":" An absolute index to fit into #t.",
+          "t":" A length. Must be greater than zero."
+        }
+      },
+      "summary":"Make i cycle.",
+      "name":"cycle",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "i":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "i":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(t, i)",
+      "tags":[],
+      "lineno":62
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"x",
+        "map":{
+          "x":""
+        }
+      },
+      "summary":"Round a number to an integer.",
+      "name":"round",
+      "modifiers":{
+        "return":[{
+            "type":"integer"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(x)",
+      "tags":[],
+      "lineno":75
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"x",
+        "map":{
+          "x":""
+        }
+      },
+      "summary":"Return the sign of the number x\n return 1 if x is positive, -1 if negative and 0 if x is 0",
+      "name":"sign",
+      "modifiers":{
+        "return":[{
+            "type":"integer"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(x)",
+      "tags":[],
+      "lineno":84
+    }],
+  "type":"utillib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/math.lua",
+  "package":"",
+  "tags":[],
+  "lineno":7
+}

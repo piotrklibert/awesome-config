@@ -209,7 +209,6 @@ local __awful_Tag = _G.require("awful.tag")
 local __awful_Timer = _G.require("gears.timer")
 local __awful_Widget = _G.require("awful.widget")
 local __awful_Wibox = _G.require("wibox")
-local __haxe_IMap = _hx_e()
 local __haxe_EntryPoint = _hx_e()
 local __haxe_Exception = _hx_e()
 local __haxe_Log = _hx_e()
@@ -218,7 +217,6 @@ local __haxe_MainLoop = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
 local __haxe_ValueException = _hx_e()
 __haxe_ds_Option = _hx_e()
-local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 local __lib_Inspect = _G.require("inspect")
@@ -242,7 +240,6 @@ local __taglist_TaglistAnimator = _hx_e()
 local __taglist_TaglistAnimatorImpl = _hx_e()
 local __taglist_Timers = _hx_e()
 local __tink_core_NamedWith = _hx_e()
-local __utils_lua__LuaTools_LuaTable_Impl_ = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -845,45 +842,19 @@ Std.parseInt = function(x)
   if (x == nil) then 
     do return nil end;
   end;
-  local hexMatch = _G.string.match(x, "^[ \t\r\n]*([%-+]*0[xX][%da-fA-F]*)");
-  if (hexMatch ~= nil) then 
-    local sign;
-    local _g = __lua_lib_luautf8_Utf8.byte(hexMatch, 1);
-    if (_g) == 43 then 
-      sign = 1;
-    elseif (_g) == 45 then 
-      sign = -1;else
-    sign = 0; end;
-    local pos = (function() 
-      local _hx_1
-      if (sign == 0) then 
-      _hx_1 = 2; else 
-      _hx_1 = 3; end
-      return _hx_1
-    end )();
-    local len = nil;
-    len = __lua_lib_luautf8_Utf8.len(hexMatch);
-    if (pos < 0) then 
-      pos = __lua_lib_luautf8_Utf8.len(hexMatch) + pos;
-    end;
-    if (pos < 0) then 
-      pos = 0;
-    end;
-    do return (function() 
-      local _hx_2
-      if (sign == -1) then 
-      _hx_2 = -1; else 
-      _hx_2 = 1; end
-      return _hx_2
-    end )() * _G.tonumber(__lua_lib_luautf8_Utf8.sub(hexMatch, pos + 1, pos + len), 16) end;
-  else
-    local intMatch = _G.string.match(x, "^ *[%-+]?%d*");
-    if (intMatch ~= nil) then 
-      do return _G.tonumber(intMatch) end;
+  local sign, numString = _G.string.match(x, "^%s*([%-+]?)0[xX]([%da-fA-F]*)");
+  if (numString ~= nil) then 
+    if (sign == "-") then 
+      do return -_G.tonumber(numString, 16) end;
     else
-      do return nil end;
+      do return _G.tonumber(numString, 16) end;
     end;
   end;
+  local intMatch = _G.string.match(x, "^%s*[%-+]?%d*");
+  if (intMatch == nil) then 
+    do return nil end;
+  end;
+  do return _G.tonumber(intMatch) end;
 end
 
 Sys.new = {}
@@ -892,9 +863,6 @@ Sys.time = function()
   local _hx_1_stamp_seconds, _hx_1_stamp_microseconds = __lua_lib_luv_Misc.gettimeofday();
   do return _hx_1_stamp_seconds + (_hx_1_stamp_microseconds / 1000000) end;
 end
-
-__haxe_IMap.new = {}
-__haxe_IMap.__name__ = true
 
 __haxe_EntryPoint.new = {}
 __haxe_EntryPoint.__name__ = true
@@ -1168,7 +1136,13 @@ __haxe_ValueException.new = function(value,previous,native)
   return self
 end
 __haxe_ValueException.super = function(self,value,previous,native) 
-  __haxe_Exception.super(self,Std.string(value),previous,native);
+  __haxe_Exception.super(self,(function() 
+    local _hx_1
+    if (value == nil) then 
+    _hx_1 = "null"; else 
+    _hx_1 = Std.string(value); end
+    return _hx_1
+  end )(),previous,native);
   self.value = value;
 end
 __haxe_ValueException.__name__ = true
@@ -1185,20 +1159,6 @@ __haxe_ds_Option = _hxClasses["haxe.ds.Option"];
 __haxe_ds_Option.Some = function(v) local _x = _hx_tab_array({[0]="Some",0,v,__enum__=__haxe_ds_Option}, 3); return _x; end 
 __haxe_ds_Option.None = _hx_tab_array({[0]="None",1,__enum__ = __haxe_ds_Option},2)
 
-
-__haxe_ds_StringMap.new = function() 
-  local self = _hx_new(__haxe_ds_StringMap.prototype)
-  __haxe_ds_StringMap.super(self)
-  return self
-end
-__haxe_ds_StringMap.super = function(self) 
-  self.h = ({});
-end
-__haxe_ds_StringMap.__name__ = true
-__haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
-__haxe_ds_StringMap.prototype = _hx_e();
-
-__haxe_ds_StringMap.prototype.__class__ =  __haxe_ds_StringMap
 
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
@@ -1608,7 +1568,7 @@ __taglist_TaglistRow.prototype.toLua = function(self,s)
 end
 __taglist_TaglistRow.prototype.makeTaglist = function(self,s) 
   local button = awful.button(_hx_e(), 1, function(x) 
-    __haxe_Log.trace("asdasda", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/taglist/Taglist.hx",lineNumber=57,className="taglist.TaglistRow",methodName="makeTaglist"}));
+    __haxe_Log.trace("asdasda", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/taglist/Taglist.hx",lineNumber=59,className="taglist.TaglistRow",methodName="makeTaglist"}));
     local sel = __awful_Screen.focused().selected_tag;
     __awful_Tag.viewtoggle(x);
     __awful_Tag.viewtoggle(sel);
@@ -1670,7 +1630,7 @@ __taglist_Taglist.prototype.show = function(self)
 end
 __taglist_Taglist.prototype.enable = function(self) 
   if (self.tagListBox == __haxe_ds_Option.None) then 
-    self.tagListBox = __haxe_ds_Option.Some(__awful_Wibox(__utils_lua__LuaTools_LuaTable_Impl_.fromObject(__taglist_Taglist.wiboxConfig)));
+    self.tagListBox = __haxe_ds_Option.Some(__awful_Wibox(__taglist_Taglist.wiboxConfig));
   end;
   local value = self.tagListBox;
   local tmp;
@@ -1679,7 +1639,11 @@ __taglist_Taglist.prototype.enable = function(self)
     tmp = value[2];
   elseif (tmp1) == 1 then 
     _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
-  self:setup(tmp, __taglist_Taglist.mkWidget(__awful_Screen.focused()));
+  local value = __awful_Screen.focused();
+  if (value == nil) then 
+    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
+  end;
+  self:setup(tmp, __taglist_Taglist.mkWidget(value));
   do return self end
 end
 __taglist_Taglist.prototype.disable = function(self) 
@@ -1890,25 +1854,6 @@ __tink_core_NamedWith.__name__ = true
 __tink_core_NamedWith.prototype = _hx_e();
 
 __tink_core_NamedWith.prototype.__class__ =  __tink_core_NamedWith
-
-__utils_lua__LuaTools_LuaTable_Impl_.new = {}
-__utils_lua__LuaTools_LuaTable_Impl_.__name__ = true
-__utils_lua__LuaTools_LuaTable_Impl_.fromObject = function(obj) 
-  local _g = __haxe_ds_StringMap.new();
-  local _g1 = 0;
-  local _g2 = Reflect.fields(obj);
-  while (_g1 < _g2.length) do 
-    local f = _g2[_g1];
-    _g1 = _g1 + 1;
-    local value = Reflect.field(obj, f);
-    if (value == nil) then 
-      _g.h[f] = __haxe_ds_StringMap.tnull;
-    else
-      _g.h[f] = value;
-    end;
-  end;
-  do return _g.h end;
-end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -1954,13 +1899,11 @@ local _hx_static_init = function()
   
   __haxe_EntryPoint.threadCount = 0;
   
-  __haxe_ds_StringMap.tnull = ({});
-  
-  __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
+  __log_Log.res_path = "/home/cji/priv/awesomescripts/haxeshigh/res";
   
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon="" .. __log_Log.res_path .. "/bang2.png",width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
-  __taglist_Pkg.ver = "1663968800";
+  __taglist_Pkg.ver = "1670610763";
   
   __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
   

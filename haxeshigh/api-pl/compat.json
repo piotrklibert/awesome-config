@@ -1,0 +1,3264 @@
+{
+  "kind":"libraries",
+  "name":"pl.compat",
+  "modifiers":[],
+  "type":"module",
+  "description":"\n Injects `table.pack`, `table.unpack`, and `package.searchpath` in the global\n environment, to make sure they are available for Lua 5.1 and LuaJIT.\n\n All other functions are exported as usual in the returned module table.\n\n NOTE: everything in this module is also available in `pl.utils`.",
+  "file":"/home/cji/portless/Penlight/lua/pl/compat.lua",
+  "summary":"Lua 5.1/5.2/5.3 compatibility.",
+  "sections":{
+    "1":{
+      "name":"lua52",
+      "inferred":true,
+      "description":"",
+      "file":{
+        "warning":"<type 'function' is not supported by JSON.>",
+        "filename":"/home/cji/portless/Penlight/lua/pl/compat.lua",
+        "items":["<reference cycle>",{
+            "name":"lua51",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is Lua 5.1 (or LuaJIT).",
+            "params":{
+              "map":{
+                "lua51":""
+              },
+              "1":"lua51"
+            },
+            "tags":[],
+            "lineno":14,
+            "subparams":[],
+            "args":"(lua51)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "lua51":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"jit",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is LuaJIT.",
+            "params":{
+              "map":{
+                "jit":""
+              },
+              "1":"jit"
+            },
+            "tags":[],
+            "lineno":18,
+            "subparams":[],
+            "args":"(jit)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "jit":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"jit52",
+            "section":"field",
+            "inferred":false,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is LuaJIT with 5.2 compatibility compiled in.",
+            "params":{
+              "map":{
+                "jit52":""
+              },
+              "1":"jit52"
+            },
+            "tags":[],
+            "lineno":22,
+            "subparams":[],
+            "args":"(jit52)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "jit52":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"dir_separator",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"the directory separator character for the current platform.",
+            "params":{
+              "map":{
+                "dir_separator":""
+              },
+              "1":"dir_separator"
+            },
+            "tags":[],
+            "lineno":29,
+            "subparams":[],
+            "args":"(dir_separator)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "dir_separator":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"is_windows",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is a Windows platform.",
+            "params":{
+              "map":{
+                "is_windows":""
+              },
+              "1":"is_windows"
+            },
+            "tags":[],
+            "lineno":33,
+            "subparams":[],
+            "args":"(is_windows)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "is_windows":[]
+              },
+              "return":[]
+            }
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "return":[[],[]],
+              "param":{
+                "1":[],
+                "cmd":[]
+              }
+            },
+            "summary":"execute a shell command, in a compatible and platform independent way.",
+            "lineno":47,
+            "retgroups":[{
+                "1":{
+                  "text":"true if successful",
+                  "type":"",
+                  "mods":[]
+                },
+                "2":{
+                  "text":"actual return code",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(cmd)",
+            "type":"function",
+            "name":"execute",
+            "parameter":"param",
+            "params":{
+              "map":{
+                "cmd":" a shell command"
+              },
+              "1":"cmd"
+            },
+            "tags":[],
+            "kind":"functions",
+            "section":"function",
+            "description":"\n This is a compatibility function that returns the same for Lua 5.1 and\n Lua 5.2+.\n\n NOTE: Windows systems can use signed 32bit integer exitcodes. Posix systems\n only use exitcodes 0-255, anything else is undefined.\n\n NOTE2: In Lua 5.2 and 5.3 a Windows exitcode of -1 would not properly be\n returned, this function will return it properly for all versions.",
+            "ret":["true if successful","actual return code"]
+          },{
+            "name":"load",
+            "description":"",
+            "inferred":true,
+            "subparams":[],
+            "kind":"functions",
+            "params":{
+              "1":"ld",
+              "2":"source",
+              "3":"mode",
+              "4":"env",
+              "map":{
+                "env":" environment to load the chunk in",
+                "source":" name of chunk for errors",
+                "ld":" code string or loader",
+                "mode":" 'b', 't' or 'bt'"
+              }
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":78,
+            "summary":"Load Lua code as a text or binary chunk (in a Lua 5.2 compatible way).",
+            "args":"(ld[, source[, mode[, env]]])",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "2":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "3":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "4":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "env":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "source":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "ld":[],
+                "mode":{
+                  "optchain":true,
+                  "opt":true
+                }
+              }
+            },
+            "section":"function",
+            "parameter":"param"
+          },{
+            "name":"getfenv",
+            "description":"\n Not 100% compatible, so with Lua 5.2 it may return nil for a function with no\n global references!\n Based on code by [Sergey Rozhenko](http://lua-users.org/lists/lua-l/2010-06/msg00313.html)",
+            "inferred":true,
+            "subparams":[],
+            "kind":"functions",
+            "params":{
+              "map":{
+                "f":" a function or a call stack reference"
+              },
+              "1":"f"
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":86,
+            "summary":"Get environment of a function (in a Lua 5.1 compatible way).",
+            "args":"(f)",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "f":[]
+              }
+            },
+            "section":"function",
+            "parameter":"param"
+          },{
+            "name":"setfenv",
+            "description":"",
+            "inferred":true,
+            "subparams":[],
+            "kind":"functions",
+            "params":{
+              "1":"f",
+              "2":"env",
+              "map":{
+                "env":" a table that becomes the new environment of `f`",
+                "f":" a function or a call stack reference"
+              }
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":92,
+            "summary":"Set environment of a function (in a Lua 5.1 compatible way).",
+            "args":"(f, env)",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "2":[],
+                "env":[],
+                "f":[]
+              }
+            },
+            "section":"function",
+            "parameter":"param"
+          },"<reference cycle>",{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "param":{
+                "1":[],
+                "...":[]
+              },
+              "return":[[]]
+            },
+            "summary":"pack an argument list into a table.",
+            "lineno":156,
+            "retgroups":[{
+                "1":{
+                  "text":"a table with field n set to the length",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(...)",
+            "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "name":"table.pack",
+            "params":{
+              "map":{
+                "...":" any arguments"
+              },
+              "1":"..."
+            },
+            "tags":[],
+            "kind":"global exported functions (for lua 5.1 & luajit) ",
+            "description":"",
+            "type":"function",
+            "ret":["a table with field n set to the length"],
+            "parameter":"param"
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "param":{
+                "1":[],
+                "2":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "3":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "t":[],
+                "j":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "i":{
+                  "optchain":true,
+                  "opt":true
+                }
+              },
+              "return":[[]],
+              "see":[[]]
+            },
+            "summary":"unpack a table and return the elements.",
+            "lineno":172,
+            "retgroups":[{
+                "1":{
+                  "text":"multiple return values from the table",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(t[, i[, j]])",
+            "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "name":"table.unpack",
+            "params":{
+              "1":"t",
+              "2":"i",
+              "map":{
+                "t":" table to unpack",
+                "j":" index of the last element to unpack, defaults to #t",
+                "i":" index from which to start unpacking, defaults to 1"
+              },
+              "3":"j"
+            },
+            "tags":{
+              "see":[]
+            },
+            "kind":"global exported functions (for lua 5.1 & luajit) ",
+            "description":"\n\n NOTE: this version does NOT honor the n field, and hence it is not nil-safe.\n See `utils.unpack` for a version that is nil-safe.",
+            "type":"function",
+            "ret":["multiple return values from the table"],
+            "parameter":"param"
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "param":{
+                "1":{
+                  "type":"string"
+                },
+                "2":{
+                  "type":"string"
+                },
+                "3":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "4":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "rep":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "path":{
+                  "type":"string"
+                },
+                "sep":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "name":{
+                  "type":"string"
+                }
+              },
+              "return":[[],[]],
+              "see":[[]]
+            },
+            "summary":"return the full path where a file name would be matched.",
+            "lineno":187,
+            "retgroups":[{
+                "1":{
+                  "text":"on success: path of the file",
+                  "type":"",
+                  "mods":[]
+                },
+                "2":{
+                  "text":"on failure: nil, error string listing paths tried",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(name, path[, sep[, rep]])",
+            "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "name":"package.searchpath",
+            "params":{
+              "1":"name",
+              "2":"path",
+              "3":"sep",
+              "4":"rep",
+              "map":{
+                "rep":" the path separator to use, defaults to system separator. Default; \"/\" on Unixes, \"\\\" on Windows.",
+                "path":" a path-template in the same form as package.path or package.cpath",
+                "sep":" template separate character to be replaced by path separator. Default: \".\"",
+                "name":" file name, possibly dotted"
+              }
+            },
+            "tags":{
+              "see":[]
+            },
+            "kind":"global exported functions (for lua 5.1 & luajit) ",
+            "description":"\n This function was introduced in Lua 5.2, so this compatibility version\n will be injected in Lua 5.1 engines.",
+            "type":"function",
+            "ret":["on success: path of the file","on failure: nil, error string listing paths tried"],
+            "parameter":"param"
+          },{
+            "name":"lua54",
+            "inferred":true,
+            "description":"",
+            "file":"<reference cycle>",
+            "summary":"",
+            "tags":[],
+            "lineno":224,
+            "display_name":"Global exported functions (for Lua < 5.4)",
+            "type":"section",
+            "modifiers":[]
+          },{
+            "name":"warn",
+            "description":"\n This functions mimics the `warn` function added in Lua 5.4.",
+            "inferred":true,
+            "subparams":[],
+            "kind":"global exported functions (for lua < 5.4) ",
+            "params":{
+              "map":{
+                "...":" any arguments"
+              },
+              "1":"..."
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":228,
+            "summary":"raise a warning message.",
+            "args":"(...)",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "...":[]
+              }
+            },
+            "section":"Global exported functions (for Lua < 5.4)",
+            "parameter":"param"
+          }],
+        "sections":[],
+        "modules":["<reference cycle>"],
+        "args":{
+          "one":false,
+          "module":false,
+          "verbose":false,
+          "style":"!",
+          "template":"!",
+          "date":"system",
+          "dir":"doc",
+          "quiet":false,
+          "all":false,
+          "ignore":false,
+          "colon":false,
+          "not_luadoc":false,
+          "ext":"html",
+          "boilerplate":false,
+          "merge":false,
+          "filter":"f.filter",
+          "package":"/home/cji/portless/Penlight/lua",
+          "dump":false,
+          "no_args_infer":false,
+          "title":"Reference",
+          "project":"ldoc",
+          "file":"/home/cji/portless/Penlight/lua/pl",
+          "format":"discount",
+          "simple":false,
+          "tags":"none",
+          "define":"none",
+          "output":"index",
+          "unqualified":false,
+          "config":"config.ld",
+          "fatalwarnings":false,
+          "testing":false
+        },
+        "error":"<type 'function' is not supported by JSON.>",
+        "lang":{
+          "line_comment":"^%-%-+",
+          "start_comment_":"^%-%-%-+",
+          "end_comment_":"[^%-]%-%-+[^-]*\n$",
+          "extra":[],
+          "block_comment":"^%-%-%[=*%[%-+",
+          "empty_comment_":"^%-%-%-+%s*$",
+          "method_call":":"
+        },
+        "base":"/home/cji/portless/Penlight/lua"
+      },
+      "summary":"",
+      "tags":[],
+      "lineno":152,
+      "display_name":"Global exported functions (for Lua 5.1 & LuaJIT)",
+      "type":"section",
+      "modifiers":[]
+    },
+    "2":{
+      "name":"lua54",
+      "inferred":true,
+      "description":"",
+      "file":{
+        "warning":"<type 'function' is not supported by JSON.>",
+        "filename":"/home/cji/portless/Penlight/lua/pl/compat.lua",
+        "items":["<reference cycle>",{
+            "name":"lua51",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is Lua 5.1 (or LuaJIT).",
+            "params":{
+              "map":{
+                "lua51":""
+              },
+              "1":"lua51"
+            },
+            "tags":[],
+            "lineno":14,
+            "subparams":[],
+            "args":"(lua51)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "lua51":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"jit",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is LuaJIT.",
+            "params":{
+              "map":{
+                "jit":""
+              },
+              "1":"jit"
+            },
+            "tags":[],
+            "lineno":18,
+            "subparams":[],
+            "args":"(jit)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "jit":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"jit52",
+            "section":"field",
+            "inferred":false,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is LuaJIT with 5.2 compatibility compiled in.",
+            "params":{
+              "map":{
+                "jit52":""
+              },
+              "1":"jit52"
+            },
+            "tags":[],
+            "lineno":22,
+            "subparams":[],
+            "args":"(jit52)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "jit52":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"dir_separator",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"the directory separator character for the current platform.",
+            "params":{
+              "map":{
+                "dir_separator":""
+              },
+              "1":"dir_separator"
+            },
+            "tags":[],
+            "lineno":29,
+            "subparams":[],
+            "args":"(dir_separator)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "dir_separator":[]
+              },
+              "return":[]
+            }
+          },{
+            "name":"is_windows",
+            "section":"field",
+            "inferred":true,
+            "description":"",
+            "kind":"fields",
+            "summary":"boolean flag this is a Windows platform.",
+            "params":{
+              "map":{
+                "is_windows":""
+              },
+              "1":"is_windows"
+            },
+            "tags":[],
+            "lineno":33,
+            "subparams":[],
+            "args":"(is_windows)",
+            "parameter":"field",
+            "type":"field",
+            "modifiers":{
+              "field":{
+                "1":[],
+                "is_windows":[]
+              },
+              "return":[]
+            }
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "return":[[],[]],
+              "param":{
+                "1":[],
+                "cmd":[]
+              }
+            },
+            "summary":"execute a shell command, in a compatible and platform independent way.",
+            "lineno":47,
+            "retgroups":[{
+                "1":{
+                  "text":"true if successful",
+                  "type":"",
+                  "mods":[]
+                },
+                "2":{
+                  "text":"actual return code",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(cmd)",
+            "type":"function",
+            "name":"execute",
+            "parameter":"param",
+            "params":{
+              "map":{
+                "cmd":" a shell command"
+              },
+              "1":"cmd"
+            },
+            "tags":[],
+            "kind":"functions",
+            "section":"function",
+            "description":"\n This is a compatibility function that returns the same for Lua 5.1 and\n Lua 5.2+.\n\n NOTE: Windows systems can use signed 32bit integer exitcodes. Posix systems\n only use exitcodes 0-255, anything else is undefined.\n\n NOTE2: In Lua 5.2 and 5.3 a Windows exitcode of -1 would not properly be\n returned, this function will return it properly for all versions.",
+            "ret":["true if successful","actual return code"]
+          },{
+            "name":"load",
+            "description":"",
+            "inferred":true,
+            "subparams":[],
+            "kind":"functions",
+            "params":{
+              "1":"ld",
+              "2":"source",
+              "3":"mode",
+              "4":"env",
+              "map":{
+                "env":" environment to load the chunk in",
+                "source":" name of chunk for errors",
+                "ld":" code string or loader",
+                "mode":" 'b', 't' or 'bt'"
+              }
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":78,
+            "summary":"Load Lua code as a text or binary chunk (in a Lua 5.2 compatible way).",
+            "args":"(ld[, source[, mode[, env]]])",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "2":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "3":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "4":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "env":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "source":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "ld":[],
+                "mode":{
+                  "optchain":true,
+                  "opt":true
+                }
+              }
+            },
+            "section":"function",
+            "parameter":"param"
+          },{
+            "name":"getfenv",
+            "description":"\n Not 100% compatible, so with Lua 5.2 it may return nil for a function with no\n global references!\n Based on code by [Sergey Rozhenko](http://lua-users.org/lists/lua-l/2010-06/msg00313.html)",
+            "inferred":true,
+            "subparams":[],
+            "kind":"functions",
+            "params":{
+              "map":{
+                "f":" a function or a call stack reference"
+              },
+              "1":"f"
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":86,
+            "summary":"Get environment of a function (in a Lua 5.1 compatible way).",
+            "args":"(f)",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "f":[]
+              }
+            },
+            "section":"function",
+            "parameter":"param"
+          },{
+            "name":"setfenv",
+            "description":"",
+            "inferred":true,
+            "subparams":[],
+            "kind":"functions",
+            "params":{
+              "1":"f",
+              "2":"env",
+              "map":{
+                "env":" a table that becomes the new environment of `f`",
+                "f":" a function or a call stack reference"
+              }
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":92,
+            "summary":"Set environment of a function (in a Lua 5.1 compatible way).",
+            "args":"(f, env)",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "2":[],
+                "env":[],
+                "f":[]
+              }
+            },
+            "section":"function",
+            "parameter":"param"
+          },{
+            "name":"lua52",
+            "inferred":true,
+            "description":"",
+            "file":"<reference cycle>",
+            "summary":"",
+            "tags":[],
+            "lineno":152,
+            "display_name":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "type":"section",
+            "modifiers":[]
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "param":{
+                "1":[],
+                "...":[]
+              },
+              "return":[[]]
+            },
+            "summary":"pack an argument list into a table.",
+            "lineno":156,
+            "retgroups":[{
+                "1":{
+                  "text":"a table with field n set to the length",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(...)",
+            "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "name":"table.pack",
+            "params":{
+              "map":{
+                "...":" any arguments"
+              },
+              "1":"..."
+            },
+            "tags":[],
+            "kind":"global exported functions (for lua 5.1 & luajit) ",
+            "description":"",
+            "type":"function",
+            "ret":["a table with field n set to the length"],
+            "parameter":"param"
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "param":{
+                "1":[],
+                "2":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "3":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "t":[],
+                "j":{
+                  "optchain":true,
+                  "opt":true
+                },
+                "i":{
+                  "optchain":true,
+                  "opt":true
+                }
+              },
+              "return":[[]],
+              "see":[[]]
+            },
+            "summary":"unpack a table and return the elements.",
+            "lineno":172,
+            "retgroups":[{
+                "1":{
+                  "text":"multiple return values from the table",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(t[, i[, j]])",
+            "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "name":"table.unpack",
+            "params":{
+              "1":"t",
+              "2":"i",
+              "map":{
+                "t":" table to unpack",
+                "j":" index of the last element to unpack, defaults to #t",
+                "i":" index from which to start unpacking, defaults to 1"
+              },
+              "3":"j"
+            },
+            "tags":{
+              "see":[]
+            },
+            "kind":"global exported functions (for lua 5.1 & luajit) ",
+            "description":"\n\n NOTE: this version does NOT honor the n field, and hence it is not nil-safe.\n See `utils.unpack` for a version that is nil-safe.",
+            "type":"function",
+            "ret":["multiple return values from the table"],
+            "parameter":"param"
+          },{
+            "inferred":true,
+            "subparams":[],
+            "modifiers":{
+              "param":{
+                "1":{
+                  "type":"string"
+                },
+                "2":{
+                  "type":"string"
+                },
+                "3":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "4":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "rep":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "path":{
+                  "type":"string"
+                },
+                "sep":{
+                  "opt":true,
+                  "type":"string",
+                  "optchain":true
+                },
+                "name":{
+                  "type":"string"
+                }
+              },
+              "return":[[],[]],
+              "see":[[]]
+            },
+            "summary":"return the full path where a file name would be matched.",
+            "lineno":187,
+            "retgroups":[{
+                "1":{
+                  "text":"on success: path of the file",
+                  "type":"",
+                  "mods":[]
+                },
+                "2":{
+                  "text":"on failure: nil, error string listing paths tried",
+                  "type":"",
+                  "mods":[]
+                },
+                "g":0
+              }],
+            "args":"(name, path[, sep[, rep]])",
+            "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+            "name":"package.searchpath",
+            "params":{
+              "1":"name",
+              "2":"path",
+              "3":"sep",
+              "4":"rep",
+              "map":{
+                "rep":" the path separator to use, defaults to system separator. Default; \"/\" on Unixes, \"\\\" on Windows.",
+                "path":" a path-template in the same form as package.path or package.cpath",
+                "sep":" template separate character to be replaced by path separator. Default: \".\"",
+                "name":" file name, possibly dotted"
+              }
+            },
+            "tags":{
+              "see":[]
+            },
+            "kind":"global exported functions (for lua 5.1 & luajit) ",
+            "description":"\n This function was introduced in Lua 5.2, so this compatibility version\n will be injected in Lua 5.1 engines.",
+            "type":"function",
+            "ret":["on success: path of the file","on failure: nil, error string listing paths tried"],
+            "parameter":"param"
+          },"<reference cycle>",{
+            "name":"warn",
+            "description":"\n This functions mimics the `warn` function added in Lua 5.4.",
+            "inferred":true,
+            "subparams":[],
+            "kind":"global exported functions (for lua < 5.4) ",
+            "params":{
+              "map":{
+                "...":" any arguments"
+              },
+              "1":"..."
+            },
+            "type":"function",
+            "tags":[],
+            "lineno":228,
+            "summary":"raise a warning message.",
+            "args":"(...)",
+            "modifiers":{
+              "return":[],
+              "param":{
+                "1":[],
+                "...":[]
+              }
+            },
+            "section":"Global exported functions (for Lua < 5.4)",
+            "parameter":"param"
+          }],
+        "sections":[],
+        "modules":["<reference cycle>"],
+        "args":{
+          "one":false,
+          "module":false,
+          "verbose":false,
+          "style":"!",
+          "template":"!",
+          "date":"system",
+          "dir":"doc",
+          "quiet":false,
+          "all":false,
+          "ignore":false,
+          "colon":false,
+          "not_luadoc":false,
+          "ext":"html",
+          "boilerplate":false,
+          "merge":false,
+          "filter":"f.filter",
+          "package":"/home/cji/portless/Penlight/lua",
+          "dump":false,
+          "no_args_infer":false,
+          "title":"Reference",
+          "project":"ldoc",
+          "file":"/home/cji/portless/Penlight/lua/pl",
+          "format":"discount",
+          "simple":false,
+          "tags":"none",
+          "define":"none",
+          "output":"index",
+          "unqualified":false,
+          "config":"config.ld",
+          "fatalwarnings":false,
+          "testing":false
+        },
+        "error":"<type 'function' is not supported by JSON.>",
+        "lang":{
+          "line_comment":"^%-%-+",
+          "start_comment_":"^%-%-%-+",
+          "end_comment_":"[^%-]%-%-+[^-]*\n$",
+          "extra":[],
+          "block_comment":"^%-%-%[=*%[%-+",
+          "empty_comment_":"^%-%-%-+%s*$",
+          "method_call":":"
+        },
+        "base":"/home/cji/portless/Penlight/lua"
+      },
+      "summary":"",
+      "tags":[],
+      "lineno":224,
+      "display_name":"Global exported functions (for Lua < 5.4)",
+      "type":"section",
+      "modifiers":[]
+    },
+    "by_name":{
+      "Global_exported_functions__for_Lua_______LuaJIT_":{
+        "name":"lua52",
+        "inferred":true,
+        "description":"",
+        "file":{
+          "warning":"<type 'function' is not supported by JSON.>",
+          "filename":"/home/cji/portless/Penlight/lua/pl/compat.lua",
+          "items":["<reference cycle>",{
+              "name":"lua51",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is Lua 5.1 (or LuaJIT).",
+              "params":{
+                "map":{
+                  "lua51":""
+                },
+                "1":"lua51"
+              },
+              "tags":[],
+              "lineno":14,
+              "subparams":[],
+              "args":"(lua51)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "lua51":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"jit",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is LuaJIT.",
+              "params":{
+                "map":{
+                  "jit":""
+                },
+                "1":"jit"
+              },
+              "tags":[],
+              "lineno":18,
+              "subparams":[],
+              "args":"(jit)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "jit":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"jit52",
+              "section":"field",
+              "inferred":false,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is LuaJIT with 5.2 compatibility compiled in.",
+              "params":{
+                "map":{
+                  "jit52":""
+                },
+                "1":"jit52"
+              },
+              "tags":[],
+              "lineno":22,
+              "subparams":[],
+              "args":"(jit52)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "jit52":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"dir_separator",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"the directory separator character for the current platform.",
+              "params":{
+                "map":{
+                  "dir_separator":""
+                },
+                "1":"dir_separator"
+              },
+              "tags":[],
+              "lineno":29,
+              "subparams":[],
+              "args":"(dir_separator)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "dir_separator":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"is_windows",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is a Windows platform.",
+              "params":{
+                "map":{
+                  "is_windows":""
+                },
+                "1":"is_windows"
+              },
+              "tags":[],
+              "lineno":33,
+              "subparams":[],
+              "args":"(is_windows)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "is_windows":[]
+                },
+                "return":[]
+              }
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "return":[[],[]],
+                "param":{
+                  "1":[],
+                  "cmd":[]
+                }
+              },
+              "summary":"execute a shell command, in a compatible and platform independent way.",
+              "lineno":47,
+              "retgroups":[{
+                  "1":{
+                    "text":"true if successful",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "2":{
+                    "text":"actual return code",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(cmd)",
+              "type":"function",
+              "name":"execute",
+              "parameter":"param",
+              "params":{
+                "map":{
+                  "cmd":" a shell command"
+                },
+                "1":"cmd"
+              },
+              "tags":[],
+              "kind":"functions",
+              "section":"function",
+              "description":"\n This is a compatibility function that returns the same for Lua 5.1 and\n Lua 5.2+.\n\n NOTE: Windows systems can use signed 32bit integer exitcodes. Posix systems\n only use exitcodes 0-255, anything else is undefined.\n\n NOTE2: In Lua 5.2 and 5.3 a Windows exitcode of -1 would not properly be\n returned, this function will return it properly for all versions.",
+              "ret":["true if successful","actual return code"]
+            },{
+              "name":"load",
+              "description":"",
+              "inferred":true,
+              "subparams":[],
+              "kind":"functions",
+              "params":{
+                "1":"ld",
+                "2":"source",
+                "3":"mode",
+                "4":"env",
+                "map":{
+                  "env":" environment to load the chunk in",
+                  "source":" name of chunk for errors",
+                  "ld":" code string or loader",
+                  "mode":" 'b', 't' or 'bt'"
+                }
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":78,
+              "summary":"Load Lua code as a text or binary chunk (in a Lua 5.2 compatible way).",
+              "args":"(ld[, source[, mode[, env]]])",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "2":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "3":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "4":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "env":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "source":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "ld":[],
+                  "mode":{
+                    "optchain":true,
+                    "opt":true
+                  }
+                }
+              },
+              "section":"function",
+              "parameter":"param"
+            },{
+              "name":"getfenv",
+              "description":"\n Not 100% compatible, so with Lua 5.2 it may return nil for a function with no\n global references!\n Based on code by [Sergey Rozhenko](http://lua-users.org/lists/lua-l/2010-06/msg00313.html)",
+              "inferred":true,
+              "subparams":[],
+              "kind":"functions",
+              "params":{
+                "map":{
+                  "f":" a function or a call stack reference"
+                },
+                "1":"f"
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":86,
+              "summary":"Get environment of a function (in a Lua 5.1 compatible way).",
+              "args":"(f)",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "f":[]
+                }
+              },
+              "section":"function",
+              "parameter":"param"
+            },{
+              "name":"setfenv",
+              "description":"",
+              "inferred":true,
+              "subparams":[],
+              "kind":"functions",
+              "params":{
+                "1":"f",
+                "2":"env",
+                "map":{
+                  "env":" a table that becomes the new environment of `f`",
+                  "f":" a function or a call stack reference"
+                }
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":92,
+              "summary":"Set environment of a function (in a Lua 5.1 compatible way).",
+              "args":"(f, env)",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "2":[],
+                  "env":[],
+                  "f":[]
+                }
+              },
+              "section":"function",
+              "parameter":"param"
+            },"<reference cycle>",{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "param":{
+                  "1":[],
+                  "...":[]
+                },
+                "return":[[]]
+              },
+              "summary":"pack an argument list into a table.",
+              "lineno":156,
+              "retgroups":[{
+                  "1":{
+                    "text":"a table with field n set to the length",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(...)",
+              "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "name":"table.pack",
+              "params":{
+                "map":{
+                  "...":" any arguments"
+                },
+                "1":"..."
+              },
+              "tags":[],
+              "kind":"global exported functions (for lua 5.1 & luajit) ",
+              "description":"",
+              "type":"function",
+              "ret":["a table with field n set to the length"],
+              "parameter":"param"
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "param":{
+                  "1":[],
+                  "2":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "3":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "t":[],
+                  "j":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "i":{
+                    "optchain":true,
+                    "opt":true
+                  }
+                },
+                "return":[[]],
+                "see":[[]]
+              },
+              "summary":"unpack a table and return the elements.",
+              "lineno":172,
+              "retgroups":[{
+                  "1":{
+                    "text":"multiple return values from the table",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(t[, i[, j]])",
+              "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "name":"table.unpack",
+              "params":{
+                "1":"t",
+                "2":"i",
+                "map":{
+                  "t":" table to unpack",
+                  "j":" index of the last element to unpack, defaults to #t",
+                  "i":" index from which to start unpacking, defaults to 1"
+                },
+                "3":"j"
+              },
+              "tags":{
+                "see":[]
+              },
+              "kind":"global exported functions (for lua 5.1 & luajit) ",
+              "description":"\n\n NOTE: this version does NOT honor the n field, and hence it is not nil-safe.\n See `utils.unpack` for a version that is nil-safe.",
+              "type":"function",
+              "ret":["multiple return values from the table"],
+              "parameter":"param"
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "param":{
+                  "1":{
+                    "type":"string"
+                  },
+                  "2":{
+                    "type":"string"
+                  },
+                  "3":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "4":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "rep":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "path":{
+                    "type":"string"
+                  },
+                  "sep":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "name":{
+                    "type":"string"
+                  }
+                },
+                "return":[[],[]],
+                "see":[[]]
+              },
+              "summary":"return the full path where a file name would be matched.",
+              "lineno":187,
+              "retgroups":[{
+                  "1":{
+                    "text":"on success: path of the file",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "2":{
+                    "text":"on failure: nil, error string listing paths tried",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(name, path[, sep[, rep]])",
+              "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "name":"package.searchpath",
+              "params":{
+                "1":"name",
+                "2":"path",
+                "3":"sep",
+                "4":"rep",
+                "map":{
+                  "rep":" the path separator to use, defaults to system separator. Default; \"/\" on Unixes, \"\\\" on Windows.",
+                  "path":" a path-template in the same form as package.path or package.cpath",
+                  "sep":" template separate character to be replaced by path separator. Default: \".\"",
+                  "name":" file name, possibly dotted"
+                }
+              },
+              "tags":{
+                "see":[]
+              },
+              "kind":"global exported functions (for lua 5.1 & luajit) ",
+              "description":"\n This function was introduced in Lua 5.2, so this compatibility version\n will be injected in Lua 5.1 engines.",
+              "type":"function",
+              "ret":["on success: path of the file","on failure: nil, error string listing paths tried"],
+              "parameter":"param"
+            },{
+              "name":"lua54",
+              "inferred":true,
+              "description":"",
+              "file":"<reference cycle>",
+              "summary":"",
+              "tags":[],
+              "lineno":224,
+              "display_name":"Global exported functions (for Lua < 5.4)",
+              "type":"section",
+              "modifiers":[]
+            },{
+              "name":"warn",
+              "description":"\n This functions mimics the `warn` function added in Lua 5.4.",
+              "inferred":true,
+              "subparams":[],
+              "kind":"global exported functions (for lua < 5.4) ",
+              "params":{
+                "map":{
+                  "...":" any arguments"
+                },
+                "1":"..."
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":228,
+              "summary":"raise a warning message.",
+              "args":"(...)",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "...":[]
+                }
+              },
+              "section":"Global exported functions (for Lua < 5.4)",
+              "parameter":"param"
+            }],
+          "sections":[],
+          "modules":["<reference cycle>"],
+          "args":{
+            "one":false,
+            "module":false,
+            "verbose":false,
+            "style":"!",
+            "template":"!",
+            "date":"system",
+            "dir":"doc",
+            "quiet":false,
+            "all":false,
+            "ignore":false,
+            "colon":false,
+            "not_luadoc":false,
+            "ext":"html",
+            "boilerplate":false,
+            "merge":false,
+            "filter":"f.filter",
+            "package":"/home/cji/portless/Penlight/lua",
+            "dump":false,
+            "no_args_infer":false,
+            "title":"Reference",
+            "project":"ldoc",
+            "file":"/home/cji/portless/Penlight/lua/pl",
+            "format":"discount",
+            "simple":false,
+            "tags":"none",
+            "define":"none",
+            "output":"index",
+            "unqualified":false,
+            "config":"config.ld",
+            "fatalwarnings":false,
+            "testing":false
+          },
+          "error":"<type 'function' is not supported by JSON.>",
+          "lang":{
+            "line_comment":"^%-%-+",
+            "start_comment_":"^%-%-%-+",
+            "end_comment_":"[^%-]%-%-+[^-]*\n$",
+            "extra":[],
+            "block_comment":"^%-%-%[=*%[%-+",
+            "empty_comment_":"^%-%-%-+%s*$",
+            "method_call":":"
+          },
+          "base":"/home/cji/portless/Penlight/lua"
+        },
+        "summary":"",
+        "tags":[],
+        "lineno":152,
+        "display_name":"Global exported functions (for Lua 5.1 & LuaJIT)",
+        "type":"section",
+        "modifiers":[]
+      },
+      "Global_exported_functions__for_Lua_______":{
+        "name":"lua54",
+        "inferred":true,
+        "description":"",
+        "file":{
+          "warning":"<type 'function' is not supported by JSON.>",
+          "filename":"/home/cji/portless/Penlight/lua/pl/compat.lua",
+          "items":["<reference cycle>",{
+              "name":"lua51",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is Lua 5.1 (or LuaJIT).",
+              "params":{
+                "map":{
+                  "lua51":""
+                },
+                "1":"lua51"
+              },
+              "tags":[],
+              "lineno":14,
+              "subparams":[],
+              "args":"(lua51)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "lua51":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"jit",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is LuaJIT.",
+              "params":{
+                "map":{
+                  "jit":""
+                },
+                "1":"jit"
+              },
+              "tags":[],
+              "lineno":18,
+              "subparams":[],
+              "args":"(jit)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "jit":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"jit52",
+              "section":"field",
+              "inferred":false,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is LuaJIT with 5.2 compatibility compiled in.",
+              "params":{
+                "map":{
+                  "jit52":""
+                },
+                "1":"jit52"
+              },
+              "tags":[],
+              "lineno":22,
+              "subparams":[],
+              "args":"(jit52)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "jit52":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"dir_separator",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"the directory separator character for the current platform.",
+              "params":{
+                "map":{
+                  "dir_separator":""
+                },
+                "1":"dir_separator"
+              },
+              "tags":[],
+              "lineno":29,
+              "subparams":[],
+              "args":"(dir_separator)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "dir_separator":[]
+                },
+                "return":[]
+              }
+            },{
+              "name":"is_windows",
+              "section":"field",
+              "inferred":true,
+              "description":"",
+              "kind":"fields",
+              "summary":"boolean flag this is a Windows platform.",
+              "params":{
+                "map":{
+                  "is_windows":""
+                },
+                "1":"is_windows"
+              },
+              "tags":[],
+              "lineno":33,
+              "subparams":[],
+              "args":"(is_windows)",
+              "parameter":"field",
+              "type":"field",
+              "modifiers":{
+                "field":{
+                  "1":[],
+                  "is_windows":[]
+                },
+                "return":[]
+              }
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "return":[[],[]],
+                "param":{
+                  "1":[],
+                  "cmd":[]
+                }
+              },
+              "summary":"execute a shell command, in a compatible and platform independent way.",
+              "lineno":47,
+              "retgroups":[{
+                  "1":{
+                    "text":"true if successful",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "2":{
+                    "text":"actual return code",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(cmd)",
+              "type":"function",
+              "name":"execute",
+              "parameter":"param",
+              "params":{
+                "map":{
+                  "cmd":" a shell command"
+                },
+                "1":"cmd"
+              },
+              "tags":[],
+              "kind":"functions",
+              "section":"function",
+              "description":"\n This is a compatibility function that returns the same for Lua 5.1 and\n Lua 5.2+.\n\n NOTE: Windows systems can use signed 32bit integer exitcodes. Posix systems\n only use exitcodes 0-255, anything else is undefined.\n\n NOTE2: In Lua 5.2 and 5.3 a Windows exitcode of -1 would not properly be\n returned, this function will return it properly for all versions.",
+              "ret":["true if successful","actual return code"]
+            },{
+              "name":"load",
+              "description":"",
+              "inferred":true,
+              "subparams":[],
+              "kind":"functions",
+              "params":{
+                "1":"ld",
+                "2":"source",
+                "3":"mode",
+                "4":"env",
+                "map":{
+                  "env":" environment to load the chunk in",
+                  "source":" name of chunk for errors",
+                  "ld":" code string or loader",
+                  "mode":" 'b', 't' or 'bt'"
+                }
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":78,
+              "summary":"Load Lua code as a text or binary chunk (in a Lua 5.2 compatible way).",
+              "args":"(ld[, source[, mode[, env]]])",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "2":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "3":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "4":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "env":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "source":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "ld":[],
+                  "mode":{
+                    "optchain":true,
+                    "opt":true
+                  }
+                }
+              },
+              "section":"function",
+              "parameter":"param"
+            },{
+              "name":"getfenv",
+              "description":"\n Not 100% compatible, so with Lua 5.2 it may return nil for a function with no\n global references!\n Based on code by [Sergey Rozhenko](http://lua-users.org/lists/lua-l/2010-06/msg00313.html)",
+              "inferred":true,
+              "subparams":[],
+              "kind":"functions",
+              "params":{
+                "map":{
+                  "f":" a function or a call stack reference"
+                },
+                "1":"f"
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":86,
+              "summary":"Get environment of a function (in a Lua 5.1 compatible way).",
+              "args":"(f)",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "f":[]
+                }
+              },
+              "section":"function",
+              "parameter":"param"
+            },{
+              "name":"setfenv",
+              "description":"",
+              "inferred":true,
+              "subparams":[],
+              "kind":"functions",
+              "params":{
+                "1":"f",
+                "2":"env",
+                "map":{
+                  "env":" a table that becomes the new environment of `f`",
+                  "f":" a function or a call stack reference"
+                }
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":92,
+              "summary":"Set environment of a function (in a Lua 5.1 compatible way).",
+              "args":"(f, env)",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "2":[],
+                  "env":[],
+                  "f":[]
+                }
+              },
+              "section":"function",
+              "parameter":"param"
+            },{
+              "name":"lua52",
+              "inferred":true,
+              "description":"",
+              "file":"<reference cycle>",
+              "summary":"",
+              "tags":[],
+              "lineno":152,
+              "display_name":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "type":"section",
+              "modifiers":[]
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "param":{
+                  "1":[],
+                  "...":[]
+                },
+                "return":[[]]
+              },
+              "summary":"pack an argument list into a table.",
+              "lineno":156,
+              "retgroups":[{
+                  "1":{
+                    "text":"a table with field n set to the length",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(...)",
+              "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "name":"table.pack",
+              "params":{
+                "map":{
+                  "...":" any arguments"
+                },
+                "1":"..."
+              },
+              "tags":[],
+              "kind":"global exported functions (for lua 5.1 & luajit) ",
+              "description":"",
+              "type":"function",
+              "ret":["a table with field n set to the length"],
+              "parameter":"param"
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "param":{
+                  "1":[],
+                  "2":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "3":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "t":[],
+                  "j":{
+                    "optchain":true,
+                    "opt":true
+                  },
+                  "i":{
+                    "optchain":true,
+                    "opt":true
+                  }
+                },
+                "return":[[]],
+                "see":[[]]
+              },
+              "summary":"unpack a table and return the elements.",
+              "lineno":172,
+              "retgroups":[{
+                  "1":{
+                    "text":"multiple return values from the table",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(t[, i[, j]])",
+              "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "name":"table.unpack",
+              "params":{
+                "1":"t",
+                "2":"i",
+                "map":{
+                  "t":" table to unpack",
+                  "j":" index of the last element to unpack, defaults to #t",
+                  "i":" index from which to start unpacking, defaults to 1"
+                },
+                "3":"j"
+              },
+              "tags":{
+                "see":[]
+              },
+              "kind":"global exported functions (for lua 5.1 & luajit) ",
+              "description":"\n\n NOTE: this version does NOT honor the n field, and hence it is not nil-safe.\n See `utils.unpack` for a version that is nil-safe.",
+              "type":"function",
+              "ret":["multiple return values from the table"],
+              "parameter":"param"
+            },{
+              "inferred":true,
+              "subparams":[],
+              "modifiers":{
+                "param":{
+                  "1":{
+                    "type":"string"
+                  },
+                  "2":{
+                    "type":"string"
+                  },
+                  "3":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "4":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "rep":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "path":{
+                    "type":"string"
+                  },
+                  "sep":{
+                    "opt":true,
+                    "type":"string",
+                    "optchain":true
+                  },
+                  "name":{
+                    "type":"string"
+                  }
+                },
+                "return":[[],[]],
+                "see":[[]]
+              },
+              "summary":"return the full path where a file name would be matched.",
+              "lineno":187,
+              "retgroups":[{
+                  "1":{
+                    "text":"on success: path of the file",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "2":{
+                    "text":"on failure: nil, error string listing paths tried",
+                    "type":"",
+                    "mods":[]
+                  },
+                  "g":0
+                }],
+              "args":"(name, path[, sep[, rep]])",
+              "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+              "name":"package.searchpath",
+              "params":{
+                "1":"name",
+                "2":"path",
+                "3":"sep",
+                "4":"rep",
+                "map":{
+                  "rep":" the path separator to use, defaults to system separator. Default; \"/\" on Unixes, \"\\\" on Windows.",
+                  "path":" a path-template in the same form as package.path or package.cpath",
+                  "sep":" template separate character to be replaced by path separator. Default: \".\"",
+                  "name":" file name, possibly dotted"
+                }
+              },
+              "tags":{
+                "see":[]
+              },
+              "kind":"global exported functions (for lua 5.1 & luajit) ",
+              "description":"\n This function was introduced in Lua 5.2, so this compatibility version\n will be injected in Lua 5.1 engines.",
+              "type":"function",
+              "ret":["on success: path of the file","on failure: nil, error string listing paths tried"],
+              "parameter":"param"
+            },"<reference cycle>",{
+              "name":"warn",
+              "description":"\n This functions mimics the `warn` function added in Lua 5.4.",
+              "inferred":true,
+              "subparams":[],
+              "kind":"global exported functions (for lua < 5.4) ",
+              "params":{
+                "map":{
+                  "...":" any arguments"
+                },
+                "1":"..."
+              },
+              "type":"function",
+              "tags":[],
+              "lineno":228,
+              "summary":"raise a warning message.",
+              "args":"(...)",
+              "modifiers":{
+                "return":[],
+                "param":{
+                  "1":[],
+                  "...":[]
+                }
+              },
+              "section":"Global exported functions (for Lua < 5.4)",
+              "parameter":"param"
+            }],
+          "sections":[],
+          "modules":["<reference cycle>"],
+          "args":{
+            "one":false,
+            "module":false,
+            "verbose":false,
+            "style":"!",
+            "template":"!",
+            "date":"system",
+            "dir":"doc",
+            "quiet":false,
+            "all":false,
+            "ignore":false,
+            "colon":false,
+            "not_luadoc":false,
+            "ext":"html",
+            "boilerplate":false,
+            "merge":false,
+            "filter":"f.filter",
+            "package":"/home/cji/portless/Penlight/lua",
+            "dump":false,
+            "no_args_infer":false,
+            "title":"Reference",
+            "project":"ldoc",
+            "file":"/home/cji/portless/Penlight/lua/pl",
+            "format":"discount",
+            "simple":false,
+            "tags":"none",
+            "define":"none",
+            "output":"index",
+            "unqualified":false,
+            "config":"config.ld",
+            "fatalwarnings":false,
+            "testing":false
+          },
+          "error":"<type 'function' is not supported by JSON.>",
+          "lang":{
+            "line_comment":"^%-%-+",
+            "start_comment_":"^%-%-%-+",
+            "end_comment_":"[^%-]%-%-+[^-]*\n$",
+            "extra":[],
+            "block_comment":"^%-%-%[=*%[%-+",
+            "empty_comment_":"^%-%-%-+%s*$",
+            "method_call":":"
+          },
+          "base":"/home/cji/portless/Penlight/lua"
+        },
+        "summary":"",
+        "tags":[],
+        "lineno":224,
+        "display_name":"Global exported functions (for Lua < 5.4)",
+        "type":"section",
+        "modifiers":[]
+      }
+    }
+  },
+  "mod_name":"compat",
+  "lineno":10,
+  "items":[{
+      "name":"lua51",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"boolean flag this is Lua 5.1 (or LuaJIT).",
+      "params":{
+        "map":{
+          "lua51":""
+        },
+        "1":"lua51"
+      },
+      "tags":[],
+      "lineno":14,
+      "subparams":[],
+      "args":"(lua51)",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "lua51":[]
+        },
+        "return":[]
+      }
+    },{
+      "name":"jit",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"boolean flag this is LuaJIT.",
+      "params":{
+        "map":{
+          "jit":""
+        },
+        "1":"jit"
+      },
+      "tags":[],
+      "lineno":18,
+      "subparams":[],
+      "args":"(jit)",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "jit":[]
+        },
+        "return":[]
+      }
+    },{
+      "name":"jit52",
+      "section":"field",
+      "inferred":false,
+      "description":"",
+      "kind":"fields",
+      "summary":"boolean flag this is LuaJIT with 5.2 compatibility compiled in.",
+      "params":{
+        "map":{
+          "jit52":""
+        },
+        "1":"jit52"
+      },
+      "tags":[],
+      "lineno":22,
+      "subparams":[],
+      "args":"(jit52)",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "jit52":[]
+        },
+        "return":[]
+      }
+    },{
+      "name":"dir_separator",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"the directory separator character for the current platform.",
+      "params":{
+        "map":{
+          "dir_separator":""
+        },
+        "1":"dir_separator"
+      },
+      "tags":[],
+      "lineno":29,
+      "subparams":[],
+      "args":"(dir_separator)",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "dir_separator":[]
+        },
+        "return":[]
+      }
+    },{
+      "name":"is_windows",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"boolean flag this is a Windows platform.",
+      "params":{
+        "map":{
+          "is_windows":""
+        },
+        "1":"is_windows"
+      },
+      "tags":[],
+      "lineno":33,
+      "subparams":[],
+      "args":"(is_windows)",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "is_windows":[]
+        },
+        "return":[]
+      }
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "cmd":[]
+        }
+      },
+      "summary":"execute a shell command, in a compatible and platform independent way.",
+      "lineno":47,
+      "retgroups":[{
+          "1":{
+            "text":"true if successful",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"actual return code",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(cmd)",
+      "type":"function",
+      "name":"execute",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "cmd":" a shell command"
+        },
+        "1":"cmd"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This is a compatibility function that returns the same for Lua 5.1 and\n Lua 5.2+.\n\n NOTE: Windows systems can use signed 32bit integer exitcodes. Posix systems\n only use exitcodes 0-255, anything else is undefined.\n\n NOTE2: In Lua 5.2 and 5.3 a Windows exitcode of -1 would not properly be\n returned, this function will return it properly for all versions.",
+      "ret":["true if successful","actual return code"]
+    },{
+      "name":"load",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "1":"ld",
+        "2":"source",
+        "3":"mode",
+        "4":"env",
+        "map":{
+          "env":" environment to load the chunk in",
+          "source":" name of chunk for errors",
+          "ld":" code string or loader",
+          "mode":" 'b', 't' or 'bt'"
+        }
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":78,
+      "summary":"Load Lua code as a text or binary chunk (in a Lua 5.2 compatible way).",
+      "args":"(ld[, source[, mode[, env]]])",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "opt":true
+          },
+          "4":{
+            "optchain":true,
+            "opt":true
+          },
+          "env":{
+            "optchain":true,
+            "opt":true
+          },
+          "source":{
+            "optchain":true,
+            "opt":true
+          },
+          "ld":[],
+          "mode":{
+            "optchain":true,
+            "opt":true
+          }
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"getfenv",
+      "description":"\n Not 100% compatible, so with Lua 5.2 it may return nil for a function with no\n global references!\n Based on code by [Sergey Rozhenko](http://lua-users.org/lists/lua-l/2010-06/msg00313.html)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "f":" a function or a call stack reference"
+        },
+        "1":"f"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":86,
+      "summary":"Get environment of a function (in a Lua 5.1 compatible way).",
+      "args":"(f)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "f":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"setfenv",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "1":"f",
+        "2":"env",
+        "map":{
+          "env":" a table that becomes the new environment of `f`",
+          "f":" a function or a call stack reference"
+        }
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":92,
+      "summary":"Set environment of a function (in a Lua 5.1 compatible way).",
+      "args":"(f, env)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "env":[],
+          "f":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "...":[]
+        },
+        "return":[[]]
+      },
+      "summary":"pack an argument list into a table.",
+      "lineno":156,
+      "retgroups":[{
+          "1":{
+            "text":"a table with field n set to the length",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(...)",
+      "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+      "name":"table.pack",
+      "params":{
+        "map":{
+          "...":" any arguments"
+        },
+        "1":"..."
+      },
+      "tags":[],
+      "kind":"global exported functions (for lua 5.1 & luajit) ",
+      "description":"",
+      "type":"function",
+      "ret":["a table with field n set to the length"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "opt":true
+          },
+          "t":[],
+          "j":{
+            "optchain":true,
+            "opt":true
+          },
+          "i":{
+            "optchain":true,
+            "opt":true
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"unpack a table and return the elements.",
+      "lineno":172,
+      "retgroups":[{
+          "1":{
+            "text":"multiple return values from the table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t[, i[, j]])",
+      "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+      "name":"table.unpack",
+      "params":{
+        "1":"t",
+        "2":"i",
+        "map":{
+          "t":" table to unpack",
+          "j":" index of the last element to unpack, defaults to #t",
+          "i":" index from which to start unpacking, defaults to 1"
+        },
+        "3":"j"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"global exported functions (for lua 5.1 & luajit) ",
+      "description":"\n\n NOTE: this version does NOT honor the n field, and hence it is not nil-safe.\n See `utils.unpack` for a version that is nil-safe.",
+      "type":"function",
+      "ret":["multiple return values from the table"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "4":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "rep":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "path":{
+            "type":"string"
+          },
+          "sep":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "name":{
+            "type":"string"
+          }
+        },
+        "return":[[],[]],
+        "see":[[]]
+      },
+      "summary":"return the full path where a file name would be matched.",
+      "lineno":187,
+      "retgroups":[{
+          "1":{
+            "text":"on success: path of the file",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"on failure: nil, error string listing paths tried",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(name, path[, sep[, rep]])",
+      "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+      "name":"package.searchpath",
+      "params":{
+        "1":"name",
+        "2":"path",
+        "3":"sep",
+        "4":"rep",
+        "map":{
+          "rep":" the path separator to use, defaults to system separator. Default; \"/\" on Unixes, \"\\\" on Windows.",
+          "path":" a path-template in the same form as package.path or package.cpath",
+          "sep":" template separate character to be replaced by path separator. Default: \".\"",
+          "name":" file name, possibly dotted"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"global exported functions (for lua 5.1 & luajit) ",
+      "description":"\n This function was introduced in Lua 5.2, so this compatibility version\n will be injected in Lua 5.1 engines.",
+      "type":"function",
+      "ret":["on success: path of the file","on failure: nil, error string listing paths tried"],
+      "parameter":"param"
+    },{
+      "name":"warn",
+      "description":"\n This functions mimics the `warn` function added in Lua 5.4.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"global exported functions (for lua < 5.4) ",
+      "params":{
+        "map":{
+          "...":" any arguments"
+        },
+        "1":"..."
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":228,
+      "summary":"raise a warning message.",
+      "args":"(...)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "...":[]
+        }
+      },
+      "section":"Global exported functions (for Lua < 5.4)",
+      "parameter":"param"
+    }],
+  "package":"pl",
+  "tags":[],
+  "section":{
+    "name":"lua54",
+    "inferred":true,
+    "description":"",
+    "file":{
+      "warning":"<type 'function' is not supported by JSON.>",
+      "filename":"/home/cji/portless/Penlight/lua/pl/compat.lua",
+      "items":["<reference cycle>",{
+          "name":"lua51",
+          "section":"field",
+          "inferred":true,
+          "description":"",
+          "kind":"fields",
+          "summary":"boolean flag this is Lua 5.1 (or LuaJIT).",
+          "params":{
+            "map":{
+              "lua51":""
+            },
+            "1":"lua51"
+          },
+          "tags":[],
+          "lineno":14,
+          "subparams":[],
+          "args":"(lua51)",
+          "parameter":"field",
+          "type":"field",
+          "modifiers":{
+            "field":{
+              "1":[],
+              "lua51":[]
+            },
+            "return":[]
+          }
+        },{
+          "name":"jit",
+          "section":"field",
+          "inferred":true,
+          "description":"",
+          "kind":"fields",
+          "summary":"boolean flag this is LuaJIT.",
+          "params":{
+            "map":{
+              "jit":""
+            },
+            "1":"jit"
+          },
+          "tags":[],
+          "lineno":18,
+          "subparams":[],
+          "args":"(jit)",
+          "parameter":"field",
+          "type":"field",
+          "modifiers":{
+            "field":{
+              "1":[],
+              "jit":[]
+            },
+            "return":[]
+          }
+        },{
+          "name":"jit52",
+          "section":"field",
+          "inferred":false,
+          "description":"",
+          "kind":"fields",
+          "summary":"boolean flag this is LuaJIT with 5.2 compatibility compiled in.",
+          "params":{
+            "map":{
+              "jit52":""
+            },
+            "1":"jit52"
+          },
+          "tags":[],
+          "lineno":22,
+          "subparams":[],
+          "args":"(jit52)",
+          "parameter":"field",
+          "type":"field",
+          "modifiers":{
+            "field":{
+              "1":[],
+              "jit52":[]
+            },
+            "return":[]
+          }
+        },{
+          "name":"dir_separator",
+          "section":"field",
+          "inferred":true,
+          "description":"",
+          "kind":"fields",
+          "summary":"the directory separator character for the current platform.",
+          "params":{
+            "map":{
+              "dir_separator":""
+            },
+            "1":"dir_separator"
+          },
+          "tags":[],
+          "lineno":29,
+          "subparams":[],
+          "args":"(dir_separator)",
+          "parameter":"field",
+          "type":"field",
+          "modifiers":{
+            "field":{
+              "1":[],
+              "dir_separator":[]
+            },
+            "return":[]
+          }
+        },{
+          "name":"is_windows",
+          "section":"field",
+          "inferred":true,
+          "description":"",
+          "kind":"fields",
+          "summary":"boolean flag this is a Windows platform.",
+          "params":{
+            "map":{
+              "is_windows":""
+            },
+            "1":"is_windows"
+          },
+          "tags":[],
+          "lineno":33,
+          "subparams":[],
+          "args":"(is_windows)",
+          "parameter":"field",
+          "type":"field",
+          "modifiers":{
+            "field":{
+              "1":[],
+              "is_windows":[]
+            },
+            "return":[]
+          }
+        },{
+          "inferred":true,
+          "subparams":[],
+          "modifiers":{
+            "return":[[],[]],
+            "param":{
+              "1":[],
+              "cmd":[]
+            }
+          },
+          "summary":"execute a shell command, in a compatible and platform independent way.",
+          "lineno":47,
+          "retgroups":[{
+              "1":{
+                "text":"true if successful",
+                "type":"",
+                "mods":[]
+              },
+              "2":{
+                "text":"actual return code",
+                "type":"",
+                "mods":[]
+              },
+              "g":0
+            }],
+          "args":"(cmd)",
+          "type":"function",
+          "name":"execute",
+          "parameter":"param",
+          "params":{
+            "map":{
+              "cmd":" a shell command"
+            },
+            "1":"cmd"
+          },
+          "tags":[],
+          "kind":"functions",
+          "section":"function",
+          "description":"\n This is a compatibility function that returns the same for Lua 5.1 and\n Lua 5.2+.\n\n NOTE: Windows systems can use signed 32bit integer exitcodes. Posix systems\n only use exitcodes 0-255, anything else is undefined.\n\n NOTE2: In Lua 5.2 and 5.3 a Windows exitcode of -1 would not properly be\n returned, this function will return it properly for all versions.",
+          "ret":["true if successful","actual return code"]
+        },{
+          "name":"load",
+          "description":"",
+          "inferred":true,
+          "subparams":[],
+          "kind":"functions",
+          "params":{
+            "1":"ld",
+            "2":"source",
+            "3":"mode",
+            "4":"env",
+            "map":{
+              "env":" environment to load the chunk in",
+              "source":" name of chunk for errors",
+              "ld":" code string or loader",
+              "mode":" 'b', 't' or 'bt'"
+            }
+          },
+          "type":"function",
+          "tags":[],
+          "lineno":78,
+          "summary":"Load Lua code as a text or binary chunk (in a Lua 5.2 compatible way).",
+          "args":"(ld[, source[, mode[, env]]])",
+          "modifiers":{
+            "return":[],
+            "param":{
+              "1":[],
+              "2":{
+                "optchain":true,
+                "opt":true
+              },
+              "3":{
+                "optchain":true,
+                "opt":true
+              },
+              "4":{
+                "optchain":true,
+                "opt":true
+              },
+              "env":{
+                "optchain":true,
+                "opt":true
+              },
+              "source":{
+                "optchain":true,
+                "opt":true
+              },
+              "ld":[],
+              "mode":{
+                "optchain":true,
+                "opt":true
+              }
+            }
+          },
+          "section":"function",
+          "parameter":"param"
+        },{
+          "name":"getfenv",
+          "description":"\n Not 100% compatible, so with Lua 5.2 it may return nil for a function with no\n global references!\n Based on code by [Sergey Rozhenko](http://lua-users.org/lists/lua-l/2010-06/msg00313.html)",
+          "inferred":true,
+          "subparams":[],
+          "kind":"functions",
+          "params":{
+            "map":{
+              "f":" a function or a call stack reference"
+            },
+            "1":"f"
+          },
+          "type":"function",
+          "tags":[],
+          "lineno":86,
+          "summary":"Get environment of a function (in a Lua 5.1 compatible way).",
+          "args":"(f)",
+          "modifiers":{
+            "return":[],
+            "param":{
+              "1":[],
+              "f":[]
+            }
+          },
+          "section":"function",
+          "parameter":"param"
+        },{
+          "name":"setfenv",
+          "description":"",
+          "inferred":true,
+          "subparams":[],
+          "kind":"functions",
+          "params":{
+            "1":"f",
+            "2":"env",
+            "map":{
+              "env":" a table that becomes the new environment of `f`",
+              "f":" a function or a call stack reference"
+            }
+          },
+          "type":"function",
+          "tags":[],
+          "lineno":92,
+          "summary":"Set environment of a function (in a Lua 5.1 compatible way).",
+          "args":"(f, env)",
+          "modifiers":{
+            "return":[],
+            "param":{
+              "1":[],
+              "2":[],
+              "env":[],
+              "f":[]
+            }
+          },
+          "section":"function",
+          "parameter":"param"
+        },{
+          "name":"lua52",
+          "inferred":true,
+          "description":"",
+          "file":"<reference cycle>",
+          "summary":"",
+          "tags":[],
+          "lineno":152,
+          "display_name":"Global exported functions (for Lua 5.1 & LuaJIT)",
+          "type":"section",
+          "modifiers":[]
+        },{
+          "inferred":true,
+          "subparams":[],
+          "modifiers":{
+            "param":{
+              "1":[],
+              "...":[]
+            },
+            "return":[[]]
+          },
+          "summary":"pack an argument list into a table.",
+          "lineno":156,
+          "retgroups":[{
+              "1":{
+                "text":"a table with field n set to the length",
+                "type":"",
+                "mods":[]
+              },
+              "g":0
+            }],
+          "args":"(...)",
+          "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+          "name":"table.pack",
+          "params":{
+            "map":{
+              "...":" any arguments"
+            },
+            "1":"..."
+          },
+          "tags":[],
+          "kind":"global exported functions (for lua 5.1 & luajit) ",
+          "description":"",
+          "type":"function",
+          "ret":["a table with field n set to the length"],
+          "parameter":"param"
+        },{
+          "inferred":true,
+          "subparams":[],
+          "modifiers":{
+            "param":{
+              "1":[],
+              "2":{
+                "optchain":true,
+                "opt":true
+              },
+              "3":{
+                "optchain":true,
+                "opt":true
+              },
+              "t":[],
+              "j":{
+                "optchain":true,
+                "opt":true
+              },
+              "i":{
+                "optchain":true,
+                "opt":true
+              }
+            },
+            "return":[[]],
+            "see":[[]]
+          },
+          "summary":"unpack a table and return the elements.",
+          "lineno":172,
+          "retgroups":[{
+              "1":{
+                "text":"multiple return values from the table",
+                "type":"",
+                "mods":[]
+              },
+              "g":0
+            }],
+          "args":"(t[, i[, j]])",
+          "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+          "name":"table.unpack",
+          "params":{
+            "1":"t",
+            "2":"i",
+            "map":{
+              "t":" table to unpack",
+              "j":" index of the last element to unpack, defaults to #t",
+              "i":" index from which to start unpacking, defaults to 1"
+            },
+            "3":"j"
+          },
+          "tags":{
+            "see":[]
+          },
+          "kind":"global exported functions (for lua 5.1 & luajit) ",
+          "description":"\n\n NOTE: this version does NOT honor the n field, and hence it is not nil-safe.\n See `utils.unpack` for a version that is nil-safe.",
+          "type":"function",
+          "ret":["multiple return values from the table"],
+          "parameter":"param"
+        },{
+          "inferred":true,
+          "subparams":[],
+          "modifiers":{
+            "param":{
+              "1":{
+                "type":"string"
+              },
+              "2":{
+                "type":"string"
+              },
+              "3":{
+                "opt":true,
+                "type":"string",
+                "optchain":true
+              },
+              "4":{
+                "opt":true,
+                "type":"string",
+                "optchain":true
+              },
+              "rep":{
+                "opt":true,
+                "type":"string",
+                "optchain":true
+              },
+              "path":{
+                "type":"string"
+              },
+              "sep":{
+                "opt":true,
+                "type":"string",
+                "optchain":true
+              },
+              "name":{
+                "type":"string"
+              }
+            },
+            "return":[[],[]],
+            "see":[[]]
+          },
+          "summary":"return the full path where a file name would be matched.",
+          "lineno":187,
+          "retgroups":[{
+              "1":{
+                "text":"on success: path of the file",
+                "type":"",
+                "mods":[]
+              },
+              "2":{
+                "text":"on failure: nil, error string listing paths tried",
+                "type":"",
+                "mods":[]
+              },
+              "g":0
+            }],
+          "args":"(name, path[, sep[, rep]])",
+          "section":"Global exported functions (for Lua 5.1 & LuaJIT)",
+          "name":"package.searchpath",
+          "params":{
+            "1":"name",
+            "2":"path",
+            "3":"sep",
+            "4":"rep",
+            "map":{
+              "rep":" the path separator to use, defaults to system separator. Default; \"/\" on Unixes, \"\\\" on Windows.",
+              "path":" a path-template in the same form as package.path or package.cpath",
+              "sep":" template separate character to be replaced by path separator. Default: \".\"",
+              "name":" file name, possibly dotted"
+            }
+          },
+          "tags":{
+            "see":[]
+          },
+          "kind":"global exported functions (for lua 5.1 & luajit) ",
+          "description":"\n This function was introduced in Lua 5.2, so this compatibility version\n will be injected in Lua 5.1 engines.",
+          "type":"function",
+          "ret":["on success: path of the file","on failure: nil, error string listing paths tried"],
+          "parameter":"param"
+        },"<reference cycle>",{
+          "name":"warn",
+          "description":"\n This functions mimics the `warn` function added in Lua 5.4.",
+          "inferred":true,
+          "subparams":[],
+          "kind":"global exported functions (for lua < 5.4) ",
+          "params":{
+            "map":{
+              "...":" any arguments"
+            },
+            "1":"..."
+          },
+          "type":"function",
+          "tags":[],
+          "lineno":228,
+          "summary":"raise a warning message.",
+          "args":"(...)",
+          "modifiers":{
+            "return":[],
+            "param":{
+              "1":[],
+              "...":[]
+            }
+          },
+          "section":"Global exported functions (for Lua < 5.4)",
+          "parameter":"param"
+        }],
+      "sections":[],
+      "modules":["<reference cycle>"],
+      "args":{
+        "one":false,
+        "module":false,
+        "verbose":false,
+        "style":"!",
+        "template":"!",
+        "date":"system",
+        "dir":"doc",
+        "quiet":false,
+        "all":false,
+        "ignore":false,
+        "colon":false,
+        "not_luadoc":false,
+        "ext":"html",
+        "boilerplate":false,
+        "merge":false,
+        "filter":"f.filter",
+        "package":"/home/cji/portless/Penlight/lua",
+        "dump":false,
+        "no_args_infer":false,
+        "title":"Reference",
+        "project":"ldoc",
+        "file":"/home/cji/portless/Penlight/lua/pl",
+        "format":"discount",
+        "simple":false,
+        "tags":"none",
+        "define":"none",
+        "output":"index",
+        "unqualified":false,
+        "config":"config.ld",
+        "fatalwarnings":false,
+        "testing":false
+      },
+      "error":"<type 'function' is not supported by JSON.>",
+      "lang":{
+        "line_comment":"^%-%-+",
+        "start_comment_":"^%-%-%-+",
+        "end_comment_":"[^%-]%-%-+[^-]*\n$",
+        "extra":[],
+        "block_comment":"^%-%-%[=*%[%-+",
+        "empty_comment_":"^%-%-%-+%s*$",
+        "method_call":":"
+      },
+      "base":"/home/cji/portless/Penlight/lua"
+    },
+    "summary":"",
+    "tags":[],
+    "lineno":224,
+    "display_name":"Global exported functions (for Lua < 5.4)",
+    "type":"section",
+    "modifiers":[]
+  },
+  "inferred":true
+}

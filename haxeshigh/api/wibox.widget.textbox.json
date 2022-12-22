@@ -1,0 +1,792 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"wibox.widget.textbox",
+  "summary":"A widget to display either plain or HTML text.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.widget.textbox",
+  "modifiers":{
+    "usage":[[]],
+    "author":[[],[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_defaults_textbox.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"string",
+        "map":{
+          "string":""
+        }
+      },
+      "summary":"The textbox font.",
+      "name":"beautiful.font",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "string":[]
+        },
+        "field":{
+          "1":[],
+          "string":[]
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(string)",
+      "tags":[],
+      "lineno":39
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"s",
+        "map":{
+          "s":" The screen on which the textbox will be displayed."
+        }
+      },
+      "summary":"Get the preferred size of a textbox.",
+      "name":"get_preferred_size",
+      "modifiers":{
+        "return":[{
+            "type":"number"
+          },{
+            "type":"number"
+          }],
+        "param":{
+          "1":{
+            "type":"integer|screen"
+          },
+          "s":{
+            "type":"integer|screen"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"integer|screen"
+          },
+          "s":{
+            "type":"integer|screen"
+          }
+        }
+      },
+      "description":"\n\n This returns the size that the textbox would use if infinite space were\n available.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(s)",
+      "tags":[],
+      "lineno":94
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"width",
+        "2":"s",
+        "map":{
+          "s":" The screen on which the textbox will be displayed.",
+          "width":" The available width."
+        }
+      },
+      "summary":"Get the preferred height of a textbox at a given width.",
+      "name":"get_height_for_width",
+      "modifiers":{
+        "return":[{
+            "type":"number"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"integer|screen"
+          },
+          "s":{
+            "type":"integer|screen"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"integer|screen"
+          },
+          "s":{
+            "type":"integer|screen"
+          },
+          "width":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This returns the height that the textbox would use when it is limited to the\n given width.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(width, s)",
+      "tags":[],
+      "lineno":115
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"dpi",
+        "map":{
+          "dpi":" The DPI value to render at."
+        }
+      },
+      "summary":"Get the preferred size of a textbox.",
+      "name":"get_preferred_size_at_dpi",
+      "modifiers":{
+        "return":[{
+            "type":"number"
+          },{
+            "type":"number"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "dpi":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "dpi":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This returns the size that the textbox would use if infinite space were\n available.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(dpi)",
+      "tags":[],
+      "lineno":135
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"width",
+        "2":"dpi",
+        "map":{
+          "dpi":" The DPI value to render at.",
+          "width":" The available width."
+        }
+      },
+      "summary":"Get the preferred height of a textbox at a given width.",
+      "name":"get_height_for_width_at_dpi",
+      "modifiers":{
+        "return":[{
+            "type":"number"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "dpi":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "dpi":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This returns the height that the textbox would use when it is limited to the\n given width.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(width, dpi)",
+      "tags":[],
+      "lineno":152
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" The text to set. This can contain pango markup (e.g.\n   `<b>bold</b>`). You can use `gears.string.escape` to escape\n   parts of it."
+        }
+      },
+      "summary":"Set the text of the textbox.(with\n [Pango markup](https://docs.gtk.org/Pango/pango_markup.html)).",
+      "name":"set_markup_silently",
+      "modifiers":{
+        "return":[{
+            "1":true,
+            "type":"boolean"
+          },{
+            "type":"boolean",
+            "2":true
+          },{
+            "type":"string",
+            "2":true
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(text)",
+      "tags":[],
+      "lineno":171
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"markup",
+        "map":{
+          "markup":" The text to set. This can contain pango markup (e.g.\n   `<b>bold</b>`). You can use `gears.string.escape` to escape\n   parts of it."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "markup":{
+            "type":"string"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "markup":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n The main difference between `text` and `markup` is that `markup` is\n able to render a small subset of HTML tags. See the\n [Pango markup](https://docs.gtk.org/Pango/pango_markup.html)) documentation\n to see what is and isn't valid in this property.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_markup1.svg)\n\n \n     local w = wibox.widget {\n         markup = &#34This is some <i>text</i>, <b>HTML tags</b> <u>WILL</u> work.&#34,\n         widget = wibox.widget.textbox,\n     }\n\n The `wibox.widget.textbox` colors are usually set by wrapping into a\n `wibox.container.background` widget, but can also be done using the\n markup:\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_markup2.svg)\n\n \n     local w = wibox.widget {\n         markup = &#34<span background='#ff0000' foreground='#0000ff'>Some</span>&#34..\n           &#34 nice <span foreground='#00ff00'>colors!</span>&#34,\n         widget = wibox.widget.textbox,\n     }\n",
+      "tags":{
+        "see":[],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the HTML text of the textbox.",
+      "name":"markup",
+      "type":"property",
+      "args":"(markup)",
+      "kind":"object properties",
+      "lineno":230
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" The text to display. Pango markup is ignored and shown\n  as-is."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n This property renders the text as-is, it does not interpret it:\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_text1.svg)\n\n \n     local w = wibox.widget {\n         text   = &#34This is some <i>text</i>, <b>HTML tags</b> will <u>NOT</u> work.&#34,\n         widget = wibox.widget.textbox,\n     }\n\n One exception are the control characters, which are interpreted:\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_text2.svg)\n\n \n     local w = wibox.widget {\n         text   = &#34This is some text\\nover\\nmultiple lines!&#34,\n         widget = wibox.widget.textbox,\n     }\n",
+      "tags":{
+        "see":[],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set a textbox plain text.",
+      "name":"text",
+      "type":"property",
+      "args":"(text)",
+      "kind":"object properties",
+      "lineno":273
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"mode",
+        "map":{
+          "mode":" The ellipsize mode."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"\"end\"",
+            "type":"string",
+            "opt":"\"end\""
+          },
+          "mode":{
+            "optchain":"\"end\"",
+            "type":"string",
+            "opt":"\"end\""
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"\"end\"",
+            "type":"string",
+            "opt":"\"end\""
+          },
+          "mode":{
+            "optchain":"\"end\"",
+            "type":"string",
+            "opt":"\"end\""
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n Valid values are:\n\n * `\"start\"`\n * `\"middle\"`\n * `\"end\"`\n * `\"none\"`\n\n See Pango for additional details:\n [Layout.set_ellipsize](https://docs.gtk.org/Pango/method.Layout.set_ellipsize.html)\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_ellipsize.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the text ellipsize mode.",
+      "name":"ellipsize",
+      "kind":"object properties",
+      "usage":["widget{\n    text = &#34This is a very long text, that cannot be displayed fully.&#34,\n    ellipsize = &#34start&#34,\n    widget = wibox.widget.textbox,\n},\nwidget{\n    text = &#34This is a very long text, that cannot be displayed fully.&#34,\n    ellipsize = &#34end&#34,\n    widget = wibox.widget.textbox,\n},\nwidget{\n    text = &#34This is a very long text, that cannot be displayed fully.&#34,\n    ellipsize = &#34middle&#34,\n    widget = wibox.widget.textbox,\n},\nwidget{\n    text = &#34This is a very long text, that cannot be displayed fully.&#34,\n    ellipsize = &#34none&#34,\n    valign = &#34top&#34,\n    widget = wibox.widget.textbox,\n}\n"],
+      "args":"([mode=\"end\"])",
+      "type":"property",
+      "lineno":332
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"mode",
+        "map":{
+          "mode":" Where to wrap? After \"word\", \"char\" or \"word_char\"."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"\"word_char\"",
+            "type":"string",
+            "opt":"\"word_char\""
+          },
+          "mode":{
+            "optchain":"\"word_char\"",
+            "type":"string",
+            "opt":"\"word_char\""
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"\"word_char\"",
+            "type":"string",
+            "opt":"\"word_char\""
+          },
+          "mode":{
+            "optchain":"\"word_char\"",
+            "type":"string",
+            "opt":"\"word_char\""
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n Valid values are:\n\n * **word**\n * **char**\n * **word_char**\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_wrap1.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set a textbox wrap mode.",
+      "name":"wrap",
+      "kind":"object properties",
+      "usage":["for _, wrap in ipairs {&#34word&#34, &#34char&#34, &#34word_char&#34} do\n    local w = wibox.widget {\n        wrap   = wrap,\n        text   = &#34Notable dinausors: Tyrannosaurus-Rex, Triceratops, Velociraptor, Sauropods, Archaeopteryx.&#34,\n        widget = wibox.widget.textbox,\n    }\nend\n"],
+      "args":"([mode=\"word_char\"])",
+      "type":"property",
+      "lineno":370
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"mode",
+        "map":{
+          "mode":" The vertical alignment"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"\"center\"",
+            "type":"string",
+            "opt":"\"center\""
+          },
+          "mode":{
+            "optchain":"\"center\"",
+            "type":"string",
+            "opt":"\"center\""
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"\"center\"",
+            "type":"string",
+            "opt":"\"center\""
+          },
+          "mode":{
+            "optchain":"\"center\"",
+            "type":"string",
+            "opt":"\"center\""
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n This aligns the text within the widget's bounds. In some situations this may\n differ from aligning the widget with `wibox.container.place`.\n\n Valid values are:\n\n * `\"top\"`\n * `\"center\"`\n * `\"bottom\"`\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_valign1.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The vertical text alignment.",
+      "name":"valign",
+      "kind":"object properties",
+      "usage":["for _, valign in ipairs {&#34top&#34, &#34center&#34, &#34bottom&#34} do\n    local w = wibox.widget {\n        valign = valign,\n        text   = &#34some text&#34,\n        widget = wibox.widget.textbox,\n    }\nend\n"],
+      "args":"([mode=\"center\"])",
+      "type":"property",
+      "lineno":411
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"mode",
+        "map":{
+          "mode":" The horizontal alignment"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"\"left\"",
+            "type":"string",
+            "opt":"\"left\""
+          },
+          "mode":{
+            "optchain":"\"left\"",
+            "type":"string",
+            "opt":"\"left\""
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"\"left\"",
+            "type":"string",
+            "opt":"\"left\""
+          },
+          "mode":{
+            "optchain":"\"left\"",
+            "type":"string",
+            "opt":"\"left\""
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n This aligns the text within the widget's bounds. In some situations this may\n differ from aligning the widget with `wibox.container.place`.\n\n Valid values are:\n\n * `\"left\"`\n * `\"center\"`\n * `\"right\"`\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_align1.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The horizontal text alignment.",
+      "name":"align",
+      "kind":"object properties",
+      "usage":["for _, align in ipairs {&#34left&#34, &#34center&#34, &#34right&#34} do\n    local w = wibox.widget {\n        align  = align,\n        text   = &#34some text&#34,\n        widget = wibox.widget.textbox,\n    }\nend\n"],
+      "args":"([mode=\"left\"])",
+      "type":"property",
+      "lineno":452
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"font",
+        "map":{
+          "font":" The font description as string."
+        }
+      },
+      "summary":"Set a textbox font.",
+      "name":"font",
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          },
+          "font":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          }
+        },
+        "usebeautiful":[[]],
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          },
+          "font":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          }
+        }
+      },
+      "description":"\n\n There is multiple valid font string representation. The most precise is\n [XFT](https://wiki.archlinux.org/title/X_Logical_Font_Description). It\n is also possible to use the family name, followed by the face and size\n such as `Monospace Bold 10`. This script lists the fonts present\n on your system:\n\n    #!/usr/bin/env lua\n\n    local lgi = require(\"lgi\")\n    local pangocairo = lgi.PangoCairo\n\n    local font_map = pangocairo.font_map_get_default()\n\n    for k, v in pairs(font_map:list_families()) do\n        print(v:get_name(), \"monospace?: \"..tostring(v:is_monospace()))\n        for k2, v2 in ipairs(v:list_faces()) do\n            print(\"    \".. v2:get_face_name())\n        end\n    end\n\n Save this script somewhere on your system, `chmod +x` it and run it. It\n will list something like:\n\n    Sans    monospace?: false\n        Regular\n        Bold\n        Italic\n        Bold Italic\n\n In this case, the font could be `Sans 10` or `Sans Bold Italic 10`.\n\n Here are examples of several font families:\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_font1.svg)\n\n**Usage example output**:\n\n **Usage example:**\n\n\n \n    local pango = require(&#34lgi&#34).Pango\n    local fonts = {\n        &#34sans&#34,\n        &#34Roboto, Bold&#34,\n        &#34DejaVu Sans, Oblique&#34,\n        &#34Noto Mono, Regular&#34\n    }\n     \n    for _, font in ipairs(fonts) do\n        local w = wibox.widget {\n            font   = font,\n            text   = &#34The quick brown fox jumps over the lazy dog!&#34,\n            widget = wibox.widget.textbox,\n        }\n         \n        -- Use the low level Pango API to validate the font was parsed properly.\n        local desc = pango.FontDescription.from_string(w.font)\n        print(\n            string.format(\n                &#34%s %d %s %s %s&#34,\n                w.font,\n                desc:get_size(),\n                desc:get_family(),\n                desc:get_variant(),\n                desc:get_style()\n             )\n        )\n    end\n\n The font size is a number at the end of the font description string:\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_textbox_font2.svg)\n\n \n    for _, font in ipairs { &#34sans 8&#34, &#34sans 10&#34, &#34sans 12&#34, &#34sans 14&#34 } do\n        local w = wibox.widget {\n            font   = font,\n            text   = &#34The quick brown fox jumps over the lazy dog!&#34,\n            widget = wibox.widget.textbox,\n        }\n    end\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([font=beautiful.font])",
+      "tags":{
+        "usebeautiful":["beautiful.font The default font."],
+        "propemits":["true false"]
+      },
+      "lineno":559
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "2":"ignore_markup",
+        "map":{
+          "ignore_markup":" Ignore the pango/HTML markup",
+          "text":" The textbox content"
+        }
+      },
+      "summary":"Create a new textbox.",
+      "name":"wibox.widget.textbox",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "optchain":"\"\"",
+            "type":"string",
+            "opt":"\"\""
+          },
+          "2":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "ignore_markup":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "text":{
+            "optchain":"\"\"",
+            "type":"string",
+            "opt":"\"\""
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"\"\"",
+            "type":"string",
+            "opt":"\"\""
+          },
+          "2":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "ignore_markup":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "text":{
+            "optchain":"\"\"",
+            "type":"string",
+            "opt":"\"\""
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"([text=\"\"[, ignore_markup=false]])",
+      "tags":[],
+      "lineno":580
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "2":"s",
+        "3":"font",
+        "map":{
+          "s":" The screen on which the textbox would be displayed.",
+          "text":" The text content, pango markup supported.",
+          "font":" The font description as string."
+        }
+      },
+      "summary":"Get geometry of text label, as if textbox would be created for it on the screen.",
+      "name":"get_markup_geometry",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "optchain":"nil",
+            "type":"integer|screen",
+            "opt":"nil"
+          },
+          "3":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          },
+          "s":{
+            "optchain":"nil",
+            "type":"integer|screen",
+            "opt":"nil"
+          },
+          "text":{
+            "type":"string"
+          },
+          "font":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "optchain":"nil",
+            "type":"integer|screen",
+            "opt":"nil"
+          },
+          "3":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          },
+          "s":{
+            "optchain":"nil",
+            "type":"integer|screen",
+            "opt":"nil"
+          },
+          "text":{
+            "type":"string"
+          },
+          "font":{
+            "optchain":"beautiful.font",
+            "type":"string",
+            "opt":"beautiful.font"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(text[, s=nil[, font=beautiful.font]])",
+      "tags":[],
+      "lineno":617
+    }],
+  "type":"widgetmod",
+  "usage":["wibox.widget{\n    markup = &#34This <i>is</i> a <b>textbox</b>!!!&#34,\n    align  = &#34center&#34,\n    valign = &#34center&#34,\n    widget = wibox.widget.textbox\n}\n"],
+  "file":"/home/cji/portless/awesome/build/lib/wibox/widget/textbox.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter","dodo"],
+    "copyright":"2010, 2011 Uli Schlachter, dodo",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":23
+}

@@ -4,7 +4,7 @@ import lua.Table;
 import lua.Package;
 
 import log.Log;
-import utils.lua.LuaTools.LuaTable;
+// import utils.lua.LuaTools.LuaTable;
 using StringTools;
 using Safety;
 
@@ -14,7 +14,16 @@ typedef Named = {
 };
 
 typedef Point = {x: Int, y: Int};
+
 typedef Geometry = { > Point, width: Int, height: Int};
+
+typedef Padding = {
+    bottom: Int,
+    left: Int,
+    right: Int,
+    top: Int
+}
+
 typedef KeyFun<T> = (Named) -> T;
 typedef FilterFun<T> = (T) -> Bool;
 
@@ -40,7 +49,7 @@ class Common {
   @:nullSafety(Off)
   public static function check_path() {
     if ( !Package.path.contains("haxeshigh/output") ) {
-      Package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;" + Package.path;
+      Package.path = "/home/cji/priv/awesomescripts/haxeshigh/output/?.lua;" + Package.path;
     }
   }
 }

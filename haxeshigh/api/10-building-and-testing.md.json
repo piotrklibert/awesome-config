@@ -1,0 +1,700 @@
+{
+  "postprocess":<type 'function' is not supported by JSON.>,
+  "kind":"documentation",
+  "display_name":"Building and Testing",
+  "section":{
+    "display_name":"Testing",
+    "lineno":1,
+    "type":"section",
+    "tags":[],
+    "file":{
+      "modules":[<reference cycle>],
+      "args":[],
+      "sections":{
+        "125":"Testing",
+        "60":"Building",
+        "3":"Dependencies"
+      },
+      "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+      "items":[<reference cycle>,{
+          "display_name":"Dependencies",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Dependencies",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"dependencies ",
+          "type":"function",
+          "section":"Dependencies",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Building",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Building",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"building ",
+          "type":"function",
+          "section":"Building",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },<reference cycle>,{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"testing ",
+          "type":"function",
+          "section":"Testing",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        }],
+      "display_name":"Building and Testing"
+    },
+    "summary":"",
+    "name":"Testing",
+    "modifiers":[]
+  },
+  "body":"# Building and Testing\n\n## Dependencies\n\nAwesome has the following dependencies (besides a more-or-less standard POSIX\nenvironment):\n\n- [CMake >= 3.0.0](https://cmake.org)\n- [Lua >= 5.1.0](https://www.lua.org) or [LuaJIT](http://luajit.org)\n- [LGI >= 0.8.0](https://github.com/pavouk/lgi)\n- [xproto >= 7.0.15](https://www.x.org/archive//individual/proto/)\n- [libxcb >= 1.6](https://xcb.freedesktop.org/) with support for the RandR, XTest, Xinerama, SHAPE and\n  XKB extensions\n- [libxcb-cursor](https://xcb.freedesktop.org/)\n- [libxcb-util >= 0.3.8](https://xcb.freedesktop.org/)\n- [libxcb-keysyms >= 0.3.4](https://xcb.freedesktop.org/)\n- [libxcb-icccm >= 0.3.8](https://xcb.freedesktop.org/)\n- [libxcb-xfixes](https://xcb.freedesktop.org/)\n- [xcb-util-xrm >= 1.0](https://github.com/Airblader/xcb-util-xrm)\n- [libxkbcommon](http://xkbcommon.org/) with X11 support enabled\n- [libstartup-notification >=\n  0.10](https://www.freedesktop.org/wiki/Software/startup-notification/)\n- [cairo](https://www.cairographics.org/) with support for XCB and GObject\n  introspection\n- [Pango](http://www.pango.org/) with support for Cairo and GObject\n  introspection\n- [GLib >= 2.40](https://wiki.gnome.org/Projects/GLib) with support for GObject\n  introspection\n- [GIO](https://developer.gnome.org/gio/stable/) with support for GObject\n  introspection\n- [GdkPixbuf](https://wiki.gnome.org/Projects/GdkPixbuf)\n- libX11 with xcb support\n- [Imagemagick's convert utility](http://www.imagemagick.org/script/index.php)\n- [libxdg-basedir >= 1.0.0](https://github.com/devnev/libxdg-basedir)\n\nAdditionally, the following optional dependencies exist:\n\n- [DBus](https://www.freedesktop.org/wiki/Software/dbus/) for DBus integration\n  and the `awesome-client` utility\n- [asciidoctor](https://asciidoctor.org/) for generating man pages\n- [gzip](http://www.gzip.org/) for compressing man pages\n- [ldoc >= 1.4.5](https://stevedonovan.github.io/ldoc/) for generating the\n  documentation\n- [busted](https://olivinelabs.com/busted/) for running unit tests\n- [luacheck](https://github.com/mpeterv/luacheck) for static code analysis\n- [LuaCov](https://keplerproject.github.io/luacov/) for collecting code coverage\n  information\n- libexecinfo on systems where libc does not provide `backtrace_symbols()` to\n  generate slightly better backtraces on crashes\n- `Xephyr` or `Xvfb` for running integration tests\n- [GTK+ >= 3.10](https://www.gtk.org/) for `./themes/gtk/`\n- [xcb-errors](https://gitlab.freedesktop.org/xorg/lib/libxcb-errors) for\n  pretty-printing of X11 errors\n- [libRSVG](https://wiki.gnome.org/action/show/Projects/LibRsvg) for displaying\n  SVG files without scaling artifacts\n- [wmctrl](http://tripie.sweb.cz/utils/wmctrl) for testing WM interactions\n  with external actions\n- [xterm](https://invisible-island.net/xterm/) for various test cases\n\n## Building\n\nWith all dependencies installed, run the following commands within the root of the repository to build and install Awesome on your system:\n\n```sh\nmake\nsudo make install\n```\n\n### Create packages\n\nTo ease installation management, you can pack Awesome into `.deb` or `.rpm` packages. The following command will build the correct package for your system's package manager:\n\n```sh\nmake package\n```\n\nTo install the package, run one of the following commands:\n\n```sh\nsudo dpkg -i awesome-x.y.z.deb\n# or\nsudo rpm -Uvh awesome-x.y.z.rpm\n```\n\n### Customizing build options\n\nAwesome allows customizing various aspects of the build process through CMake variables. To change these variables, pass the `CMAKE_ARGS` environment variable to `make` with CMake flags as content (see `cmake -h`).\n\nHere is an example:\n\n```sh\nCMAKE_ARGS=\"-DLUA_EXECUTABLE=/usr/bin/lua5.3\" make\n```\n\n**Note:**\n\nCMake arguments only need to be specified on the first run of `make` or after `make distclean`.\n\n#### Skip documentation\n\nThe CMake variables `GENERATE_DOC` and `GENERATE_MANPAGES` toggle generation of HTML documentation and man pages respectively. They are enabled by default but can be set to `OFF`.\n\n```sh\nCMAKE_ARGS=\"-DGENERATE_DOC=OFF -DGENERATE_MANPAGES=OFF\" make\n```\n\n#### Change the Lua version\n\nBoth the build steps and the final binary require a working Lua interpreter. To change the Lua interpreter that both the build process and Awesome should use, specify an absolute path to a `lua` binary for `LUA_EXECUTABLE` and values that match the binary's version for `LUA_LIBRARY` and `LUA_INCLUDE_DIR`.\n\nExample to build on Arch Linux:\n\n```sh\nCMAKE_ARGS=\"-DLUA_EXECUTABLE=/usr/bin/lua5.3 -DLUA_LIBRARY=/usr/lib/liblua.so.5.3 -DLUA_INCLUDE_DIR=/usr/include/lua5.3\" make\n```\n\n#### Additional options\n\nAdditional variables can be found through CMake. Run the following command to print a list of all available variables, including the ones explained above:\n\n```sh\ncmake -B build -L\n```\n\n## Testing\n\nOnce Awesome has been built, you can run various test suites to verify functionality for both the binary and the Lua library. Make sure to install applicable dependencies as outlined at the top.\n\n**Full test suite:**\n\n```sh\nmake check\n```\n\nIndividual test categories can be run as well:\n\n* `make check-integration`: Run integration tests within a Xephyr session.\n* `make check-qa`: Run `luacheck` against the Lua library\n* `make check-unit`: Run unit tests with `busted` against the Lua library. You can also run `busted <options> ./spec` if you want to specify options for `busted`.\n* `make check-requires`: Check for invalid `require()` calls.\n* `make check-examples`: Run integration tests within the examples in `./tests/examples`.\n* `make check-themes`: Test themes.\n",
+  "sections":{
+    "1":{
+      "display_name":"Dependencies",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "125":"Testing",
+          "60":"Building",
+          "3":"Dependencies"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+        "items":[<reference cycle>,<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"dependencies ",
+            "type":"function",
+            "section":"Dependencies",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Building",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Building",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"building ",
+            "type":"function",
+            "section":"Building",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Testing",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Testing",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"testing ",
+            "type":"function",
+            "section":"Testing",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Building and Testing"
+      },
+      "summary":"",
+      "name":"Dependencies",
+      "modifiers":[]
+    },
+    "2":{
+      "display_name":"Building",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "125":"Testing",
+          "60":"Building",
+          "3":"Dependencies"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+        "items":[<reference cycle>,{
+            "display_name":"Dependencies",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Dependencies",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"dependencies ",
+            "type":"function",
+            "section":"Dependencies",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"building ",
+            "type":"function",
+            "section":"Building",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Testing",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Testing",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"testing ",
+            "type":"function",
+            "section":"Testing",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Building and Testing"
+      },
+      "summary":"",
+      "name":"Building",
+      "modifiers":[]
+    },
+    "by_name":{
+      "Dependencies":{
+        "display_name":"Dependencies",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "125":"Testing",
+            "60":"Building",
+            "3":"Dependencies"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+          "items":[<reference cycle>,<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"dependencies ",
+              "type":"function",
+              "section":"Dependencies",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Building",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Building",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"building ",
+              "type":"function",
+              "section":"Building",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Testing",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Testing",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"testing ",
+              "type":"function",
+              "section":"Testing",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Building and Testing"
+        },
+        "summary":"",
+        "name":"Dependencies",
+        "modifiers":[]
+      },
+      "Testing":{
+        "display_name":"Testing",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "125":"Testing",
+            "60":"Building",
+            "3":"Dependencies"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+          "items":[<reference cycle>,{
+              "display_name":"Dependencies",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Dependencies",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"dependencies ",
+              "type":"function",
+              "section":"Dependencies",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Building",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Building",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"building ",
+              "type":"function",
+              "section":"Building",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"testing ",
+              "type":"function",
+              "section":"Testing",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Building and Testing"
+        },
+        "summary":"",
+        "name":"Testing",
+        "modifiers":[]
+      },
+      "Building":{
+        "display_name":"Building",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "125":"Testing",
+            "60":"Building",
+            "3":"Dependencies"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+          "items":[<reference cycle>,{
+              "display_name":"Dependencies",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Dependencies",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"dependencies ",
+              "type":"function",
+              "section":"Dependencies",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"building ",
+              "type":"function",
+              "section":"Building",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Testing",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Testing",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"testing ",
+              "type":"function",
+              "section":"Testing",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Building and Testing"
+        },
+        "summary":"",
+        "name":"Building",
+        "modifiers":[]
+      }
+    },
+    "3":{
+      "display_name":"Testing",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "125":"Testing",
+          "60":"Building",
+          "3":"Dependencies"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+        "items":[<reference cycle>,{
+            "display_name":"Dependencies",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Dependencies",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"dependencies ",
+            "type":"function",
+            "section":"Dependencies",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Building",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Building",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"building ",
+            "type":"function",
+            "section":"Building",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"testing ",
+            "type":"function",
+            "section":"Testing",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Building and Testing"
+      },
+      "summary":"",
+      "name":"Testing",
+      "modifiers":[]
+    }
+  },
+  "name":"10-building-and-testing.md",
+  "modifiers":[],
+  "mod_name":"10-building-and-testing.md",
+  "type":"topic",
+  "items":[{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"dependencies ",
+      "type":"function",
+      "section":"Dependencies",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"building ",
+      "type":"function",
+      "section":"Building",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"testing ",
+      "type":"function",
+      "section":"Testing",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    }],
+  "file":"/home/cji/portless/awesome/build/docs/10-building-and-testing.md",
+  "package":"",
+  "tags":[],
+  "lineno":1
+}

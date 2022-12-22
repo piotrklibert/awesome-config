@@ -1,15 +1,19 @@
 local awful = require("awful")
 local tag = require("awful.tag")
 local gtimer, filter_in
+
 do
   local _obj_0 = require("util")
   gtimer, filter_in = _obj_0.gtimer, _obj_0.filter_in
 end
+
 local get_tags
 get_tags = function()
   return screen[1].tags
 end
+
 local slide_out_timer = nil
+
 local wrap_show_taglist
 wrap_show_taglist = function(f)
   return function(...)
@@ -60,6 +64,9 @@ local tag_right = wrap_show_taglist(function(t)
     return tag.viewidx(1)
   end
 end)
+
+print("asdasdasdasdasdasdasd")
+
 return {
   tag_up = tag_up,
   tag_down = tag_down,

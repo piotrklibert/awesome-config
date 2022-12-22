@@ -1,18 +1,18 @@
 package awful;
 
 
-import Utils;
-import haxe.extern.Rest;
+// import Utils;
+import haxe.Rest;
 
 
 
 @:luaRequire("client")
-extern class Client {
-  static function next(i: Int, ?sel: Client, ?stacked: Bool = false): Client;
-  static function cycle(clockwise, s, ?stacked: Bool = false): Client;
-  static function getmarked(): Client;
-  static function restore(s);
-  static function iterate(filter, start, s);
+extern class Client implements Dynamic {
+  // static function next(i: Int, ?sel: Client, ?stacked: Bool = false): Client;
+  // static function cycle(clockwise, s, ?stacked: Bool = false): Client;
+  // static function getmarked(): Client;
+  // static function restore(s);
+  // static function iterate(filter, start, s);
 
   // static function swap.bydirection (dir[, c=focused, ?stacked: Bool = false);
   // static function swap.global_bydirection (dir[, sel]);

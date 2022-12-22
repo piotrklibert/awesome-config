@@ -1,0 +1,140 @@
+{
+  "inferred":true,
+  "kind":"classes",
+  "description":"\n\n This can not be used as a standalone class, but is instead referenced\n explicitely in the classes, where it can be used. In the respective classes,\n it then can be used via `classname:connect_signal(...)` etc.",
+  "summary":"Handling of signals.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"signals",
+  "modifiers":[],
+  "tags":[],
+  "type":"classmod",
+  "package":"",
+  "file":"/home/cji/portless/awesome/build/common/luaobject.c",
+  "mod_name":"signals",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" A signal name.",
+          "func":" A function to call when the signal is emitted."
+        }
+      },
+      "summary":"Add a signal.",
+      "name":"signals:connect_signal",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"func"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"func"
+          }
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"Methods",
+      "kind":"methods",
+      "args":"(name, func)",
+      "tags":{
+        "within":"Methods"
+      },
+      "lineno":174
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" A signal name.",
+          "func":" A function to remove."
+        }
+      },
+      "summary":"Remove a signal.",
+      "name":"signals:disconnect_signal",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"func"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"func"
+          }
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"Methods",
+      "kind":"methods",
+      "args":"(name, func)",
+      "tags":{
+        "within":"Methods"
+      },
+      "lineno":187
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "name":" A signal name.",
+          "...":" Various arguments."
+        }
+      },
+      "summary":"Emit a signal.",
+      "name":"signals:emit_signal",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "name":{
+            "type":"string"
+          },
+          "...":{
+            "optchain":true,
+            "opt":true
+          }
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"Methods",
+      "kind":"methods",
+      "args":"(name[, ...])",
+      "tags":{
+        "within":"Methods"
+      },
+      "lineno":264
+    }],
+  "lineno":30
+}

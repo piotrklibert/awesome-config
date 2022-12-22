@@ -1,0 +1,504 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "description":"\n\n It provide basic observer pattern, signaling and dynamic properties.\n",
+  "summary":"The object oriented programming base class used by various Awesome\n widgets and components.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.object",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2010 Uli Schlachter"
+  },
+  "type":"utillib",
+  "package":"",
+  "file":"/home/cji/portless/awesome/build/lib/gears/object.lua",
+  "mod_name":"gears.object",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal.",
+          "func":" The callback to call when the signal is emitted."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n\n\n\n**Usage example output**:\n\n    In slot\t[obj]\tnil\tnil\tnil\n    In slot\t[obj]\tfoo\tbar\t42\n\n",
+      "tags":[],
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Connect to a signal.",
+      "name":"connect_signal",
+      "kind":"object methods ",
+      "usage":["local o = gears.object{}\n-- Function can be attached to signals\nlocal function slot(obj, a, b, c)\n    print(&#34In slot&#34, obj, a, b, c)\nend\no:connect_signal(&#34my_signal&#34, slot)\n-- Emitting can be done without arguments. In that case, the object will be\n-- implicitly added as an argument.\no:emit_signal &#34my_signal&#34\n-- It is also possible to add as many random arguments are required.\no:emit_signal(&#34my_signal&#34, &#34foo&#34, &#34bar&#34, 42)\n-- Finally, to allow the object to be garbage collected (the memory freed), it\n-- is necessary to disconnect the signal or use `weak_connect_signal`\no:disconnect_signal(&#34my_signal&#34, slot)\n-- This time, the `slot` wont be called as it is no longer connected.\no:emit_signal &#34my_signal&#34\n"],
+      "args":"(name, func)",
+      "type":"method",
+      "lineno":80
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal.",
+          "func":" The callback to call when the signal is emitted."
+        }
+      },
+      "summary":"Connect to a signal weakly.",
+      "name":"weak_connect_signal",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        }
+      },
+      "description":"\n\n This allows the callback function to be garbage collected and\n automatically disconnects the signal when that happens.\n **Warning:**\n Only use this function if you really, really, really know what you\n are doing.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(name, func)",
+      "tags":[],
+      "lineno":133
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal.",
+          "func":" The callback that should be disconnected."
+        }
+      },
+      "summary":"Disonnect from a signal.",
+      "name":"disconnect_signal",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(name, func)",
+      "tags":[],
+      "lineno":144
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "name":" The name of the signal",
+          "...":" Extra arguments for the callback functions. Each connected\n   function receives the object as first argument and then any extra\n   arguments that are given to emit_signal()"
+        }
+      },
+      "summary":"Emit a signal.",
+      "name":"emit_signal",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(name, ...)",
+      "tags":[],
+      "lineno":157
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "name":" The signal name.",
+          "...":" The signal callback arguments"
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        },
+        "return":[]
+      },
+      "description":"",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Emit a notification signal.",
+      "name":"t.emit_signal",
+      "kind":"functions",
+      "lineno":195,
+      "args":"(name, ...)",
+      "type":"function"
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal",
+          "func":" The attached function"
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }]
+      },
+      "description":"",
+      "type":"function",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Disconnect a signal from a source.",
+      "name":"t.disconnect_signal",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"If the disconnection was successful",
+            "type":"boolean",
+            "mods":{
+              "type":"boolean"
+            }
+          }
+        }],
+      "kind":"functions",
+      "ret":["If the disconnection was successful"],
+      "args":"(name, func)",
+      "lineno":206
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.class":"",
+          "args":" The arguments",
+          "args.enable_properties":" Automatically call getters and setters",
+          "args.enable_auto_signals":" Generate \"property::xxxx\" signals\n   when an unknown property is set."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "2":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "3":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "4":{
+            "type":"table",
+            "opt":"nil"
+          },
+          "args.class":{
+            "type":"table",
+            "opt":"nil"
+          },
+          "args":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "args.enable_properties":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.enable_auto_signals":{
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "2":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "3":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "4":{
+            "type":"table",
+            "opt":"nil"
+          },
+          "args.class":{
+            "type":"table",
+            "opt":"nil"
+          },
+          "args":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "args.enable_properties":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.enable_auto_signals":{
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":" You can call `:emit_signal()`, `:disconnect_signal()`\n  and `:connect_signal()` on the resulting object.\n\n Note that `args.enable_auto_signals` is only supported when\n `args.enable_properties` is true.\n\n\n\n\n**Usage example output**:\n\n    In get foo\tbar\n    bar\n    In set foo\t42\n    In get foo\t42\n    42\n    In a method\t1\t2\t3\n    nil\n    In the connection handler!\ta cow\n    a cow\n\n",
+      "tags":[],
+      "section":"constructorfct",
+      "inferred":true,
+      "subparams":{
+        "args":["args.enable_properties","args.enable_auto_signals","args.class"]
+      },
+      "summary":"Returns a new object.",
+      "name":"gears.object",
+      "kind":"constructors",
+      "usage":["-- Create a class for this object. It will be used as a backup source for\n-- methods and accessors. It is also possible to set them directly on the\n-- object.\nlocal class = {}\nfunction class:get_foo()\n    print(&#34In get foo&#34, self._foo or &#34bar&#34)\n    return self._foo or &#34bar&#34\nend\nfunction class:set_foo(value)\n    print(&#34In set foo&#34, value)\n    -- In case it is necessary to bypass the object property system, use\n    -- `rawset`\n    rawset(self, &#34_foo&#34, value)\n    -- When using custom accessors, the signals need to be handled manually\n    self:emit_signal(&#34property::foo&#34, value)\nend\nfunction class:method(a, b, c)\n    print(&#34In a method&#34, a, b, c)\nend\nlocal o = gears.object {\n    class               = class,\n    enable_properties   = true,\n    enable_auto_signals = true,\n}\nprint(o.foo)\no.foo = 42\nprint(o.foo)\no:method(1, 2, 3)\n-- Random properties can also be added, the signal will be emitted automatically.\no:connect_signal(&#34property::something&#34, function(obj, value)\n    assert(obj == o)\n    print(&#34In the connection handler!&#34, value)\nend)\nprint(o.something)\no.something = &#34a cow&#34\nprint(o.something)\n"],
+      "args":"([args={}])",
+      "type":"constructorfct",
+      "lineno":322
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"level",
+        "map":{
+          "level":" Level for `debug.getinfo(level, \"S\")`.\n   Typically 2 or 3."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"2",
+            "type":"integer",
+            "opt":"2"
+          },
+          "level":{
+            "optchain":"2",
+            "type":"integer",
+            "opt":"2"
+          }
+        },
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "optchain":"2",
+            "type":"integer",
+            "opt":"2"
+          },
+          "level":{
+            "optchain":"2",
+            "type":"integer",
+            "opt":"2"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Helper function to get the module name out of `debug.getinfo`.",
+      "name":"modulename",
+      "kind":"static module functions",
+      "usage":["local mt = {}\nmt.__tostring = function(o)\n    return require(\"gears.object\").modulename(2)\nend\nreturn setmetatable(ret, mt)\n"],
+      "args":"([level=2])",
+      "type":"staticfct",
+      "lineno":379
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"class",
+        "2":"args",
+        "map":{
+          "class":" A standard luaobject derived object",
+          "args":" A set of accessors configuration parameters"
+        }
+      },
+      "summary":"Add the missing properties handler to a CAPI object such as client/tag/screen.",
+      "name":"gears.object.properties.capi_index_fallback",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "class":[],
+          "args":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          }
+        },
+        "return":[]
+      },
+      "description":"\n Valid args:\n\n * **getter**: A smart getter (handle property getter itself)\n * **getter_fallback**: A dumb getter method (don't handle individual property getter)\n * **getter_class**: A module with individual property getter/setter\n * **getter_prefix**: A special getter prefix (like \"get\" or \"get_\" (default))\n * **setter**: A smart setter (handle property setter itself)\n * **setter_fallback**: A dumb setter method (don't handle individual property setter)\n * **setter_class**: A module with individual property getter/setter\n * **setter_prefix**: A special setter prefix (like \"set\" or \"set_\" (default))\n * **auto_emit**: Emit \"property::___\" automatically (default: false). This is\n     ignored when setter_fallback is set or a setter is found\n",
+      "type":"function",
+      "section":"lib.gears.object.properties Functions",
+      "kind":"lib.gears.object.properties functions",
+      "args":"(class[, args={}])",
+      "tags":{
+        "within":"lib.gears.object.properties Functions"
+      },
+      "lineno":34
+    }],
+  "lineno":12
+}

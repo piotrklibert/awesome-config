@@ -1,0 +1,132 @@
+{
+  "inferred":true,
+  "kind":"classes",
+  "mod_name":"icon_theme",
+  "summary":"(Deprecated) class module for icon lookup for menubar",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"menubar.icon_theme",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"icon_theme_name",
+        "2":"base_directories",
+        "map":{
+          "base_directories":" Paths used for lookup",
+          "icon_theme_name":" Internal name of icon theme"
+        }
+      },
+      "summary":"Class constructor of `icon_theme`",
+      "name":"menubar.icon_theme.new",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"table"
+          },
+          "base_directories":{
+            "type":"table"
+          },
+          "icon_theme_name":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"table"
+          },
+          "base_directories":{
+            "type":"table"
+          },
+          "icon_theme_name":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(icon_theme_name, base_directories)",
+      "tags":[],
+      "lineno":85
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"icon_name",
+        "2":"icon_size",
+        "map":{
+          "icon_size":" Prefereable icon size",
+          "icon_name":" Icon name to be looked up"
+        }
+      },
+      "summary":"Look up an image file based on a given icon name and/or a preferable size.",
+      "name":"menubar.icon_theme:find_icon_path",
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"number"
+          },
+          "icon_size":{
+            "type":"number"
+          },
+          "icon_name":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"number"
+          },
+          "icon_size":{
+            "type":"number"
+          },
+          "icon_name":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(icon_name, icon_size)",
+      "tags":[],
+      "lineno":226
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/awesome/build/lib/menubar/icon_theme.lua",
+  "package":"menubar",
+  "tags":{
+    "author":["Kazunobu Kuriyama"],
+    "copyright":"2015 Kazunobu Kuriyama"
+  },
+  "lineno":9
+}

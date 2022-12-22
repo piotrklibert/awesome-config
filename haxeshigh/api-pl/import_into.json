@@ -1,0 +1,18 @@
+{
+  "kind":"libraries",
+  "name":"pl.import_into",
+  "mod_name":"import_into",
+  "old_style":false,
+  "description":"\n Whenever a module is implicitly accesssed, the table will have the module automatically injected.\n (e.g. `_ENV.tablex`)\n then that module is dynamically loaded. The submodules are all brought into\n the table that is provided as the argument, or returned in a new table.\n If a table is provided, that table's metatable is clobbered, but the values are not.\n This module returns a single function, which is passed the environment.\n If this is `true`, then return a 'shadow table' as the module\n See @{01-introduction.md.To_Inject_or_not_to_Inject_|the Guide}",
+  "file":"/home/cji/portless/Penlight/lua/pl/import_into.lua",
+  "summary":"PL loader, for loading all PL libraries, only on demand.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":92,
+  "package":"pl",
+  "items":[],
+  "type":"module",
+  "modifiers":[]
+}

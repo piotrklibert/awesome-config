@@ -1,0 +1,671 @@
+{
+  "kind":"libraries",
+  "name":"pl.dir",
+  "mod_name":"dir",
+  "inferred":true,
+  "description":"\n\n Dependencies: `pl.utils`, `pl.path`\n\n Soft Dependencies: `alien`, `ffi` (either are used on Windows for copying/moving files)",
+  "file":"/home/cji/portless/Penlight/lua/pl/dir.lua",
+  "summary":"Listing files in directories and creating/removing directory paths.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":8,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "filename":{
+            "type":"string"
+          },
+          "pattern":{
+            "type":"string"
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"bool"
+          }]
+      },
+      "summary":"Test whether a file name matches a shell pattern.",
+      "lineno":47,
+      "retgroups":[{
+          "1":{
+            "text":"",
+            "type":"bool",
+            "mods":{
+              "type":"bool"
+            }
+          },
+          "g":0
+        }],
+      "args":"(filename, pattern)",
+      "type":"function",
+      "name":"fnmatch",
+      "params":{
+        "1":"filename",
+        "2":"pattern",
+        "map":{
+          "filename":" A file name.",
+          "pattern":" A shell pattern. The only special characters are\n `'*'` and `'?'`: `'*'` matches any sequence of characters and\n `'?'` matches any single character."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Both parameters are case-normalized if operating system is\n case-insensitive.",
+      "raise":"dir and mask must be strings",
+      "ret":[""],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"string"
+          },
+          "pattern":{
+            "type":"string"
+          },
+          "filenames":{
+            "type":"tab"
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"List(string)"
+          }]
+      },
+      "summary":"Return a list of all file names within an array which match a pattern.",
+      "lineno":58,
+      "retgroups":[{
+          "1":{
+            "text":"List of matching file names.",
+            "type":"List(string)",
+            "mods":{
+              "type":"List(string)"
+            }
+          },
+          "g":0
+        }],
+      "args":"(filenames, pattern)",
+      "type":"function",
+      "name":"filter",
+      "params":{
+        "1":"filenames",
+        "2":"pattern",
+        "map":{
+          "pattern":" A shell pattern (see `fnmatch`).",
+          "filenames":" An array containing file names."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"dir and mask must be strings",
+      "ret":["List of matching file names."],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "opt":"'.'",
+            "type":"string",
+            "optchain":"'.'"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "dirname":{
+            "opt":"'.'",
+            "type":"string",
+            "optchain":"'.'"
+          },
+          "mask":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"{string}"
+          }]
+      },
+      "summary":"return a list of all files in a directory which match a shell pattern.",
+      "lineno":89,
+      "retgroups":[{
+          "1":{
+            "text":"list of files",
+            "type":"{string}",
+            "mods":{
+              "type":"{string}"
+            }
+          },
+          "g":0
+        }],
+      "args":"([dirname='.'[, mask]])",
+      "type":"function",
+      "name":"getfiles",
+      "params":{
+        "1":"dirname",
+        "2":"mask",
+        "map":{
+          "dirname":" A directory.",
+          "mask":" A shell pattern (see `fnmatch`). If not given, all files are returned."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"dirname and mask must be strings",
+      "ret":["list of files"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "opt":"'.'",
+            "type":"string",
+            "optchain":"'.'"
+          },
+          "dirname":{
+            "opt":"'.'",
+            "type":"string",
+            "optchain":"'.'"
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"{string}"
+          }]
+      },
+      "summary":"return a list of all subdirectories of the directory.",
+      "lineno":107,
+      "retgroups":[{
+          "1":{
+            "text":"a list of directories",
+            "type":"{string}",
+            "mods":{
+              "type":"{string}"
+            }
+          },
+          "g":0
+        }],
+      "args":"([dirname='.'])",
+      "type":"function",
+      "name":"getdirectories",
+      "params":{
+        "map":{
+          "dirname":" A directory."
+        },
+        "1":"dirname"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"dir must be a valid directory",
+      "ret":["a list of directories"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"bool"
+          },
+          "flag":{
+            "type":"bool"
+          },
+          "src":{
+            "type":"string"
+          },
+          "dest":{
+            "type":"string"
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"bool"
+          }]
+      },
+      "summary":"copy a file.",
+      "lineno":240,
+      "retgroups":[{
+          "1":{
+            "text":"operation succeeded",
+            "type":"bool",
+            "mods":{
+              "type":"bool"
+            }
+          },
+          "g":0
+        }],
+      "args":"(src, dest, flag)",
+      "type":"function",
+      "name":"copyfile",
+      "params":{
+        "1":"src",
+        "2":"dest",
+        "map":{
+          "flag":" true if you want to force the copy (default)",
+          "src":" source file",
+          "dest":" destination file or directory"
+        },
+        "3":"flag"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"src and dest must be strings",
+      "ret":["operation succeeded"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "dest":{
+            "type":"string"
+          },
+          "src":{
+            "type":"string"
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"bool"
+          }]
+      },
+      "summary":"move a file.",
+      "lineno":252,
+      "retgroups":[{
+          "1":{
+            "text":"operation succeeded",
+            "type":"bool",
+            "mods":{
+              "type":"bool"
+            }
+          },
+          "g":0
+        }],
+      "args":"(src, dest)",
+      "type":"function",
+      "name":"movefile",
+      "params":{
+        "1":"src",
+        "2":"dest",
+        "map":{
+          "dest":" destination file or directory",
+          "src":" source file"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"src and dest must be strings",
+      "ret":["operation succeeded"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"bool"
+          },
+          "3":{
+            "type":"bool"
+          },
+          "root":{
+            "type":"string"
+          },
+          "follow_links":{
+            "type":"bool"
+          },
+          "bottom_up":{
+            "type":"bool"
+          }
+        },
+        "raise":[],
+        "return":[[]]
+      },
+      "summary":"return an iterator which walks through a directory tree starting at root.",
+      "lineno":289,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator returning root,dirs,files",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(root, bottom_up, follow_links)",
+      "type":"function",
+      "name":"walk",
+      "params":{
+        "1":"root",
+        "2":"bottom_up",
+        "map":{
+          "root":" A starting directory",
+          "follow_links":" follow symbolic links",
+          "bottom_up":" False if we start listing entries immediately."
+        },
+        "3":"follow_links"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n The iterator returns (root,dirs,files)\n Note that dirs and files are lists of names (i.e. you must say path.join(root,d)\n to get the actual full path)\n If bottom_up is false (or not present), then the entries at the current level are returned\n before we go deeper. This means that you can modify the returned list of directories before\n continuing.\n This is a clone of os.walk from the Python libraries.",
+      "raise":"root must be a directory",
+      "ret":["an iterator returning root,dirs,files"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "fullpath":{
+            "type":"string"
+          }
+        },
+        "raise":[],
+        "return":[[],[]]
+      },
+      "summary":"remove a whole directory tree.",
+      "lineno":327,
+      "retgroups":[{
+          "1":{
+            "text":"true or nil",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"error if failed",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fullpath)",
+      "type":"function",
+      "name":"rmtree",
+      "params":{
+        "map":{
+          "fullpath":" A directory path (must be an actual directory, not a symlink)"
+        },
+        "1":"fullpath"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Symlinks in the tree will be deleted without following them.",
+      "raise":"fullpath must be a string",
+      "ret":["true or nil","error if failed"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "p":{
+            "type":"string"
+          }
+        },
+        "raise":[],
+        "return":[[]]
+      },
+      "summary":"create a directory path.",
+      "lineno":386,
+      "retgroups":[{
+          "1":{
+            "text":"true on success, nil + errormsg on failure",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(p)",
+      "type":"function",
+      "name":"makepath",
+      "params":{
+        "map":{
+          "p":" A directory path"
+        },
+        "1":"p"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This will create subdirectories as necessary!",
+      "raise":"failure to create",
+      "ret":["true on success, nil + errormsg on failure"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"func"
+          },
+          "4":{
+            "type":"bool"
+          },
+          "file_fun":{
+            "type":"func"
+          },
+          "path2":{
+            "type":"string"
+          },
+          "path1":{
+            "type":"string"
+          },
+          "verbose":{
+            "type":"bool"
+          }
+        },
+        "raise":[],
+        "return":[[],[],[]]
+      },
+      "summary":"clone a directory tree.",
+      "lineno":407,
+      "retgroups":[{
+          "1":{
+            "text":"true, or nil",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"error message, or list of failed directory creations",
+            "type":"",
+            "mods":[]
+          },
+          "3":{
+            "text":"list of failed file operations",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(path1, path2, file_fun, verbose)",
+      "usage":["clonetree('.','../backup',copyfile)\n"],
+      "raise":"path1 and path2 must be strings",
+      "name":"clonetree",
+      "params":{
+        "1":"path1",
+        "2":"path2",
+        "3":"file_fun",
+        "4":"verbose",
+        "map":{
+          "file_fun":" an optional function to apply on all files",
+          "path2":" the new base path for the destination",
+          "path1":" the base path of the source tree",
+          "verbose":" an optional boolean to control the verbosity of the output.\n  It can also be a logging function that behaves like print()"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "type":"function",
+      "parameter":"param",
+      "ret":["true, or nil","error message, or list of failed directory creations","list of failed file operations"],
+      "description":" Will always try to create a new directory structure\n if necessary."
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "d":{
+            "type":"string"
+          }
+        },
+        "raise":[],
+        "return":[[]]
+      },
+      "summary":"return an iterator over all entries in a directory tree",
+      "lineno":488,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator giving pathname and mode (true for dir, false otherwise)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(d)",
+      "type":"function",
+      "name":"dirtree",
+      "params":{
+        "map":{
+          "d":" a directory"
+        },
+        "1":"d"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"d must be a non-empty string",
+      "ret":["an iterator giving pathname and mode (true for dir, false otherwise)"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "opt":"'.'",
+            "type":"string",
+            "optchain":"'.'"
+          },
+          "2":{
+            "opt":"'*'",
+            "type":"string",
+            "optchain":"'*'"
+          },
+          "start_path":{
+            "opt":"'.'",
+            "type":"string",
+            "optchain":"'.'"
+          },
+          "shell_pattern":{
+            "opt":"'*'",
+            "type":"string",
+            "optchain":"'*'"
+          }
+        },
+        "raise":[],
+        "return":[{
+            "type":"List(string)"
+          }]
+      },
+      "summary":"Recursively returns all the file starting at 'path'.",
+      "lineno":508,
+      "retgroups":[{
+          "1":{
+            "text":"containing all the files found recursively starting at 'path' and filtered by 'shell_pattern'.",
+            "type":"List(string)",
+            "mods":{
+              "type":"List(string)"
+            }
+          },
+          "g":0
+        }],
+      "args":"([start_path='.'[, shell_pattern='*']])",
+      "type":"function",
+      "name":"getallfiles",
+      "params":{
+        "1":"start_path",
+        "2":"shell_pattern",
+        "map":{
+          "start_path":"  A directory.",
+          "shell_pattern":" A shell pattern (see `fnmatch`)."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" It can optionally take a shell pattern and\n only returns files that match 'shell_pattern'. If a pattern is given it will do a case insensitive search.",
+      "raise":"start_path must be a directory",
+      "ret":["containing all the files found recursively starting at 'path' and filtered by 'shell_pattern'."],
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

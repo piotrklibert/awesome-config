@@ -1,0 +1,1970 @@
+{
+  "inferred":true,
+  "kind":"theme_related_libraries",
+  "mod_name":"gears.shape",
+  "summary":"Module dedicated to gather common shape painters.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.shape",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"\n\n It adds the concept of \"shape\" to Awesome. A shape can be applied to a\n background, a margin, a mask or a drawable shape bounding.\n\n The functions exposed by this module always take a cairo context as first\n parameter followed by a width and height. Individual functions may take\n additional parameters for their specific implementions.\n\n The functions provided by this module only create a path in the content.\n to actually draw the content, use `cr:fill()`, `cr:mask()`, `cr:clip()` or\n `cr:stroke()`\n\n In many case, it is necessary to apply the shape using a transformation\n such as a rotation. The preferred way to do this is to wrap the function\n in another function calling `cr:rotate()` (or any other transformation\n matrix).\n\n To specialize a shape where the API doesn't allows extra arguments to be\n passed, it is possible to wrap the shape function like:\n\n    local new_shape = function(cr, width, height)\n        gears.shape.rounded_rect(cr, width, height, 2)\n    end\n\n Many elements can be shaped. This include:\n\n * `client`s (see `gears.surface.apply_shape_bounding`)\n * `wibox`es (see `wibox.shape`)\n * All widgets (see `wibox.container.background`)\n * The progressbar (see `wibox.widget.progressbar.bar_shape`)\n * The graph (see `wibox.widget.graph.step_shape`)\n * The checkboxes (see `wibox.widget.checkbox.check_shape`)\n * Images (see `wibox.widget.imagebox.clip_shape`)\n * The taglist tags (see `awful.widget.taglist`)\n * The tasklist clients (see `awful.widget.tasklist`)\n * The tooltips (see `awful.tooltip`)\n",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"tl",
+        "5":"tr",
+        "6":"br",
+        "7":"bl",
+        "8":"rate",
+        "9":"delta",
+        "map":{
+          "br":" If the bottom right corner is rounded",
+          "tr":" If the top right corner is rounded",
+          "width":" The shape width",
+          "bl":" If the bottom left corner is rounded",
+          "tl":" If the top left corner is rounded",
+          "cr":" A cairo context",
+          "rate":" The \"squareness\" of the squircle, should be greater than 1",
+          "height":" The shape height",
+          "delta":" The \"smoothness\" of the shape, delta must be greater than 0.01 and will be reset to 0.01 if not"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"boolean"
+          },
+          "5":{
+            "type":"boolean"
+          },
+          "6":{
+            "type":"boolean"
+          },
+          "7":{
+            "type":"boolean"
+          },
+          "8":{
+            "type":"number"
+          },
+          "9":{
+            "type":"number"
+          },
+          "br":{
+            "type":"boolean"
+          },
+          "tr":{
+            "type":"boolean"
+          },
+          "width":{
+            "type":"number"
+          },
+          "bl":{
+            "type":"boolean"
+          },
+          "tl":{
+            "type":"boolean"
+          },
+          "cr":[],
+          "rate":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "delta":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"boolean"
+          },
+          "5":{
+            "type":"boolean"
+          },
+          "6":{
+            "type":"boolean"
+          },
+          "7":{
+            "type":"boolean"
+          },
+          "8":{
+            "type":"number"
+          },
+          "9":{
+            "type":"number"
+          },
+          "br":{
+            "type":"boolean"
+          },
+          "tr":{
+            "type":"boolean"
+          },
+          "width":{
+            "type":"number"
+          },
+          "bl":{
+            "type":"boolean"
+          },
+          "tl":{
+            "type":"boolean"
+          },
+          "cr":[],
+          "rate":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "delta":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n The squircle is not exactly as the definition.\n It will expand to the shape's width and height, kinda like an ellipse\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_partial_squircle.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a squircle shape with only some of the corner are \"circled\" to the current path.",
+      "name":"partial_squircle",
+      "kind":"static module functions",
+      "usage":["shape.partial_squircle(cr, 70, 70, false, true)\nshape.partial_squircle(cr, 70, 70, true, false, true)\nshape.partial_squircle(cr, 70, 70, true, false, true, true)\n"],
+      "args":"(cr, width, height, tl, tr, br, bl, rate, delta)",
+      "type":"staticfct",
+      "lineno":86
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"rate",
+        "5":"delta",
+        "map":{
+          "delta":" The \"smoothness\" of the shape, delta must be greater than 0.01 and will be reset to 0.01 if not",
+          "cr":" A cairo context",
+          "rate":" The \"squareness\" of the squircle, should be greater than 1",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "delta":{
+            "type":"number"
+          },
+          "cr":[],
+          "rate":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "delta":{
+            "type":"number"
+          },
+          "cr":[],
+          "rate":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n This will behave the same as `partial_squircle`\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_squircle.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a squircle shape to the current path.",
+      "name":"squircle",
+      "kind":"static module functions",
+      "usage":["shape.squircle(cr, 70, 70, 2)\nshape.squircle(cr, 70, 70, 8)\nshape.squircle(cr, 70, 70, 1.5)\n"],
+      "args":"(cr, width, height, rate, delta)",
+      "type":"staticfct",
+      "lineno":186
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"n",
+        "map":{
+          "cr":" A cairo context",
+          "n":" Number of grams (default n = 5 -> pentagram)",
+          "height":" The height constraint",
+          "width":" The width constraint"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "cr":[],
+          "n":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "cr":[],
+          "n":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n The star size will be the minimum of the given width and weight\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_star.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a star shape to the current path.",
+      "name":"star",
+      "kind":"static module functions",
+      "usage":["shape.star(cr, 70, 70, 4)\nshape.star(cr, 70, 70, 9)\nshape.transform(shape.star) : translate(70/2, 70/2)\n: rotate(math.pi) : scale(0.5, 0.75)\n: translate(-70/2, -70/2) (cr, 70, 70)\n"],
+      "args":"(cr, width, height, n)",
+      "type":"staticfct",
+      "lineno":209
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"radius",
+        "map":{
+          "cr":" A cairo content",
+          "radius":" the corner radius",
+          "height":" The rectangle height",
+          "width":" The rectangle width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "cr":[],
+          "radius":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "cr":[],
+          "radius":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n Note: If the radius is bigger than either half side, it will be reduced.\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_rounded_rect.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a rounded rectangle to the current path.",
+      "name":"rounded_rect",
+      "kind":"static module functions",
+      "usage":["shape.rounded_rect(cr, 70, 70, 10)\nshape.rounded_rect(cr,20,70, 5)\nshape.transform(shape.rounded_rect) : translate(0,25) (cr,70,20, 5)\n"],
+      "args":"(cr, width, height, radius)",
+      "type":"staticfct",
+      "lineno":250
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "map":{
+          "cr":" A cairo content",
+          "height":" The rectangle height.",
+          "width":" The rectangle width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "cr":[],
+          "height":[],
+          "width":[]
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "cr":[],
+          "height":[],
+          "width":[]
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_rounded_bar.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a rectangle delimited by 2 180 degree arcs to the path.",
+      "name":"rounded_bar",
+      "kind":"static module functions",
+      "usage":["shape.rounded_bar(cr, 70, 70)\nshape.rounded_bar(cr, 20, 70)\nshape.rounded_bar(cr, 70, 20)\n"],
+      "args":"(cr, width, height)",
+      "type":"staticfct",
+      "lineno":287
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"tl",
+        "5":"tr",
+        "6":"br",
+        "7":"bl",
+        "8":"rad",
+        "map":{
+          "rad":" The corner radius",
+          "bl":" If the bottom left corner is rounded",
+          "br":" If the bottom right corner is rounded",
+          "tr":" If the top right corner is rounded",
+          "cr":" A cairo context",
+          "tl":" If the top left corner is rounded",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"boolean"
+          },
+          "5":{
+            "type":"boolean"
+          },
+          "6":{
+            "type":"boolean"
+          },
+          "7":{
+            "type":"boolean"
+          },
+          "8":{
+            "type":"number"
+          },
+          "rad":{
+            "type":"number"
+          },
+          "bl":{
+            "type":"boolean"
+          },
+          "br":{
+            "type":"boolean"
+          },
+          "tr":{
+            "type":"boolean"
+          },
+          "cr":[],
+          "tl":{
+            "type":"boolean"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"boolean"
+          },
+          "5":{
+            "type":"boolean"
+          },
+          "6":{
+            "type":"boolean"
+          },
+          "7":{
+            "type":"boolean"
+          },
+          "8":{
+            "type":"number"
+          },
+          "rad":{
+            "type":"number"
+          },
+          "bl":{
+            "type":"boolean"
+          },
+          "br":{
+            "type":"boolean"
+          },
+          "tr":{
+            "type":"boolean"
+          },
+          "cr":[],
+          "tl":{
+            "type":"boolean"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_partially_rounded_rect.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A rounded rect with only some of the corners rounded.",
+      "name":"partially_rounded_rect",
+      "kind":"static module functions",
+      "usage":["shape.partially_rounded_rect(cr, 70, 70)\nshape.partially_rounded_rect(cr, 70, 70, true)\nshape.partially_rounded_rect(cr, 70, 70, true, true, false, true, 30)\n"],
+      "args":"(cr, width, height, tl, tr, br, bl, rad)",
+      "type":"staticfct",
+      "lineno":311
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"corner_radius",
+        "5":"arrow_size",
+        "6":"arrow_position",
+        "map":{
+          "arrow_position":" The position of the arrow",
+          "corner_radius":" The corner radius",
+          "cr":" A cairo context",
+          "arrow_size":" The width and height of the arrow",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"5",
+            "type":"number",
+            "opt":"5"
+          },
+          "5":{
+            "optchain":"10",
+            "type":"number",
+            "opt":"10"
+          },
+          "6":{
+            "optchain":"width/2 - arrow_size/2",
+            "type":"number",
+            "opt":"width/2 - arrow_size/2"
+          },
+          "arrow_position":{
+            "optchain":"width/2 - arrow_size/2",
+            "type":"number",
+            "opt":"width/2 - arrow_size/2"
+          },
+          "corner_radius":{
+            "optchain":"5",
+            "type":"number",
+            "opt":"5"
+          },
+          "cr":[],
+          "arrow_size":{
+            "optchain":"10",
+            "type":"number",
+            "opt":"10"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"5",
+            "type":"number",
+            "opt":"5"
+          },
+          "5":{
+            "optchain":"10",
+            "type":"number",
+            "opt":"10"
+          },
+          "6":{
+            "optchain":"width/2 - arrow_size/2",
+            "type":"number",
+            "opt":"width/2 - arrow_size/2"
+          },
+          "arrow_position":{
+            "optchain":"width/2 - arrow_size/2",
+            "type":"number",
+            "opt":"width/2 - arrow_size/2"
+          },
+          "corner_radius":{
+            "optchain":"5",
+            "type":"number",
+            "opt":"5"
+          },
+          "cr":[],
+          "arrow_size":{
+            "optchain":"10",
+            "type":"number",
+            "opt":"10"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_infobubble.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A rounded rectangle with a triangle at the top.",
+      "name":"infobubble",
+      "kind":"static module functions",
+      "usage":["shape.infobubble(cr, 70, 70)\nshape.transform(shape.infobubble) : translate(0, 20)\n: rotate_at(35,35,math.pi) (cr,70,20,10, 5, 35 - 5)\nshape.transform(shape.infobubble)\n: rotate_at(35,35,3*math.pi/2) (cr,70,70, nil, nil, 40)\n"],
+      "args":"(cr, width, height[, corner_radius=5[, arrow_size=10[, arrow_position=width/2 - arrow_size/2]]])",
+      "type":"staticfct",
+      "lineno":376
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"arrow_length",
+        "map":{
+          "cr":" A cairo context",
+          "arrow_length":" The length of the arrow part",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "cr":[],
+          "arrow_length":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "cr":[],
+          "arrow_length":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_rectangular_tag.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A rectangle terminated by an arrow.",
+      "name":"rectangular_tag",
+      "kind":"static module functions",
+      "usage":["shape.rectangular_tag(cr, 70, 70)\nshape.transform(shape.rectangular_tag) : translate(0, 30) (cr, 70, 10,  10)\nshape.transform(shape.rectangular_tag) : translate(0, 30) (cr, 70, 10, -10)\n"],
+      "args":"(cr, width, height[, arrow_length=height/2])",
+      "type":"staticfct",
+      "lineno":417
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"head_width",
+        "5":"shaft_width",
+        "6":"shaft_length",
+        "map":{
+          "shaft_length":" The head_length of the shaft (the rest is the head)",
+          "shaft_width":" The width of the shaft of the arrow",
+          "cr":" A cairo context",
+          "height":" The shape height",
+          "head_width":" The width of the head (/\\) of the arrow",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"head_width",
+            "type":"number",
+            "opt":"head_width"
+          },
+          "5":{
+            "optchain":"width /2",
+            "type":"number",
+            "opt":"width /2"
+          },
+          "6":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "shaft_length":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "shaft_width":{
+            "optchain":"width /2",
+            "type":"number",
+            "opt":"width /2"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "head_width":{
+            "optchain":"head_width",
+            "type":"number",
+            "opt":"head_width"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"head_width",
+            "type":"number",
+            "opt":"head_width"
+          },
+          "5":{
+            "optchain":"width /2",
+            "type":"number",
+            "opt":"width /2"
+          },
+          "6":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "shaft_length":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "shaft_width":{
+            "optchain":"width /2",
+            "type":"number",
+            "opt":"width /2"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "head_width":{
+            "optchain":"head_width",
+            "type":"number",
+            "opt":"head_width"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_arrow.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A simple arrow shape.",
+      "name":"arrow",
+      "kind":"static module functions",
+      "usage":["shape.arrow(cr, 70, 70)\nshape.arrow(cr,70,70, 30, 10, 60)\nshape.transform(shape.arrow) : rotate_at(35,35,math.pi/2)(cr,70,70)\n"],
+      "args":"(cr, width, height[, head_width=head_width[, shaft_width=width /2[, shaft_length=height/2]]])",
+      "type":"staticfct",
+      "lineno":454
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "map":{
+          "cr":" A cairo context",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_hexagon.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A squeezed hexagon filling the rectangle.",
+      "name":"hexagon",
+      "kind":"static module functions",
+      "usage":["shape.hexagon(cr, 70, 70)\nshape.transform(shape.hexagon) : translate(0,15)(cr,70,20)\nshape.transform(shape.hexagon) : rotate_at(35,35,math.pi/2)(cr,70,40)\n"],
+      "args":"(cr, width, height)",
+      "type":"staticfct",
+      "lineno":486
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"arrow_depth",
+        "map":{
+          "cr":" A cairo context",
+          "arrow_depth":" The width of the arrow part of the shape",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "cr":[],
+          "arrow_depth":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "cr":[],
+          "arrow_depth":{
+            "optchain":"height/2",
+            "type":"number",
+            "opt":"height/2"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_powerline.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Double arrow popularized by the vim-powerline module.",
+      "name":"powerline",
+      "kind":"static module functions",
+      "usage":["shape.powerline(cr, 70, 70)\nshape.transform(shape.powerline) : translate(0, 25) (cr,70,20)\nshape.transform(shape.powerline) : translate(0, 25) (cr,70,20, -20)\n"],
+      "args":"(cr, width, height[, arrow_depth=height/2])",
+      "type":"staticfct",
+      "lineno":513
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "map":{
+          "cr":" A cairo context",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_isosceles_triangle.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"An isosceles triangle.",
+      "name":"isosceles_triangle",
+      "kind":"static module functions",
+      "usage":["shape.isosceles_triangle(cr, 70, 70)\nshape.isosceles_triangle(cr,20,70)\nshape.transform(shape.isosceles_triangle) : rotate_at(35, 35, math.pi/2)(cr,70,70)\n"],
+      "args":"(cr, width, height)",
+      "type":"staticfct",
+      "lineno":548
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"thickness",
+        "map":{
+          "cr":" A cairo context",
+          "thickness":" The cross section thickness",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "cr":[],
+          "thickness":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "cr":[],
+          "thickness":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_cross.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A cross (**+**) symbol.",
+      "name":"cross",
+      "kind":"static module functions",
+      "usage":["shape.cross(cr, 70, 70)\nshape.cross(cr,20,70)\nshape.transform(shape.cross) : scale(0.5, 1)(cr,70,70)\n"],
+      "args":"(cr, width, height[, thickness=width/3])",
+      "type":"staticfct",
+      "lineno":571
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"corner_radius",
+        "map":{
+          "cr":" A cairo context",
+          "corner_radius":"",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "cr":[],
+          "corner_radius":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "cr":[],
+          "corner_radius":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_octogon.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A similar shape to the `rounded_rect`, but with sharp corners.",
+      "name":"octogon",
+      "kind":"static module functions",
+      "usage":["shape.octogon(cr, 70, 70)\nshape.octogon(cr,70,70,70/2.5)\nshape.transform(shape.octogon) : translate(0, 25) (cr,70,20)\n"],
+      "args":"(cr, width, height, corner_radius)",
+      "type":"staticfct",
+      "lineno":606
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"radius",
+        "map":{
+          "cr":" A cairo context",
+          "radius":" The radius",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"math.min(width  height) / 2)",
+            "type":"number",
+            "opt":"math.min(width  height) / 2)"
+          },
+          "cr":[],
+          "radius":{
+            "optchain":"math.min(width  height) / 2)",
+            "type":"number",
+            "opt":"math.min(width  height) / 2)"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"math.min(width  height) / 2)",
+            "type":"number",
+            "opt":"math.min(width  height) / 2)"
+          },
+          "cr":[],
+          "radius":{
+            "optchain":"math.min(width  height) / 2)",
+            "type":"number",
+            "opt":"math.min(width  height) / 2)"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_circle.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A circle shape.",
+      "name":"circle",
+      "kind":"static module functions",
+      "usage":["shape.circle(cr, 70, 70)\nshape.circle(cr,20,70)\nshape.transform(shape.circle) : scale(0.5, 1)(cr,70,70)\n"],
+      "args":"(cr, width, height[, radius=math.min(width  height) / 2)])",
+      "type":"staticfct",
+      "lineno":637
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "map":{
+          "cr":" A cairo context",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_rectangle.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A simple rectangle.",
+      "name":"rectangle",
+      "kind":"static module functions",
+      "usage":["shape.rectangle(cr, 70, 70)\nshape.rectangle(cr,20,70)\nshape.transform(shape.rectangle) : scale(0.5, 1)(cr,70,70)\n"],
+      "args":"(cr, width, height)",
+      "type":"staticfct",
+      "lineno":659
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"base_width",
+        "map":{
+          "cr":" A cairo context",
+          "base_width":" The parallelogram base width",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "cr":[],
+          "base_width":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "cr":[],
+          "base_width":{
+            "optchain":"width/3",
+            "type":"number",
+            "opt":"width/3"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_parallelogram.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A diagonal parallelogram with the bottom left corner at x=0 and top right\n at x=width.",
+      "name":"parallelogram",
+      "kind":"static module functions",
+      "usage":["shape.parallelogram(cr, 70, 70)\nshape.parallelogram(cr,70,20)\nshape.transform(shape.parallelogram) : scale(0.5, 1)(cr,70,70)\n"],
+      "args":"(cr, width, height[, base_width=width/3])",
+      "type":"staticfct",
+      "lineno":680
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "map":{
+          "cr":" A cairo context",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "cr":[],
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_losange.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A losange.",
+      "name":"losange",
+      "kind":"static module functions",
+      "usage":["shape.losange(cr, 70, 70)\nshape.losange(cr,20,70)\nshape.transform(shape.losange) : scale(0.5, 1)(cr,70,70)\n"],
+      "args":"(cr, width, height)",
+      "type":"staticfct",
+      "lineno":704
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"start_angle",
+        "5":"end_angle",
+        "6":"radius",
+        "map":{
+          "end_angle":" The end angle (in radian)",
+          "start_angle":" The start angle (in radian)",
+          "cr":" A cairo context",
+          "radius":" The shape height",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "5":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "6":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "end_angle":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "start_angle":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "cr":[],
+          "radius":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "5":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "6":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "end_angle":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "start_angle":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "cr":[],
+          "radius":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n The pie center is the center of the area.\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_pie.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A pie.",
+      "name":"pie",
+      "kind":"static module functions",
+      "usage":["shape.pie(cr, 70, 70)\nshape.pie(cr,70,70, 1.0471975511966,   4.1887902047864)\nshape.pie(cr,70,70, 0, 2*math.pi, 10)\n"],
+      "args":"(cr, width, height[, start_angle=0[, end_angle=math.pi/2[, radius=math.min(width height)/2]]])",
+      "type":"staticfct",
+      "lineno":732
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"width",
+        "3":"height",
+        "4":"thickness",
+        "5":"start_angle",
+        "6":"end_angle",
+        "7":"start_rounded",
+        "8":"end_rounded",
+        "map":{
+          "end_angle":" The end angle (in radian)",
+          "end_rounded":" if the arc end rounded",
+          "thickness":" The arc thickness",
+          "start_rounded":" if the arc start rounded",
+          "cr":" A cairo context",
+          "start_angle":" The start angle (in radian)",
+          "height":" The shape height",
+          "width":" The shape width"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "5":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "6":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "7":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "8":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "end_angle":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "end_rounded":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "thickness":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "start_rounded":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "cr":[],
+          "start_angle":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "5":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "6":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "7":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "8":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "end_angle":{
+            "optchain":"math.pi/2",
+            "type":"number",
+            "opt":"math.pi/2"
+          },
+          "end_rounded":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "thickness":{
+            "optchain":"math.min(width height)/2",
+            "type":"number",
+            "opt":"math.min(width height)/2"
+          },
+          "start_rounded":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "cr":[],
+          "start_angle":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "height":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n The pie center is the center of the area.\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_arc.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A rounded arc.",
+      "name":"arc",
+      "kind":"static module functions",
+      "usage":["shape.arc(cr,70,70, 10)\nshape.arc(cr,70,70, 10, nil, nil, true, true)\nshape.arc(cr,70,70, nil, 0, 2*math.pi)\n"],
+      "args":"(cr, width, height[, thickness=math.min(width height)/2[, start_angle=0[, end_angle=math.pi/2[, start_rounded=false[, end_rounded=false]]]]])",
+      "type":"staticfct",
+      "lineno":777
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"cr",
+        "2":"w",
+        "3":"h",
+        "4":"percent",
+        "5":"hide_left",
+        "map":{
+          "hide_left":" Do not draw the left side of the shape",
+          "h":" The shape height",
+          "cr":" A cairo context",
+          "w":" The shape width",
+          "percent":" The progressbar percent"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"boolean"
+          },
+          "hide_left":{
+            "type":"boolean"
+          },
+          "h":{
+            "type":"number"
+          },
+          "cr":[],
+          "w":{
+            "type":"number"
+          },
+          "percent":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"boolean"
+          },
+          "hide_left":{
+            "type":"boolean"
+          },
+          "h":{
+            "type":"number"
+          },
+          "cr":[],
+          "w":{
+            "type":"number"
+          },
+          "percent":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":" How much of the rounded bar is visible depends on\n the given percentage value.\n\n Note that this shape is not closed and thus filling it doesn't make much\n sense.\n\n \n\n![Usage example](../images/AUTOGEN_gears_shape_radial_progress.svg)\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A partial rounded bar.",
+      "name":"radial_progress",
+      "kind":"static module functions",
+      "usage":["shape.radial_progress(cr, 70, 20, .3)\nshape.radial_progress(cr, 70, 20, .6)\nshape.radial_progress(cr, 70, 20, .9)\n"],
+      "args":"(cr, w, h, percent, hide_left)",
+      "type":"staticfct",
+      "lineno":907
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"shape",
+        "map":{
+          "shape":" A shape function"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "shape":[]
+        },
+        "return":[[]],
+        "param":{
+          "1":[],
+          "shape":[]
+        },
+        "usage":[[]]
+      },
+      "description":" Apply various transformations to the shape\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Adjust the shape using a transformation object",
+      "name":"transform",
+      "kind":"static module functions",
+      "usage":["gears.shape.transform(gears.shape.rounded_bar)\n   : rotate(math.pi/2)\n      : translate(10, 10)\n"],
+      "args":"(shape)",
+      "type":"staticfct",
+      "lineno":974
+    }],
+  "type":"themelib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/shape.lua",
+  "package":"",
+  "tags":{
+    "author":["Emmanuel Lepage Vallee"],
+    "copyright":"2011-2016 Emmanuel Lepage Vallee"
+  },
+  "lineno":44
+}

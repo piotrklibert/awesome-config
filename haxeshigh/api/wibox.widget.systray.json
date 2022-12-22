@@ -1,0 +1,352 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"wibox.widget.systray",
+  "summary":"",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.widget.systray",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"string",
+        "map":{
+          "string":" The color (string like \"#ff0000\" only)"
+        }
+      },
+      "summary":"The systray background color.",
+      "name":"beautiful.bg_systray",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "string":[]
+        },
+        "field":{
+          "1":[],
+          "string":[]
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(string)",
+      "tags":[],
+      "lineno":33
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"The",
+        "map":{
+          "The":" positive number of rows"
+        }
+      },
+      "summary":"The maximum number of rows for systray icons.",
+      "name":"beautiful.systray_max_rows",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          },
+          "The":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          },
+          "The":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          }
+        }
+      },
+      "description":" Icons will fill the\n current column (orthogonally to the systray direction) before\n filling the next column.\n",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"([The=1])",
+      "tags":[],
+      "lineno":40
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"The",
+        "map":{
+          "The":" icon spacing"
+        }
+      },
+      "summary":"The systray icon spacing.",
+      "name":"beautiful.systray_icon_spacing",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"0",
+            "type":"integer",
+            "opt":"0"
+          },
+          "The":{
+            "optchain":"0",
+            "type":"integer",
+            "opt":"0"
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"0",
+            "type":"integer",
+            "opt":"0"
+          },
+          "The":{
+            "optchain":"0",
+            "type":"integer",
+            "opt":"0"
+          }
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"([The=0])",
+      "tags":[],
+      "lineno":45
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"size",
+        "map":{
+          "size":" The base size"
+        }
+      },
+      "summary":"Set the size of a single icon.",
+      "name":"base_size",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"integer|nil"
+          },
+          "size":{
+            "type":"integer|nil"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"integer|nil"
+          },
+          "size":{
+            "type":"integer|nil"
+          }
+        }
+      },
+      "description":"\n\n If this is set to nil, then the size is picked dynamically based on the\n available space. Otherwise, any single icon has a size of `size`x`size`.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(size)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":149
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"horiz",
+        "map":{
+          "horiz":" Use horizontal mode?"
+        }
+      },
+      "summary":"Decide between horizontal or vertical display.",
+      "name":"horizontal",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "horiz":{
+            "type":"boolean"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "horiz":{
+            "type":"boolean"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(horiz)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":163
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"rev",
+        "map":{
+          "rev":" Display in reverse order."
+        }
+      },
+      "summary":"Should the systray icons be displayed in reverse order?",
+      "name":"reverse",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "rev":{
+            "type":"boolean"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "rev":{
+            "type":"boolean"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(rev)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":177
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"s",
+        "map":{
+          "s":" The screen to display on."
+        }
+      },
+      "summary":"Set the screen that the systray should be displayed on.",
+      "name":"screen",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"screen|\"primary\""
+          },
+          "s":{
+            "type":"screen|\"primary\""
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"screen|\"primary\""
+          },
+          "s":{
+            "type":"screen|\"primary\""
+          }
+        }
+      },
+      "description":"\n\n This can either be a screen, in which case the systray will be displayed on\n exactly that screen, or the string `\"primary\"`, in which case it will be\n visible on the primary screen. The default value is \"primary\".\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(s)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":195
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"revers",
+        "map":{
+          "revers":" Show in the opposite direction"
+        }
+      },
+      "summary":"Create the systray widget.",
+      "name":"wibox.widget.systray",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "revers":{
+            "type":"boolean"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "revers":{
+            "type":"boolean"
+          }
+        }
+      },
+      "description":"\n\n Note that this widget can only exist once.\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(revers)",
+      "tags":[],
+      "lineno":211
+    }],
+  "type":"widgetmod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/widget/systray.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2010 Uli Schlachter",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":8
+}

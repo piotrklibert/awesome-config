@@ -1,0 +1,277 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "mod_name":"gears.wallpaper",
+  "summary":"Functions for setting the wallpaper.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.wallpaper",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"\n\n This module is deprecated, please use `awful.wallpaper`.\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"s",
+        "map":{
+          "s":" The screen to set the wallpaper on or nil for all screens"
+        }
+      },
+      "summary":"Prepare the needed state for setting a wallpaper.",
+      "name":"prepare_context",
+      "modifiers":{
+        "return":[{
+            "1":true
+          },{
+            "1":true
+          }],
+        "param":{
+          "1":[],
+          "s":[]
+        },
+        "field":{
+          "1":[],
+          "s":[]
+        }
+      },
+      "description":"\n This function returns a cairo context through which a wallpaper can be drawn.\n The context is only valid for a short time and should not be saved in a\n global variable.",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(s)",
+      "tags":[],
+      "lineno":40
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"pattern",
+        "map":{
+          "pattern":" The wallpaper that should be set. This can be a cairo surface,\n   a description for gears.color or a cairo pattern."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "pattern":[]
+        },
+        "field":{
+          "1":[],
+          "pattern":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the current wallpaper.",
+      "name":"set",
+      "type":"deprecated",
+      "args":"(pattern)",
+      "kind":"deprecated functions",
+      "lineno":101
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"surf",
+        "2":"s",
+        "3":"background",
+        "4":"scale",
+        "map":{
+          "surf":" The wallpaper to center. Either a cairo surface or a file name.",
+          "scale":" The scale factor for the wallpaper. Default is 1 (original size).",
+          "background":" The background color that should be used. Gets handled via\n   gears.color. The default is black.",
+          "s":" The screen whose wallpaper should be set. Can be nil, in which case\n   all screens are set."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "surf":[],
+          "scale":[],
+          "background":[],
+          "s":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "surf":[],
+          "scale":[],
+          "background":[],
+          "s":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set a centered wallpaper.",
+      "name":"centered",
+      "type":"deprecated",
+      "args":"(surf, s, background, scale)",
+      "kind":"deprecated functions",
+      "lineno":125
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"surf",
+        "2":"s",
+        "3":"offset",
+        "map":{
+          "surf":" The wallpaper to tile. Either a cairo surface or a file name.",
+          "offset":" This can be set to a table with entries x and y.",
+          "s":" The screen whose wallpaper should be set. Can be nil, in which case\n   all screens are set."
+        }
+      },
+      "summary":"Set a tiled wallpaper.",
+      "name":"tiled",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "surf":[],
+          "offset":[],
+          "s":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "surf":[],
+          "offset":[],
+          "s":[]
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(surf, s, offset)",
+      "tags":[],
+      "lineno":167
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"surf",
+        "2":"s",
+        "3":"ignore_aspect",
+        "4":"offset",
+        "map":{
+          "surf":" The wallpaper to set. Either a cairo surface or a file name.",
+          "ignore_aspect":" If this is true, the image's aspect ratio is ignored.\n   The default is to honor the aspect ratio.",
+          "offset":" This can be set to a table with entries x and y.",
+          "s":" The screen whose wallpaper should be set. Can be nil, in which case\n   all screens are set."
+        }
+      },
+      "summary":"Set a maximized wallpaper.",
+      "name":"maximized",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "surf":[],
+          "ignore_aspect":[],
+          "offset":[],
+          "s":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "surf":[],
+          "ignore_aspect":[],
+          "offset":[],
+          "s":[]
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(surf, s, ignore_aspect, offset)",
+      "tags":[],
+      "lineno":199
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"surf",
+        "2":"s",
+        "3":"background",
+        "map":{
+          "surf":" The wallpaper to set. Either a cairo surface or a file name.",
+          "background":" The background color that should be used. Gets handled via\n   gears.color. The default is black.",
+          "s":" The screen whose wallpaper should be set. Can be nil, in which case\n   all screens are set."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "surf":[],
+          "background":[],
+          "s":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "surf":[],
+          "background":[],
+          "s":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set a fitting wallpaper.",
+      "name":"fit",
+      "type":"deprecated",
+      "args":"(surf, s, background)",
+      "kind":"deprecated functions",
+      "lineno":242
+    }],
+  "type":"utillib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/wallpaper.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2012 Uli Schlachter"
+  },
+  "lineno":11
+}

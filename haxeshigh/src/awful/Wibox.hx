@@ -2,6 +2,7 @@ package awful;
 import haxe.Constraints;
 
 import utils.Common;
+import lua.Table.AnyTable;
 
 // TODO: change the names, container widget from awesome is too close to
 // built-in "Constraints" module
@@ -67,8 +68,8 @@ typedef Align = {
 }
 
 typedef Layouts = {
-  align: Class<Widget>,
-  fixed: Class<Widget>,
+  align: Align,
+  fixed: Align,
   flex: Class<Widget>,
   grid: Class<Widget>,
   manual: Class<Widget>,
@@ -92,37 +93,37 @@ typedef Containers = {
 
 @:luaRequire("wibox")
 extern class Wibox extends Widget {
-  public var visible: Bool;              // Visibility.
-  public var opacity: Float;             // The opacity, between 0 and 1. (default 1)
-  public var type: String;               // The window type (desktop, normal, dock).
-  public var x: Int;                     // The x coordinates.
-  public var y: Int;                     // The y coordinates.
-  public var width: Int;                 // The width.
-  public var height: Int;                // The height.
+    public var visible: Bool;              // Visibility.
+    public var opacity: Float;             // The opacity, between 0 and 1. (default 1)
+    public var type: String;               // The window type (desktop, normal, dock).
+    public var x: Int;                     // The x coordinates.
+    public var y: Int;                     // The y coordinates.
+    public var width: Int;                 // The width.
+    public var height: Int;                // The height.
 
-  @:selfCall
-  @:overload(function (o: WiboxArgs): Wibox {})
-  public function new(tbl: LuaTable);
-
-
-  public static var layout: Layouts;
-  public static var container: Containers;
-  public static var widget: Widgets;
+    @:selfCall
+    @:overload(function (o: AnyTable): Wibox {})
+    public function new(o: WiboxArgs);
 
 
-  @:native("widget")
-  public static function makeWidget(t: LuaTable): Widget;
+    public static var layout: Layouts;
+    public static var container: Containers;
+    public static var widget: Widgets;
 
 
-  public function setup(table: LuaTable): Void;
-  public function connect_signal(s: String, f: Function): Void;
+    @:native("widget")
+    public static function makeWidget(t: LuaTable): Widget;
 
-  @:overload(function (): Geometry {})
-  public function geometry(table: PartialGeometry): Void;
 
-  public function buttons(buttons_table: LuaTable): LuaTable;          // Get or set mouse buttons bindings to a wibox.
-  public function struts(?strut: Struts): Struts;                      // Get or set wibox struts.
-  public function find_widgets(x: Int, y: Int): Widget;                // Find a widget by a point.
-  public function to_widget(): Widget;                                 // Create a widget that reflects the current state of this wibox.
-  public function save_to_svg(path: String, ?context: LuaTable): Void; // Save a screenshot of the wibox to path.
+    public function setup(table: LuaTable): Void;
+    public function connect_signal(s: String, f: Function): Void;
+
+    @:overload(function (): Geometry {})
+    public function geometry(table: PartialGeometry): Void;
+
+    public function buttons(buttons_table: LuaTable): LuaTable;          // Get or set mouse buttons bindings to a wibox.
+    public function struts(?strut: Struts): Struts;                      // Get or set wibox struts.
+    public function find_widgets(x: Int, y: Int): Widget;                // Find a widget by a point.
+    public function to_widget(): Widget;                                 // Create a widget that reflects the current state of this wibox.
+    public function save_to_svg(path: String, ?context: LuaTable): Void; // Save a screenshot of the wibox to path.
 }

@@ -1,0 +1,17 @@
+{
+  "name":"testinputfields.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/testinputfields.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"testinputfields.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"local input = require 'pl.input'\nlocal sum = 0.0\nlocal count = 0\nlocal text = [[\n    981124001\t2.0\t18988.4\t10047.1\t4149.7\n    981125001\t0.8\t19104.0\t9970.4\t5088.7\n    981127003\t0.5\t19012.5\t9946.9\t3831.2\n]]\nfor id,magn,x in input.fields(3,' ',text) do\n  sum = sum + x\n  count = count + 1\nend\nprint('average x coord is ',sum/count)\n"
+}

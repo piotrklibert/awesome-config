@@ -1030,7 +1030,13 @@ __haxe_ValueException.new = function(value,previous,native)
   return self
 end
 __haxe_ValueException.super = function(self,value,previous,native) 
-  __haxe_Exception.super(self,Std.string(value),previous,native);
+  __haxe_Exception.super(self,(function() 
+    local _hx_1
+    if (value == nil) then 
+    _hx_1 = "null"; else 
+    _hx_1 = Std.string(value); end
+    return _hx_1
+  end )(),previous,native);
   self.value = value;
 end
 __haxe_ValueException.__name__ = true
@@ -1279,7 +1285,7 @@ __pkg_PackageCommand.new = function()
   return self
 end
 __pkg_PackageCommand.super = function(self) 
-  self.argFilePath = "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
+  self.argFilePath = "/home/cji/priv/awesomescripts/haxeshigh/tmp/loading";
   self.PackageManager = _hx_funcToField(_G.PackageManager);
 end
 __pkg_PackageCommand.__name__ = true
@@ -1410,7 +1416,7 @@ __utils_Common.check_path = function()
     _hx_1 = -1; end
     return _hx_1
   end )() == -1) then 
-    _G.package.path = "/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;" .. _G.package.path;
+    _G.package.path = "/home/cji/priv/awesomescripts/haxeshigh/output/?.lua;" .. _G.package.path;
   end;
 end
 if _hx_bit_raw then
@@ -1472,7 +1478,7 @@ local _hx_static_init = function()
     return _hx_2
   end )();
   
-  __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
+  __log_Log.res_path = "/home/cji/priv/awesomescripts/haxeshigh/res";
   
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon="" .. __log_Log.res_path .. "/bang2.png",width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   

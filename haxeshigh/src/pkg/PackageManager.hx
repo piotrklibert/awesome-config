@@ -22,7 +22,7 @@ class PackageManager {
   private function new() {}
 
   public final argFilePath =
-    "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
+    "/home/cji/priv/awesomescripts/haxeshigh/tmp/loading";
 
   public final packages: Array<PackageDefinition> = [];
   public final widgetCache: Map<String, awful.Widget> = [];

@@ -1,0 +1,700 @@
+{
+  "kind":"manual",
+  "name":"08-additional.md",
+  "display_name":"Additional Libraries",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+  "section":{
+    "display_name":"Simple Test Framework",
+    "name":"Simple_Test_Framework",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+      "items":["<reference cycle>",{
+          "display_name":"Simple Input Patterns",
+          "name":"Simple_Input_Patterns",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"simple input patterns ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Simple Input Patterns",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Command-line Programs with Lapp",
+          "name":"Command_line_Programs_with_Lapp",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"command-line programs with lapp ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Command-line Programs with Lapp",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"simple test framework ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Simple Test Framework",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Additional Libraries",
+      "sections":{
+        "528":"Simple_Test_Framework",
+        "8":"Simple_Input_Patterns",
+        "160":"Command_line_Programs_with_Lapp"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Simple Input Patterns",
+      "name":"Simple_Input_Patterns",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"simple input patterns ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Simple Input Patterns",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Command-line Programs with Lapp",
+            "name":"Command_line_Programs_with_Lapp",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"command-line programs with lapp ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Command-line Programs with Lapp",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Simple Test Framework",
+            "name":"Simple_Test_Framework",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"simple test framework ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Simple Test Framework",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Additional Libraries",
+        "sections":{
+          "528":"Simple_Test_Framework",
+          "8":"Simple_Input_Patterns",
+          "160":"Command_line_Programs_with_Lapp"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"Command-line Programs with Lapp",
+      "name":"Command_line_Programs_with_Lapp",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+        "items":["<reference cycle>",{
+            "display_name":"Simple Input Patterns",
+            "name":"Simple_Input_Patterns",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"simple input patterns ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Simple Input Patterns",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"command-line programs with lapp ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Command-line Programs with Lapp",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Simple Test Framework",
+            "name":"Simple_Test_Framework",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"simple test framework ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Simple Test Framework",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Additional Libraries",
+        "sections":{
+          "528":"Simple_Test_Framework",
+          "8":"Simple_Input_Patterns",
+          "160":"Command_line_Programs_with_Lapp"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "Simple_Input_Patterns":{
+        "display_name":"Simple Input Patterns",
+        "name":"Simple_Input_Patterns",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"simple input patterns ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Simple Input Patterns",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Command-line Programs with Lapp",
+              "name":"Command_line_Programs_with_Lapp",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"command-line programs with lapp ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Command-line Programs with Lapp",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Simple Test Framework",
+              "name":"Simple_Test_Framework",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"simple test framework ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Simple Test Framework",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Additional Libraries",
+          "sections":{
+            "528":"Simple_Test_Framework",
+            "8":"Simple_Input_Patterns",
+            "160":"Command_line_Programs_with_Lapp"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Simple_Test_Framework":{
+        "display_name":"Simple Test Framework",
+        "name":"Simple_Test_Framework",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+          "items":["<reference cycle>",{
+              "display_name":"Simple Input Patterns",
+              "name":"Simple_Input_Patterns",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"simple input patterns ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Simple Input Patterns",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Command-line Programs with Lapp",
+              "name":"Command_line_Programs_with_Lapp",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"command-line programs with lapp ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Command-line Programs with Lapp",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"simple test framework ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Simple Test Framework",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Additional Libraries",
+          "sections":{
+            "528":"Simple_Test_Framework",
+            "8":"Simple_Input_Patterns",
+            "160":"Command_line_Programs_with_Lapp"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Command_line_Programs_with_Lapp":{
+        "display_name":"Command-line Programs with Lapp",
+        "name":"Command_line_Programs_with_Lapp",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+          "items":["<reference cycle>",{
+              "display_name":"Simple Input Patterns",
+              "name":"Simple_Input_Patterns",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"simple input patterns ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Simple Input Patterns",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"command-line programs with lapp ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Command-line Programs with Lapp",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Simple Test Framework",
+              "name":"Simple_Test_Framework",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"simple test framework ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Simple Test Framework",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Additional Libraries",
+          "sections":{
+            "528":"Simple_Test_Framework",
+            "8":"Simple_Input_Patterns",
+            "160":"Command_line_Programs_with_Lapp"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    },
+    "3":{
+      "display_name":"Simple Test Framework",
+      "name":"Simple_Test_Framework",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/08-additional.md",
+        "items":["<reference cycle>",{
+            "display_name":"Simple Input Patterns",
+            "name":"Simple_Input_Patterns",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"simple input patterns ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Simple Input Patterns",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Command-line Programs with Lapp",
+            "name":"Command_line_Programs_with_Lapp",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"command-line programs with lapp ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Command-line Programs with Lapp",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"simple test framework ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Simple Test Framework",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Additional Libraries",
+        "sections":{
+          "528":"Simple_Test_Framework",
+          "8":"Simple_Input_Patterns",
+          "160":"Command_line_Programs_with_Lapp"
+        }
+      },
+      "type":"section",
+      "summary":""
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"simple input patterns ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Simple Input Patterns",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"command-line programs with lapp ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Command-line Programs with Lapp",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"simple test framework ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Simple Test Framework",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"08-additional.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Additional Libraries\n\nLibraries in this section are no longer considered to be part of the Penlight\ncore, but still provide specialized functionality when needed.\n\n<a id=\"sip\"/>\n\n### Simple Input Patterns\n\nLua string pattern matching is very powerful, and usually you will not need a\ntraditional regular expression library.  Even so, sometimes Lua code ends up\nlooking like Perl, which happens because string patterns are not always the\neasiest things to read, especially for the casual reader.  Here is a program\nwhich needs to understand three distinct date formats:\n\n    -- parsing dates using Lua string patterns\n    months={Jan=1,Feb=2,Mar=3,Apr=4,May=5,Jun=6,\n    Jul=7,Aug=8,Sep=9,Oct=10,Nov=11,Dec=12}\n\n    function check_and_process(d,m,y)\n        d = tonumber(d)\n        m = tonumber(m)\n        y = tonumber(y)\n        ....\n    end\n\n    for line in f:lines() do\n        -- ordinary (English) date format\n        local d,m,y = line:match('(%d+)/(%d+)/(%d+)')\n        if d then\n            check_and_process(d,m,y)\n        else -- ISO date??\n            y,m,d = line:match('(%d+)%-(%d+)%-(%d+)')\n            if y then\n                check_and_process(d,m,y)\n            else -- <day> <month-name> <year>?\n                d,mm,y = line:match('%(d+)%s+(%a+)%s+(%d+)')\n                m = months[mm]\n                check_and_process(d,m,y)\n            end\n        end\n    end\n\nThese aren't particularly difficult patterns, but already typical issues are\nappearing, such as having to escape '-'. Also, `string.match` returns its\ncaptures, so that we're forced to use a slightly awkward nested if-statement.\n\nVerification issues will further cloud the picture, since regular expression\npeople try to enforce constraints (like year cannot be more than four digits)\nusing regular expressions, on the usual grounds that you shouldn't stop using a\nhammer when you are enjoying yourself.\n\n`pl.sip` provides a simple, intuitive way to detect patterns in strings and\nextract relevant parts.\n\n    > sip = require 'pl.sip'\n    > dump = require('pl.pretty').dump\n    > res = {}\n    > c = sip.compile 'ref=$S{file}:$d{line}'\n    > = c('ref=hello.c:10',res)\n    true\n    > dump(res)\n    {\n      line = 10,\n      file = \"hello.c\"\n    }\n    > = c('ref=long name, no line',res)\n    false\n\n`sip.compile` creates a pattern matcher function, which takes a string and a\ntable as arguments. If the string matches the pattern, then `true` is returned\nand the table is populated according to the captures within the pattern.\n\nHere is another version of the date parser:\n\n    -- using SIP patterns\n    function check(t)\n        check_and_process(t.day,t.month,t.year)\n    end\n\n    shortdate = sip.compile('$d{day}/$d{month}/$d{year}')\n    longdate = sip.compile('$d{day} $v{mon} $d{year}')\n    isodate = sip.compile('$d{year}-$d{month}-$d{day}')\n\n    for line in f:lines() do\n        local res = {}\n        if shortdate(str,res) then\n            check(res)\n        elseif isodate(str,res) then\n            check(res)\n        elseif longdate(str,res) then\n            res.month = months[res.mon]\n            check(res)\n        end\n    end\n\nSIP captures start with '$', then a one-character type, and then an\noptional variable name in curly braces.\n\n    Type      Meaning\n    v         identifier\n    i         possibly signed integer\n    f         floating-point number\n    r         rest of line\n    q         quoted string (quoted using either ' or \")\n    p         a path name\n    (         anything inside balanced parentheses\n    [         anything inside balanced brackets\n    {         anything inside balanced curly brackets\n    <         anything inside balanced angle brackets\n\nIf a type is not one of the above, then it's assumed to be one of the standard\nLua character classes, and will match one or more repetitions of that class.\nAny spaces you leave in your pattern will match any number of spaces, including\nzero, unless the spaces are between two identifier characters or patterns\nmatching them; in that case, at least one space will be matched.\n\nSIP captures (like `$v{mon}`) do not have to be named. You can use just `$v`, but\nyou have to be consistent; if a pattern contains unnamed captures, then all\ncaptures must be unnamed. In this case, the result table is a simple list of\nvalues.\n\n`sip.match` is a useful shortcut if you want to compile and match in one call,\nwithout saving the compiled pattern. It caches the result, so it is not much\nslower than explicitly using `sip.compile`.\n\n    > sip.match('($q{first},$q{second})','(\"john\",\"smith\")',res)\n    true\n    > res\n    {second='smith',first='john'}\n    > res = {}\n    > sip.match('($q,$q)','(\"jan\",\"smit\")',res)  -- unnamed captures\n    true\n    > res\n    {'jan','smit'}\n    > sip.match('($q,$q)','(\"jan\", \"smit\")',res)\n    false   ---> oops! Can't handle extra space!\n    > sip.match('( $q , $q )','(\"jan\", \"smit\")',res)\n    true\n\nAs a general rule, allow for whitespace in your patterns.\n\nFinally, putting a '$' at the end of a pattern means 'capture the rest of the\nline, starting at the first non-space'. It is a shortcut for '$r{rest}',\nor just '$r' if no named captures are used.\n\n    > sip.match('( $q , $q ) $','(\"jan\", \"smit\") and a string',res)\n    true\n    > res\n    {'jan','smit','and a string'}\n    > res = {}\n    > sip.match('( $q{first} , $q{last} ) $','(\"jan\", \"smit\") and a string',res)\n    true\n    > res\n    {first='jan',rest='and a string',last='smit'}\n\n\n<a id=\"lapp\"/>\n\n### Command-line Programs with Lapp\n\n`pl.lapp` is a small and focused Lua module which aims to make standard\ncommand-line parsing easier and intuitive. It implements the standard GNU style,\ni.e. short flags with one letter start with '-', and there may be an additional\nlong flag which starts with '--'. Generally options which take an argument expect\nto find it as the next parameter (e.g. 'gcc test.c -o test') but single short\noptions taking a value can dispense with the space (e.g. 'head -n4\ntest.c' or `gcc -I/usr/include/lua/5.1 ...`)\n\nAs far as possible, Lapp will convert parameters into their equivalent Lua types,\ni.e. convert numbers and convert filenames into file objects. If any conversion\nfails, or a required parameter is missing, an error will be issued and the usage\ntext will be written out. So there are two necessary tasks, supplying the flag\nand option names and associating them with a type.\n\nFor any non-trivial script, even for personal consumption, it's necessary to\nsupply usage text. The novelty of Lapp is that it starts from that point and\ndefines a loose format for usage strings which can specify the names and types of\nthe parameters.\n\nAn example will make this clearer:\n\n    -- scale.lua\n      lapp = require 'pl.lapp'\n      local args = lapp [[\n      Does some calculations\n        -o,--offset (default 0.0)  Offset to add to scaled number\n        -s,--scale  (number)  Scaling factor\n        <number> (number)  Number to be scaled\n      ]]\n\n      print(args.offset + args.scale * args.number)\n\nHere is a command-line session using this script:\n\n      $ lua scale.lua\n      scale.lua:missing required parameter: scale\n\n      Does some calculations\n       -o,--offset (default 0.0)  Offset to add to scaled number\n       -s,--scale  (number)  Scaling factor\n        <number> (number )  Number to be scaled\n\n      $ lua scale.lua -s 2.2 10\n      22\n\n      $ lua scale.lua -s 2.2 x10\n      scale.lua:unable to convert to number: x10\n\n      ....(usage as before)\n\nThere are two kinds of lines in Lapp usage strings which are meaningful; option\nand parameter lines. An option line gives the short option, optionally followed\nby the corresponding long option. A type specifier in parentheses may follow.\nSimilarly, a parameter line starts with '<NAME>', followed by a type\nspecifier.\n\nType specifiers usually start with a type name: one of 'boolean', 'string','number','file-in' or\n'file-out'.  You may leave this out, but then _must_ say 'default' followed by a value.\nIf a flag or parameter has a default, it is not _required_ and is set to the default. The actual\ntype is deduced from this value (number, string, file or boolean) if not provided directly.\n'Deduce' is a fancy word for 'guess' and it can be wrong, e.g '(default 1)'\nwill always be a number. You can say '(string default 1)' to override the guess.\nThere are file values for the predefined console streams: stdin, stdout, stderr.\n\nThe boolean type is the default for flags. Not providing the type specifier is equivalent to\n'(boolean default false)`.  If the flag is meant to be 'turned off' then either the full\n'(boolean default true)` or the shortcut '(default true)' will work.\n\nAn alternative to `default` is `optional`:\n\n    local lapp = require 'pl.lapp'\n    local args = lapp [[\n       --cmd (optional string) Command to run.\n    ]]\n\n    if args.cmd then\n      os.execute(args.cmd)\n    end\n\nHere we're implying that `cmd` need not be specified (just as with `default`) but if not\npresent, then `args.cmd` is `nil`, which will always test false.\n\nThe rest of the line is ignored and can be used for explanatory text.\n\nThis script shows the relation between the specified parameter names and the\nfields in the output table.\n\n      -- simple.lua\n      local args = require ('pl.lapp') [[\n      Various flags and option types\n        -p          A simple optional flag, defaults to false\n        -q,--quiet  A simple flag with long name\n        -o  (string)  A required option with argument\n        -s  (default 'save') Optional string with default 'save' (single quotes ignored)\n        -n  (default 1) Optional numerical flag with default 1\n        -b  (string default 1)  Optional string flag with default '1' (type explicit)\n        <input> (default stdin)  Optional input file parameter, reads from stdin\n      ]]\n\n      for k,v in pairs(args) do\n          print(k,v)\n      end\n\nI've just dumped out all values of the args table; note that args.quiet has\nbecome true, because it's specified; args.p defaults to false. If there is a long\nname for an option, that will be used in preference as a field name. A type or\ndefault specifier is not necessary for simple flags, since the default type is\nboolean.\n\n      $ simple -o test -q simple.lua\n      p       false\n      input   file (781C1BD8)\n      quiet   true\n      o       test\n      input_name      simple.lua\n      D:\\dev\\lua\\lapp>simple -o test simple.lua one two three\n      1       one\n      2       two\n      3       three\n      p       false\n      quiet   false\n      input   file (781C1BD8)\n      o       test\n      input_name      simple.lua\n\nThe parameter input has been set to an open read-only file object - we know it\nmust be a read-only file since that is the type of the default value. The field\ninput_name is automatically generated, since it's often useful to have access to\nthe original filename.\n\nNotice that any extra parameters supplied will be put in the result table with\ninteger indices, i.e. args[i] where i goes from 1 to #args.\n\nFiles don't really have to be closed explicitly for short scripts with a quick\nwell-defined mission, since the result of garbage-collecting file objects is to\nclose them.\n\n#### Enforcing a Range and Enumerations\n\nThe type specifier can also be of the form '(' MIN '..' MAX ')' or a set of strings\nseparated by '|'.\n\n    local lapp = require 'pl.lapp'\n    local args = lapp [[\n        Setting ranges\n        <x> (1..10)  A number from 1 to 10\n        <y> (-5..1e6) Bigger range\n        <z> (slow|medium|fast)\n    ]]\n\n    print(args.x,args.y)\n\nHere the meaning of ranges is that the value is greater or equal to MIN and less or equal\nto MAX.\nAn 'enum' is a _string_ that can only have values from a specified set.\n\n#### Custom Types\n\nThere is no builti-in way to force a parameter to be a whole number, but\nyou may define a custom type that does this:\n\n    lapp = require ('pl.lapp')\n\n    lapp.add_type('integer','number',\n        function(x)\n            lapp.assert(math.ceil(x) == x, 'not an integer!')\n        end\n    )\n\n    local args =  lapp [[\n        <ival> (integer) Process PID\n    ]]\n\n    print(args.ival)\n\n`lapp.add_type` takes three parameters, a type name, a converter and a constraint\nfunction. The constraint function is expected to throw an assertion if some\ncondition is not true; we use `lapp.assert` because it fails in the standard way\nfor a command-line script. The converter argument can either be a type name known\nto Lapp, or a function which takes a string and generates a value.\n\nHere's a useful custom type that allows dates to be input as @{pl.Date} values:\n\n    local df = Date.Format()\n\n    lapp.add_type('date',\n        function(s)\n            local d,e = df:parse(s)\n            lapp.assert(d,e)\n            return d\n        end\n    )\n\n#### 'varargs' Parameter Arrays\n\n    lapp = require 'pl.lapp'\n    local args = lapp [[\n    Summing numbers\n        <numbers...> (number) A list of numbers to be summed\n    ]]\n\n    local sum = 0\n    for i,x in ipairs(args.numbers) do\n        sum = sum + x\n    end\n    print ('sum is '..sum)\n\nThe parameter number has a trailing '...', which indicates that this parameter is\na 'varargs' parameter. It must be the last parameter, and args.number will be an\narray.\n\nConsider this implementation of the head utility from Mac OS X:\n\n        -- implements a BSD-style head\n        -- (see http://www.manpagez.com/man/1/head/osx-10.3.php)\n\n        lapp = require ('pl.lapp')\n\n        local args = lapp [[\n        Print the first few lines of specified files\n           -n         (default 10)    Number of lines to print\n           <files...> (default stdin) Files to print\n        ]]\n\n        -- by default, lapp converts file arguments to an actual Lua file object.\n        -- But the actual filename is always available as <file>_name.\n        -- In this case, 'files' is a varargs array, so that 'files_name' is\n        -- also an array.\n        local nline = args.n\n        local nfile = #args.files\n        for i = 1,nfile do\n            local file = args.files[i]\n            if nfile > 1 then\n                print('==> '..args.files_name[i]..' <==')\n            end\n            local n = 0\n            for line in file:lines() do\n                print(line)\n                n = n + 1\n                if n == nline then break end\n            end\n        end\n\nNote how we have access to all the filenames, because the auto-generated field\n`files_name` is also an array!\n\n(This is probably not a very considerate script, since Lapp will open all the\nfiles provided, and only close them at the end of the script. See the `xhead.lua`\nexample for another implementation.)\n\nFlags and options may also be declared as vararg arrays, and can occur anywhere.\nIf there is both a short and long form, then the trailing \"...\" must happen after the long form,\nfor example \"-x,--network... (string)...\",\n\nBear in mind that short options can be combined (like 'tar -xzf'), so it's\nperfectly legal to have '-vvv'. But normally the value of args.v is just a simple\n`true` value.\n\n    local args = require ('pl.lapp') [[\n       -v...  Verbosity level; can be -v, -vv or -vvv\n    ]]\n    vlevel = not args.v[1] and 0 or #args.v\n    print(vlevel)\n\nThe vlevel assigment is a bit of Lua voodoo, so consider the cases:\n\n    * No -v flag, v is just { false }\n    * One -v flags, v is { true }\n    * Two -v flags, v is { true, true }\n    * Three -v flags, v is { true, true, true }\n\n#### Defining a Parameter Callback\n\nIf a script implements `lapp.callback`, then Lapp will call it after each\nargument is parsed. The callback is passed the parameter name, the raw unparsed\nvalue, and the result table. It is called immediately after assignment of the\nvalue, so the corresponding field is available.\n\n    lapp = require ('pl.lapp')\n\n    function lapp.callback(parm,arg,args)\n        print('+',parm,arg)\n    end\n\n    local args = lapp [[\n    Testing parameter handling\n        -p               Plain flag (defaults to false)\n        -q,--quiet       Plain flag with GNU-style optional long name\n        -o  (string)     Required string option\n        -n  (number)     Required number option\n        -s (default 1.0) Option that takes a number, but will default\n        <start> (number) Required number argument\n        <input> (default stdin)  A parameter which is an input file\n        <output> (default stdout) One that is an output file\n    ]]\n    print 'args'\n    for k,v in pairs(args) do\n        print(k,v)\n    end\n\nThis produces the following output:\n\n    $ args -o name -n 2 10 args.lua\n    +       o       name\n    +       n       2\n    +       start   10\n    +       input   args.lua\n    args\n    p       false\n    s       1\n    input_name      args.lua\n    quiet   false\n    output  file (781C1B98)\n    start   10\n    input   file (781C1BD8)\n    o       name\n    n       2\n\nCallbacks are needed when you want to take action immediately on parsing an\nargument.\n\n#### Slack Mode\n\nIf you'd like to use a multi-letter 'short' parameter you need to set\nthe `lapp.slack` variable to `true`.\n\nIn the following example we also see how default `false` and default `true` flags can be used\nand how to overwrite the default `-h` help flag (`--help` still works fine) - this applies\nto non-slack mode as well.\n\n    -- Parsing the command line ----------------------------------------------------\n    -- test.lua\n    local lapp = require 'pl.lapp'\n    local pretty = require 'pl.pretty'\n    lapp.slack = true\n    local args = lapp [[\n    Does some calculations\n       -v, --video              (string)             Specify input video\n       -w, --width              (default 256)        Width of the video\n       -h, --height             (default 144)        Height of the video\n       -t, --time               (default 10)         Seconds of video to process\n       -sk,--seek               (default 0)          Seek number of seconds\n       -f1,--flag1                                   A false flag\n       -f2,--flag2                                   A false flag\n       -f3,--flag3              (default true)       A true flag\n       -f4,--flag4              (default true)       A true flag\n    ]]\n\n    pretty.dump(args)\n\nAnd here we can see the output of `test.lua`:\n\n    $> lua test.lua -v abc --time 40 -h 20 -sk 15 --flag1 -f3\n    ---->\n    {\n      width = 256,\n      flag1 = true,\n      flag3 = false,\n      seek = 15,\n      flag2 = false,\n      video = abc,\n      time = 40,\n      height = 20,\n      flag4 = true\n    }\n\n### Simple Test Framework\n\n`pl.test` was originally developed for the sole purpose of testing Penlight itself,\nbut you may find it useful for your own applications. ([There are many other options](http://lua-users.org/wiki/UnitTesting).)\n\nMost of the goodness is in `test.asserteq`.  It uses `tablex.deepcompare` on its two arguments,\nand by default quits the test application with a non-zero exit code, and an informative\nmessage printed to stderr:\n\n    local test = require 'pl.test'\n\n    test.asserteq({10,20,30},{10,20,30.1})\n\n    --~ test-test.lua:3: assertion failed\n    --~ got:\t{\n    --~  [1] = 10,\n    --~  [2] = 20,\n    --~  [3] = 30\n    --~ }\n    --~ needed:\t{\n    --~  [1] = 10,\n    --~  [2] = 20,\n    --~  [3] = 30.1\n    --~ }\n    --~ these values were not equal\n\nThis covers most cases but it's also useful to compare strings using `string.match`\n\n    -- must start with bonzo the dog\n    test.assertmatch ('bonzo the dog is here','^bonzo the dog')\n    -- must end with an integer\n    test.assertmatch ('hello 42','%d+$')\n\nSince Lua errors are usually strings, this matching strategy is used to test 'exceptions':\n\n    test.assertraise(function()\n        local t = nil\n        print(t.bonzo)\n    end,'nil value')\n\n(Some care is needed to match the essential part of the thrown error if you care\nfor portability, since in Lua 5.2\nthe exact error is \"attempt to index local 't' (a nil value)\" and in Lua 5.3 the error\nis \"attempt to index a nil value (local 't')\")\n\nThere is an extra optional argument to these test functions, which is helpful when writing\ntest helper functions. There you want to highlight the failed line, not the actual call\nto `asserteq` or `assertmatch` - line 33 here is the call to `is_iden`\n\n    function is_iden(str)\n        test.assertmatch(str,'^[%a_][%w_]*$',1)\n    end\n\n    is_iden 'alpha_dog'\n    is_iden '$dollars'\n\n    --~ test-test.lua:33: assertion failed\n    --~ got:\t\"$dollars\"\n    --~ needed:\t\"^[%a_][%w_]*$\"\n    --~ these strings did not match\n\nUseful Lua functions often return multiple values, and `test.tuple` is a convenient way to\ncapture these values, whether they contain nils or not.\n\n    T = test.tuple\n\n    --- common error pattern\n    function failing()\n        return nil,'failed'\n    end\n\n    test.asserteq(T(failing()),T(nil,'failed'))\n\n"
+}

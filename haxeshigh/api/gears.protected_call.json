@@ -1,0 +1,68 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "mod_name":"gears.protected_call",
+  "summary":"",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.protected_call",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"func",
+        "2":"...",
+        "map":{
+          "...":" Arguments to the function",
+          "func":" The function to call"
+        }
+      },
+      "summary":"Call a function in protected mode and handle error-reporting.",
+      "name":"gears.protected_call",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"function"
+          },
+          "2":[],
+          "...":[],
+          "func":{
+            "type":"function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"function"
+          },
+          "2":[],
+          "...":[],
+          "func":{
+            "type":"function"
+          }
+        }
+      },
+      "description":"\n If the function call succeeds, all results of the function are returned.\n Otherwise, an error message is printed and nothing is returned.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(func, ...)",
+      "tags":[],
+      "lineno":47
+    }],
+  "type":"utillib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/protected_call.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2016 Uli Schlachter"
+  },
+  "lineno":7
+}

@@ -1,0 +1,17 @@
+{
+  "name":"testconfig.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/testconfig.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"testconfig.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"local stringio = require 'pl.stringio'\nlocal config = require 'pl.config'\n\nlocal function dump(t,indent)\n    if type(t) == 'table' then\n        io.write(indent,'{\\n')\n        local newindent = indent..'  '\n        for k,v in pairs(t) do\n            io.write(newindent,k,'=')\n            dump(v,indent)\n            io.write('\\n')\n        end\n        io.write(newindent,'},\\n')\n    else\n        io.write(indent,t,'(',type(t),')')\n    end\nend\n\n\nlocal function testconfig(test)\n    local f = stringio.open(test)\n    local c = config.read(f)\n    f:close()\n    dump(c,'  ')\n    print '-----'\nend\n\ntestconfig [[\n ; comment 2 (an ini file)\n[section!]\nbonzo.dog=20,30\nconfig_parm=here we go again\ndepth = 2\n[another]\nfelix=\"cat\"\n]]\n\ntestconfig [[\n# this is a more Unix-y config file\nfred = 1\nalice = 2\nhome = /bonzo/dog/etc\n]]\n\ntestconfig [[\n# this is just a set of comma-separated values\n1000,444,222\n44,555,224\n]]\n\n\n"
+}

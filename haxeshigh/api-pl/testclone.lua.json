@@ -1,0 +1,17 @@
+{
+  "name":"testclone.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/testclone.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"testclone.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"--cloning a directory tree.\nlocal lfs = require 'lfs'\nlocal path = require 'pl.path'\nlocal dir = require 'pl.dir'\n\nlocal p1 = [[examples]]\nlocal p2 = [[copy/of/examples]]\n\nif not path.isfile 'examples/testclone.lua' then\n\treturn print 'please run this in the penlight folder (below examples)'\nend\n\n-- make a copy of the examples folder\ndir.clonetree(p1,p2,dir.copyfile)\n\nassert(path.isdir 'copy')\n\nprint '---'\nlocal t = os.time()\nprint(lfs.touch('examples/testclone.lua',t,t+10))\n\n-- this should only update this file\ndir.clonetree(p1,p2,\nfunction(f1,f2)\n  local t1 = path.getmtime(f1)\n  local t2 = path.getmtime(f2)\n  --print(f1,t1,f2,t2)\n  if t1 > t2 then\n\tdir.copyfile(f1,f2)\n\tprint(f1,f2,t1,t2)\n  end\n  return true\nend)\n\n-- and get rid of the whole copy directory, with subdirs\ndir.rmtree 'copy'\n\nassert(not path.exists 'copy')\n\n\n"
+}

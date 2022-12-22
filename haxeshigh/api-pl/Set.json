@@ -1,0 +1,598 @@
+{
+  "name":"pl.Set",
+  "kind":"classes",
+  "inferred":true,
+  "description":"\n\n     > Set = require 'pl.Set'\n     > = Set{'one','two'} == Set{'two','one'}\n     true\n     > fruit = Set{'apple','banana','orange'}\n     > = fruit['banana']\n     true\n     > = fruit['hazelnut']\n     nil\n     > colours = Set{'red','orange','green','blue'}\n     > = fruit,colours\n     [apple,orange,banana]   [blue,green,orange,red]\n     > = fruit+colours\n     [blue,green,apple,red,orange,banana]\n     [orange]\n     > more_fruits = fruit + 'apricot'\n     > = fruit*colours\n    > =  more_fruits, fruit\n    [banana,apricot,apple,orange]\t[banana,apple,orange]\n\n Dependencies: `pl.utils`, `pl.tablex`, `pl.class`, `pl.Map`, (`pl.List` if __tostring is used)",
+  "modifiers":[],
+  "summary":"A Set class.",
+  "sections":{
+    "by_name":[]
+  },
+  "mod_name":"Set",
+  "lineno":25,
+  "tags":[],
+  "package":"pl",
+  "items":[{
+      "name":"pl.Set:Set",
+      "description":" <br>",
+      "inferred":true,
+      "subparams":[],
+      "kind":"methods",
+      "params":{
+        "map":{
+          "t":" may be a Set, Map or list-like table."
+        },
+        "1":"t"
+      },
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "lineno":48,
+      "summary":"create a set.",
+      "args":"(t)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "section":"Methods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "summary":"string representation of a set.",
+      "lineno":60,
+      "args":"()",
+      "section":"Metamethods",
+      "name":"pl.Set:__tostring",
+      "params":{
+        "map":[]
+      },
+      "tags":{
+        "within":"Metamethods"
+      },
+      "kind":"metamethods",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "self":[]
+        },
+        "return":[[]]
+      },
+      "summary":"get a list of the values in a set.",
+      "lineno":68,
+      "retgroups":[{
+          "1":{
+            "text":"a list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self)",
+      "section":"Methods",
+      "name":"pl.Set:values",
+      "params":{
+        "map":{
+          "self":" a Set"
+        },
+        "1":"self"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "description":"",
+      "type":"function",
+      "ret":["a list"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "self":[],
+          "fn":[],
+          "...":[]
+        }
+      },
+      "summary":"map a function over the values of a set.",
+      "lineno":75,
+      "retgroups":[{
+          "1":{
+            "text":"a new set",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self, fn, ...)",
+      "type":"function",
+      "name":"pl.Set:map",
+      "parameter":"param",
+      "params":{
+        "1":"self",
+        "2":"fn",
+        "map":{
+          "self":" a Set",
+          "fn":" a function",
+          "...":" extra arguments to pass to the function."
+        },
+        "3":"..."
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["a new set"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "self":[],
+          "set":[]
+        }
+      },
+      "summary":"union of two sets (also +).",
+      "lineno":88,
+      "retgroups":[{
+          "1":{
+            "text":"a new set",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self, set)",
+      "type":"function",
+      "name":"pl.Set:union",
+      "parameter":"param",
+      "params":{
+        "1":"self",
+        "2":"set",
+        "map":{
+          "self":" a Set",
+          "set":" another set"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["a new set"]
+    },{
+      "name":"pl.Set:__add",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":109,
+      "summary":"union of sets.",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "self":[],
+          "set":[]
+        },
+        "return":[[]]
+      },
+      "summary":"intersection of two sets (also *).",
+      "lineno":125,
+      "retgroups":[{
+          "1":{
+            "text":"a new set",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self, set)",
+      "usage":["> s = Set{10,20,30}\n> t = Set{20,30,40}\n> = t\n[20,30,40]\n> = Set.intersection(s,t)\n[30,20]\n> = s*t\n[30,20]\n"],
+      "type":"function",
+      "name":"pl.Set:intersection",
+      "parameter":"param",
+      "params":{
+        "1":"self",
+        "2":"set",
+        "map":{
+          "self":" a Set",
+          "set":" another set"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["a new set"]
+    },{
+      "name":"pl.Set:__mul",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":132,
+      "summary":"intersection of sets.",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "self":[],
+          "set":[]
+        }
+      },
+      "summary":"new set with elements in the set that are not in the other (also -).",
+      "lineno":138,
+      "retgroups":[{
+          "1":{
+            "text":"a new set",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self, set)",
+      "type":"function",
+      "name":"pl.Set:difference",
+      "parameter":"param",
+      "params":{
+        "1":"self",
+        "2":"set",
+        "map":{
+          "self":" a Set",
+          "set":" another set"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["a new set"]
+    },{
+      "name":"pl.Set:__sub",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":158,
+      "summary":"difference of sets.",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "name":"pl.Set:__pow",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":171,
+      "summary":"symmetric difference of sets.",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "self":[],
+          "set":[]
+        }
+      },
+      "summary":"is the first set a subset of the second (also <)?.",
+      "lineno":177,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self, set)",
+      "type":"function",
+      "name":"pl.Set:issubset",
+      "parameter":"param",
+      "params":{
+        "1":"self",
+        "2":"set",
+        "map":{
+          "self":" a Set",
+          "set":" another set"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["true or false"]
+    },{
+      "name":"pl.Set:__lt",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":187,
+      "summary":"first set subset of second?",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "self":[]
+        }
+      },
+      "summary":"is the set empty?.",
+      "lineno":192,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(self)",
+      "type":"function",
+      "name":"pl.Set:isempty",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "self":" a Set"
+        },
+        "1":"self"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "s2":[],
+          "s1":[]
+        }
+      },
+      "summary":"are the sets disjoint?",
+      "lineno":201,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s1, s2)",
+      "type":"function",
+      "name":"pl.Set:isdisjoint",
+      "parameter":"param",
+      "params":{
+        "1":"s1",
+        "2":"s2",
+        "map":{
+          "s2":" another set",
+          "s1":" a Set"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":" (no elements in common).\n Uses naive definition, i.e. that intersection is empty",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "s":[]
+        },
+        "return":[[]]
+      },
+      "summary":"size of this set (also # for 5.2).",
+      "lineno":209,
+      "retgroups":[{
+          "1":{
+            "text":"size",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s)",
+      "section":"Methods",
+      "name":"pl.Set:len",
+      "params":{
+        "map":{
+          "s":" a Set"
+        },
+        "1":"s"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "description":"",
+      "type":"function",
+      "ret":["size"],
+      "parameter":"param"
+    },{
+      "name":"pl.Set:__len",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":214,
+      "summary":"cardinality of set (5.2).",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "summary":"equality between sets.",
+      "lineno":218,
+      "args":"(s1, s2)",
+      "section":"Metamethods",
+      "name":"pl.Set:__eq",
+      "params":{
+        "1":"s1",
+        "2":"s2",
+        "map":{
+          "s2":"",
+          "s1":""
+        }
+      },
+      "tags":{
+        "within":"Metamethods"
+      },
+      "kind":"metamethods",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/Penlight/lua/pl/Set.lua"
+}

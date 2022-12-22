@@ -1,0 +1,311 @@
+{
+  "inferred":true,
+  "kind":"widget_containers",
+  "mod_name":"wibox.container.constraint",
+  "summary":"Restrict a widget size using one of multiple available strategies.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.container.constraint",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_defaults_constraint.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" The widget"
+        }
+      },
+      "summary":"The widget to be constrained.",
+      "name":"widget",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(widget)",
+      "tags":{
+        "interface":["container"]
+      },
+      "lineno":52
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"strategy",
+        "map":{
+          "strategy":" Either 'max', 'min' or 'exact'."
+        }
+      },
+      "summary":"Set the strategy to use for the constraining.",
+      "name":"strategy",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "strategy":{
+            "type":"string"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "strategy":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n Valid values are:\n\n * **max**: Never allow the size to be larger than the limit.\n * **min**: Never allow the size to tbe below the limit.\n * **exact**: Force the widget size.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(strategy)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":77
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"width",
+        "map":{
+          "width":""
+        }
+      },
+      "summary":"Set the maximum width to val.",
+      "name":"width",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        }
+      },
+      "description":" nil for no width limit.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(width)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":109
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"height",
+        "map":{
+          "height":""
+        }
+      },
+      "summary":"Set the maximum height to val.",
+      "name":"height",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          }
+        }
+      },
+      "description":" nil for no height limit.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(height)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":125
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Reset this layout.",
+      "name":"reset",
+      "modifiers":{
+        "return":[],
+        "interface":[[]],
+        "field":[]
+      },
+      "description":"\n\nThe widget will be unreferenced, strategy set to \"max\"\n and the constraints set to nil.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "interface":["container"]
+      },
+      "lineno":142
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"strategy",
+        "3":"width",
+        "4":"height",
+        "map":{
+          "height":" The maximum height of the widget. nil for no limit.",
+          "widget":" A widget to use.",
+          "strategy":" How to constraint the size. 'max' (default), 'min' or\n 'exact'.",
+          "width":" The maximum width of the widget. nil for no limit."
+        }
+      },
+      "summary":"Returns a new constraint container.",
+      "name":"wibox.container.constraint",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "optchain":true,
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "opt":true
+          },
+          "4":{
+            "optchain":true,
+            "opt":true
+          },
+          "height":{
+            "optchain":true,
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "opt":true
+          },
+          "strategy":{
+            "optchain":true,
+            "opt":true
+          },
+          "width":{
+            "optchain":true,
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":true,
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "opt":true
+          },
+          "4":{
+            "optchain":true,
+            "opt":true
+          },
+          "height":{
+            "optchain":true,
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "opt":true
+          },
+          "strategy":{
+            "optchain":true,
+            "opt":true
+          },
+          "width":{
+            "optchain":true,
+            "opt":true
+          }
+        }
+      },
+      "description":"\n\n This container will constraint the size of a\n widget according to the strategy. Note that this will only work for layouts\n that respect the widget's size, eg. fixed layout. In layouts that don't\n (fully) respect widget's requested size, the inner widget still might get\n drawn with a size that does not fit the constraint, eg. in flex layout.",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"([widget[, strategy[, width[, height]]]])",
+      "tags":[],
+      "lineno":163
+    }],
+  "type":"containermod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/container/constraint.lua",
+  "package":"",
+  "tags":{
+    "author":["Lukáš Hrázký"],
+    "copyright":"2012 Lukáš Hrázký",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":14
+}

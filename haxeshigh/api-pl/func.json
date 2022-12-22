@@ -1,0 +1,376 @@
+{
+  "kind":"libraries",
+  "name":"pl.func",
+  "mod_name":"func",
+  "inferred":true,
+  "description":"\n Placeholder expressions are useful for short anonymous functions, and were\n inspired by the Boost Lambda library.\n\n    > utils.import 'pl.func'\n    > ls = List{10,20,30}\n    > = ls:map(_1+1)\n    {11,21,31}\n\n They can also be used to _bind_ particular arguments of a function.\n\n    > p = bind(print,'start>',_0)\n    > p(10,20,30)\n    > start>   10   20  30\n\n See @{07-functional.md.Creating_Functions_from_Functions|the Guide}\n\n Dependencies: `pl.utils`, `pl.tablex`",
+  "file":"/home/cji/portless/Penlight/lua/pl/func.lua",
+  "summary":"Functional helpers like composition, binding and placeholder expressions.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":20,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "tname":{
+            "type":"string"
+          },
+          "context":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"wrap a table of functions.",
+      "lineno":127,
+      "args":"(tname, context)",
+      "section":"function",
+      "name":"import",
+      "params":{
+        "1":"tname",
+        "2":"context",
+        "map":{
+          "tname":" a table name",
+          "context":" context to put results, defaults to environment of caller"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" This makes them available for use in\n placeholder expressions.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "fun":{
+            "type":"func"
+          },
+          "name":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"register a function for use in placeholder expressions.",
+      "lineno":141,
+      "retgroups":[{
+          "1":{
+            "text":"a placeholder functiond",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun[, name])",
+      "type":"function",
+      "name":"register",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"name",
+        "map":{
+          "fun":" a function",
+          "name":" an optional name"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a placeholder functiond"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "ls":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"all elements of a table except the first.",
+      "lineno":190,
+      "args":"(ls)",
+      "section":"function",
+      "name":"tail",
+      "params":{
+        "map":{
+          "ls":" a list-like table."
+        },
+        "1":"ls"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "lastpred":[],
+          "e":[]
+        }
+      },
+      "summary":"create a string representation of a placeholder expression.",
+      "lineno":202,
+      "args":"(e, lastpred)",
+      "section":"function",
+      "name":"repr",
+      "params":{
+        "1":"e",
+        "2":"lastpred",
+        "map":{
+          "lastpred":" not used",
+          "e":" a placeholder expression"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "e":[]
+        }
+      },
+      "summary":"instantiate a PE into an actual function.",
+      "lineno":294,
+      "retgroups":[{
+          "1":{
+            "text":"a function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(e)",
+      "type":"function",
+      "name":"instantiate",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "e":" a placeholder expression"
+        },
+        "1":"e"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" First we find the largest placeholder used,\n e.g. _2; from this a list of the formal parameters can be build. Then we collect and replace\n any non-PE values from the PE, and build up a constant binding list.\n Finally, the expression can be compiled, and e.__PE_function is set.",
+      "ret":["a function"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "e":[]
+        }
+      },
+      "summary":"instantiate a PE unless it has already been done.",
+      "lineno":321,
+      "retgroups":[{
+          "1":{
+            "text":"the function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(e)",
+      "type":"function",
+      "name":"I",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "e":" a placeholder expression"
+        },
+        "1":"e"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the function"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "p":[],
+          "fn":{
+            "type":"func"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"bind the first parameter of the function to a value.",
+      "lineno":336,
+      "retgroups":[{
+          "1":{
+            "text":"a function of one less argument",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fn, p)",
+      "usage":["(bind1(math.max,10))(20) == math.max(10,20)\n"],
+      "type":"function",
+      "name":"bind1",
+      "params":{
+        "1":"fn",
+        "2":"p",
+        "map":{
+          "p":" a value",
+          "fn":" a function of one or more arguments"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a function of one less argument"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"func"
+          },
+          "g":{
+            "type":"func"
+          },
+          "f":{
+            "type":"func"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"create a function which chains two functions.",
+      "lineno":344,
+      "retgroups":[{
+          "1":{
+            "text":"a function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, g)",
+      "usage":["printf = compose(io.write,string.format)\n"],
+      "type":"function",
+      "name":"compose",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"g",
+        "map":{
+          "g":" a function of at least one argument",
+          "f":" a function of at least one argument"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a function"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "...":[],
+          "fn":{
+            "type":"func"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"bind the arguments of a function to given values.",
+      "lineno":355,
+      "retgroups":[{
+          "1":{
+            "text":"a function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fn, ...)",
+      "usage":["(bind(f,_1,a))(b) == f(a,b)\n","(bind(f,_2,_1))(a,b) == f(b,a)\n"],
+      "type":"function",
+      "name":"bind",
+      "parameter":"param",
+      "params":{
+        "1":"fn",
+        "2":"...",
+        "map":{
+          "...":" values or placeholder variables",
+          "fn":" a function of at least one argument"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n `bind(fn,v,_2)` is equivalent to `bind1(fn,v)`.",
+      "ret":["a function"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

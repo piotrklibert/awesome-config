@@ -1,0 +1,2344 @@
+{
+  "kind":"manual",
+  "name":"06-data.md",
+  "display_name":"Data",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+  "section":{
+    "display_name":"XML",
+    "name":"XML",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+      "items":["<reference cycle>",{
+          "display_name":"Reading Data Files",
+          "name":"Reading_Data_Files",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"reading data files ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Reading Data Files",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Reading Unstructured Text Data",
+          "name":"Reading_Unstructured_Text_Data",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"reading unstructured text data ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Reading Unstructured Text Data",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Reading Columnar Data",
+          "name":"Reading_Columnar_Data",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"reading columnar data ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Reading Columnar Data",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Reading Configuration Files",
+          "name":"Reading_Configuration_Files",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"reading configuration files ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Reading Configuration Files",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Lexical Scanning",
+          "name":"Lexical_Scanning",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"lexical scanning ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Lexical Scanning",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"xml ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"XML",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Data",
+      "sections":{
+        "54":"Reading_Unstructured_Text_Data",
+        "3":"Reading_Data_Files",
+        "770":"XML",
+        "620":"Lexical_Scanning",
+        "107":"Reading_Columnar_Data",
+        "401":"Reading_Configuration_Files"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Reading Data Files",
+      "name":"Reading_Data_Files",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"reading data files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Data Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Unstructured Text Data",
+            "name":"Reading_Unstructured_Text_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading unstructured text data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Unstructured Text Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Columnar Data",
+            "name":"Reading_Columnar_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading columnar data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Columnar Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Configuration Files",
+            "name":"Reading_Configuration_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading configuration files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Configuration Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Lexical Scanning",
+            "name":"Lexical_Scanning",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"lexical scanning ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Lexical Scanning",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"XML",
+            "name":"XML",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"xml ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"XML",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Data",
+        "sections":{
+          "54":"Reading_Unstructured_Text_Data",
+          "3":"Reading_Data_Files",
+          "770":"XML",
+          "620":"Lexical_Scanning",
+          "107":"Reading_Columnar_Data",
+          "401":"Reading_Configuration_Files"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"Reading Unstructured Text Data",
+      "name":"Reading_Unstructured_Text_Data",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+        "items":["<reference cycle>",{
+            "display_name":"Reading Data Files",
+            "name":"Reading_Data_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading data files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Data Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"reading unstructured text data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Unstructured Text Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Columnar Data",
+            "name":"Reading_Columnar_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading columnar data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Columnar Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Configuration Files",
+            "name":"Reading_Configuration_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading configuration files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Configuration Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Lexical Scanning",
+            "name":"Lexical_Scanning",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"lexical scanning ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Lexical Scanning",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"XML",
+            "name":"XML",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"xml ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"XML",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Data",
+        "sections":{
+          "54":"Reading_Unstructured_Text_Data",
+          "3":"Reading_Data_Files",
+          "770":"XML",
+          "620":"Lexical_Scanning",
+          "107":"Reading_Columnar_Data",
+          "401":"Reading_Configuration_Files"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "3":{
+      "display_name":"Reading Columnar Data",
+      "name":"Reading_Columnar_Data",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+        "items":["<reference cycle>",{
+            "display_name":"Reading Data Files",
+            "name":"Reading_Data_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading data files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Data Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Unstructured Text Data",
+            "name":"Reading_Unstructured_Text_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading unstructured text data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Unstructured Text Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"reading columnar data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Columnar Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Configuration Files",
+            "name":"Reading_Configuration_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading configuration files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Configuration Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Lexical Scanning",
+            "name":"Lexical_Scanning",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"lexical scanning ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Lexical Scanning",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"XML",
+            "name":"XML",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"xml ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"XML",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Data",
+        "sections":{
+          "54":"Reading_Unstructured_Text_Data",
+          "3":"Reading_Data_Files",
+          "770":"XML",
+          "620":"Lexical_Scanning",
+          "107":"Reading_Columnar_Data",
+          "401":"Reading_Configuration_Files"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "4":{
+      "display_name":"Reading Configuration Files",
+      "name":"Reading_Configuration_Files",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+        "items":["<reference cycle>",{
+            "display_name":"Reading Data Files",
+            "name":"Reading_Data_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading data files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Data Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Unstructured Text Data",
+            "name":"Reading_Unstructured_Text_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading unstructured text data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Unstructured Text Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Columnar Data",
+            "name":"Reading_Columnar_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading columnar data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Columnar Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"reading configuration files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Configuration Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Lexical Scanning",
+            "name":"Lexical_Scanning",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"lexical scanning ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Lexical Scanning",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"XML",
+            "name":"XML",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"xml ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"XML",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Data",
+        "sections":{
+          "54":"Reading_Unstructured_Text_Data",
+          "3":"Reading_Data_Files",
+          "770":"XML",
+          "620":"Lexical_Scanning",
+          "107":"Reading_Columnar_Data",
+          "401":"Reading_Configuration_Files"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "5":{
+      "display_name":"Lexical Scanning",
+      "name":"Lexical_Scanning",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+        "items":["<reference cycle>",{
+            "display_name":"Reading Data Files",
+            "name":"Reading_Data_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading data files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Data Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Unstructured Text Data",
+            "name":"Reading_Unstructured_Text_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading unstructured text data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Unstructured Text Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Columnar Data",
+            "name":"Reading_Columnar_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading columnar data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Columnar Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Configuration Files",
+            "name":"Reading_Configuration_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading configuration files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Configuration Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"lexical scanning ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Lexical Scanning",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"XML",
+            "name":"XML",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"xml ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"XML",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Data",
+        "sections":{
+          "54":"Reading_Unstructured_Text_Data",
+          "3":"Reading_Data_Files",
+          "770":"XML",
+          "620":"Lexical_Scanning",
+          "107":"Reading_Columnar_Data",
+          "401":"Reading_Configuration_Files"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "6":{
+      "display_name":"XML",
+      "name":"XML",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+        "items":["<reference cycle>",{
+            "display_name":"Reading Data Files",
+            "name":"Reading_Data_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading data files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Data Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Unstructured Text Data",
+            "name":"Reading_Unstructured_Text_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading unstructured text data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Unstructured Text Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Columnar Data",
+            "name":"Reading_Columnar_Data",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading columnar data ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Columnar Data",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Reading Configuration Files",
+            "name":"Reading_Configuration_Files",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"reading configuration files ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Reading Configuration Files",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Lexical Scanning",
+            "name":"Lexical_Scanning",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"lexical scanning ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Lexical Scanning",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"xml ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"XML",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Data",
+        "sections":{
+          "54":"Reading_Unstructured_Text_Data",
+          "3":"Reading_Data_Files",
+          "770":"XML",
+          "620":"Lexical_Scanning",
+          "107":"Reading_Columnar_Data",
+          "401":"Reading_Configuration_Files"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "Reading_Data_Files":{
+        "display_name":"Reading Data Files",
+        "name":"Reading_Data_Files",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"reading data files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Data Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Unstructured Text Data",
+              "name":"Reading_Unstructured_Text_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading unstructured text data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Unstructured Text Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Columnar Data",
+              "name":"Reading_Columnar_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading columnar data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Columnar Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Configuration Files",
+              "name":"Reading_Configuration_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading configuration files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Configuration Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Lexical Scanning",
+              "name":"Lexical_Scanning",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"lexical scanning ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Lexical Scanning",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"XML",
+              "name":"XML",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"xml ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"XML",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Data",
+          "sections":{
+            "54":"Reading_Unstructured_Text_Data",
+            "3":"Reading_Data_Files",
+            "770":"XML",
+            "620":"Lexical_Scanning",
+            "107":"Reading_Columnar_Data",
+            "401":"Reading_Configuration_Files"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Reading_Unstructured_Text_Data":{
+        "display_name":"Reading Unstructured Text Data",
+        "name":"Reading_Unstructured_Text_Data",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+          "items":["<reference cycle>",{
+              "display_name":"Reading Data Files",
+              "name":"Reading_Data_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading data files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Data Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"reading unstructured text data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Unstructured Text Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Columnar Data",
+              "name":"Reading_Columnar_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading columnar data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Columnar Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Configuration Files",
+              "name":"Reading_Configuration_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading configuration files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Configuration Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Lexical Scanning",
+              "name":"Lexical_Scanning",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"lexical scanning ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Lexical Scanning",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"XML",
+              "name":"XML",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"xml ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"XML",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Data",
+          "sections":{
+            "54":"Reading_Unstructured_Text_Data",
+            "3":"Reading_Data_Files",
+            "770":"XML",
+            "620":"Lexical_Scanning",
+            "107":"Reading_Columnar_Data",
+            "401":"Reading_Configuration_Files"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "XML":{
+        "display_name":"XML",
+        "name":"XML",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+          "items":["<reference cycle>",{
+              "display_name":"Reading Data Files",
+              "name":"Reading_Data_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading data files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Data Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Unstructured Text Data",
+              "name":"Reading_Unstructured_Text_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading unstructured text data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Unstructured Text Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Columnar Data",
+              "name":"Reading_Columnar_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading columnar data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Columnar Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Configuration Files",
+              "name":"Reading_Configuration_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading configuration files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Configuration Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Lexical Scanning",
+              "name":"Lexical_Scanning",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"lexical scanning ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Lexical Scanning",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"xml ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"XML",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Data",
+          "sections":{
+            "54":"Reading_Unstructured_Text_Data",
+            "3":"Reading_Data_Files",
+            "770":"XML",
+            "620":"Lexical_Scanning",
+            "107":"Reading_Columnar_Data",
+            "401":"Reading_Configuration_Files"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Lexical_Scanning":{
+        "display_name":"Lexical Scanning",
+        "name":"Lexical_Scanning",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+          "items":["<reference cycle>",{
+              "display_name":"Reading Data Files",
+              "name":"Reading_Data_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading data files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Data Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Unstructured Text Data",
+              "name":"Reading_Unstructured_Text_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading unstructured text data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Unstructured Text Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Columnar Data",
+              "name":"Reading_Columnar_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading columnar data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Columnar Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Configuration Files",
+              "name":"Reading_Configuration_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading configuration files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Configuration Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"lexical scanning ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Lexical Scanning",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"XML",
+              "name":"XML",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"xml ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"XML",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Data",
+          "sections":{
+            "54":"Reading_Unstructured_Text_Data",
+            "3":"Reading_Data_Files",
+            "770":"XML",
+            "620":"Lexical_Scanning",
+            "107":"Reading_Columnar_Data",
+            "401":"Reading_Configuration_Files"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Reading_Columnar_Data":{
+        "display_name":"Reading Columnar Data",
+        "name":"Reading_Columnar_Data",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+          "items":["<reference cycle>",{
+              "display_name":"Reading Data Files",
+              "name":"Reading_Data_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading data files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Data Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Unstructured Text Data",
+              "name":"Reading_Unstructured_Text_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading unstructured text data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Unstructured Text Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"reading columnar data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Columnar Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Configuration Files",
+              "name":"Reading_Configuration_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading configuration files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Configuration Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Lexical Scanning",
+              "name":"Lexical_Scanning",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"lexical scanning ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Lexical Scanning",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"XML",
+              "name":"XML",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"xml ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"XML",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Data",
+          "sections":{
+            "54":"Reading_Unstructured_Text_Data",
+            "3":"Reading_Data_Files",
+            "770":"XML",
+            "620":"Lexical_Scanning",
+            "107":"Reading_Columnar_Data",
+            "401":"Reading_Configuration_Files"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Reading_Configuration_Files":{
+        "display_name":"Reading Configuration Files",
+        "name":"Reading_Configuration_Files",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/06-data.md",
+          "items":["<reference cycle>",{
+              "display_name":"Reading Data Files",
+              "name":"Reading_Data_Files",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading data files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Data Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Unstructured Text Data",
+              "name":"Reading_Unstructured_Text_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading unstructured text data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Unstructured Text Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Reading Columnar Data",
+              "name":"Reading_Columnar_Data",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"reading columnar data ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Columnar Data",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"reading configuration files ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Reading Configuration Files",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Lexical Scanning",
+              "name":"Lexical_Scanning",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"lexical scanning ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Lexical Scanning",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"XML",
+              "name":"XML",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"xml ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"XML",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Data",
+          "sections":{
+            "54":"Reading_Unstructured_Text_Data",
+            "3":"Reading_Data_Files",
+            "770":"XML",
+            "620":"Lexical_Scanning",
+            "107":"Reading_Columnar_Data",
+            "401":"Reading_Configuration_Files"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"reading data files ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Reading Data Files",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"reading unstructured text data ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Reading Unstructured Text Data",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"reading columnar data ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Reading Columnar Data",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"reading configuration files ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Reading Configuration Files",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"lexical scanning ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Lexical Scanning",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"xml ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"XML",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"06-data.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Data\n\n### Reading Data Files\n\nThe first thing to consider is this: do you actually need to write a custom file\nreader? And if the answer is yes, the next question is: can you write the reader\nin as clear a way as possible? Correctness, Robustness, and Speed; pick the first\ntwo and the third can be sorted out later, _if necessary_.\n\nA common sort of data file is the configuration file format commonly used on Unix\nsystems. This format is often called a _property_ file in the Java world.\n\n    # Read timeout in seconds\n    read.timeout=10\n\n    # Write timeout in seconds\n    write.timeout=10\n\nHere is a simple Lua implementation:\n\n    -- property file parsing with Lua string patterns\n    props = []\n    for line in io.lines() do\n        if line:find('#',1,true) ~= 1 and not line:find('^%s*$') then\n            local var,value = line:match('([^=]+)=(.*)')\n            props[var] = value\n        end\n    end\n\nVery compact, but it suffers from a similar disease in equivalent Perl programs;\nit uses odd string patterns which are 'lexically noisy'. Noisy code like this\nslows the casual reader down. (For an even more direct way of doing this, see the\nnext section, 'Reading Configuration Files')\n\nAnother implementation, using the Penlight libraries:\n\n    -- property file parsing with extended string functions\n    require 'pl'\n    stringx.import()\n    props = []\n    for line in io.lines() do\n        if not line:startswith('#') and not line:isspace() then\n            local var,value = line:splitv('=')\n            props[var] = value\n        end\n    end\n\nThis is more self-documenting; it is generally better to make the code express\nthe _intention_, rather than having to scatter comments everywhere - comments are\nnecessary, of course, but mostly to give the higher view of your intention that\ncannot be expressed in code. It is slightly slower, true, but in practice the\nspeed of this script is determined by I/O, so further optimization is unnecessary.\n\n### Reading Unstructured Text Data\n\nText data is sometimes unstructured, for example a file containing words. The\n`pl.input` module has a number of functions which makes processing such files\neasier. For example, a script to count the number of words in standard input\nusing `import.words`:\n\n    -- countwords.lua\n    require 'pl'\n    local k = 1\n    for w in input.words(io.stdin) do\n        k = k + 1\n    end\n    print('count',k)\n\nOr this script to calculate the average of a set of numbers using `input.numbers`:\n\n    -- average.lua\n    require 'pl'\n    local k = 1\n    local sum = 0\n    for n in input.numbers(io.stdin) do\n        sum = sum + n\n        k = k + 1\n    end\n    print('average',sum/k)\n\nThese scripts can be improved further by _eliminating loops_ In the last case,\nthere is a perfectly good function `seq.sum` which can already take a sequence of\nnumbers and calculate these numbers for us:\n\n    -- average2.lua\n    require 'pl'\n    local total,n = seq.sum(input.numbers())\n    print('average',total/n)\n\nA further simplification here is that if `numbers` or `words` are not passed an\nargument, they will grab their input from standard input.  The first script can\nbe rewritten:\n\n    -- countwords2.lua\n    require 'pl'\n    print('count',seq.count(input.words()))\n\nA useful feature of a sequence generator like `numbers` is that it can read from\na string source. Here is a script to calculate the sums of the numbers on each\nline in a file:\n\n    -- sums.lua\n    for line in io.lines() do\n        print(seq.sum(input.numbers(line))\n    end\n\n### Reading Columnar Data\n\nIt is very common to find data in columnar form, either space or comma-separated,\nperhaps with an initial set of column headers. Here is a typical example:\n\n    EventID\tMagnitude\tLocationX\tLocationY\tLocationZ\n    981124001\t2.0\t18988.4\t10047.1\t4149.7\n    981125001\t0.8\t19104.0\t9970.4\t5088.7\n    981127003\t0.5\t19012.5\t9946.9\t3831.2\n    ...\n\n`input.fields` is designed to extract several columns, given some delimiter\n(default to whitespace).  Here is a script to calculate the average X location of\nall the events:\n\n    -- avg-x.lua\n    require 'pl'\n    io.read() -- skip the header line\n    local sum,count = seq.sum(input.fields {3})\n    print(sum/count)\n\n`input.fields` is passed either a field count, or a list of column indices,\nstarting at one as usual. So in this case we're only interested in column 3.  If\nyou pass it a field count, then you get every field up to that count:\n\n    for id,mag,locX,locY,locZ in input.fields (5) do\n    ....\n    end\n\n`input.fields` by default tries to convert each field to a number. It will skip\nlines which clearly don't match the pattern, but will abort the script if there\nare any fields which cannot be converted to numbers.\n\nThe second parameter is a delimiter, by default spaces. ' ' is understood to mean\n'any number of spaces', i.e. '%s+'. Any Lua string pattern can be used.\n\nThe third parameter is a _data source_, by default standard input (defined by\n`input.create_getter`.) It assumes that the data source has a `read` method which\nbrings in the next line, i.e. it is a 'file-like' object. As a special case, a\nstring will be split into its lines:\n\n    > for x,y in input.fields(2,' ','10 20\\n30 40\\n') do print(x,y) end\n    10      20\n    30      40\n\nNote the default behaviour for bad fields, which is to show the offending line\nnumber:\n\n    > for x,y in input.fields(2,' ','10 20\\n30 40x\\n') do print(x,y) end\n    10      20\n    line 2: cannot convert '40x' to number\n\nThis behaviour of `input.fields` is appropriate for a script which you want to\nfail immediately with an appropriate _user_ error message if conversion fails.\nThe fourth optional parameter is an options table: `{no_fail=true}` means that\nconversion is attempted but if it fails it just returns the string, rather as AWK\nwould operate. You are then responsible for checking the type of the returned\nfield. `{no_convert=true}` switches off conversion altogether and all fields are\nreturned as strings.\n\n@lookup pl.data\n\nSometimes it is useful to bring a whole dataset into memory, for operations such\nas extracting columns. Penlight provides a flexible reader specifically for\nreading this kind of data, using the `data` module. Given a file looking like this:\n\n    x,y\n    10,20\n    2,5\n    40,50\n\nThen `data.read` will create a table like this, with each row represented by a\nsublist:\n\n    > t = data.read 'test.txt'\n    > pretty.dump(t)\n    {{10,20},{2,5},{40,50},fieldnames={'x','y'},delim=','}\n\nYou can now analyze this returned table using the supplied methods. For instance,\nthe method `column_by_name` returns a table of all the values of that column.\n\n    -- testdata.lua\n    require 'pl'\n    d = data.read('fev.txt')\n    for _,name in ipairs(d.fieldnames) do\n        local col = d:column_by_name(name)\n        if type(col[1]) == 'number' then\n            local total,n = seq.sum(col)\n            utils.printf(\"Average for %s is %f\\n\",name,total/n)\n        end\n    end\n\n`data.read` tries to be clever when given data; by default it expects a first\nline of column names, unless any of them are numbers. It tries to deduce the\ncolumn delimiter by looking at the first line. Sometimes it guesses wrong; these\nthings can be specified explicitly. The second optional parameter is an options\ntable: can override `delim` (a string pattern), `fieldnames` (a list or\ncomma-separated string), specify `no_convert` (default is to convert), numfields\n(indices of columns known to be numbers, as a list) and `thousands_dot` (when the\nthousands separator in Excel CSV is '.')\n\nA very powerful feature is a way to execute SQL-like queries on such data:\n\n    -- queries on tabular data\n    require 'pl'\n    local d = data.read('xyz.txt')\n    local q = d:select('x,y,z where x > 3 and z < 2 sort by y')\n    for x,y,z in q do\n        print(x,y,z)\n    end\n\nPlease note that the format of queries is restricted to the following syntax:\n\n    FIELDLIST [ 'where' CONDITION ] [ 'sort by' FIELD [asc|desc]]\n\nAny valid Lua code can appear in `CONDITION`; remember it is _not_ SQL and you\nhave to use `==` (this warning comes from experience.)\n\nFor this to work, _field names must be Lua identifiers_. So `read` will massage\nfieldnames so that all non-alphanumeric chars are replaced with underscores.\nHowever, the `original_fieldnames` field always contains the original un-massaged\nfieldnames.\n\n`read` can handle standard CSV files fine, although doesn't try to be a\nfull-blown CSV parser.  With the `csv=true` option, it's possible to have\ndouble-quoted fields, which may contain commas; then trailing commas become\nsignificant as well.\n\nSpreadsheet programs are not always the best tool to\nprocess such data, strange as this might seem to some people. This is a toy CSV\nfile; to appreciate the problem, imagine thousands of rows and dozens of columns\nlike this:\n\n    Department Name,Employee ID,Project,Hours Booked\n    sales,1231,overhead,4\n    sales,1255,overhead,3\n    engineering,1501,development,5\n    engineering,1501,maintenance,3\n    engineering,1433,maintenance,10\n\nThe task is to reduce the dataset to a relevant set of rows and columns, perhaps\ndo some processing on row data, and write the result out to a new CSV file. The\n`write_row` method uses the delimiter to write the row to a file;\n`Data.select_row` is like `Data.select`, except it iterates over _rows_, not\nfields; this is necessary if we are dealing with a lot of columns!\n\n    names = {[1501]='don',[1433]='dilbert'}\n    keepcols = {'Employee_ID','Hours_Booked'}\n    t:write_row (outf,{'Employee','Hours_Booked'})\n    q = t:select_row {\n        fields=keepcols,\n        where=function(row) return row[1]=='engineering' end\n    }\n    for row in q do\n        row[1] = names[row[1]]\n        t:write_row(outf,row)\n    end\n\n`Data.select_row` and `Data.select` can be passed a table specifying the query; a\nlist of field names, a function defining the condition and an optional parameter\n`sort_by`. It isn't really necessary here, but if we had a more complicated row\ncondition (such as belonging to a specified set) then it is not generally\npossible to express such a condition as a query string, without resorting to\nhackery such as global variables.\n\nWith 1.0.3, you can specify explicit conversion functions for selected columns.\nFor instance, this is a log file with a Unix date stamp:\n\n    Time Message\n    1266840760 +# EE7C0600006F0D00C00F06010302054000000308010A00002B00407B00\n    1266840760 closure data 0.000000 1972 1972 0\n    1266840760 ++ 1266840760 EE 1\n    1266840760 +# EE7C0600006F0D00C00F06010302054000000408020A00002B00407B00\n    1266840764 closure data 0.000000 1972 1972 0\n\nWe would like the first column as an actual date object, so the `convert`\nfield sets an explicit conversion for column 1. (Note that we have to explicitly\nconvert the string to a number first.)\n\n    Date = require 'pl.Date'\n\n    function date_convert (ds)\n        return Date(tonumber(ds))\n    end\n\n    d = data.read(f,{convert={[1]=date_convert},last_field_collect=true})\n\nThis gives us a two-column dataset, where the first column contains `Date` objects\nand the second column contains the rest of the line. Queries can then easily\npick out events on a day of the week:\n\n    q = d:select \"Time,Message where Time:weekday_name()=='Sun'\"\n\nData does not have to come from files, nor does it necessarily come from the lab\nor the accounts department. On Linux, `ps aux` gives you a full listing of all\nprocesses running on your machine. It is straightforward to feed the output of\nthis command into `data.read` and perform useful queries on it. Notice that\nnon-identifier characters like '%' get converted into underscores:\n\n        require 'pl'\n        f = io.popen 'ps aux'\n        s = data.read (f,{last_field_collect=true})\n        f:close()\n        print(s.fieldnames)\n        print(s:column_by_name 'USER')\n        qs = 'COMMAND,_MEM where _MEM > 5 and USER==\"steve\"'\n        for name,mem in s:select(qs) do\n            print(mem,name)\n        end\n\nI've always been an admirer of the AWK programming language; with `filter` you\ncan get Lua programs which are just as compact:\n\n    -- printxy.lua\n    require 'pl'\n    data.filter 'x,y where x > 3'\n\nIt is common enough to have data files without headers of field names.\n`data.read` makes a special exception for such files if all fields are numeric.\nSince there are no column names to use in query expressions, you can use AWK-like\ncolumn indexes, e.g. '$1,$2 where $1 > 3'.  I have a little executable script on\nmy system called `lf` which looks like this:\n\n    #!/usr/bin/env lua\n    require 'pl.data'.filter(arg[1])\n\nAnd it can be used generally as a filter command to extract columns from data.\n(The column specifications may be expressions or even constants.)\n\n    $ lf '$1,$5/10' < test.dat\n\n(As with AWK, please note the single-quotes used in this command; this prevents\nthe shell trying to expand the column indexes. If you are on Windows, then you\nmust quote the expression in double-quotes so\nit is passed as one argument to your batch file.)\n\nAs a tutorial resource, have a look at `test-data.lua` in the PL tests directory\nfor other examples of use, plus comments.\n\nThe data returned by `read` or constructed by `Data.copy_select` from a query is\nbasically just an array of rows: `{{1,2},{3,4}}`. So you may use `read` to pull\nin any array-like dataset, and process with any function that expects such a\nimplementation. In particular, the functions in `array2d` will work fine with\nthis data. In fact, these functions are available as methods; e.g.\n`array2d.flatten` can be called directly like so to give us a one-dimensional list:\n\n    v = data.read('dat.txt'):flatten()\n\nThe data is also in exactly the right shape to be treated as matrices by\n[LuaMatrix](http://lua-users.org/wiki/LuaMatrix):\n\n    > matrix = require 'matrix'\n    > m = matrix(data.read 'mat.txt')\n    > = m\n    1       0.2     0.3\n    0.2     1       0.1\n    0.1     0.2     1\n    > = m^2  -- same as m*m\n    1.07    0.46    0.62\n    0.41    1.06    0.26\n    0.24    0.42    1.05\n\n`write` will write matrices back to files for you.\n\nFinally, for the curious, the global variable `_DEBUG` can be used to print out\nthe actual iterator function which a query generates and dynamically compiles. By\nusing code generation, we can get pretty much optimal performance out of\narbitrary queries.\n\n    > lua -lpl -e \"_DEBUG=true\" -e \"data.filter 'x,y where x > 4 sort by x'\" < test.txt\n    return function (t)\n            local i = 0\n            local v\n            local ls = {}\n            for i,v in ipairs(t) do\n                if v[1] > 4  then\n                        ls[#ls+1] = v\n                end\n            end\n            table.sort(ls,function(v1,v2)\n                return v1[1] < v2[1]\n            end)\n            local n = #ls\n            return function()\n                i = i + 1\n                v = ls[i]\n                if i > n then return end\n                return v[1],v[2]\n            end\n    end\n\n    10,20\n    40,50\n\n### Reading Configuration Files\n\nThe `config` module provides a simple way to convert several kinds of\nconfiguration files into a Lua table. Consider the simple example:\n\n    # test.config\n    # Read timeout in seconds\n    read.timeout=10\n\n    # Write timeout in seconds\n    write.timeout=5\n\n    #acceptable ports\n    ports = 1002,1003,1004\n\nThis can be easily brought in using `config.read` and the result shown using\n`pretty.write`:\n\n    -- readconfig.lua\n    local config = require 'pl.config'\n    local pretty= require 'pl.pretty'\n\n    local t = config.read(arg[1])\n    print(pretty.write(t))\n\nand the output of `lua readconfig.lua test.config` is:\n\n    {\n      ports = {\n        1002,\n        1003,\n        1004\n      },\n      write_timeout = 5,\n      read_timeout = 10\n    }\n\nThat is, `config.read` will bring in all key/value pairs, ignore # comments, and\nensure that the key names are proper Lua identifiers by replacing non-identifier\ncharacters with '_'. If the values are numbers, then they will be converted. (So\nthe value of `t.write_timeout` is the number 5). In addition, any values which\nare separated by commas will be converted likewise into an array.\n\nAny line can be continued with a backslash. So this will all be considered one\nline:\n\n    names=one,two,three, \\\n    four,five,six,seven, \\\n    eight,nine,ten\n\n\nWindows-style INI files are also supported. The section structure of INI files\ntranslates naturally to nested tables in Lua:\n\n    ; test.ini\n    [timeouts]\n    read=10 ; Read timeout in seconds\n    write=5 ; Write timeout in seconds\n    [portinfo]\n    ports = 1002,1003,1004\n\n The output is:\n\n    {\n      portinfo = {\n        ports = {\n          1002,\n          1003,\n          1004\n        }\n      },\n      timeouts = {\n        write = 5,\n        read = 10\n      }\n    }\n\nYou can now refer to the write timeout as `t.timeouts.write`.\n\nAs a final example of the flexibility of `config.read`, if passed this simple\ncomma-delimited file\n\n    one,two,three\n    10,20,30\n    40,50,60\n    1,2,3\n\nit will produce the following table:\n\n    {\n      { \"one\", \"two\", \"three\" },\n      { 10, 20, 30 },\n      { 40, 50, 60  },\n      { 1, 2, 3 }\n    }\n\n`config.read` isn't designed to read all CSV files in general, but intended to\nsupport some Unix configuration files not structured as key-value pairs, such as\n'/etc/passwd'.\n\nThis function is intended to be a Swiss Army Knife of configuration readers, but\nit does have to make assumptions, and you may not like them. So there is an\noptional extra parameter which allows some control, which is table that may have\nthe following fields:\n\n    {\n       variablilize = true,\n       convert_numbers = tonumber,\n       trim_space = true,\n       list_delim = ',',\n       trim_quotes = true,\n       ignore_assign = false,\n       keysep = '=',\n       smart = false,\n    }\n\n`variablilize` is the option that converted `write.timeout` in the first example\nto the valid Lua identifier `write_timeout`.  If `convert_numbers` is true, then\nan attempt is made to convert any string that starts like a number. You can\nspecify your own function (say one that will convert a string like '5224 kb' into\na number.)\n\n`trim_space` ensures that there is no starting or trailing whitespace with\nvalues, and `list_delim` is the character that will be used to decide whether to\nsplit a value up into a list (it may be a Lua string pattern such as '%s+'.)\n\nFor instance, the password file in Unix is colon-delimited:\n\n    t = config.read('/etc/passwd',{list_delim=':'})\n\nThis produces the following output on my system (only last two lines shown):\n\n    {\n      ...\n      {\n        \"user\",\n        \"x\",\n        \"1000\",\n        \"1000\",\n        \"user,,,\",\n        \"/home/user\",\n        \"/bin/bash\"\n      },\n      {\n        \"sdonovan\",\n        \"x\",\n        \"1001\",\n        \"1001\",\n        \"steve donovan,28,,\",\n        \"/home/sdonovan\",\n        \"/bin/bash\"\n      }\n    }\n\nYou can get this into a more sensible format, where the usernames are the keys,\nwith this (the `tablex.pairmap` function must return value, key!)\n\n    t = tablex.pairmap(function(k,v) return v,v[1] end,t)\n\nand you get:\n\n    { ...\n      sdonovan = {\n        \"sdonovan\",\n        \"x\",\n        \"1001\",\n        \"1001\",\n        \"steve donovan,28,,\",\n        \"/home/sdonovan\",\n        \"/bin/bash\"\n      }\n    ...\n    }\n\nMany common Unix configuration files can be read by tweaking these parameters.\nFor `/etc/fstab`, the options `{list_delim='%s+',ignore_assign=true}` will\ncorrectly separate the columns.  It's common to find 'KEY VALUE' assignments in\nfiles such as `/etc/ssh/ssh_config`; the options `{keysep=' '}` make\n`config.read` return a table where each KEY has a value VALUE.\n\nFiles in the Linux `procfs` usually use ':` as the field delimiter:\n\n    > t = config.read('/proc/meminfo',{keysep=':'})\n    > = t.MemFree\n    220140 kB\n\nThat result is a string, since `tonumber` doesn't like it, but defining the\n`convert_numbers` option as `function(s) return tonumber((s:gsub(' kB$','')))\nend` will get the memory figures as actual numbers in the result. (The extra\nparentheses are necessary so that `tonumber` only gets the first result from\n`gsub`). From `tests/test-config.lua':\n\n    testconfig([[\n    MemTotal:        1024748 kB\n    MemFree:          220292 kB\n    ]],\n    { MemTotal = 1024748, MemFree = 220292 },\n    {\n     keysep = ':',\n     convert_numbers = function(s)\n        s = s:gsub(' kB$','')\n        return tonumber(s)\n      end\n     }\n    )\n\n\nThe `smart` option lets `config.read` make a reasonable guess for you; there\nare examples in `tests/test-config.lua`, but basically these common file\nformats (and those following the same pattern) can be processed directly in\nsmart mode: 'etc/fstab', '/proc/XXXX/status', 'ssh_config' and 'pdatedb.conf'.\n\nPlease note that `config.read` can be passed a _file-like object_; if it's not a\nstring and supports the `read` method, then that will be used. For instance, to\nread a configuration from a string, use `stringio.open`.\n\n\n<a id=\"lexer\"/>\n\n### Lexical Scanning\n\nAlthough Lua's string pattern matching is very powerful, there are times when\nsomething more powerful is needed.  `pl.lexer.scan` provides lexical scanners\nwhich _tokenize_ a string, classifying tokens into numbers, strings, etc.\n\n    > lua -lpl\n    Lua 5.1.4  Copyright (C) 1994-2008 Lua.org, PUC-Rio\n    > tok = lexer.scan 'alpha = sin(1.5)'\n    > = tok()\n    iden    alpha\n    > = tok()\n    =       =\n    > = tok()\n    iden    sin\n    > = tok()\n    (       (\n    > = tok()\n    number  1.5\n    > = tok()\n    )       )\n    > = tok()\n    (nil)\n\nThe scanner is a function, which is repeatedly called and returns the _type_ and\n_value_ of the token.  Recognized basic types are 'iden','string','number', and\n'space'. and everything else is represented by itself. Note that by default the\nscanner will skip any 'space' tokens.\n\n'comment' and 'keyword' aren't applicable to the plain scanner, which is not\nlanguage-specific, but a scanner which understands Lua is available. It\nrecognizes the Lua keywords, and understands both short and long comments and\nstrings.\n\n    > for t,v in lexer.lua 'for i=1,n do' do print(t,v) end\n    keyword for\n    iden    i\n    =       =\n    number  1\n    ,       ,\n    iden    n\n    keyword do\n\nA lexical scanner is useful where you have highly-structured data which is not\nnicely delimited by newlines. For example, here is a snippet of a in-house file\nformat which it was my task to maintain:\n\n    points\n        (818344.1,-20389.7,-0.1),(818337.9,-20389.3,-0.1),(818332.5,-20387.8,-0.1)\n        ,(818327.4,-20388,-0.1),(818322,-20387.7,-0.1),(818316.3,-20388.6,-0.1)\n        ,(818309.7,-20389.4,-0.1),(818303.5,-20390.6,-0.1),(818295.8,-20388.3,-0.1)\n        ,(818290.5,-20386.9,-0.1),(818285.2,-20386.1,-0.1),(818279.3,-20383.6,-0.1)\n        ,(818274,-20381.2,-0.1),(818274,-20380.7,-0.1);\n\nHere is code to extract the points using `pl.lexer`:\n\n    -- assume 's' contains the text above...\n    local lexer = require 'pl.lexer'\n    local expecting = lexer.expecting\n    local append = table.insert\n\n    local tok = lexer.scan(s)\n\n    local points = {}\n    local t,v = tok() -- should be 'iden','points'\n\n    while t ~= ';' do\n        c = {}\n        expecting(tok,'(')\n        c.x = expecting(tok,'number')\n        expecting(tok,',')\n        c.y = expecting(tok,'number')\n        expecting(tok,',')\n        c.z = expecting(tok,'number')\n        expecting(tok,')')\n        t,v = tok()  -- either ',' or ';'\n        append(points,c)\n    end\n\nThe `expecting` function grabs the next token and if the type doesn't match, it\nthrows an error. (`pl.lexer`, unlike other PL libraries, raises errors if\nsomething goes wrong, so you should wrap your code in `pcall` to catch the error\ngracefully.)\n\nThe scanners all have a second optional argument, which is a table which controls\nwhether you want to exclude spaces and/or comments. The default for `lexer.lua`\nis `{space=true,comments=true}`.  There is a third optional argument which\ndetermines how string and number tokens are to be processsed.\n\nThe ultimate highly-structured data is of course, program source. Here is a\nsnippet from 'text-lexer.lua':\n\n    require 'pl'\n\n    lines = [[\n    for k,v in pairs(t) do\n        if type(k) == 'number' then\n            print(v) -- array-like case\n        else\n            print(k,v)\n        end\n    end\n    ]]\n\n    ls = List()\n    for tp,val in lexer.lua(lines,{space=true,comments=true}) do\n        assert(tp ~= 'space' and tp ~= 'comment')\n        if tp == 'keyword' then ls:append(val) end\n    end\n    test.asserteq(ls,List{'for','in','do','if','then','else','end','end'})\n\nHere is a useful little utility that identifies all common global variables found\nin a lua module (ignoring those declared locally for the moment):\n\n    -- testglobal.lua\n    require 'pl'\n\n    local txt,err = utils.readfile(arg[1])\n    if not txt then return print(err) end\n\n    local globals = List()\n    for t,v in lexer.lua(txt) do\n        if t == 'iden' and _G[v] then\n            globals:append(v)\n        end\n    end\n    pretty.dump(seq.count_map(globals))\n\nRather then dumping the whole list, with its duplicates, we pass it through\n`seq.count_map` which turns the list into a table where the keys are the values,\nand the associated values are the number of times those values occur in the\nsequence. Typical output looks like this:\n\n    {\n      type = 2,\n      pairs = 2,\n      table = 2,\n      print = 3,\n      tostring = 2,\n      require = 1,\n      ipairs = 4\n    }\n\nYou could further pass this through `tablex.keys` to get a unique list of\nsymbols. This can be useful when writing 'strict' Lua modules, where all global\nsymbols must be defined as locals at the top of the file.\n\nFor a more detailed use of `lexer.scan`, please look at `testxml.lua` in the\nexamples directory.\n\n### XML\n\nNew in the 0.9.7 release is some support for XML. This is a large topic, and\nPenlight does not provide a full XML stack, which is properly the task of a more\nspecialized library.\n\n#### Parsing and Pretty-Printing\n\nThe semi-standard XML parser in the Lua universe is [lua-expat](http://matthewwild.co.uk/projects/luaexpat/).\nIn particular,\nit has a function called `lxp.lom.parse` which will parse XML into the Lua Object\nModel (LOM) format. However, it does not provide a way to convert this data back\ninto XML text.  `xml.parse` will use this function, _if_ `lua-expat` is\navailable, and otherwise switches back to a pure Lua parser originally written by\nRoberto Ierusalimschy.\n\nThe resulting document object knows how to render itself as a string, which is\nuseful for debugging:\n\n    > d = xml.parse \"<nodes><node id='1'>alice</node></nodes>\"\n    > = d\n    <nodes><node id='1'>alice</node></nodes>\n    > pretty.dump (d)\n    {\n      {\n        \"alice\",\n        attr = {\n          \"id\",\n          id = \"1\"\n        },\n        tag = \"node\"\n      },\n      attr = {\n      },\n      tag = \"nodes\"\n    }\n\nLooking at the actual shape of the data reveals the structure of LOM:\n\n  * every element has a `tag` field with its name\n  * plus a `attr` field which is a table containing the attributes as fields, and\nalso as an array. It is always present.\n  * the children of the element are the array part of the element, so `d[1]` is\nthe first child of `d`, etc.\n\nIt could be argued that having attributes also as the array part of `attr` is not\nessential (you cannot depend on attribute order in XML) but that's how\nit goes with this standard.\n\n`lua-expat` is another _soft dependency_ of Penlight; generally, the fallback\nparser is good enough for straightforward XML as is commonly found in\nconfiguration files, etc. `doc.basic_parse` is not intended to be a proper\nconforming parser (it's only sixty lines) but it handles simple kinds of\ndocuments that do not have comments or DTD directives. It is intelligent enough\nto ignore the `<?xml` directive and that is about it.\n\nYou can get pretty-printing by explicitly calling `xml.tostring` and passing it\nthe initial indent and the per-element indent:\n\n    > = xml.tostring(d,'','  ')\n\n    <nodes>\n      <node id='1'>alice</node>\n    </nodes>\n\nThere is a fourth argument which is the _attribute indent_:\n\n    > a = xml.parse \"<frodo name='baggins' age='50' type='hobbit'/>\"\n    > = xml.tostring(a,'','  ','  ')\n\n    <frodo\n      type='hobbit'\n      name='baggins'\n      age='50'\n    />\n\n#### Parsing and Working with Configuration Files\n\nIt's common to find configurations expressed with XML these days. It's\nstraightforward to 'walk' the [LOM](http://matthewwild.co.uk/projects/luaexpat/lom.html)\ndata and extract the data in the form you want:\n\n    require 'pl'\n\n    local config = [[\n    <config>\n        <alpha>1.3</alpha>\n        <beta>10</beta>\n        <name>bozo</name>\n    </config>\n    ]]\n    local d,err = xml.parse(config)\n\n    local t = {}\n    for item in d:childtags() do\n        t[item.tag] = item[1]\n    end\n\n    pretty.dump(t)\n    --->\n    {\n      beta = \"10\",\n      alpha = \"1.3\",\n      name = \"bozo\"\n    }\n\nThe only gotcha is that here we must use the `Doc:childtags` method, which will\nskip over any text elements.\n\nA more involved example is this excerpt from `serviceproviders.xml`, which is\nusually found at `/usr/share/mobile-broadband-provider-info/serviceproviders.xml`\non Debian/Ubuntu Linux systems.\n\n    d = xml.parse [[\n    <serviceproviders format=\"2.0\">\n    ...\n    <country code=\"za\">\n        <provider>\n            <name>Cell-c</name>\n            <gsm>\n                <network-id mcc=\"655\" mnc=\"07\"/>\n                <apn value=\"internet\">\n                    <username>Cellcis</username>\n                    <dns>196.7.0.138</dns>\n                    <dns>196.7.142.132</dns>\n                </apn>\n            </gsm>\n        </provider>\n        <provider>\n            <name>MTN</name>\n            <gsm>\n                <network-id mcc=\"655\" mnc=\"10\"/>\n                <apn value=\"internet\">\n                    <dns>196.11.240.241</dns>\n                    <dns>209.212.97.1</dns>\n                </apn>\n            </gsm>\n        </provider>\n        <provider>\n            <name>Vodacom</name>\n            <gsm>\n                <network-id mcc=\"655\" mnc=\"01\"/>\n                <apn value=\"internet\">\n                    <dns>196.207.40.165</dns>\n                    <dns>196.43.46.190</dns>\n                </apn>\n                <apn value=\"unrestricted\">\n                    <name>Unrestricted</name>\n                    <dns>196.207.32.69</dns>\n                    <dns>196.43.45.190</dns>\n                </apn>\n            </gsm>\n        </provider>\n        <provider>\n            <name>Virgin Mobile</name>\n            <gsm>\n                <apn value=\"vdata\">\n                    <dns>196.7.0.138</dns>\n                    <dns>196.7.142.132</dns>\n                </apn>\n            </gsm>\n        </provider>\n    </country>\n    ....\n    </serviceproviders>\n    ]]\n\nGetting the names of the providers per-country is straightforward:\n\n    local t = {}\n    for country in d:childtags() do\n        local providers = {}\n        t[country.attr.code] = providers\n        for provider in country:childtags() do\n            table.insert(providers,provider:child_with_name('name'):get_text())\n        end\n    end\n\n    pretty.dump(t)\n    -->\n    {\n      za = {\n        \"Cell-c\",\n        \"MTN\",\n        \"Vodacom\",\n        \"Virgin Mobile\"\n      }\n      ....\n    }\n\n#### Generating XML with 'xmlification'\n\nThis feature is inspired by the `htmlify` function used by\n[Orbit](http://keplerproject.github.com/orbit/) to simplify HTML generation,\nexcept that no function environment magic is used; the `tags` function returns a\nset of _constructors_ for elements of the given tag names.\n\n    > nodes, node = xml.tags 'nodes, node'\n    > = node 'alice'\n    <node>alice</node>\n    > = nodes { node {id='1','alice'}}\n    <nodes><node id='1'>alice</node></nodes>\n\nThe flexibility of Lua tables is very useful here, since both the attributes and\nthe children of an element can be encoded naturally. The argument to these tag\nconstructors is either a single value (like a string) or a table where the\nattributes are the named keys and the children are the array values.\n\n#### Generating XML using Templates\n\nA template is a little XML document which contains dollar-variables. The `subst`\nmethod on a document is fed an array of tables containing values for these\nvariables. Note how the parent tag name is specified:\n\n    > templ = xml.parse \"<node id='$id'>$name</node>\"\n    > = templ:subst {tag='nodes', {id=1,name='alice'},{id=2,name='john'}}\n    <nodes><node id='1'>alice</node><node id='2'>john</node></nodes>\n\nSubstitution is very related to _filtering_ documents. One of the annoying things\nabout XML is that it is a document markup language first, and a data language\nsecond. Standard parsers will assume you really care about all those extra\ntext elements. Consider this fragment, which has been changed by a five-year old:\n\n    T = [[\n      <weather>\n        boops!\n        <current_conditions>\n          <condition data='$condition'/>\n          <temp_c data='$temp'/>\n          <bo>whoops!</bo>\n        </current_conditions>\n      </weather>\n    ]]\n\nConformant parsers will give you text elements with the line feed after `<current_conditions>`\nalthough it makes handling the data more irritating.\n\n    local function parse (str)\n        return xml.parse(str,false,true)\n    end\n\nSecond argument means 'string, not file' and third argument means use the built-in\nLua parser (instead of LuaExpat if available) which _by default_ is not interested in\nkeeping such strings.\n\nHow to remove the string `boops!`?  `clone` (also called `filter` when called as a\nmethod) copies a LOM document. It can be passed a filter function, which is applied\nto each string found. The powerful thing about this is that this function receives\nstructural information - the parent node, and whether this was a tag name, a text\nelement or a attribute name:\n\n    d = parse (T)\n    c = d:filter(function(s,kind,parent)\n        print(stringx.strip(s),kind,parent and parent.tag or '?')\n        if kind == '*TEXT' and #parent > 1 then return nil end\n        return s\n    end)\n    --->\n    weather\t*TAG\t?\n    boops!\t*TEXT\tweather\n    current_conditions\t*TAG\tweather\n    condition\t*TAG\tcurrent_conditions\n    $condition\tdata\tcondition\n    temp_c\t*TAG\tcurrent_conditions\n    $temp\tdata\ttemp_c\n    bo\t*TAG\tcurrent_conditions\n    whoops!\t*TEXT\tbo\n\nWe can pull out 'boops' and not 'whoops' by discarding text elements which are not\nthe single child of an element.\n\n\n\n#### Extracting Data using Templates\n\nMatching goes in the opposite direction.  We have a document, and would like to\nextract values from it using a pattern.\n\nA common use of this is parsing the XML result of API queries.  The\n[(undocumented and subsequently discontinued) Google Weather\nAPI](http://blog.programmableweb.com/2010/02/08/googles-secret-weather-api/) is a\ngood example. Grabbing the result of\n`http://www.google.com/ig/api?weather=Johannesburg,ZA\" we get something like\nthis, after pretty-printing:\n\n    <xml_api_reply version='1'>\n      <weather module_id='0' tab_id='0' mobile_zipped='1' section='0' row='0'\nmobile_row='0'>\n        <forecast_information>\n          <city data='Johannesburg, Gauteng'/>\n          <postal_code data='Johannesburg,ZA'/>\n          <latitude_e6 data=''/>\n          <longitude_e6 data=''/>\n          <forecast_date data='2010-10-02'/>\n          <current_date_time data='2010-10-02 18:30:00 +0000'/>\n          <unit_system data='US'/>\n        </forecast_information>\n        <current_conditions>\n          <condition data='Clear'/>\n          <temp_f data='75'/>\n          <temp_c data='24'/>\n          <humidity data='Humidity: 19%'/>\n          <icon data='/ig/images/weather/sunny.gif'/>\n          <wind_condition data='Wind: NW at 7 mph'/>\n        </current_conditions>\n        <forecast_conditions>\n          <day_of_week data='Sat'/>\n          <low data='60'/>\n          <high data='89'/>\n          <icon data='/ig/images/weather/sunny.gif'/>\n          <condition data='Clear'/>\n        </forecast_conditions>\n        ....\n       </weather>\n    </xml_api_reply>\n\nAssume that the above XML has been read into `google`. The idea is to write a\npattern looking like a template, and use it to extract some values of interest:\n\n    t = [[\n      <weather>\n        <current_conditions>\n          <condition data='$condition'/>\n          <temp_c data='$temp'/>\n        </current_conditions>\n      </weather>\n    ]]\n\n    local res, ret = google:match(t)\n    pretty.dump(res)\n\nAnd the output is:\n\n    {\n      condition = \"Clear\",\n      temp = \"24\"\n    }\n\nThe `match` method can be passed a LOM document or some text, which will be\nparsed first.\n\nBut what if we need to extract values from repeated elements? Match templates may\ncontain 'array matches' which are enclosed in '{{..}}':\n\n      <weather>\n        {{<forecast_conditions>\n          <day_of_week data='$day'/>\n          <low data='$low'/>\n          <high data='$high'/>\n          <condition data='$condition'/>\n        </forecast_conditions>}}\n      </weather>\n\nAnd the match result is:\n\n    {\n      {\n        low = \"60\",\n        high = \"89\",\n        day = \"Sat\",\n        condition = \"Clear\",\n      },\n      {\n        low = \"53\",\n        high = \"86\",\n        day = \"Sun\",\n        condition = \"Clear\",\n      },\n      {\n        low = \"57\",\n        high = \"87\",\n        day = \"Mon\",\n        condition = \"Clear\",\n      },\n      {\n        low = \"60\",\n        high = \"84\",\n        day = \"Tue\",\n        condition = \"Clear\",\n      }\n    }\n\nWith this array of tables, you can use `tablex` or `List`\nto reshape into the desired form, if you choose.  Just as with reading a Unix password\nfile with `config`, you can make the array into a map of days to conditions using:\n\n    `tablex.pairmap`('|k,v| v,v.day',conditions)\n\n(Here using the alternative string lambda option)\n\nHowever, xml matches can shape the structure of the output. By replacing the `day_of_week`\nline of the template with `<day_of_week data='$_'/>` we get the same effect; `$_` is\na special symbol that means that this captured value (or simply _capture_) becomes the key.\n\nNote that `$NUMBER` means a numerical index, so\nthat `$1` is the first element of the resulting array, and so forth. You can mix\nnumbered and named captures, but it's strongly advised to make the numbered captures\nform a proper array sequence (everything from `1` to `n` inclusive). `$0` has a\nspecial meaning; if it is the only capture (`{[0]='foo'}`) then the table is\ncollapsed into 'foo'.\n\n      <weather>\n        {{<forecast_conditions>\n          <day_of_week data='$_'/>\n          <low data='$1'/>\n          <high data='$2'/>\n          <condition data='$3'/>\n        </forecast_conditions>}}\n      </weather>\n\nNow the result is:\n\n    {\n      Tue = {\n        \"60\",\n        \"84\",\n        \"Clear\"\n      },\n      Sun = {\n        \"53\",\n        \"86\",\n        \"Clear\"\n      },\n      Sat = {\n        \"60\",\n        \"89\",\n        \"Clear\"\n      },\n      Mon = {\n        \"57\",\n        \"87\",\n        \"Clear\"\n      }\n    }\n\nApplying matches to this config file poses another problem, because the actual\ntags matched are themselves meaningful.\n\n    <config>\n        <alpha>1.3</alpha>\n        <beta>10</beta>\n        <name>bozo</name>\n    </config>\n\nSo there are tag 'wildcards' which are element names ending with a hyphen.\n\n    <config>\n        {{<key->$value</key->}}\n    </config>\n\nYou will then get `{{alpha='1.3'},...}`. The most convenient format would be\nreturned by this (note that `_-` behaves just like `$_`):\n\n    <config>\n        {{<_->$0</_->}}\n    </config>\n\nwhich would return `{alpha='1.3',beta='10',name='bozo'}`.\n\nWe could play this game endlessly, and encode ways of converting captures, but\nthe scheme is complex enough, and it's easy to do the conversion later\n\n    local numbers = {alpha=true,beta=true}\n    for k,v in pairs(res) do\n        if numbers[v] then res[k] = tonumber(v) end\n    end\n\n\n#### HTML Parsing\n\nHTML is an unusually degenerate form of XML, and Dennis Schridde has contributed\na feature which makes parsing it easier.  For instance, from the tests:\n\n    doc = xml.parsehtml [[\n    <BODY>\n    Hello dolly<br>\n    HTML is <b>slack</b><br>\n    </BODY>\n    ]]\n\n    asserteq(xml.tostring(doc),[[\n    <body>\n    Hello dolly<br/>\n    HTML is <b>slack</b><br/></body>]])\n\nThat is, all tags are converted to lowercase, and empty HTML elements like `br`\nare properly closed; attributes do not need to be quoted.\n\nAlso, DOCTYPE directives and comments are skipped. For truly badly formed HTML,\nthis is not the tool for you!\n\n\n\n"
+}

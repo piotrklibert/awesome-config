@@ -1,0 +1,18 @@
+{
+  "kind":"libraries",
+  "name":"pl.comprehension",
+  "mod_name":"comprehension",
+  "inferred":true,
+  "description":"\n\n See the [wiki page](http://lua-users.org/wiki/ListComprehensions)\n\n    local C= require 'pl.comprehension' . new()\n\n    C ('x for x=1,10') ()\n    ==> {1,2,3,4,5,6,7,8,9,10}\n    C 'x^2 for x=1,4' ()\n    ==> {1,4,9,16}\n    C '{x,x^2} for x=1,4' ()\n    ==> {{1,1},{2,4},{3,9},{4,16}}\n    C '2*x for x' {1,2,3}\n    ==> {2,4,6}\n    dbl = C '2*x for x'\n    dbl {10,20,30}\n    ==> {20,40,60}\n    C 'x for x if x % 2 == 0' {1,2,3,4,5}\n    ==> {2,4}\n    C '{x,y} for x = 1,2 for y = 1,2' ()\n    ==> {{1,1},{1,2},{2,1},{2,2}}\n    C '{x,y} for x for y' ({1,2},{10,20})\n    ==> {{1,10},{1,20},{2,10},{2,20}}\n    assert(C 'sum(x^2 for x)' {2,3,4} == 2^2+3^2+4^2)\n\n (c) 2008 David Manura. Licensed under the same terms as Lua (MIT license).\n\n Dependencies: `pl.utils`, `pl.luabalanced`\n\n See @{07-functional.md.List_Comprehensions|the Guide}",
+  "file":"/home/cji/portless/Penlight/lua/pl/comprehension.lua",
+  "summary":"List comprehensions implemented in Lua.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":33,
+  "package":"pl",
+  "items":[],
+  "type":"module",
+  "modifiers":[]
+}

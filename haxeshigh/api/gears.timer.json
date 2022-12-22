@@ -1,0 +1,714 @@
+{
+  "inferred":true,
+  "kind":"core_components",
+  "mod_name":"gears.timer",
+  "summary":"Timer objects and functions.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.timer",
+  "modifiers":{
+    "author":[[]],
+    "usage":[[]],
+    "copyright":[]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"timeout",
+        "2":"started",
+        "map":{
+          "started":" Read-only boolean field indicating if the timer has been\n   started.",
+          "timeout":" Interval in seconds to emit the timeout signal.\n   Can be any value, including floating point ones (e.g. `1.5` seconds)."
+        }
+      },
+      "summary":"Timer objects.",
+      "name":"timer",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"boolean"
+          },
+          "started":{
+            "type":"boolean"
+          },
+          "timeout":{
+            "type":"number"
+          }
+        }
+      },
+      "description":" This type of object is useful when triggering events repeatedly.\n\n The timer will emit the \"timeout\" signal every N seconds, N being the timeout\n value. Note that a started timer will not be garbage collected. Call `:stop`\n before dropping the last reference to prevent leaking the object.\n",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"(timeout, started)",
+      "tags":[],
+      "lineno":78
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Emitted when the timer is started.",
+      "name":"start",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"()",
+      "tags":[],
+      "lineno":81
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Emitted when the timer is stopped.",
+      "name":"stop",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"()",
+      "tags":[],
+      "lineno":84
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Emitted when `timeout` seconds have elapsed.",
+      "name":"timeout",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n This will be emitted repeatedly, unless `single_shot` has been set to `true`\n for the timer.",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"()",
+      "tags":[],
+      "lineno":90
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Start the timer.",
+      "name":"start",
+      "modifiers":{
+        "return":[],
+        "field":[],
+        "emits":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "emits":["start"]
+      },
+      "lineno":95
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Stop the timer.",
+      "name":"stop",
+      "modifiers":{
+        "return":[],
+        "field":[],
+        "emits":[[]]
+      },
+      "description":"\n\n Does nothing if the timer isn't running.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "emits":["stop"]
+      },
+      "lineno":114
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Restart the timer.",
+      "name":"again",
+      "modifiers":{
+        "return":[],
+        "field":[],
+        "emits":[[],[]]
+      },
+      "description":"\n This is equivalent to stopping the timer if it is running and then starting\n it.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "emits":["start","stop"]
+      },
+      "lineno":129
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":""
+        }
+      },
+      "summary":"The timer is started.",
+      "name":"started",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "field":{
+          "1":[],
+          "boolean":[]
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(boolean)",
+      "tags":[],
+      "lineno":140
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"number",
+        "map":{
+          "number":""
+        }
+      },
+      "summary":"The timer timeout value.",
+      "name":"timeout",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "number":[]
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":[],
+          "number":[]
+        }
+      },
+      "description":"\n **Signal:** property::timeout",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(number)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":146
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.timeout","args.autostart","args.call_now","args.callback","args.single_shot"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.call_now":" Call the callback at timer creation.",
+          "args.single_shot":" Run only once then stop.",
+          "args.timeout":" Timeout in seconds (e.g. `1.5`).",
+          "args":" Arguments.",
+          "args.autostart":" Automatically start the timer.",
+          "args.callback":" Callback function to connect to the\n  \"timeout\" signal."
+        }
+      },
+      "summary":"Create a new timer object.",
+      "name":"gears.timer",
+      "modifiers":{
+        "return":[{
+            "type":"timer"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "4":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "5":{
+            "type":"function",
+            "opt":true
+          },
+          "6":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.call_now":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.single_shot":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.timeout":{
+            "type":"number"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.autostart":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.callback":{
+            "type":"function",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "4":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "5":{
+            "type":"function",
+            "opt":true
+          },
+          "6":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.call_now":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.single_shot":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.timeout":{
+            "type":"number"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.autostart":{
+            "type":"boolean",
+            "opt":"false"
+          },
+          "args.callback":{
+            "type":"function",
+            "opt":true
+          }
+        }
+      },
+      "description":"\n\n `call_now` only takes effect when a `callback` is provided. `single_shot`,\n on the other hand, also stops signals connected to the `timeout` signal.\n\n Specifying a function `func` as `args.callback` is equivalent to calling\n `:connect_signal(func)` on the timer object.\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(args)",
+      "tags":[],
+      "lineno":182
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"timeout",
+        "2":"callback",
+        "map":{
+          "callback":" Function to run.",
+          "timeout":" Timeout in seconds (e.g. 1.5)."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"timer"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"function"
+          },
+          "callback":{
+            "type":"function"
+          },
+          "timeout":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"function"
+          },
+          "callback":{
+            "type":"function"
+          },
+          "timeout":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This is a small wrapper around `gears.timer`, that creates a timer based on\n `callback`.\n The timer will run continuously and call `callback` every `timeout` seconds.\n It is stopped when `callback` returns `false`, when `callback` throws an\n error or when the `:stop()` method is called on the return value.\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Create a simple timer for calling the `callback` function continuously.",
+      "name":"start_new",
+      "type":"staticfct",
+      "args":"(timeout, callback)",
+      "kind":"static module functions",
+      "lineno":224
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"timeout",
+        "2":"callback",
+        "map":{
+          "callback":" Function to start.",
+          "timeout":" Timeout in seconds (e.g. 1.5)."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"timer"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"function"
+          },
+          "callback":{
+            "type":"function"
+          },
+          "timeout":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"function"
+          },
+          "callback":{
+            "type":"function"
+          },
+          "timeout":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This function is almost identical to `gears.timer.start_new`. The only\n difference is that this does not prevent the callback function from being\n garbage collected.\n In addition to the conditions in `gears.timer.start_new`,\n this timer will also stop if `callback` was garbage collected since the\n previous run.\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Create a simple timer for calling the `callback` function continuously.",
+      "name":"weak_start_new",
+      "type":"staticfct",
+      "args":"(timeout, callback)",
+      "kind":"static module functions",
+      "lineno":250
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Run all pending delayed calls now.",
+      "name":"run_delayed_calls_now",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":" This function should best not be used at\n all, because it means that less batching happens and the delayed calls run\n prematurely.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":267
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"callback",
+        "2":"...",
+        "map":{
+          "callback":" The function that should be called",
+          "...":" Arguments to the callback function"
+        }
+      },
+      "summary":"Call the given function at the end of the current GLib event loop iteration.",
+      "name":"delayed_call",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"function"
+          },
+          "2":[],
+          "callback":{
+            "type":"function"
+          },
+          "...":[]
+        },
+        "field":{
+          "1":{
+            "type":"function"
+          },
+          "2":[],
+          "callback":{
+            "type":"function"
+          },
+          "...":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(callback, ...)",
+      "tags":[],
+      "lineno":278
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "name":" The name of the signal.",
+          "...":" Extra arguments for the callback functions. Each connected\n   function receives the object as first argument and then any extra\n   arguments that are given to emit_signal()."
+        }
+      },
+      "summary":"Emit a signal.",
+      "name":"emit_signal",
+      "modifiers":{
+        "return":[],
+        "baseclass":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(name, ...)",
+      "tags":{
+        "baseclass":["gears.object"]
+      },
+      "lineno":305
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal.",
+          "func":" The callback to call when the signal is emitted."
+        }
+      },
+      "summary":"Connect to a signal.",
+      "name":"connect_signal",
+      "modifiers":{
+        "return":[],
+        "baseclass":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(name, func)",
+      "tags":{
+        "baseclass":["gears.object"]
+      },
+      "lineno":311
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal.",
+          "func":" The callback to call when the signal is emitted."
+        }
+      },
+      "summary":"Connect to a signal weakly.",
+      "name":"weak_connect_signal",
+      "modifiers":{
+        "return":[],
+        "baseclass":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        }
+      },
+      "description":"\n\n This allows the callback function to be garbage collected and\n automatically disconnects the signal when that happens.\n\n **Warning:**\n Only use this function if you really, really, really know what you\n are doing.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(name, func)",
+      "tags":{
+        "baseclass":["gears.object"]
+      },
+      "lineno":324
+    }],
+  "type":"coreclassmod",
+  "usage":["-- Create a widget and update its content using the output of a shell\n-- command every 10 seconds:\nlocal mybatterybar = wibox.widget {\n    {\n        min_value    = 0,\n        max_value    = 100,\n        value        = 0,\n        paddings     = 1,\n        border_width = 1,\n        forced_width = 50,\n        border_color = \"#0000ff\",\n        id           = \"mypb\",\n        widget       = wibox.widget.progressbar,\n    },\n    {\n        id           = \"mytb\",\n        text         = \"100%\",\n        widget       = wibox.widget.textbox,\n    },\n    layout      = wibox.layout.stack,\n    set_battery = function(self, val)\n        self.mytb.text  = tonumber(val)..\"%\"\n        self.mypb.value = tonumber(val)\n    end,\n}\n\ngears.timer {\n    timeout   = 10,\n    call_now  = true,\n    autostart = true,\n    callback  = function()\n        -- You should read it from `/sys/class/power_supply/` (on Linux)\n        -- instead of spawning a shell. This is only an example.\n        awful.spawn.easy_async(\n            {\"sh\", \"-c\", \"acpi | sed -n 's/^.*, \\([0-9]*\\)%/\\1/p'\"},\n            function(out)\n                mybatterybar.battery = out\n            end\n        )\n    end\n}\n"],
+  "file":"/home/cji/portless/awesome/build/lib/gears/timer.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2014 Uli Schlachter"
+  },
+  "lineno":52
+}

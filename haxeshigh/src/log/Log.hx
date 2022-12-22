@@ -19,7 +19,9 @@ enum abstract LogLevel(String) {
 
 // #ff8080  - lososiowy
 // #55ffff  -  mietowy
-
+function f() {
+    "ad".substring(1, 2);
+}
 
 @:tink
 @:nullSafety(Strict)
@@ -31,7 +33,7 @@ class Log {
     Warn => "#ffff7f",
     Error => "#b91e1e",
   ];
-  static final res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
+  static final res_path = "/home/cji/priv/awesomescripts/haxeshigh/res";
 
   static final defaults = {
     // fg: "white",

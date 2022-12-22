@@ -1,0 +1,24 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"rules",
+  "summary":"This module has been moved to `ruled.client`",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.rules",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/lib/awful/rules.lua",
+  "package":"awful",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2009 Julien Danjou"
+  },
+  "lineno":8
+}

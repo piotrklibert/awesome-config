@@ -1,0 +1,1232 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"wibox.widget.graph",
+  "summary":"A graph widget.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.widget.graph",
+  "modifiers":{
+    "usage":[[]],
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n The graph goes from left to right. To change this to right to left, use\n a `wibox.container.mirror` widget. This can also be used to have data\n shown from top to bottom.\n\n To add text on top of the graph, use a `wibox.layout.stack` and a\n `wibox.container.align` widgets.\n\n To display the graph vertically, use a `wibox.container.rotate` widget.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_defaults_graph.svg)\n",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"border_width",
+        "map":{
+          "border_width":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "border_width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "border_width":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_border_width.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the graph border_width.",
+      "name":"border_width",
+      "kind":"object properties",
+      "usage":["for _, width in ipairs { 1, 2, 4, 10 } do\n    wibox.widget {\n        border_width  = width,\n        border_color  = beautiful.border_color,\n        widget        = wibox.widget.graph,\n    }\n end\n"],
+      "args":"(border_width)",
+      "type":"property",
+      "lineno":62
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"border_color",
+        "map":{
+          "border_color":" The border color to set."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "param":{
+          "1":{
+            "type":"gears.color"
+          },
+          "border_color":{
+            "type":"gears.color"
+          }
+        },
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"gears.color"
+          },
+          "border_color":{
+            "type":"gears.color"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "propbeautiful":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_border_color.svg)\n",
+      "tags":{
+        "propbeautiful":[""],
+        "see":[],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the graph border color.",
+      "name":"border_color",
+      "kind":"object properties",
+      "usage":["for _, color in ipairs {&#34#ff0000&#34, &#34#00ff00&#34, &#34#0000ff&#34, &#34#ff00ff&#34 } do\n    wibox.widget {\n        border_width  = 2,\n        border_color  = color,\n        widget        = wibox.widget.graph,\n    }\n end\n"],
+      "args":"(border_color)",
+      "type":"property",
+      "lineno":83
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"color",
+        "map":{
+          "color":" The graph color."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"color"
+          },
+          "color":{
+            "type":"color"
+          }
+        },
+        "usage":[[]],
+        "usebeautiful":[[]],
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"color"
+          },
+          "color":{
+            "type":"color"
+          }
+        }
+      },
+      "description":"\n\n This color is used, when `group_colors` isn't set.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_color.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[],
+        "usebeautiful":["beautiful.graph_fg"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the graph foreground color.",
+      "name":"color",
+      "kind":"object properties",
+      "usage":["for _, color in ipairs {&#34#ff0000&#34, &#34#00ff00&#34, &#34#0000ff&#34, &#34#ff00ff&#34 } do\n    wibox.widget {\n        color     = color,\n        widget    = wibox.widget.graph,\n    }\n end\n"],
+      "args":"(color)",
+      "type":"property",
+      "lineno":105
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"background_color",
+        "map":{
+          "background_color":" The graph background color."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"gears.color"
+          },
+          "background_color":{
+            "type":"gears.color"
+          }
+        },
+        "usage":[[]],
+        "usebeautiful":[[]],
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"gears.color"
+          },
+          "background_color":{
+            "type":"gears.color"
+          }
+        }
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_background_color.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[],
+        "usebeautiful":["beautiful.graph_bg"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the graph background color.",
+      "name":"background_color",
+      "kind":"object properties",
+      "usage":["for _, color in ipairs {&#34#ff0000&#34, &#34#00ff00&#34, &#34#0000ff&#34, &#34#ff00ff&#34 } do\n    wibox.widget {\n        background_color = color,\n        widget           = wibox.widget.graph,\n    }\n end\n"],
+      "args":"(background_color)",
+      "type":"property",
+      "lineno":125
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"colors",
+        "map":{
+          "colors":" A table with colors for data groups."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "colors":{
+            "type":"table"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "colors":{
+            "type":"table"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n Colors in this table are used to paint respective data groups.\n When this property is unset (default), the `color` property is used\n instead for all data groups.\n When this property is set, but there's no color for a data group in it\n (i.e. `group_colors`[group] is nil or false), then the respective\n data group is disabled, i.e. not drawn.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_stacked_group_disable.svg)\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the colors for data groups.",
+      "name":"group_colors",
+      "kind":"object properties",
+      "usage":["local colors_normal = {\n    &#34#ff0000&#34,\n    &#34#00ff00&#34, -- the data group is green\n    &#34#0000ff&#34\n}\nlocal colors_transparent = {\n    &#34#ff0000&#34,\n    &#34#00000000&#34, -- the data group is transparent\n    &#34#0000ff&#34\n}\nlocal colors_disabled = {\n    &#34#ff0000&#34,\n    nil, -- the data group is disabled\n    &#34#0000ff&#34\n}\n \nwibox.widget {\n    stack         = true,\n    group_colors  = colors_normal,\n    widget        = wibox.widget.graph,\n}\n \nwibox.widget {\n    stack         = true,\n    group_colors  = colors_transparent,\n    widget        = wibox.widget.graph,\n}\n \nwibox.widget {\n    stack         = true,\n    group_colors  = colors_disabled,\n    widget        = wibox.widget.graph,\n}\n \n"],
+      "args":"(colors)",
+      "type":"property",
+      "lineno":178
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"max_value",
+        "map":{
+          "max_value":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "max_value":{
+            "type":"number"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "max_value":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n This value corresponds to the top of the graph.\n If `scale` is also set, the graph never scales up below this value, but it\n automatically scales down to make all data fit.\n If `scale` and `max_value` are unset, `max_value` defaults to 1.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_max_value.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The maximum value the graph should handle.",
+      "name":"max_value",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    max_value = 30,\n    widget    = wibox.widget.graph,\n}\n \nwibox.widget {\n    max_value = 10,\n    widget    = wibox.widget.graph,\n}\n"],
+      "args":"(max_value)",
+      "type":"property",
+      "lineno":204
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"min_value",
+        "map":{
+          "min_value":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "min_value":{
+            "type":"number"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "min_value":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n This value corresponds to the bottom of the graph.\n If `scale` is also set, the graph never scales up above this value, but it\n automatically scales down to make all data fit.\n If `scale` and `min_value` are unset, `min_value` defaults to 0.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_min_value.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The minimum value the graph should handle.",
+      "name":"min_value",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    max_value = 30,\n    widget    = wibox.widget.graph,\n}\n \nwibox.widget {\n    min_value = 10,\n    max_value = 30,\n    widget    = wibox.widget.graph,\n}\n"],
+      "args":"(min_value)",
+      "type":"property",
+      "lineno":231
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"scale",
+        "map":{
+          "scale":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "scale":{
+            "type":"boolean"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "scale":{
+            "type":"boolean"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":" Default is false.\n\n If this property is set to true, the graph calculates\n effective `min_value` and `max_value` based on the displayed data,\n so that all data fits on screen. The properties themselves aren't changed,\n but the graph is drawn as though `min_value`(`max_value`) were equal to\n the minimum(maximum) value among itself and the currently drawn values.\n If `min_value`(`max_value`) is unset, then only the drawn values\n are considered in this calculation.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_scale1.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the graph to automatically scale its values.",
+      "name":"scale",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    scale  = false,\n    widget = wibox.widget.graph,\n}\n \nwibox.widget {\n    scale  = true,\n    widget = wibox.widget.graph,\n}\n"],
+      "args":"(scale)",
+      "type":"property",
+      "lineno":260
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"clamp_bars",
+        "map":{
+          "clamp_bars":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "clamp_bars":{
+            "type":"boolean"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "clamp_bars":{
+            "type":"boolean"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n Drawing values outside the [`min_value`, `max_value`] range leads to\n bar shapes that exceed physical widget dimensions.\n Most of the time this doesn't matter, because bar shapes are rectangles\n and bar heights aren't large enough to trigger errors in the drawing system.\n However for some shapes and values it does make a difference and leads\n to visibly different and/or invalid result.\n\n When this property is set to true (the default), the graph clamps\n bars' heights to keep them within the graph.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_clamp_bars.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Clamp graph bars to keep them inside the widget for out-of-range values.",
+      "name":"clamp_bars",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    clamp_bars    = false,\n    step_width    = 9,\n    step_spacing  = 1,\n    step_shape    = gears.shape.arrow,\n    widget        = wibox.widget.graph,\n}\n \nwibox.widget {\n    --clamp_bars    = true, --default\n    step_width    = 9,\n    step_spacing  = 1,\n    step_shape    = gears.shape.arrow,\n    widget        = wibox.widget.graph,\n}\n \n"],
+      "args":"(clamp_bars)",
+      "type":"property",
+      "lineno":298
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"baseline_value",
+        "map":{
+          "baseline_value":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "baseline_value":{
+            "type":"number"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "baseline_value":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":" Default is 0.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_baseline_value.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The value corresponding to the starting point of graph bars.",
+      "name":"baseline_value",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    --baseline_value = 0, --default\n    min_value      = -5,\n    max_value      = 5,\n    widget         = wibox.widget.graph,\n}\n \nwibox.widget {\n    baseline_value = 5,\n    min_value      = -5,\n    max_value      = 5,\n    widget         = wibox.widget.graph,\n}\n \nwibox.widget {\n    baseline_value = -2.5,\n    min_value      = -5,\n    max_value      = 5,\n    widget         = wibox.widget.graph,\n}\n \n"],
+      "args":"(baseline_value)",
+      "type":"property",
+      "lineno":331
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"step_width",
+        "map":{
+          "step_width":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"1",
+            "type":"number",
+            "opt":"1"
+          },
+          "step_width":{
+            "optchain":"1",
+            "type":"number",
+            "opt":"1"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"1",
+            "type":"number",
+            "opt":"1"
+          },
+          "step_width":{
+            "optchain":"1",
+            "type":"number",
+            "opt":"1"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_step.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the width or the individual steps.",
+      "name":"step_width",
+      "kind":"object properties",
+      "usage":["for _, width in ipairs {1, 2, 3, 10} do\n    wibox.widget {\n        step_width   = width,\n        step_spacing = 1,\n        step_shape   = function(cr, s_width, height)\n            gears.shape.rounded_rect(cr, s_width, height, 2)\n        end,\n        widget       = wibox.widget.graph,\n    }\n end\n"],
+      "args":"([step_width=1])",
+      "type":"property",
+      "lineno":353
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"step_spacing",
+        "map":{
+          "step_spacing":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "step_spacing":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "step_spacing":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_step_spacing.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the spacing between the steps.",
+      "name":"step_spacing",
+      "kind":"object properties",
+      "usage":["for _, spacing in ipairs {0, 2, 4, 10} do\n    wibox.widget {\n        step_spacing = spacing,\n        widget       = wibox.widget.graph,\n    }\n end\n"],
+      "args":"([step_spacing=0])",
+      "type":"property",
+      "lineno":371
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"step_shape",
+        "map":{
+          "step_shape":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "optchain":"rectangle",
+            "type":"gears.shape|function",
+            "opt":"rectangle"
+          },
+          "step_shape":{
+            "optchain":"rectangle",
+            "type":"gears.shape|function",
+            "opt":"rectangle"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"rectangle",
+            "type":"gears.shape|function",
+            "opt":"rectangle"
+          },
+          "step_shape":{
+            "optchain":"rectangle",
+            "type":"gears.shape|function",
+            "opt":"rectangle"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_step_shape.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The step shape.",
+      "name":"step_shape",
+      "kind":"object properties",
+      "usage":["local shapes = {\n    gears.shape.squircle,\n    gears.shape.octogon,\n    gears.shape.rounded_bar,\n    gears.shape.arrow\n}\n \nfor _, shape in ipairs(shapes) do\n    wibox.widget {\n        step_width   = 5,\n        step_spacing = 1,\n        step_shape   = shape,\n        widget       = wibox.widget.graph,\n    }\n end\n"],
+      "args":"([step_shape=rectangle])",
+      "type":"property",
+      "lineno":400
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"stack",
+        "map":{
+          "stack":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "stack":{
+            "type":"boolean"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "stack":{
+            "type":"boolean"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":" Default is false.\n\n When set to true, bars of each successive data group are drawn on top of\n bars of previous groups, instead of the baseline.\n This necessitates all data values to be non-negative.\n Negative values, if present, will trigger @{nan_color|NaN indication}.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_normal_vs_stacked.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the graph to draw stacks.",
+      "name":"stack",
+      "kind":"object properties",
+      "usage":["local colors = {\n    &#34#ff0000&#34,\n    &#34#00ff00&#34,\n    &#34#0000ff&#34\n}\nlocal thin_arrow_shape = function(cr, width, height)\n    gears.shape.arrow(cr, width, height, nil, 1, math.max(0, height-4))\nend\n \nwibox.widget {\n    --stack         = false, --default\n    group_colors  = colors,\n    step_width    = 5,\n    step_spacing  = 1,\n    step_shape    = thin_arrow_shape,\n    widget        = wibox.widget.graph,\n}\n \nwibox.widget {\n    stack         = true,\n    group_colors  = colors,\n    step_width    = 5,\n    step_spacing  = 1,\n    step_shape    = thin_arrow_shape,\n    widget        = wibox.widget.graph,\n}\n \n"],
+      "args":"(stack)",
+      "type":"property",
+      "lineno":444
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"nan_indication",
+        "map":{
+          "nan_indication":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "nan_indication":{
+            "type":"boolean"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "nan_indication":{
+            "type":"boolean"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":" Default is true.\n\n When the data contains [NaN](https://en.wikipedia.org/wiki/NaN) values,\n and `nan_indication` is set, the corresponding area,\n where the value bar should have been drawn, is filled\n with the `nan_color` from top to bottom.\n The painting is done after all other data is rendered,\n to make sure that it won't be overpainted and go unnoticed.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_nan_color.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Display NaN indication.",
+      "name":"nan_indication",
+      "kind":"object properties",
+      "usage":["local data = {\n    -5, -4, 0/0, -2, -1, 0/0, 1, 2, 3, 0/0, 5,\n}\n \nwibox.widget {\n    -- nan_indication = true, -- default\n    -- default nan_color\n    step_width    = 9,\n    step_spacing  = 1,\n    widget        = wibox.widget.graph,\n}\n \nwibox.widget {\n    -- nan_indication = true, -- default\n    nan_color     = &#34#ff00007f&#34,\n    step_width    = 9,\n    step_spacing  = 1,\n    widget        = wibox.widget.graph,\n}\n \nwibox.widget {\n    nan_indication = false,\n    step_width     = 9,\n    step_spacing   = 1,\n    widget         = wibox.widget.graph,\n}\n \n"],
+      "args":"(nan_indication)",
+      "type":"property",
+      "lineno":490
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"nan_color",
+        "map":{
+          "nan_color":" The color of NaN indication."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"gears.color"
+          },
+          "nan_color":{
+            "type":"gears.color"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"gears.color"
+          },
+          "nan_color":{
+            "type":"gears.color"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n The color used when `nan_indication` is set.\n Defaults to a yellow-black diagonal stripes pattern.\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_graph_stacked_nan.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The color of NaN indication.",
+      "name":"nan_color",
+      "kind":"object properties",
+      "usage":["-- The red and blue data groups are constant,\n-- but the green data group is a sine,\n-- which, when it becomes negative,\n-- triggers NaN indication in a stacked graph.\nlocal colors = {\n    &#34#ff0000&#34,\n    &#34#00ff00&#34,\n    &#34#0000ff&#34\n}\n \nwibox.widget {\n    --default nan_color\n    stack        = true,\n    group_colors = colors,\n    step_width   = 1,\n    step_spacing = 1,\n    widget       = wibox.widget.graph,\n}\n \nwibox.widget {\n    nan_color    = &#34#ff00ff7f&#34,\n    stack        = true,\n    group_colors = colors,\n    step_width   = 1,\n    step_spacing = 1,\n    widget       = wibox.widget.graph,\n}\n \nwibox.widget {\n    nan_indication = false,\n    stack          = true,\n    group_colors   = colors,\n    step_width     = 1,\n    step_spacing   = 1,\n    widget         = wibox.widget.graph,\n}\n \n"],
+      "args":"(nan_color)",
+      "type":"property",
+      "lineno":543
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"color",
+        "map":{
+          "color":""
+        }
+      },
+      "summary":"The graph foreground color\n Used, when the `color` property isn't set.",
+      "name":"beautiful.graph_fg",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "color":[]
+        },
+        "field":{
+          "1":[],
+          "color":[]
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(color)",
+      "tags":[],
+      "lineno":549
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"color",
+        "map":{
+          "color":""
+        }
+      },
+      "summary":"The graph background color.",
+      "name":"beautiful.graph_bg",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "color":[]
+        },
+        "field":{
+          "1":[],
+          "color":[]
+        }
+      },
+      "description":"\n Used, when the `background_color` property isn't set.\n",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(color)",
+      "tags":[],
+      "lineno":555
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"color",
+        "map":{
+          "color":""
+        }
+      },
+      "summary":"The graph border color.",
+      "name":"beautiful.graph_border_color",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "color":[]
+        },
+        "field":{
+          "1":[],
+          "color":[]
+        }
+      },
+      "description":"\n Used, when the `border_color` property isn't set.\n",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(color)",
+      "tags":[],
+      "lineno":561
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"group_idx",
+        "map":{
+          "group_idx":" The index of the data group."
+        }
+      },
+      "summary":"Determine the color to paint a data group with.",
+      "name":"pick_data_group_color",
+      "modifiers":{
+        "return":[{
+            "type":"gears.color"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "group_idx":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "group_idx":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n The graph uses this method to choose a color for a given data group.\n The default implementation uses a color from the `group_colors` table,\n if present, otherwise it falls back to `color`, then\n `beautiful.graph_fg` and finally to color red (#ff0000).\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(group_idx)",
+      "tags":[],
+      "lineno":689
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"usable_width",
+        "map":{
+          "usable_width":""
+        }
+      },
+      "summary":"Determine how many values should be drawn for a given widget width.",
+      "name":"compute_drawn_values_num",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "usable_width":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "usable_width":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n The graph uses this method to determine the upper bound on the\n number of values that will be drawn from each data group. This affects,\n among other things, how many values will be considered for autoscaling,\n when `scale` is true, and, indirectly, how many values will be kept in\n the backing array, when `capacity` is unset.\n\n The default implementation computes the minimum number that is enough\n to completely cover the given width with `step_width` + `step_spacing`\n intervals. The graph calls this method on every redraw and the width\n passed is the width of the value drawing area, i.e the graph borders\n are subtracted (2\\*`border_width`).\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(usable_width)",
+      "tags":[],
+      "lineno":983
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"value",
+        "2":"group",
+        "map":{
+          "value":" The value to be added to a graph's data group.",
+          "group":" The index of the data group."
+        }
+      },
+      "summary":"Add a value to the graph.",
+      "name":"add_value",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"NaN",
+            "type":"number",
+            "opt":"NaN"
+          },
+          "2":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          },
+          "value":{
+            "optchain":"NaN",
+            "type":"number",
+            "opt":"NaN"
+          },
+          "group":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"NaN",
+            "type":"number",
+            "opt":"NaN"
+          },
+          "2":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          },
+          "value":{
+            "optchain":"NaN",
+            "type":"number",
+            "opt":"NaN"
+          },
+          "group":{
+            "optchain":"1",
+            "type":"integer",
+            "opt":"1"
+          }
+        }
+      },
+      "description":"\n\n The graph widget keeps its values grouped in _data groups_. Each data group\n is drawn with its own set of bars, starting with the latest value\n in the data group at the left edge of the graph.\n\n Simply calling this method with a particular data group index is the only\n thing necessary and sufficient for creating a data group.\n Any natural integer as a group number is ok, but the user is advised to keep\n the group numbers low and consecutive for performance reasons.\n\n There are no constraints on the value parameter, other than it should\n be a number.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"([value=NaN[, group=1]])",
+      "tags":[],
+      "lineno":1029
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Clear the graph.",
+      "name":"clear",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n Removes all values from all data groups.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":1073
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"capacity",
+        "map":{
+          "capacity":" The maximum number of values to keep\n per data group (`nil` for automatic guess)."
+        }
+      },
+      "summary":"Set the graph capacity.",
+      "name":"capacity",
+      "modifiers":{
+        "param":{
+          "1":{
+            "optchain":"nil",
+            "type":"integer|nil",
+            "opt":"nil"
+          },
+          "capacity":{
+            "optchain":"nil",
+            "type":"integer|nil",
+            "opt":"nil"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "optchain":"nil",
+            "type":"integer|nil",
+            "opt":"nil"
+          },
+          "capacity":{
+            "optchain":"nil",
+            "type":"integer|nil",
+            "opt":"nil"
+          }
+        }
+      },
+      "description":"\n\n Since the typical uses of the graph widget imply that `add_value` will be\n called an indefinite number of times, the widget needs a way to know, when\n to start discarding old values from the backing array.\n\n When `capacity` is set, it defines the maximum number of values to keep in\n each data group.\n\n When `capacity` is unset (default), the number is determined heuristically,\n which is sufficient most of the time, unless the widget gets resized\n too much too fast.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([capacity=nil])",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":1096
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"height",
+        "map":{
+          "height":" The height to set."
+        }
+      },
+      "summary":"Set the graph height.",
+      "name":"height",
+      "modifiers":{
+        "renamedin":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This property is deprecated.  Use a `wibox.container.constraint` widget or\n `forced_height`.\n",
+      "type":"deprecatedproperty",
+      "section":"deprecatedproperty",
+      "kind":"deprecated object properties",
+      "args":"(height)",
+      "tags":{
+        "renamedin":["5.0 forced_height"],
+        "propemits":["true false"]
+      },
+      "lineno":1118
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"width",
+        "map":{
+          "width":" The width to set."
+        }
+      },
+      "summary":"Set the graph width.",
+      "name":"width",
+      "modifiers":{
+        "renamedin":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This property is deprecated.  Use a `wibox.container.constraint` widget or\n `forced_width`.\n",
+      "type":"deprecatedproperty",
+      "section":"deprecatedproperty",
+      "kind":"deprecated object properties",
+      "args":"(width)",
+      "tags":{
+        "renamedin":["5.0 forced_width"],
+        "propemits":["true false"]
+      },
+      "lineno":1145
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"colors",
+        "map":{
+          "colors":" A table with colors for data groups."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "renamedin":[[]],
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "colors":{
+            "type":"table"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "colors":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"\n\n This property is deprecated. Use `group_colors` instead.\n",
+      "tags":{
+        "renamedin":["5.0 group_colors"],
+        "see":[]
+      },
+      "section":"deprecatedproperty",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the colors for data groups.",
+      "name":"stack_colors",
+      "type":"deprecatedproperty",
+      "args":"(colors)",
+      "kind":"deprecated object properties",
+      "lineno":1171
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args":" Standard widget() arguments."
+        }
+      },
+      "summary":"Create a graph widget.",
+      "name":"wibox.widget.graph",
+      "modifiers":{
+        "return":[{
+            "type":"wibox.widget.graph"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "args":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "args":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(args)",
+      "tags":[],
+      "lineno":1195
+    }],
+  "type":"widgetmod",
+  "usage":["wibox.widget {\n    max_value = 29,\n    widget = wibox.widget.graph\n}\n"],
+  "file":"/home/cji/portless/awesome/build/lib/wibox/widget/graph.lua",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2009 Julien Danjou",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":28
+}

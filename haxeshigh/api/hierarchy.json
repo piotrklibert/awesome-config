@@ -1,0 +1,412 @@
+{
+  "inferred":true,
+  "kind":"classes",
+  "mod_name":"hierarchy",
+  "summary":"Management of widget hierarchies.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.hierarchy",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":" Each widget hierarchy object has a widget\n for which it saves e.g. size and transformation in its parent. Also, each\n widget has a number of children.\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" The widget that should be counted."
+        }
+      },
+      "summary":"Add a widget to the list of widgets for which hierarchies should count their\n occurrences.",
+      "name":"wibox.hierarchy.count_widget",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "widget":[]
+        },
+        "field":{
+          "1":[],
+          "widget":[]
+        }
+      },
+      "description":" Note that for correct operations, the widget must not yet be\n visible in any hierarchy.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(widget)",
+      "tags":[],
+      "lineno":26
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"context",
+        "2":"widget",
+        "3":"width",
+        "4":"height",
+        "5":"redraw_callback",
+        "6":"layout_callback",
+        "7":"callback_arg",
+        "map":{
+          "redraw_callback":" Callback that is called with the corresponding widget\n   hierarchy on widget::redraw_needed on some widget.",
+          "callback_arg":" A second argument that is given to the above callbacks.",
+          "layout_callback":" Callback that is called with the corresponding widget\n   hierarchy on widget::layout_changed on some widget.",
+          "context":" The context in which we are laid out.",
+          "widget":" The widget that is at the base of the hierarchy.",
+          "height":" The available height for this hierarchy.",
+          "width":" The available width for this hierarchy."
+        }
+      },
+      "summary":"Create a new widget hierarchy that has no parent.",
+      "name":"wibox.hierarchy.new",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "6":[],
+          "7":[],
+          "redraw_callback":[],
+          "callback_arg":[],
+          "layout_callback":[],
+          "context":[],
+          "widget":[],
+          "height":[],
+          "width":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "6":[],
+          "7":[],
+          "redraw_callback":[],
+          "callback_arg":[],
+          "layout_callback":[],
+          "context":[],
+          "widget":[],
+          "height":[],
+          "width":[]
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(context, widget, width, height, redraw_callback, layout_callback, callback_arg)",
+      "tags":[],
+      "lineno":212
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"context",
+        "2":"widget",
+        "3":"width",
+        "4":"height",
+        "5":"region",
+        "map":{
+          "region":" A region to use for accumulating changed parts",
+          "context":" The context in which we are laid out.",
+          "widget":" The widget that is at the base of the hierarchy.",
+          "height":" The available height for this hierarchy.",
+          "width":" The available width for this hierarchy."
+        }
+      },
+      "summary":"Update a widget hierarchy with some new state.",
+      "name":"wibox.hierarchy.update",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":{
+            "optchain":true,
+            "opt":true
+          },
+          "region":{
+            "optchain":true,
+            "opt":true
+          },
+          "context":[],
+          "widget":[],
+          "height":[],
+          "width":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":{
+            "optchain":true,
+            "opt":true
+          },
+          "region":{
+            "optchain":true,
+            "opt":true
+          },
+          "context":[],
+          "widget":[],
+          "height":[],
+          "width":[]
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(context, widget, width, height[, region])",
+      "tags":[],
+      "lineno":227
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the widget that this hierarchy manages.",
+      "name":"wibox.hierarchy.get_widget",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":235
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get a matrix that transforms to the parent's coordinate space from this\n hierarchy's coordinate system.",
+      "name":"wibox.hierarchy.get_matrix_to_parent",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":243
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get a matrix that transforms to the base of this hierarchy's coordinate\n system (aka the coordinate system of the device that this\n hierarchy is applied upon) from this hierarchy's coordinate system.",
+      "name":"wibox.hierarchy.get_matrix_to_device",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":252
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get a matrix that transforms from the parent's coordinate space into this\n hierarchy's coordinate system.",
+      "name":"wibox.hierarchy.get_matrix_from_parent",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":260
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get a matrix that transforms from the base of this hierarchy's coordinate\n system (aka the coordinate system of the device that this\n hierarchy is applied upon) into this hierarchy's coordinate system.",
+      "name":"wibox.hierarchy.get_matrix_from_device",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":270
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the extents that this hierarchy possibly draws to (in the current coordinate space).",
+      "name":"wibox.hierarchy.get_draw_extents",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"\n This includes the size of this element plus the size of all children\n (after applying the corresponding transformation).",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":280
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the size that this hierarchy logically covers (in the current coordinate space).",
+      "name":"wibox.hierarchy.get_size",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":288
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get a list of all children.",
+      "name":"wibox.hierarchy.get_children",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":296
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" The widget that should be counted"
+        }
+      },
+      "summary":"Count how often this widget is visible inside this hierarchy.",
+      "name":"wibox.hierarchy.get_count",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "widget":[]
+        },
+        "field":{
+          "1":[],
+          "widget":[]
+        }
+      },
+      "description":" This function\n only works with widgets registered via `count_widget`.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget)",
+      "tags":[],
+      "lineno":305
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"context",
+        "2":"cr",
+        "map":{
+          "cr":" The cairo context that is used for drawing.",
+          "context":" The context in which widgets are drawn."
+        }
+      },
+      "summary":"Draw a hierarchy to some cairo context.",
+      "name":"wibox.hierarchy.draw",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "cr":[],
+          "context":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "cr":[],
+          "context":[]
+        }
+      },
+      "description":"\n This function draws the widgets in this widget hierarchy to the given cairo\n context. The context's clip is used to skip parts that aren't visible.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(context, cr)",
+      "tags":[],
+      "lineno":321
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/hierarchy.lua",
+  "package":"wibox",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2015 Uli Schlachter"
+  },
+  "lineno":11
+}

@@ -1,0 +1,146 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"menu_gen",
+  "summary":"Menu generation module for menubar",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"menubar.menu_gen",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Specifies all directories where menubar should look for .desktop\n files.",
+      "name":"all_menu_dirs",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":" The search is recursive.",
+      "type":"field",
+      "section":"field",
+      "kind":"fields",
+      "args":"()",
+      "tags":[],
+      "lineno":30
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"multimedia",
+        "2":"name",
+        "3":"icon_name",
+        "4":"use",
+        "map":{
+          "use":"",
+          "icon_name":"",
+          "name":"",
+          "multimedia":""
+        }
+      },
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":" If \"use\" flag is set to false then any of\n the applications that fall only to this category will not be shown.",
+      "tags":[],
+      "section":"table",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Specify the mapping of .desktop Categories section to the\n categories in the menubar.",
+      "name":"all_categories",
+      "kind":"tables",
+      "lineno":35,
+      "args":"(multimedia, name, icon_name, use)",
+      "type":"table"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Find icons for category entries.",
+      "name":"menubar.menu_gen.lookup_category_icons",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":62
+    },{
+      "inferred":true,
+      "subparams":{
+        "callback":["callback.entries"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"callback",
+        "map":{
+          "callback":" Will be fired when all menu entries were parsed\n with the resulting list of menu entries as argument.",
+          "callback.entries":" All menu entries."
+        }
+      },
+      "summary":"Generate an array of all visible menu entries.",
+      "name":"menubar.menu_gen.generate",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"function"
+          },
+          "2":{
+            "type":"table"
+          },
+          "callback":{
+            "type":"function"
+          },
+          "callback.entries":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"function"
+          },
+          "2":{
+            "type":"table"
+          },
+          "callback":{
+            "type":"function"
+          },
+          "callback.entries":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(callback)",
+      "tags":[],
+      "lineno":84
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/lib/menubar/menu_gen.lua",
+  "package":"menubar",
+  "tags":{
+    "author":["Antonio Terceiro"],
+    "copyright":"2009, 2011-2012 Antonio Terceiro, Alexander Yakushev"
+  },
+  "lineno":9
+}

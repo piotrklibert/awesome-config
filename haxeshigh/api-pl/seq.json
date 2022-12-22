@@ -1,0 +1,855 @@
+{
+  "kind":"libraries",
+  "name":"pl.seq",
+  "mod_name":"seq",
+  "inferred":true,
+  "description":"\n See @{07-functional.md.Sequences|The Guide}\n\n Dependencies: `pl.utils`, `pl.types`, `debug`",
+  "file":"/home/cji/portless/Penlight/lua/pl/seq.lua",
+  "summary":"Manipulating iterators as sequences.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":7,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "s":[]
+        }
+      },
+      "summary":"given a string, return a function(y) which matches y against the string.",
+      "lineno":52,
+      "args":"(s)",
+      "section":"function",
+      "name":"matching",
+      "params":{
+        "map":{
+          "s":" a string"
+        },
+        "1":"s"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "summary":"sequence adaptor for a table.",
+      "lineno":65,
+      "args":"(t)",
+      "usage":["sum(list(t)) is the sum of all elements of t\n","for x in list(t) do...end\n"],
+      "section":"function",
+      "name":"list",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" a list-like table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"   Note that if any generic function is\n passed a table, it will automatically use seq.list()",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "summary":"return the keys of the table.",
+      "lineno":80,
+      "retgroups":[{
+          "1":{
+            "text":"iterator over keys",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"keys",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" an arbitrary table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["iterator over keys"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "start":[],
+          "finish":[]
+        }
+      },
+      "summary":"create an iterator over a numerical range.",
+      "lineno":100,
+      "args":"(start, finish)",
+      "section":"function",
+      "name":"range",
+      "params":{
+        "1":"start",
+        "2":"finish",
+        "map":{
+          "start":" a number",
+          "finish":" a number greater than start"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" Like the standard Python function xrange.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "iter":[]
+        }
+      },
+      "summary":"return the minimum and the maximum value of the sequence.",
+      "lineno":126,
+      "retgroups":[{
+          "1":{
+            "text":"minimum value",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"maximum value",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter)",
+      "type":"function",
+      "name":"minmax",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "iter":" a sequence"
+        },
+        "1":"iter"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["minimum value","maximum value"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "fn":[],
+          "iter":[]
+        }
+      },
+      "summary":"return the sum and element count of the sequence.",
+      "lineno":139,
+      "args":"(iter, fn)",
+      "section":"function",
+      "name":"sum",
+      "params":{
+        "1":"iter",
+        "2":"fn",
+        "map":{
+          "fn":" an optional function to apply to the values",
+          "iter":" a sequence"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[]],
+        "param":{
+          "1":[],
+          "iter":[]
+        },
+        "return":[[]]
+      },
+      "summary":"create a table from the sequence.",
+      "lineno":155,
+      "retgroups":[{
+          "1":{
+            "text":"a List",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter)",
+      "usage":["copy(list(ls)) is equal to ls\n","copy(list {1,2,3}) == List{1,2,3}\n"],
+      "type":"function",
+      "name":"copy",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "iter":" a sequence"
+        },
+        "1":"iter"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" (This will make the result a List.)",
+      "ret":["a List"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "iter":[],
+          "i1":[],
+          "i2":[]
+        },
+        "return":[[]]
+      },
+      "summary":"create a table of pairs from the double-valued sequence.",
+      "lineno":171,
+      "retgroups":[{
+          "1":{
+            "text":"a list-like table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter, i1, i2)",
+      "usage":["copy2(ipairs{10,20,30}) == {{1,10},{2,20},{3,30}}\n"],
+      "type":"function",
+      "name":"copy2",
+      "parameter":"param",
+      "params":{
+        "1":"iter",
+        "2":"i1",
+        "map":{
+          "iter":" a double-valued sequence",
+          "i1":" used to capture extra iterator values",
+          "i2":" as with pairs & ipairs"
+        },
+        "3":"i2"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a list-like table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "iter":[]
+        }
+      },
+      "summary":"create a table of 'tuples' from a multi-valued sequence.",
+      "lineno":184,
+      "retgroups":[{
+          "1":{
+            "text":"a list-like table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter)",
+      "type":"function",
+      "name":"copy_tuples",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "iter":" a multiple-valued sequence"
+        },
+        "1":"iter"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n A generalization of copy2 above",
+      "ret":["a list-like table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "l":[],
+          "n":[],
+          "u":[]
+        }
+      },
+      "summary":"return an iterator of random numbers.",
+      "lineno":200,
+      "retgroups":[{
+          "1":{
+            "text":"a sequence",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(n, l, u)",
+      "type":"function",
+      "name":"random",
+      "parameter":"param",
+      "params":{
+        "1":"n",
+        "2":"l",
+        "map":{
+          "l":" same as the first optional argument to math.random",
+          "n":" the length of the sequence",
+          "u":" same as the second optional argument to math.random"
+        },
+        "3":"u"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a sequence"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "comp":[],
+          "iter":[]
+        }
+      },
+      "summary":"return an iterator to the sorted elements of a sequence.",
+      "lineno":223,
+      "args":"(iter, comp)",
+      "section":"function",
+      "name":"sort",
+      "params":{
+        "1":"iter",
+        "2":"comp",
+        "map":{
+          "comp":" an optional comparison function (comp(x,y) is true if x < y)",
+          "iter":" a sequence"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "iter1":[],
+          "iter2":[]
+        }
+      },
+      "summary":"return an iterator which returns elements of two sequences.",
+      "lineno":233,
+      "args":"(iter1, iter2)",
+      "usage":["for x,y in seq.zip(ls1,ls2) do....end\n"],
+      "section":"function",
+      "name":"zip",
+      "parameter":"param",
+      "params":{
+        "1":"iter1",
+        "2":"iter2",
+        "map":{
+          "iter1":" a sequence",
+          "iter2":" a sequence"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "iter":[]
+        },
+        "return":[[],[]],
+        "see":[[]]
+      },
+      "summary":"Makes a table where the key/values are the values and value counts of the sequence.",
+      "lineno":248,
+      "retgroups":[{
+          "1":{
+            "text":"a map-like table",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"a table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter)",
+      "type":"function",
+      "name":"count_map",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "iter":" a sequence"
+        },
+        "1":"iter"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This version works with 'hashable' values like strings and numbers.\n `pl.tablex.count_map` is more general.",
+      "ret":["a map-like table","a table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "fmt":[],
+          "iter":[],
+          "sep":[],
+          "nfields":[]
+        }
+      },
+      "summary":"print out a sequence iter with a separator.",
+      "lineno":280,
+      "args":"(iter, sep, nfields, fmt)",
+      "section":"function",
+      "name":"printall",
+      "params":{
+        "1":"iter",
+        "2":"sep",
+        "3":"nfields",
+        "4":"fmt",
+        "map":{
+          "fmt":" optional format function for each value",
+          "iter":" a sequence",
+          "sep":" the separator (default space)",
+          "nfields":" maximum number of values per line (default 7)"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "iter":[],
+          "fn":[],
+          "arg":[]
+        }
+      },
+      "summary":"return a sequence where every element of a sequence has been transformed\n by a function.",
+      "lineno":332,
+      "args":"(fn, iter, arg)",
+      "section":"function",
+      "name":"map",
+      "params":{
+        "1":"fn",
+        "2":"iter",
+        "map":{
+          "iter":" a sequence of one or two values",
+          "fn":" a function to apply to elements; may take two arguments",
+          "arg":" optional argument to pass to function."
+        },
+        "3":"arg"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" If you don't supply an argument, then the function will\n receive both values of a double-valued sequence, otherwise behaves rather like\n tablex.map.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "pred":[],
+          "iter":[],
+          "arg":[]
+        }
+      },
+      "summary":"filter a sequence using a predicate function.",
+      "lineno":346,
+      "args":"(iter, pred, arg)",
+      "section":"function",
+      "name":"filter",
+      "params":{
+        "1":"iter",
+        "2":"pred",
+        "map":{
+          "pred":" a boolean function; may take two arguments",
+          "iter":" a sequence of one or two values",
+          "arg":" optional argument to pass to function."
+        },
+        "3":"arg"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "3":[],
+          "iter":[],
+          "fn":{
+            "type":"func"
+          },
+          "initval":[]
+        }
+      },
+      "summary":"'reduce' a sequence using a binary function.",
+      "lineno":364,
+      "args":"(fn, iter, initval)",
+      "usage":["seq.reduce(operator.add,seq.list{1,2,3,4}) == 10\n","seq.reduce('-',{1,2,3,4,5}) == -13\n"],
+      "section":"function",
+      "name":"reduce",
+      "parameter":"param",
+      "params":{
+        "1":"fn",
+        "2":"iter",
+        "map":{
+          "iter":" a sequence",
+          "fn":" a function of two arguments",
+          "initval":" optional initial value"
+        },
+        "3":"initval"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "n":[],
+          "iter":[]
+        }
+      },
+      "summary":"take the first n values from the sequence.",
+      "lineno":379,
+      "retgroups":[{
+          "1":{
+            "text":"a sequence of at most n items",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter, n)",
+      "type":"function",
+      "name":"take",
+      "parameter":"param",
+      "params":{
+        "1":"iter",
+        "2":"n",
+        "map":{
+          "n":" number of items to take",
+          "iter":" a sequence of one or two values"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a sequence of at most n items"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "n":[],
+          "iter":[]
+        }
+      },
+      "summary":"skip the first n values of a sequence",
+      "lineno":393,
+      "args":"(iter, n)",
+      "section":"function",
+      "name":"skip",
+      "params":{
+        "1":"iter",
+        "2":"n",
+        "map":{
+          "n":" number of items to skip",
+          "iter":" a sequence of one or more values"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "iter":[]
+        }
+      },
+      "summary":"a sequence with a sequence count and the original value.",
+      "lineno":405,
+      "retgroups":[{
+          "1":{
+            "text":"sequence of (i,v), i = 1..n and v is from iter.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(iter)",
+      "type":"function",
+      "name":"enum",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "iter":" a single or double valued sequence"
+        },
+        "1":"iter"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n enum(copy(ls)) is a roundabout way of saying ipairs(ls).",
+      "ret":["sequence of (i,v), i = 1..n and v is from iter."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "arg1":[],
+          "name":[],
+          "arg2":[],
+          "iter":[]
+        }
+      },
+      "summary":"map using a named method over a sequence.",
+      "lineno":421,
+      "args":"(iter, name, arg1, arg2)",
+      "section":"function",
+      "name":"mapmethod",
+      "params":{
+        "1":"iter",
+        "2":"name",
+        "3":"arg1",
+        "4":"arg2",
+        "map":{
+          "arg1":" optional first extra argument",
+          "name":" the method name",
+          "arg2":" optional second extra argument",
+          "iter":" a sequence"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "iter":[]
+        }
+      },
+      "summary":"a sequence of (last,current) values from another sequence.",
+      "lineno":435,
+      "args":"(iter)",
+      "section":"function",
+      "name":"last",
+      "params":{
+        "map":{
+          "iter":" a sequence"
+        },
+        "1":"iter"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n  This will return S(i-1),S(i) if given S(i)",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "fn":[],
+          "iter":[]
+        }
+      },
+      "summary":"call the function on each element of the sequence.",
+      "lineno":449,
+      "args":"(iter, fn)",
+      "section":"function",
+      "name":"foreach",
+      "params":{
+        "1":"iter",
+        "2":"fn",
+        "map":{
+          "fn":" a function",
+          "iter":" a sequence with up to 3 values"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "...":[],
+          "f":[]
+        }
+      },
+      "summary":"create a wrapped iterator over all lines in the file.",
+      "lineno":513,
+      "retgroups":[{
+          "1":{
+            "text":"a sequence wrapper",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, ...)",
+      "type":"function",
+      "name":"lines",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"...",
+        "map":{
+          "...":" for Lua 5.2 only, optional format specifiers, as in `io.read`.",
+          "f":" either a filename, file-like object, or 'STDIN' (for standard input)"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a sequence wrapper"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

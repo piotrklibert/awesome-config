@@ -1,0 +1,1061 @@
+{
+  "kind":"libraries",
+  "name":"pl.path",
+  "mod_name":"path",
+  "inferred":true,
+  "description":"\n\n This is modelled after Python's os.path library (10.1); see @{04-paths.md|the Guide}.\n\n NOTE: the functions assume the paths being dealt with to originate\n from the OS the application is running on. Windows drive letters are not\n to be used when running on a Unix system for example. The one exception\n is Windows paths to allow both forward and backward slashes (since Lua\n also accepts those)\n\n Dependencies: `pl.utils`, `lfs`",
+  "file":"/home/cji/portless/Penlight/lua/pl/path.lua",
+  "summary":"Path manipulation and file queries.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":14,
+  "package":"pl",
+  "items":[{
+      "name":"dir",
+      "description":"\n Implicit link to [`luafilesystem.dir`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":50,
+      "summary":"Lua iterator over the entries of a given directory.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"mkdir",
+      "description":"\n Implicit link to [`luafilesystem.mkdir`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":55,
+      "summary":"Creates a directory.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"rmdir",
+      "description":"\n Implicit link to [`luafilesystem.rmdir`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":66,
+      "summary":"Removes a directory.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"attrib",
+      "description":"\n Implicit link to [`luafilesystem.attributes`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":77,
+      "summary":"Gets attributes.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"currentdir",
+      "description":"\n Implicit link to [`luafilesystem.currentdir`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":88,
+      "summary":"Get the working directory.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"link_attrib",
+      "description":"\n Implicit link to [`luafilesystem.symlinkattributes`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":99,
+      "summary":"Gets symlink attributes.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"chdir",
+      "description":"\n On Windows, if a drive is specified, it also changes the current drive. If\n only specifying the drive, it will only switch drive, but not modify the path.\n Implicit link to [`luafilesystem.chdir`](https://keplerproject.github.io/luafilesystem/manual.html#reference)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":112,
+      "summary":"Changes the working directory.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"is this a directory?",
+      "lineno":122,
+      "args":"(P)",
+      "section":"function",
+      "name":"isdir",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"is this a file?",
+      "lineno":129,
+      "args":"(P)",
+      "section":"function",
+      "name":"isfile",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"return size of a file.",
+      "lineno":147,
+      "args":"(P)",
+      "section":"function",
+      "name":"getsize",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"does a path exist?",
+      "lineno":155,
+      "retgroups":[{
+          "1":{
+            "text":"the file path if it exists (either as file, directory, socket, etc), nil otherwise",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(P)",
+      "type":"function",
+      "name":"exists",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the file path if it exists (either as file, directory, socket, etc), nil otherwise"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Return the time of last access as the number of seconds since the epoch.",
+      "lineno":162,
+      "args":"(P)",
+      "section":"function",
+      "name":"getatime",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Return the time of last modification as the number of seconds since the epoch.",
+      "lineno":169,
+      "args":"(P)",
+      "section":"function",
+      "name":"getmtime",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Return the system's ctime as the number of seconds since the epoch.",
+      "lineno":176,
+      "args":"(P)",
+      "section":"function",
+      "name":"getctime",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "name":"is_windows",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"are we running Windows?",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":206,
+      "subparams":[],
+      "args":"()",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      }
+    },{
+      "name":"sep",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"path separator for this platform.",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":210,
+      "subparams":[],
+      "args":"()",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      }
+    },{
+      "name":"dirsep",
+      "section":"field",
+      "inferred":true,
+      "description":"",
+      "kind":"fields",
+      "summary":"separator for PATH for this platform",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":214,
+      "subparams":[],
+      "args":"()",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      }
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        },
+        "return":[[],[]]
+      },
+      "summary":"given a path, return the directory part and a file part.",
+      "lineno":231,
+      "retgroups":[{
+          "1":{
+            "text":"directory part",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"file part",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(P)",
+      "usage":["local dir, file = path.splitpath(\"some/dir/myfile.txt\")\nassert(dir == \"some/dir\")\nassert(file == \"myfile.txt\")\n\nlocal dir, file = path.splitpath(\"some/dir/\")\nassert(dir == \"some/dir\")\nassert(file == \"\")\n\nlocal dir, file = path.splitpath(\"some_dir\")\nassert(dir == \"\")\nassert(file == \"some_dir\")\n"],
+      "type":"function",
+      "name":"splitpath",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n if there's no directory part, the first value will be empty",
+      "ret":["directory part","file part"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "pwd":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"return an absolute path.",
+      "lineno":249,
+      "args":"(P[, pwd])",
+      "section":"function",
+      "name":"abspath",
+      "params":{
+        "1":"P",
+        "2":"pwd",
+        "map":{
+          "pwd":" optional start path to use (default is current dir)",
+          "P":" A file path"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        },
+        "return":[{
+            "type":"string"
+          },{
+            "type":"string"
+          }]
+      },
+      "summary":"given a path, return the root part and the extension part.",
+      "lineno":277,
+      "retgroups":[{
+          "1":{
+            "text":"root part (everything upto the \".\"\", maybe empty)",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "2":{
+            "text":"extension part (including the \".\", maybe empty)",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "g":0
+        }],
+      "args":"(P)",
+      "usage":["local file_path, ext = path.splitext(\"/bonzo/dog_stuff/cat.txt\")\nassert(file_path == \"/bonzo/dog_stuff/cat\")\nassert(ext == \".txt\")\n\nlocal file_path, ext = path.splitext(\"\")\nassert(file_path == \"\")\nassert(ext == \"\")\n"],
+      "type":"function",
+      "name":"splitext",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n if there's no extension part, the second value will be empty",
+      "ret":["root part (everything upto the \".\"\", maybe empty)","extension part (including the \".\", maybe empty)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        },
+        "see":[[]]
+      },
+      "summary":"return the directory part of a path",
+      "lineno":302,
+      "retgroups":[{
+          "1":{
+            "text":"everything before the last dir-separator",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "g":0
+        }],
+      "args":"(P)",
+      "usage":["path.dirname(\"/some/path/file.txt\")   -- \"/some/path\"\npath.dirname(\"file.txt\")              -- \"\" (empty string)\n"],
+      "type":"function",
+      "name":"dirname",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["everything before the last dir-separator"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        },
+        "see":[[]]
+      },
+      "summary":"return the file part of a path",
+      "lineno":315,
+      "retgroups":[{
+          "1":{
+            "text":"",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "g":0
+        }],
+      "args":"(P)",
+      "usage":["path.basename(\"/some/path/file.txt\")  -- \"file.txt\"\npath.basename(\"/some/path/file/\")     -- \"\" (empty string)\n"],
+      "type":"function",
+      "name":"basename",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":[""]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        },
+        "see":[[]]
+      },
+      "summary":"get the extension part of a path.",
+      "lineno":328,
+      "retgroups":[{
+          "1":{
+            "text":"",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "g":0
+        }],
+      "args":"(P)",
+      "usage":["path.extension(\"/some/path/file.txt\") -- \".txt\"\npath.extension(\"/some/path/file_txt\") -- \"\" (empty string)\n"],
+      "type":"function",
+      "name":"extension",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":[""]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"is this an absolute path?",
+      "lineno":344,
+      "args":"(P)",
+      "usage":["path.isabs(\"hello/path\")    -- false\npath.isabs(\"/hello/path\")   -- true\n-- Windows;\npath.isabs(\"hello\\path\")    -- false\npath.isabs(\"\\hello\\path\")   -- true\npath.isabs(\"C:\\hello\\path\") -- true\npath.isabs(\"C:hello\\path\")  -- false\n"],
+      "section":"function",
+      "name":"isabs",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "p2":{
+            "type":"string"
+          },
+          "p1":{
+            "type":"string"
+          },
+          "...":{
+            "type":"string"
+          }
+        },
+        "return":[{
+            "type":"string"
+          }]
+      },
+      "summary":"return the path resulting from combining the individual paths.",
+      "lineno":363,
+      "retgroups":[{
+          "1":{
+            "text":"the combined path",
+            "type":"string",
+            "mods":{
+              "type":"string"
+            }
+          },
+          "g":0
+        }],
+      "args":"(p1, p2, ...)",
+      "usage":["path.join(\"/first\",\"second\",\"third\")   -- \"/first/second/third\"\npath.join(\"first\",\"second/third\")      -- \"first/second/third\"\npath.join(\"/first\",\"/second\",\"third\")  -- \"/second/third\"\n"],
+      "type":"function",
+      "name":"join",
+      "parameter":"param",
+      "params":{
+        "1":"p1",
+        "2":"p2",
+        "map":{
+          "p2":" A file path",
+          "p1":" A file path",
+          "...":" more file paths"
+        },
+        "3":"..."
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n if the second (or later) path is absolute, we return the last absolute path (joined with any non-absolute paths following).\n empty elements (except the last) will be ignored.",
+      "ret":["the combined path"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"normalize the case of a pathname.",
+      "lineno":392,
+      "args":"(P)",
+      "usage":["path.normcase(\"/Some/Path/File.txt\")\n-- Windows: \"\\some\\path\\file.txt\"\n-- Others : \"/Some/Path/File.txt\"\n"],
+      "section":"function",
+      "name":"normcase",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" On Unix, this returns the path unchanged,\n for Windows it converts;\n\n * the path to lowercase\n * forward slashes to backward slashes",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"normalize a path name.",
+      "lineno":406,
+      "args":"(P)",
+      "section":"function",
+      "name":"normpath",
+      "params":{
+        "map":{
+          "P":" a file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n `A//B`, `A/./B`, and `A/foo/../B` all become `A/B`.\n\n An empty path results in '.'.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "start":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"relative path from current directory or optional start point",
+      "lineno":457,
+      "args":"(P[, start])",
+      "section":"function",
+      "name":"relpath",
+      "params":{
+        "1":"P",
+        "2":"start",
+        "map":{
+          "start":" optional start point (default current directory)",
+          "P":" a path"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "P":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Replace a starting '~' with the user's home directory.",
+      "lineno":496,
+      "args":"(P)",
+      "section":"function",
+      "name":"expanduser",
+      "params":{
+        "map":{
+          "P":" A file path"
+        },
+        "1":"P"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n In windows, if HOME isn't set, then USERPROFILE is used in preference to\n HOMEDRIVE HOMEPATH. This is guaranteed to be writeable on all versions of Windows.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"Return a suitable full path to a new temporary file name.",
+      "lineno":512,
+      "args":"()",
+      "section":"function",
+      "name":"tmpname",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n unlike os.tmpname(), it always gives you a writeable path (uses TEMP environment variable on Windows)",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "path1":{
+            "type":"string"
+          },
+          "path2":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"return the largest common prefix path of two paths.",
+      "lineno":527,
+      "retgroups":[{
+          "1":{
+            "text":"the common prefix (Windows: separators will be normalized, casing will be original)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(path1, path2)",
+      "type":"function",
+      "name":"common_prefix",
+      "parameter":"param",
+      "params":{
+        "1":"path1",
+        "2":"path2",
+        "map":{
+          "path1":" a file path",
+          "path2":" a file path"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the common prefix (Windows: separators will be normalized, casing will be original)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "mod":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"return the full path where a particular Lua module would be found.",
+      "lineno":560,
+      "retgroups":[{
+          "1":{
+            "text":"on success: path of module, lua or binary",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"on error: nil, error string listing paths tried",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(mod)",
+      "type":"function",
+      "name":"package_path",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "mod":" name of the module"
+        },
+        "1":"mod"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Both package.path and package.cpath is searched, so the result may\n either be a Lua file or a shared library.",
+      "ret":["on success: path of module, lua or binary","on error: nil, error string listing paths tried"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

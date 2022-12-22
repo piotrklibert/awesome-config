@@ -1,0 +1,731 @@
+{
+  "inferred":true,
+  "kind":"widget_layouts",
+  "mod_name":"wibox.layout.manual",
+  "summary":"A layout with widgets added at specific positions.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.layout.manual",
+  "modifiers":{
+    "usage":[[]],
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n Use cases include desktop icons, complex custom composed widgets, a floating\n client layout and fine grained control over the output.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_defaults_manual.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets that should be added"
+        }
+      },
+      "summary":"Add some widgets to the given stack layout.",
+      "name":"add",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(...)",
+      "tags":[],
+      "lineno":46
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "map":{
+          "index":" The widget index to remove"
+        }
+      },
+      "summary":"Remove a widget from the layout.",
+      "name":"remove",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index)",
+      "tags":{
+        "interface":["layout"]
+      },
+      "lineno":53
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"widget",
+        "map":{
+          "index":" The position",
+          "widget":" The widget"
+        }
+      },
+      "summary":"Insert a new widget in the layout at position `index`.",
+      "name":"insert",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, widget)",
+      "tags":{
+        "emits":["widget::inserted"],
+        "interface":["layout"],
+        "emitstparam":["widget::inserted widget self The fixed layout.","widget::inserted widget widget index The inserted widget.","widget::inserted number count The widget count."]
+      },
+      "lineno":64
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets that should be removed (must at least be one)"
+        }
+      },
+      "summary":"Remove one or more widgets from the layout.",
+      "name":"remove_widgets",
+      "modifiers":{
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"\n\n The last parameter can be a boolean, forcing a recursive seach of the\n widget(s) to remove.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(...)",
+      "tags":[],
+      "lineno":87
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"point",
+        "map":{
+          "point":" Either an `{x=x,y=y}` table or a function\n  returning the new geometry.",
+          "widget":" The widget."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"table|function"
+          },
+          "point":{
+            "type":"table|function"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"table|function"
+          },
+          "point":{
+            "type":"table|function"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n The point can either be a function or a table. The table follow the generic\n geometry format used elsewhere in Awesome.\n\n * *x*: The horizontal position.\n * *y*: The vertical position.\n * *width*: The width.\n * *height*: The height.\n\n If a function is used, it follows the same prototype as `awful.placement`\n functions.\n\n * *geo*:\n     * *x*: The horizontal position (always 0).\n     * *y*: The vertical position (always 0).\n     * *width*: The width.\n     * *height*: The height.\n     * *geometry*: A function to get or set the geometry (for compatibility).\n       The function is compatible with the `awful.placement` prototype.\n * *args*:\n     * *parent* The layout own geometry\n         * *x*: The horizontal position (always 0).\n         * *y*: The vertical position (always 0).\n         * *width*: The width.\n         * *height*: The height.\n         * *geometry*: A function to get or set the geometry (for compatibility)\n           The function is compatible with the `awful.placement` prototype.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_manual_add_at.svg)\n",
+      "tags":[],
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a widget at a specific point.",
+      "name":"add_at",
+      "kind":"object methods ",
+      "usage":["local l = wibox.layout {\n    layout  = wibox.layout.manual\n}\n--\n-- Option 1: Set the point directly in the widget\nlocal w1        = generic_widget()\nw1.point        = {x=75, y=5}\nw1.text         = &#34first&#34\nw1.forced_width = 50\nl:add(w1)\n--\n-- Option 2: Set the point directly in the widget as a function\nlocal w2  = generic_widget()\nw2.text   = &#34second&#34\nw2.point  = function(geo, args)\n    return {\n        x = args.parent.width  - geo.width,\n        y = 0\n    }\nend\nl:add(w2)\n--\n-- Option 3: Set the point directly in the widget as an `awful.placement`\n-- function.\nlocal w3 = generic_widget()\nw3.text  = &#34third&#34\nw3.point = awful.placement.bottom_right\nl:add(w3)\n--\n-- Option 4: Use `:add_at` instead of using the `.point` property. This works\n-- with all 3 ways to define the point.\n-- function.\nlocal w4 = generic_widget()\nw4.text  = &#34fourth&#34\nl:add_at(w4, awful.placement.centered + awful.placement.maximize_horizontally)\n"],
+      "args":"(widget, point)",
+      "type":"method",
+      "lineno":230
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"point",
+        "map":{
+          "index":" The widget index.",
+          "point":" A new point value."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"table|function"
+          },
+          "index":{
+            "type":"number"
+          },
+          "point":{
+            "type":"table|function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"table|function"
+          },
+          "index":{
+            "type":"number"
+          },
+          "point":{
+            "type":"table|function"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Move a widget (by index).",
+      "name":"move",
+      "type":"method",
+      "args":"(index, point)",
+      "kind":"object methods ",
+      "lineno":254
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"point",
+        "map":{
+          "point":" A new point value.",
+          "widget":" The widget."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"table|function"
+          },
+          "point":{
+            "type":"table|function"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"table|function"
+          },
+          "point":{
+            "type":"table|function"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_manual_move_widget.svg)\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Move a widget.",
+      "name":"move_widget",
+      "kind":"object methods ",
+      "usage":["local l = wibox.layout {\n    layout  = wibox.layout.manual\n}\n--\nlocal w1        = generic_widget()\nw1.point        = {x=75, y=5}\nw1.text         = &#34first&#34\nw1.forced_width = 50\nl:add(w1)\nl:move_widget(w1, awful.placement.bottom_right)\n"],
+      "args":"(widget, point)",
+      "type":"method",
+      "lineno":282
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets to add to the layout."
+        }
+      },
+      "summary":"Create a manual layout.",
+      "name":"wibox.layout.manual",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "...":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "...":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(...)",
+      "tags":[],
+      "lineno":310
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"widget2",
+        "map":{
+          "index":" A widget or a widget index",
+          "widget2":" The widget to replace the previous one with"
+        }
+      },
+      "summary":"Set a widget at a specific index, replacing the current one.",
+      "name":"set",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget2":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget2":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, widget2)",
+      "tags":{
+        "emits":["widget::replaced"],
+        "interface":["layout"],
+        "emitstparam":["widget::replaced widget self The layout.","widget::replaced widget widget The inserted widget.","widget::replaced widget previous The previous widget.","widget::replaced number index The replaced index."]
+      },
+      "lineno":336
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"widget2",
+        "3":"recursive",
+        "map":{
+          "widget2":" The widget to replace `widget` with",
+          "widget":" The widget to replace",
+          "recursive":" Recurse into all compatible layouts to\n   find the widget."
+        }
+      },
+      "summary":"Replace the first instance of `widget` in the layout with `widget2`.",
+      "name":"replace_widget",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget, widget2[, recursive=false])",
+      "tags":{
+        "emits":["widget::replaced"],
+        "interface":["layout"],
+        "emitstparam":["widget::replaced widget self The layout.","widget::replaced widget widget index The inserted widget.","widget::replaced widget previous The previous widget.","widget::replaced number index The replaced index."]
+      },
+      "lineno":352
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index1",
+        "2":"index2",
+        "map":{
+          "index2":" The second widget index",
+          "index1":" The first widget index"
+        }
+      },
+      "summary":"Swap 2 widgets in a layout.",
+      "name":"swap",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index2":{
+            "type":"number"
+          },
+          "index1":{
+            "type":"number"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index2":{
+            "type":"number"
+          },
+          "index1":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index1, index2)",
+      "tags":{
+        "emits":["widget::swapped"],
+        "interface":["layout"],
+        "emitstparam":["widget::swapped widget self The layout.","widget::swapped widget widget1 The first widget.","widget::swapped widget widget2 The second widget.","widget::swapped number index1 The first index.","widget::swapped number index1 The second index."]
+      },
+      "lineno":367
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"widget1",
+        "2":"widget2",
+        "3":"recursive",
+        "map":{
+          "widget2":" The second widget",
+          "recursive":" Recurse into all compatible layouts to\n   find the widget.",
+          "widget1":" The first widget"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget1":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget1":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"\n\n If `widget1` is present multiple time, only the first instance is swapped.\n\n Calls `set` internally, so the signal `widget::replaced` is emitted for both\n widgets as well.\n",
+      "tags":{
+        "see":[],
+        "emits":["widget::swapped"],
+        "interface":["layout"],
+        "emitstparam":["widget::swapped widget self The layout.","widget::swapped widget widget1 The first widget.","widget::swapped widget widget2 The second widget.","widget::swapped number index1 The first index.","widget::swapped number index1 The second index."]
+      },
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Swap 2 widgets in a layout.",
+      "name":"swap_widgets",
+      "type":"method",
+      "args":"(widget1, widget2[, recursive=false])",
+      "kind":"object methods ",
+      "lineno":390
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Reset the layout.",
+      "name":"reset",
+      "modifiers":{
+        "emits":[[]],
+        "field":[],
+        "return":[],
+        "emitstparam":[[]],
+        "interface":[[]]
+      },
+      "description":" This removes all widgets from the layout.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "interface":["layout"],
+        "emits":["widget::reset"],
+        "emitstparam":["widget::reset widget self The layout."]
+      },
+      "lineno":396
+    }],
+  "type":"layoutmod",
+  "usage":["local w1, w2 = generic_widget(), generic_widget()\nw1.point  = {x=75,y=5}\nw1.text   = &#34first&#34\nw1.forced_width = 50\nw2.text = &#34second&#34\nw2.point  = function(geo, args)\n    -- Bottom right\n    return {\n        x = args.parent.width-geo.width,\n        y = args.parent.height-geo.height\n    }\nend\nwibox.layout {\n    w1,\n    w2,\n    generic_widget(&#34third&#34),\n    layout  = wibox.layout.manual\n}\n"],
+  "file":"/home/cji/portless/awesome/build/lib/wibox/layout/manual.lua",
+  "package":"",
+  "tags":{
+    "author":["Emmanuel Lepage Vallee"],
+    "copyright":"2016 Emmanuel Lepage Vallee",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":35
+}

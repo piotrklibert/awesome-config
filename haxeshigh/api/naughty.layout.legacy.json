@@ -1,0 +1,24 @@
+{
+  "inferred":true,
+  "kind":"popups_and_bars",
+  "mod_name":"naughty.layout.legacy",
+  "summary":"A notification popup widget.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"naughty.layout.legacy",
+  "modifiers":{
+    "copyright":[[],[]],
+    "author":[[],[]]
+  },
+  "description":"\n\n This is the legacy notification widget. It was the default until Awesome\n v4.3 but is now being deprecated in favor of a more flexible widget.\n\n The reason for this is/was that this widget is inflexible and mutate the\n state of the notification object in a way that hinder other notification\n widgets.\n\n If no other notification widget is specified, Awesome fallback to this\n widget.\n\n\n\n![Usage example](../images/AUTOGEN_naughty_actions.svg)\n\n\n Use the `naughty.notification.position` property to control where the popup\n is located.\n\n\n\n![Usage example](../images/AUTOGEN_awful_notification_corner.svg)\n\n",
+  "items":[],
+  "type":"popupmod",
+  "file":"/home/cji/portless/awesome/build/lib/naughty/layout/legacy.lua",
+  "package":"",
+  "tags":{
+    "author":["koniu &lt;gkusnierz@gmail.com&gt;","Emmanuel Lepage Vallee &lt;elv1313@gmail.com&gt;"],
+    "copyright":["2008 koniu","2017 Emmanuel Lepage Vallee"]
+  },
+  "lineno":34
+}

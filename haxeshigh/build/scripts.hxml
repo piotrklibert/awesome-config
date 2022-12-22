@@ -1,0 +1,11 @@
+$OPTIONS
+
+$LIBRARIES
+
+-cp src
+
+-lua output/hx_scripts.lua
+
+-m scripts.Main
+
+scripts.Main

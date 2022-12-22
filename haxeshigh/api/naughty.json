@@ -1,0 +1,2260 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"naughty",
+  "summary":"Notification library.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"naughty",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"\n\n For more details on how to create notifications, see `naughty.notification`.\n\n To send notifications from the terminal, use `notify-send`.\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"padding",
+        "2":"spacing",
+        "3":"icon_dirs",
+        "4":"icon_formats",
+        "5":"notify_callback",
+        "6":"presets",
+        "7":"defaults",
+        "map":{
+          "defaults":" Default values for the params to `notify()`.  These can\n   optionally be overridden by specifying a preset.  See `config.defaults`.",
+          "icon_formats":" List of formats that will be\n   checked by `getIcon()`.",
+          "presets":" Notification presets.  See `config.presets`.",
+          "icon_dirs":" List of directories\n   that will be checked by `getIcon()`.",
+          "padding":" Space between popups and edge of the\n   workarea.",
+          "notify_callback":" Callback used to modify or reject\n notifications, e.g.\n     naughty.config.notify_callback = function(args)\n         args.text = 'prefix: ' .. args.text\n         return args\n     end\n   To reject a notification return `nil` from the callback.\n   If the notification is a freedesktop notification received via DBUS, you can\n   access the freedesktop hints via `args.freedesktop_hints` if any where\n   specified.\n",
+          "spacing":" Spacing between popups."
+        }
+      },
+      "summary":"Naughty configuration - a table containing common popup settings.",
+      "name":"config",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":{
+            "type":"int",
+            "opt":"apply_dpi(4)"
+          },
+          "2":{
+            "type":"int",
+            "opt":"apply_dpi(1)"
+          },
+          "3":{
+            "type":"table",
+            "opt":"{\"/usr/share/pixmaps/\"}"
+          },
+          "4":{
+            " \"gif\" }":true,
+            "type":"table",
+            "opt":"{ \"png\""
+          },
+          "5":{
+            "type":"function",
+            "opt":true
+          },
+          "6":{
+            "type":"table"
+          },
+          "7":{
+            "type":"table"
+          },
+          "defaults":{
+            "type":"table"
+          },
+          "icon_formats":{
+            " \"gif\" }":true,
+            "type":"table",
+            "opt":"{ \"png\""
+          },
+          "presets":{
+            "type":"table"
+          },
+          "icon_dirs":{
+            "type":"table",
+            "opt":"{\"/usr/share/pixmaps/\"}"
+          },
+          "padding":{
+            "type":"int",
+            "opt":"apply_dpi(4)"
+          },
+          "notify_callback":{
+            "type":"function",
+            "opt":true
+          },
+          "spacing":{
+            "type":"int",
+            "opt":"apply_dpi(1)"
+          }
+        }
+      },
+      "description":"",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"([padding=apply_dpi(4)][, spacing=apply_dpi(1)][, icon_dirs={\"/usr/share/pixmaps/\"}][, icon_formats={ \"png\"][, notify_callback], presets, defaults)",
+      "tags":[],
+      "lineno":51
+    },{
+      "inferred":true,
+      "subparams":{
+        "critical":["critical.bg","critical.fg","critical.timeout"],
+        "low":["low.timeout"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"low",
+        "2":"normal",
+        "3":"critical",
+        "map":{
+          "normal":" The default preset for every notification without a\n   preset that will also be used for normal urgency level.",
+          "critical.fg":"",
+          "critical":" The preset for notifications with a critical urgency\n   level.",
+          "critical.timeout":"",
+          "low":" The preset for notifications with low urgency level.",
+          "critical.bg":"",
+          "low.timeout":""
+        }
+      },
+      "summary":"Notification presets for `naughty.notify`.",
+      "name":"config.presets",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "optchain":"5",
+            "type":"int",
+            "opt":"5"
+          },
+          "3":{
+            "optchain":"empty",
+            "type":"table",
+            "opt":"empty"
+          },
+          "4":{
+            "type":"table"
+          },
+          "5":{
+            "type":"string",
+            "opt":"\"#ff0000\""
+          },
+          "6":{
+            "type":"string",
+            "opt":"\"#ffffff\""
+          },
+          "7":{
+            "type":"string",
+            "opt":"0"
+          },
+          "normal":{
+            "optchain":"empty",
+            "type":"table",
+            "opt":"empty"
+          },
+          "critical.fg":{
+            "type":"string",
+            "opt":"\"#ffffff\""
+          },
+          "critical":{
+            "type":"table"
+          },
+          "critical.timeout":{
+            "type":"string",
+            "opt":"0"
+          },
+          "low":{
+            "type":"table"
+          },
+          "critical.bg":{
+            "type":"string",
+            "opt":"\"#ff0000\""
+          },
+          "low.timeout":{
+            "optchain":"5",
+            "type":"int",
+            "opt":"5"
+          }
+        }
+      },
+      "description":"\n This holds presets for different purposes.  A preset is a table of any\n parameters for `notify()`, overriding the default values\n (`naughty.config.defaults`).\n\n You have to pass a reference of a preset in your `notify()` as the `preset`\n argument.\n\n The presets `\"low\"`, `\"normal\"` and `\"critical\"` are used for notifications\n over DBUS.\n",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"(low[, normal=5[, critical=empty]])",
+      "tags":[],
+      "lineno":78
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"timeout",
+        "2":"text",
+        "3":"screen",
+        "4":"ontop",
+        "5":"margin",
+        "6":"border_width",
+        "7":"position",
+        "map":{
+          "ontop":"",
+          "border_width":"",
+          "timeout":"",
+          "position":"",
+          "text":"",
+          "margin":"",
+          "screen":" Defaults to `awful.screen.focused`."
+        }
+      },
+      "summary":"Defaults for `naughty.notify`.",
+      "name":"config.defaults",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":{
+            "optchain":"5",
+            "type":"int",
+            "opt":"5"
+          },
+          "2":{
+            "optchain":"\"\"",
+            "type":"string",
+            "opt":"\"\""
+          },
+          "3":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          },
+          "4":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          },
+          "5":{
+            "optchain":"apply_dpi(5)",
+            "type":"int",
+            "opt":"apply_dpi(5)"
+          },
+          "6":{
+            "optchain":"apply_dpi(1)",
+            "type":"int",
+            "opt":"apply_dpi(1)"
+          },
+          "7":{
+            "optchain":"\"top_right\"",
+            "type":"string",
+            "opt":"\"top_right\""
+          },
+          "ontop":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          },
+          "border_width":{
+            "optchain":"apply_dpi(1)",
+            "type":"int",
+            "opt":"apply_dpi(1)"
+          },
+          "timeout":{
+            "optchain":"5",
+            "type":"int",
+            "opt":"5"
+          },
+          "position":{
+            "optchain":"\"top_right\"",
+            "type":"string",
+            "opt":"\"top_right\""
+          },
+          "text":{
+            "optchain":"\"\"",
+            "type":"string",
+            "opt":"\"\""
+          },
+          "margin":{
+            "optchain":"apply_dpi(5)",
+            "type":"int",
+            "opt":"apply_dpi(5)"
+          },
+          "screen":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          }
+        }
+      },
+      "description":"",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"([timeout=5[, text=\"\"[, screen[, ontop=true[, margin=apply_dpi(5)[, border_width=apply_dpi(1)[, position=\"top_right\"]]]]]]])",
+      "tags":[],
+      "lineno":89
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"silent",
+        "2":"expired",
+        "3":"dismissed_by_user",
+        "4":"dismissed_by_command",
+        "5":"undefined",
+        "map":{
+          "dismissed_by_command":"",
+          "expired":"",
+          "undefined":"",
+          "silent":"",
+          "dismissed_by_user":""
+        }
+      },
+      "summary":"The reason why a notification is to be closed.",
+      "name":"notification_closed_reason",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "dismissed_by_command":{
+            "type":"number"
+          },
+          "expired":{
+            "type":"number"
+          },
+          "undefined":{
+            "type":"number"
+          },
+          "silent":{
+            "type":"number"
+          },
+          "dismissed_by_user":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n See [the specification](https://developer.gnome.org/notification-spec/#signals)\n for more details.",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"(silent, expired, dismissed_by_user, dismissed_by_command, undefined)",
+      "tags":[],
+      "lineno":99
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":""
+        }
+      },
+      "summary":"The global suspension state.",
+      "name":"suspended",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "boolean":[]
+        },
+        "emits":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n When suspended, no notification widget should interrupt the user. This is\n useful when watching movies or doing presentations.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(boolean)",
+      "tags":{
+        "propemits":["true false"],
+        "emits":["added"]
+      },
+      "lineno":109
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":""
+        }
+      },
+      "summary":"Do not allow notifications to auto-expire.",
+      "name":"expiration_paused",
+      "modifiers":{
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        }
+      },
+      "description":"\n\n When navigating the notifications, for example on mouse over or when\n keyboard navigation is enabled, it is very annoying when notifications\n just vanish.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([boolean=false])",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":119
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"table",
+        "map":{
+          "table":""
+        }
+      },
+      "summary":"A table with all active notifications.",
+      "name":"active",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "table":[]
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":[],
+          "table":[]
+        }
+      },
+      "description":"\n\n Please note that this list is kept up-to-date even in suspended mode.\n\n **Signal:**\n\n * property::active\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(table)",
+      "tags":{
+        "propemits":["false false"]
+      },
+      "lineno":131
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":""
+        }
+      },
+      "summary":"True when there is a handler connected to `request::display`.",
+      "name":"has_display_handler",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "field":{
+          "1":[],
+          "boolean":[]
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(boolean)",
+      "tags":[],
+      "lineno":135
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"auto_reset_timeout",
+        "map":{
+          "auto_reset_timeout":""
+        }
+      },
+      "summary":"If the timeout needs to be reset when a property changes.",
+      "name":"auto_reset_timeout",
+      "modifiers":{
+        "param":{
+          "1":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          },
+          "auto_reset_timeout":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          },
+          "auto_reset_timeout":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          }
+        }
+      },
+      "description":"\n\n This is the global variant of the `naughty.notification` `auto_reset_timeout`\n property.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([auto_reset_timeout=true])",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":144
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":""
+        }
+      },
+      "summary":"Enable or disable naughty ability to claim to support animations.",
+      "name":"image_animations_enabled",
+      "modifiers":{
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        }
+      },
+      "description":"\n\n When this is true, applications which query `naughty` feature support\n will see that animations are supported. Note that there is *very little*\n support for this and enabling it will cause bugs.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([boolean=false])",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":154
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":""
+        }
+      },
+      "summary":"Enable or disable the persistent notifications.",
+      "name":"persistence_enabled",
+      "modifiers":{
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        }
+      },
+      "description":"\n\n This is very annoying when using `naughty.layout.box` popups, but tolerable\n when using `naughty.list.notifications`.\n\n Note that enabling this **does nothing** in `naughty` itself. The timeouts\n are still honored and notifications still destroyed. It is the user\n responsibility to disable the dismiss timer. However, this tells the\n applications that notification persistence is supported so they might\n stop using systray icons for the sake of displaying or other changes like\n that.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([boolean=false])",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":170
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"box",
+        "2":"height",
+        "3":"width",
+        "4":"die",
+        "5":"id",
+        "map":{
+          "box":" Wibox object containing the popup",
+          "die":" Function to be executed on timeout",
+          "id":" Unique notification id based on a counter",
+          "height":" Popup height",
+          "width":" Popup width"
+        }
+      },
+      "summary":"Index of notifications per screen and position.",
+      "name":"notifications",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "box":[],
+          "die":[],
+          "id":[],
+          "height":[],
+          "width":[]
+        }
+      },
+      "description":"\n See config table for valid 'position' values.\n Each element is a table consisting of:\n",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"(box, height, width, die, id)",
+      "tags":[],
+      "lineno":190
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Notification state.",
+      "name":"is_suspended",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n This function is deprecated, use `naughty.suspended`.\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":274
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Suspend notifications.",
+      "name":"suspend",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n This function is deprecated, use `naughty.suspended = true`.\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":284
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Resume notifications.",
+      "name":"resume",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n This function is deprecated, use `naughty.suspended = false`.\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":318
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Toggle notification state.",
+      "name":"toggle",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n This function is deprecated, use `naughty.suspended = not naughty.suspended`.\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":328
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "2":"reason",
+        "3":"keep_visible",
+        "map":{
+          "reason":" One of the reasons from `notification_closed_reason`",
+          "notification":" Notification object to be destroyed",
+          "keep_visible":" If true, keep the notification visible"
+        }
+      },
+      "summary":"Destroy notification by notification object",
+      "name":"destroy",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "reason":[],
+          "notification":[],
+          "keep_visible":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "reason":[],
+          "notification":[],
+          "keep_visible":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        }
+      },
+      "description":" This function is deprecated in favor of\n `notification:destroy(reason, keep_visible)`.\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(notification, reason[, keep_visible=false])",
+      "tags":[],
+      "lineno":347
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"screens",
+        "2":"reason",
+        "map":{
+          "screens":" Table of screens on which notifications should be\n destroyed. If nil, destroy notifications on all screens.",
+          "reason":" Reason for closing\n notifications."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"true|nil"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"naughty.notification_closed_reason"
+          },
+          "screens":{
+            "type":"table"
+          },
+          "reason":{
+            "type":"naughty.notification_closed_reason"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"naughty.notification_closed_reason"
+          },
+          "screens":{
+            "type":"table"
+          },
+          "reason":{
+            "type":"naughty.notification_closed_reason"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Destroy all notifications on given screens.",
+      "name":"destroy_all_notifications",
+      "type":"staticfct",
+      "args":"(screens, reason)",
+      "kind":"static module functions",
+      "lineno":365
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"id",
+        "map":{
+          "id":" ID of the notification"
+        }
+      },
+      "summary":"Get notification by ID",
+      "name":"getById",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "id":[]
+        },
+        "field":{
+          "1":[],
+          "id":[]
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(id)",
+      "tags":[],
+      "lineno":391
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"id",
+        "map":{
+          "id":" ID of the notification"
+        }
+      },
+      "summary":"Get notification by ID",
+      "name":"get_by_id",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "id":[]
+        },
+        "field":{
+          "1":[],
+          "id":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(id)",
+      "tags":[],
+      "lineno":401
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "2":"new_timeout",
+        "map":{
+          "notification":" Notification object, which timer is to be reset.",
+          "new_timeout":" Time in seconds after which notification disappears."
+        }
+      },
+      "summary":"Set new notification timeout.",
+      "name":"reset_timeout",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"notification"
+          },
+          "2":{
+            "type":"number"
+          },
+          "notification":{
+            "type":"notification"
+          },
+          "new_timeout":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"notification"
+          },
+          "2":{
+            "type":"number"
+          },
+          "notification":{
+            "type":"notification"
+          },
+          "new_timeout":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n This function is deprecated, use `notification:reset_timeout(new_timeout)`.\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(notification, new_timeout)",
+      "tags":[],
+      "lineno":439
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "2":"new_title",
+        "3":"new_text",
+        "map":{
+          "new_text":" New text of notification. If not specified, old text remains unchanged.",
+          "new_title":" New title of notification. If not specified, old title remains unchanged.",
+          "notification":" Notification object, which contents are to be replaced."
+        }
+      },
+      "summary":"Replace title and text of an existing notification.",
+      "name":"replace_text",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"notification"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "new_text":{
+            "type":"string"
+          },
+          "new_title":{
+            "type":"string"
+          },
+          "notification":{
+            "type":"notification"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"notification"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "new_text":{
+            "type":"string"
+          },
+          "new_title":{
+            "type":"string"
+          },
+          "notification":{
+            "type":"notification"
+          }
+        }
+      },
+      "description":"\n\n This function is deprecated, use `notification.message = new_text` and\n `notification.title = new_title`\n",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(notification, new_title, new_text)",
+      "tags":[],
+      "lineno":457
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"The default handler for `request::screen`.",
+      "name":"default_screen_handler",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n\n It selects `awful.screen.focused()`.\n",
+      "type":"signalhandler",
+      "section":"signalhandler",
+      "kind":"request handlers",
+      "args":"()",
+      "tags":[],
+      "lineno":553
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"message",
+        "2":"startup",
+        "map":{
+          "startup":" If the error occurred during the initial loading of\n  rc.lua (and thus caused the fallback to kick in).",
+          "message":" The error message."
+        }
+      },
+      "summary":"Emitted when an error occurred and requires attention.",
+      "name":"request::display_error",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"boolean"
+          },
+          "startup":{
+            "type":"boolean"
+          },
+          "message":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"boolean"
+          },
+          "startup":{
+            "type":"boolean"
+          },
+          "message":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(message, startup)",
+      "tags":[],
+      "lineno":567
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "map":{
+          "notification":" The notification object"
+        }
+      },
+      "summary":"Emitted when a notification is created.",
+      "name":"added",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"naughty.notification"
+          },
+          "notification":{
+            "type":"naughty.notification"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"naughty.notification"
+          },
+          "notification":{
+            "type":"naughty.notification"
+          }
+        }
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(notification)",
+      "tags":[],
+      "lineno":571
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "map":{
+          "notification":" The notification object"
+        }
+      },
+      "summary":"Emitted when a notification is destroyed.",
+      "name":"destroyed",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"naughty.notification"
+          },
+          "notification":{
+            "type":"naughty.notification"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"naughty.notification"
+          },
+          "notification":{
+            "type":"naughty.notification"
+          }
+        }
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(notification)",
+      "tags":[],
+      "lineno":575
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "2":"context",
+        "3":"args",
+        "map":{
+          "args":" Any arguments passed to the `naughty.notify` function,\n  including, but not limited to, all `naughty.notification` properties.",
+          "notification":" The `naughty.notification` object.",
+          "context":" Why is the signal sent."
+        }
+      },
+      "summary":"Emitted when a notification has to be displayed.",
+      "name":"request::display",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "args":{
+            "type":"table"
+          },
+          "notification":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "args":{
+            "type":"table"
+          },
+          "notification":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n To add a handler, use:\n\n    naughty.connect_signal(\"request::display\", function(notification, args)\n        -- do something\n    end)\n",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(notification, context, args)",
+      "tags":[],
+      "lineno":589
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "2":"context",
+        "3":"args",
+        "map":{
+          "args":" Any arguments passed to the `naughty.notify` function,\n  including, but not limited to, all `naughty.notification` properties.",
+          "notification":" The `naughty.notification` object.",
+          "context":" Why is the signal sent."
+        }
+      },
+      "summary":"Emitted when a notification needs pre-display configuration.",
+      "name":"request::preset",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "args":{
+            "type":"table"
+          },
+          "notification":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "args":{
+            "type":"table"
+          },
+          "notification":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(notification, context, args)",
+      "tags":[],
+      "lineno":597
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.id"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"action",
+        "2":"context",
+        "3":"hints",
+        "map":{
+          "args.id":" The action id. This will often by the (XDG) icon name.",
+          "action":" The action.",
+          "hints":"",
+          "context":" The context."
+        }
+      },
+      "summary":"Emitted when an action requires an icon it doesn't know.",
+      "name":"request::action_icon",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"naughty.action"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "4":{
+            "type":"string"
+          },
+          "args.id":{
+            "type":"string"
+          },
+          "action":{
+            "type":"naughty.action"
+          },
+          "hints":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"naughty.action"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "4":{
+            "type":"string"
+          },
+          "args.id":{
+            "type":"string"
+          },
+          "action":{
+            "type":"naughty.action"
+          },
+          "hints":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n The implementation should look in the icon theme for an action icon or\n provide something natively.\n\n If an icon is found, the handler must set the `icon` property on the `action`\n object to a path or a `gears.surface`.\n\n There is no implementation by default. To use the XDG-icon, the common\n implementation will be:\n\n    naughty.connect_signal(\"request::action_icon\", function(a, context, hints)\n         a.icon = menubar.utils.lookup_icon(hints.id)\n    end)\n",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(action, context, hints)",
+      "tags":[],
+      "lineno":618
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"n",
+        "2":"context",
+        "3":"hints",
+        "map":{
+          "hints.app_icon":" The name of the icon to look for.",
+          "hints.image":" The path or pixmap of the icon.",
+          "hints.path":" The path of the icon.",
+          "n":" The notification.",
+          "hints":" The hints.",
+          "context":" The source of the icon to look for."
+        }
+      },
+      "modifiers":{
+        "see":[[],[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"notification"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "4":{
+            "type":"string"
+          },
+          "5":{
+            "type":"string"
+          },
+          "6":{
+            "type":"string"
+          },
+          "hints.app_icon":{
+            "type":"string"
+          },
+          "hints.image":{
+            "type":"string"
+          },
+          "hints.path":{
+            "type":"string"
+          },
+          "n":{
+            "type":"notification"
+          },
+          "hints":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"notification"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "4":{
+            "type":"string"
+          },
+          "5":{
+            "type":"string"
+          },
+          "6":{
+            "type":"string"
+          },
+          "hints.app_icon":{
+            "type":"string"
+          },
+          "hints.image":{
+            "type":"string"
+          },
+          "hints.path":{
+            "type":"string"
+          },
+          "n":{
+            "type":"notification"
+          },
+          "hints":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n When an icon is passed in some \"encoded\" formats, such as XDG icon names or\n network URLs, AwesomeWM will not attempt to load it. If you wish to see the\n icon displayed, you must provide an handler. It is highly recommended for\n handler to only set `n.icon` when they *found* the icon. That way multiple\n handlers can be attached for multiple protocols.\n\n The `context` argument is the origin of the icon to decode. If an handler\n only supports one if them, it should check the `context` and return if it\n doesn't handle it. The currently valid contexts are:\n\n * app_icon\n * clients\n * path\n * image\n * images\n * dbus_clear\n\n For example, an implementation which uses the `app_icon` to perform an XDG\n icon lookup will look like:\n\n    naughty.connect_signal(\"request::icon\", function(n, context, hints)\n        if context ~= \"app_icon\" then return end\n\n        local path = menubar.utils.lookup_icon(hints.app_icon) or\n            menubar.utils.lookup_icon(hints.app_icon:lower())\n\n        if path then\n            n.icon = path\n        end\n    end)\n\n The `images` context has no handler. It is part of the specification to\n handle animations. This is not supported by default.\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"signal",
+      "inferred":true,
+      "subparams":{
+        "hints":["hints.app_icon","hints.path","hints.image"]
+      },
+      "summary":"Emitted when a notification icon could not be loaded.",
+      "name":"request::icon",
+      "type":"signal",
+      "args":"(n, context, hints)",
+      "kind":"signals",
+      "lineno":664
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"notification",
+        "2":"context",
+        "map":{
+          "notification":" The `naughty.notification` object. This is\n  currently either \"new\" or \"removed\".",
+          "context":" Why is the signal sent."
+        }
+      },
+      "summary":"Emitted when the screen is not defined or being removed.",
+      "name":"request::screen",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "notification":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "notification":{
+            "type":"table"
+          },
+          "context":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"signal",
+      "section":"signal",
+      "kind":"signals",
+      "args":"(notification, context)",
+      "tags":[],
+      "lineno":670
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.ignore_suspend":" If set to true this notification\n   will be shown even if notifications are suspended via `naughty.suspend`.",
+          "args.position":" Corner of the workarea displaying the popups.\n   Values: `\"top_right\"`, `\"top_left\"`, `\"bottom_left\"`,\n   `\"bottom_right\"`, `\"top_middle\"`, `\"bottom_middle\"`, `\"middle\"`.",
+          "args.bg":" Background color.",
+          "args.actions":" A list of `naughty.action`s.",
+          "args.title":" Title of the notification.",
+          "args.callback":" Function that will be called with all arguments.\n   The notification will only be displayed if the function returns true.\n   Note: this function is only relevant to notifications sent via dbus.",
+          "args.margin":" Widget margin.",
+          "args.fg":" Foreground color.",
+          "args.replaces_id":" Replace the notification with the given ID.",
+          "args.preset":" Table with any of the above parameters.\n   Note: Any parameters specified directly in args will override ones defined\n   in the preset.",
+          "args.run":" Function to run on left click.  The notification\n   object will be passed to it as an argument.\n   You need to call e.g.\n   `notification.die(naughty.notification_closed_reason.dismissedByUser)` from\n   there to dismiss the notification yourself.",
+          "args.hover_timeout":" Delay in seconds after which hovered popup disappears.",
+          "args.screen":" Target screen for the notification.",
+          "args.destroy":" Function to run when notification is destroyed.",
+          "args.timeout":" Time in seconds after which popup expires.\n   Set 0 for no timeout.",
+          "args.opacity":" Widget opacity.",
+          "args.icon":" Path to icon.",
+          "args.ontop":" Boolean forcing popups to display on top.",
+          "args.border_color":" Border color.",
+          "args.border_width":" Border width.",
+          "args.width":" Popup width.",
+          "args.shape":" Widget shape.",
+          "args.text":" Text of the notification.",
+          "args.height":" Popup height.",
+          "args":" The argument table containing any of the arguments below.",
+          "args.icon_size":" Desired icon size in px.",
+          "args.font":" Notification font."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string",
+            "opt":"\"\""
+          },
+          "3":{
+            "type":"string",
+            "opt":true
+          },
+          "4":{
+            "type":"int",
+            "opt":"5"
+          },
+          "5":{
+            "type":"int",
+            "opt":true
+          },
+          "6":{
+            "type":"integer|screen",
+            "opt":"focused"
+          },
+          "7":{
+            "type":"string",
+            "opt":"\"top_right\""
+          },
+          "8":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "9":{
+            "type":"int",
+            "opt":"`beautiful.notification_height` or auto"
+          },
+          "10":{
+            "type":"int",
+            "opt":"`beautiful.notification_width` or auto"
+          },
+          "11":{
+            "type":"string",
+            "opt":"`beautiful.notification_font` or `beautiful.font` or `awesome.font`"
+          },
+          "12":{
+            "type":"string",
+            "opt":true
+          },
+          "13":{
+            "type":"int",
+            "opt":true
+          },
+          "14":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.fg_focus` or `'#ffffff'`"
+          },
+          "15":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.bg_focus` or `'#535d6c'`"
+          },
+          "16":{
+            "type":"int",
+            "opt":"`beautiful.notification_border_width` or 1"
+          },
+          "17":{
+            "type":"string",
+            "opt":"`beautiful.notification_border_color` or `beautiful.border_color_active` or `'#535d6c'`"
+          },
+          "18":{
+            "type":"gears.shape",
+            "opt":"`beautiful.notification_shape`"
+          },
+          "19":{
+            "type":"gears.opacity",
+            "opt":"`beautiful.notification_opacity`"
+          },
+          "20":{
+            "type":"gears.margin",
+            "opt":"`beautiful.notification_margin`"
+          },
+          "21":{
+            "type":"func",
+            "opt":true
+          },
+          "22":{
+            "type":"func",
+            "opt":true
+          },
+          "23":{
+            "type":"table",
+            "opt":true
+          },
+          "24":{
+            "type":"int",
+            "opt":true
+          },
+          "25":{
+            "type":"func",
+            "opt":true
+          },
+          "26":{
+            "type":"table",
+            "opt":true
+          },
+          "27":{
+            "type":"bool",
+            "opt":"false"
+          },
+          "args.ignore_suspend":{
+            "type":"bool",
+            "opt":"false"
+          },
+          "args.position":{
+            "type":"string",
+            "opt":"\"top_right\""
+          },
+          "args.bg":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.bg_focus` or `'#535d6c'`"
+          },
+          "args.actions":{
+            "type":"table",
+            "opt":true
+          },
+          "args.title":{
+            "type":"string",
+            "opt":true
+          },
+          "args.callback":{
+            "type":"func",
+            "opt":true
+          },
+          "args.margin":{
+            "type":"gears.margin",
+            "opt":"`beautiful.notification_margin`"
+          },
+          "args.fg":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.fg_focus` or `'#ffffff'`"
+          },
+          "args.replaces_id":{
+            "type":"int",
+            "opt":true
+          },
+          "args.preset":{
+            "type":"table",
+            "opt":true
+          },
+          "args.run":{
+            "type":"func",
+            "opt":true
+          },
+          "args.hover_timeout":{
+            "type":"int",
+            "opt":true
+          },
+          "args.screen":{
+            "type":"integer|screen",
+            "opt":"focused"
+          },
+          "args.destroy":{
+            "type":"func",
+            "opt":true
+          },
+          "args.timeout":{
+            "type":"int",
+            "opt":"5"
+          },
+          "args.opacity":{
+            "type":"gears.opacity",
+            "opt":"`beautiful.notification_opacity`"
+          },
+          "args.icon":{
+            "type":"string",
+            "opt":true
+          },
+          "args.ontop":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "args.border_color":{
+            "type":"string",
+            "opt":"`beautiful.notification_border_color` or `beautiful.border_color_active` or `'#535d6c'`"
+          },
+          "args.border_width":{
+            "type":"int",
+            "opt":"`beautiful.notification_border_width` or 1"
+          },
+          "args.width":{
+            "type":"int",
+            "opt":"`beautiful.notification_width` or auto"
+          },
+          "args.shape":{
+            "type":"gears.shape",
+            "opt":"`beautiful.notification_shape`"
+          },
+          "args.text":{
+            "type":"string",
+            "opt":"\"\""
+          },
+          "args.height":{
+            "type":"int",
+            "opt":"`beautiful.notification_height` or auto"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.icon_size":{
+            "type":"int",
+            "opt":true
+          },
+          "args.font":{
+            "type":"string",
+            "opt":"`beautiful.notification_font` or `beautiful.font` or `awesome.font`"
+          }
+        },
+        "return":[{
+            "type":"?table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string",
+            "opt":"\"\""
+          },
+          "3":{
+            "type":"string",
+            "opt":true
+          },
+          "4":{
+            "type":"int",
+            "opt":"5"
+          },
+          "5":{
+            "type":"int",
+            "opt":true
+          },
+          "6":{
+            "type":"integer|screen",
+            "opt":"focused"
+          },
+          "7":{
+            "type":"string",
+            "opt":"\"top_right\""
+          },
+          "8":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "9":{
+            "type":"int",
+            "opt":"`beautiful.notification_height` or auto"
+          },
+          "10":{
+            "type":"int",
+            "opt":"`beautiful.notification_width` or auto"
+          },
+          "11":{
+            "type":"string",
+            "opt":"`beautiful.notification_font` or `beautiful.font` or `awesome.font`"
+          },
+          "12":{
+            "type":"string",
+            "opt":true
+          },
+          "13":{
+            "type":"int",
+            "opt":true
+          },
+          "14":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.fg_focus` or `'#ffffff'`"
+          },
+          "15":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.bg_focus` or `'#535d6c'`"
+          },
+          "16":{
+            "type":"int",
+            "opt":"`beautiful.notification_border_width` or 1"
+          },
+          "17":{
+            "type":"string",
+            "opt":"`beautiful.notification_border_color` or `beautiful.border_color_active` or `'#535d6c'`"
+          },
+          "18":{
+            "type":"gears.shape",
+            "opt":"`beautiful.notification_shape`"
+          },
+          "19":{
+            "type":"gears.opacity",
+            "opt":"`beautiful.notification_opacity`"
+          },
+          "20":{
+            "type":"gears.margin",
+            "opt":"`beautiful.notification_margin`"
+          },
+          "21":{
+            "type":"func",
+            "opt":true
+          },
+          "22":{
+            "type":"func",
+            "opt":true
+          },
+          "23":{
+            "type":"table",
+            "opt":true
+          },
+          "24":{
+            "type":"int",
+            "opt":true
+          },
+          "25":{
+            "type":"func",
+            "opt":true
+          },
+          "26":{
+            "type":"table",
+            "opt":true
+          },
+          "27":{
+            "type":"bool",
+            "opt":"false"
+          },
+          "args.ignore_suspend":{
+            "type":"bool",
+            "opt":"false"
+          },
+          "args.position":{
+            "type":"string",
+            "opt":"\"top_right\""
+          },
+          "args.bg":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.bg_focus` or `'#535d6c'`"
+          },
+          "args.actions":{
+            "type":"table",
+            "opt":true
+          },
+          "args.title":{
+            "type":"string",
+            "opt":true
+          },
+          "args.callback":{
+            "type":"func",
+            "opt":true
+          },
+          "args.margin":{
+            "type":"gears.margin",
+            "opt":"`beautiful.notification_margin`"
+          },
+          "args.fg":{
+            "type":"string",
+            "opt":"`beautiful.notification_fg` or `beautiful.fg_focus` or `'#ffffff'`"
+          },
+          "args.replaces_id":{
+            "type":"int",
+            "opt":true
+          },
+          "args.preset":{
+            "type":"table",
+            "opt":true
+          },
+          "args.run":{
+            "type":"func",
+            "opt":true
+          },
+          "args.hover_timeout":{
+            "type":"int",
+            "opt":true
+          },
+          "args.screen":{
+            "type":"integer|screen",
+            "opt":"focused"
+          },
+          "args.destroy":{
+            "type":"func",
+            "opt":true
+          },
+          "args.timeout":{
+            "type":"int",
+            "opt":"5"
+          },
+          "args.opacity":{
+            "type":"gears.opacity",
+            "opt":"`beautiful.notification_opacity`"
+          },
+          "args.icon":{
+            "type":"string",
+            "opt":true
+          },
+          "args.ontop":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "args.border_color":{
+            "type":"string",
+            "opt":"`beautiful.notification_border_color` or `beautiful.border_color_active` or `'#535d6c'`"
+          },
+          "args.border_width":{
+            "type":"int",
+            "opt":"`beautiful.notification_border_width` or 1"
+          },
+          "args.width":{
+            "type":"int",
+            "opt":"`beautiful.notification_width` or auto"
+          },
+          "args.shape":{
+            "type":"gears.shape",
+            "opt":"`beautiful.notification_shape`"
+          },
+          "args.text":{
+            "type":"string",
+            "opt":"\"\""
+          },
+          "args.height":{
+            "type":"int",
+            "opt":"`beautiful.notification_height` or auto"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.icon_size":{
+            "type":"int",
+            "opt":true
+          },
+          "args.font":{
+            "type":"string",
+            "opt":"`beautiful.notification_font` or `beautiful.font` or `awesome.font`"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n This function is deprecated, create notification objects instead:\n\n    local notif = naughty.notification(args)\n",
+      "tags":[],
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":{
+        "args":["args.text","args.title","args.timeout","args.hover_timeout","args.screen","args.position","args.ontop","args.height","args.width","args.font","args.icon","args.icon_size","args.fg","args.bg","args.border_width","args.border_color","args.shape","args.opacity","args.margin","args.run","args.destroy","args.preset","args.replaces_id","args.callback","args.actions","args.ignore_suspend"]
+      },
+      "summary":"Create a notification.",
+      "name":"notify",
+      "kind":"deprecated functions",
+      "usage":["naughty.notify({ title = \"Achtung!\", message = \"You're idling\", timeout = 0 })\n"],
+      "args":"(args)",
+      "type":"deprecated",
+      "lineno":790
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Request handler to get the icon using the clients icons.",
+      "name":"client_icon_handler",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"signalhandler",
+      "section":"signalhandler",
+      "kind":"request handlers",
+      "args":"()",
+      "tags":[],
+      "lineno":817
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Request handler to get the icon using the image or path.",
+      "name":"icon_path_handler",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"signalhandler",
+      "section":"signalhandler",
+      "kind":"request handlers",
+      "args":"()",
+      "tags":[],
+      "lineno":834
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Request handler for clearing the icon when asked by ie, DBus.",
+      "name":"icon_clear_handler",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"signalhandler",
+      "section":"signalhandler",
+      "kind":"request handlers",
+      "args":"()",
+      "tags":[],
+      "lineno":844
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal",
+          "func":" The function to attach"
+        }
+      },
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n Functions connected to this signal source will be executed when any\n module object emits the signal.\n\n It is also used for some generic module signals such as\n `request::display`.\n",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Connect a global signal on the module.",
+      "name":"connect_signal",
+      "kind":"functions",
+      "usage":["naughty.connect_signal(\\\"added\\\", function(notif)\n   -- do something\nend)\n"],
+      "args":"(name, func)",
+      "type":"function",
+      "lineno":875
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "name":" The signal name.",
+          "...":" The signal callback arguments"
+        }
+      },
+      "summary":"Emit a module signal.",
+      "name":"emit_signal",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        },
+        "return":[]
+      },
+      "description":"",
+      "type":"function",
+      "section":"function",
+      "kind":"functions",
+      "args":"(name, ...)",
+      "tags":[],
+      "lineno":880
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"func",
+        "map":{
+          "name":" The name of the signal",
+          "func":" The attached function"
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"function"
+          },
+          "name":{
+            "type":"string"
+          },
+          "func":{
+            "type":"function"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }]
+      },
+      "description":"",
+      "type":"function",
+      "tags":[],
+      "section":"function",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Disconnect a signal from a source.",
+      "name":"disconnect_signal",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"If the disconnection was successful",
+            "type":"boolean",
+            "mods":{
+              "type":"boolean"
+            }
+          }
+        }],
+      "ret":["If the disconnection was successful"],
+      "kind":"functions",
+      "args":"(name, func)",
+      "lineno":886
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/lib/naughty/core.lua",
+  "package":"",
+  "tags":{
+    "author":["koniu &lt;gkusnierz@gmail.com&gt;"],
+    "copyright":"2008 koniu"
+  },
+  "lineno":13
+}

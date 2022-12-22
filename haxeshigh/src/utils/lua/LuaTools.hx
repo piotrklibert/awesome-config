@@ -61,13 +61,16 @@ abstract LuaTable(AnyTable)
   }
 
   @:from
-  static public inline function fromArray(arr: Array<Dynamic>): LuaTable {
+  static public inline function fromArray(arr: Array<Any>): LuaTable {
     return lua.Table.fromArray(arr);
   }
 
   @:from
-  static public function fromObject(obj: Null<{}>): LuaTable {
-    return [for(f in Reflect.fields(obj)) f => Reflect.field(obj, f)];
+  static public function fromObject(obj: {}): LuaTable {
+      return untyped {
+          obj["__fields__"] = null;
+          obj;
+      };
   }
 }
 

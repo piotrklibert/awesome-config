@@ -1,0 +1,92 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"awful.widget.button",
+  "summary":"A simple button widget.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.widget.button",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n \nDOC_GEN_IMAGE --DOC_HIDE\n\n![Usage example](../images/AUTOGEN_wibox_awidget_defaults_button.svg)\n\n \n     awful.widget.button {\n         image   = beautiful.awesome_icon,\n         buttons = {\n             awful.button({}, 1, nil, function ()\n                 print(&#34Mouse was clicked&#34)\n             end)\n         }\n     }\n",
+  "items":[{
+      "inferred":true,
+      "subparams":{
+        "args":["args.image","args.buttons"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.image":" \"image\" is the image to display (mandatory).",
+          "args":" Widget arguments.",
+          "args.buttons":" The buttons."
+        }
+      },
+      "summary":"Create a button widget.",
+      "name":"awful.widget.button",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "args.image":{
+            "type":"string"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.buttons":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "args.image":{
+            "type":"string"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.buttons":{
+            "type":"table"
+          }
+        }
+      },
+      "description":" When clicked, the image is deplaced to make it like\n a real button.\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(args)",
+      "tags":[],
+      "lineno":43
+    }],
+  "type":"widgetmod",
+  "file":"/home/cji/portless/awesome/build/lib/awful/widget/button.lua",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008-2009 Julien Danjou",
+    "supermodule":["wibox.widget.imagebox"]
+  },
+  "lineno":25
+}

@@ -1,0 +1,203 @@
+{
+  "inferred":true,
+  "kind":"widget_containers",
+  "mod_name":"wibox.container.rotate",
+  "summary":"A container rotating the conained widget by 90 degrees.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.container.rotate",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_defaults_rotate.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" The widget."
+        }
+      },
+      "summary":"The widget to be rotated.",
+      "name":"widget",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(widget)",
+      "tags":{
+        "interface":["container"]
+      },
+      "lineno":71
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Reset this layout.",
+      "name":"reset",
+      "modifiers":{
+        "return":[],
+        "interface":[[]],
+        "field":[]
+      },
+      "description":"\n\n The widget will be removed and the rotation reset.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "interface":["container"]
+      },
+      "lineno":91
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"dir",
+        "map":{
+          "dir":" The direction."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "dir":{
+            "type":"string"
+          }
+        },
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "dir":{
+            "type":"string"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n Valid values are:\n\n * *north*\n * *east*\n * *south*\n * *north*\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_rotate_angle.svg)\n",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The direction of this rotating container.",
+      "name":"direction",
+      "kind":"object properties",
+      "usage":["local normal = create_arrow(&#34Normal&#34)\nlocal north  = wibox.container {\n    create_arrow(&#34North&#34),\n    direction = &#34north&#34,\n    widget    = wibox.container.rotate\n}\nlocal south  = wibox.container {\n    create_arrow(&#34South&#34),\n    direction = &#34south&#34,\n    widget    = wibox.container.rotate\n}\nlocal east  = wibox.container {\n    create_arrow(&#34East&#34),\n    direction = &#34east&#34,\n    widget    = wibox.container.rotate\n}\nlocal west  = wibox.container {\n    create_arrow(&#34West&#34),\n    direction = &#34west&#34,\n    widget    = wibox.container.rotate\n}\n"],
+      "args":"(dir)",
+      "type":"property",
+      "lineno":135
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"dir",
+        "map":{
+          "dir":" The direction to rotate to.",
+          "widget":" The widget to display."
+        }
+      },
+      "summary":"Returns a new rotate container.",
+      "name":"wibox.container.rotate",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "dir":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "dir":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          }
+        }
+      },
+      "description":"\n\n A rotate container rotates a given widget. Use the `widget` property\n to set the widget and `direction` property for the direction.\n The default direction is \"north\" which doesn't change anything.",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"([widget[, dir]])",
+      "tags":[],
+      "lineno":166
+    }],
+  "type":"containermod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/container/rotate.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2010 Uli Schlachter",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":14
+}

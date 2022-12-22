@@ -1,0 +1,17 @@
+{
+  "name":"testglobal.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/testglobal.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"testglobal.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"-- very simple lexer program which looks at all identifiers in a Lua\n-- file and checks whether they're in the global namespace.\n-- At the end, we dump out the result of count_map, which will give us\n-- unique identifiers with their usage count.\n-- (an example of a program which itself needs to be careful about what\n-- goes into the global namespace)\n\nlocal utils = require 'pl.utils'\nlocal file = require 'pl.file'\nlocal lexer = require 'pl.lexer'\nlocal List = require 'pl.List'\nlocal pretty = require 'pl.pretty'\nlocal seq = require 'pl.seq'\nlocal path = require 'pl.path'\n\nutils.on_error 'quit'\n\nlocal txt = file.read(arg[1] or path.normpath('examples/testglobal.lua'))\nlocal globals = List()\nfor t,v in lexer.lua(txt) do\n\tif t == 'iden' and rawget(_G,v) then\n\t\tglobals:append(v)\n\tend\nend\n\npretty.dump(seq.count_map(globals))\n\n\n"
+}

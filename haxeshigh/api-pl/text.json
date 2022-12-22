@@ -1,0 +1,18 @@
+{
+  "kind":"libraries",
+  "name":"pl.text",
+  "mod_name":"text",
+  "inferred":true,
+  "description":"\n\n This provides a Template class (modeled after the same from the Python\n libraries, see string.Template). It also provides similar functions to those\n found in the textwrap module.\n\n IMPORTANT: this module has been deprecated and will be removed in a future\n version (2.0). The contents of this module have moved to the `pl.stringx`\n module.\n\n See  @{03-strings.md.String_Templates|the Guide}.\n\n Dependencies: `pl.stringx`, `pl.utils`",
+  "file":"/home/cji/portless/Penlight/lua/pl/text.lua",
+  "summary":"Text processing utilities.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":16,
+  "package":"pl",
+  "items":[],
+  "type":"module",
+  "modifiers":[]
+}

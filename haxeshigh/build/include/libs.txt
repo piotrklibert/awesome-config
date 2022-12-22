@@ -3,3 +3,6 @@
 -L HaxeContracts
 -L safety
 -L tink_lang
+-L sure
+-L extype
+-L console.hx

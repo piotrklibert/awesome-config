@@ -1,0 +1,99 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"awful.widget.clienticon",
+  "summary":"Container showing the icon of a client.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.widget.clienticon",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"client",
+        "map":{
+          "client":""
+        }
+      },
+      "summary":"The widget's @{client}.",
+      "name":"client",
+      "modifiers":{
+        "param":{
+          "1":[],
+          "client":[]
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":[],
+          "client":[]
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(client)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":92
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"c",
+        "map":{
+          "c":" The client whose icon should be displayed."
+        }
+      },
+      "summary":"Returns a new clienticon.",
+      "name":"awful.widget.clienticon",
+      "modifiers":{
+        "return":[{
+            "type":"widget"
+          }],
+        "param":{
+          "1":{
+            "type":"client"
+          },
+          "c":{
+            "type":"client"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"client"
+          },
+          "c":{
+            "type":"client"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(c)",
+      "tags":[],
+      "lineno":108
+    }],
+  "type":"widgetmod",
+  "file":"/home/cji/portless/awesome/build/lib/awful/widget/clienticon.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2017 Uli Schlachter",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":9
+}

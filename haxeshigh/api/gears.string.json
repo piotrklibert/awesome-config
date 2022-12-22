@@ -1,0 +1,440 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "mod_name":"gears.string",
+  "summary":"String module for gears.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.string",
+  "modifiers":[],
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" Text to escape."
+        }
+      },
+      "summary":"Escape a string from XML char.",
+      "name":"xml_escape",
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":[],
+          "text":[]
+        },
+        "field":{
+          "1":[],
+          "text":[]
+        }
+      },
+      "description":"\n Useful to set raw text in textbox.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(text)",
+      "tags":[],
+      "lineno":16
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" Text to unescape."
+        }
+      },
+      "summary":"Unescape a string from entities.",
+      "name":"xml_unescape",
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":[],
+          "text":[]
+        },
+        "field":{
+          "1":[],
+          "text":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(text)",
+      "tags":[],
+      "lineno":27
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" Input string."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        },
+        "return":[{
+            "type":"int"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n \n\n\n**Usage example output**:\n\n    Count is: 1\n    Count is: 3\n\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Count number of lines in a string.",
+      "name":"linecount",
+      "kind":"static module functions",
+      "usage":["local test = &#34do.t&#34\nlocal res = gears.string.linecount(test)\nprint(&#34Count is: &#34 .. res)\nlocal test2 = &#34do\\nit\\nnow&#34\nlocal res2 = gears.string.linecount(test2)\nprint(&#34Count is: &#34 .. res2)\n"],
+      "args":"(text)",
+      "type":"staticfct",
+      "lineno":51
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "2":"width",
+        "3":"indent",
+        "map":{
+          "text":" String to wrap.",
+          "indent":" Number of spaces added before each wrapped line. Default: 0.",
+          "width":" Maximum length of each line. Default: 72."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "text":{
+            "type":"string"
+          },
+          "indent":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "text":{
+            "type":"string"
+          },
+          "indent":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n \n\n\n**Usage example output**:\n\n    do\n    it\n\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Split a string into multiple lines.",
+      "name":"linewrap",
+      "kind":"static module functions",
+      "usage":["local test = &#34do it&#34\nlocal res = gears.string.linewrap(test, 2, 0)\nprint(res)\n"],
+      "args":"(text, width, indent)",
+      "type":"staticfct",
+      "lineno":74
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"s",
+        "map":{
+          "s":" String to generate pattern for"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "s":{
+            "type":"string"
+          }
+        },
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "s":{
+            "type":"string"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n Source: http://stackoverflow.com/a/20778724/15690\n \n\n\n**Usage example output**:\n\n    do%.it\n\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Escape all special pattern-matching characters so that lua interprets them\n literally instead of as a character class.",
+      "name":"quote_pattern",
+      "kind":"static module functions",
+      "usage":["local test = &#34do.it&#34\nlocal res = gears.string.quote_pattern(test)\nprint(res)\n"],
+      "args":"(s)",
+      "type":"staticfct",
+      "lineno":107
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"q",
+        "map":{
+          "q":" Original pattern matching expression."
+        }
+      },
+      "summary":"Generate a pattern matching expression that ignores case.",
+      "name":"query_to_pattern",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "q":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "q":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(q)",
+      "tags":[],
+      "lineno":116
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"str",
+        "2":"delimiter",
+        "map":{
+          "str":" String to be splitted",
+          "delimiter":" Character where the string will be splitted"
+        }
+      },
+      "summary":"Split separates a string containing a delimiter into the list of\n substrings between that delimiter.",
+      "name":"split",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          },
+          "delimiter":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          },
+          "delimiter":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(str, delimiter)",
+      "tags":[],
+      "lineno":133
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"str",
+        "2":"sub",
+        "map":{
+          "str":" String to search",
+          "sub":" String to check for."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          },
+          "sub":{
+            "type":"string"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          },
+          "sub":{
+            "type":"string"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n \n\n\n**Usage example output**:\n\n    true\n    false\n    false\n\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if a string starts with another string.",
+      "name":"startswith",
+      "kind":"static module functions",
+      "usage":["local test = &#34do.it&#34\nlocal res = gears.string.startswith(test,&#34do&#34)\nprint(tostring(res)) -- Print boolean value\nres = gears.string.startswith(test,&#34it&#34)\nprint(tostring(res)) -- print boolean value\nres = gears.string.startswith(nil,&#34do&#34)\nprint(tostring(res)) -- print boolean value\n"],
+      "args":"(str, sub)",
+      "type":"staticfct",
+      "lineno":173
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"str",
+        "2":"sub",
+        "map":{
+          "str":" String to search",
+          "sub":" String to check for."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          },
+          "sub":{
+            "type":"string"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          },
+          "sub":{
+            "type":"string"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n \n\n\n**Usage example output**:\n\n    true\n    false\n    false\n\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if a string ends with another string.",
+      "name":"endswith",
+      "kind":"static module functions",
+      "usage":["local test = &#34do.it&#34\nlocal res = gears.string.endswith(test,&#34it&#34)\nprint(tostring(res))\nres = gears.string.endswith(test,&#34do&#34)\nprint(tostring(res))\nres = gears.string.endswith(nil,&#34it&#34)\nprint(tostring(res))\n"],
+      "args":"(str, sub)",
+      "type":"staticfct",
+      "lineno":200
+    }],
+  "type":"utillib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/string.lua",
+  "package":"",
+  "tags":[],
+  "lineno":7
+}

@@ -1,0 +1,291 @@
+{
+  "kind":"libraries",
+  "name":"pl.sip",
+  "mod_name":"sip",
+  "inferred":true,
+  "description":"\n SIP patterns start with '$', then a\n one-letter type, and then an optional variable in curly braces.\n\n    sip.match('$v=$q','name=\"dolly\"',res)\n    ==> res=={'name','dolly'}\n    sip.match('($q{first},$q{second})','(\"john\",\"smith\")',res)\n    ==> res=={second='smith',first='john'}\n\n Type names:\n\n    v     identifier\n    i     integer\n    f     floating-point\n    q     quoted string\n    ([{<  match up to closing bracket\n\n See @{08-additional.md.Simple_Input_Patterns|the Guide}\n",
+  "file":"/home/cji/portless/Penlight/lua/pl/sip.lua",
+  "summary":"Simple Input Patterns (SIP).",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":22,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "options":[],
+          "spec":[]
+        }
+      },
+      "summary":"convert a SIP pattern into the equivalent Lua string pattern.",
+      "lineno":97,
+      "retgroups":[{
+          "1":{
+            "text":"a Lua string pattern.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(spec, options)",
+      "type":"function",
+      "name":"create_pattern",
+      "parameter":"param",
+      "params":{
+        "1":"spec",
+        "2":"options",
+        "map":{
+          "options":" a table; only the <code>at_start</code> field is\n currently meaningful and ensures that the pattern is anchored\n at the start of the string.",
+          "spec":" a SIP pattern"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a Lua string pattern."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "options":[],
+          "spec":[]
+        }
+      },
+      "summary":"convert a SIP pattern into a matching function.",
+      "lineno":231,
+      "retgroups":[{
+          "1":{
+            "text":"a function if successful, or nil,error",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(spec, options)",
+      "type":"function",
+      "name":"compile",
+      "parameter":"param",
+      "params":{
+        "1":"spec",
+        "2":"options",
+        "map":{
+          "options":" optional table; {at_start=true} ensures that the pattern\n is anchored at the start of the string.",
+          "spec":" a SIP pattern"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n The returned function takes two arguments, the line and an empty table.\n If the line matched the pattern, then this function returns true\n and the table is filled with field-value pairs.",
+      "ret":["a function if successful, or nil,error"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "res":[],
+          "spec":[],
+          "options":[],
+          "line":[]
+        }
+      },
+      "summary":"match a SIP pattern against a string.",
+      "lineno":249,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(spec, line, res, options)",
+      "type":"function",
+      "name":"match",
+      "parameter":"param",
+      "params":{
+        "1":"spec",
+        "2":"line",
+        "3":"res",
+        "4":"options",
+        "map":{
+          "res":" a table to receive values",
+          "spec":" a SIP pattern",
+          "options":" (optional) option table",
+          "line":" a string"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "res":[],
+          "spec":[],
+          "line":[]
+        }
+      },
+      "summary":"match a SIP pattern against the start of a string.",
+      "lineno":264,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(spec, line, res)",
+      "type":"function",
+      "name":"match_at_start",
+      "parameter":"param",
+      "params":{
+        "1":"spec",
+        "2":"line",
+        "map":{
+          "res":" a table to receive values",
+          "spec":" a SIP pattern",
+          "line":" a string"
+        },
+        "3":"res"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "f":[],
+          "spec":[]
+        }
+      },
+      "summary":"given a pattern and a file object, return an iterator over the results",
+      "lineno":271,
+      "args":"(spec, f)",
+      "section":"function",
+      "name":"fields",
+      "params":{
+        "1":"spec",
+        "2":"f",
+        "map":{
+          "f":" a file-like object.",
+          "spec":" a SIP pattern"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"func"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "spec":{
+            "type":"string"
+          }
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"register a match which will be used in the read function.",
+      "lineno":296,
+      "args":"(spec, fun)",
+      "section":"function",
+      "name":"pattern",
+      "params":{
+        "1":"spec",
+        "2":"fun",
+        "map":{
+          "fun":" a function to be called with the results of the match",
+          "spec":" a SIP pattern"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"array"
+          },
+          "matches":{
+            "type":"array"
+          },
+          "f":[]
+        }
+      },
+      "summary":"enter a loop which applies all registered matches to the input file.",
+      "lineno":305,
+      "args":"(f, matches)",
+      "section":"function",
+      "name":"read",
+      "params":{
+        "1":"f",
+        "2":"matches",
+        "map":{
+          "matches":" optional list of `{spec,fun}` pairs, as for `pattern` above.",
+          "f":" a file-like object"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

@@ -1,0 +1,727 @@
+{
+  "kind":"libraries",
+  "name":"pl.operator",
+  "mod_name":"operator",
+  "inferred":true,
+  "description":"\n\n (similar to the Python module of the same name)\n\n There is a module field `optable` which maps the operator strings\n onto these functions, e.g. `operator.optable['()']==operator.call`\n\n Operator strings like '>' and '{}' can be passed to most Penlight functions\n expecting a function argument.\n",
+  "file":"/home/cji/portless/Penlight/lua/pl/operator.lua",
+  "summary":"Lua operators available as functions.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":13,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "...":[],
+          "fn":[]
+        }
+      },
+      "summary":"apply function to some arguments **()**",
+      "lineno":20,
+      "args":"(fn, ...)",
+      "section":"function",
+      "name":"call",
+      "params":{
+        "1":"fn",
+        "2":"...",
+        "map":{
+          "...":" arguments",
+          "fn":" a function or callable object"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "t":[],
+          "k":[]
+        }
+      },
+      "summary":"get the indexed value from a table **[]**",
+      "lineno":27,
+      "args":"(t, k)",
+      "section":"function",
+      "name":"index",
+      "params":{
+        "1":"t",
+        "2":"k",
+        "map":{
+          "t":" a table or any indexable object",
+          "k":" the key"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"returns true if arguments are equal **==**",
+      "lineno":34,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"eq",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"returns true if arguments are not equal **~=**",
+      "lineno":41,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"neq",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"returns true if a is less than b **<**",
+      "lineno":48,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"lt",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"returns true if a is less or equal to b **<=**",
+      "lineno":55,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"le",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"returns true if a is greater than b **>**",
+      "lineno":62,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"gt",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"returns true if a is greater or equal to b **>=**",
+      "lineno":69,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"ge",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "a":[]
+        }
+      },
+      "summary":"returns length of string or table **#**",
+      "lineno":75,
+      "args":"(a)",
+      "section":"function",
+      "name":"len",
+      "params":{
+        "map":{
+          "a":" a string or a table"
+        },
+        "1":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"add two values **+**",
+      "lineno":82,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"add",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"subtract b from a **-**",
+      "lineno":89,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"sub",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"multiply two values __*__",
+      "lineno":96,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"mul",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"divide first value by second **/**",
+      "lineno":103,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"div",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"raise first to the power of second **^**",
+      "lineno":110,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"pow",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"modulo; remainder of a divided by b **%**",
+      "lineno":117,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"mod",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"concatenate two values (either strings or `__concat` defined) **..**",
+      "lineno":124,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"concat",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "a":[]
+        }
+      },
+      "summary":"return the negative of a value **-**",
+      "lineno":130,
+      "args":"(a)",
+      "section":"function",
+      "name":"unm",
+      "params":{
+        "map":{
+          "a":" value"
+        },
+        "1":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "a":[]
+        }
+      },
+      "summary":"false if value evaluates as true **not**",
+      "lineno":136,
+      "args":"(a)",
+      "section":"function",
+      "name":"lnot",
+      "params":{
+        "map":{
+          "a":" value"
+        },
+        "1":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"true if both values evaluate as true **and**",
+      "lineno":143,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"land",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "b":[]
+        }
+      },
+      "summary":"true if either value evaluate as true **or**",
+      "lineno":150,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"lor",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":" value",
+          "b":" value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "...":[]
+        }
+      },
+      "summary":"make a table from the arguments **{}**",
+      "lineno":157,
+      "retgroups":[{
+          "1":{
+            "text":"a table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(...)",
+      "type":"function",
+      "name":"table",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "...":" non-nil arguments"
+        },
+        "1":"..."
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"match two strings **~**.",
+      "lineno":163,
+      "args":"(a, b)",
+      "section":"function",
+      "name":"match",
+      "params":{
+        "1":"a",
+        "2":"b",
+        "map":{
+          "a":"",
+          "b":""
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n uses @{string.find}",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "...":[]
+        }
+      },
+      "summary":"the null operation.",
+      "lineno":170,
+      "retgroups":[{
+          "1":{
+            "text":"the arguments",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(...)",
+      "type":"function",
+      "name":"nop",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "...":" arguments"
+        },
+        "1":"..."
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the arguments"]
+    },{
+      "name":"optable",
+      "section":"table",
+      "inferred":true,
+      "description":"\n Most of these map directly from operators;\n But note these extras\n\n  * __'()'__  `call`\n  * __'[]'__  `index`\n  * __'{}'__ `table`\n  * __'~'__   `match`\n",
+      "kind":"tables",
+      "summary":"Map from operator symbol to function.",
+      "params":{
+        "map":{
+          "operator":""
+        },
+        "1":"operator"
+      },
+      "tags":[],
+      "lineno":185,
+      "subparams":[],
+      "args":"(operator)",
+      "parameter":"field",
+      "type":"table",
+      "modifiers":{
+        "field":{
+          "1":[],
+          "operator":[]
+        },
+        "return":[]
+      }
+    }],
+  "type":"module",
+  "modifiers":[]
+}

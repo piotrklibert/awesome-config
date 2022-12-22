@@ -1,0 +1,700 @@
+{
+  "postprocess":<type 'function' is not supported by JSON.>,
+  "kind":"documentation",
+  "display_name":"Authors",
+  "section":{
+    "display_name":"Originally based on dwm code",
+    "lineno":1,
+    "type":"section",
+    "tags":[],
+    "file":{
+      "modules":[<reference cycle>],
+      "args":[],
+      "sections":{
+        "54":"Originally_based_on_dwm_code",
+        "3":"Awesome___awesome_window_manager",
+        "38":"License"
+      },
+      "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+      "items":[<reference cycle>,{
+          "display_name":"Awesome - awesome window manager",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Awesome___awesome_window_manager",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"awesome - awesome window manager ",
+          "type":"function",
+          "section":"Awesome - awesome window manager",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"License",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"License",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"license ",
+          "type":"function",
+          "section":"License",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },<reference cycle>,{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"originally based on dwm code ",
+          "type":"function",
+          "section":"Originally based on dwm code",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        }],
+      "display_name":"Authors"
+    },
+    "summary":"",
+    "name":"Originally_based_on_dwm_code",
+    "modifiers":[]
+  },
+  "body":"# Authors\n\n## Awesome - awesome window manager\n\n**Maintainer**:\n\n* © 2009- [Uli Schlachter](mailto:psychon@znc.in)\n\n**Main contributors**:\n\n* © 2013- [Emmanuel Lepage-Vallee](mailto:elv1313@gmail.com)\n* © 2014- [Daniel Hahler](https://daniel.hahler.de)\n* © 2014- [Yauhen Kirylau](mailto:actionless.loveless@gmail.com)\n\n**Original author**:\n\n* © 2007-2009 [Julien Danjou](mailto:julien@danjou.info)\n\n**Past contributors**:\n\n* © 2007-2008 [Marco Candrian](mailto:mac@calmar.ws)\n* © 2007 [Aldo Cortesi](mailto:aldo@nullcube.com)\n* © 2008 [Lucas de Vries](mailto:lucasdevries@gmail.com)\n* © 2008 [Pierre Habouzit](mailto:madcoder@debian.org)\n* © 2008 [Félix C. Morency](mailto:felix.morency@gmail.com)\n* © 2008 [Michael Gehring](mailto:mg@ebfe.org)\n* © 2008 [Hans Ulrich Niedermann](mailto:hun@n-dimensional.de)\n* © 2007-2009 [Nikos Ntarmos](mailto:ntarmos@ceid.upatras.gr)\n* © 2008-2009 [Damien Leone](mailto:damien.leone@gmail.com)\n* © 2008-2009 [Maarten Maathuis](mailto:madman2003@gmail.com)\n* © 2008-2010 [koniu](mailto:gkusnierz@gmail.com)\n* © 2007-2011 [Arnaud Fontaine](mailto:arnau@debian.org)\n* © 2008-2012 [Gregor Best](mailto:farhaven@googlemail.com)\n\nFor a complete list of contributors, see our\n[GitHub page](https://github.com/awesomeWM/awesome/graphs/contributors).\n\n## License\n\nThis program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License along\nwith this program; if not, write to the Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.\n\n## Originally based on dwm code\n\nMIT/X Consortium License\n\n* © 2006-2007 [Anselm R. Garbe](mailto:garbeam@gmail.com)\n* © 2006-2007 [Sander van Dijk](mailto:a.h.vandijk@gmail.com)\n* © 2006-2007 [Jukka Salmi](mailto:jukka@salmi.ch)\n* © 2007 [Premysl Hruby](mailto:dfenze@gmail.com)\n* © 2007 [Szabolcs Nagy](mailto:nszabolcs@gmail.com)\n\nPermission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and associated documentation files (the \"Software\"),\nto deal in the Software without restriction, including without limitation\nthe rights to use, copy, modify, merge, publish, distribute, sublicense,\nand/or sell copies of the Software, and to permit persons to whom the\nSoftware is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n",
+  "sections":{
+    "1":{
+      "display_name":"Awesome - awesome window manager",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "54":"Originally_based_on_dwm_code",
+          "3":"Awesome___awesome_window_manager",
+          "38":"License"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+        "items":[<reference cycle>,<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"awesome - awesome window manager ",
+            "type":"function",
+            "section":"Awesome - awesome window manager",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"License",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"License",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"license ",
+            "type":"function",
+            "section":"License",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Originally based on dwm code",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Originally_based_on_dwm_code",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"originally based on dwm code ",
+            "type":"function",
+            "section":"Originally based on dwm code",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Authors"
+      },
+      "summary":"",
+      "name":"Awesome___awesome_window_manager",
+      "modifiers":[]
+    },
+    "2":{
+      "display_name":"License",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "54":"Originally_based_on_dwm_code",
+          "3":"Awesome___awesome_window_manager",
+          "38":"License"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+        "items":[<reference cycle>,{
+            "display_name":"Awesome - awesome window manager",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Awesome___awesome_window_manager",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"awesome - awesome window manager ",
+            "type":"function",
+            "section":"Awesome - awesome window manager",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"license ",
+            "type":"function",
+            "section":"License",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Originally based on dwm code",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Originally_based_on_dwm_code",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"originally based on dwm code ",
+            "type":"function",
+            "section":"Originally based on dwm code",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Authors"
+      },
+      "summary":"",
+      "name":"License",
+      "modifiers":[]
+    },
+    "by_name":{
+      "Awesome___awesome_window_manager":{
+        "display_name":"Awesome - awesome window manager",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "54":"Originally_based_on_dwm_code",
+            "3":"Awesome___awesome_window_manager",
+            "38":"License"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+          "items":[<reference cycle>,<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"awesome - awesome window manager ",
+              "type":"function",
+              "section":"Awesome - awesome window manager",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"License",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"License",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"license ",
+              "type":"function",
+              "section":"License",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Originally based on dwm code",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Originally_based_on_dwm_code",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"originally based on dwm code ",
+              "type":"function",
+              "section":"Originally based on dwm code",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Authors"
+        },
+        "summary":"",
+        "name":"Awesome___awesome_window_manager",
+        "modifiers":[]
+      },
+      "Originally_based_on_dwm_code":{
+        "display_name":"Originally based on dwm code",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "54":"Originally_based_on_dwm_code",
+            "3":"Awesome___awesome_window_manager",
+            "38":"License"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+          "items":[<reference cycle>,{
+              "display_name":"Awesome - awesome window manager",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Awesome___awesome_window_manager",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"awesome - awesome window manager ",
+              "type":"function",
+              "section":"Awesome - awesome window manager",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"License",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"License",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"license ",
+              "type":"function",
+              "section":"License",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"originally based on dwm code ",
+              "type":"function",
+              "section":"Originally based on dwm code",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Authors"
+        },
+        "summary":"",
+        "name":"Originally_based_on_dwm_code",
+        "modifiers":[]
+      },
+      "License":{
+        "display_name":"License",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "54":"Originally_based_on_dwm_code",
+            "3":"Awesome___awesome_window_manager",
+            "38":"License"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+          "items":[<reference cycle>,{
+              "display_name":"Awesome - awesome window manager",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Awesome___awesome_window_manager",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"awesome - awesome window manager ",
+              "type":"function",
+              "section":"Awesome - awesome window manager",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"license ",
+              "type":"function",
+              "section":"License",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Originally based on dwm code",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Originally_based_on_dwm_code",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"originally based on dwm code ",
+              "type":"function",
+              "section":"Originally based on dwm code",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Authors"
+        },
+        "summary":"",
+        "name":"License",
+        "modifiers":[]
+      }
+    },
+    "3":{
+      "display_name":"Originally based on dwm code",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "54":"Originally_based_on_dwm_code",
+          "3":"Awesome___awesome_window_manager",
+          "38":"License"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/00-authors.md",
+        "items":[<reference cycle>,{
+            "display_name":"Awesome - awesome window manager",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Awesome___awesome_window_manager",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"awesome - awesome window manager ",
+            "type":"function",
+            "section":"Awesome - awesome window manager",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"License",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"License",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"license ",
+            "type":"function",
+            "section":"License",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"originally based on dwm code ",
+            "type":"function",
+            "section":"Originally based on dwm code",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Authors"
+      },
+      "summary":"",
+      "name":"Originally_based_on_dwm_code",
+      "modifiers":[]
+    }
+  },
+  "name":"00-authors.md",
+  "modifiers":[],
+  "mod_name":"00-authors.md",
+  "type":"topic",
+  "items":[{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"awesome - awesome window manager ",
+      "type":"function",
+      "section":"Awesome - awesome window manager",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"license ",
+      "type":"function",
+      "section":"License",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"originally based on dwm code ",
+      "type":"function",
+      "section":"Originally based on dwm code",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    }],
+  "file":"/home/cji/portless/awesome/build/docs/00-authors.md",
+  "package":"",
+  "tags":[],
+  "lineno":1
+}

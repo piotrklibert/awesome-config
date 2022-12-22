@@ -1,0 +1,148 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "description":"",
+  "summary":"Popup widget which shows current hotkeys and their descriptions.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.hotkeys_popup",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "tags":{
+    "author":["Yauheni Kirylau &lt;yawghen@gmail.com&gt;"],
+    "copyright":"2014-2015 Yauheni Kirylau"
+  },
+  "type":"module",
+  "package":"awful",
+  "file":"/home/cji/portless/awesome/build/lib/awful/hotkeys_popup/init.lua",
+  "mod_name":"hotkeys_popup",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"c",
+        "2":"s",
+        "map":{
+          "s":" The screen.",
+          "c":" The hostkeys for the client \"c\".",
+          "show_args.show_awesome_keys":" Show AwesomeWM hotkeys.\n When set to `false` only app-specific hotkeys will be shown."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":true,
+            "type":"client",
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "type":"screen",
+            "opt":true
+          },
+          "3":{
+            "type":"boolean",
+            "opt":"true"
+          },
+          "s":{
+            "optchain":true,
+            "type":"screen",
+            "opt":true
+          },
+          "c":{
+            "optchain":true,
+            "type":"client",
+            "opt":true
+          },
+          "show_args.show_awesome_keys":{
+            "type":"boolean",
+            "opt":"true"
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":true,
+            "type":"client",
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "type":"screen",
+            "opt":true
+          },
+          "3":{
+            "type":"boolean",
+            "opt":"true"
+          },
+          "s":{
+            "optchain":true,
+            "type":"screen",
+            "opt":true
+          },
+          "c":{
+            "optchain":true,
+            "type":"client",
+            "opt":true
+          },
+          "show_args.show_awesome_keys":{
+            "type":"boolean",
+            "opt":"true"
+          }
+        }
+      },
+      "description":"\n\n example usage:\n\n     local hotkeys_popup = require(\"awful.hotkeys_popup\")\n     myawesomemenu = {{ \"hotkeys\", function() hotkeys_popup.show_help() end },\n                      -- <more entries>\n     }\n\n see `awful.hotkeys_popup.widget.show_help` for more information",
+      "tags":{
+        "see":[]
+      },
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":{
+        "show_args":["show_args.show_awesome_keys"]
+      },
+      "summary":"This is the same as awful.hotkeys_popup.widget.show_help.",
+      "name":"awful.hotkeys_popup.show_help",
+      "type":"staticfct",
+      "args":"([c[, s]])",
+      "kind":"static module functions",
+      "lineno":30
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"rule",
+        "map":{
+          "rule":" Rules to match a window containing a tmux session."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "rule":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"\n\n For example:\n\n     tmux.add_rules_for_terminal({ rule = { name = { \"tmux\" }}})\n\n will show tmux hotkeys for any window that has 'tmux' in its title.\n If no rules are provided then tmux hotkeys will be shown always!",
+      "tags":{
+        "see":[],
+        "within":"lib.awful.hotkeys_popup.keys.tmux Functions"
+      },
+      "section":"lib.awful.hotkeys_popup.keys.tmux Functions",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add rules to match tmux session.",
+      "name":"add_rules_for_terminal",
+      "kind":"lib.awful.hotkeys_popup.keys.tmux functions",
+      "args":"(rule)",
+      "type":"function",
+      "lineno":24
+    }],
+  "lineno":9
+}

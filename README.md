@@ -1,6 +1,6 @@
 ### My Lua config for Awesome WM
 
-Also uses MoonScript and Haxe.
+Also uses MoonScript (deprecated and almost eliminated) and Haxe.
 
 Needs
 - date   2.2-2 (installed) - /usr/lib/luarocks/rocks-5.4

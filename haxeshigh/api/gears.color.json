@@ -1,0 +1,419 @@
+{
+  "inferred":true,
+  "kind":"theme_related_libraries",
+  "mod_name":"gears.color",
+  "summary":"This module simplifies the creation of cairo pattern objects.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.color",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"\n\n In most places in awesome where a color is needed, the provided argument is\n passed to @{gears.color}, which actually calls @{create_pattern} and creates\n a pattern from a given string or table.\n\n This function can create solid, linear, radial and png patterns.\n\n A simple example for a solid pattern is a hexadecimal color specification.\n For example `#ff8000` creates a solid pattern with 100% red, 50% green and 0%\n blue. Limited support for named colors (`red`) is also provided.\n\n In general, patterns are specified as strings formatted as\n `\"type:arguments\"`. `\"arguments\"` is specific to the pattern being used. For\n example, one can use:\n     \"radial:50,50,10:55,55,30:0,#ff0000:0.5,#00ff00:1,#0000ff\"\n The above will call @{create_radial_pattern} with the provided string, after\n stripping the `radial:` prefix.\n\n Alternatively, patterns can be specified via tables. In this case, the\n table's 'type' member specifies the type. For example:\n     {\n       type = \"radial\",\n       from = { 50, 50, 10 },\n       to = { 55, 55, 30 },\n       stops = { { 0, \"#ff0000\" }, { 0.5, \"#00ff00\" }, { 1, \"#0000ff\" } }\n     }\n Any argument that cannot be understood is passed to @{create_solid_pattern}.\n\n Please note that you MUST NOT modify the returned pattern, for example by\n calling :set_matrix() on it, because this function uses a cache and your\n changes could thus have unintended side effects. Use @{create_pattern_uncached}\n if you need to modify the returned pattern.\n",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"col",
+        "map":{
+          "col":" The color to parse"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "col":[]
+        },
+        "return":[{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"nil"
+          }],
+        "param":{
+          "1":[],
+          "col":[]
+        },
+        "usage":[[]]
+      },
+      "description":"\n This function can parse colors like `#rrggbb` and `#rrggbbaa` and also `red`.\n Max 4 chars per channel.\n",
+      "tags":[],
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Parse a HTML-color.",
+      "name":"parse_color",
+      "kind":"static module functions",
+      "usage":["-- Both of the following will return 0, 0.4, 0.8, 1\ngears.color.parse_color(\"#0066ccff\")\ngears.color.parse_color(\"#0066cc\")\n"],
+      "args":"(col)",
+      "type":"staticfct",
+      "lineno":73
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"col",
+        "map":{
+          "col":" The color for the pattern"
+        }
+      },
+      "summary":"Create a solid pattern",
+      "name":"create_solid_pattern",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "col":[]
+        },
+        "field":{
+          "1":[],
+          "col":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(col)",
+      "tags":[],
+      "lineno":130
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"file",
+        "map":{
+          "file":" The filename of the file"
+        }
+      },
+      "summary":"Create an image pattern from a png file",
+      "name":"create_png_pattern",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "file":[]
+        },
+        "field":{
+          "1":[],
+          "file":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(file)",
+      "tags":[],
+      "lineno":144
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"arg",
+        "map":{
+          "arg":" The argument describing the pattern."
+        }
+      },
+      "summary":"Create a linear pattern object.",
+      "name":"create_linear_pattern",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string|table"
+          },
+          "arg":{
+            "type":"string|table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string|table"
+          },
+          "arg":{
+            "type":"string|table"
+          }
+        }
+      },
+      "description":"\n The pattern is created from a string. This string should have the following\n form: `\"x0, y0:x1, y1:<stops>\"`\n Alternatively, the pattern can be specified as a table:\n    { type = \"linear\", from = { x0, y0 }, to = { x1, y1 },\n      stops = { <stops> } }\n `x0,y0` and `x1,y1` are the start and stop point of the pattern.\n For the explanation of `<stops>`, see `color.create_pattern`.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(arg)",
+      "tags":[],
+      "lineno":201
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"arg",
+        "map":{
+          "arg":" The argument describing the pattern"
+        }
+      },
+      "summary":"Create a radial pattern object.",
+      "name":"create_radial_pattern",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string|table"
+          },
+          "arg":{
+            "type":"string|table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string|table"
+          },
+          "arg":{
+            "type":"string|table"
+          }
+        }
+      },
+      "description":"\n The pattern is created from a string. This string should have the following\n form: `\"x0, y0, r0:x1, y1, r1:<stops>\"`\n Alternatively, the pattern can be specified as a table:\n    { type = \"radial\", from = { x0, y0, r0 }, to = { x1, y1, r1 },\n      stops = { <stops> } }\n `x0,y0` and `x1,y1` are the start and stop point of the pattern.\n `r0` and `r1` are the radii of the start / stop circle.\n For the explanation of `<stops>`, see `color.create_pattern`.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(arg)",
+      "tags":[],
+      "lineno":227
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"solid",
+        "2":"png",
+        "3":"linear",
+        "4":"radial",
+        "map":{
+          "radial":"",
+          "linear":"",
+          "png":"",
+          "solid":""
+        }
+      },
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":" New entries can be added.",
+      "tags":[],
+      "section":"table",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Mapping of all supported color types.",
+      "name":"color.types",
+      "kind":"tables",
+      "lineno":243,
+      "args":"(solid, png, linear, radial)",
+      "type":"table"
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"col",
+        "map":{
+          "col":" The string describing the pattern."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "col":[]
+        },
+        "field":{
+          "1":[],
+          "col":[]
+        }
+      },
+      "description":"\n For full documentation of this function, please refer to\n `color.create_pattern`.  The difference between `color.create_pattern`\n and this function is that this function does not insert the generated\n objects into the pattern cache. Thus, you are allowed to modify the\n returned object.",
+      "tags":{
+        "see":[]
+      },
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Create a pattern from a given string.",
+      "name":"create_pattern_uncached",
+      "type":"staticfct",
+      "args":"(col)",
+      "kind":"static module functions",
+      "lineno":260
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "field":[]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"staticfct",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Create a pattern from a given string, same as @{gears.color}.",
+      "name":"create_pattern",
+      "type":"staticfct",
+      "args":"()",
+      "kind":"static module functions",
+      "lineno":285
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"col",
+        "map":{
+          "col":" An argument that `create_pattern` accepts."
+        }
+      },
+      "summary":"Check if a pattern is opaque.",
+      "name":"create_opaque_pattern",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "col":[]
+        },
+        "field":{
+          "1":[],
+          "col":[]
+        }
+      },
+      "description":"\n A pattern is transparent if the background on which it gets drawn (with\n operator OVER) doesn't influence the visual result.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(col)",
+      "tags":[],
+      "lineno":298
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"image",
+        "2":"new_color",
+        "map":{
+          "new_color":" New color.",
+          "image":" Image or path to it."
+        }
+      },
+      "summary":"Fill non-transparent area of an image with a given color.",
+      "name":"recolor_image",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "new_color":[],
+          "image":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "new_color":[],
+          "image":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(image, new_color)",
+      "tags":[],
+      "lineno":349
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"check_color",
+        "2":"fallback",
+        "map":{
+          "fallback":" The color to return if the first is invalid. (default: black)",
+          "check_color":" The color to check."
+        }
+      },
+      "summary":"Get a valid color for Pango markup",
+      "name":"ensure_pango_color",
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"string"
+          },
+          "fallback":{
+            "type":"string"
+          },
+          "check_color":[]
+        },
+        "field":{
+          "1":[],
+          "2":{
+            "type":"string"
+          },
+          "fallback":{
+            "type":"string"
+          },
+          "check_color":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(check_color, fallback)",
+      "tags":[],
+      "lineno":362
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"No color",
+      "name":"color.transparent",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"field",
+      "section":"field",
+      "kind":"fields",
+      "args":"()",
+      "tags":[],
+      "lineno":379
+    }],
+  "type":"themelib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/color.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2010 Uli Schlachter"
+  },
+  "lineno":41
+}

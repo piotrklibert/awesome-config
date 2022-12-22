@@ -1,0 +1,489 @@
+{
+  "kind":"libraries",
+  "name":"pl.lexer",
+  "mod_name":"lexer",
+  "inferred":true,
+  "description":"\n `lexer.scan(s)` returns an iterator over all tokens found in the\n string `s`. This iterator returns two values, a token type string\n (such as 'string' for quoted string, 'iden' for identifier) and the value of the\n token.\n\n Versions specialized for Lua and C are available; these also handle block comments\n and classify keywords as 'keyword' tokens. For example:\n\n    > s = 'for i=1,n do'\n    > for t,v in lexer.lua(s)  do print(t,v) end\n    keyword for\n    iden    i\n    =       =\n    number  1\n    ,       ,\n    iden    n\n    keyword do\n\n See the Guide for further @{06-data.md.Lexical_Scanning|discussion}",
+  "file":"/home/cji/portless/Penlight/lua/pl/lexer.lua",
+  "summary":"Lexical scanner for creating a sequence of tokens from text.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":23,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string|file"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "4":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "matches":{
+            "type":"tab"
+          },
+          "filter":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "s":{
+            "type":"string|file"
+          },
+          "options":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"create a plain token iterator from a string or file-like object.",
+      "lineno":139,
+      "args":"(s, matches[, filter[, options]])",
+      "section":"function",
+      "name":"scan",
+      "params":{
+        "1":"s",
+        "2":"matches",
+        "3":"filter",
+        "4":"options",
+        "map":{
+          "matches":" an optional match table - array of token descriptions.\n A token is described by a `{pattern, action}` pair, where `pattern` should match\n token body and `action` is a function called when a token of described type is found.",
+          "filter":" a table of token types to exclude, by default `{space=true}`",
+          "s":" a string or a file-like object with `:read()` method returning lines.",
+          "options":" a table of options; by default, `{number=true,string=true}`,\n which means convert numbers and strip string quotes."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":{
+            "type":"string"
+          },
+          "a2":{
+            "type":"string"
+          },
+          "tok":[],
+          "a1":[]
+        }
+      },
+      "summary":"insert tokens into a stream.",
+      "lineno":273,
+      "args":"(tok, a1, a2)",
+      "section":"function",
+      "name":"insert",
+      "params":{
+        "1":"tok",
+        "2":"a1",
+        "map":{
+          "a2":" a string is the value",
+          "tok":" a token stream",
+          "a1":" a string is the type, a table is a token list and\n a function is assumed to be a token-like iterator (returns type & value)"
+        },
+        "3":"a2"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "tok":[]
+        }
+      },
+      "summary":"get everything in a stream upto a newline.",
+      "lineno":292,
+      "retgroups":[{
+          "1":{
+            "text":"a string",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tok)",
+      "type":"function",
+      "name":"getline",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "tok":" a token stream"
+        },
+        "1":"tok"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a string"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "tok":[]
+        }
+      },
+      "summary":"get current line number.",
+      "lineno":302,
+      "retgroups":[{
+          "1":{
+            "text":" the line number.\n if the input source is a file-like object,\n also return the column.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tok)",
+      "type":"function",
+      "name":"lineno",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "tok":" a token stream"
+        },
+        "1":"tok"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":[" the line number.\n if the input source is a file-like object,\n also return the column."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "tok":[]
+        }
+      },
+      "summary":"get the rest of the stream.",
+      "lineno":309,
+      "retgroups":[{
+          "1":{
+            "text":"a string",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tok)",
+      "type":"function",
+      "name":"getrest",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "tok":" a token stream"
+        },
+        "1":"tok"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a string"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"get the Lua keywords as a set-like table.",
+      "lineno":317,
+      "retgroups":[{
+          "1":{
+            "text":"a table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"get_keywords",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n So `res[\"and\"]` etc would be `true`.",
+      "ret":["a table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "filter":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "s":{
+            "type":"string"
+          },
+          "options":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"create a Lua token iterator from a string or file-like object.",
+      "lineno":338,
+      "args":"(s[, filter[, options]])",
+      "section":"function",
+      "name":"lua",
+      "params":{
+        "1":"s",
+        "2":"filter",
+        "map":{
+          "filter":" a table of token types to exclude, by default `{space=true,comments=true}`",
+          "s":" the string",
+          "options":" a table of options; by default, `{number=true,string=true}`,\n which means convert numbers and strip string quotes."
+        },
+        "3":"options"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Will return the token type and value.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "filter":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "s":{
+            "type":"string"
+          },
+          "options":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"create a C/C++ token iterator from a string or file-like object.",
+      "lineno":374,
+      "args":"(s[, filter[, options]])",
+      "section":"function",
+      "name":"cpp",
+      "params":{
+        "1":"s",
+        "2":"filter",
+        "map":{
+          "filter":" a table of token types to exclude, by default `{space=true,comments=true}`",
+          "s":" the string",
+          "options":" a table of options; by default, `{number=true,string=true}`,\n which means convert numbers and strip string quotes."
+        },
+        "3":"options"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Will return the token type type and value.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":{
+            "opt":"')'",
+            "type":"string",
+            "optchain":"')'"
+          },
+          "3":{
+            "type":"string",
+            "opt":"'",
+            "'":true,
+            "optchain":"'"
+          },
+          "delim":{
+            "type":"string",
+            "opt":"'",
+            "'":true,
+            "optchain":"'"
+          },
+          "endtoken":{
+            "opt":"')'",
+            "type":"string",
+            "optchain":"')'"
+          },
+          "tok":[]
+        }
+      },
+      "summary":"get a list of parameters separated by a delimiter from a stream.",
+      "lineno":437,
+      "retgroups":[{
+          "1":{
+            "text":"a list of token lists.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tok[, endtoken=')'[, delim=']])",
+      "type":"function",
+      "name":"get_separated_list",
+      "parameter":"param",
+      "params":{
+        "1":"tok",
+        "2":"endtoken",
+        "map":{
+          "delim":" separator",
+          "endtoken":" end of list. Can be '\\n'",
+          "tok":" the token stream"
+        },
+        "3":"delim"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a list of token lists."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "tok":[]
+        }
+      },
+      "summary":"get the next non-space token from the stream.",
+      "lineno":487,
+      "args":"(tok)",
+      "section":"function",
+      "name":"skipws",
+      "params":{
+        "map":{
+          "tok":" the token stream."
+        },
+        "1":"tok"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"bool"
+          },
+          "no_skip_ws":{
+            "type":"bool"
+          },
+          "expected_type":{
+            "type":"string"
+          },
+          "tok":[]
+        }
+      },
+      "summary":"get the next token, which must be of the expected type.",
+      "lineno":502,
+      "args":"(tok, expected_type, no_skip_ws)",
+      "section":"function",
+      "name":"expecting",
+      "params":{
+        "1":"tok",
+        "2":"expected_type",
+        "map":{
+          "no_skip_ws":" whether we should skip whitespace",
+          "expected_type":" the token type",
+          "tok":" the token stream"
+        },
+        "3":"no_skip_ws"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Throws an error if this type does not match!",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

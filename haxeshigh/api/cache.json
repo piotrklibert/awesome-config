@@ -1,0 +1,93 @@
+{
+  "inferred":true,
+  "kind":"classes",
+  "description":"\n\n Here is an example with a basic cache:\n\n\n\n\n**Usage example output**:\n\n    new entry created with value 0\n    0\n    new entry created with value 1\n    42\n    new entry created with value 2\n    84\n    0\n\n",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2015 Uli Schlachter"
+  },
+  "summary":"Cache object with data that can be garbage-collected.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.cache",
+  "modifiers":{
+    "author":[[]],
+    "usage":[[],[]],
+    "copyright":[]
+  },
+  "package":"gears",
+  "type":"classmod",
+  "usage":[" local test_cache = cache.new(function(test)\n     -- let's just print about what we created\n     print(&#34new entry created with value &#34 .. test)\n     -- Pretend this is some expensive computation\n     return test * 42\n end)\n -- Populate the cache\n print(test_cache:get(0))\n print(test_cache:get(1))\n print(test_cache:get(2))\n -- no message since it exists\n print(test_cache:get(0))\n\n The example below demonstrates how the garbage collector will clear the\n cache:\n\n\n\n\n**Usage example output**:\n\n    cache object #0 for first\n    cache object #1 for second\n    cache object #0 for first\n    forcing a garbage collect\n    cache object #2 for first\n    cache object #3 for second\n\n","local function tostring_for_cache(obj)\n    return obj[1]\nend\nlocal counter = 0\nlocal wrapper_cache = gears.cache.new(function(arg)\n    local kind = &#34cache object #&#34 .. tostring(counter) .. &#34 for &#34 .. tostring(arg)\n    counter = counter + 1\n    return setmetatable({ kind }, { __tostring = tostring_for_cache })\nend)\nprint(wrapper_cache:get(&#34first&#34))\nprint(wrapper_cache:get(&#34second&#34))\n-- No new object since it already exists\nprint(wrapper_cache:get(&#34first&#34))\nprint(&#34forcing a garbage collect&#34)\n-- The GC can *always* clear the cache\ncollectgarbage(&#34collect&#34)\nprint(wrapper_cache:get(&#34first&#34))\nprint(wrapper_cache:get(&#34second&#34))\n\n"],
+  "file":"/home/cji/portless/awesome/build/lib/gears/cache.lua",
+  "mod_name":"cache",
+  "items":[{
+      "parameter":"param",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Arguments for the creation callback. These are checked against the\n   cache contents for equality."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":[],
+          "...":[]
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get an entry from the cache, creating it if it's missing.",
+      "name":"gears.cache:get",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"The entry from the cache",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["The entry from the cache"],
+      "args":"(...)",
+      "lineno":86
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"creation_cb",
+        "map":{
+          "creation_cb":" Callback that is used for creating missing cache entries."
+        }
+      },
+      "summary":"Create a new cache object.",
+      "name":"gears.cache",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "creation_cb":[]
+        },
+        "field":{
+          "1":[],
+          "creation_cb":[]
+        }
+      },
+      "description":" A cache keeps some data that can be\n garbage-collected at any time, but might be useful to keep.",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(creation_cb)",
+      "tags":[],
+      "lineno":110
+    }],
+  "lineno":76
+}

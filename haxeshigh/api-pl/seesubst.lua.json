@@ -1,0 +1,17 @@
+{
+  "name":"seesubst.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/seesubst.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"seesubst.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"-- shows how replacing '@see module' in the Markdown documentation\n-- can be done more elegantly using PL.\n-- We either have something like 'pl.config' (a module reference)\n-- or 'pl.seq.map' (a function reference); these cases must be distinguished\n-- and a Markdown link generated pointing to the LuaDoc file.\n\nlocal sip = require 'pl.sip'\nlocal stringx = require 'pl.stringx'\n\nlocal res = {}\nlocal s = [[\n(@see pl.bonzo.dog)\nremember about @see pl.bonzo\n\n]]\n\nlocal _gsub_patterns = {}\n\nlocal function gsub (s,pat,subst,start)\n    local fpat = _gsub_patterns[pat]\n    if not fpat then\n        -- use SIP to generate a proper string pattern.\n        -- the _whole thing_ is a capture, to get the whole match\n        -- and the unnamed capture.\n        fpat = '('..sip.create_pattern(pat)..')'\n        _gsub_patterns[pat] = fpat\n    end\n    return s:gsub(fpat,subst,start)\nend\n\n\nlocal mod = sip.compile '$v.$v'\nlocal fun = sip.compile '$v.$v.$v'\n\nfor line in stringx.lines(s) do\n    line = gsub(line,'@see $p',function(see,path)\n        if fun(path,res) or mod(path,res) then\n            local ret = ('[see %s](%s.%s.html'):format(path,res[1],res[2])\n            if res[3] then\n                return ret..'#'..res[3]..')'\n            else\n                return ret..')'\n            end\n        end\n    end)\n    print(line)\nend\n\n\n\n\n\n\n\n\n"
+}

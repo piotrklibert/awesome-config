@@ -1,0 +1,164 @@
+{
+  "inferred":true,
+  "kind":"widget_containers",
+  "mod_name":"awful.widget.only_on_screen",
+  "summary":"A container that makes a widget display only on a specified screen.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.widget.only_on_screen",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" The widget"
+        }
+      },
+      "summary":"The widget to be displayed",
+      "name":"widget",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(widget)",
+      "tags":[],
+      "lineno":55
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"screen",
+        "map":{
+          "screen":" The screen."
+        }
+      },
+      "summary":"The screen to display on.",
+      "name":"screen",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"screen|string|integer"
+          },
+          "screen":{
+            "type":"screen|string|integer"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"screen|string|integer"
+          },
+          "screen":{
+            "type":"screen|string|integer"
+          }
+        }
+      },
+      "description":" Can be a screen object, a screen index, a screen\n name (\"VGA1\") or the string \"primary\" for the primary screen.",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(screen)",
+      "tags":[],
+      "lineno":74
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"s",
+        "map":{
+          "s":" The screen to display on.",
+          "widget":" The widget to display."
+        }
+      },
+      "summary":"Returns a new only_on_screen container.",
+      "name":"awful.widget.only_on_screen",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "optchain":true,
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "s":{
+            "optchain":true,
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":true,
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "s":{
+            "optchain":true,
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "opt":true
+          }
+        }
+      },
+      "description":"\n This widget makes some other widget visible on just some screens. Use\n `:set_widget()` to set the widget and `:set_screen()` to set the screen.",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"([widget[, s]])",
+      "tags":[],
+      "lineno":90
+    }],
+  "type":"containermod",
+  "file":"/home/cji/portless/awesome/build/lib/awful/widget/only_on_screen.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2017 Uli Schlachter",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":11
+}

@@ -196,19 +196,52 @@ local Enum = _hx_e();
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Math = _hx_e()
+local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
+local StringTools = _hx_e()
 local Sys = _hx_e()
-local __awful_Naughty = _G.require("naughty")
+local __awful_Spawn = _hx_e()
+local __awful_NativeSpawn = _G.require("awful.spawn")
+local __awful_Wibox = _G.require("wibox")
+local __haxe_IMap = _hx_e()
 local __haxe_EntryPoint = _hx_e()
+local __haxe_Exception = _hx_e()
 local __haxe_Log = _hx_e()
 local __haxe_MainEvent = _hx_e()
 local __haxe_MainLoop = _hx_e()
+local __haxe_NativeStackTrace = _hx_e()
+local __haxe_Timer = _hx_e()
+local __haxe_ValueException = _hx_e()
+__haxe_ds_Either = _hx_e()
+local __haxe_ds_IntMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
-local __lib_Inspect = _G.require("inspect")
+local __lua_Boot = _hx_e()
+local __lua_UserData = _hx_e()
+local __lua_Thread = _hx_e()
 local __lua_lib_luv_Misc = _G.require("luv")
-local __volume_GT = _G.require("gears.table")
+local __pkg_PackageManager = _hx_e()
+local __tink_core__Callback_Callback_Impl_ = _hx_e()
+local __tink_core_LinkObject = _hx_e()
+local __tink_core_CallbackLinkRef = _hx_e()
+local __tink_core__Callback_LinkPair = _hx_e()
+local __tink_core__Callback_ListCell = _hx_e()
+local __tink_core_Disposable = _hx_e()
+local __tink_core_OwnedDisposable = _hx_e()
+local __tink_core_SimpleDisposable = _hx_e()
+local __tink_core_CallbackList = _hx_e()
+local __tink_core__Future_FutureObject = _hx_e()
+local __tink_core__Lazy_Computable = _hx_e()
+local __tink_core__Lazy_LazyObject = _hx_e()
+local __tink_core__Lazy_LazyConst = _hx_e()
+local __tink_core__Future_SyncFuture = _hx_e()
+local __tink_core__Future_Future_Impl_ = _hx_e()
+__tink_core_FutureStatus = _hx_e()
+local __tink_core__Future_SuspendableFuture = _hx_e()
+local __tink_core__Lazy_Lazy_Impl_ = _hx_e()
+local __tink_core__Lazy_LazyFunc = _hx_e()
+local __volume_Settings = _hx_e()
 local __volume_Volume = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -223,6 +256,7 @@ end
 Array.super = function(self) 
   _hx_tab_array(self, 0);
 end
+Array.__name__ = true
 Array.prototype = _hx_e();
 Array.prototype.concat = function(self,a) 
   local _g = _hx_tab_array({}, 0);
@@ -525,7 +559,10 @@ Array.prototype.resize = function(self,len)
   end;
 end
 
+Array.prototype.__class__ =  Array
+
 Math.new = {}
+Math.__name__ = true
 Math.isNaN = function(f) 
   do return f ~= f end;
 end
@@ -544,6 +581,28 @@ Math.min = function(a,b)
   end;
 end
 
+Reflect.new = {}
+Reflect.__name__ = true
+Reflect.compare = function(a,b) 
+  if (a == b) then 
+    do return 0 end;
+  else
+    if (a == nil) then 
+      do return -1 end;
+    else
+      if (b == nil) then 
+        do return 1 end;
+      else
+        if (a > b) then 
+          do return 1 end;
+        else
+          do return -1 end;
+        end;
+      end;
+    end;
+  end;
+end
+
 String.new = function(string) 
   local self = _hx_new(String.prototype)
   String.super(self,string)
@@ -552,6 +611,7 @@ String.new = function(string)
 end
 String.super = function(self,string) 
 end
+String.__name__ = true
 String.__index = function(s,k) 
   if (k == "length") then 
     do return __lua_lib_luautf8_Utf8.len(s) end;
@@ -722,7 +782,10 @@ String.prototype.substr = function(self,pos,len)
   do return __lua_lib_luautf8_Utf8.sub(self, pos + 1, pos + len) end
 end
 
+String.prototype.__class__ =  String
+
 Std.new = {}
+Std.__name__ = true
 Std.string = function(s) 
   do return _hx_tostring(s, 0) end;
 end
@@ -733,14 +796,110 @@ Std.int = function(x)
     do return _hx_bit_clamp(x) end;
   end;
 end
+Std.parseInt = function(x) 
+  if (x == nil) then 
+    do return nil end;
+  end;
+  local sign, numString = _G.string.match(x, "^%s*([%-+]?)0[xX]([%da-fA-F]*)");
+  if (numString ~= nil) then 
+    if (sign == "-") then 
+      do return -_G.tonumber(numString, 16) end;
+    else
+      do return _G.tonumber(numString, 16) end;
+    end;
+  end;
+  local intMatch = _G.string.match(x, "^%s*[%-+]?%d*");
+  if (intMatch == nil) then 
+    do return nil end;
+  end;
+  do return _G.tonumber(intMatch) end;
+end
+
+StringTools.new = {}
+StringTools.__name__ = true
+StringTools.isSpace = function(s,pos) 
+  if (((__lua_lib_luautf8_Utf8.len(s) == 0) or (pos < 0)) or (pos >= __lua_lib_luautf8_Utf8.len(s))) then 
+    do return false end;
+  end;
+  local c = __lua_lib_luautf8_Utf8.byte(s, pos + 1);
+  if (not ((c > 8) and (c < 14))) then 
+    do return c == 32 end;
+  else
+    do return true end;
+  end;
+end
+StringTools.ltrim = function(s) 
+  local l = __lua_lib_luautf8_Utf8.len(s);
+  local r = 0;
+  while ((r < l) and StringTools.isSpace(s, r)) do 
+    r = r + 1;
+  end;
+  if (r > 0) then 
+    local pos = r;
+    local len = l - r;
+    if ((len == nil) or (len > (pos + __lua_lib_luautf8_Utf8.len(s)))) then 
+      len = __lua_lib_luautf8_Utf8.len(s);
+    else
+      if (len < 0) then 
+        len = __lua_lib_luautf8_Utf8.len(s) + len;
+      end;
+    end;
+    if (pos < 0) then 
+      pos = __lua_lib_luautf8_Utf8.len(s) + pos;
+    end;
+    if (pos < 0) then 
+      pos = 0;
+    end;
+    do return __lua_lib_luautf8_Utf8.sub(s, pos + 1, pos + len) end;
+  else
+    do return s end;
+  end;
+end
+StringTools.rtrim = function(s) 
+  local l = __lua_lib_luautf8_Utf8.len(s);
+  local r = 0;
+  while ((r < l) and StringTools.isSpace(s, (l - r) - 1)) do 
+    r = r + 1;
+  end;
+  if (r > 0) then 
+    local len = l - r;
+    if ((len == nil) or (len > __lua_lib_luautf8_Utf8.len(s))) then 
+      len = __lua_lib_luautf8_Utf8.len(s);
+    else
+      if (len < 0) then 
+        len = __lua_lib_luautf8_Utf8.len(s) + len;
+      end;
+    end;
+    do return __lua_lib_luautf8_Utf8.sub(s, 1, len) end;
+  else
+    do return s end;
+  end;
+end
+StringTools.trim = function(s) 
+  do return StringTools.ltrim(StringTools.rtrim(s)) end;
+end
 
 Sys.new = {}
+Sys.__name__ = true
 Sys.time = function() 
   local _hx_1_stamp_seconds, _hx_1_stamp_microseconds = __lua_lib_luv_Misc.gettimeofday();
   do return _hx_1_stamp_seconds + (_hx_1_stamp_microseconds / 1000000) end;
 end
 
+__awful_Spawn.new = {}
+__awful_Spawn.__name__ = true
+__awful_Spawn.spawn = function(cmd) 
+  local cmd = cmd:join(" ");
+  do return __tink_core__Future_Future_Impl_.irreversible(function(callback) 
+    do return __awful_NativeSpawn.easy_async(cmd, callback) end;
+  end) end;
+end
+
+__haxe_IMap.new = {}
+__haxe_IMap.__name__ = true
+
 __haxe_EntryPoint.new = {}
+__haxe_EntryPoint.__name__ = true
 __haxe_EntryPoint.processEvents = function() 
   while (true) do 
     local f = __haxe_EntryPoint.pending:shift();
@@ -773,7 +932,49 @@ __haxe_EntryPoint.run = function()
   end;
 end
 
+__haxe_Exception.new = function(message,previous,native) 
+  local self = _hx_new(__haxe_Exception.prototype)
+  __haxe_Exception.super(self,message,previous,native)
+  return self
+end
+__haxe_Exception.super = function(self,message,previous,native) 
+  self.__skipStack = 0;
+  self.__exceptionMessage = message;
+  self.__previousException = previous;
+  if (native ~= nil) then 
+    self.__nativeException = native;
+    self.__nativeStack = __haxe_NativeStackTrace.exceptionStack();
+  else
+    self.__nativeException = self;
+    self.__nativeStack = __haxe_NativeStackTrace.callStack();
+    self.__skipStack = 1;
+  end;
+end
+__haxe_Exception.__name__ = true
+__haxe_Exception.thrown = function(value) 
+  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
+    do return value:get_native() end;
+  else
+    local e = __haxe_ValueException.new(value);
+    e.__skipStack = e.__skipStack + 1;
+    do return e end;
+  end;
+end
+__haxe_Exception.prototype = _hx_e();
+__haxe_Exception.prototype.toString = function(self) 
+  do return self:get_message() end
+end
+__haxe_Exception.prototype.get_message = function(self) 
+  do return self.__exceptionMessage end
+end
+__haxe_Exception.prototype.get_native = function(self) 
+  do return self.__nativeException end
+end
+
+__haxe_Exception.prototype.__class__ =  __haxe_Exception
+
 __haxe_Log.new = {}
+__haxe_Log.__name__ = true
 __haxe_Log.formatOutput = function(v,infos) 
   local str = Std.string(v);
   if (infos == nil) then 
@@ -797,7 +998,7 @@ __haxe_Log.trace = function(v,infos)
 end
 
 __haxe_MainEvent.new = function(f,p) 
-  local self = _hx_new()
+  local self = _hx_new(__haxe_MainEvent.prototype)
   __haxe_MainEvent.super(self,f,p)
   return self
 end
@@ -807,8 +1008,37 @@ __haxe_MainEvent.super = function(self,f,p)
   self.priority = p;
   self.nextRun = -_G.math.huge;
 end
+__haxe_MainEvent.__name__ = true
+__haxe_MainEvent.prototype = _hx_e();
+__haxe_MainEvent.prototype.delay = function(self,t) 
+  self.nextRun = (function() 
+    local _hx_1
+    if (t == nil) then 
+    _hx_1 = -_G.math.huge; else 
+    _hx_1 = Sys.time() + t; end
+    return _hx_1
+  end )();
+end
+__haxe_MainEvent.prototype.stop = function(self) 
+  if (self.f == nil) then 
+    do return end;
+  end;
+  self.f = nil;
+  self.nextRun = -_G.math.huge;
+  if (self.prev == nil) then 
+    __haxe_MainLoop.pending = self.next;
+  else
+    self.prev.next = self.next;
+  end;
+  if (self.next ~= nil) then 
+    self.next.prev = self.prev;
+  end;
+end
+
+__haxe_MainEvent.prototype.__class__ =  __haxe_MainEvent
 
 __haxe_MainLoop.new = {}
+__haxe_MainLoop.__name__ = true
 __haxe_MainLoop.hasEvents = function() 
   local p = __haxe_MainLoop.pending;
   while (p ~= nil) do 
@@ -818,6 +1048,22 @@ __haxe_MainLoop.hasEvents = function()
     p = p.next;
   end;
   do return false end;
+end
+__haxe_MainLoop.add = function(f,priority) 
+  if (priority == nil) then 
+    priority = 0;
+  end;
+  if (f == nil) then 
+    _G.error(__haxe_Exception.thrown("Event function is null"),0);
+  end;
+  local e = __haxe_MainEvent.new(f, priority);
+  local head = __haxe_MainLoop.pending;
+  if (head ~= nil) then 
+    head.prev = e;
+  end;
+  e.next = head;
+  __haxe_MainLoop.pending = e;
+  do return e end;
 end
 __haxe_MainLoop.sortEvents = function() 
   local list = __haxe_MainLoop.pending;
@@ -910,6 +1156,132 @@ __haxe_MainLoop.tick = function()
   do return wait end;
 end
 
+__haxe_NativeStackTrace.new = {}
+__haxe_NativeStackTrace.__name__ = true
+__haxe_NativeStackTrace.saveStack = function(exception) 
+end
+__haxe_NativeStackTrace.callStack = function() 
+  local _g = debug.traceback();
+  if (_g == nil) then 
+    do return _hx_tab_array({}, 0) end;
+  else
+    local idx = 1;
+    local ret = _hx_tab_array({}, 0);
+    while (idx ~= nil) do 
+      local newidx = 0;
+      if (__lua_lib_luautf8_Utf8.len("\n") > 0) then 
+        newidx = __lua_lib_luautf8_Utf8.find(_g, "\n", idx, true);
+      else
+        if (idx >= __lua_lib_luautf8_Utf8.len(_g)) then 
+          newidx = nil;
+        else
+          newidx = idx + 1;
+        end;
+      end;
+      if (newidx ~= nil) then 
+        local match = __lua_lib_luautf8_Utf8.sub(_g, idx, newidx - 1);
+        ret:push(match);
+        idx = newidx + __lua_lib_luautf8_Utf8.len("\n");
+      else
+        ret:push(__lua_lib_luautf8_Utf8.sub(_g, idx, __lua_lib_luautf8_Utf8.len(_g)));
+        idx = nil;
+      end;
+    end;
+    do return ret:slice(3) end;
+  end;
+end
+__haxe_NativeStackTrace.exceptionStack = function() 
+  do return _hx_tab_array({}, 0) end;
+end
+
+__haxe_Timer.new = function(time_ms) 
+  local self = _hx_new(__haxe_Timer.prototype)
+  __haxe_Timer.super(self,time_ms)
+  return self
+end
+__haxe_Timer.super = function(self,time_ms) 
+  local _gthis = self;
+  local dt = time_ms / 1000;
+  self.event = __haxe_MainLoop.add(function() 
+    local fh = _gthis.event;
+    fh.nextRun = fh.nextRun + dt;
+    _gthis:run();
+  end);
+  self.event:delay(dt);
+end
+__haxe_Timer.__name__ = true
+__haxe_Timer.delay = function(f,time_ms) 
+  local t = __haxe_Timer.new(time_ms);
+  t.run = function(self) 
+    t:stop();
+    f();
+   end;
+  do return t end;
+end
+__haxe_Timer.prototype = _hx_e();
+__haxe_Timer.prototype.stop = function(self) 
+  if (self.event ~= nil) then 
+    self.event:stop();
+    self.event = nil;
+  end;
+end
+__haxe_Timer.prototype.run = function(self) 
+end
+
+__haxe_Timer.prototype.__class__ =  __haxe_Timer
+
+__haxe_ValueException.new = function(value,previous,native) 
+  local self = _hx_new(__haxe_ValueException.prototype)
+  __haxe_ValueException.super(self,value,previous,native)
+  return self
+end
+__haxe_ValueException.super = function(self,value,previous,native) 
+  __haxe_Exception.super(self,(function() 
+    local _hx_1
+    if (value == nil) then 
+    _hx_1 = "null"; else 
+    _hx_1 = Std.string(value); end
+    return _hx_1
+  end )(),previous,native);
+  self.value = value;
+end
+__haxe_ValueException.__name__ = true
+__haxe_ValueException.prototype = _hx_e();
+
+__haxe_ValueException.prototype.__class__ =  __haxe_ValueException
+__haxe_ValueException.__super__ = __haxe_Exception
+setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
+_hxClasses["haxe.ds.Either"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Left","Right"},2)}
+__haxe_ds_Either = _hxClasses["haxe.ds.Either"];
+__haxe_ds_Either.Left = function(v) local _x = _hx_tab_array({[0]="Left",0,v,__enum__=__haxe_ds_Either}, 3); return _x; end 
+__haxe_ds_Either.Right = function(v) local _x = _hx_tab_array({[0]="Right",1,v,__enum__=__haxe_ds_Either}, 3); return _x; end 
+
+__haxe_ds_IntMap.new = function() 
+  local self = _hx_new(__haxe_ds_IntMap.prototype)
+  __haxe_ds_IntMap.super(self)
+  return self
+end
+__haxe_ds_IntMap.super = function(self) 
+  self.h = ({});
+end
+__haxe_ds_IntMap.__name__ = true
+__haxe_ds_IntMap.__interfaces__ = {__haxe_IMap}
+__haxe_ds_IntMap.prototype = _hx_e();
+__haxe_ds_IntMap.prototype.keys = function(self) 
+  local _gthis = self;
+  local next = _G.next;
+  local cur = next(self.h, nil);
+  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
+    local ret = cur;
+    cur = next(_gthis.h, cur);
+    do return ret end;
+  end,hasNext=function(self) 
+    do return cur ~= nil end;
+  end}) end
+end
+
+__haxe_ds_IntMap.prototype.__class__ =  __haxe_ds_IntMap
+
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -919,6 +1291,7 @@ __haxe_iterators_ArrayIterator.super = function(self,array)
   self.current = 0;
   self.array = array;
 end
+__haxe_iterators_ArrayIterator.__name__ = true
 __haxe_iterators_ArrayIterator.prototype = _hx_e();
 __haxe_iterators_ArrayIterator.prototype.hasNext = function(self) 
   do return self.current < self.array.length end
@@ -933,55 +1306,894 @@ __haxe_iterators_ArrayIterator.prototype.next = function(self)
    end)()] end
 end
 
+__haxe_iterators_ArrayIterator.prototype.__class__ =  __haxe_iterators_ArrayIterator
+
 __haxe_iterators_ArrayKeyValueIterator.new = function(array) 
-  local self = _hx_new()
+  local self = _hx_new(__haxe_iterators_ArrayKeyValueIterator.prototype)
   __haxe_iterators_ArrayKeyValueIterator.super(self,array)
   return self
 end
 __haxe_iterators_ArrayKeyValueIterator.super = function(self,array) 
   self.array = array;
 end
+__haxe_iterators_ArrayKeyValueIterator.__name__ = true
+__haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
-__volume_Volume.new = {}
-__volume_Volume.main = function() 
-  local s = "zażółć gęślą jaźń";
-  local tmp = __haxe_Log.trace;
-  local tmp1 = ({2,3,4});
-  tmp(__lib_Inspect.inspect(__volume_GT.join(_hx_o({__fields__={aa=true},aa=3}), tmp1, _hx_e())), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/volume/Volume.hx",lineNumber=35,className="volume.Volume",methodName="main"}));
-  local tmp = ({text = (function() 
-    local _hx_1
-    
-    local pos = 0;
-    
-    local len = 3;
-    
-    if ((function() 
-      local _hx_2
-      if (len ~= nil) then 
-      _hx_2 = len > (pos + __lua_lib_luautf8_Utf8.len(s)); else 
-      _hx_2 = true; end
-      return _hx_2
-    end )()) then 
-      len = __lua_lib_luautf8_Utf8.len(s);
+__haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
+
+__lua_Boot.new = {}
+__lua_Boot.__name__ = true
+__lua_Boot.__instanceof = function(o,cl) 
+  if (cl == nil) then 
+    do return false end;
+  end;
+  local cl1 = cl;
+  if (cl1) == Array then 
+    do return __lua_Boot.isArray(o) end;
+  elseif (cl1) == Bool then 
+    do return _G.type(o) == "boolean" end;
+  elseif (cl1) == Dynamic then 
+    do return o ~= nil end;
+  elseif (cl1) == Float then 
+    do return _G.type(o) == "number" end;
+  elseif (cl1) == Int then 
+    if (_G.type(o) == "number") then 
+      do return _hx_bit_clamp(o) == o end;
     else
-      if (len < 0) then 
-        len = __lua_lib_luautf8_Utf8.len(s) + len;
+      do return false end;
+    end;
+  elseif (cl1) == String then 
+    do return _G.type(o) == "string" end;
+  elseif (cl1) == _G.table then 
+    do return _G.type(o) == "table" end;
+  elseif (cl1) == __lua_Thread then 
+    do return _G.type(o) == "thread" end;
+  elseif (cl1) == __lua_UserData then 
+    do return _G.type(o) == "userdata" end;else
+  if (((o ~= nil) and (_G.type(o) == "table")) and (_G.type(cl) == "table")) then 
+    local tmp;
+    if (__lua_Boot.__instanceof(o, Array)) then 
+      tmp = Array;
+    else
+      if (__lua_Boot.__instanceof(o, String)) then 
+        tmp = String;
+      else
+        local cl = o.__class__;
+        tmp = (function() 
+          local _hx_1
+          if (cl ~= nil) then 
+          _hx_1 = cl; else 
+          _hx_1 = nil; end
+          return _hx_1
+        end )();
       end;
     end;
-    
-    if (pos < 0) then 
-      pos = __lua_lib_luautf8_Utf8.len(s) + pos;
+    if (__lua_Boot.extendsOrImplements(tmp, cl)) then 
+      do return true end;
     end;
-    
-    if (pos < 0) then 
-      pos = 0;
+    if ((function() 
+      local _hx_2
+      if (cl == Class) then 
+      _hx_2 = o.__name__ ~= nil; else 
+      _hx_2 = false; end
+      return _hx_2
+    end )()) then 
+      do return true end;
     end;
-    
-    _hx_1 = __lua_lib_luautf8_Utf8.sub(s, pos + 1, pos + len);
-    return _hx_1
-  end )()});
-  __awful_Naughty.notify(tmp);
+    if ((function() 
+      local _hx_3
+      if (cl == Enum) then 
+      _hx_3 = o.__ename__ ~= nil; else 
+      _hx_3 = false; end
+      return _hx_3
+    end )()) then 
+      do return true end;
+    end;
+    do return o.__enum__ == cl end;
+  else
+    do return false end;
+  end; end;
 end
+__lua_Boot.isArray = function(o) 
+  if (_G.type(o) == "table") then 
+    if ((o.__enum__ == nil) and (_G.getmetatable(o) ~= nil)) then 
+      do return _G.getmetatable(o).__index == Array.prototype end;
+    else
+      do return false end;
+    end;
+  else
+    do return false end;
+  end;
+end
+__lua_Boot.extendsOrImplements = function(cl1,cl2) 
+  while (true) do 
+    if ((cl1 == nil) or (cl2 == nil)) then 
+      do return false end;
+    else
+      if (cl1 == cl2) then 
+        do return true end;
+      else
+        if (cl1.__interfaces__ ~= nil) then 
+          local intf = cl1.__interfaces__;
+          local _g = 1;
+          local _g1 = _hx_table.maxn(intf) + 1;
+          while (_g < _g1) do 
+            _g = _g + 1;
+            local i = _g - 1;
+            if (__lua_Boot.extendsOrImplements(intf[i], cl2)) then 
+              do return true end;
+            end;
+          end;
+        end;
+      end;
+    end;
+    cl1 = cl1.__super__;
+  end;
+end
+
+__lua_UserData.new = {}
+__lua_UserData.__name__ = true
+
+__lua_Thread.new = {}
+__lua_Thread.__name__ = true
+
+__pkg_PackageManager.new = function() 
+  local self = _hx_new(__pkg_PackageManager.prototype)
+  __pkg_PackageManager.super(self)
+  return self
+end
+__pkg_PackageManager.super = function(self) 
+end
+__pkg_PackageManager.__name__ = true
+__pkg_PackageManager.prototype = _hx_e();
+__pkg_PackageManager.prototype.toString = function(self) 
+  do return "<PackageManager>" end
+end
+
+__pkg_PackageManager.prototype.__class__ =  __pkg_PackageManager
+
+__tink_core__Callback_Callback_Impl_.new = {}
+__tink_core__Callback_Callback_Impl_.__name__ = true
+__tink_core__Callback_Callback_Impl_.invoke = function(this1,data) 
+  if (__tink_core__Callback_Callback_Impl_.depth < 500) then 
+    __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth + 1;
+    this1(data);
+    __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth - 1;
+  else
+    __tink_core__Callback_Callback_Impl_.defer(function() 
+      this1(data);
+    end);
+  end;
+end
+__tink_core__Callback_Callback_Impl_.defer = function(f) 
+  __haxe_Timer.delay(f, 0);
+end
+
+__tink_core_LinkObject.new = {}
+__tink_core_LinkObject.__name__ = true
+__tink_core_LinkObject.prototype = _hx_e();
+
+__tink_core_LinkObject.prototype.__class__ =  __tink_core_LinkObject
+
+__tink_core_CallbackLinkRef.new = function() 
+  local self = _hx_new(__tink_core_CallbackLinkRef.prototype)
+  __tink_core_CallbackLinkRef.super(self)
+  return self
+end
+__tink_core_CallbackLinkRef.super = function(self) 
+end
+__tink_core_CallbackLinkRef.__name__ = true
+__tink_core_CallbackLinkRef.__interfaces__ = {__tink_core_LinkObject}
+__tink_core_CallbackLinkRef.prototype = _hx_e();
+__tink_core_CallbackLinkRef.prototype.cancel = function(self) 
+  local this1 = self.link;
+  if (this1 ~= nil) then 
+    this1:cancel();
+  end;
+end
+
+__tink_core_CallbackLinkRef.prototype.__class__ =  __tink_core_CallbackLinkRef
+
+__tink_core__Callback_LinkPair.new = function(a,b) 
+  local self = _hx_new(__tink_core__Callback_LinkPair.prototype)
+  __tink_core__Callback_LinkPair.super(self,a,b)
+  return self
+end
+__tink_core__Callback_LinkPair.super = function(self,a,b) 
+  self.dissolved = false;
+  self.a = a;
+  self.b = b;
+end
+__tink_core__Callback_LinkPair.__name__ = true
+__tink_core__Callback_LinkPair.__interfaces__ = {__tink_core_LinkObject}
+__tink_core__Callback_LinkPair.prototype = _hx_e();
+__tink_core__Callback_LinkPair.prototype.cancel = function(self) 
+  if (not self.dissolved) then 
+    self.dissolved = true;
+    local this1 = self.a;
+    if (this1 ~= nil) then 
+      this1:cancel();
+    end;
+    local this1 = self.b;
+    if (this1 ~= nil) then 
+      this1:cancel();
+    end;
+    self.a = nil;
+    self.b = nil;
+  end;
+end
+
+__tink_core__Callback_LinkPair.prototype.__class__ =  __tink_core__Callback_LinkPair
+
+__tink_core__Callback_ListCell.new = function(cb,list) 
+  local self = _hx_new(__tink_core__Callback_ListCell.prototype)
+  __tink_core__Callback_ListCell.super(self,cb,list)
+  return self
+end
+__tink_core__Callback_ListCell.super = function(self,cb,list) 
+  if (cb == nil) then 
+    _G.error(__haxe_Exception.thrown("callback expected but null received"),0);
+  end;
+  self.cb = _hx_funcToField(cb);
+  self.list = list;
+end
+__tink_core__Callback_ListCell.__name__ = true
+__tink_core__Callback_ListCell.__interfaces__ = {__tink_core_LinkObject}
+__tink_core__Callback_ListCell.prototype = _hx_e();
+__tink_core__Callback_ListCell.prototype.cancel = function(self) 
+  if (self.list ~= nil) then 
+    local list = self.list;
+    self.cb = nil;
+    self.list = nil;
+    local tmp = (function() 
+    local _hx_obj = list;
+    local _hx_fld = 'used';
+    _hx_obj[_hx_fld] = _hx_obj[_hx_fld]  - 1;
+     return _hx_obj[_hx_fld];
+     end)();
+    if (tmp <= (_hx_bit.arshift(list.cells.length,1))) then 
+      list:compact();
+    end;
+  end;
+end
+
+__tink_core__Callback_ListCell.prototype.__class__ =  __tink_core__Callback_ListCell
+
+__tink_core_Disposable.new = {}
+__tink_core_Disposable.__name__ = true
+
+__tink_core_OwnedDisposable.new = {}
+__tink_core_OwnedDisposable.__name__ = true
+__tink_core_OwnedDisposable.__interfaces__ = {__tink_core_Disposable}
+
+__tink_core_SimpleDisposable.new = function(dispose) 
+  local self = _hx_new(__tink_core_SimpleDisposable.prototype)
+  __tink_core_SimpleDisposable.super(self,dispose)
+  return self
+end
+__tink_core_SimpleDisposable.super = function(self,dispose) 
+  self.disposeHandlers = _hx_tab_array({}, 0);
+  self.f = _hx_funcToField(dispose);
+end
+__tink_core_SimpleDisposable.__name__ = true
+__tink_core_SimpleDisposable.__interfaces__ = {__tink_core_OwnedDisposable}
+__tink_core_SimpleDisposable.noop = function() 
+end
+__tink_core_SimpleDisposable.prototype = _hx_e();
+__tink_core_SimpleDisposable.prototype.dispose = function(self) 
+  local _g = self.disposeHandlers;
+  if (_g ~= nil) then 
+    self.disposeHandlers = nil;
+    local f = self.f;
+    self.f = _hx_funcToField(__tink_core_SimpleDisposable.noop);
+    f();
+    local _g1 = 0;
+    while (_g1 < _g.length) do 
+      local h = _g[_g1];
+      _g1 = _g1 + 1;
+      h();
+    end;
+  end;
+end
+
+__tink_core_SimpleDisposable.prototype.__class__ =  __tink_core_SimpleDisposable
+
+__tink_core_CallbackList.new = function(destructive) 
+  local self = _hx_new(__tink_core_CallbackList.prototype)
+  __tink_core_CallbackList.super(self,destructive)
+  return self
+end
+__tink_core_CallbackList.super = function(self,destructive) 
+  if (destructive == nil) then 
+    destructive = false;
+  end;
+  self.onfill = function(self) 
+   end;
+  self.ondrain = function(self) 
+   end;
+  self.busy = false;
+  self.queue = _hx_tab_array({}, 0);
+  self.used = 0;
+  local _gthis = self;
+  __tink_core_SimpleDisposable.super(self,function() 
+    if (not _gthis.busy) then 
+      _gthis:destroy();
+    end;
+  end);
+  self.destructive = destructive;
+  self.cells = _hx_tab_array({}, 0);
+end
+__tink_core_CallbackList.__name__ = true
+__tink_core_CallbackList.prototype = _hx_e();
+__tink_core_CallbackList.prototype.destroy = function(self) 
+  local _g = 0;
+  local _g1 = self.cells;
+  while (_g < _g1.length) do 
+    local c = _g1[_g];
+    _g = _g + 1;
+    c.cb = nil;
+    c.list = nil;
+  end;
+  self.queue = nil;
+  self.cells = nil;
+  if (self.used > 0) then 
+    self.used = 0;
+    local fn = self.ondrain;
+    if (__tink_core__Callback_Callback_Impl_.depth < 500) then 
+      __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth + 1;
+      fn();
+      __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth - 1;
+    else
+      __tink_core__Callback_Callback_Impl_.defer(fn);
+    end;
+  end;
+end
+__tink_core_CallbackList.prototype.invoke = function(self,data) 
+  local _gthis = self;
+  if (__tink_core__Callback_Callback_Impl_.depth < 500) then 
+    __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth + 1;
+    if (_gthis.disposeHandlers ~= nil) then 
+      if (_gthis.busy) then 
+        if (_gthis.destructive ~= true) then 
+          local _g = _gthis;
+          local data = data;
+          local tmp = function() 
+            _g:invoke(data);
+          end;
+          _gthis.queue:push(tmp);
+        end;
+      else
+        _gthis.busy = true;
+        if (_gthis.destructive) then 
+          _gthis:dispose();
+        end;
+        local length = _gthis.cells.length;
+        local _g = 0;
+        while (_g < length) do 
+          _g = _g + 1;
+          local _this = _gthis.cells[_g - 1];
+          if (_this.list ~= nil) then 
+            _this:cb(data);
+          end;
+        end;
+        _gthis.busy = false;
+        if (_gthis.disposeHandlers == nil) then 
+          _gthis:destroy();
+        else
+          if (_gthis.used < _gthis.cells.length) then 
+            _gthis:compact();
+          end;
+          if (_gthis.queue.length > 0) then 
+            (_gthis.queue:shift())();
+          end;
+        end;
+      end;
+    end;
+    __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth - 1;
+  else
+    __tink_core__Callback_Callback_Impl_.defer(function() 
+      if (_gthis.disposeHandlers ~= nil) then 
+        if (_gthis.busy) then 
+          if (_gthis.destructive ~= true) then 
+            local _g = _gthis;
+            local data = data;
+            local tmp = function() 
+              _g:invoke(data);
+            end;
+            _gthis.queue:push(tmp);
+          end;
+        else
+          _gthis.busy = true;
+          if (_gthis.destructive) then 
+            _gthis:dispose();
+          end;
+          local length = _gthis.cells.length;
+          local _g = 0;
+          while (_g < length) do 
+            _g = _g + 1;
+            local _this = _gthis.cells[_g - 1];
+            if (_this.list ~= nil) then 
+              _this:cb(data);
+            end;
+          end;
+          _gthis.busy = false;
+          if (_gthis.disposeHandlers == nil) then 
+            _gthis:destroy();
+          else
+            if (_gthis.used < _gthis.cells.length) then 
+              _gthis:compact();
+            end;
+            if (_gthis.queue.length > 0) then 
+              (_gthis.queue:shift())();
+            end;
+          end;
+        end;
+      end;
+    end);
+  end;
+end
+__tink_core_CallbackList.prototype.compact = function(self) 
+  if (self.busy) then 
+    do return end;
+  else
+    if (self.used == 0) then 
+      self:resize(0);
+      local fn = self.ondrain;
+      if (__tink_core__Callback_Callback_Impl_.depth < 500) then 
+        __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth + 1;
+        fn();
+        __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth - 1;
+      else
+        __tink_core__Callback_Callback_Impl_.defer(fn);
+      end;
+    else
+      local compacted = 0;
+      local _g = 0;
+      local _g1 = self.cells.length;
+      while (_g < _g1) do 
+        _g = _g + 1;
+        local i = _g - 1;
+        local _g = self.cells[i];
+        if (_g.cb ~= nil) then 
+          if (compacted ~= i) then 
+            self.cells[compacted] = _g;
+          end;
+          compacted = compacted + 1;
+          if (compacted == self.used) then 
+            break;
+          end;
+        end;
+      end;
+      self:resize(self.used);
+    end;
+  end;
+end
+__tink_core_CallbackList.prototype.resize = function(self,length) 
+  self.cells:resize(length);
+end
+
+__tink_core_CallbackList.prototype.__class__ =  __tink_core_CallbackList
+__tink_core_CallbackList.__super__ = __tink_core_SimpleDisposable
+setmetatable(__tink_core_CallbackList.prototype,{__index=__tink_core_SimpleDisposable.prototype})
+
+__tink_core__Future_FutureObject.new = function() 
+  local self = _hx_new(__tink_core__Future_FutureObject.prototype)
+  __tink_core__Future_FutureObject.super(self)
+  return self
+end
+__tink_core__Future_FutureObject.super = function(self) 
+end
+__tink_core__Future_FutureObject.__name__ = true
+__tink_core__Future_FutureObject.prototype = _hx_e();
+__tink_core__Future_FutureObject.prototype.getStatus = function(self) 
+  do return __tink_core_FutureStatus.NeverEver end
+end
+__tink_core__Future_FutureObject.prototype.handle = function(self,callback) 
+  do return nil end
+end
+
+__tink_core__Future_FutureObject.prototype.__class__ =  __tink_core__Future_FutureObject
+
+__tink_core__Lazy_Computable.new = {}
+__tink_core__Lazy_Computable.__name__ = true
+__tink_core__Lazy_Computable.prototype = _hx_e();
+
+__tink_core__Lazy_Computable.prototype.__class__ =  __tink_core__Lazy_Computable
+
+__tink_core__Lazy_LazyObject.new = {}
+__tink_core__Lazy_LazyObject.__name__ = true
+__tink_core__Lazy_LazyObject.__interfaces__ = {__tink_core__Lazy_Computable}
+__tink_core__Lazy_LazyObject.prototype = _hx_e();
+
+__tink_core__Lazy_LazyObject.prototype.__class__ =  __tink_core__Lazy_LazyObject
+
+__tink_core__Lazy_LazyConst.new = function(value) 
+  local self = _hx_new(__tink_core__Lazy_LazyConst.prototype)
+  __tink_core__Lazy_LazyConst.super(self,value)
+  return self
+end
+__tink_core__Lazy_LazyConst.super = function(self,value) 
+  self.value = value;
+end
+__tink_core__Lazy_LazyConst.__name__ = true
+__tink_core__Lazy_LazyConst.__interfaces__ = {__tink_core__Lazy_LazyObject}
+__tink_core__Lazy_LazyConst.prototype = _hx_e();
+__tink_core__Lazy_LazyConst.prototype.isComputed = function(self) 
+  do return true end
+end
+__tink_core__Lazy_LazyConst.prototype.get = function(self) 
+  do return self.value end
+end
+__tink_core__Lazy_LazyConst.prototype.compute = function(self) 
+end
+__tink_core__Lazy_LazyConst.prototype.underlying = function(self) 
+  do return nil end
+end
+
+__tink_core__Lazy_LazyConst.prototype.__class__ =  __tink_core__Lazy_LazyConst
+
+__tink_core__Future_SyncFuture.new = function(value) 
+  local self = _hx_new(__tink_core__Future_SyncFuture.prototype)
+  __tink_core__Future_SyncFuture.super(self,value)
+  return self
+end
+__tink_core__Future_SyncFuture.super = function(self,value) 
+  __tink_core__Future_FutureObject.super(self);
+  self.value = value;
+end
+__tink_core__Future_SyncFuture.__name__ = true
+__tink_core__Future_SyncFuture.prototype = _hx_e();
+__tink_core__Future_SyncFuture.prototype.getStatus = function(self) 
+  do return __tink_core_FutureStatus.Ready(self.value) end
+end
+__tink_core__Future_SyncFuture.prototype.handle = function(self,cb) 
+  __tink_core__Callback_Callback_Impl_.invoke(cb, __tink_core__Lazy_Lazy_Impl_.get(self.value));
+  do return nil end
+end
+
+__tink_core__Future_SyncFuture.prototype.__class__ =  __tink_core__Future_SyncFuture
+__tink_core__Future_SyncFuture.__super__ = __tink_core__Future_FutureObject
+setmetatable(__tink_core__Future_SyncFuture.prototype,{__index=__tink_core__Future_FutureObject.prototype})
+
+__tink_core__Future_Future_Impl_.new = {}
+__tink_core__Future_Future_Impl_.__name__ = true
+__tink_core__Future_Future_Impl_.never = function() 
+  do return __tink_core__Future_Future_Impl_.NEVER_INST end;
+end
+__tink_core__Future_Future_Impl_.map = function(this1,f,gather) 
+  local _g = this1:getStatus();
+  local tmp = _g[1];
+  if (tmp) == 3 then 
+    local this1 = _g[2];
+    local f = f;
+    do return __tink_core__Future_SyncFuture.new(__tink_core__Lazy_LazyFunc.new(function() 
+      do return f(this1:get()) end;
+    end, this1)) end;
+  elseif (tmp) == 4 then 
+    do return __tink_core__Future_Future_Impl_.never() end;else
+  do return __tink_core__Future_SuspendableFuture.new(function(fire) 
+    do return this1:handle(function(v) 
+      fire(f(v));
+    end) end;
+  end) end; end;
+end
+__tink_core__Future_Future_Impl_.flatMap = function(this1,next,gather) 
+  local _g = this1:getStatus();
+  local tmp = _g[1];
+  if (tmp) == 3 then 
+    local l = _g[2];
+    do return __tink_core__Future_SuspendableFuture.new(function(fire) 
+      do return next(__tink_core__Lazy_Lazy_Impl_.get(l)):handle(function(v) 
+        fire(v);
+      end) end;
+    end) end;
+  elseif (tmp) == 4 then 
+    do return __tink_core__Future_Future_Impl_.never() end;else
+  do return __tink_core__Future_SuspendableFuture.new(function(yield) 
+    local inner = __tink_core_CallbackLinkRef.new();
+    do return __tink_core__Callback_LinkPair.new(this1:handle(function(v) 
+      local param = next(v):handle(yield);
+      local this1 = inner.link;
+      if (this1 ~= nil) then 
+        this1:cancel();
+      end;
+      inner.link = param;
+    end), inner) end;
+  end) end; end;
+end
+__tink_core__Future_Future_Impl_.irreversible = function(init) 
+  do return __tink_core__Future_SuspendableFuture.new(function(yield) 
+    init(yield);
+    do return nil end;
+  end) end;
+end
+_hxClasses["tink.core.FutureStatus"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="Suspended","Awaited","EagerlyAwaited","Ready","NeverEver"},5)}
+__tink_core_FutureStatus = _hxClasses["tink.core.FutureStatus"];
+__tink_core_FutureStatus.Suspended = _hx_tab_array({[0]="Suspended",0,__enum__ = __tink_core_FutureStatus},2)
+
+__tink_core_FutureStatus.Awaited = _hx_tab_array({[0]="Awaited",1,__enum__ = __tink_core_FutureStatus},2)
+
+__tink_core_FutureStatus.EagerlyAwaited = _hx_tab_array({[0]="EagerlyAwaited",2,__enum__ = __tink_core_FutureStatus},2)
+
+__tink_core_FutureStatus.Ready = function(result) local _x = _hx_tab_array({[0]="Ready",3,result,__enum__=__tink_core_FutureStatus}, 3); return _x; end 
+__tink_core_FutureStatus.NeverEver = _hx_tab_array({[0]="NeverEver",4,__enum__ = __tink_core_FutureStatus},2)
+
+
+__tink_core__Future_SuspendableFuture.new = function(wakeup) 
+  local self = _hx_new(__tink_core__Future_SuspendableFuture.prototype)
+  __tink_core__Future_SuspendableFuture.super(self,wakeup)
+  return self
+end
+__tink_core__Future_SuspendableFuture.super = function(self,wakeup) 
+  self.status = __tink_core_FutureStatus.Suspended;
+  local _gthis = self;
+  __tink_core__Future_FutureObject.super(self);
+  self.wakeup = _hx_funcToField(wakeup);
+  self.callbacks = __tink_core_CallbackList.new(true);
+  self.callbacks.ondrain = function(self) 
+    if (_gthis.status == __tink_core_FutureStatus.Awaited) then 
+      _gthis.status = __tink_core_FutureStatus.Suspended;
+      local this1 = _gthis.link;
+      if (this1 ~= nil) then 
+        this1:cancel();
+      end;
+      _gthis.link = nil;
+    end;
+   end;
+  self.callbacks.onfill = function(self) 
+    if (_gthis.status == __tink_core_FutureStatus.Suspended) then 
+      _gthis.status = __tink_core_FutureStatus.Awaited;
+      _gthis:arm();
+    end;
+   end;
+end
+__tink_core__Future_SuspendableFuture.__name__ = true
+__tink_core__Future_SuspendableFuture.prototype = _hx_e();
+__tink_core__Future_SuspendableFuture.prototype.getStatus = function(self) 
+  do return self.status end
+end
+__tink_core__Future_SuspendableFuture.prototype.trigger = function(self,value) 
+  if (self.status[1] ~= 3) then 
+    self.status = __tink_core_FutureStatus.Ready(__tink_core__Lazy_LazyConst.new(value));
+    local link = self.link;
+    self.link = nil;
+    self.wakeup = nil;
+    self.callbacks:invoke(value);
+    if (link ~= nil) then 
+      link:cancel();
+    end;
+  end;
+end
+__tink_core__Future_SuspendableFuture.prototype.handle = function(self,callback) 
+  local _g = self.status;
+  if (_g[1] == 3) then 
+    __tink_core__Callback_Callback_Impl_.invoke(callback, __tink_core__Lazy_Lazy_Impl_.get(_g[2]));
+    do return nil end;
+  else
+    local _this = self.callbacks;
+    if (_this.disposeHandlers == nil) then 
+      do return nil end;
+    else
+      local node = __tink_core__Callback_ListCell.new(callback, _this);
+      _this.cells:push(node);
+      local tmp = (function() 
+      local _hx_obj = _this;
+      local _hx_fld = 'used';
+      local _ = _hx_obj[_hx_fld];
+      _hx_obj[_hx_fld] = _hx_obj[_hx_fld]  + 1;
+       return _;
+       end)() == 0;
+      if (tmp) then 
+        local fn = _this.onfill;
+        if (__tink_core__Callback_Callback_Impl_.depth < 500) then 
+          __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth + 1;
+          fn();
+          __tink_core__Callback_Callback_Impl_.depth = __tink_core__Callback_Callback_Impl_.depth - 1;
+        else
+          __tink_core__Callback_Callback_Impl_.defer(fn);
+        end;
+      end;
+      do return node end;
+    end;
+  end;
+end
+__tink_core__Future_SuspendableFuture.prototype.arm = function(self) 
+  local _gthis = self;
+  self.link = self:wakeup(function(x) 
+    _gthis:trigger(x);
+  end);
+end
+
+__tink_core__Future_SuspendableFuture.prototype.__class__ =  __tink_core__Future_SuspendableFuture
+__tink_core__Future_SuspendableFuture.__super__ = __tink_core__Future_FutureObject
+setmetatable(__tink_core__Future_SuspendableFuture.prototype,{__index=__tink_core__Future_FutureObject.prototype})
+
+__tink_core__Lazy_Lazy_Impl_.new = {}
+__tink_core__Lazy_Lazy_Impl_.__name__ = true
+__tink_core__Lazy_Lazy_Impl_.get = function(this1) 
+  this1:compute();
+  do return this1:get() end;
+end
+
+__tink_core__Lazy_LazyFunc.new = function(f,from) 
+  local self = _hx_new(__tink_core__Lazy_LazyFunc.prototype)
+  __tink_core__Lazy_LazyFunc.super(self,f,from)
+  return self
+end
+__tink_core__Lazy_LazyFunc.super = function(self,f,from) 
+  self.f = _hx_funcToField(f);
+  self.from = from;
+end
+__tink_core__Lazy_LazyFunc.__name__ = true
+__tink_core__Lazy_LazyFunc.__interfaces__ = {__tink_core__Lazy_LazyObject}
+__tink_core__Lazy_LazyFunc.prototype = _hx_e();
+__tink_core__Lazy_LazyFunc.prototype.underlying = function(self) 
+  do return self.from end
+end
+__tink_core__Lazy_LazyFunc.prototype.isComputed = function(self) 
+  do return self.f == nil end
+end
+__tink_core__Lazy_LazyFunc.prototype.get = function(self) 
+  do return self.result end
+end
+__tink_core__Lazy_LazyFunc.prototype.compute = function(self) 
+  local _g = self.f;
+  if (_g ~= nil) then 
+    self.f = nil;
+    local _g1 = self.from;
+    if (_g1 ~= nil) then 
+      local cur = _g1;
+      self.from = nil;
+      local stack = _hx_tab_array({}, 0);
+      while ((cur ~= nil) and not cur:isComputed()) do 
+        stack:push(cur);
+        cur = cur:underlying();
+      end;
+      stack:reverse();
+      local _g = 0;
+      while (_g < stack.length) do 
+        local c = stack[_g];
+        _g = _g + 1;
+        c:compute();
+      end;
+    end;
+    self.result = _g();
+  end;
+end
+
+__tink_core__Lazy_LazyFunc.prototype.__class__ =  __tink_core__Lazy_LazyFunc
+
+__volume_Settings.new = {}
+__volume_Settings.__name__ = true
+__volume_Settings.cmd_for_button = function(btn) 
+  local _g = Std.parseInt(btn);
+  if (_g == nil) then 
+    _G.error(__haxe_Exception.new("bad button number: " .. btn),0);
+  else
+    if (_g) == 1 then 
+      do return __volume_Settings.TOGGLE_MUTE_CMD end;
+    elseif (_g) == 4 then 
+      do return __volume_Settings.INC_VOLUME_CMD end;
+    elseif (_g) == 5 then 
+      do return __volume_Settings.DEC_VOLUME_CMD end;else
+    _G.error(__haxe_Exception.new("bad button number: " .. btn),0); end;
+  end;
+end
+__volume_Settings.choose_icon = function(vol) 
+  if ((vol == nil) or (vol <= 0)) then 
+    do return "/home/cji/.config/awesome/icons" .. "/audio-volume-muted-symbolic-red.svg" end;
+  end;
+  local icon_name = nil;
+  local __tmp = _hx_tab_array({}, 0);
+  local k = __volume_Settings.volume_to_icons:keys();
+  while (k:hasNext()) do 
+    __tmp:push(k:next());
+  end;
+  __tmp:sort(Reflect.compare);
+  local _g = 0;
+  while (_g < __tmp.length) do 
+    local k = __tmp[_g];
+    _g = _g + 1;
+    if (vol <= k) then 
+      local ret = __volume_Settings.volume_to_icons.h[k];
+      if (ret == __haxe_ds_IntMap.tnull) then 
+        ret = nil;
+      end;
+      icon_name = ret;
+      break;
+    end;
+  end;
+  if (icon_name ~= nil) then 
+    do return "/home/cji/.config/awesome/icons" .. "/" .. icon_name .. ".svg" end;
+  else
+    _G.error(__haxe_Exception.new("Can't find icon for vol #{vol}"),0);
+  end;
+end
+
+__volume_Volume.new = {}
+__volume_Volume.__name__ = true
+__volume_Volume.set_volume = function(stdout) 
+  local _this = StringTools.trim(stdout);
+  local idx = 1;
+  local ret = _hx_tab_array({}, 0);
+  while (idx ~= nil) do 
+    local newidx = 0;
+    if (__lua_lib_luautf8_Utf8.len(" ") > 0) then 
+      newidx = __lua_lib_luautf8_Utf8.find(_this, " ", idx, true);
+    else
+      if (idx >= __lua_lib_luautf8_Utf8.len(_this)) then 
+        newidx = nil;
+      else
+        newidx = idx + 1;
+      end;
+    end;
+    if (newidx ~= nil) then 
+      local match = __lua_lib_luautf8_Utf8.sub(_this, idx, newidx - 1);
+      ret:push(match);
+      idx = newidx + __lua_lib_luautf8_Utf8.len(" ");
+    else
+      ret:push(__lua_lib_luautf8_Utf8.sub(_this, idx, __lua_lib_luautf8_Utf8.len(_this)));
+      idx = nil;
+    end;
+  end;
+  __volume_Volume.state.is_muted = ret[0] == "true";
+  __volume_Volume.state.volume = Std.parseInt(ret[1]);
+  __volume_Volume.state.icon = __volume_Settings.choose_icon((function() 
+    local _hx_1
+    if (not __volume_Volume.state.is_muted) then 
+    _hx_1 = __volume_Volume.state.volume; else 
+    _hx_1 = nil; end
+    return _hx_1
+  end )());
+end
+__volume_Volume.update_widgets = function() 
+  __volume_Volume.state.volume_widget.icon.image = _hx_funcToField(__volume_Volume.state.icon);
+  local txt = "";
+  if (__volume_Volume.state.notification_widget ~= nil) then 
+    txt = "" .. Std.string(__volume_Volume.state.volume) .. "%";
+  end;
+  if (__volume_Volume.state.is_muted) then 
+    txt = "muted";
+  end;
+  __volume_Volume.state.notification_widget:get_children_by_id("text")[1].text = txt;
+end
+__volume_Volume.handle_mouse = function(_,_1,_2,button) 
+  if (button == 3) then 
+    __awful_NativeSpawn.spawn("pavucontrol", _hx_o({__fields__={floating=true},floating=true}));
+    do return end;
+  end;
+  __tink_core__Future_Future_Impl_.map(__tink_core__Future_Future_Impl_.flatMap(__awful_Spawn.spawn(__volume_Settings.cmd_for_button(Std.string(button))), function(_) 
+    do return __awful_Spawn.spawn(__volume_Settings.GET_VOLUME_CMD) end;
+  end), function(out) 
+    __volume_Volume.set_volume(out);
+    __volume_Volume.update_widgets();
+  end);
+end
+__volume_Volume.main = function() 
+  __volume_Volume.state.volume_widget = __awful_Wibox.widget(({layout = __awful_Wibox.container.margin, left = 5, right = 5, top = 1, bottom = 1,({id = "icon", resize = true, image = choose_icon(100), widget = __awful_Wibox.widget.imagebox})}));
+  __volume_Volume.state.volume_widget:connect_signal("button::press", __volume_Volume.handle_mouse);
+  __awful_NativeSpawn.spawn("pavucontrol", _hx_o({__fields__={floating=true},floating=true}));
+  __haxe_Log.trace(__volume_Settings.choose_icon(45), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/volume/Volume.hx",lineNumber=140,className="volume.Volume",methodName="main"}));
+  __haxe_Log.trace(__volume_Settings.choose_icon(78), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/volume/Volume.hx",lineNumber=141,className="volume.Volume",methodName="main"}));
+  __haxe_Log.trace(__volume_Volume.state, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/volume/Volume.hx",lineNumber=142,className="volume.Volume",methodName="main"}));
+end
+-- require this for lua 5.1
+pcall(require, 'bit')
+if bit then
+  _hx_bit_raw = bit
+  _hx_bit = setmetatable({}, { __index = _hx_bit_raw });
+else
+  _hx_bit_raw = _G.require('bit32')
+  _hx_bit = setmetatable({}, { __index = _hx_bit_raw });
+  -- lua 5.2 weirdness
+  _hx_bit.bnot = function(...) return _hx_bit_clamp(_hx_bit_raw.bnot(...)) end;
+  _hx_bit.bxor = function(...) return _hx_bit_clamp(_hx_bit_raw.bxor(...)) end;
+end
+-- see https://github.com/HaxeFoundation/haxe/issues/8849
+_hx_bit.bor = function(...) return _hx_bit_clamp(_hx_bit_raw.bor(...)) end;
+_hx_bit.band = function(...) return _hx_bit_clamp(_hx_bit_raw.band(...)) end;
+_hx_bit.arshift = function(...) return _hx_bit_clamp(_hx_bit_raw.arshift(...)) end;
+
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
     if v <= 2147483647 and v >= -2147483648 then
@@ -1020,9 +2232,46 @@ else
   }
 end
 local _hx_static_init = function()
-  __haxe_EntryPoint.pending = Array.new();
+  
+  String.__name__ = true;
+  Array.__name__ = true;__haxe_EntryPoint.pending = Array.new();
   
   __haxe_EntryPoint.threadCount = 0;
+  
+  __haxe_ds_IntMap.tnull = ({});
+  
+  __tink_core__Callback_Callback_Impl_.depth = 0;
+  
+  __tink_core__Future_Future_Impl_.NEVER_INST = __tink_core__Future_FutureObject.new();
+  
+  __volume_Settings.GET_VOLUME_CMD = _hx_tab_array({[0]="/usr/local/bin/pamixer", "--get-volume", "--get-mute"}, 3);
+  
+  __volume_Settings.INC_VOLUME_CMD = _hx_tab_array({[0]="/usr/local/bin/pamixer", "-i", "5"}, 3);
+  
+  __volume_Settings.DEC_VOLUME_CMD = _hx_tab_array({[0]="/usr/local/bin/pamixer", "-d", "5"}, 3);
+  
+  __volume_Settings.TOGGLE_MUTE_CMD = _hx_tab_array({[0]="/usr/local/bin/pamixer", "-t"}, 2);
+  
+  __volume_Settings.volume_to_icons = (function() 
+    local _hx_1
+    
+    local _g = __haxe_ds_IntMap.new();
+    
+    _g.h[0] = "audio-volume-muted-symbolic-red";
+    
+    _g.h[25] = "audio-volume-muted-symbolic";
+    
+    _g.h[50] = "audio-volume-low-symbolic";
+    
+    _g.h[75] = "audio-volume-medium-symbolic";
+    
+    _g.h[100] = "audio-volume-high-symbolic";
+    
+    _hx_1 = _g;
+    return _hx_1
+  end )();
+  
+  __volume_Volume.state = _hx_o({__fields__={volume=true,is_muted=true,icon=true,notification_widget=true,volume_widget=true},volume=100,is_muted=false,icon=__volume_Settings.choose_icon(100),notification_widget=nil,volume_widget=nil});
   
   
 end
@@ -1038,6 +2287,19 @@ _hx_funcToField = function(f)
 end
 
 _hx_print = print or (function() end)
+
+_hx_table = {}
+_hx_table.pack = _G.table.pack or function(...)
+    return {...}
+end
+_hx_table.unpack = _G.table.unpack or _G.unpack
+_hx_table.maxn = _G.table.maxn or function(t)
+  local maxn=0;
+  for i in pairs(t) do
+    maxn=type(i)=='number'and i>maxn and i or maxn
+  end
+  return maxn
+end;
 
 _hx_static_init();
 _G.xpcall(function() 

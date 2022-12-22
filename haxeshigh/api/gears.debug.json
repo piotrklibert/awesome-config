@@ -1,0 +1,410 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "mod_name":"gears.debug",
+  "summary":"",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.debug",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"data",
+        "2":"tag",
+        "3":"depth",
+        "map":{
+          "data":" Value to inspect.",
+          "tag":" The name of the value.",
+          "depth":" Depth of recursion."
+        }
+      },
+      "summary":"Inspect the value in data.",
+      "name":"dump_return",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          },
+          "data":[],
+          "tag":[],
+          "depth":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          },
+          "data":[],
+          "tag":[],
+          "depth":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(data, tag[, depth])",
+      "tags":[],
+      "lineno":53
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"data",
+        "2":"tag",
+        "3":"depth",
+        "map":{
+          "data":" Table to print.",
+          "tag":" The name of the table.",
+          "depth":" Depth of recursion."
+        }
+      },
+      "summary":"Print the table (or any other value) to the console.",
+      "name":"dump",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          },
+          "data":[],
+          "tag":[],
+          "depth":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          },
+          "data":[],
+          "tag":[],
+          "depth":{
+            "optchain":true,
+            "type":"int",
+            "opt":true
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(data, tag[, depth])",
+      "tags":[],
+      "lineno":62
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"message",
+        "map":{
+          "message":" The warning message to print."
+        }
+      },
+      "summary":"Print an warning message",
+      "name":"print_warning",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "message":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "message":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(message)",
+      "tags":[],
+      "lineno":69
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"message",
+        "map":{
+          "message":" The error message to print."
+        }
+      },
+      "summary":"Print an error message",
+      "name":"print_error",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "message":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "message":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(message)",
+      "tags":[],
+      "lineno":76
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.raw","args.deprecated_in"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"see",
+        "2":"args",
+        "map":{
+          "see":" The message to a new method / function to use.",
+          "args":" Extra arguments",
+          "args.deprecated_in":" Print the message only when Awesome's\n   version is equal to or greater than deprecated_in.",
+          "args.raw":" Print the message as-is without the automatic context"
+        }
+      },
+      "summary":"Display a deprecation notice, but only once per traceback.",
+      "name":"deprecate",
+      "modifiers":{
+        "field":{
+          "1":{
+            "opt":true
+          },
+          "2":{
+            "type":"table"
+          },
+          "3":{
+            "type":"boolean"
+          },
+          "4":{
+            "type":"integer"
+          },
+          "see":{
+            "opt":true
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.deprecated_in":{
+            "type":"integer"
+          },
+          "args.raw":{
+            "type":"boolean"
+          }
+        },
+        "emits":[[],[]],
+        "return":[],
+        "param":{
+          "1":{
+            "opt":true
+          },
+          "2":{
+            "type":"table"
+          },
+          "3":{
+            "type":"boolean"
+          },
+          "4":{
+            "type":"integer"
+          },
+          "see":{
+            "opt":true
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.deprecated_in":{
+            "type":"integer"
+          },
+          "args.raw":{
+            "type":"boolean"
+          }
+        },
+        "emitstparam":[[],[],[],[]]
+      },
+      "description":"\n\n This function also emits the `debug::deprecation` signal on the `awesome`\n global object. If the deprecated API has been deprecated for more than one\n API level, it will also send a non-fatal error.\n",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"([see], args)",
+      "tags":{
+        "emitstparam":["debug::deprecation string msg The full formatted message.","debug::deprecation string see A message provided by the caller.","debug::deprecation table args Some extra context.","debug::error string msg The full formatted message."],
+        "emits":["debug::deprecation This is usually routed to stdout when the API is\n  newly deprecated.","debug::error When the API has been deprecated for more than\n  one API level."]
+      },
+      "lineno":102
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.deprecated_in"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"fallback",
+        "2":"old_name",
+        "3":"new_name",
+        "4":"The",
+        "map":{
+          "new_name":" The new class name.",
+          "old_name":" The old class name.",
+          "fallback":" The new class.",
+          "The":" name.",
+          "args.deprecated_in":" The version which deprecated this\n  class."
+        }
+      },
+      "summary":"Create a class proxy with deprecation messages.",
+      "name":"deprecate_class",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "4":{
+            "optchain":"{}",
+            "type":"args",
+            "opt":"{}"
+          },
+          "5":{
+            "type":"number",
+            "opt":true
+          },
+          "new_name":{
+            "type":"string"
+          },
+          "old_name":{
+            "type":"string"
+          },
+          "fallback":{
+            "type":"table"
+          },
+          "The":{
+            "optchain":"{}",
+            "type":"args",
+            "opt":"{}"
+          },
+          "args.deprecated_in":{
+            "type":"number",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "4":{
+            "optchain":"{}",
+            "type":"args",
+            "opt":"{}"
+          },
+          "5":{
+            "type":"number",
+            "opt":true
+          },
+          "new_name":{
+            "type":"string"
+          },
+          "old_name":{
+            "type":"string"
+          },
+          "fallback":{
+            "type":"table"
+          },
+          "The":{
+            "optchain":"{}",
+            "type":"args",
+            "opt":"{}"
+          },
+          "args.deprecated_in":{
+            "type":"number",
+            "opt":true
+          }
+        }
+      },
+      "description":"\n This is useful when a class has moved somewhere else.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(fallback, old_name, new_name[, The={}])",
+      "tags":[],
+      "lineno":149
+    }],
+  "type":"utillib",
+  "file":"/home/cji/portless/awesome/build/lib/gears/debug.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2010 Uli Schlachter"
+  },
+  "lineno":7
+}

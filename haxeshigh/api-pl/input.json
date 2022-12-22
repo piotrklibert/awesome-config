@@ -1,0 +1,239 @@
+{
+  "kind":"libraries",
+  "name":"pl.input",
+  "mod_name":"input",
+  "inferred":true,
+  "description":"\n\n    require 'pl'\n    local total,n = seq.sum(input.numbers())\n    print('average',total/n)\n\n _source_ is defined as a string or a file-like object (i.e. has a read() method which returns the next line)\n\n See @{06-data.md.Reading_Unstructured_Text_Data|here}\n\n Dependencies: `pl.utils`",
+  "file":"/home/cji/portless/Penlight/lua/pl/input.lua",
+  "summary":"Iterators for extracting words or numbers from an input source.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":13,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "fn":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "getter":{
+            "type":"func"
+          },
+          "pattern":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"create an iterator over all tokens.",
+      "lineno":30,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(getter, pattern[, fn])",
+      "type":"function",
+      "name":"alltokens",
+      "parameter":"param",
+      "params":{
+        "1":"getter",
+        "2":"pattern",
+        "map":{
+          "fn":"  Optionally can pass a function to process each token as it's found.",
+          "getter":" any function that returns a line of text",
+          "pattern":""
+        },
+        "3":"fn"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n based on allwords from PiL, 7.1",
+      "ret":["an iterator"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "f":[]
+        }
+      },
+      "summary":"create a function which grabs the next value from a source.",
+      "lineno":57,
+      "retgroups":[{
+          "1":{
+            "text":"a getter function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f)",
+      "type":"function",
+      "name":"create_getter",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "f":" a string or a file-like object (i.e. has a read() method which returns the next line)"
+        },
+        "1":"f"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" If the source is a string, then the getter\n will return the string and thereafter return nil. If not specified then the source is assumed to be stdin.",
+      "ret":["a getter function"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "f":[]
+        }
+      },
+      "summary":"generate a sequence of numbers from a source.",
+      "lineno":80,
+      "retgroups":[{
+          "1":{
+            "text":"An iterator",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f)",
+      "type":"function",
+      "name":"numbers",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "f":" A source"
+        },
+        "1":"f"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["An iterator"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "f":[]
+        }
+      },
+      "summary":"generate a sequence of words from a source.",
+      "lineno":88,
+      "retgroups":[{
+          "1":{
+            "text":"An iterator",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f)",
+      "type":"function",
+      "name":"words",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "f":" A source"
+        },
+        "1":"f"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["An iterator"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"string"
+          },
+          "3":[],
+          "4":{
+            "type":"tab"
+          },
+          "delim":{
+            "type":"string"
+          },
+          "ids":[],
+          "opts":{
+            "type":"tab"
+          },
+          "f":[]
+        },
+        "return":[[]]
+      },
+      "summary":"parse an input source into fields.",
+      "lineno":113,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator with the field values",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(ids, delim, f, opts)",
+      "usage":["for x,y in fields {2,3} do print(x,y) end -- 2nd and 3rd fields from stdin\n"],
+      "type":"function",
+      "name":"fields",
+      "parameter":"param",
+      "params":{
+        "1":"ids",
+        "2":"delim",
+        "3":"f",
+        "4":"opts",
+        "map":{
+          "delim":" delimiter to parse fields (default space)",
+          "ids":" a list of field indices, or a maximum field index",
+          "opts":" option table, `{no_fail=true}`",
+          "f":" a source @see create_getter"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n By default, will fail if it cannot convert a field to a number.",
+      "ret":["an iterator with the field values"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

@@ -1,0 +1,312 @@
+{
+  "kind":"libraries",
+  "name":"pl.pretty",
+  "mod_name":"pretty",
+  "inferred":true,
+  "description":"\n Also provides a sandboxed Lua table reader and\n a function to present large numbers in human-friendly format.\n\n Dependencies: `pl.utils`, `pl.lexer`, `pl.stringx`, `debug`",
+  "file":"/home/cji/portless/Penlight/lua/pl/pretty.lua",
+  "summary":"Pretty-printing Lua tables.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":8,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "s":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Read a string representation of a Lua table.",
+      "lineno":80,
+      "retgroups":[{
+          "1":{
+            "text":" a table in case of success.\n If loading the string failed, return `nil` and error message.\n If executing loaded string failed, return `nil` and the error it raised.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s)",
+      "type":"function",
+      "name":"read",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "s":" string to read in `{...}` format, possibly with some whitespace\n before or after the curly braces. A single line comment may be present\n at the beginning."
+        },
+        "1":"s"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This function loads and runs the string as Lua code, but bails out\n if it contains a function definition.\n Loaded string is executed in an empty environment.",
+      "ret":[" a table in case of success.\n If loading the string failed, return `nil` and error message.\n If executing loaded string failed, return `nil` and the error it raised."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"bool",
+            "optchain":true
+          },
+          "env":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "s":{
+            "type":"string"
+          },
+          "paranoid":{
+            "opt":true,
+            "type":"bool",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"Read a Lua chunk.",
+      "lineno":113,
+      "retgroups":[{
+          "1":{
+            "text":"the environment in case of success or `nil` and syntax or runtime error\n if something went wrong.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s[, env[, paranoid]])",
+      "type":"function",
+      "name":"load",
+      "parameter":"param",
+      "params":{
+        "1":"s",
+        "2":"env",
+        "map":{
+          "env":" environment used to run the code, empty by default.",
+          "s":" Lua code.",
+          "paranoid":" abort loading if any looping constructs a found in the code\n and disable string methods."
+        },
+        "3":"paranoid"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the environment in case of success or `nil` and syntax or runtime error\n if something went wrong."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"bool",
+            "optchain":true
+          },
+          "tbl":{
+            "type":"tab"
+          },
+          "not_clever":{
+            "opt":true,
+            "type":"bool",
+            "optchain":true
+          },
+          "space":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"Create a string representation of a Lua table.",
+      "lineno":186,
+      "retgroups":[{
+          "1":{
+            "text":"a string",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"an optional error message",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tbl[, space[, not_clever]])",
+      "type":"function",
+      "name":"write",
+      "parameter":"param",
+      "params":{
+        "1":"tbl",
+        "2":"space",
+        "map":{
+          "tbl":" Table to serialize to a string.",
+          "not_clever":" Pass `true` for plain output, e.g `{['key']=1}`.\n Defaults to `false`.",
+          "space":" The indent to use.\n Defaults to two spaces; pass an empty string for no indentation."
+        },
+        "3":"not_clever"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This function never fails, but may complain by returning an\n extra value. Normally puts out one item per line, using\n the provided indent; set the second parameter to an empty string\n if you want output on one line.\n\n *NOTE:* this is NOT a serialization function, not a full blown\n debug function. Checkout out respectively the\n [serpent](https://github.com/pkulchenko/serpent)\n or [inspect](https://github.com/kikito/inspect.lua)\n Lua modules for that if you need them.",
+      "ret":["a string","an optional error message"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "t":{
+            "type":"tab"
+          },
+          "filename":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"Dump a Lua table out to a file or stdout.",
+      "lineno":339,
+      "args":"(t[, filename])",
+      "section":"function",
+      "name":"dump",
+      "params":{
+        "1":"t",
+        "2":"filename",
+        "map":{
+          "t":" The table to write to a file or stdout.",
+          "filename":" File name to write too. Defaults to writing\n to stdout."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "...":[]
+        }
+      },
+      "summary":"Dump a series of arguments to stdout for debug purposes.",
+      "lineno":374,
+      "args":"(...)",
+      "usage":["-- example debug output\nrequire\"pl.pretty\" (\"hello\", nil, \"world\", { bye = \"world\", true} )\n\n-- output:\n{\n  [\"arg 1\"] = \"hello\",\n  [\"arg 2\"] = \"<nil>\",\n  [\"arg 3\"] = \"world\",\n  [\"arg 4\"] = {\n    true,\n    bye = \"world\"\n  }\n}\n"],
+      "section":"function",
+      "name":"debug",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "...":" the parameters to dump to stdout."
+        },
+        "1":"..."
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n This function is attached to the module table `__call` method, to make it\n extra easy to access. So the full:\n\n     print(require(\"pl.pretty\").write({...}))\n\n Can be shortened to:\n\n     require\"pl.pretty\" (...)\n\n Any `nil` entries will be printed as `\"<nil>\"` to make them explicit.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"int",
+            "optchain":true
+          },
+          "num":{
+            "type":"number"
+          },
+          "kind":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "prec":{
+            "opt":true,
+            "type":"int",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"Format large numbers nicely for human consumption.",
+      "lineno":405,
+      "args":"(num[, kind[, prec]])",
+      "section":"function",
+      "name":"number",
+      "params":{
+        "1":"num",
+        "2":"kind",
+        "map":{
+          "num":" a number.",
+          "kind":" one of `'M'` (memory in `KiB`, `MiB`, etc.),\n `'N'` (postfixes are `'K'`, `'M'` and `'B'`),\n or `'T'` (use commas as thousands separator), `'N'` by default.",
+          "prec":" number of digits to use for `'M'` and `'N'`, `1` by default."
+        },
+        "3":"prec"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

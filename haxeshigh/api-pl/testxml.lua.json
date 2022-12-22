@@ -1,0 +1,17 @@
+{
+  "name":"testxml.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/testxml.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"testxml.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"-- an example showing 'pl.lexer' doing some serious work.\n-- The resulting Lua table is in the same LOM format used by luaexpat.\n-- This is (clearly) not a professional XML parser, so don't use it\n-- on your homework!\n\nlocal lexer = require 'pl.lexer'\nlocal pretty = require 'pl.pretty'\n\nlocal append = table.insert\nlocal skipws,expecting = lexer.skipws,lexer.expecting\n\nlocal function parse_element (tok,tag)\n\tlocal tbl,t,v,attrib\n\ttbl = {}\n\ttbl.tag = tag  -- LOM 'tag' is the element tag\n\tt,v = skipws(tok)\n\twhile v ~= '/' and v ~= '>' do\n\t\tif t ~= 'iden' then error('expecting attribute identifier') end\n\t\tattrib = v\n\t\texpecting(tok,'=')\n\t\tv = expecting(tok,'string')\n\t\t-- LOM: 'attr' subtable contains attrib/value pairs and an ordered list of attribs\n\t\tif not tbl.attr then tbl.attr = {} end\n\t\ttbl.attr[attrib] = v\n\t\tappend(tbl.attr,attrib)\n\t\tt,v = skipws(tok)\n\tend\n\tif v == '/' then\n\t\texpecting(tok,'>')\n\t\treturn tbl\n\tend\n\t-- pick up element data\n\tt,v = tok()\n\twhile true do\n\t\tif t == '<' then\n\t\t\tt,v = skipws(tok)\n\t\t\tif t == '/' then -- element end tag\n\t\t\t\tt,v = tok()\n\t\t\t\tif t == '>' then return tbl end\n\t\t\t\tif t == 'iden' and v == tag then\n\t\t\t\t\tif tok() == '>' then return tbl end\n\t\t\t\tend\n\t\t\t\terror('expecting end tag '..tag)\n\t\t\telse\n\t\t\t\tappend(tbl,parse_element(tok,v)) -- LOM: child elements added to table\n\t\t\t\tt,v = skipws(tok)\n\t\t\tend\n\t\telse\n\t\t\tappend(tbl,v) -- LOM: text added to table\n\t\t\tt,v = skipws(tok)\n\t\tend\n\tend\nend\n\nlocal function parse_xml (tok)\n\tlocal t = skipws(tok)\n\tlocal v\n\twhile t == '<' do\n\t\tt,v = tok()\n\t\tif t == '?' or t == '!' then\n\t\t\t-- skip meta stuff and commentary\n\t\t\trepeat t = tok() until t == '>'\n\t\t\tt = expecting(tok,'<')\n\t\telse\n\t\t\treturn parse_element(tok,v)\n\t\tend\n\tend\nend\n\nlocal s = [[\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<sensor name=\"closure-meter-2\" id=\"7D7D0600006F0D00\" loc=\"100,100,0\" device=\"closure-meter\" init=\"true\">\n<detector name=\"closure-meter\" phenomenon=\"closure\" units=\"mm\" id=\"1\"\n    vmin=\"0\" vmax=\"5000\" device=\"closure-meter\" calib=\"0,0;5000,5000\"\n    sampling_interval=\"25000\" measurement_interval=\"600000\"\n/>\n</sensor>\n]]\n\nlocal tok = lexer.scan(s,nil,{space=false},{string=true})\nlocal res = parse_xml(tok)\nprint(pretty.write(res))\n\n"
+}

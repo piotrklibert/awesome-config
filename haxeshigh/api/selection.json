@@ -1,0 +1,44 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"selection",
+  "summary":"awesome selection (clipboard) API",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"selection",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the selection (clipboard) content.",
+      "name":"selection",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":37
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/selection.c",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008-2009 Julien Danjou"
+  },
+  "lineno":29
+}

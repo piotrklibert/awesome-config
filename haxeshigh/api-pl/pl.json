@@ -1,0 +1,18 @@
+{
+  "kind":"libraries",
+  "name":"pl",
+  "mod_name":"pl",
+  "inferred":true,
+  "description":"\n Requiring 'pl' means that whenever a module is implicitly accesssed\n (e.g. `utils.split`)\n then that module is dynamically loaded. The submodules are all brought into\n the global space.\nUpdated to use @{pl.import_into}",
+  "file":"/home/cji/portless/Penlight/lua/pl/init.lua",
+  "summary":"Entry point for loading all PL libraries only on demand, into the global space.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":9,
+  "package":"",
+  "items":[],
+  "type":"module",
+  "modifiers":[]
+}

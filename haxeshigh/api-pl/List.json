@@ -1,0 +1,1624 @@
+{
+  "name":"pl.List",
+  "kind":"classes",
+  "inferred":true,
+  "description":"\n\n **Please Note**: methods that change the list will return the list.\n This is to allow for method chaining, but please note that `ls = ls:sort()`\n does not mean that a new copy of the list is made. In-place (mutable) methods\n are marked as returning 'the list' in this documentation.\n\n See the Guide for further @{02-arrays.md.Python_style_Lists|discussion}\n\n See <a href=\"http://www.python.org/doc/current/tut/tut.html\">http://www.python.org/doc/current/tut/tut.html</a>, section 5.1\n\n **Note**: The comments before some of the functions are from the Python docs\n and contain Python code.\n\n Written for Lua version Nick Trout 4.0; Redone for Lua 5.1, Steve Donovan.\n\n Dependencies: `pl.utils`, `pl.tablex`, `pl.class`",
+  "modifiers":{
+    "pragma":[]
+  },
+  "summary":"Python-style list class.",
+  "sections":{
+    "by_name":[]
+  },
+  "mod_name":"List",
+  "lineno":21,
+  "tags":{
+    "pragma":"nostrip"
+  },
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "optchain":true,
+            "opt":true
+          },
+          "t":{
+            "optchain":true,
+            "opt":true
+          }
+        },
+        "return":[[]],
+        "usage":[[]],
+        "see":[[]]
+      },
+      "summary":"Create a new list.",
+      "lineno":77,
+      "retgroups":[{
+          "1":{
+            "text":"a new List",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([t])",
+      "usage":["ls = List();  ls = List {1,2,3,4}\n"],
+      "type":"function",
+      "name":"List.new",
+      "params":{
+        "map":{
+          "t":" An optional list-like table"
+        },
+        "1":"t"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":" Can optionally pass a table;\n passing another instance of List will cause a copy to be created;\n this will return a plain table with an appropriate metatable.\n we pass anything which isn't a simple table to iterate() to work out\n an appropriate iterator",
+      "ret":["a new List"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"Make a copy of an existing list.",
+      "lineno":82,
+      "args":"()",
+      "section":"function",
+      "name":"List:clone",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n The difference from a plain 'copy constructor' is that this returns\n the actual List subtype.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "i":[]
+        }
+      },
+      "summary":"Add an item to the end of the list.",
+      "lineno":91,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(i)",
+      "type":"function",
+      "name":"List:append",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "i":" An item"
+        },
+        "1":"i"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"List"
+          },
+          "L":{
+            "type":"List"
+          }
+        }
+      },
+      "summary":"Extend the list by appending all the items in the given list.",
+      "lineno":102,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(L)",
+      "type":"function",
+      "name":"List:extend",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "L":" Another List"
+        },
+        "1":"L"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n equivalent to 'a[len(a):] = L'.",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":[],
+          "i":{
+            "type":"int"
+          },
+          "x":[]
+        }
+      },
+      "summary":"Insert an item at a given position.",
+      "lineno":113,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(i, x)",
+      "type":"function",
+      "name":"List:insert",
+      "parameter":"param",
+      "params":{
+        "1":"i",
+        "2":"x",
+        "map":{
+          "i":" index of element before whichh to insert",
+          "x":" A data item"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" i is the index of the\n element before which to insert.",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "x":[]
+        }
+      },
+      "summary":"Insert an item at the begining of the list.",
+      "lineno":122,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(x)",
+      "type":"function",
+      "name":"List:put",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "x":" a data item"
+        },
+        "1":"x"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "i":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"Remove an element given its index.",
+      "lineno":130,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(i)",
+      "type":"function",
+      "name":"List:remove",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "i":" the index"
+        },
+        "1":"i"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n (equivalent of Python's del s[i])",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "x":[]
+        }
+      },
+      "summary":"Remove the first item from the list whose value is given.",
+      "lineno":142,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(x)",
+      "type":"function",
+      "name":"List:remove_value",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "x":" A data value"
+        },
+        "1":"x"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n (This is called 'remove' in Python; renamed to avoid confusion\n with table.remove)\n Return nil if there is no such item.",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "opt":true,
+            "type":"int",
+            "optchain":true
+          },
+          "i":{
+            "opt":true,
+            "type":"int",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"Remove the item at the given position in the list, and return it.",
+      "lineno":154,
+      "retgroups":[{
+          "1":{
+            "text":"the item",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([i])",
+      "type":"function",
+      "name":"List:pop",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "i":" An index"
+        },
+        "1":"i"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n If no index is specified, a:pop() returns the last item in the list.\n The item is also removed from the list.",
+      "ret":["the item"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "idx":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "x":[]
+        },
+        "return":[[]]
+      },
+      "summary":"Return the index in the list of the first item whose value is given.",
+      "lineno":169,
+      "retgroups":[{
+          "1":{
+            "text":"the index, or nil if not found.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(x[, idx=1])",
+      "section":"function",
+      "name":"List:index",
+      "params":{
+        "1":"x",
+        "2":"idx",
+        "map":{
+          "idx":" where to start search",
+          "x":" A data value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Return nil if there is no such item.",
+      "type":"function",
+      "ret":["the index, or nil if not found."],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "x":[]
+        }
+      },
+      "summary":"Does this list contain the value?",
+      "lineno":175,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(x)",
+      "type":"function",
+      "name":"List:contains",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "x":" A data value"
+        },
+        "1":"x"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "x":[]
+        }
+      },
+      "summary":"Return the number of times value appears in the list.",
+      "lineno":182,
+      "retgroups":[{
+          "1":{
+            "text":"number of times x appears",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(x)",
+      "type":"function",
+      "name":"List:count",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "x":" A data value"
+        },
+        "1":"x"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["number of times x appears"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "opt":"'<'",
+            "type":"func",
+            "optchain":"'<'"
+          },
+          "cmp":{
+            "opt":"'<'",
+            "type":"func",
+            "optchain":"'<'"
+          }
+        }
+      },
+      "summary":"Sort the items of the list, in place.",
+      "lineno":193,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([cmp='<'])",
+      "type":"function",
+      "name":"List:sort",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "cmp":" an optional comparison function"
+        },
+        "1":"cmp"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "opt":"'<'",
+            "type":"func",
+            "optchain":"'<'"
+          },
+          "cmp":{
+            "opt":"'<'",
+            "type":"func",
+            "optchain":"'<'"
+          }
+        }
+      },
+      "summary":"Return a sorted copy of this list.",
+      "lineno":202,
+      "retgroups":[{
+          "1":{
+            "text":"a new list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([cmp='<'])",
+      "type":"function",
+      "name":"List:sorted",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "cmp":" an optional comparison function"
+        },
+        "1":"cmp"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a new list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Reverse the elements of the list, in place.",
+      "lineno":208,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"List:reverse",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[],[]]
+      },
+      "summary":"Return the minimum and the maximum value of the list.",
+      "lineno":221,
+      "retgroups":[{
+          "1":{
+            "text":"minimum value",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"maximum value",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"List:minmax",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["minimum value","maximum value"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "first":[],
+          "last":[]
+        }
+      },
+      "summary":"Emulate list slicing.",
+      "lineno":238,
+      "retgroups":[{
+          "1":{
+            "text":"a new List",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(first, last)",
+      "type":"function",
+      "name":"List:slice",
+      "parameter":"param",
+      "params":{
+        "1":"first",
+        "2":"last",
+        "map":{
+          "first":" An index",
+          "last":" An index"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"  like  'list[first:last]' in Python.\n If first or last are negative then they are relative to the end of the list\n eg. slice(-2) gives last 2 entries in a list, and\n slice(-4,-2) gives from -4th to -2nd",
+      "ret":["a new List"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Empty the list.",
+      "lineno":244,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"List:clear",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[],[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":{
+            "opt":true,
+            "type":"int",
+            "optchain":true
+          },
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "incr":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "start":{
+            "type":"int"
+          },
+          "finish":{
+            "opt":true,
+            "type":"int",
+            "optchain":true
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Emulate Python's range(x) function.",
+      "lineno":261,
+      "retgroups":[{
+          "1":{
+            "text":"a List from start .. finish",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(start[, finish[, incr=1]])",
+      "usage":["List.range(0,3) == List{0,1,2,3}\n","List.range(4) = List{1,2,3,4}\n","List.range(5,1,-1) == List{5,4,3,2,1}\n"],
+      "type":"function",
+      "name":"List.range",
+      "parameter":"param",
+      "params":{
+        "1":"start",
+        "2":"finish",
+        "map":{
+          "incr":" an increment (may be less than 1)",
+          "start":" A number",
+          "finish":" A number greater than start; if absent,\n then start is 1 and finish is start"
+        },
+        "3":"incr"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Include it in List table for tidiness",
+      "ret":["a List from start .. finish"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"list:len() is the same as #list.",
+      "lineno":280,
+      "args":"()",
+      "section":"function",
+      "name":"List:len",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":{
+            "type":"int"
+          },
+          "i1":{
+            "type":"int"
+          },
+          "i2":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"Remove a subrange of elements.",
+      "lineno":291,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(i1, i2)",
+      "type":"function",
+      "name":"List:chop",
+      "parameter":"param",
+      "params":{
+        "1":"i1",
+        "2":"i2",
+        "map":{
+          "i1":" start of range",
+          "i2":" end of range"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n equivalent to 'del s[i1:i2]' in Python.",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":{
+            "type":"List"
+          },
+          "list":{
+            "type":"List"
+          },
+          "idx":{
+            "type":"int"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Insert a sublist into a list\n equivalent to 's[idx:idx] = list' in Python",
+      "lineno":301,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(idx, list)",
+      "usage":["l = List{10,20}; l:splice(2,{21,22});  assert(l == List{10,21,22,20})\n"],
+      "type":"function",
+      "name":"List:splice",
+      "parameter":"param",
+      "params":{
+        "1":"idx",
+        "2":"list",
+        "map":{
+          "list":" list to insert",
+          "idx":" index"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"List"
+          },
+          "seq":{
+            "type":"List"
+          },
+          "i1":{
+            "type":"int"
+          },
+          "i2":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"General slice assignment s[i1:i2] = seq.",
+      "lineno":317,
+      "retgroups":[{
+          "1":{
+            "text":"the list",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(i1, i2, seq)",
+      "type":"function",
+      "name":"List:slice_assign",
+      "parameter":"param",
+      "params":{
+        "1":"i1",
+        "2":"i2",
+        "map":{
+          "seq":" a list",
+          "i1":"  start index",
+          "i2":"  end index"
+        },
+        "3":"seq"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the list"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"List"
+          },
+          "L":{
+            "type":"List"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Concatenation operator.",
+      "lineno":330,
+      "retgroups":[{
+          "1":{
+            "text":"a new list consisting of the list with the elements of the new list appended",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(L)",
+      "type":"function",
+      "name":"List:__concat",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "L":" another List"
+        },
+        "1":"L"
+      },
+      "tags":{
+        "within":"metamethods"
+      },
+      "kind":"metamethods",
+      "section":"metamethods",
+      "description":"",
+      "ret":["a new list consisting of the list with the elements of the new list appended"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"List"
+          },
+          "L":{
+            "type":"List"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Equality operator ==.",
+      "lineno":341,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(L)",
+      "type":"function",
+      "name":"List:__eq",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "L":" another List"
+        },
+        "1":"L"
+      },
+      "tags":{
+        "within":"metamethods"
+      },
+      "kind":"metamethods",
+      "section":"metamethods",
+      "description":"  True iff all elements of two lists are equal.",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "opt":"''",
+            "type":"string",
+            "optchain":"''"
+          },
+          "delim":{
+            "opt":"''",
+            "type":"string",
+            "optchain":"''"
+          }
+        }
+      },
+      "summary":"Join the elements of a list using a delimiter.",
+      "lineno":353,
+      "retgroups":[{
+          "1":{
+            "text":"a string",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([delim=''])",
+      "type":"function",
+      "name":"List:join",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "delim":" a delimiter string, can be empty."
+        },
+        "1":"delim"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This method uses tostring on all elements.",
+      "ret":["a string"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "opt":"''",
+            "type":"string",
+            "optchain":"''"
+          },
+          "delim":{
+            "opt":"''",
+            "type":"string",
+            "optchain":"''"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Join a list of strings.",
+      "lineno":364,
+      "retgroups":[{
+          "1":{
+            "text":"a string",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([delim=''])",
+      "section":"function",
+      "name":"List:concat",
+      "params":{
+        "map":{
+          "delim":" a delimiter"
+        },
+        "1":"delim"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" <br>\n Uses `table.concat` directly.",
+      "type":"function",
+      "ret":["a string"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[],
+        "see":[[]]
+      },
+      "summary":"How our list should be rendered as a string.",
+      "lineno":377,
+      "args":"()",
+      "section":"metamethods",
+      "name":"List:__tostring",
+      "params":{
+        "map":[]
+      },
+      "tags":{
+        "within":"metamethods",
+        "see":[]
+      },
+      "kind":"metamethods",
+      "description":" Uses join().",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        }
+      },
+      "summary":"Call the function on each element of the list.",
+      "lineno":384,
+      "args":"(fun, ...)",
+      "section":"function",
+      "name":"List:foreach",
+      "params":{
+        "1":"fun",
+        "2":"...",
+        "map":{
+          "fun":" a function or callable object",
+          "...":" optional values to pass to function"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "...":[],
+          "name":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Call the named method on each element of the list.",
+      "lineno":400,
+      "args":"(name, ...)",
+      "section":"function",
+      "name":"List:foreachm",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "...":" optional values to pass to function",
+          "name":" the method name"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "fun":{
+            "type":"func"
+          },
+          "arg":{
+            "optchain":true,
+            "opt":true
+          }
+        }
+      },
+      "summary":"Create a list of all elements which match a function.",
+      "lineno":412,
+      "retgroups":[{
+          "1":{
+            "text":"a new filtered list.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun[, arg])",
+      "type":"function",
+      "name":"List:filter",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"arg",
+        "map":{
+          "fun":" a boolean function",
+          "arg":" optional argument to be passed as second argument of the predicate"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a new filtered list."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "s":{
+            "type":"string"
+          },
+          "delim":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"Split a string using a delimiter.",
+      "lineno":421,
+      "retgroups":[{
+          "1":{
+            "text":"a List of strings",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s[, delim])",
+      "type":"function",
+      "name":"List.split",
+      "parameter":"param",
+      "params":{
+        "1":"s",
+        "2":"delim",
+        "map":{
+          "s":" the string",
+          "delim":" the delimiter (default spaces)"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a List of strings"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[[]],
+        "usage":[[]],
+        "see":[[]]
+      },
+      "summary":"Apply a function to all elements.",
+      "lineno":433,
+      "retgroups":[{
+          "1":{
+            "text":"a new list: {f(x) for x in self}",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun, ...)",
+      "usage":["List{'one','two'}:map(string.upper) == {'ONE','TWO'}\n"],
+      "type":"function",
+      "name":"List:map",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"...",
+        "map":{
+          "fun":" a function of at least one argument",
+          "...":" arbitrary extra arguments."
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Any extra arguments will be passed to the function.",
+      "ret":["a new list: {f(x) for x in self}"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        }
+      },
+      "summary":"Apply a function to all elements, in-place.",
+      "lineno":442,
+      "retgroups":[{
+          "1":{
+            "text":"the list.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun, ...)",
+      "type":"function",
+      "name":"List:transform",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"...",
+        "map":{
+          "fun":" A function that takes at least one argument",
+          "...":" arbitrary extra arguments."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Any extra arguments are passed to the function.",
+      "ret":["the list."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"List"
+          },
+          "3":[],
+          "ls":{
+            "type":"List"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"Apply a function to elements of two lists.",
+      "lineno":454,
+      "retgroups":[{
+          "1":{
+            "text":"a new list: {f(x,y) for x in self, for x in arg1}",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun, ls, ...)",
+      "type":"function",
+      "name":"List:map2",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"ls",
+        "map":{
+          "ls":" another list",
+          "fun":" a function of at least two arguments",
+          "...":" arbitrary extra arguments."
+        },
+        "3":"..."
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Any extra arguments will be passed to the function",
+      "ret":["a new list: {f(x,y) for x in self, for x in arg1}"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "...":[],
+          "name":{
+            "type":"string"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"apply a named method to all elements.",
+      "lineno":464,
+      "retgroups":[{
+          "1":{
+            "text":"a new list of the results",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(name, ...)",
+      "type":"function",
+      "name":"List:mapm",
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"...",
+        "map":{
+          "...":" extra arguments",
+          "name":" name of method"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Any extra arguments will be passed to the method.",
+      "ret":["a new list of the results"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "fun":{
+            "type":"func"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"'reduce' a list using a binary function.",
+      "lineno":500,
+      "retgroups":[{
+          "1":{
+            "text":"result of the function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun)",
+      "type":"function",
+      "name":"List:reduce",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "fun":" a function of two arguments"
+        },
+        "1":"fun"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["result of the function"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":[],
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[{
+            "type":"MultiMap"
+          }],
+        "see":[[]]
+      },
+      "summary":"Partition a list using a classifier function.",
+      "lineno":511,
+      "retgroups":[{
+          "1":{
+            "text":"a table where the keys are the returned values, and the values are Lists\n of values where the function returned that key.",
+            "type":"MultiMap",
+            "mods":{
+              "type":"MultiMap"
+            }
+          },
+          "g":0
+        }],
+      "args":"(fun, ...)",
+      "type":"function",
+      "name":"List:partition",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"...",
+        "map":{
+          "fun":" a function of at least one argument",
+          "...":" will also be passed to the function"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n The function may return nil, but this will be converted to the string key '<nil>'.",
+      "ret":["a table where the keys are the returned values, and the values are Lists\n of values where the function returned that key."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"return an iterator over all values.",
+      "lineno":525,
+      "args":"()",
+      "section":"function",
+      "name":"List:iter",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "seq":[]
+        }
+      },
+      "summary":"Create an iterator over a seqence.",
+      "lineno":535,
+      "args":"(seq)",
+      "usage":["for x in iterate {1,10,22,55} do io.write(x,',') end ==> 1,10,22,55\n","for ch in iterate 'help' do do io.write(ch,' ') end ==> h e l p\n"],
+      "section":"function",
+      "name":"List.iterate",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "seq":" a sequence; a string (over characters), a table, a file object (over lines) or an iterator function"
+        },
+        "1":"seq"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n This captures the Python concept of 'sequence'.\n For tables, iterates over all values with integer indices.",
+      "type":"function"
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/Penlight/lua/pl/List.lua"
+}

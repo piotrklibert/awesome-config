@@ -1,0 +1,184 @@
+{
+  "inferred":true,
+  "kind":"classes",
+  "mod_name":"index_theme",
+  "summary":"(Deprecated) class module for parsing an index.theme file",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"menubar.index_theme",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"cls",
+        "2":"icon_theme_name",
+        "3":"base_directories",
+        "map":{
+          "cls":" Metatable that will be used. Should always be `index_theme.mt`.",
+          "base_directories":" Paths used for lookup",
+          "icon_theme_name":" Internal name of icon theme"
+        }
+      },
+      "summary":"Class constructor of `index_theme`",
+      "name":"menubar.index_theme.new",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "cls":{
+            "type":"table"
+          },
+          "base_directories":{
+            "type":"table"
+          },
+          "icon_theme_name":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"table"
+          },
+          "cls":{
+            "type":"table"
+          },
+          "base_directories":{
+            "type":"table"
+          },
+          "icon_theme_name":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(cls, icon_theme_name, base_directories)",
+      "tags":[],
+      "lineno":39
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Table of the values of the `Directories` key",
+      "name":"menubar.index_theme:get_subdirectories",
+      "modifiers":{
+        "field":[],
+        "return":[{
+            "type":"table"
+          }]
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":138
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Table of the values of the `Inherits` key",
+      "name":"menubar.index_theme:get_inherits",
+      "modifiers":{
+        "field":[],
+        "return":[{
+            "type":"table"
+          }]
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":145
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"subdirectory",
+        "map":{
+          "subdirectory":" Icon theme's subdirectory"
+        }
+      },
+      "summary":"Query (part of) per-directory keys of a given subdirectory name.",
+      "name":"menubar.index_theme:get_per_directory_keys",
+      "modifiers":{
+        "return":[{
+            "type":"string"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "subdirectory":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "subdirectory":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"(subdirectory)",
+      "tags":[],
+      "lineno":157
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/awesome/build/lib/menubar/index_theme.lua",
+  "package":"menubar",
+  "tags":{
+    "author":["Kazunobu Kuriyama"],
+    "copyright":"2015 Kazunobu Kuriyama"
+  },
+  "lineno":9
+}

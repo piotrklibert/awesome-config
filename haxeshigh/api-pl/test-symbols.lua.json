@@ -1,0 +1,17 @@
+{
+  "name":"test-symbols.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/test-symbols.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"test-symbols.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"require 'pl'\n-- force us to look in the script's directory when requiring...\napp.require_here()\nrequire 'symbols'\n\nlocal MT = getmetatable(_1)\n\nadd = MT.__add\nmul = MT.__mul\npow = MT.__pow\n\n\nfunction testeq (e1,e2)\n    if not equals(e1,e2) then\n        print ('Not equal',repr(e1),repr(e2))\n    end\nend\n\nsin = register(math.sin,'sin')\n\nf = register(function(x,y,z) end)\n\n--[[\ntesteq (_1,_1)\ntesteq (_1+_2,_1+_2)\ntesteq (_1 + 3*_2,_1 + 3*_2)\ntesteq (_2+_1,_1+_2)\ntesteq (sin(_1),sin(_1))\ntesteq (1+f(10,20,'ok'),f(10,20,'ok')+1)\n--]]\n\n\nfunction testexpand (e)\n    print(repr(fold(expand(e)))) --fold\nend\n\n--[[\ntestexpand (a*(a+1))\n\ntestexpand ((x+2)*(b+1))\n]]--\n\nfunction testfold (e)\n    print(repr(fold(e)))\nend\n\na,b,c,x,y = Var 'a,b,c,x,y'\n\n--~ testfold(_1 + _2)\n--~ testfold(add(10,20))\n--~ testfold(add(mul(2,_1),mul(3,_2)))\n--[[\ntestfold(sin(a))\ne = a^(b+2)\ntestfold(e)\nbindval(b,1)\ntestfold(e)\nbindval(a,2)\ntestfold(e)\n\nbindval(a)\nbindval(b)\n]]\n\n\n\nfunction testdiff (e)\n    balance(e)\n    e = diff(e,x)\n    balance(e)\n    print('+ ',e)\n    e = fold(e)\n    print('- ',e)\nend\n\n\ntestdiff(x^2+1)\ntestdiff(3*x^2)\ntestdiff(x^2 + 2*x^3)\ntestdiff(x^2 + 2*a*x^3 + x^4)\ntestdiff(2*a*x^3)\ntestdiff(x*x*x)\n\n\n\n"
+}

@@ -1,0 +1,827 @@
+{
+  "inferred":true,
+  "kind":"widget_layouts",
+  "mod_name":"wibox.layout.stack",
+  "summary":"A stacked layout.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.layout.stack",
+  "modifiers":{
+    "usage":[[]],
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n This layout display widgets on top of each other. It can be used to overlay\n a `wibox.widget.textbox` on top of a `awful.widget.progressbar` or manage\n \"pages\" where only one is visible at any given moment.\n\n The indices are going from 1 (the bottom of the stack) up to the top of\n the stack. The order can be changed either using `:swap` or `:raise`.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_defaults_stack.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"...",
+        "map":{
+          "...":" Widgets that should be added (must at least be one)"
+        }
+      },
+      "summary":"Add some widgets to the given stack layout.",
+      "name":"add",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "...":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(...)",
+      "tags":{
+        "interface":["layout"]
+      },
+      "lineno":42
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"The",
+        "map":{
+          "The":" widget index to remove"
+        }
+      },
+      "summary":"Remove a widget from the layout.",
+      "name":"remove",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"index"
+          },
+          "The":{
+            "type":"index"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"index"
+          },
+          "The":{
+            "type":"index"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(The)",
+      "tags":{
+        "interface":["layout"]
+      },
+      "lineno":49
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"widget",
+        "map":{
+          "index":" The position",
+          "widget":" The widget"
+        }
+      },
+      "summary":"Insert a new widget in the layout at position `index`.",
+      "name":"insert",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, widget)",
+      "tags":{
+        "emits":["widget::inserted"],
+        "interface":["layout"],
+        "emitstparam":["widget::inserted widget self The fixed layout.","widget::inserted widget widget index The inserted widget.","widget::inserted number count The widget count."]
+      },
+      "lineno":61
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" ... Widgets that should be removed (must at least be one)"
+        }
+      },
+      "summary":"Remove one or more widgets from the layout.",
+      "name":"remove_widgets",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"\n\n The last parameter can be a boolean, forcing a recursive seach of the\n widget(s) to remove.\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget)",
+      "tags":{
+        "interface":["layout"]
+      },
+      "lineno":71
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"spacing",
+        "map":{
+          "spacing":" Spacing between widgets."
+        }
+      },
+      "modifiers":{
+        "interface":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "spacing":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "spacing":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_stack_spacing.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "interface":["layout"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add spacing around the widget, similar to the margin container.",
+      "name":"spacing",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    generic_widget( &#34first&#34  ),\n    generic_widget( &#34second&#34 ),\n    generic_widget( &#34third&#34  ),\n    spacing = 6,\n    layout  = wibox.layout.stack\n}\n"],
+      "args":"(spacing)",
+      "type":"property",
+      "lineno":90
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"top_only",
+        "map":{
+          "top_only":""
+        }
+      },
+      "summary":"If only the first stack widget is drawn.",
+      "name":"top_only",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"boolean"
+          },
+          "top_only":{
+            "type":"boolean"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "type":"boolean"
+          },
+          "top_only":{
+            "type":"boolean"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(top_only)",
+      "tags":{
+        "propemits":["true false"]
+      },
+      "lineno":126
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "map":{
+          "index":" the widget index to raise"
+        }
+      },
+      "summary":"Raise a widget at `index` to the top of the stack.",
+      "name":"raise",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "index":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index)",
+      "tags":[],
+      "lineno":140
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"recursive",
+        "map":{
+          "recursive":" Also look deeper in the hierarchy to\n   find the widget",
+          "widget":" The widget to raise"
+        }
+      },
+      "summary":"Raise the first instance of `widget`.",
+      "name":"raise_widget",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget[, recursive=false])",
+      "tags":[],
+      "lineno":156
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"horizontal_offset",
+        "map":{
+          "horizontal_offset":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "horizontal_offset":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "horizontal_offset":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n Note that this reduces the overall size of each widgets by the sum of all\n layers offsets.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_layout_stack_offset.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add an horizontal offset to each layers.",
+      "name":"horizontal_offset",
+      "kind":"object properties",
+      "usage":["wibox.widget {\n    generic_widget( &#34first&#34  ),\n    generic_widget( &#34second&#34 ),\n    generic_widget( &#34third&#34  ),\n    horizontal_offset = 5,\n    vertical_offset   = 5,\n    layout            = wibox.layout.stack\n}\n"],
+      "args":"(horizontal_offset)",
+      "type":"property",
+      "lineno":195
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"vertial_offset",
+        "map":{
+          "vertial_offset":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "vertial_offset":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "vertial_offset":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n Note that this reduces the overall size of each widgets by the sum of all\n layers offsets.\n",
+      "tags":{
+        "see":[],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add an vertical offset to each layers.",
+      "name":"vertial_offset",
+      "type":"property",
+      "args":"(vertial_offset)",
+      "kind":"object properties",
+      "lineno":205
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Create a new stack layout.",
+      "name":"wibox.layout.stack",
+      "modifiers":{
+        "field":[],
+        "return":[{
+            "type":"widget"
+          }]
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"()",
+      "tags":[],
+      "lineno":230
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index",
+        "2":"widget2",
+        "map":{
+          "index":" A widget or a widget index",
+          "widget2":" The widget to replace the previous one with"
+        }
+      },
+      "summary":"Set a widget at a specific index, replacing the current one.",
+      "name":"set",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget2":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "index":{
+            "type":"number"
+          },
+          "widget2":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index, widget2)",
+      "tags":{
+        "emits":["widget::replaced"],
+        "interface":["layout"],
+        "emitstparam":["widget::replaced widget self The layout.","widget::replaced widget widget The inserted widget.","widget::replaced widget previous The previous widget.","widget::replaced number index The replaced index."]
+      },
+      "lineno":259
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"widget2",
+        "3":"recursive",
+        "map":{
+          "widget2":" The widget to replace `widget` with",
+          "widget":" The widget to replace",
+          "recursive":" Recurse into all compatible layouts to\n   find the widget."
+        }
+      },
+      "summary":"Replace the first instance of `widget` in the layout with `widget2`.",
+      "name":"replace_widget",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget, widget2[, recursive=false])",
+      "tags":{
+        "emits":["widget::replaced"],
+        "interface":["layout"],
+        "emitstparam":["widget::replaced widget self The layout.","widget::replaced widget widget index The inserted widget.","widget::replaced widget previous The previous widget.","widget::replaced number index The replaced index."]
+      },
+      "lineno":275
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"index1",
+        "2":"index2",
+        "map":{
+          "index2":" The second widget index",
+          "index1":" The first widget index"
+        }
+      },
+      "summary":"Swap 2 widgets in a layout.",
+      "name":"swap",
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index2":{
+            "type":"number"
+          },
+          "index1":{
+            "type":"number"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "index2":{
+            "type":"number"
+          },
+          "index1":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(index1, index2)",
+      "tags":{
+        "emits":["widget::swapped"],
+        "interface":["layout"],
+        "emitstparam":["widget::swapped widget self The layout.","widget::swapped widget widget1 The first widget.","widget::swapped widget widget2 The second widget.","widget::swapped number index1 The first index.","widget::swapped number index1 The second index."]
+      },
+      "lineno":290
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"widget1",
+        "2":"widget2",
+        "3":"recursive",
+        "map":{
+          "widget2":" The second widget",
+          "recursive":" Recurse into all compatible layouts to\n   find the widget.",
+          "widget1":" The first widget"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget1":{
+            "type":"widget"
+          }
+        },
+        "emits":[[]],
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "2":{
+            "type":"widget"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget2":{
+            "type":"widget"
+          },
+          "recursive":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "widget1":{
+            "type":"widget"
+          }
+        },
+        "return":[{
+            "type":"boolean"
+          }],
+        "emitstparam":[[],[],[],[],[]],
+        "interface":[[]]
+      },
+      "description":"\n\n If `widget1` is present multiple time, only the first instance is swapped.\n\n Calls `set` internally, so the signal `widget::replaced` is emitted for both\n widgets as well.\n",
+      "tags":{
+        "see":[],
+        "emits":["widget::swapped"],
+        "interface":["layout"],
+        "emitstparam":["widget::swapped widget self The layout.","widget::swapped widget widget1 The first widget.","widget::swapped widget widget2 The second widget.","widget::swapped number index1 The first index.","widget::swapped number index1 The second index."]
+      },
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Swap 2 widgets in a layout.",
+      "name":"swap_widgets",
+      "type":"method",
+      "args":"(widget1, widget2[, recursive=false])",
+      "kind":"object methods ",
+      "lineno":313
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Reset the layout.",
+      "name":"reset",
+      "modifiers":{
+        "emits":[[]],
+        "field":[],
+        "return":[],
+        "emitstparam":[[]],
+        "interface":[[]]
+      },
+      "description":" This removes all widgets from the layout.",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":{
+        "interface":["layout"],
+        "emits":["widget::reset"],
+        "emitstparam":["widget::reset widget self The layout."]
+      },
+      "lineno":319
+    }],
+  "type":"layoutmod",
+  "usage":["wibox.widget {\n    generic_widget( &#34first&#34  ),\n    generic_widget( &#34second&#34 ),\n    generic_widget( &#34third&#34  ),\n    layout  = wibox.layout.stack\n}\n"],
+  "file":"/home/cji/portless/awesome/build/lib/wibox/layout/stack.lua",
+  "package":"",
+  "tags":{
+    "author":["Emmanuel Lepage Vallee"],
+    "copyright":"2016 Emmanuel Lepage Vallee",
+    "supermodule":["wibox.layout.fixed"]
+  },
+  "lineno":28
+}

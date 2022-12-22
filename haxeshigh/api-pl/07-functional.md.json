@@ -1,0 +1,1688 @@
+{
+  "kind":"manual",
+  "name":"07-functional.md",
+  "display_name":"Functional Programming",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+  "section":{
+    "display_name":"Placeholder Expressions",
+    "name":"Placeholder_Expressions",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+      "items":["<reference cycle>",{
+          "display_name":"Sequences",
+          "name":"Sequences",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"sequences ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Sequences",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Sequence Wrappers",
+          "name":"Sequence_Wrappers",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"sequence wrappers ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Sequence Wrappers",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"List Comprehensions",
+          "name":"List_Comprehensions",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"list comprehensions ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"List Comprehensions",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Creating Functions from Functions",
+          "name":"Creating_Functions_from_Functions",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"creating functions from functions ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Creating Functions from Functions",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"placeholder expressions ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Placeholder Expressions",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Functional Programming",
+      "sections":{
+        "155":"Sequence_Wrappers",
+        "3":"Sequences",
+        "256":"List_Comprehensions",
+        "420":"Placeholder_Expressions",
+        "338":"Creating_Functions_from_Functions"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Sequences",
+      "name":"Sequences",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"sequences ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequences",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Sequence Wrappers",
+            "name":"Sequence_Wrappers",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequence wrappers ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequence Wrappers",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"List Comprehensions",
+            "name":"List_Comprehensions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"list comprehensions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"List Comprehensions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Creating Functions from Functions",
+            "name":"Creating_Functions_from_Functions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"creating functions from functions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Creating Functions from Functions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Placeholder Expressions",
+            "name":"Placeholder_Expressions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"placeholder expressions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Placeholder Expressions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Functional Programming",
+        "sections":{
+          "155":"Sequence_Wrappers",
+          "3":"Sequences",
+          "256":"List_Comprehensions",
+          "420":"Placeholder_Expressions",
+          "338":"Creating_Functions_from_Functions"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"Sequence Wrappers",
+      "name":"Sequence_Wrappers",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+        "items":["<reference cycle>",{
+            "display_name":"Sequences",
+            "name":"Sequences",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequences ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequences",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"sequence wrappers ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequence Wrappers",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"List Comprehensions",
+            "name":"List_Comprehensions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"list comprehensions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"List Comprehensions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Creating Functions from Functions",
+            "name":"Creating_Functions_from_Functions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"creating functions from functions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Creating Functions from Functions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Placeholder Expressions",
+            "name":"Placeholder_Expressions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"placeholder expressions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Placeholder Expressions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Functional Programming",
+        "sections":{
+          "155":"Sequence_Wrappers",
+          "3":"Sequences",
+          "256":"List_Comprehensions",
+          "420":"Placeholder_Expressions",
+          "338":"Creating_Functions_from_Functions"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "3":{
+      "display_name":"List Comprehensions",
+      "name":"List_Comprehensions",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+        "items":["<reference cycle>",{
+            "display_name":"Sequences",
+            "name":"Sequences",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequences ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequences",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Sequence Wrappers",
+            "name":"Sequence_Wrappers",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequence wrappers ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequence Wrappers",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"list comprehensions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"List Comprehensions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Creating Functions from Functions",
+            "name":"Creating_Functions_from_Functions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"creating functions from functions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Creating Functions from Functions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Placeholder Expressions",
+            "name":"Placeholder_Expressions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"placeholder expressions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Placeholder Expressions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Functional Programming",
+        "sections":{
+          "155":"Sequence_Wrappers",
+          "3":"Sequences",
+          "256":"List_Comprehensions",
+          "420":"Placeholder_Expressions",
+          "338":"Creating_Functions_from_Functions"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "4":{
+      "display_name":"Creating Functions from Functions",
+      "name":"Creating_Functions_from_Functions",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+        "items":["<reference cycle>",{
+            "display_name":"Sequences",
+            "name":"Sequences",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequences ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequences",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Sequence Wrappers",
+            "name":"Sequence_Wrappers",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequence wrappers ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequence Wrappers",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"List Comprehensions",
+            "name":"List_Comprehensions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"list comprehensions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"List Comprehensions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"creating functions from functions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Creating Functions from Functions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Placeholder Expressions",
+            "name":"Placeholder_Expressions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"placeholder expressions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Placeholder Expressions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Functional Programming",
+        "sections":{
+          "155":"Sequence_Wrappers",
+          "3":"Sequences",
+          "256":"List_Comprehensions",
+          "420":"Placeholder_Expressions",
+          "338":"Creating_Functions_from_Functions"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "Sequence_Wrappers":{
+        "display_name":"Sequence Wrappers",
+        "name":"Sequence_Wrappers",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+          "items":["<reference cycle>",{
+              "display_name":"Sequences",
+              "name":"Sequences",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequences ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequences",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"sequence wrappers ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequence Wrappers",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"List Comprehensions",
+              "name":"List_Comprehensions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"list comprehensions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"List Comprehensions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Creating Functions from Functions",
+              "name":"Creating_Functions_from_Functions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"creating functions from functions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Creating Functions from Functions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Placeholder Expressions",
+              "name":"Placeholder_Expressions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"placeholder expressions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Placeholder Expressions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Functional Programming",
+          "sections":{
+            "155":"Sequence_Wrappers",
+            "3":"Sequences",
+            "256":"List_Comprehensions",
+            "420":"Placeholder_Expressions",
+            "338":"Creating_Functions_from_Functions"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "List_Comprehensions":{
+        "display_name":"List Comprehensions",
+        "name":"List_Comprehensions",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+          "items":["<reference cycle>",{
+              "display_name":"Sequences",
+              "name":"Sequences",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequences ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequences",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Sequence Wrappers",
+              "name":"Sequence_Wrappers",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequence wrappers ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequence Wrappers",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"list comprehensions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"List Comprehensions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Creating Functions from Functions",
+              "name":"Creating_Functions_from_Functions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"creating functions from functions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Creating Functions from Functions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Placeholder Expressions",
+              "name":"Placeholder_Expressions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"placeholder expressions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Placeholder Expressions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Functional Programming",
+          "sections":{
+            "155":"Sequence_Wrappers",
+            "3":"Sequences",
+            "256":"List_Comprehensions",
+            "420":"Placeholder_Expressions",
+            "338":"Creating_Functions_from_Functions"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Sequences":{
+        "display_name":"Sequences",
+        "name":"Sequences",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"sequences ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequences",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Sequence Wrappers",
+              "name":"Sequence_Wrappers",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequence wrappers ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequence Wrappers",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"List Comprehensions",
+              "name":"List_Comprehensions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"list comprehensions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"List Comprehensions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Creating Functions from Functions",
+              "name":"Creating_Functions_from_Functions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"creating functions from functions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Creating Functions from Functions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Placeholder Expressions",
+              "name":"Placeholder_Expressions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"placeholder expressions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Placeholder Expressions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Functional Programming",
+          "sections":{
+            "155":"Sequence_Wrappers",
+            "3":"Sequences",
+            "256":"List_Comprehensions",
+            "420":"Placeholder_Expressions",
+            "338":"Creating_Functions_from_Functions"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Placeholder_Expressions":{
+        "display_name":"Placeholder Expressions",
+        "name":"Placeholder_Expressions",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+          "items":["<reference cycle>",{
+              "display_name":"Sequences",
+              "name":"Sequences",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequences ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequences",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Sequence Wrappers",
+              "name":"Sequence_Wrappers",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequence wrappers ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequence Wrappers",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"List Comprehensions",
+              "name":"List_Comprehensions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"list comprehensions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"List Comprehensions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Creating Functions from Functions",
+              "name":"Creating_Functions_from_Functions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"creating functions from functions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Creating Functions from Functions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"placeholder expressions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Placeholder Expressions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Functional Programming",
+          "sections":{
+            "155":"Sequence_Wrappers",
+            "3":"Sequences",
+            "256":"List_Comprehensions",
+            "420":"Placeholder_Expressions",
+            "338":"Creating_Functions_from_Functions"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Creating_Functions_from_Functions":{
+        "display_name":"Creating Functions from Functions",
+        "name":"Creating_Functions_from_Functions",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+          "items":["<reference cycle>",{
+              "display_name":"Sequences",
+              "name":"Sequences",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequences ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequences",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Sequence Wrappers",
+              "name":"Sequence_Wrappers",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"sequence wrappers ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Sequence Wrappers",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"List Comprehensions",
+              "name":"List_Comprehensions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"list comprehensions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"List Comprehensions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"creating functions from functions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Creating Functions from Functions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Placeholder Expressions",
+              "name":"Placeholder_Expressions",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"placeholder expressions ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Placeholder Expressions",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Functional Programming",
+          "sections":{
+            "155":"Sequence_Wrappers",
+            "3":"Sequences",
+            "256":"List_Comprehensions",
+            "420":"Placeholder_Expressions",
+            "338":"Creating_Functions_from_Functions"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    },
+    "5":{
+      "display_name":"Placeholder Expressions",
+      "name":"Placeholder_Expressions",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/07-functional.md",
+        "items":["<reference cycle>",{
+            "display_name":"Sequences",
+            "name":"Sequences",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequences ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequences",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Sequence Wrappers",
+            "name":"Sequence_Wrappers",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"sequence wrappers ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Sequence Wrappers",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"List Comprehensions",
+            "name":"List_Comprehensions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"list comprehensions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"List Comprehensions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Creating Functions from Functions",
+            "name":"Creating_Functions_from_Functions",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"creating functions from functions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Creating Functions from Functions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"placeholder expressions ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Placeholder Expressions",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Functional Programming",
+        "sections":{
+          "155":"Sequence_Wrappers",
+          "3":"Sequences",
+          "256":"List_Comprehensions",
+          "420":"Placeholder_Expressions",
+          "338":"Creating_Functions_from_Functions"
+        }
+      },
+      "type":"section",
+      "summary":""
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"sequences ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Sequences",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"sequence wrappers ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Sequence Wrappers",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"list comprehensions ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"List Comprehensions",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"creating functions from functions ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Creating Functions from Functions",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"placeholder expressions ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Placeholder Expressions",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"07-functional.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Functional Programming\n\n### Sequences\n\n@lookup pl.seq\n\nA Lua iterator (in its simplest form) is a function which can be repeatedly\ncalled to return a set of one or more values. The `for in` statement understands\nthese iterators, and loops until the function returns `nil`. There are standard\nsequence adapters for tables in Lua (`ipairs` and `pairs`), and `io.lines`\nreturns an iterator over all the lines in a file. In the Penlight libraries, such\niterators are also called _sequences_.  A sequence of single values (say from\n`io.lines`) is called _single-valued_, whereas the sequence defined by `pairs` is\n_double-valued_.\n\n`pl.seq` provides a number of useful iterators, and some functions which operate\non sequences.  At first sight this example looks like an attempt to write Python\nin Lua, (with the sequence being inclusive):\n\n    > for i in seq.range(1,4) do print(i) end\n    1\n    2\n    3\n    4\n\nBut `range` is actually equivalent to Python's `xrange`, since it generates a\nsequence, not a list.  To get a list, use `seq.copy(seq.range(1,10))`, which\ntakes any single-value sequence and makes a table from the result. `seq.list` is\nlike `ipairs` except that it does not give you the index, just the value.\n\n    > for x in seq.list {1,2,3} do print(x) end\n    1\n    2\n    3\n\n`enum` takes a sequence and turns it into a double-valued sequence consisting of\na sequence number and the value, so `enum(list(ls))` is actually equivalent to\n`ipairs`. A more interesting example prints out a file with line numbers:\n\n    for i,v in seq.enum(io.lines(fname)) do print(i..' '..v) end\n\nSequences can be _combined_, either by 'zipping' them or by concatenating them.\n\n    > for x,y in seq.zip(l1,l2) do print(x,y) end\n    10      1\n    20      2\n    30      3\n    > for x in seq.splice(l1,l2) do print(x) end\n    10\n    20\n    30\n    1\n    2\n    3\n\n`seq.printall` is useful for printing out single-valued sequences, and provides\nsome finer control over formating, such as a delimiter, the number of fields per\nline, and a format string to use (@see string.format)\n\n    > seq.printall(seq.random(10))\n    0.0012512588885159 0.56358531449324 0.19330423902097 ....\n    > seq.printall(seq.random(10), ',', 4, '%4.2f')\n    0.17,0.86,0.71,0.51\n    0.30,0.01,0.09,0.36\n    0.15,0.17,\n\n`map` will apply a function to a sequence.\n\n    > seq.printall(seq.map(string.upper, {'one','two'}))\n    ONE TWO\n    > seq.printall(seq.map('+', {10,20,30}, 1))\n    11 21 31\n\n`filter` will filter a sequence using a boolean function (often called a\n_predicate_). For instance, this code only prints lines in a file which are\ncomposed of digits:\n\n    for l in seq.filter(io.lines(file), stringx.isdigit) do print(l) end\n\nThe following returns a table consisting of all the positive values in the\noriginal table (equivalent to `tablex.filter(ls, '>', 0)`)\n\n    ls = seq.copy(seq.filter(ls, '>', 0))\n\nWe're already encounted `seq.sum` when discussing `input.numbers`. This can also\nbe expressed with `seq.reduce`:\n\n    > seq.reduce(function(x,y) return x + y end, seq.list{1,2,3,4})\n    10\n\n`seq.reduce` applies a binary function in a recursive fashion, so that:\n\n    reduce(op,{1,2,3}) => op(1,reduce(op,{2,3}) => op(1,op(2,3))\n\nit's now possible to easily generate other cumulative operations; the standard\noperations declared in `pl.operator` are useful here:\n\n    > ops = require 'pl.operator'\n    > -- can also say '*' instead of ops.mul\n    > = seq.reduce(ops.mul,input.numbers '1 2 3 4')\n    24\n\nThere are functions to extract statistics from a sequence of numbers:\n\n    > l1 = List {10,20,30}\n    > l2 = List {1,2,3}\n    > = seq.minmax(l1)\n    10      30\n    > = seq.sum(l1)\n    60      3\n\nIt is common to get sequences where values are repeated, say the words in a file.\n`count_map` will take such a sequence and count the values, returning a table\nwhere the _keys_ are the unique values, and the value associated with each key is\nthe number of times they occurred:\n\n    > t = seq.count_map {'one','fred','two','one','two','two'}\n    > = t\n    {one=2,fred=1,two=3}\n\nThis will also work on numerical sequences, but you cannot expect the result to\nbe a proper list, i.e. having no 'holes'. Instead, you always need to use `pairs`\nto iterate over the result - note that there is a hole at index 5:\n\n    > t = seq.count_map {1,2,4,2,2,3,4,2,6}\n    > for k,v in pairs(t) do print(k,v) end\n    1       1\n    2       4\n    3       1\n    4       2\n    6       1\n\n`unique` uses `count_map` to return a list of the unique values, that is, just\nthe keys of the resulting table.\n\n`last` turns a single-valued sequence into a double-valued sequence with the\ncurrent value and the last value:\n\n    > for current,last in seq.last {10,20,30,40} do print (current,last) end\n    20      10\n    30      20\n    40      30\n\nThis makes it easy to do things like identify repeated lines in a file, or\nconstruct differences between values. `filter` can handle double-valued sequences\nas well, so one could filter such a sequence to only return cases where the\ncurrent value is less than the last value by using `operator.lt` or just '<'.\nThis code then copies the resulting code into a table.\n\n    > ls = {10,9,10,3}\n    > = seq.copy(seq.filter(seq.last(s),'<'))\n    {9,3}\n\n\n### Sequence Wrappers\n\nThe functions in `pl.seq` cover the common patterns when dealing with sequences,\nbut chaining these functions together can lead to ugly code. Consider the last\nexample of the previous section; `seq` is repeated three times and the resulting\nexpression has to be read right-to-left. The first issue can be helped by local\naliases, so that the expression becomes `copy(filter(last(s),'<'))` but the\nsecond issue refers to the somewhat unnatural order of functional application.\nWe tend to prefer reading operations from left to right, which is one reason why\nobject-oriented notation has become popular. Sequence adapters allow this\nexpression to be written like so:\n\n    seq(s):last():filter('<'):copy()\n\nWith this notation, the operation becomes a chain of method calls running from\nleft to right.\n\n'Sequence' is not a basic Lua type, they are generally functions or callable\nobjects. The expression `seq(s)` wraps a sequence in a _sequence wrapper_, which\nis an object which understands all the functions in `pl.seq` as methods. This\nobject then explicitly represents sequences.\n\nAs a special case, the  constructor (which is when you call the table `seq`) will\nmake a wrapper for a plain list-like table. Here we apply the length operator to\na sequence of strings, and print them out.\n\n    > seq{'one','tw','t'} :map '#' :printall()\n    3 2 1\n\nAs a convenience, there is a function `seq.lines` which behaves just like\n`io.lines` except it wraps the result as an explicit sequence type. This takes\nthe first 10 lines from standard input, makes it uppercase, turns it into a\nsequence with a count and the value, glues these together with the concatenation\noperator, and finally prints out the sequence delimited by a newline.\n\n    seq.lines():take(10):upper():enum():map('..'):printall '\\n'\n\nNote the method `upper`, which is not a `seq` function. if an unknown method is\ncalled, sequence wrappers apply that method to all the values in the sequence\n(this is implicit use of `mapmethod`)\n\nIt is straightforward to create custom sequences that can be used in this way. On\nUnix, `/dev/random` gives you an _endless_ sequence of random bytes, so we use\n`take` to limit the sequence, and then `map` to scale the result into the desired\nrange. The key step is to use `seq` to wrap the iterator function:\n\n    -- random.lua\n    local seq = require 'pl.seq'\n\n    function dev_random()\n        local f = io.open('/dev/random')\n        local byte = string.byte\n        return seq(function()\n            -- read two bytes into a string and convert into a 16-bit number\n            local s = f:read(2)\n            return byte(s,1) + 256*byte(s,2)\n        end)\n    end\n\n    -- print 10 random numbers from 0 to 1 !\n    dev_random():take(10):map('%',100):map('/',100):printall ','\n\n\nAnother Linux one-liner depends on the `/proc` filesystem and makes a list of all\nthe currently running processes:\n\n    pids = seq(lfs.dir '/proc'):filter(stringx.isdigit):map(tonumber):copy()\n\nThis version of Penlight has an experimental feature which relies on the fact\nthat _all_ Lua types can have metatables, including functions. This makes\n_implicit sequence wrapping_ possible:\n\n    > seq.import()\n    > seq.random(5):printall(',',5,'%4.1f')\n     0.0, 0.1, 0.4, 0.1, 0.2\n\nThis avoids the awkward `seq(seq.random(5))` construction. Or the iterator can\ncome from somewhere else completely:\n\n    > ('one two three'):gfind('%a+'):printall(',')\n    one,two,three,\n\nAfter `seq.import`, it is no longer necessary to explicitly wrap sequence\nfunctions.\n\nBut there is a price to pay for this convenience. _Every_ function is affected,\nso that any function can be used, appropriate or not:\n\n    > math.sin:printall()\n    ..seq.lua:287: bad argument #1 to '(for generator)' (number expected, got nil)\n    > a = tostring\n    > = a:find(' ')\n    function: 0042C920\n\nWhat function is returned? It's almost certain to be something that makes no\nsense in the current context. So implicit sequences may make certain kinds of\nprogramming mistakes harder to catch - they are best used for interactive\nexploration and small scripts.\n\n<a id=\"comprehensions\"/>\n\n### List Comprehensions\n\nList comprehensions are a compact way to create tables by specifying their\nelements. In Python, you can say this:\n\n    ls = [x for x in range(5)]  # == [0,1,2,3,4]\n\nIn Lua, using `pl.comprehension`:\n\n    > C = require('pl.comprehension').new()\n    > = C ('x for x=1,10') ()\n    {1,2,3,4,5,6,7,8,9,10}\n\n`C` is a function which compiles a list comprehension _string_ into a _function_.\nIn this case, the function has no arguments. The parentheses are redundant for a\nfunction taking a string argument, so this works as well:\n\n    > = C 'x^2 for x=1,4' ()\n    {1,4,9,16}\n    > = C '{x,x^2} for x=1,4' ()\n    {{1,1},{2,4},{3,9},{4,16}}\n\nNote that the expression can be _any_ function of the variable `x`!\n\nThe basic syntax so far is `<expr> for <set>`, where `<set>` can be anything that\nthe Lua `for` statement understands. `<set>` can also just be the variable, in\nwhich case the values will come from the _argument_ of the comprehension. Here\nI'm emphasizing that a comprehension is a function which can take a list argument:\n\n    > = C '2*x for x' {1,2,3}\n    {2,4,6}\n    > dbl = C '2*x for x'\n    > = dbl {10,20,30}\n    {20,40,60}\n\nHere is a somewhat more explicit way of saying the same thing; `_1` is a\n_placeholder_ refering to the _first_ argument passed to the comprehension.\n\n    > = C '2*x for _,x in pairs(_1)' {10,20,30}\n    {20,40,60}\n    > = C '_1(x) for x'(tostring,{1,2,3,4})\n    {'1','2','3','4'}\n\nThis extended syntax is useful when you wish to collect the result of some\niterator, such as `io.lines`. This comprehension creates a function which creates\na table of all the lines in a file:\n\n    > f = io.open('array.lua')\n    > lines = C 'line for line in _1:lines()' (f)\n    > = #lines\n    118\n\nThere are a number of functions that may be applied to the result of a\ncomprehension:\n\n    > = C 'min(x for x)' {1,44,0}\n    0\n    > = C 'max(x for x)' {1,44,0}\n    44\n    > = C 'sum(x for x)' {1,44,0}\n    45\n\n(These are equivalent to a reduce operation on a list.)\n\nAfter the `for` part, there may be a condition, which filters the output. This\ncomprehension collects the even numbers from a list:\n\n    > = C 'x for x if x % 2 == 0' {1,2,3,4,5}\n    {2,4}\n\nThere may be a number of `for` parts:\n\n    > = C '{x,y} for x = 1,2 for y = 1,2' ()\n    {{1,1},{1,2},{2,1},{2,2}}\n    > = C '{x,y} for x for y' ({1,2},{10,20})\n    {{1,10},{1,20},{2,10},{2,20}}\n\nThese comprehensions are useful when dealing with functions of more than one\nvariable, and are not so easily achieved with the other Penlight functional forms.\n\n<a id=\"func\"/>\n\n### Creating Functions from Functions\n\n@lookup pl.func\n\nLua functions may be treated like any other value, although of course you cannot\nmultiply or add them. One operation that makes sense is _function composition_,\nwhich chains function calls (so `(f * g)(x)` is `f(g(x))`.)\n\n    > func = require 'pl.func'\n    > printf = func.compose(io.write,string.format)\n    > printf(\"hello %s\\n\",'world')\n    hello world\n    true\n\nMany functions require you to pass a function as an argument, say to apply to all\nvalues of a sequence or as a callback. Often useful functions have the wrong\nnumber of arguments. So there is a need to construct a function of one argument\nfrom one of two arguments, _binding_ the extra argument to a given value.\n\n_partial application_ takes a function of n arguments and returns a function of n-1\narguments where the first argument is bound to some value:\n\n    > p2 = func.bind1(print,'start>')\n    > p2('hello',2)\n    start>  hello   2\n    > ops = require 'pl.operator'\n    > = tablex.filter({1,-2,10,-1,2},bind1(ops.gt,0))\n    {-2,-1}\n    > tablex.filter({1,-2,10,-1,2},bind1(ops.le,0))\n    {1,10,2}\n\nThe last example unfortunately reads backwards, because `bind1` alway binds the\nfirst argument!  Also unfortunately, in my youth I confused 'currying' with\n'partial application', so the old name for `bind1` is `curry` - this alias still exists.\n\nThis is a specialized form of function argument binding. Here is another way\nto say the `print` example:\n\n    > p2 = func.bind(print,'start>',func._1,func._2)\n    > p2('hello',2)\n    start>  hello   2\n\nwhere `_1` and `_2` are _placeholder variables_, corresponding to the first and\nsecond argument respectively.\n\nHaving `func` all over the place is distracting, so it's useful to pull all of\n`pl.func` into the local context. Here is the filter example, this time the right\nway around:\n\n    > utils.import 'pl.func'\n    > tablex.filter({1,-2,10,-1,2},bind(ops.gt, _1, 0))\n    {1,10,2}\n\n`tablex.merge` does a general merge of two tables. This example shows the\nusefulness of binding the last argument of a function.\n\n    > S1 = {john=27, jane=31, mary=24}\n    > S2 = {jane=31, jones=50}\n    > intersection = bind(tablex.merge, _1, _2, false)\n    > union = bind(tablex.merge, _1, _2, true)\n    > = intersection(S1,S2)\n    {jane=31}\n    > = union(S1,S2)\n    {mary=24,jane=31,john=27,jones=50}\n\nWhen using `bind` with `print`, we got a function of precisely two arguments,\nwhereas we really want our function to use varargs like `print`. This is the role\nof `_0`:\n\n    > _DEBUG = true\n    > p = bind(print,'start>', _0)\n    return function (fn,_v1)\n        return function(...) return fn(_v1,...) end\n    end\n\n    > p(1,2,3,4,5)\n    start>  1       2       3       4       5\n\nI've turned on the global `_DEBUG` flag, so that the function generated is\nprinted out. It is actually a function which _generates_ the required function;\nthe first call _binds the value_ of `_v1` to 'start>'.\n\n### Placeholder Expressions\n\nA common pattern in Penlight is a function which applies another function to all\nelements in a table or a sequence, such as `tablex.map` or `seq.filter`. Lua does\nanonymous functions well, although they can be a bit tedious to type:\n\n    > = tablex.map(function(x) return x*x end, {1,2,3,4})\n    {1,4,9,16}\n\n`pl.func` allows you to define _placeholder expressions_, which can cut down on\nthe typing required, and also make your intent clearer. First, we bring contents\nof `pl.func` into our context, and then supply an expression using placeholder\nvariables, such as `_1`,`_2`,etc. (C++ programmers will recognize this from the\nBoost libraries.)\n\n    > utils.import 'pl.func'\n    > = tablex.map(_1*_1, {1,2,3,4})\n    {1,4,9,16}\n\nFunctions of up to 5 arguments can be generated.\n\n    > = tablex.map2(_1+_2,{1,2,3}, {10,20,30})\n    {11,22,33}\n\nThese expressions can use arbitrary functions, altho they must first be\nregistered with the functional library. `func.register` brings in a single\nfunction, and `func.import` brings in a whole table of functions, such as `math`.\n\n    > sin = register(math.sin)\n    > = tablex.map(sin(_1), {1,2,3,4})\n    {0.8414709848079,0.90929742682568,0.14112000805987,-0.75680249530793}\n    > import 'math'\n    > = tablex.map(cos(2*_1),{1,2,3,4})\n    {-0.41614683654714,-0.65364362086361,0.96017028665037,-0.14550003380861}\n\nA common operation is calling a method of a set of objects:\n\n    > = tablex.map(_1:sub(1,1), {'one','four','x'})\n    {'o','f','x'}\n\nThere are some restrictions on what operators can be used in PEs. For instance,\nbecause the `__len` metamethod cannot be overriden by plain Lua tables, we need\nto define a special function to express `#_1':\n\n    > = tablex.map(Len(_1), {'one','four','x'})\n    {3,4,1}\n\nLikewise for comparison operators, which cannot be overloaded for _different_\ntypes, and thus also have to be expressed as a special function:\n\n    > = tablex.filter(Gt(_1,0), {1,-1,2,4,-3})\n    {1,2,4}\n\nIt is useful to express the fact that a function returns multiple values. For\ninstance, `tablex.pairmap`  expects a function that will be called with the key\nand the value, and returns the new value and the key, in that order.\n\n    > = pairmap(Args(_2,_1:upper()),{fred=1,alice=2})\n    {ALICE=2,FRED=1}\n\nPEs cannot contain `nil` values, since PE function arguments are represented as\nan array. Instead, a special value called `Nil` is provided.  So say\n`_1:f(Nil,1)` instead of `_1:f(nil,1)`.\n\nA placeholder expression cannot be automatically used as a Lua function. The\ntechnical reason is that the call operator must be overloaded to construct\nfunction calls like `_1(1)`.  If you want to force a PE to return a function, use\n`func.I`.\n\n    > = tablex.map(_1(10),{I(2*_1),I(_1*_1),I(_1+2)})\n    {20,100,12}\n\nHere we make a table of functions taking a single argument, and then call them\nall with a value of 10.\n\nThe essential idea with PEs is to 'quote' an expression so that it is not\nimmediately evaluated, but instead turned into a function that can be applied\nlater to some arguments. The basic mechanism is to wrap values and placeholders\nso that the usual Lua operators have the effect of building up an _expression\ntree_. (It turns out that you can do _symbolic algebra_ using PEs, see\n`symbols.lua` in the examples directory, and its test runner `testsym.lua`, which\ndemonstrates symbolic differentiation.)\n\nThe rule is that if any operator has a PE operand, the result will be quoted.\nSometimes we need to quote things explicitly. For instance, say we want to pass a\nfunction to a filter that must return true if the element value is in a set.\n`set[_1]` is the obvious expression, but it does not give the desired result,\nsince it evaluates directly, giving `nil`. Indexing works differently than a\nbinary operation like addition (set+_1 _is_ properly quoted) so there is a need\nfor an explicit quoting or wrapping operation. This is the job of the `_`\nfunction; the PE in this case should be `_(set)[_1]`.  This works for functions\nas well, as a convenient alternative to registering functions: `_(math.sin)(_1)`.\nThis is equivalent to using the `lines' method:\n\n    for line in I(_(f):read()) do print(line) end\n\nNow this will work for _any_ 'file-like' object which which has a `read` method\nreturning the next line. If you had a LuaSocket client which was being 'pushed'\nby lines sent from a server, then `_(s):receive '*l'` would create an iterator\nfor accepting input. These forms can be convenient for adapting your data flow so\nthat it can be passed to the sequence functions in `pl.seq'.\n\nPlaceholder expressions can be mixed with sequence wrapper expressions.\n`lexer.lua` will give us a double-valued sequence of tokens, where the first\nvalue is a type, and the second is a value. We filter out only the values where\nthe type is 'iden', extract the actual value using `map`, get the unique values\nand finally copy to a list.\n\n    > str = 'for i=1,10 do for j = 1,10 do print(i,j) end end'\n    > = seq(lexer.lua(str)):filter('==','iden'):map(_2):unique():copy()\n    {i,print,j}\n\nThis is a particularly intense line (and I don't always suggest making everything\na one-liner!); the key is the behaviour of `map`, which will take both values of\nthe sequence, so `_2` returns the value part. (Since `filter` here takes extra\narguments, it only operates on the type values.)\n\nThere are some performance considerations to using placeholder expressions.\nInstantiating a PE requires constructing and compiling a function, which is not\nsuch a fast operation. So to get best performance, factor out PEs from loops like\nthis;\n\n    local fn = I(_1:f() + _2:g())\n    for i = 1,n do\n        res[i] = tablex.map2(fn,first[i],second[i])\n    end\n\n\n"
+}

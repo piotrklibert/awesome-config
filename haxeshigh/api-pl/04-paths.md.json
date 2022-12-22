@@ -1,0 +1,700 @@
+{
+  "kind":"manual",
+  "name":"04-paths.md",
+  "display_name":"Paths and Directories",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+  "section":{
+    "display_name":"Directory Operations",
+    "name":"Directory_Operations",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+      "items":["<reference cycle>",{
+          "display_name":"Working with Paths",
+          "name":"Working_with_Paths",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"working with paths ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Working with Paths",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"File Operations",
+          "name":"File_Operations",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"file operations ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"File Operations",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"directory operations ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Directory Operations",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Paths and Directories",
+      "sections":{
+        "67":"File_Operations",
+        "100":"Directory_Operations",
+        "3":"Working_with_Paths"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Working with Paths",
+      "name":"Working_with_Paths",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"working with paths ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Working with Paths",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"File Operations",
+            "name":"File_Operations",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"file operations ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File Operations",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Directory Operations",
+            "name":"Directory_Operations",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"directory operations ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Directory Operations",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Paths and Directories",
+        "sections":{
+          "67":"File_Operations",
+          "100":"Directory_Operations",
+          "3":"Working_with_Paths"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"File Operations",
+      "name":"File_Operations",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+        "items":["<reference cycle>",{
+            "display_name":"Working with Paths",
+            "name":"Working_with_Paths",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"working with paths ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Working with Paths",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"file operations ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File Operations",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Directory Operations",
+            "name":"Directory_Operations",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"directory operations ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Directory Operations",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Paths and Directories",
+        "sections":{
+          "67":"File_Operations",
+          "100":"Directory_Operations",
+          "3":"Working_with_Paths"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "Directory_Operations":{
+        "display_name":"Directory Operations",
+        "name":"Directory_Operations",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+          "items":["<reference cycle>",{
+              "display_name":"Working with Paths",
+              "name":"Working_with_Paths",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"working with paths ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Working with Paths",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"File Operations",
+              "name":"File_Operations",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"file operations ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File Operations",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"directory operations ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Directory Operations",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Paths and Directories",
+          "sections":{
+            "67":"File_Operations",
+            "100":"Directory_Operations",
+            "3":"Working_with_Paths"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "File_Operations":{
+        "display_name":"File Operations",
+        "name":"File_Operations",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+          "items":["<reference cycle>",{
+              "display_name":"Working with Paths",
+              "name":"Working_with_Paths",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"working with paths ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Working with Paths",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"file operations ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File Operations",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Directory Operations",
+              "name":"Directory_Operations",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"directory operations ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Directory Operations",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Paths and Directories",
+          "sections":{
+            "67":"File_Operations",
+            "100":"Directory_Operations",
+            "3":"Working_with_Paths"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Working_with_Paths":{
+        "display_name":"Working with Paths",
+        "name":"Working_with_Paths",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"working with paths ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Working with Paths",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"File Operations",
+              "name":"File_Operations",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"file operations ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File Operations",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Directory Operations",
+              "name":"Directory_Operations",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"directory operations ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Directory Operations",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Paths and Directories",
+          "sections":{
+            "67":"File_Operations",
+            "100":"Directory_Operations",
+            "3":"Working_with_Paths"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    },
+    "3":{
+      "display_name":"Directory Operations",
+      "name":"Directory_Operations",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/04-paths.md",
+        "items":["<reference cycle>",{
+            "display_name":"Working with Paths",
+            "name":"Working_with_Paths",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"working with paths ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Working with Paths",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"File Operations",
+            "name":"File_Operations",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"file operations ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File Operations",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"directory operations ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Directory Operations",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Paths and Directories",
+        "sections":{
+          "67":"File_Operations",
+          "100":"Directory_Operations",
+          "3":"Working_with_Paths"
+        }
+      },
+      "type":"section",
+      "summary":""
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"working with paths ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Working with Paths",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"file operations ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"File Operations",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"directory operations ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Directory Operations",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"04-paths.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Paths and Directories\n\n### Working with Paths\n\nPrograms should not depend on quirks of your operating system. They will be\nharder to read, and need to be ported for other systems.  The worst of course is\nhardcoding paths like 'c:\\\\' in programs, and wondering why Vista complains so\nmuch. But even something like `dir..'\\\\'..file` is a problem, since Unix can't\nunderstand backslashes in this way. `dir..'/'..file` is _usually_ portable, but\nit's best to put this all into a simple function, `path.join`. If you\nconsistently use `path.join`, then it's much easier to write cross-platform code,\nsince it handles the directory separator for you.\n\n`pl.path` provides the same functionality as Python's `os.path` module (11.1).\n\n    > p = 'c:\\\\bonzo\\\\DOG.txt'\n    > = path.normcase (p)  ---> only makes sense on Windows\n    c:\\bonzo\\dog.txt\n    > = path.splitext (p)\n    c:\\bonzo\\DOG    .txt\n    > = path.extension (p)\n    .txt\n    > = path.basename (p)\n    DOG.txt\n    > = path.exists(p)\n    false\n    > = path.join ('fred','alice.txt')\n    fred\\alice.txt\n    > = path.exists 'pretty.lua'\n    true\n    > = path.getsize 'pretty.lua'\n    2125\n    > = path.isfile 'pretty.lua'\n    true\n    > = path.isdir 'pretty.lua'\n    false\n\n\nIt is very important for all programmers, not just on Unix, to only write to\nwhere they are allowed to write. `path.expanduser` will expand '~' (tilde) into\nthe home directory. Depending on your OS, this will be a guaranteed place where\nyou can create files:\n\n    > = path.expanduser '~/mydata.txt'\n    'C:\\Documents and Settings\\SJDonova/mydata.txt'\n\n    > = path.expanduser '~/mydata.txt'\n    /home/sdonovan/mydata.txt\n\nUnder Windows, `os.tmpname` returns a path which leads to your drive root full of\ntemporary files. (And increasingly, you do not have access to this root folder.)\nThis is corrected by `path.tmpname`, which uses the environment variable TMP:\n\n    > os.tmpname()  -- not a good place to put temporary files!\n    '\\s25g.'\n    > path.tmpname()\n    'C:\\DOCUME~1\\SJDonova\\LOCALS~1\\Temp\\s25g.1'\n\n\nA useful extra function is `pl.path.package_path`, which will tell you the path\nof a particular Lua module.  So on my system, `package_path('pl.path')` returns\n'C:\\Program Files\\Lua\\5.1\\lualibs\\pl\\path.lua', and `package_path('ifs')` returns\n'C:\\Program Files\\Lua\\5.1\\clibs\\lfs.dll'. It is implemented in terms of\n`package.searchpath`, which is a new function in Lua 5.2 which has been\nimplemented for Lua 5.1 in Penlight.\n\n### File Operations\n\n`pl.file` is a new module that provides more sensible names for common file\noperations. For instance, `file.read` and `file.write` are aliases for\n`utils.readfile` and `utils.writefile`.\n\nSmaller files can be efficiently read and written in one operation. `file.read`\nis passed a filename and returns the contents as a string, if successful; if not,\nthen it returns `nil` and the actual error message. There is an optional boolean\nparameter if you want the file to be read in binary mode (this makes no\ndifference on Unix but remains important with Windows.)\n\nIn previous versions of Penlight, `utils.readfile` would read standard input if\nthe file was not specified, but this can lead to nasty bugs; use `io.read '*a'`\nto grab all of standard input.\n\nSimilarly, `file.write` takes a filename and a string which will be written to\nthat file.\n\nFor example, this little script converts a file into upper case:\n\n    require 'pl'\n\tassert(#arg == 2, 'supply two filenames')\n\ttext = assert(file.read(arg[1]))\n    assert(file.write(arg[2],text:upper()))\n\nCopying files is suprisingly tricky. `file.copy` and `file.move` attempt to use\nthe best implementation possible. On Windows, they link to the API functions\n`CopyFile` and `MoveFile`, but only if the `alien` package is installed (this is\ntrue for Lua for Windows.) Otherwise, the system copy command is used. This can\nbe ugly when writing Windows GUI applications, because of the dreaded flashing\nblack-box problem with launching processes.\n\n### Directory Operations\n\n`pl.dir` provides some useful functions for working with directories. `fnmatch`\nwill match a filename against a shell pattern, and `filter` will return any files\nin the supplied list which match the given pattern, which correspond to the\nfunctions in the Python `fnmatch` module. `getdirectories` will return all\ndirectories contained in a directory, and `getfiles` will return all files in a\ndirectory which match a shell pattern. These functions return the files as a\ntable, unlike `lfs.dir` which returns an iterator.)\n\n`dir.makepath` can create a full path, creating subdirectories as necessary;\n`rmtree` is the Nuclear Option of file deleting functions, since it will\nrecursively clear out and delete all directories found begining at a path (there\nis a similar function with this name in the Python `shutils` module.)\n\n    > = dir.makepath 't\\\\temp\\\\bonzo'\n    > = path.isdir 't\\\\temp\\\\bonzo'\n    true\n    > = dir.rmtree 't'\n\n`dir.rmtree` depends on `dir.walk`, which is a powerful tool for scanning a whole\ndirectory tree. Here is the implementation of `dir.rmtree`:\n\n    --- remove a whole directory tree.\n    -- @param path A directory path\n    function dir.rmtree(fullpath)\n        for root,dirs,files in dir.walk(fullpath) do\n            for i,f in ipairs(files) do\n                os.remove(path.join(root,f))\n            end\n            lfs.rmdir(root)\n        end\n    end\n\n\n`dir.clonetree` clones directory trees. The first argument is a path that must\nexist, and the second path is the path to be cloned. (Note that this path cannot\nbe _inside_ the first path, since this leads to madness.)  By default, it will\nthen just recreate the directory structure. You can in addition provide a\nfunction, which will be applied for all files found.\n\n    -- make a copy of my libs folder\n    require 'pl'\n    p1 = [[d:\\dev\\lua\\libs]]\n    p2 = [[D:\\dev\\lua\\libs\\..\\tests]]\n    dir.clonetree(p1,p2,dir.copyfile)\n\nA more sophisticated version, which only copies files which have been modified:\n\n    -- p1 and p2 as before, or from arg[1] and arg[2]\n    dir.clonetree(p1,p2,function(f1,f2)\n      local res\n      local t1,t2 = path.getmtime(f1),path.getmtime(f2)\n\t  -- f2 might not exist, so be careful about t2\n      if not t2 or t1 > t2 then\n        res = dir.copyfile(f1,f2)\n      end\n      return res -- indicates successful operation\n    end)\n\n`dir.clonetree` uses `path.common_prefix`. With `p1` and `p2` defined above, the\ncommon path is 'd:\\dev\\lua'. So 'd:\\dev\\lua\\libs\\testfunc.lua' is copied to\n'd:\\dev\\lua\\test\\testfunc.lua', etc.\n\nIf you need to find the common path of list of files, then `tablex.reduce` will\ndo the job:\n\n    > p3 = [[d:\\dev]]\n    > = tablex.reduce(path.common_prefix,{p1,p2,p3})\n    'd:\\dev'\n\n"
+}

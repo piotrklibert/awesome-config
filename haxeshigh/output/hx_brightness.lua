@@ -202,8 +202,9 @@ local Reflect = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
 local StringTools = _hx_e()
+local Sys = _hx_e()
 local __awful_Naughty = _G.require("naughty")
-local __awful_Spawn = _G.require("awful.spawn")
+local __awful_NativeSpawn = _G.require("awful.spawn")
 local __awful_Wibox = _G.require("wibox")
 __brightness_State = _hx_e()
 local __sys_io_File = _hx_e()
@@ -212,10 +213,14 @@ local __safety_SafetyException = _hx_e()
 local __safety_NullPointerException = _hx_e()
 local __haxe_NativeStackTrace = _hx_e()
 local __brightness_BrightnessWidget = _hx_e()
+local __brightness_PowerWidget = _hx_e()
 local __pkg_PackageBase = _hx_e()
 local __pkg_PackageDefinition = _hx_e()
 local __brightness_Pkg = _hx_e()
 local __haxe_IMap = _hx_e()
+local __haxe_EntryPoint = _hx_e()
+local __haxe_MainEvent = _hx_e()
+local __haxe_MainLoop = _hx_e()
 local __haxe_ValueException = _hx_e()
 __haxe_ds_Either = _hx_e()
 local __haxe_ds_StringMap = _hx_e()
@@ -226,6 +231,7 @@ local __log_Log = _hx_e()
 local __lua_Boot = _hx_e()
 local __lua_UserData = _hx_e()
 local __lua_Thread = _hx_e()
+local __lua_lib_luv_Misc = _G.require("luv")
 local __pkg_PackageManager = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -824,45 +830,19 @@ Std.parseInt = function(x)
   if (x == nil) then 
     do return nil end;
   end;
-  local hexMatch = _G.string.match(x, "^[ \t\r\n]*([%-+]*0[xX][%da-fA-F]*)");
-  if (hexMatch ~= nil) then 
-    local sign;
-    local _g = __lua_lib_luautf8_Utf8.byte(hexMatch, 1);
-    if (_g) == 43 then 
-      sign = 1;
-    elseif (_g) == 45 then 
-      sign = -1;else
-    sign = 0; end;
-    local pos = (function() 
-      local _hx_1
-      if (sign == 0) then 
-      _hx_1 = 2; else 
-      _hx_1 = 3; end
-      return _hx_1
-    end )();
-    local len = nil;
-    len = __lua_lib_luautf8_Utf8.len(hexMatch);
-    if (pos < 0) then 
-      pos = __lua_lib_luautf8_Utf8.len(hexMatch) + pos;
-    end;
-    if (pos < 0) then 
-      pos = 0;
-    end;
-    do return (function() 
-      local _hx_2
-      if (sign == -1) then 
-      _hx_2 = -1; else 
-      _hx_2 = 1; end
-      return _hx_2
-    end )() * _G.tonumber(__lua_lib_luautf8_Utf8.sub(hexMatch, pos + 1, pos + len), 16) end;
-  else
-    local intMatch = _G.string.match(x, "^ *[%-+]?%d*");
-    if (intMatch ~= nil) then 
-      do return _G.tonumber(intMatch) end;
+  local sign, numString = _G.string.match(x, "^%s*([%-+]?)0[xX]([%da-fA-F]*)");
+  if (numString ~= nil) then 
+    if (sign == "-") then 
+      do return -_G.tonumber(numString, 16) end;
     else
-      do return nil end;
+      do return _G.tonumber(numString, 16) end;
     end;
   end;
+  local intMatch = _G.string.match(x, "^%s*[%-+]?%d*");
+  if (intMatch == nil) then 
+    do return nil end;
+  end;
+  do return _G.tonumber(intMatch) end;
 end
 
 StringTools.new = {}
@@ -927,6 +907,13 @@ StringTools.rtrim = function(s)
 end
 StringTools.trim = function(s) 
   do return StringTools.ltrim(StringTools.rtrim(s)) end;
+end
+
+Sys.new = {}
+Sys.__name__ = true
+Sys.time = function() 
+  local _hx_1_stamp_seconds, _hx_1_stamp_microseconds = __lua_lib_luv_Misc.gettimeofday();
+  do return _hx_1_stamp_seconds + (_hx_1_stamp_microseconds / 1000000) end;
 end
 _hxClasses["brightness.State"] = { __ename__ = true, __constructs__ = _hx_tab_array({[0]="InProgress","Ready"},2)}
 __brightness_State = _hxClasses["brightness.State"];
@@ -1087,53 +1074,27 @@ __brightness_BrightnessWidget.prototype.set_brightness = function(self,percent)
   end;
   local val = Std.int((percent / 100) * __brightness_BrightnessWidget.max);
   self.state = __brightness_State.InProgress(percent);
-  __awful_Spawn.easy_async("sudo bash -c \"echo " .. Std.string(val) .. " >" .. __brightness_BrightnessWidget.BACKLIGHT_PATH .. "\"", function(_) 
+  __awful_NativeSpawn.easy_async("sudo bash -c \"echo " .. Std.string(val) .. " >" .. __brightness_BrightnessWidget.BACKLIGHT_PATH .. "\"", function(_) 
     local tmp = __brightness_BrightnessWidget.get_percent_brightness();
     _gthis.state = __brightness_State.Ready(tmp);
   end);
   do return val end
 end
-__brightness_BrightnessWidget.prototype.mkText = function(self,txt) 
-  do return __awful_Wibox.widget(({widget = __awful_Wibox.widget.textbox, font = __brightness_BrightnessWidget.FONT, text = txt})) end
+__brightness_BrightnessWidget.prototype.makeText = function(self,txt) 
+  do return ({widget = __awful_Wibox.widget.textbox, font = __brightness_BrightnessWidget.FONT, text = txt}) end
+end
+__brightness_BrightnessWidget.prototype.makeSeparator = function(self,thickness) 
+  if (thickness == nil) then 
+    thickness = 1;
+  end;
+  do return ({top = 3, bottom = 3, widget = __awful_Wibox.container.margin,({thickness = thickness, forced_width = 5, widget = __awful_Wibox.widget.separator})}) end
 end
 __brightness_BrightnessWidget.prototype.w = function(self) 
   local txt = " " .. Std.string(__brightness_BrightnessWidget.get_percent_brightness()) .. "%";
   local brightness_text = __awful_Wibox.widget(({widget = __awful_Wibox.widget.textbox, font = __brightness_BrightnessWidget.FONT, text = txt}));
-  local args = ({layout = __awful_Wibox.layout.fixed.horizontal, forced_width = 90,(function() 
-    local _hx_1
-    
-    local args = ({widget = __awful_Wibox.container.margin, top = 5,({widget = __awful_Wibox.widget.imagebox, image = __brightness_BrightnessWidget.PATH_TO_ICON, resize = false, forced_width = 25})});
-    
-    _hx_1 = __awful_Wibox.widget(args);
-    return _hx_1
-  end )(),brightness_text});
-  self.brightnessWidget = __awful_Wibox.widget(args);
-  local power_widget = __awful_Wibox.widget(({color = "#777777", widget = __awful_Wibox.widget.textbox}));
-  local short = _hx_tab_array({[0]="5/5", "PERF", "BAT"}, 3);
-  local long = _hx_tab_array({[0]="balanced", "performance", "power-saver"}, 3);
-  local state = long:indexOf(_G.io.popen("sudo powerprofilesctl get"):read());
-  power_widget:set_text(short[state]);
-  power_widget:connect_signal("button::press", function(_,_1,_2,button) 
-    if (button ~= 1) then 
-      do return end;
-    end;
-    state = state + 1;
-    if (state > 2) then 
-      state = 0;
-    end;
-    power_widget:set_text(short[state]);
-    __awful_Spawn.easy_async("sudo powerprofilesctl set " .. long[state], function(x) 
-    end);
-  end);
-  local args = ({id = "brightness", widget = __awful_Wibox.layout.align.horizontal,self.brightnessWidget,(function() 
-    local _hx_2
-    
-    local args = ({widget = __awful_Wibox.widget.separator, forced_width = 12});
-    
-    _hx_2 = __awful_Wibox.widget(args);
-    return _hx_2
-  end )(),power_widget});
-  self.widget = __awful_Wibox.widget(args);
+  local brightnessIcon = ({widget = __awful_Wibox.widget.imagebox, image = __brightness_BrightnessWidget.PATH_TO_ICON, resize = false, forced_width = 25});
+  self.brightnessWidget = ({layout = __awful_Wibox.layout.fixed.horizontal, forced_width = 85,({top = 5, widget = __awful_Wibox.container.margin,brightnessIcon}),brightness_text});
+  self.widget = __awful_Wibox.widget(({widget = __awful_Wibox.layout.align.horizontal, id = "brightness",self.brightnessWidget,({top = 3, bottom = 3, widget = __awful_Wibox.container.margin,({thickness = 1, forced_width = 5, widget = __awful_Wibox.widget.separator})}),__brightness_PowerWidget.getWidget()}));
   local brightness_text = brightness_text;
   local _gthis = self;
   local value = self.widget;
@@ -1162,28 +1123,31 @@ __brightness_BrightnessWidget.prototype.w = function(self)
   end);
   do return self.widget end
 end
-__brightness_BrightnessWidget.prototype.connect_signals = function(self,brightness_text) 
-  local _gthis = self;
-  local value = self.widget;
-  if (value == nil) then 
-    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
-  end;
-  value:connect_signal("button::press", function(_,_1,_2,button) 
-    local percent = __brightness_BrightnessWidget.get_percent_brightness();
-    local tmp = _gthis.state[1];
-    if (tmp) == 0 then 
-      do return end;
-    elseif (tmp) == 1 then 
-      if (button) == 4 then 
-        brightness_text:set_text(" " .. Std.string(Math.min(percent + 5, 100)) .. "%");
-        _gthis:set_brightness(Math.min(percent + 5, 100));
-      elseif (button) == 5 then 
-        brightness_text:set_text(" " .. Std.string(Math.max(percent - 5, 0)) .. "%");
-        _gthis:set_brightness(Math.max(percent - 5, 0));else end; end;
-  end);
-end
 
 __brightness_BrightnessWidget.prototype.__class__ =  __brightness_BrightnessWidget
+
+__brightness_PowerWidget.new = {}
+__brightness_PowerWidget.__name__ = true
+__brightness_PowerWidget.getWidget = function() 
+  local power_widget = __awful_Wibox.widget(({color = "#777777", widget = __awful_Wibox.widget.textbox}));
+  local short = _hx_tab_array({[0]="5/5", "PERF", "BAT"}, 3);
+  local long = _hx_tab_array({[0]="balanced", "performance", "power-saver"}, 3);
+  local state = long:indexOf(_G.io.popen("sudo powerprofilesctl get"):read());
+  power_widget:set_text(short[state]);
+  power_widget:connect_signal("button::press", function(_,_1,_2,button) 
+    if (button ~= 1) then 
+      do return end;
+    end;
+    state = state + 1;
+    if (state > 2) then 
+      state = 0;
+    end;
+    power_widget:set_text(short[state]);
+    __awful_NativeSpawn.easy_async("sudo powerprofilesctl set " .. long[state], function(x) 
+    end);
+  end);
+  do return ({left = 10, widget = __awful_Wibox.container.margin,power_widget}) end;
+end
 
 __pkg_PackageBase.new = function() 
   local self = _hx_new(__pkg_PackageBase.prototype)
@@ -1253,14 +1217,14 @@ __brightness_Pkg.prototype.unload = function(self)
   if (ret == __haxe_ds_StringMap.tnull) then 
     ret = nil;
   end;
-  __log_Log.log("BRIGHTNESS(" .. __brightness_Pkg.ver .. "): unload!", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=39,className="brightness.Pkg",methodName="unload"}));
+  __log_Log.log("BRIGHTNESS(): unload!", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=103,className="brightness.Pkg",methodName="unload"}));
 end
 __brightness_Pkg.prototype.load = function(self) 
   local ret = __log_Log.backgrounds.h["Info"];
   if (ret == __haxe_ds_StringMap.tnull) then 
     ret = nil;
   end;
-  __log_Log.log("BRIGHTNESS(" .. __brightness_Pkg.ver .. ") loaded!", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=43,className="brightness.Pkg",methodName="load"}));
+  __log_Log.log("BRIGHTNESS() loaded!", _hx_o({__fields__={bg=true,icon=true},bg=ret,icon="" .. __log_Log.res_path .. "/debug2.png"}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/brightness/Pkg.hx",lineNumber=107,className="brightness.Pkg",methodName="load"}));
 end
 
 __brightness_Pkg.prototype.__class__ =  __brightness_Pkg
@@ -1270,13 +1234,172 @@ setmetatable(__brightness_Pkg.prototype,{__index=__pkg_PackageBase.prototype})
 __haxe_IMap.new = {}
 __haxe_IMap.__name__ = true
 
+__haxe_EntryPoint.new = {}
+__haxe_EntryPoint.__name__ = true
+__haxe_EntryPoint.processEvents = function() 
+  while (true) do 
+    local f = __haxe_EntryPoint.pending:shift();
+    if (f == nil) then 
+      break;
+    end;
+    f();
+  end;
+  local time = __haxe_MainLoop.tick();
+  if (not __haxe_MainLoop.hasEvents() and (__haxe_EntryPoint.threadCount == 0)) then 
+    do return -1 end;
+  end;
+  do return time end;
+end
+__haxe_EntryPoint.run = function() 
+  while (true) do 
+    local nextTick = __haxe_EntryPoint.processEvents();
+    if (_hx_luv.loop_alive()) then 
+      if (nextTick < 0) then 
+        _hx_luv.run("once");
+      else
+        _hx_luv.run("nowait");
+      end;
+    else
+      if (nextTick < 0) then 
+        break;
+      end;
+      local tmp = nextTick > 0;
+    end;
+  end;
+end
+
+__haxe_MainEvent.new = function(f,p) 
+  local self = _hx_new(__haxe_MainEvent.prototype)
+  __haxe_MainEvent.super(self,f,p)
+  return self
+end
+__haxe_MainEvent.super = function(self,f,p) 
+  self.isBlocking = true;
+  self.f = _hx_funcToField(f);
+  self.priority = p;
+  self.nextRun = -_G.math.huge;
+end
+__haxe_MainEvent.__name__ = true
+__haxe_MainEvent.prototype = _hx_e();
+
+__haxe_MainEvent.prototype.__class__ =  __haxe_MainEvent
+
+__haxe_MainLoop.new = {}
+__haxe_MainLoop.__name__ = true
+__haxe_MainLoop.hasEvents = function() 
+  local p = __haxe_MainLoop.pending;
+  while (p ~= nil) do 
+    if (p.isBlocking) then 
+      do return true end;
+    end;
+    p = p.next;
+  end;
+  do return false end;
+end
+__haxe_MainLoop.sortEvents = function() 
+  local list = __haxe_MainLoop.pending;
+  if (list == nil) then 
+    do return end;
+  end;
+  local insize = 1;
+  local nmerges;
+  local psize = 0;
+  local qsize = 0;
+  local p;
+  local q;
+  local e;
+  local tail;
+  while (true) do 
+    p = list;
+    list = nil;
+    tail = nil;
+    nmerges = 0;
+    while (p ~= nil) do 
+      nmerges = nmerges + 1;
+      q = p;
+      psize = 0;
+      local _g = 0;
+      local _g1 = insize;
+      while (_g < _g1) do 
+        _g = _g + 1;
+        psize = psize + 1;
+        q = q.next;
+        if (q == nil) then 
+          break;
+        end;
+      end;
+      qsize = insize;
+      while ((psize > 0) or ((qsize > 0) and (q ~= nil))) do 
+        if (psize == 0) then 
+          e = q;
+          q = q.next;
+          qsize = qsize - 1;
+        else
+          if (((qsize == 0) or (q == nil)) or ((p.priority > q.priority) or ((p.priority == q.priority) and (p.nextRun <= q.nextRun)))) then 
+            e = p;
+            p = p.next;
+            psize = psize - 1;
+          else
+            e = q;
+            q = q.next;
+            qsize = qsize - 1;
+          end;
+        end;
+        if (tail ~= nil) then 
+          tail.next = e;
+        else
+          list = e;
+        end;
+        e.prev = tail;
+        tail = e;
+      end;
+      p = q;
+    end;
+    tail.next = nil;
+    if (nmerges <= 1) then 
+      break;
+    end;
+    insize = insize * 2;
+  end;
+  list.prev = nil;
+  __haxe_MainLoop.pending = list;
+end
+__haxe_MainLoop.tick = function() 
+  __haxe_MainLoop.sortEvents();
+  local e = __haxe_MainLoop.pending;
+  local now = Sys.time();
+  local wait = 1e9;
+  while (e ~= nil) do 
+    local next = e.next;
+    local wt = e.nextRun - now;
+    if (wt <= 0) then 
+      wait = 0;
+      if (e.f ~= nil) then 
+        e:f();
+      end;
+    else
+      if (wait > wt) then 
+        wait = wt;
+      end;
+    end;
+    e = next;
+  end;
+  do return wait end;
+end
+
 __haxe_ValueException.new = function(value,previous,native) 
   local self = _hx_new(__haxe_ValueException.prototype)
   __haxe_ValueException.super(self,value,previous,native)
   return self
 end
 __haxe_ValueException.super = function(self,value,previous,native) 
-  __haxe_Exception.super(self,Std.string(value),previous,native);
+  __haxe_Exception.super(self,(function() 
+    local _hx_1
+    if (value == nil) then 
+    _hx_1 = "null"; else 
+    _hx_1 = Std.string(value); end
+    return _hx_1
+  end )(),previous,native);
   self.value = value;
 end
 __haxe_ValueException.__name__ = true
@@ -1584,7 +1707,9 @@ local _hx_static_init = function()
   
   __brightness_BrightnessWidget.max = __brightness_BrightnessWidget.get_max_brightness();
   
-  __brightness_Pkg.ver = "1664042162";
+  __haxe_EntryPoint.pending = Array.new();
+  
+  __haxe_EntryPoint.threadCount = 0;
   
   __haxe_ds_StringMap.tnull = ({});
   
@@ -1605,11 +1730,21 @@ local _hx_static_init = function()
     return _hx_1
   end )();
   
-  __log_Log.res_path = "/home/cji/portless/lua/awesome-config/haxeshigh/res";
+  __log_Log.res_path = "/home/cji/priv/awesomescripts/haxeshigh/res";
   
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon="" .. __log_Log.res_path .. "/bang2.png",width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
   
+end
+
+_hx_funcToField = function(f)
+  if type(f) == 'function' then
+    return function(self,...)
+      return f(...)
+    end
+  else
+    return f
+  end
 end
 
 _hx_table = {}
@@ -1640,6 +1775,7 @@ end
 _hx_static_init();
 _G.xpcall(function() 
   __brightness_Pkg.main();
+  __haxe_EntryPoint.run();
   _hx_luv.run();
 end, _hx_error)
 return _hx_exports

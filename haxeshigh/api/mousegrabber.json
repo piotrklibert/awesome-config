@@ -1,0 +1,102 @@
+{
+  "inferred":true,
+  "kind":"core_components",
+  "mod_name":"mousegrabber",
+  "summary":"awesome mousegrabber API.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"mousegrabber",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"func",
+        "2":"cursor",
+        "map":{
+          "cursor":" The name of a X cursor to use while grabbing.",
+          "func":" A callback function as described above."
+        }
+      },
+      "summary":"Grab the mouse pointer and list motions, calling callback function at each\n motion.",
+      "name":"run",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "cursor":[],
+          "func":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "cursor":[],
+          "func":[]
+        }
+      },
+      "description":" The callback function must return a boolean value: true to\n continue grabbing, false to stop.\n The function is called with one argument:\n a table containing modifiers pointer coordinates.\n\n The list of valid cursors is:\n\n  <div class='flex-list'>\n <div>num\\_glyphs</div>\n <div>arrow</div>\n <div>based\\_arrow\\_down</div>\n <div>based\\_arrow\\_up</div>\n <div>boat</div>\n <div>bogosity</div>\n <div>bottom\\_left\\_corner</div>\n <div>bottom\\_right\\_corner</div>\n <div>bottom\\_side</div>\n <div>bottom\\_tee</div>\n <div>box\\_spiral</div>\n <div>center\\_ptr</div>\n <div>circle</div>\n <div>clock</div>\n <div>coffee\\_mug</div>\n <div>cross</div>\n <div>crosshair</div>\n <div>cross\\_reverse</div>\n <div>cursor</div>\n <div>diamond\\_cross</div>\n <div>dotbox</div>\n <div>dot</div>\n <div>double\\_arrow</div>\n <div>draft\\_large</div>\n <div>draft\\_small</div>\n <div>draped\\_box</div>\n <div>exchange</div>\n <div>fleur</div>\n <div>gobbler</div>\n <div>gumby</div>\n <div>hand</div>\n <div>hand</div>\n <div>heart</div>\n <div>icon</div>\n <div>iron\\_cross</div>\n <div>leftbutton</div>\n <div>left\\_ptr</div>\n <div>left\\_side</div>\n <div>left\\_tee</div>\n <div>ll\\_angle</div>\n <div>lr\\_angle</div>\n <div>man</div>\n <div>middlebutton</div>\n <div>mouse</div>\n <div>pencil</div>\n <div>pirate</div>\n <div>plus</div>\n <div>question\\_arrow</div>\n <div>rightbutton</div>\n <div>right\\_ptr</div>\n <div>right\\_side</div>\n <div>right\\_tee</div>\n <div>rtl\\_logo</div>\n <div>sailboat</div>\n <div>sb\\_down\\_arrow</div>\n <div>sb\\_h\\_double\\_arrow</div>\n <div>sb\\_left\\_arrow</div>\n <div>sb\\_right\\_arrow</div>\n <div>sb\\_up\\_arrow</div>\n <div>sb\\_v\\_double\\_arrow</div>\n <div>shuttle</div>\n <div>sizing</div>\n <div>spider</div>\n <div>spraycan</div>\n <div>star</div>\n <div>target</div>\n <div>tcross</div>\n <div>top\\_left\\_arrow</div>\n <div>top\\_left\\_corner</div>\n <div>top\\_right\\_corner</div>\n <div>top\\_side</div>\n <div>top\\_tee</div>\n <div>trek</div>\n <div>ul\\_angle</div>\n <div>umbrella</div>\n <div>ur\\_angle</div>\n <div>watch</div>\n <div>xterm</div>\n </div>\n\n",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(func, cursor)",
+      "tags":[],
+      "lineno":167
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Stop grabbing the mouse pointer.",
+      "name":"stop",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":197
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Check if mousegrabber is running.",
+      "name":"isrunning",
+      "modifiers":{
+        "field":[],
+        "return":[{
+            "type":"boolean"
+          }]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":210
+    }],
+  "type":"coreclassmod",
+  "file":"/home/cji/portless/awesome/build/mousegrabber.c",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008-2009 Julien Danjou"
+  },
+  "lineno":28
+}

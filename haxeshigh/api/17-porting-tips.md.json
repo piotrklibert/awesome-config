@@ -1,0 +1,138 @@
+{
+  "postprocess":<type 'function' is not supported by JSON.>,
+  "kind":"documentation",
+  "display_name":"Tips for upgrading your configuration",
+  "section":{
+    "display_name":"From 3.5 to 4.0",
+    "lineno":1,
+    "type":"section",
+    "tags":[],
+    "file":{
+      "modules":[<reference cycle>],
+      "args":[],
+      "sections":[null,null,null,"From_3_5_to_4_0"],
+      "filename":"/home/cji/portless/awesome/build/docs/17-porting-tips.md",
+      "items":[<reference cycle>,<reference cycle>,{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"from 3.5 to 4.0 ",
+          "type":"function",
+          "section":"From 3.5 to 4.0",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        }],
+      "display_name":"Tips for upgrading your configuration"
+    },
+    "summary":"",
+    "name":"From_3_5_to_4_0",
+    "modifiers":[]
+  },
+  "body":"# Tips for upgrading your configuration\n\n<a name=\"v4\"></a>\n## From 3.5 to 4.0\n\nThe\n**best advice is to start from the default `rc.lua` and backport any changes**\nyou might have added to your `rc.lua`.\nThis avoids most of the possible errors due to missing important changes.\n\nTo do this, you can download the default rc.lua for 3.5.9\n[here](https://github.com/awesomeWM/awesome/blob/v3.5.9/awesomerc.lua.in), and\nthen compare your existing rc.lua with the 3.5.9 default using your diff tool of\nchoice. Write down the changes, then apply these to the 4.0 default rc.lua,\nwhich you can find at /etc/xdg/awesome/rc.lua after the upgrade, or\n[here](../sample%20files/rc.lua.html) if you have not yet performed the upgrade.\n\nIf you still wish to ignore this advice, first read the\n<a href=\"89-NEWS.md.html#v4\">NEWS</a> section about the breaking changes. This\ndocument assumes you did.\n\nBe warned, even if it looks like it's working after changing some lines, **it wont\nsupports dynamic screen changes and will have many subtle bugs**. The changes\nmentioned below **are important for the stability of your window manager**.\n\nHere is a diff of the 3.5.9 `rc.lua` with the 4.0 one. All changes due to\nnew features and new syntaxes have been removed. A `-` in front of the line\ncorrespond to content of the 3.5 `rc.lua` and `+` its replacement in 4.0.\n\nThis document does not cover the new features added in the Awesome v4 `rc.lua`,\nit only covers the minimal required changes to have a properly behaving config.\n\nTo test during the port, we recommend the `Xephyr` X11 server.\n\nIf Awesome v4 **is not installed yet**, we recommend to install it in its own\nprefix to avoid conflicts in case you wish to stay on 3.5 for a little\nlonger:\n\n    cd path/to/awesome/code\n    mkdir -p $HOME/.config/awesome4\n    mkdir build -p\n    cd build\n\n    # Install in a local folder, this assumes all the dependencies are installed\n    cmake -DCMAKE_INSTALL_PREFIX=$HOME/awesome4_test ..\n    make -j4\n\n    # Use a copy of rc.lua to avoid it being overwritten accidentally\n    cp awesomerc.lua $HOME/.config/awesome4/rc.lua\n\n    make install\n\n    # Start Awesome in a 1280x800 window\n    Xephyr :1 -screen 1280x800 &\n    DISPLAY=:1 $HOME/awesome4_test/bin/awesome \\\n        -c $HOME/.config/awesome4/rc.lua \\\n        --search $HOME/awesome4_test/share/awesome/lib\n\nIf Awesome v4 is **already installed**, then backup your old `rc.lua` and overwrite\n`~/.config/awesome/rc.lua` (replace this by another path if you use a custom\nXDH config local directory). And only execute:\n\n    Xephyr :1 -screen 1280x800 &\n    DISPLAY=:1 awesome\n\nScreens are now added and removed without reloading `rc.lua`. The wallpaper are\nnow set in a signal callback.\n\n    --- {{{ Wallpaper\n    -if `beautiful.wallpaper` then\n    -    for s = 1, screen.count() do\n    -        `gears.wallpaper.maximized`(beautiful.wallpaper, s, true)\n    -    end\n    -end\n    --- }}}\n\n    +local function set_wallpaper(s)\n    +    -- Wallpaper\n    +    if `beautiful.wallpaper` then\n    +        local wallpaper = `beautiful.wallpaper`\n    +        -- If wallpaper is a function, call it with the screen\n    +        if type(wallpaper) == \"function\" then\n    +            wallpaper = wallpaper(s)\n    +        end\n    +        `gears.wallpaper.maximized`(wallpaper, s, true)\n    +    end\n    +end\n    +\n    +-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)\n    +`screen.connect_signal`(\"property::geometry\", set_wallpaper)\n\nTags need to be created for each screens, the old static initialization cannot\nwork. Remove this section.\n\n    --- {{{ Tags\n    --- Define a tag table which hold all screen tags.\n    -tags = {}\n    -for s = 1, `screen.count`() do\n    -    -- Each screen has its own tag table.\n    -    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])\n    - end\n    --- }}}\n\nThe `quit` menu command must be wrapped in a function, otherwise an error\noccurs due to mismatched argument types from the v4 `awful.menu` library.\n\n     -- {{{ Menu\n     -- Create a laucher widget and a main menu\n     myawesomemenu = {\n       { \"manual\", terminal .. \" -e man awesome\" },\n       { \"edit config\", editor_cmd .. \" \" .. awesome.conffile },\n       { \"restart\", awesome.restart },\n    -  { \"quit\", awesome.quit }\n    +  { \"quit\", function() awesome.quit() end}\n     }\n\nThe textclock is now part of the `wibox` library, rename it.\n\n     -- {{{ Wibar\n     -- Create a textclock widget\n    -mytextclock = `awful.widget.textclock`()\n    +mytextclock = `wibox.widget.textclock`()\n\n\nWidgets were previously added to static global tables. This isn't going to\nbehave correctly when screen are added and removed. Remove this section.\n\n     --- Create a wibox for each screen and add it\n     -mywibox = {}\n     -mypromptbox = {}\n     -mylayoutbox = {}\n     -mytaglist = {}\n     -mytasklist = {}\n\nMany functions have been converted to methods. The old functions are deprecated,\nthey are still supported, but will be removed in the next release.\n\n    -mytaglist.buttons = awful.util.table.join(\n    +local taglist_buttons = awful.util.table.join(\n    -                    awful.button({ }, 1, `awful.tag.viewonly`),\n    +                    awful.button({ }, 1, function(t) t:`view_only`() end),\n    -                    awful.button({ modkey }, 1, `awful.client.movetotag`),\n    +                    awful.button({ modkey }, 1, function(t)\n    +                                              if `client.focus` then\n    +                                                  `client.focus:move_to_tag`(t)\n    +                                              end\n    +                                          end),\n                         `awful.button`({ }, 3, `awful.tag.viewtoggle`),\n    -                    `awful.button`({ modkey }, 3, `awful.client.toggletag`),\n    +                    `awful.button`({ modkey }, 3, function(t)\n    +                                              if client.focus then\n    +                                                  client.focus:toggle_tag(t)\n    +                                              end\n    +                                          end),\n    -                    `awful.button`({ }, 4, function(t) `awful.tag.viewnext`(awful.tag.getscreen(t)) end),\n    -                    `awful.button`({ }, 5, function(t) `awful.tag.viewprev`(awful.tag.getscreen(t)) end)\n    +                    `awful.button`({ }, 4, function(t) `awful.tag.viewnext`(t.screen) end),\n    +                    `awful.button`({ }, 5, function(t) `awful.tag.viewprev`(t.screen) end)\n                         )\n\n    -mytasklist.buttons = awful.util.table.join(\n    +local tasklist_buttons = awful.util.table.join(\n                          awful.button({ }, 1, function (c)\n                                                   if c == `client.focus` then\n                                                       c.minimized = true\n                                                   else\n                                                       -- Without this, the following\n                                                       -- :isvisible() makes no sense\n                                                       c.minimized = false\n    -                                                  if not c:isvisible() then\n    -                                                      `awful.tag.viewonly`(c:tags()[1])\n    +                                                  if not c:isvisible() and c.`first_tag` then\n    +                                                      c.first_tag:view_only()\n                                                       end\n                                                       -- This will also un-minimize\n                                                       -- the client, if needed\n                                                       `client.focus` = c\n                                                       c:raise()\n                                                   end\n                                               end),\n\n\nThis section is **very important**. This is where adding and removing screens is\nhandled (including during startup). Note that the `mysomething` table\npreviously removed are replaced by custom screens attributes.\n\n    -for s = 1, `screen.count`() do\n    +`awful.screen.connect_for_each_screen`(function(s)\n    +    -- Wallpaper\n    +    set_wallpaper(s)\n    +\n    +    -- Each screen has its own tag table.\n    +    awful.tag({ \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\" }, s, awful.layout.layouts[1])\n    +\n         -- Create a promptbox for each screen\n    -    mypromptbox[s] = `awful.widget.prompt`()\n    +    s.mypromptbox = `awful.widget.prompt`()\n         -- Create an imagebox widget which will contains an icon indicating which layout we're using.\n         -- We need one layoutbox per screen.\n    -    mylayoutbox[s] = `awful.widget.layoutbox`(s)\n    +    s.mylayoutbox = `awful.widget.layoutbox`(s)\n    -    mylayoutbox[s]:buttons(`awful.util.table.join`(\n    +    s.mylayoutbox:buttons(`awful.util.table.join`(\n                                `awful.button`({ }, 1, function () `awful.layout.inc`( 1) end),\n                                `awful.button`({ }, 3, function () `awful.layout.inc`(-1) end),\n                                `awful.button`({ }, 4, function () `awful.layout.inc`( 1) end),\n                                `awful.button`({ }, 5, function () `awful.layout.inc`(-1) end)))\n         -- Create a taglist widget\n    -    mytaglist[s] = `awful.widget.taglist`(s, `awful.widget.taglist.filter.all`, mytaglist.buttons)\n    +    s.mytaglist = `awful.widget.taglist`(s, `awful.widget.taglist.filter.all`, taglist_buttons)\n\n         -- Create a tasklist widget\n    -    mytasklist[s] = `awful.widget.tasklist`(s, `awful.widget.tasklist.filter.currenttags`, mytasklist.buttons)\n    +    s.mytasklist = `awful.widget.tasklist`(s, `awful.widget.tasklist.filter.currenttags`, tasklist_buttons)\n\n         -- Create the wibox\n    -    mywibox[s] = `awful.wibox`({ position = \"top\", screen = s })\n    +    s.mywibox = `awful.wibar`({ position = \"top\", screen = s })\n\n         -- Widgets that are aligned to the left\n         local left_layout = wibox.layout.fixed.horizontal()\n    -    left_layout:add(mylauncher)\n    -    left_layout:add(mytaglist[s])\n    -    left_layout:add(mypromptbox[s])\n    +    left_layout:add(s.mytaglist)\n    +    left_layout:add(s.mypromptbox)\n\n        -- Widgets that are aligned to the right\n         local right_layout = wibox.layout.fixed.horizontal()\n    -    if s == 1 then right_layout:add(wibox.widget.systray()) end\n    +    right_layout:add(wibox.widget.systray())\n         right_layout:add(mytextclock)\n    -    right_layout:add(mylayoutbox[s])\n    +    right_layout:add(s.mylayoutbox)\n\n         -- Now bring it all together (with the tasklist in the middle)\n         local layout = wibox.layout.align.horizontal()\n         layout:set_left(left_layout)\n    -    layout:set_middle(mytasklist[s])\n    +    layout:set_middle(s.mytasklist)\n         layout:set_right(right_layout)\n\n    -    mywibox[s]:set_widget(layout)\n    +    s.mywibox:set_widget(layout)\n    end)\n     -- }}}\n\n\n`awful.util.spawn` is now called `awful.spawn`.\n\n    -- Standard program\n    -    `awful.key`({ modkey,           }, \"Return\", function () `awful.util.spawn`(terminal) end),\n    +    `awful.key`({ modkey,           }, \"Return\", function () `awful.spawn`(terminal) end),\n\nAnother dynamic screen related changes.\n\n    ⠀-- Prompt\n    -    awful.key({ modkey },            \"r\",     function () mypromptbox[mouse.screen]:run() end),\n    +    awful.key({ modkey },            \"r\",     function () `awful.screen.focused`().mypromptbox:run() end),\n\n`awful.prompt` now uses a more future proof arguments table instead of many\noptional arguments.\n\n    ⠀    awful.key({ modkey }, \"x\",\n                   function ()\n    -                  `awful.prompt.run`({ prompt = \"Run Lua code: \" },\n    -                  mypromptbox[mouse.screen].widget,\n    -                  `awful.util.eval`, nil,\n    -                  `awful.util.getdir`(\"cache\") .. \"/history_eval\")\n    -              end),\n    +                  awful.prompt.run {\n    +                    prompt       = \"Run Lua code: \",\n    +                    textbox      = `awful.screen.focused`().mypromptbox.widget,\n    +                    exe_callback = `awful.util.eval`,\n    +                    history_path = `awful.util.get_cache_dir`() .. \"/history_eval\"\n    +                  }\n    +              end),\n\n\nAnother function-to-method API change:\n\n    -    `awful.key`({ modkey,           }, \"o\",      `awful.client.movetoscreen`                        ),\n    +    `awful.key`({ modkey,           }, \"o\",      function (c) c:`move_to_screen`()               end),\n\nThe `mod4+[1-9]` keybindings also have some changes related to deprecated\nfunctions.\n\n    -- Bind all key numbers to tags.\n    -- Be careful: we use keycodes to make it works on any keyboard layout.\n    -- This should map on the top row of your keyboard, usually 1 to 9.\n    for i = 1, 9 do\n              -- View tag only.\n              awful.key({ modkey }, \"#\" .. i + 9,\n                        function ()\n     -                        local screen = `mouse.screen`\n     -                        local tag = `awful.tag.gettags`(screen)[i]\n     +                        local screen = `awful.screen.focused`()\n     +                        local tag = `screen.tags`[i]\n                              if tag then\n     -                           `awful.tag.viewonly`(tag)\n     +                           `tag:view_only`()\n                              end\n                        end),\n     -        -- Toggle tag.\n     +        -- Toggle tag display.\n              awful.key({ modkey, \"Control\" }, \"#\" .. i + 9,\n                        function ()\n     -                      local screen = `mouse.screen`\n     -                      local tag = `awful.tag.gettags`(screen)[i]\n     +                      local screen = `awful.screen.focused`()\n     +                      local tag = `screen.tags`[i]\n                            if tag then\n                               `awful.tag.viewtoggle`(tag)\n                            end\n     for i = 1, 9 do\n              awful.key({ modkey, \"Shift\" }, \"#\" .. i + 9,\n                        function ()\n                            if client.focus then\n     -                          local tag = `awful.tag.gettags`(client.focus.screen)[i]\n     +                          local tag = `client.focus.screen.tags`[i]\n                                if tag then\n     -                              `awful.client.movetotag`(tag)\n     +                              `client.focus:move_to_tag`(tag)\n                                end\n                           end\n                        end),\n     -        -- Toggle tag.\n     +        -- Toggle tag on focused client.\n              awful.key({ modkey, \"Control\", \"Shift\" }, \"#\" .. i + 9,\n                        function ()\n                            if client.focus then\n     -                          local tag = `awful.tag.gettags`(client.focus.screen)[i]\n     +                          local tag = `client.focus.screen.tags`[i]\n                                if tag then\n     -                              `awful.client.toggletag`(tag)\n     +                              `client.focus:toggle_tag`(tag)\n                                end\n                            end\n     -                  end))\n     +                  end),\n     +    )\n    end\n\nThe default rules need to be changed to avoid having offscreen clients:\n\n     awful.rules.rules = {\n         -- All clients will match this rule.\n         { rule = { },\n           properties = { border_width = beautiful.border_width,\n               awful.rules.rules = {\n                          focus = awful.client.focus.filter,\n                          raise = true,\n                          keys = clientkeys,\n     +                     buttons = clientbuttons,\n     +                     screen = `awful.screen.preferred`,\n     +                     placement = `awful.placement.no_overlap`+`awful.placement.no_offscreen`\n\nThe `tags` global table has been removed to support dynamic screens, you can\nnow access tags by name.\n\n    -    --   properties = { tag = tags[1][2] } },\n    +    --   properties = { screen = 1, tag = \"2\" } },\n\nIf you need to get the current client object in global context, currently you can use\n`client.focus` for it. E.g., to mark/unmark the client:\n\n    -    awful.client.mark()\n    +    client.focus.marked = true\n\n    -    awful.client.unmark()\n    +    client.focus.marked = false\n",
+  "sections":{
+    "by_name":{
+      "From_____to____":{
+        "display_name":"From 3.5 to 4.0",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":[null,null,null,"From_3_5_to_4_0"],
+          "filename":"/home/cji/portless/awesome/build/docs/17-porting-tips.md",
+          "items":[<reference cycle>,<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"from 3.5 to 4.0 ",
+              "type":"function",
+              "section":"From 3.5 to 4.0",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Tips for upgrading your configuration"
+        },
+        "summary":"",
+        "name":"From_3_5_to_4_0",
+        "modifiers":[]
+      }
+    },
+    "1":{
+      "display_name":"From 3.5 to 4.0",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":[null,null,null,"From_3_5_to_4_0"],
+        "filename":"/home/cji/portless/awesome/build/docs/17-porting-tips.md",
+        "items":[<reference cycle>,<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"from 3.5 to 4.0 ",
+            "type":"function",
+            "section":"From 3.5 to 4.0",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Tips for upgrading your configuration"
+      },
+      "summary":"",
+      "name":"From_3_5_to_4_0",
+      "modifiers":[]
+    }
+  },
+  "name":"17-porting-tips.md",
+  "modifiers":[],
+  "mod_name":"17-porting-tips.md",
+  "type":"topic",
+  "items":[{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"from 3.5 to 4.0 ",
+      "type":"function",
+      "section":"From 3.5 to 4.0",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    }],
+  "file":"/home/cji/portless/awesome/build/docs/17-porting-tips.md",
+  "package":"",
+  "tags":[],
+  "lineno":1
+}

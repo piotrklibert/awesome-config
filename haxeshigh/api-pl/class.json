@@ -1,0 +1,180 @@
+{
+  "kind":"libraries",
+  "name":"pl.class",
+  "mod_name":"class",
+  "inferred":true,
+  "description":"\n Two possible notations:\n\n    B = class(A)\n    class.B(A)\n\n The latter form creates a named class within the current environment. Note\n that this implicitly brings in `pl.utils` as a dependency.\n\n See the Guide for further @{01-introduction.md.Simplifying_Object_Oriented_Programming_in_Lua|discussion}",
+  "file":"/home/cji/portless/Penlight/lua/pl/class.lua",
+  "summary":"Provides a reuseable and convenient framework for creating classes in Lua.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":13,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "...":[]
+        },
+        "return":[],
+        "usage":[[]]
+      },
+      "summary":"initializes an __instance__ upon creation.",
+      "lineno":58,
+      "args":"(...)",
+      "usage":["local Cat = class()\nfunction Cat:_init(name)\n  --self:super(name)   -- call the ancestor initializer if needed\n  self.name = name\nend\n\nlocal pussycat = Cat(\"pussycat\")\nprint(pussycat.name)  --> pussycat\n"],
+      "section":"function",
+      "name":"_init",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "...":" parameters passed to the constructor"
+        },
+        "1":"..."
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "some_class":[]
+        },
+        "return":[[]]
+      },
+      "summary":"checks whether an __instance__ is derived from some class.",
+      "lineno":73,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if `instance` is derived from `some_class`, or if `some_class == nil` then\n it returns the class table of the instance",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(some_class)",
+      "usage":["local pussycat = Lion()  -- assuming Lion derives from Cat\nif pussycat:is_a(Cat) then\n  -- it's true, it is a Lion, but also a Cat\nend\n\nif pussycat:is_a() == Lion then\n  -- It's true\nend\n"],
+      "type":"function",
+      "name":"instance:is_a",
+      "params":{
+        "map":{
+          "some_class":" class to check against, or `nil` to return the class"
+        },
+        "1":"some_class"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Works the other way around as `class_of`. It has two ways of using;\n 1) call with a class to check against, 2) call without params.",
+      "ret":["`true` if `instance` is derived from `some_class`, or if `some_class == nil` then\n it returns the class table of the instance"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "some_instance":[]
+        },
+        "return":[[]]
+      },
+      "summary":"checks whether an __instance__ is derived from some class.",
+      "lineno":96,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if `some_instance` is derived from `some_class`",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(some_instance)",
+      "usage":["local pussycat = Lion()  -- assuming Lion derives from Cat\nif Cat:class_of(pussycat) then\n  -- it's true\nend\n"],
+      "type":"function",
+      "name":"some_class:class_of",
+      "params":{
+        "map":{
+          "some_instance":" instance to check against"
+        },
+        "1":"some_instance"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Works the other way around as `is_a`.",
+      "ret":["`true` if `some_instance` is derived from `some_class`"],
+      "parameter":"param"
+    },{
+      "name":"some_class:cast",
+      "description":"\n It is not clever (or safe!) so use carefully.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "some_instance":" the object to be changed"
+        },
+        "1":"some_instance"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":105,
+      "summary":"cast an object to another class.",
+      "args":"(some_instance)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "some_instance":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"class",
+      "description":"\n Supporting two class creation syntaxes:\n either `Name = class(base)` or `class.Name(base)`.\n The first form returns the class directly and does not set its `_name`.\n The second form creates a variable `Name` in the current environment set\n to the class, and also sets `_name`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "1":"base",
+        "2":"c_arg",
+        "map":{
+          "c_arg":" optional parameter to class constructor",
+          "c":" optional table to be used as class",
+          "base":" optional base class"
+        },
+        "3":"c"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":216,
+      "summary":"create a new class, derived from a given base class.",
+      "args":"(base, c_arg, c)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "c_arg":[],
+          "c":[],
+          "base":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

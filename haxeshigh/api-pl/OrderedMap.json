@@ -1,0 +1,344 @@
+{
+  "name":"pl.OrderedMap",
+  "kind":"classes",
+  "inferred":true,
+  "description":"\n\n Derived from `pl.Map`.\n\n Dependencies: `pl.utils`, `pl.tablex`, `pl.class`, `pl.List`, `pl.Map`",
+  "modifiers":[],
+  "summary":"OrderedMap, a map which preserves ordering.",
+  "sections":{
+    "by_name":[]
+  },
+  "mod_name":"OrderedMap",
+  "lineno":8,
+  "tags":[],
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "summary":"construct an OrderedMap.",
+      "lineno":24,
+      "args":"(t)",
+      "section":"Methods",
+      "name":"pl.OrderedMap:_init",
+      "params":{
+        "map":{
+          "t":" optional initialization table, same as for @{OrderedMap:update}"
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "description":"\n Will throw an error if the argument is bad.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"update an OrderedMap using a table.",
+      "lineno":42,
+      "retgroups":[{
+          "1":{
+            "text":"the map, or nil in case of error",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"the error message",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"pl.OrderedMap:update",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" a table."
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"\n If the table is itself an OrderedMap, then its entries will be appended.\n if it s a table of the form `{{key1=val1},{key2=val2},...}` these will be appended.\n\n Otherwise, it is assumed to be a map-like table, and order of extra entries is arbitrary.",
+      "ret":["the map, or nil in case of error","the error message"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "key":[],
+          "val":[]
+        }
+      },
+      "summary":"set the key's value.",
+      "lineno":72,
+      "retgroups":[{
+          "1":{
+            "text":"the map",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(key, val)",
+      "type":"function",
+      "name":"pl.OrderedMap:set",
+      "parameter":"param",
+      "params":{
+        "1":"key",
+        "2":"val",
+        "map":{
+          "key":" the key",
+          "val":" the value"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"   This key will be appended at the end of the map.\n\n If the value is nil, then the key is removed.",
+      "ret":["the map"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":[],
+          "3":[],
+          "pos":{
+            "type":"int"
+          },
+          "val":[],
+          "key":[]
+        }
+      },
+      "summary":"insert a key/value pair before a given position.",
+      "lineno":96,
+      "args":"(pos, key, val)",
+      "section":"Methods",
+      "name":"pl.OrderedMap:insert",
+      "params":{
+        "1":"pos",
+        "2":"key",
+        "map":{
+          "pos":" a position starting at 1",
+          "val":" the value; if nil use the old value",
+          "key":" the key"
+        },
+        "3":"val"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "description":"\n Note: if the map already contains the key, then this effectively\n moves the item to the new position by first removing at the old position.\n Has no effect if the key does not exist and val is nil",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"return the keys in order.",
+      "lineno":112,
+      "retgroups":[{
+          "1":{
+            "text":"List",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"pl.OrderedMap:keys",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"\n (Not a copy!)",
+      "ret":["List"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"return the values in order.",
+      "lineno":119,
+      "retgroups":[{
+          "1":{
+            "text":"List",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"pl.OrderedMap:values",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"\n this is relatively expensive.",
+      "ret":["List"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "cmp":{
+            "type":"func"
+          }
+        }
+      },
+      "summary":"sort the keys.",
+      "lineno":126,
+      "retgroups":[{
+          "1":{
+            "text":"the map",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(cmp)",
+      "type":"function",
+      "name":"pl.OrderedMap:sort",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "cmp":" a comparison function as for @{table.sort}"
+        },
+        "1":"cmp"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["the map"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"iterate over key-value pairs in order.",
+      "lineno":132,
+      "args":"()",
+      "section":"Methods",
+      "name":"pl.OrderedMap:iter",
+      "params":{
+        "map":[]
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "name":"pl.OrderedMap:__pairs",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"metamethods",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":{
+        "within":"Metamethods"
+      },
+      "lineno":147,
+      "summary":"iterate over an ordered map (5.2).",
+      "args":"()",
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "section":"Metamethods",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "return":[],
+        "param":[]
+      },
+      "summary":"string representation of an ordered map.",
+      "lineno":151,
+      "args":"()",
+      "section":"Metamethods",
+      "name":"pl.OrderedMap:__tostring",
+      "params":{
+        "map":[]
+      },
+      "tags":{
+        "within":"Metamethods"
+      },
+      "kind":"metamethods",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/Penlight/lua/pl/OrderedMap.lua"
+}

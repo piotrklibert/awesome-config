@@ -1,0 +1,368 @@
+{
+  "postprocess":<type 'function' is not supported by JSON.>,
+  "kind":"documentation",
+  "display_name":"Using Cairo and LGI",
+  "section":{
+    "display_name":"The Cairo API",
+    "lineno":1,
+    "type":"section",
+    "tags":[],
+    "file":{
+      "modules":[<reference cycle>],
+      "args":[],
+      "sections":{
+        "60":"The_Cairo_API",
+        "18":"Using_LGI_in_Awesome"
+      },
+      "filename":"/home/cji/portless/awesome/build/docs/16-using-cairo.md",
+      "items":[<reference cycle>,{
+          "display_name":"Using LGI in Awesome",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Using_LGI_in_Awesome",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"using lgi in awesome ",
+          "type":"function",
+          "section":"Using LGI in Awesome",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },<reference cycle>,{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"the cairo api ",
+          "type":"function",
+          "section":"The Cairo API",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        }],
+      "display_name":"Using Cairo and LGI"
+    },
+    "summary":"",
+    "name":"The_Cairo_API",
+    "modifiers":[]
+  },
+  "body":"# Using Cairo and LGI\n\nThe interface of Awesome is mostly based on a library called LGI. It provides\naccess to C libraries such as GTK, GLib, Cairo, Pango, PangoCairo and RSVG using\nLua code without having to write actual \"glue\" C code.\n\nThis is done using the GObject-introspection framework. The main advantage is\nthe time saved and large number of features exposed for free. The downside is\nthe lack of proper Lua centric documentation and examples. Some examples can be\nfound in [LGI's own documentation](https://github.com/pavouk/lgi/tree/master/docs),\nbut this does not directly explain how to use a concrete API.\nUsing other APIs requires some trial and error, and can be even impossible if\nthe introspection data is missing or inaccurate.\nUsing low-level APIs directly can easily cause crashes.\nIt is the programmer's responsibility to properly check return and error\nvalues.\n\n## Using LGI in Awesome\n\nGObject and Gnome centric libraries tend to use the common C practice of\nemulating namespaces using underscores in function names.\nLGI exposes a proper namespace based API. For example, if the C function is:\n\n    cairo_image_surface_create()\n\nThen the LGI equivalent is:\n\n    lgi.cairo.ImageSurface.create()\n\nThe same goes for enums:\n\n    CAIRO_FORMAT_ARGB32\n\nbecomes:\n\n    lgi.cairo.Format.ARGB32\n\nLGI is also object oriented while the C API is function based. When those\nfunctions take the \"class\" \"object\", then this:\n\n    cairo_line_to(cr, x, y)\n\ncan be expressed as:\n\n    cr:line_to(x, y)\n\nIt is however important to note some inconsistencies. For example, Cairo is\ncalled `lgi.cairo` while GLib is called `lgi.GLib`. Figuring this out will\nrequire some experimenting. The best way to do this without actually\nreloading Awesome is to open the `lua` command in a terminal and use `print`:\n\n    print(\"This will print a table address:\", require(\"lgi\").cairo)\n    print(\"This will print an error:\", require(\"lgi\").Cairo)\n\nIt is recommended to avoid using `require` always when using a function, but\ninclude the libraries at the top of your `rc.lua` or Lua module instead:\n\n    local cairo = require(\"lgi\").cairo\n\n## The Cairo API\n\nCairo is a 2D graphic library used by Awesome, Gnome and XFCE. It allows to\ne.g. paint paths on a `surface`.\nAwesome uses it internally and being able to call it directly is a powerful\nfeature.\n\nThe following concepts are necessary to be able to use Cairo:\n\n**Surface**:\n\nA surface is the area where the painting will be done. There are multiple types\nof surfaces including:\n\n * Color images with transparency (`ARGB32`) or without (`RGB24`)\n * Monochrome image surfaces with transparency (`A8`) or without (`A1`)\n * SVG vectorial surfaces\n * Native (XCB) surfaces\n * Framebuffers and other less interesting ones (from the point of\n   view of Awesome)\n\nFor more details see [Surfaces](https://cairographics.org/manual/cairo-Image-Surfaces.html).\n\n**Sources**:\n\nSources are elements like colors, patterns or gradients. See `gears.color` for\ncommon sources.\n\nFor more details see [Pattern](http://cairographics.org/manual/cairo-cairo-pattern-t.html).\n\n**Context and paths**:\n\nA context is the proxy between the program and the surface, and holds a path.\nPaths are something like a line, circle or rectangle, which may or\nmay not be closed (a shape).\n\nAll drawing operations on a surface are done via a context.\nThe current path is extended until it is used and reset (see next section).\nUntil then nothing will be drawn to the surface.  For example:\n\n    cr:rectangle(0 , 0 , 10, 10)\n    cr:rectangle(10, 10, 10, 10)\n\nwill not do anything until the operation is applied to the context.\n\nFor more details, read:\n\n* [Path](http://cairographics.org/manual/cairo-Paths.html)\n* [Context](http://cairographics.org/manual/cairo-cairo-t.html)\n* [Transformation](http://cairographics.org/manual/cairo-Transformations.html)\n\nA context also holds a transformation matrix (see `gears.matrix`), which is\nused when applying an operation.\n\n**Operations**:\n\nMultiple operations can be done with the paths. The most common are:\n\n * *fill*: Fill the path with the current source.\n * *stroke*: Paint the path outline with the current source.\n * *mask*: Use the current source as an alpha mask while painting with the\n   current operator.\n * *clip*: Crop the surface's workarea so nothing outside of the clip will be\n   affected by all following operations.\n\n**Operators**:\n\n[Operators](http://cairographics.org/operators/) are modifiers used when\napplying operations.\n\n### Cairo in Awesome\n\nThe `wibox`es, `awful.wibar`s, `gears.wallpaper`s and\n`awful.titlebar`s in Awesome contain Cairo surfaces, which can be accessed through\nthe `drawin` API.  This allows widgets to use the Cairo context directly.\nSee the\n[declarative layout system](../documentation/03-declarative-layout.md.html)\nand [new widgets](../documentation/04-new-widgets.md.html) articles for more\ninformation and examples on how widgets work.\n\nIt is also possible to create surfaces manually. See `gears.surface` for\nsome examples. Here is the most simple example you can get:\n\n    -- Create a surface\n    local img = cairo.ImageSurface.create(cairo.Format.ARGB32, 50, 50)\n\n    -- Create a context\n    local cr  = cairo.Context(img)\n\n    -- Set a red source\n    cr:set_source_rgb(1, 0, 0)\n    -- Alternative:\n    cr:set_source(gears.color(\"#ff0000\"))\n\n    -- Add a 10px square path to the context at x=10, y=10\n    cr:rectangle(10, 10, 10, 10)\n\n    -- Actually draw the rectangle on img\n    cr:fill()\n\nThis can then be used as `bgimage` for a `wibox`, `awful.wibar` or\n`wibox.container.background`:\n\n    screen.primary.mywibox.bgimage = img\n",
+  "sections":{
+    "1":{
+      "display_name":"Using LGI in Awesome",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "60":"The_Cairo_API",
+          "18":"Using_LGI_in_Awesome"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/16-using-cairo.md",
+        "items":[<reference cycle>,<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"using lgi in awesome ",
+            "type":"function",
+            "section":"Using LGI in Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"The Cairo API",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"The_Cairo_API",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"the cairo api ",
+            "type":"function",
+            "section":"The Cairo API",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Using Cairo and LGI"
+      },
+      "summary":"",
+      "name":"Using_LGI_in_Awesome",
+      "modifiers":[]
+    },
+    "2":{
+      "display_name":"The Cairo API",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "60":"The_Cairo_API",
+          "18":"Using_LGI_in_Awesome"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/16-using-cairo.md",
+        "items":[<reference cycle>,{
+            "display_name":"Using LGI in Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Using_LGI_in_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"using lgi in awesome ",
+            "type":"function",
+            "section":"Using LGI in Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"the cairo api ",
+            "type":"function",
+            "section":"The Cairo API",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"Using Cairo and LGI"
+      },
+      "summary":"",
+      "name":"The_Cairo_API",
+      "modifiers":[]
+    },
+    "by_name":{
+      "The_Cairo_API":{
+        "display_name":"The Cairo API",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "60":"The_Cairo_API",
+            "18":"Using_LGI_in_Awesome"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/16-using-cairo.md",
+          "items":[<reference cycle>,{
+              "display_name":"Using LGI in Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Using_LGI_in_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"using lgi in awesome ",
+              "type":"function",
+              "section":"Using LGI in Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"the cairo api ",
+              "type":"function",
+              "section":"The Cairo API",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Using Cairo and LGI"
+        },
+        "summary":"",
+        "name":"The_Cairo_API",
+        "modifiers":[]
+      },
+      "Using_LGI_in_Awesome":{
+        "display_name":"Using LGI in Awesome",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "60":"The_Cairo_API",
+            "18":"Using_LGI_in_Awesome"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/16-using-cairo.md",
+          "items":[<reference cycle>,<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"using lgi in awesome ",
+              "type":"function",
+              "section":"Using LGI in Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"The Cairo API",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"The_Cairo_API",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"the cairo api ",
+              "type":"function",
+              "section":"The Cairo API",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"Using Cairo and LGI"
+        },
+        "summary":"",
+        "name":"Using_LGI_in_Awesome",
+        "modifiers":[]
+      }
+    }
+  },
+  "name":"16-using-cairo.md",
+  "modifiers":[],
+  "mod_name":"16-using-cairo.md",
+  "type":"topic",
+  "items":[{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"using lgi in awesome ",
+      "type":"function",
+      "section":"Using LGI in Awesome",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"the cairo api ",
+      "type":"function",
+      "section":"The Cairo API",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    }],
+  "file":"/home/cji/portless/awesome/build/docs/16-using-cairo.md",
+  "package":"",
+  "tags":[],
+  "lineno":1
+}

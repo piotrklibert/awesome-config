@@ -1,0 +1,218 @@
+{
+  "inferred":true,
+  "kind":"utility_libraries",
+  "description":"",
+  "summary":"Extra sorting algorithms.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.sort",
+  "modifiers":[],
+  "tags":[],
+  "type":"utillib",
+  "package":"",
+  "file":"/home/cji/portless/awesome/build/lib/gears/sort/init.lua",
+  "mod_name":"gears.sort",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"node",
+        "2":"dependencies",
+        "map":{
+          "dependencies":" List of nodes that have to appear before `node`.",
+          "node":" The node that edges are added to."
+        }
+      },
+      "summary":"Ensure that `node` appears after all `dependencies`.",
+      "name":"append",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"table"
+          },
+          "dependencies":{
+            "type":"table"
+          },
+          "node":[]
+        },
+        "field":{
+          "1":[],
+          "2":{
+            "type":"table"
+          },
+          "dependencies":{
+            "type":"table"
+          },
+          "node":[]
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"lib.gears.sort.topological Functions",
+      "kind":"lib.gears.sort.topological functions",
+      "args":"(node, dependencies)",
+      "tags":{
+        "within":"lib.gears.sort.topological Functions"
+      },
+      "lineno":22
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"node",
+        "2":"subordinates",
+        "map":{
+          "subordinates":" List of nodes that have to appear after `node`.",
+          "node":" The node that edges are added to."
+        }
+      },
+      "summary":"Ensure that `node` appears before all `subordinates`.",
+      "name":"prepend",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"table"
+          },
+          "subordinates":{
+            "type":"table"
+          },
+          "node":[]
+        },
+        "field":{
+          "1":[],
+          "2":{
+            "type":"table"
+          },
+          "subordinates":{
+            "type":"table"
+          },
+          "node":[]
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"lib.gears.sort.topological Functions",
+      "kind":"lib.gears.sort.topological functions",
+      "args":"(node, subordinates)",
+      "tags":{
+        "within":"lib.gears.sort.topological Functions"
+      },
+      "lineno":34
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Create a copy of this topological sort.",
+      "name":"clone",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n This is useful to backup it before adding elements that can potentially\n have circular dependencies and thus render the original useless.",
+      "type":"method",
+      "section":"lib.gears.sort.topological Functions",
+      "kind":"lib.gears.sort.topological functions",
+      "args":"()",
+      "tags":{
+        "within":"lib.gears.sort.topological Functions"
+      },
+      "lineno":69
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"node",
+        "map":{
+          "node":" The node"
+        }
+      },
+      "summary":"Remove a node from the topological map.",
+      "name":"remove",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "node":[]
+        },
+        "field":{
+          "1":[],
+          "node":[]
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"lib.gears.sort.topological Functions",
+      "kind":"lib.gears.sort.topological functions",
+      "args":"(node)",
+      "tags":{
+        "within":"lib.gears.sort.topological Functions"
+      },
+      "lineno":82
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Try to sort the nodes.",
+      "name":"sort",
+      "modifiers":{
+        "field":[],
+        "return":[{
+            "1":true,
+            "type":"table"
+          },{
+            "type":"nil",
+            "2":true
+          },{
+            "2":true
+          }]
+      },
+      "description":"",
+      "type":"method",
+      "section":"lib.gears.sort.topological Functions",
+      "kind":"lib.gears.sort.topological functions",
+      "args":"()",
+      "tags":{
+        "within":"lib.gears.sort.topological Functions"
+      },
+      "lineno":94
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "return":[],
+        "field":[],
+        "usage":[[]]
+      },
+      "description":"\n\n The object returned by this function allows to create simple dependency\n graphs. It can be used for decision making or ordering of complex sequences.\n\n\n\n\n\n**Usage example output**:\n\n    The position #1 is: a\n    The position #2 is: b\n    The position #3 is: c\n    The position #4 is: d\n    The position #5 is: e\n    The position #6 is: f\n\n",
+      "tags":{
+        "within":"lib.gears.sort.topological Functions"
+      },
+      "section":"lib.gears.sort.topological Functions",
+      "inferred":true,
+      "subparams":[],
+      "summary":"A topological sorting class.",
+      "name":"topological",
+      "kind":"lib.gears.sort.topological functions",
+      "usage":["local tsort = gears.sort.topological()\ntsort:prepend('a', { 'b' })\ntsort:prepend('b', { 'c' })\ntsort:prepend('c', { 'd' })\ntsort:append('e', { 'd' })\ntsort:append('f', { 'e', 'd' })\nlocal res = assert(tsort:sort())\nfor k, v in ipairs(res) do\n    print(&#34The position #&#34..k..&#34 is: &#34..v)\nend\n"],
+      "args":"()",
+      "type":"constructorfct",
+      "lineno":137
+    }],
+  "lineno":7
+}

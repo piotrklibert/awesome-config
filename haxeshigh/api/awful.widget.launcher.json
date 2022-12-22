@@ -1,0 +1,118 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"awful.widget.launcher",
+  "summary":"A button widget which hosts a menu or starts a command.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.widget.launcher",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n  Implementation of `awful.widget.button` with the ability to host an\n  `awful.menu` or a command to execute on user click.\n\n This example is the default launcher.\n\n\n\n![Usage example](../images/AUTOGEN_awful_widget_launcher_default.svg)\n\n \n     myawesomemenu = {\n        { &#34hotkeys&#34, function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },\n        { &#34manual&#34, &#34xterm&#34 .. &#34 -e man awesome&#34 },\n        { &#34restart&#34, awesome.restart },\n        { &#34quit&#34, function() awesome.quit() end }\n     }\n      \n     mymainmenu = awful.menu({ items = { { &#34awesome&#34, myawesomemenu, beautiful.awesome_icon },\n                                         { &#34open terminal&#34, &#34xterm&#34}\n                                       }\n                             })\n      \n     mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,\n                                          menu = mymainmenu })\n      \n     wb:setup {\n         layout = wibox.layout.align.horizontal,\n         { -- Left widgets\n             mylauncher,\n             mytaglist,\n             layout = wibox.layout.fixed.horizontal,\n         },\n         mytasklist, -- Middle widget\n         { -- Right widgets\n             layout = wibox.layout.fixed.horizontal,\n             mykeyboardlayout,\n             mytextclock,\n             mylayoutbox,\n         },\n     }\n",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.image":" The image to display on the launcher button (refer to `wibox.widget.imagebox`).",
+          "args":"",
+          "args.menu":" Table of items to create a menu based on `awful.menu`.",
+          "args.command":" Command to run on user click."
+        }
+      },
+      "modifiers":{
+        "see":[[],[]],
+        "return":[{
+            "type":"awful.widget.launcher"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"image"
+          },
+          "3":{
+            "type":"string",
+            "opt":true
+          },
+          "4":{
+            "type":"table",
+            "opt":true
+          },
+          "args.image":{
+            "type":"image"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.menu":{
+            "type":"table",
+            "opt":true
+          },
+          "args.command":{
+            "type":"string",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"image"
+          },
+          "3":{
+            "type":"string",
+            "opt":true
+          },
+          "4":{
+            "type":"table",
+            "opt":true
+          },
+          "args.image":{
+            "type":"image"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.menu":{
+            "type":"table",
+            "opt":true
+          },
+          "args.command":{
+            "type":"string",
+            "opt":true
+          }
+        }
+      },
+      "description":"\n\n **NOTE**: You need either command or menu argument for widget to create\n successfully",
+      "tags":{
+        "see":[]
+      },
+      "section":"constructorfct",
+      "inferred":true,
+      "subparams":{
+        "args":["args.image","args.command","args.menu"]
+      },
+      "summary":"Create a button widget which will launch a command.",
+      "name":"awful.widget.launcher",
+      "type":"constructorfct",
+      "args":"(args)",
+      "kind":"constructors",
+      "lineno":70
+    }],
+  "type":"widgetmod",
+  "file":"/home/cji/portless/awesome/build/lib/awful/widget/launcher.lua",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008-2009 Julien Danjou",
+    "supermodule":["awful.widget.button"]
+  },
+  "lineno":51
+}

@@ -1,0 +1,795 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"wibox.widget.calendar",
+  "summary":"A calendar widget.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.widget.calendar",
+  "modifiers":{
+    "author":[[]],
+    "usage":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n This module defines two widgets: a month calendar and a year calendar\n\n The two widgets have a `date` property, in the form of\n a table {day=[number|nil], month=[number|nil], year=[number]}.\n\n The `year` widget displays the whole specified year, e.g. {year=2006}.\n\n The `month` widget displays the calendar for the specified month, e.g. {month=12, year=2006},\n highlighting the specified day if the day is provided in the date, e.g. {day=22, month=12, year=2006}.\n\n Cell and container styles can be overridden using the `fn_embed` callback function\n which is called before adding the widgets to the layouts. The `fn_embed` function\n takes three arguments, the original widget, the flag (`string` used to identified the widget)\n and the date (`table`).\n It returns another widget, embedding (and modifying) the original widget.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_defaults_calendar.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"font",
+        "map":{
+          "font":" Font of the calendar"
+        }
+      },
+      "summary":"The calendar font.",
+      "name":"beautiful.calendar_font",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "font":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "font":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(font)",
+      "tags":[],
+      "lineno":53
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"spacing",
+        "map":{
+          "spacing":" Spacing of the grid (twice this value for inter-month spacing)"
+        }
+      },
+      "summary":"The calendar spacing.",
+      "name":"beautiful.calendar_spacing",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "spacing":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "spacing":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(spacing)",
+      "tags":[],
+      "lineno":57
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Display week numbers"
+        }
+      },
+      "summary":"Display the calendar week numbers.",
+      "name":"beautiful.calendar_week_numbers",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "field":{
+          "1":[],
+          "boolean":[]
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(boolean)",
+      "tags":[],
+      "lineno":61
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Start the week on Sunday"
+        }
+      },
+      "summary":"Start the week on Sunday.",
+      "name":"beautiful.calendar_start_sunday",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "field":{
+          "1":[],
+          "boolean":[]
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(boolean)",
+      "tags":[],
+      "lineno":65
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Use three characters for the weekdays instead of two"
+        }
+      },
+      "summary":"Format the weekdays with three characters instead of two",
+      "name":"beautiful.calendar_long_weekdays",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "field":{
+          "1":[],
+          "boolean":[]
+        }
+      },
+      "description":"",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(boolean)",
+      "tags":[],
+      "lineno":69
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Cells can skretch to fill the empty space."
+        }
+      },
+      "summary":"Allow cells to have flexible height.",
+      "name":"beautiful.flex_height",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "boolean":[]
+        },
+        "field":{
+          "1":[],
+          "boolean":[]
+        }
+      },
+      "description":"\n Flexible height allow cells to adapt their height to fill the empty space at the bottom of the widget.",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(boolean)",
+      "tags":[],
+      "lineno":74
+    },{
+      "inferred":true,
+      "subparams":{
+        "date":["date.year","date.month","date.day"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"table",
+        "map":{
+          "table":" Date table.",
+          "date.year":" Date year",
+          "date.day":" Date day",
+          "date.month":" Date month"
+        }
+      },
+      "summary":"The calendar date.",
+      "name":"date",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"date"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number|nil"
+          },
+          "4":{
+            "type":"number|nil"
+          },
+          "table":{
+            "type":"date"
+          },
+          "date.year":{
+            "type":"number"
+          },
+          "date.day":{
+            "type":"number|nil"
+          },
+          "date.month":{
+            "type":"number|nil"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"date"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number|nil"
+          },
+          "4":{
+            "type":"number|nil"
+          },
+          "table":{
+            "type":"date"
+          },
+          "date.year":{
+            "type":"number"
+          },
+          "date.day":{
+            "type":"number|nil"
+          },
+          "date.month":{
+            "type":"number|nil"
+          }
+        }
+      },
+      "description":"\n\n A table representing the date {day=[number|nil], month=[number|nil], year=[number]}.\n\n E.g.. {day=21, month=2, year=2005}, {month=2, year=2005}, {year=2005}",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(table)",
+      "tags":[],
+      "lineno":85
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"string",
+        "map":{
+          "string":" Font of the calendar"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"\"Monospace 10\"",
+            "opt":"\"Monospace 10\""
+          },
+          "string":{
+            "optchain":"\"Monospace 10\"",
+            "opt":"\"Monospace 10\""
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"\"Monospace 10\"",
+            "opt":"\"Monospace 10\""
+          },
+          "string":{
+            "optchain":"\"Monospace 10\"",
+            "opt":"\"Monospace 10\""
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n Choose a monospace font for a better rendering.\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_font.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The calendar font.",
+      "name":"font",
+      "kind":"object properties",
+      "usage":["local cal = wibox.widget.calendar.month(\n    os.date(&#34*t&#34), &#34sans 12&#34)\n"],
+      "args":"([string=\"Monospace 10\"])",
+      "type":"property",
+      "lineno":98
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"number",
+        "map":{
+          "number":" Spacing of the grid"
+        }
+      },
+      "summary":"The calendar spacing.",
+      "name":"spacing",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"5",
+            "opt":"5"
+          },
+          "number":{
+            "optchain":"5",
+            "opt":"5"
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"5",
+            "opt":"5"
+          },
+          "number":{
+            "optchain":"5",
+            "opt":"5"
+          }
+        }
+      },
+      "description":"\n\n The spacing between cells in the month.\n The spacing between months in a year calendar is twice this value.",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([number=5])",
+      "tags":[],
+      "lineno":105
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Display week numbers"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_week_numbers.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Display the calendar week numbers.",
+      "name":"week_numbers",
+      "kind":"object properties",
+      "usage":["local cal = wibox.widget {\n    date         = os.date(&#34*t&#34),\n    font         = &#34Monospace 10&#34,\n    week_numbers = true,\n    widget       = wibox.widget.calendar.month\n}\n"],
+      "args":"([boolean=false])",
+      "type":"property",
+      "lineno":121
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Start the week on Sunday"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_start_sunday.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Start the week on Sunday.",
+      "name":"start_sunday",
+      "kind":"object properties",
+      "usage":["local cal = wibox.widget {\n    date         = os.date(&#34*t&#34),\n    font         = &#34Monospace 10&#34,\n    start_sunday = true,\n    widget       = wibox.widget.calendar.month\n}\n"],
+      "args":"([boolean=false])",
+      "type":"property",
+      "lineno":137
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Use three characters for the weekdays instead of two"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_long_weekdays.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Format the weekdays with three characters instead of two",
+      "name":"long_weekdays",
+      "kind":"object properties",
+      "usage":["local cal = wibox.widget {\n    date          = os.date(&#34*t&#34),\n    font          = &#34Monospace 10&#34,\n    long_weekdays = true,\n    widget        = wibox.widget.calendar.month\n}\n"],
+      "args":"([boolean=false])",
+      "type":"property",
+      "lineno":153
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"function",
+        "map":{
+          "function":" Function to embed the widget depending on its flag"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":[],
+          "function":[]
+        },
+        "return":[],
+        "param":{
+          "1":[],
+          "function":[]
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n Function that takes a widget, flag (`string`) and date (`table`) as argument\n and returns a widget encapsulating the input widget.\n\n Default value: function (widget, flag, date) return widget end\n\n It is used to add a container to the grid layout and to the cells:\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_fn_embed_cell.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The widget encapsulating function.",
+      "name":"fn_embed",
+      "kind":"object properties",
+      "usage":["local styles = {}\nlocal function rounded_shape(size, partial)\n    if partial then\n        return function(cr, width, height)\n                   gears.shape.partially_rounded_rect(cr, width, height,\n                        false, true, false, true, 5)\n               end\n    else\n        return function(cr, width, height)\n                   gears.shape.rounded_rect(cr, width, height, size)\n               end\n    end\nend\nstyles.month   = { padding      = 5,\n                   bg_color     = &#34#555555&#34,\n                   border_width = 2,\n                   shape        = rounded_shape(10)\n}\nstyles.normal  = { shape    = rounded_shape(5) }\nstyles.focus   = { fg_color = &#34#000000&#34,\n                   bg_color = &#34#ff9800&#34,\n                   markup   = function(t) return '<b>' .. t .. '</b>' end,\n                   shape    = rounded_shape(5, true)\n}\nstyles.header  = { fg_color = &#34#de5e1e&#34,\n                   markup   = function(t) return '<b>' .. t .. '</b>' end,\n                   shape    = rounded_shape(10)\n}\nstyles.weekday = { fg_color = &#34#7788af&#34,\n                   markup   = function(t) return '<b>' .. t .. '</b>' end,\n                   shape    = rounded_shape(5)\n}\nlocal function decorate_cell(widget, flag, date)\n    if flag==&#34monthheader&#34 and not styles.monthheader then\n        flag = &#34header&#34\n    end\n    local props = styles[flag] or {}\n    if props.markup and widget.get_text and widget.set_markup then\n        widget:set_markup(props.markup(widget:get_text()))\n    end\n    -- Change bg color for weekends\n    local d = {year=date.year, month=(date.month or 1), day=(date.day or 1)}\n    local weekday = tonumber(os.date(&#34%w&#34, os.time(d)))\n    local default_bg = (weekday==0 or weekday==6) and &#34#232323&#34 or &#34#383838&#34\n    local ret = wibox.widget {\n        {\n            widget,\n            margins = (props.padding or 2) + (props.border_width or 0),\n            widget  = wibox.container.margin\n        },\n        shape        = props.shape,\n        border_color = props.border_color or &#34#b9214f&#34,\n        border_width = props.border_width or 0,\n        fg           = props.fg_color or &#34#999999&#34,\n        bg           = props.bg_color or default_bg,\n        widget       = wibox.container.background\n    }\n    return ret\nend\nlocal cal = wibox.widget {\n    date     = os.date(&#34*t&#34),\n    fn_embed = decorate_cell,\n    widget   = wibox.widget.calendar.month\n}\n"],
+      "args":"(function)",
+      "type":"property",
+      "lineno":234
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"boolean",
+        "map":{
+          "boolean":" Allow flex height."
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"false",
+            "opt":"false"
+          },
+          "boolean":{
+            "optchain":"false",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_flex_height.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Allow cells to have flexible height",
+      "name":"flex_height",
+      "kind":"object properties",
+      "usage":["local cal = wibox.widget {\n    date        = os.date(&#34*t&#34),\n    font        = &#34Monospace 10&#34,\n    flex_height = true,\n    widget      = wibox.widget.calendar.month\n}\n"],
+      "args":"([boolean=false])",
+      "type":"property",
+      "lineno":251
+    },{
+      "inferred":true,
+      "subparams":{
+        "date":["date.year","date.month","date.day"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"date",
+        "2":"font",
+        "map":{
+          "date.day":" Date day",
+          "date.year":" Date year",
+          "date.month":" Date month",
+          "date":" Date of the calendar",
+          "font":" Font of the calendar"
+        }
+      },
+      "summary":"A month calendar widget.",
+      "name":"month",
+      "modifiers":{
+        "return":[{
+            "type":"widget"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number|nil"
+          },
+          "5":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          },
+          "date.day":{
+            "type":"number|nil"
+          },
+          "date.year":{
+            "type":"number"
+          },
+          "date.month":{
+            "type":"number"
+          },
+          "date":{
+            "type":"table"
+          },
+          "font":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number|nil"
+          },
+          "5":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          },
+          "date.day":{
+            "type":"number|nil"
+          },
+          "date.year":{
+            "type":"number"
+          },
+          "date.month":{
+            "type":"number"
+          },
+          "date":{
+            "type":"table"
+          },
+          "font":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          }
+        }
+      },
+      "description":"\n\n A calendar widget is a grid containing the calendar for one month.\n If the day is specified in the date, its cell is highlighted.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_month.svg)\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(date, font)",
+      "tags":[],
+      "lineno":513
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"date",
+        "2":"font",
+        "map":{
+          "date.day":" Date day",
+          "date.year":" Date year",
+          "date.month":" Date month",
+          "date":" Date of the calendar",
+          "font":" Font of the calendar"
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number|nil"
+          },
+          "4":{
+            "type":"number|nil"
+          },
+          "5":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          },
+          "date.day":{
+            "type":"number|nil"
+          },
+          "date.year":{
+            "type":"number"
+          },
+          "date.month":{
+            "type":"number|nil"
+          },
+          "date":{
+            "type":"table"
+          },
+          "font":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          }
+        },
+        "return":[{
+            "type":"widget"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number|nil"
+          },
+          "4":{
+            "type":"number|nil"
+          },
+          "5":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          },
+          "date.day":{
+            "type":"number|nil"
+          },
+          "date.year":{
+            "type":"number"
+          },
+          "date.month":{
+            "type":"number|nil"
+          },
+          "date":{
+            "type":"table"
+          },
+          "font":{
+            "type":"string",
+            "opt":"\"Monospace 10\""
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n A calendar widget is a grid containing the calendar for one year.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_widget_calendar_year.svg)\n",
+      "tags":[],
+      "section":"constructorfct",
+      "inferred":true,
+      "subparams":{
+        "date":["date.year","date.month","date.day"]
+      },
+      "summary":"A year calendar widget.",
+      "name":"year",
+      "kind":"constructors",
+      "usage":["local cal = wibox.widget {\n    date         = os.date(&#34*t&#34),\n    font         = &#34Monospace 8&#34,\n    spacing      = 2,\n    week_numbers = false,\n    start_sunday = false,\n    widget       = wibox.widget.calendar.year\n}\n"],
+      "args":"(date, font)",
+      "type":"constructorfct",
+      "lineno":541
+    }],
+  "type":"widgetmod",
+  "usage":["local cal = wibox.widget.calendar.month(os.date(&#34*t&#34))\n"],
+  "file":"/home/cji/portless/awesome/build/lib/wibox/widget/calendar.lua",
+  "package":"",
+  "tags":{
+    "author":["getzze"],
+    "copyright":"2017 getzze"
+  },
+  "lineno":33
+}

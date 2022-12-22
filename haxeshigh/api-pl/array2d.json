@@ -1,0 +1,1779 @@
+{
+  "kind":"libraries",
+  "name":"pl.array2d",
+  "mod_name":"array2d",
+  "inferred":true,
+  "description":"\n See @{02-arrays.md.Operations_on_two_dimensional_tables|The Guide}\n\n The size of the arrays is determined by using the length operator `#` hence\n the module is not `nil` safe, and the usual precautions apply.\n\n Note: all functions taking `i1,j1,i2,j2` as arguments will normalize the\n arguments using `default_range`.\n\n Dependencies: `pl.utils`, `pl.tablex`, `pl.types`",
+  "file":"/home/cji/portless/Penlight/lua/pl/array2d.lua",
+  "summary":"Operations on two-dimensional arrays.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":13,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[{
+            "type":"int"
+          },{
+            "type":"int"
+          }],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "a":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"return the row and column size.",
+      "lineno":48,
+      "retgroups":[{
+          "1":{
+            "text":"number of rows (`#a`)",
+            "type":"int",
+            "mods":{
+              "type":"int"
+            }
+          },
+          "2":{
+            "text":"number of cols (`#a[1]`)",
+            "type":"int",
+            "mods":{
+              "type":"int"
+            }
+          },
+          "g":0
+        }],
+      "args":"(a)",
+      "type":"function",
+      "name":"size",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "a":" a 2d array"
+        },
+        "1":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Size is calculated using the Lua length operator #, so usual precautions\n regarding `nil` values apply.",
+      "ret":["number of rows (`#a`)","number of cols (`#a[1]`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "a":{
+            "type":"array"
+          },
+          "j":[]
+        }
+      },
+      "summary":"extract a column from the 2D array.",
+      "lineno":62,
+      "retgroups":[{
+          "1":{
+            "text":"1d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(a, j)",
+      "type":"function",
+      "name":"column",
+      "parameter":"param",
+      "params":{
+        "1":"a",
+        "2":"j",
+        "map":{
+          "a":" 2d array",
+          "j":" column index"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["1d array"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "a":{
+            "type":"array"
+          },
+          "i":[]
+        }
+      },
+      "summary":"extract a row from the 2D array.",
+      "lineno":75,
+      "retgroups":[{
+          "1":{
+            "text":"1d array (copy of the row)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(a, i)",
+      "type":"function",
+      "name":"row",
+      "parameter":"param",
+      "params":{
+        "1":"a",
+        "2":"i",
+        "map":{
+          "a":" 2d array",
+          "i":" row index"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Added in line with `column`, for read-only purposes directly\n accessing a[i] is more performant.",
+      "ret":["1d array (copy of the row)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":[],
+          "f":{
+            "type":"func"
+          },
+          "a":{
+            "type":"array"
+          },
+          "arg":[]
+        }
+      },
+      "summary":"map a function over a 2D array",
+      "lineno":90,
+      "retgroups":[{
+          "1":{
+            "text":"2d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, a, arg)",
+      "type":"function",
+      "name":"map",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"a",
+        "map":{
+          "f":" a function of at least one argument",
+          "a":" 2d array",
+          "arg":" an optional extra argument to be passed to the function."
+        },
+        "3":"arg"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["2d array"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "a":{
+            "type":"array"
+          },
+          "f":{
+            "type":"func"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"reduce the rows using a function.",
+      "lineno":101,
+      "retgroups":[{
+          "1":{
+            "text":"1d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, a)",
+      "type":"function",
+      "name":"reduce_rows",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"a",
+        "map":{
+          "a":" 2d array",
+          "f":" a binary function"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["1d array"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "a":{
+            "type":"array"
+          },
+          "f":{
+            "type":"func"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"reduce the columns using a function.",
+      "lineno":111,
+      "retgroups":[{
+          "1":{
+            "text":"1d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, a)",
+      "type":"function",
+      "name":"reduce_cols",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"a",
+        "map":{
+          "a":" 2d array",
+          "f":" a binary function"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["1d array"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"func"
+          },
+          "3":[],
+          "opc":{
+            "type":"func"
+          },
+          "a":[],
+          "opr":{
+            "type":"func"
+          }
+        }
+      },
+      "summary":"reduce a 2D array into a scalar, using two operations.",
+      "lineno":120,
+      "args":"(opc, opr, a)",
+      "section":"function",
+      "name":"reduce2",
+      "params":{
+        "1":"opc",
+        "2":"opr",
+        "map":{
+          "opc":" operation to reduce the final result",
+          "a":" 2D array",
+          "opr":" operation to reduce the rows"
+        },
+        "3":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"int"
+          },
+          "4":{
+            "type":"tab"
+          },
+          "5":{
+            "type":"tab"
+          },
+          "6":[],
+          "b":{
+            "type":"tab"
+          },
+          "arg":[],
+          "ad":{
+            "type":"int"
+          },
+          "f":{
+            "type":"func"
+          },
+          "bd":{
+            "type":"int"
+          },
+          "a":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"map a function over two arrays.",
+      "lineno":135,
+      "retgroups":[{
+          "1":{
+            "text":"2D array, unless both arrays are 1D",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, ad, bd, a, b, arg)",
+      "type":"function",
+      "name":"map2",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"ad",
+        "3":"bd",
+        "4":"a",
+        "5":"b",
+        "6":"arg",
+        "map":{
+          "b":" 1d or 2d array",
+          "arg":" optional extra argument to pass to function",
+          "ad":" order of first array (`1` if `a` is a list/array, `2` if it is a 2d array)",
+          "f":" function of at least two arguments",
+          "bd":" order of second array (`1` if `b` is a list/array, `2` if it is a 2d array)",
+          "a":" 1d or 2d array"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n They can be both or either 2D arrays",
+      "ret":["2D array, unless both arrays are 1D"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":{
+            "type":"array"
+          },
+          "t1":{
+            "type":"array"
+          },
+          "t2":{
+            "type":"array"
+          },
+          "f":{
+            "type":"func"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"cartesian product of two 1d arrays.",
+      "lineno":162,
+      "retgroups":[{
+          "1":{
+            "text":"2d table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(f, t1, t2)",
+      "usage":["product('..',{1,2},{'a','b'}) == {{'1a','2a'},{'1b','2b'}}\n"],
+      "type":"function",
+      "name":"product",
+      "parameter":"param",
+      "params":{
+        "1":"f",
+        "2":"t1",
+        "map":{
+          "t1":" a 1d table",
+          "t2":" a 1d table",
+          "f":" a function of 2 arguments"
+        },
+        "3":"t2"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["2d table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "t":{
+            "type":"array"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"flatten a 2D array.",
+      "lineno":178,
+      "retgroups":[{
+          "1":{
+            "text":"a 1d table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "usage":["flatten {{1,2},{3,4},{5,6}} == {1,2,3,4,5,6}\n"],
+      "type":"function",
+      "name":"flatten",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" 2d table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n (this goes over columns first.)",
+      "ret":["a 1d table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"bool"
+          },
+          "t":{
+            "type":"array"
+          },
+          "co":{
+            "type":"bool"
+          },
+          "nrows":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"reshape a 2D array.",
+      "lineno":197,
+      "retgroups":[{
+          "1":{
+            "text":"a new 2d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, nrows, co)",
+      "type":"function",
+      "name":"reshape",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"nrows",
+        "map":{
+          "t":" 2d array",
+          "co":" use column-order (Fortran-style) (default false)",
+          "nrows":" new number of rows"
+        },
+        "3":"co"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" Reshape the aray by specifying a new nr of rows.",
+      "ret":["a new 2d array"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "t":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"transpose a 2D array.",
+      "lineno":228,
+      "retgroups":[{
+          "1":{
+            "text":"a new 2d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"transpose",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" 2d array"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a new 2d array"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "i1":{
+            "type":"int"
+          },
+          "i2":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"swap two rows of an array.",
+      "lineno":239,
+      "retgroups":[{
+          "1":{
+            "text":"t (same, modified 2d array)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, i1, i2)",
+      "type":"function",
+      "name":"swap_rows",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"i1",
+        "map":{
+          "t":" a 2d array",
+          "i1":" a row index",
+          "i2":" a row index"
+        },
+        "3":"i2"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["t (same, modified 2d array)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "j1":{
+            "type":"int"
+          },
+          "j2":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"swap two columns of an array.",
+      "lineno":250,
+      "retgroups":[{
+          "1":{
+            "text":"t (same, modified 2d array)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, j1, j2)",
+      "type":"function",
+      "name":"swap_cols",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"j1",
+        "map":{
+          "t":" a 2d array",
+          "j1":" a column index",
+          "j2":" a column index"
+        },
+        "3":"j2"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["t (same, modified 2d array)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"{int}"
+          },
+          "t":{
+            "type":"array"
+          },
+          "ridx":{
+            "type":"{int}"
+          }
+        }
+      },
+      "summary":"extract the specified rows.",
+      "lineno":262,
+      "retgroups":[{
+          "1":{
+            "text":"a new 2d array with the extracted rows",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, ridx)",
+      "type":"function",
+      "name":"extract_rows",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"ridx",
+        "map":{
+          "t":" 2d array",
+          "ridx":" a table of row indices"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a new 2d array with the extracted rows"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"{int}"
+          },
+          "t":{
+            "type":"array"
+          },
+          "cidx":{
+            "type":"{int}"
+          }
+        }
+      },
+      "summary":"extract the specified columns.",
+      "lineno":270,
+      "retgroups":[{
+          "1":{
+            "text":"a new 2d array with the extracted colums",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, cidx)",
+      "type":"function",
+      "name":"extract_cols",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"cidx",
+        "map":{
+          "t":" 2d array",
+          "cidx":" a table of column indices"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a new 2d array with the extracted colums"]
+    },{
+      "name":"remove_row",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "1":"t",
+        "2":"i",
+        "map":{
+          "t":" a 2d array",
+          "i":" a row index"
+        }
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":283,
+      "summary":"remove a row from an array.",
+      "args":"(t, i)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "i":{
+            "type":"int"
+          }
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "j":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"remove a column from an array.",
+      "lineno":288,
+      "args":"(t, j)",
+      "section":"function",
+      "name":"remove_col",
+      "params":{
+        "1":"t",
+        "2":"j",
+        "map":{
+          "t":" a 2d array",
+          "j":" a column index"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[{
+            "type":"int"
+          },{
+            "type":"int"
+          },{
+            "type":"int"
+          },{
+            "type":"int"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "s":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"parse a spreadsheet range or cell.",
+      "lineno":321,
+      "retgroups":[{
+          "1":{
+            "text":"start row",
+            "type":"int",
+            "mods":{
+              "type":"int"
+            }
+          },
+          "2":{
+            "text":"start col",
+            "type":"int",
+            "mods":{
+              "type":"int"
+            }
+          },
+          "3":{
+            "text":"end row (or `nil` if the range was a single cell)",
+            "type":"int",
+            "mods":{
+              "type":"int"
+            }
+          },
+          "4":{
+            "text":"end col (or `nil` if the range was a single cell)",
+            "type":"int",
+            "mods":{
+              "type":"int"
+            }
+          },
+          "g":0
+        }],
+      "args":"(s)",
+      "type":"function",
+      "name":"parse_range",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "s":" a range (case insensitive)."
+        },
+        "1":"s"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n The range/cell can be specified either as 'A1:B2' or 'R1C1:R2C2' or for\n single cells as 'A1' or 'R1C1'.",
+      "ret":["start row","start col","end row (or `nil` if the range was a single cell)","end col (or `nil` if the range was a single cell)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":[],
+        "see":[[]]
+      },
+      "summary":"get a slice of a 2D array.",
+      "lineno":339,
+      "args":"(...)",
+      "section":"function",
+      "name":"range",
+      "params":{
+        "map":{
+          "...":""
+        },
+        "1":"..."
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"\n Same as `slice`.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "5":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "t":{
+            "type":"array"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"normalizes coordinates to valid positive entries and defaults.",
+      "lineno":364,
+      "retgroups":[{
+          "1":{
+            "text":"i1, j1, i2, j2",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "type":"function",
+      "name":"default_range",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"i1",
+        "3":"j1",
+        "4":"i2",
+        "map":{
+          "j1":" start col",
+          "t":" a 2D array",
+          "j2":" end col",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "i2":" end row"
+        },
+        "5":"j2"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Negative indices will be counted from the end, too low, or too high\n will be limited by the array sizes.",
+      "ret":["i1, j1, i2, j2"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "5":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "t":{
+            "type":"array"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"get a slice of a 2D array.",
+      "lineno":387,
+      "retgroups":[{
+          "1":{
+            "text":"an array, 2D in general but 1D in special cases.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "type":"function",
+      "name":"slice",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"i1",
+        "3":"j1",
+        "4":"i2",
+        "map":{
+          "j1":" start col",
+          "t":" a 2D array",
+          "j2":" end col",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "i2":" end row"
+        },
+        "5":"j2"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":" Note that if the specified range has\n a 1D result, the rank of the result will be 1.",
+      "ret":["an array, 2D in general but 1D in special cases."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "3":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "5":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "6":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "value":[],
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "t":{
+            "type":"array"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          }
+        },
+        "return":[],
+        "see":[[],[]]
+      },
+      "summary":"set a specified range of an array to a value.",
+      "lineno":417,
+      "args":"(t, value[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "section":"function",
+      "name":"set",
+      "params":{
+        "1":"t",
+        "2":"value",
+        "3":"i1",
+        "4":"j1",
+        "5":"i2",
+        "6":"j2",
+        "map":{
+          "value":" the value (may be a function, called as `val(i,j)`)",
+          "j1":" start col",
+          "t":" a 2D array",
+          "j2":" end col",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "i2":" end row"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "3":{
+            "type":"string"
+          },
+          "4":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "5":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "6":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "7":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "fmt":{
+            "type":"string"
+          },
+          "t":{
+            "type":"array"
+          },
+          "f":[],
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          }
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"write a 2D array to a file.",
+      "lineno":441,
+      "args":"(t, f, fmt[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "section":"function",
+      "name":"write",
+      "params":{
+        "1":"t",
+        "2":"f",
+        "3":"fmt",
+        "4":"i1",
+        "5":"j1",
+        "6":"i2",
+        "7":"j2",
+        "map":{
+          "j1":" start col",
+          "j2":" end col",
+          "fmt":" a format string (default is just to use tostring)",
+          "t":" a 2D array",
+          "f":" a file object (default stdout)",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "i2":" end row"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"func"
+          },
+          "3":{
+            "type":"func"
+          },
+          "4":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "5":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "6":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "7":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "end_row_op":{
+            "type":"func"
+          },
+          "t":{
+            "type":"array"
+          },
+          "row_op":{
+            "type":"func"
+          },
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          }
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"perform an operation for all values in a 2D array.",
+      "lineno":465,
+      "args":"(t, row_op, end_row_op[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "section":"function",
+      "name":"forall",
+      "params":{
+        "1":"t",
+        "2":"row_op",
+        "3":"end_row_op",
+        "4":"i1",
+        "5":"j1",
+        "6":"i2",
+        "7":"j2",
+        "map":{
+          "j1":" start col",
+          "j2":" end col",
+          "end_row_op":" function to call at end of each row; `end_row_op(i)`",
+          "t":" 2D array",
+          "row_op":" function to call on each value; `row_op(row,j)`",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "i2":" end row"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"int"
+          },
+          "4":{
+            "type":"array"
+          },
+          "5":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "6":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "7":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "8":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "dj":{
+            "type":"int"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "dest":{
+            "type":"array"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "di":{
+            "type":"int"
+          },
+          "src":{
+            "type":"array"
+          }
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"move a block from the destination to the source.",
+      "lineno":487,
+      "args":"(dest, di, dj, src[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "section":"function",
+      "name":"move",
+      "params":{
+        "1":"dest",
+        "2":"di",
+        "3":"dj",
+        "4":"src",
+        "5":"i1",
+        "6":"j1",
+        "7":"i2",
+        "8":"j2",
+        "map":{
+          "j1":" start col",
+          "dj":" start col in dest",
+          "i2":" end row",
+          "dest":" a 2D array",
+          "j2":" end col",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "di":" start row in dest",
+          "src":" a 2D array"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"bool"
+          },
+          "3":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "5":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          },
+          "6":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "j1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "j2":{
+            "opt":"M",
+            "type":"int",
+            "optchain":"M"
+          },
+          "indices":{
+            "type":"bool"
+          },
+          "i1":{
+            "opt":"1",
+            "type":"int|string",
+            "optchain":"1"
+          },
+          "a":{
+            "type":"array"
+          },
+          "i2":{
+            "opt":"N",
+            "type":"int",
+            "optchain":"N"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"iterate over all elements in a 2D array, with optional indices.",
+      "lineno":512,
+      "retgroups":[{
+          "1":{
+            "text":"either `value` or `i,j,value` depending on the value of `indices`",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(a, indices[, i1=1[, j1=1[, i2=N[, j2=M]]]])",
+      "type":"function",
+      "name":"iter",
+      "parameter":"param",
+      "params":{
+        "1":"a",
+        "2":"indices",
+        "3":"i1",
+        "4":"j1",
+        "5":"i2",
+        "6":"j2",
+        "map":{
+          "j1":" start col",
+          "j2":" end col",
+          "indices":" with indices (default false)",
+          "i1":" start row or spreadsheet range passed to `parse_range`",
+          "a":" 2D array",
+          "i2":" end row"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["either `value` or `i,j,value` depending on the value of `indices`"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "a":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"iterate over all columns.",
+      "lineno":538,
+      "retgroups":[{
+          "1":{
+            "text":"column, column-index",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(a)",
+      "type":"function",
+      "name":"columns",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "a":" a 2D array"
+        },
+        "1":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["column, column-index"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "a":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"iterate over all rows.",
+      "lineno":554,
+      "retgroups":[{
+          "1":{
+            "text":"row, row-index",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(a)",
+      "type":"function",
+      "name":"rows",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "a":" a 2D array"
+        },
+        "1":"a"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Returns a copy of the row, for read-only purposes directly iterating\n is more performant; `ipairs(a)`",
+      "ret":["row, row-index"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":[],
+          "rows":{
+            "type":"int"
+          },
+          "cols":{
+            "type":"int"
+          },
+          "val":[]
+        }
+      },
+      "summary":"new array of specified dimensions",
+      "lineno":570,
+      "retgroups":[{
+          "1":{
+            "text":"new 2d array",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(rows, cols, val)",
+      "type":"function",
+      "name":"new",
+      "parameter":"param",
+      "params":{
+        "1":"rows",
+        "2":"cols",
+        "map":{
+          "rows":" number of rows",
+          "cols":" number of cols",
+          "val":" initial value; if it's a function then use `val(i,j)`"
+        },
+        "3":"val"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["new 2d array"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

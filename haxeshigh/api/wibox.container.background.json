@@ -1,0 +1,624 @@
+{
+  "inferred":true,
+  "kind":"widget_containers",
+  "mod_name":"wibox.container.background",
+  "summary":"A container capable of changing the background color, foreground color and\n widget shape.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.container.background",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_defaults_background.svg)\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "map":{
+          "widget":" The widget to be disaplayed inside of the background\n  area."
+        }
+      },
+      "summary":"The widget displayed in the background widget.",
+      "name":"widget",
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        },
+        "return":[],
+        "interface":[[]],
+        "field":{
+          "1":{
+            "type":"widget"
+          },
+          "widget":{
+            "type":"widget"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(widget)",
+      "tags":{
+        "interface":["container"]
+      },
+      "lineno":245
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"bg",
+        "map":{
+          "bg":" A color string, pattern or gradient"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"color"
+          },
+          "bg":{
+            "type":"color"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"color"
+          },
+          "bg":{
+            "type":"color"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_background_bg.svg)\n",
+      "tags":{
+        "see":[],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The background color/pattern/gradient to use.",
+      "name":"bg",
+      "kind":"object properties",
+      "usage":["local text_widget = {\n    text   = &#34Hello world!&#34,\n    widget = wibox.widget.textbox\n}\nparent : setup {\n    {\n        text_widget,\n        bg     = '#ff0000',\n        widget = wibox.container.background\n    },\n    {\n        text_widget,\n        bg     = '#00ff00',\n        widget = wibox.container.background\n    },\n    {\n        text_widget,\n        bg     = '#0000ff',\n        widget = wibox.container.background\n    },\n    spacing = 10,\n    layout  = wibox.layout.fixed.vertical\n}\n"],
+      "args":"(bg)",
+      "type":"property",
+      "lineno":295
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"fg",
+        "map":{
+          "fg":" A color string, pattern or gradient"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"color"
+          },
+          "fg":{
+            "type":"color"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"color"
+          },
+          "fg":{
+            "type":"color"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_background_fg.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The foreground (text) color/pattern/gradient to use.",
+      "name":"fg",
+      "kind":"object properties",
+      "usage":["local text_widget = {\n    text   = &#34Hello world!&#34,\n    widget = wibox.widget.textbox\n}\nparent : setup {\n    {\n        text_widget,\n        fg     = '#ff0000',\n        widget = wibox.container.background\n    },\n    {\n        text_widget,\n        fg     = '#00ff00',\n        widget = wibox.container.background\n    },\n    {\n        text_widget,\n        fg     = '#0000ff',\n        widget = wibox.container.background\n    },\n    spacing = 10,\n    layout  = wibox.layout.fixed.vertical\n}\n"],
+      "args":"(fg)",
+      "type":"property",
+      "lineno":345
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"shape",
+        "map":{
+          "shape":" A function taking a context, width and height as arguments"
+        }
+      },
+      "modifiers":{
+        "see":[[],[]],
+        "field":{
+          "1":{
+            "type":"gears.shape|function"
+          },
+          "shape":{
+            "type":"gears.shape|function"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"gears.shape|function"
+          },
+          "shape":{
+            "type":"gears.shape|function"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n Use `set_shape` to set additional shape paramaters.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_background_shape.svg)\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The background shape.",
+      "name":"shape",
+      "kind":"object properties",
+      "usage":["parent : setup {\n    {\n        -- Adding a shape without margin may result in cropped output\n        {\n            text   = &#34Hello world!&#34,\n            widget = wibox.widget.textbox\n        },\n        shape              = gears.shape.hexagon,\n        bg                 = beautiful.bg_normal,\n        shape_border_color = beautiful.border_color,\n        shape_border_width = beautiful.border_width,\n        widget             = wibox.container.background\n    },\n    {\n        -- To solve this, use a margin\n        {\n            {\n                text   = &#34Hello world!&#34,\n                widget = wibox.widget.textbox\n            },\n            left   = 10,\n            right  = 10,\n            top    = 3,\n            bottom = 3,\n            widget = wibox.container.margin\n        },\n        shape        = gears.shape.hexagon,\n        bg           = beautiful.bg_normal,\n        border_color = beautiful.border_color,\n        border_width = beautiful.border_width,\n        widget       = wibox.container.background\n    },\n    spacing = 10,\n    layout  = wibox.layout.fixed.vertical\n}\n"],
+      "args":"(shape)",
+      "type":"property",
+      "lineno":409
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"shape",
+        "map":{
+          "shape":" A function taking a context, width and height as arguments"
+        }
+      },
+      "modifiers":{
+        "see":[[],[]],
+        "field":{
+          "1":{
+            "type":"gears.shape|function"
+          },
+          "shape":{
+            "type":"gears.shape|function"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "param":{
+          "1":{
+            "type":"gears.shape|function"
+          },
+          "shape":{
+            "type":"gears.shape|function"
+          }
+        }
+      },
+      "description":"\n\n Any other arguments will be passed to the shape function.\n",
+      "tags":{
+        "see":[],
+        "propemits":["true false"]
+      },
+      "section":"method",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the background shape.",
+      "name":"set_shape",
+      "type":"method",
+      "args":"(shape)",
+      "kind":"object methods ",
+      "lineno":418
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"width",
+        "map":{
+          "width":" The border width"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "renamedin":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"\n\n See `wibox.container.background.shape` for an usage example.\n",
+      "tags":{
+        "renamedin":["4.4 border_width"],
+        "see":[]
+      },
+      "section":"deprecatedproperty",
+      "inferred":true,
+      "subparams":[],
+      "summary":"When a `shape` is set, also draw a border.",
+      "name":"shape_border_width",
+      "type":"deprecatedproperty",
+      "args":"(width)",
+      "kind":"deprecated object properties",
+      "lineno":442
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"width",
+        "map":{
+          "width":" The border width."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "width":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          }
+        },
+        "param":{
+          "1":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          },
+          "width":{
+            "optchain":"0",
+            "type":"number",
+            "opt":"0"
+          }
+        },
+        "return":[],
+        "propemits":[[]],
+        "introducedin":[[]]
+      },
+      "description":"\n\n If the shape is set, the border will also be shaped.\n\n See `wibox.container.background.shape` for an usage example.",
+      "tags":{
+        "see":[],
+        "introducedin":["4.4"],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Add a border of a specific width.",
+      "name":"border_width",
+      "type":"property",
+      "args":"([width=0])",
+      "kind":"object properties",
+      "lineno":453
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"fg",
+        "map":{
+          "fg":" The border color, pattern or gradient"
+        }
+      },
+      "modifiers":{
+        "see":[[],[]],
+        "renamedin":[[]],
+        "field":{
+          "1":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          },
+          "fg":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          }
+        },
+        "usebeautiful":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          },
+          "fg":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          }
+        }
+      },
+      "description":"\n\n See `wibox.container.background.shape` for an usage example.\n",
+      "tags":{
+        "see":[],
+        "renamedin":["4.4 border_color"],
+        "usebeautiful":["beautiful.fg_normal Fallback when 'fg' and `border_color` aren't set."]
+      },
+      "section":"deprecatedproperty",
+      "inferred":true,
+      "subparams":[],
+      "summary":"When a `shape` is set, also draw a border.",
+      "name":"shape_border_color",
+      "type":"deprecatedproperty",
+      "args":"([fg=self._private.foreground])",
+      "kind":"deprecated object properties",
+      "lineno":490
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"fg",
+        "map":{
+          "fg":" The border color, pattern or gradient"
+        }
+      },
+      "modifiers":{
+        "see":[[],[]],
+        "propemits":[[]],
+        "field":{
+          "1":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          },
+          "fg":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          }
+        },
+        "usebeautiful":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          },
+          "fg":{
+            "optchain":"self._private.foreground",
+            "type":"color",
+            "opt":"self._private.foreground"
+          }
+        },
+        "introducedin":[[]]
+      },
+      "description":"\n\n See `wibox.container.background.shape` for an usage example.",
+      "tags":{
+        "introducedin":["4.4"],
+        "see":[],
+        "usebeautiful":["beautiful.fg_normal Fallback when 'fg' and `border_color` aren't set."],
+        "propemits":["true false"]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Set the color for the border.",
+      "name":"border_color",
+      "type":"property",
+      "args":"([fg=self._private.foreground])",
+      "kind":"object properties",
+      "lineno":501
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"border_strategy",
+        "map":{
+          "border_strategy":""
+        }
+      },
+      "summary":"How the border width affects the contained widget.",
+      "name":"border_strategy",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"\"none\"",
+            "type":"string",
+            "opt":"\"none\""
+          },
+          "border_strategy":{
+            "optchain":"\"none\"",
+            "type":"string",
+            "opt":"\"none\""
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"\"none\"",
+            "type":"string",
+            "opt":"\"none\""
+          },
+          "border_strategy":{
+            "optchain":"\"none\"",
+            "type":"string",
+            "opt":"\"none\""
+          }
+        }
+      },
+      "description":"\n\n The valid values are:\n\n * *none*: Just apply the border, do not affect the content size (default).\n * *inner*: Squeeze the size of the content by the border width.\n",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"([border_strategy=\"none\"])",
+      "tags":[],
+      "lineno":549
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"image",
+        "map":{
+          "image":" A background image or a function"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string|surface|function"
+          },
+          "image":{
+            "type":"string|surface|function"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string|surface|function"
+          },
+          "image":{
+            "type":"string|surface|function"
+          }
+        }
+      },
+      "description":"\n\n If `image` is a function, it will be called with `(context, cr, width, height)`\n as arguments. Any other arguments passed to this method will be appended.\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The background image to use.",
+      "name":"bgimage",
+      "type":"property",
+      "args":"(image)",
+      "kind":"object properties",
+      "lineno":564
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"bg",
+        "3":"shape",
+        "map":{
+          "shape":" A `gears.shape` compatible shape function",
+          "widget":" The widget to display.",
+          "bg":" The background to use for that widget."
+        }
+      },
+      "summary":"Returns a new background container.",
+      "name":"wibox.container.background",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "type":"color",
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "type":"gears.shape|function",
+            "opt":true
+          },
+          "shape":{
+            "optchain":true,
+            "type":"gears.shape|function",
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          },
+          "bg":{
+            "optchain":true,
+            "type":"color",
+            "opt":true
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          },
+          "2":{
+            "optchain":true,
+            "type":"color",
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "type":"gears.shape|function",
+            "opt":true
+          },
+          "shape":{
+            "optchain":true,
+            "type":"gears.shape|function",
+            "opt":true
+          },
+          "widget":{
+            "optchain":true,
+            "type":"widget",
+            "opt":true
+          },
+          "bg":{
+            "optchain":true,
+            "type":"color",
+            "opt":true
+          }
+        }
+      },
+      "description":"\n\n A background container applies a background and foreground color\n to another widget.\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"([widget[, bg[, shape]]])",
+      "tags":[],
+      "lineno":584
+    }],
+  "type":"containermod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/container/background.lua",
+  "package":"",
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2010 Uli Schlachter",
+    "supermodule":["wibox.widget.base"]
+  },
+  "lineno":15
+}

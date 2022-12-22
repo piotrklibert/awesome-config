@@ -1,0 +1,17 @@
+{
+  "name":"test-listcallbacks.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/test-listcallbacks.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"test-listcallbacks.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"-- demonstrates how to use a list of callbacks\nlocal List = require 'pl.List'\nlocal utils = require 'pl.utils'\nlocal actions = List()\nlocal L = utils.string_lambda\n\nactions:append(function() print 'hello' end)\nactions:append(L '|| print \"yay\"')\n\n-- '()' is a shortcut for operator.call or function(x) return x() end\nactions:foreach '()'\n"
+}

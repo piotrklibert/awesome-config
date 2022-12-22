@@ -1,0 +1,96 @@
+{
+  "name":"pl.MultiMap",
+  "kind":"classes",
+  "inferred":true,
+  "description":"\n\n Dependencies: `pl.utils`, `pl.class`, `pl.List`, `pl.Map`",
+  "modifiers":[],
+  "summary":"MultiMap, a Map which has multiple values per key.",
+  "sections":{
+    "by_name":[]
+  },
+  "mod_name":"MultiMap",
+  "lineno":6,
+  "tags":[],
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "summary":"update a MultiMap using a table.",
+      "lineno":25,
+      "retgroups":[{
+          "1":{
+            "text":"the map",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"pl.MultiMap:update",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" either a Multimap or a map-like table."
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"",
+      "ret":["the map"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "key":[],
+          "val":[]
+        }
+      },
+      "summary":"add a new value to a key.",
+      "lineno":43,
+      "retgroups":[{
+          "1":{
+            "text":"the map",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(key, val)",
+      "type":"function",
+      "name":"pl.MultiMap:set",
+      "parameter":"param",
+      "params":{
+        "1":"key",
+        "2":"val",
+        "map":{
+          "key":" the key",
+          "val":" the value"
+        }
+      },
+      "tags":{
+        "within":"Methods"
+      },
+      "kind":"methods",
+      "section":"Methods",
+      "description":"  Setting a nil value removes the key.",
+      "ret":["the map"]
+    }],
+  "type":"classmod",
+  "file":"/home/cji/portless/Penlight/lua/pl/MultiMap.lua"
+}

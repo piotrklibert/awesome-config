@@ -1,0 +1,17 @@
+{
+  "name":"test-pretty.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/test-pretty.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"test-pretty.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"local pretty = require 'pl.pretty'\n\nlocal tb = {\n    'one','two','three',{1,2,3},\n    alpha=1,beta=2,gamma=3,['&']=true,[0]=false,\n    _fred = {true,true},\n    s = [[\nhello dolly\nyou're so fine\n]]\n}\n\nprint(pretty.write(tb))\n"
+}

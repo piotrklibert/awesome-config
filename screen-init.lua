@@ -4,6 +4,7 @@ local wibox = require("wibox")
 local naughty = require("naughty")
 local h = require("helpers")
 local u = require("util")
+
 local make_layoutbox
 make_layoutbox = function(screen)
   local lb = awful.widget.layoutbox(screen)
@@ -24,6 +25,7 @@ make_layoutbox = function(screen)
   lb:buttons(gears.table.join(unpack(buttons)))
   return lb
 end
+
 local make_sep
 make_sep = function(t)
   if t == nil then
@@ -37,6 +39,7 @@ make_sep = function(t)
     widget = wibox.widget.separator
   }
 end
+
 local make_tasklist
 make_tasklist = function(screen, buttons)
   local highlight_bar_widget = {
@@ -90,6 +93,7 @@ make_tasklist = function(screen, buttons)
     }
   })
 end
+
 local get_top
 get_top = function()
   local f = io.popen("top -b -n1 -w 140")
@@ -103,6 +107,7 @@ get_top = function()
     return _accum_0
   end)(), "\n")
 end
+
 local get_top_mem
 get_top_mem = function()
   local f = io.popen("top -b -n1 -w 140 -o RES")
@@ -116,6 +121,7 @@ get_top_mem = function()
     return _accum_0
   end)(), "\n")
 end
+
 local make_mem_widget
 make_mem_widget = function()
   local widget = wibox.widget.textbox()
@@ -139,6 +145,7 @@ make_mem_widget = function()
   end)
   return widget
 end
+
 local make_cpu_widget
 make_cpu_widget = function()
   local widget = wibox.widget.textbox()
@@ -166,6 +173,7 @@ make_cpu_widget = function()
   end)
   return widget
 end
+
 local get_sensors
 get_sensors = function()
   local f = io.popen("sensors")
@@ -179,6 +187,7 @@ get_sensors = function()
     return _accum_0
   end)(), "\n")
 end
+
 local make_therm_widget
 make_therm_widget = function()
   local widget = wibox.widget.textbox()
@@ -202,12 +211,14 @@ make_therm_widget = function()
   end)
   return widget
 end
+
 local beautiful = require("beautiful")
 local gears = require("gears")
 local set_wallpaper
 set_wallpaper = function(screen)
   return gears.wallpaper.maximized("/home/cji/Pictures/mirai-nikki1.jpg", screen, true)
 end
+
 
 local tasklist_buttons = gears.table.join(
     awful.button({ }, 1, function (c)
@@ -238,31 +249,25 @@ initialize = function()
   screen.connect_signal("property::geometry", set_wallpaper)
   return awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
-    awful.tag({
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9"
-    }, s, awful.layout.layouts[1])
+
+    awful.tag({"1", "2", "3", "4", "5", "6", "7", "8", "9"}, s, awful.layout.layouts[1])
+    s.mytaglist = nil -- disable the default one
+
     s.mypromptbox = awful.widget.prompt()
+
     s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(awful.button({ }, 1, function()
-      return awful.layout.inc(1)
-    end), awful.button({ }, 3, function()
-      return awful.layout.inc(-1)
-    end), awful.button({ }, 4, function()
-      return awful.layout.inc(1)
-    end), awful.button({ }, 5, function()
-      return awful.layout.inc(-1)
-    end)))
-    s.mytaglist = nil
+    s.mylayoutbox:buttons(
+        gears.table.join(
+            awful.button({ }, 1, function() return awful.layout.inc(1) end),
+            awful.button({ }, 3, function() return awful.layout.inc(-1) end),
+            awful.button({ }, 4, function() return awful.layout.inc(1) end),
+            awful.button({ }, 5, function() return awful.layout.inc(-1) end)
+        )
+    )
     s.mytasklist = make_tasklist(s, tasklist_buttons)
+
     s.cpuwidget = make_cpu_widget()
+
     s.batwidget = wibox.widget.progressbar()
     s.batwidget.forced_width = 50
     s.batwidget.forced_height = 3
@@ -325,7 +330,7 @@ initialize = function()
     local make_stats_widget
     make_stats_widget = function()
       local w = {
-        image = "/home/cji/portless/lua/awesome-config/analytics.png",
+        image = "/home/cji/priv/awesomescripts/analytics.png",
         resize = true,
         widget = wibox.widget.imagebox,
         forced_width = 25
@@ -449,6 +454,7 @@ initialize = function()
     })
   end)
 end
+
 
 
 return {

@@ -1,0 +1,881 @@
+{
+  "inferred":true,
+  "kind":"popups_and_bars",
+  "mod_name":"awful.widget.calendar_popup",
+  "summary":"A calendar popup wibox.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.widget.calendar_popup",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"\n\n Display a month or year calendar popup using `calendar_popup.month` or `calendar_popup.year`.\n The calendar style can be tweaked by providing tables of style properties at creation:\n `style_year`, `style_month`, `style_yearheader`, `style_header`,\n `style_weekday`, `style_weeknumber`, `style_normal`, `style_focus` (see `cell_properties`).\n\n The wibox accepts arguments for the calendar widget: `font`, `spacing`, `week_numbers`,\n `start_sunday`, `long_weekdays`.\n It also accepts the extra arguments `opacity`, `bg`, `screen` and `position`.\n `opacity` and `bg` apply to the wibox itself, they are mainly useful to manage opacity\n by setting `opacity` for the false opacity or setting `bg=\"#00000000\"` for compositor opacity.\n The `screen` argument forces the display of the wibox to this screen (instead of the focused screen by default).\n The `position` argument is a two-characters string describing the screen alignment \"[vertical][horizontal]\",\n e.g. \"cc\", \"tr\", \"bl\", ...\n\n The wibox visibility can be changed calling the `toggle` method.\n The `attach` method adds mouse bindings to an existing widget in order to toggle the display of the wibox.\n\n\n\n![Usage example](../images/AUTOGEN_awful_widget_calendar_popup_default.svg)\n\n \n     local month_calendar = awful.widget.calendar_popup.month()\n     month_calendar:attach( mytextclock, &#34tr&#34 )\n     month_calendar:toggle()\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"table",
+        "map":{
+          "table":" Table of cell style properties"
+        }
+      },
+      "summary":"The generic calendar style table.",
+      "name":"beautiful.calendar_style",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"cell_properties"
+          },
+          "table":{
+            "type":"cell_properties"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"cell_properties"
+          },
+          "table":{
+            "type":"cell_properties"
+          }
+        }
+      },
+      "description":"\n\n Each table property can also be defined by `beautiful.calendar_[flag]_[property]=val`.",
+      "type":"beautiful",
+      "section":"beautiful",
+      "kind":"theme variables",
+      "args":"(table)",
+      "tags":[],
+      "lineno":55
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"markup",
+        "2":"fg_color",
+        "3":"bg_color",
+        "4":"shape",
+        "5":"padding",
+        "6":"border_width",
+        "7":"border_color",
+        "8":"opacity",
+        "map":{
+          "bg_color":" Text background color",
+          "border_width":" Calendar border width",
+          "border_color":" Calendar border color",
+          "markup":" Markup function or format string",
+          "opacity":" Cell opacity",
+          "padding":" Cell padding",
+          "fg_color":" Text foreground color",
+          "shape":" Cell shape"
+        }
+      },
+      "modifiers":{
+        "return":[],
+        "usage":[[]],
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "6":[],
+          "7":[],
+          "8":[],
+          "bg_color":[],
+          "border_width":[],
+          "border_color":[],
+          "markup":[],
+          "opacity":[],
+          "padding":[],
+          "fg_color":[],
+          "shape":[]
+        }
+      },
+      "description":"\n\n \n\n![Usage example](../images/AUTOGEN_awful_widget_calendar_popup_cell_properties.svg)\n",
+      "tags":[],
+      "section":"table",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Cell properties.",
+      "name":"cell_properties",
+      "kind":"tables",
+      "usage":["local my_header_properties = {\n    markup = function(text) return &#34<i>&#34 .. text .. &#34</i>&#34 end,\n}\nlocal my_options = { style_header = my_header_properties, }\nlocal month_calendar = awful.widget.calendar_popup.month(my_options)\nmonth_calendar:attach(my_text_clock, &#34tr&#34)\n"],
+      "args":"(markup, fg_color, bg_color, shape, padding, border_width, border_color, opacity)",
+      "type":"table",
+      "lineno":79
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"year",
+        "2":"month",
+        "3":"yearheader",
+        "4":"header",
+        "5":"weekday",
+        "6":"weeknumber",
+        "7":"normal",
+        "8":"focus",
+        "map":{
+          "focus":" Current day cell properties table",
+          "yearheader":" Year header cell properties table",
+          "normal":" Normal day cell properties table",
+          "weeknumber":" Weeknumber cell properties table",
+          "weekday":" Weekday cell properties table",
+          "header":" Month header cell properties table (called `monthheader` for a year calendar)",
+          "year":" Year calendar grid properties table",
+          "month":" Month calendar grid properties table"
+        }
+      },
+      "summary":"Cell types (flags).",
+      "name":"cell_flags",
+      "modifiers":{
+        "return":[],
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "6":[],
+          "7":[],
+          "8":[],
+          "focus":[],
+          "yearheader":[],
+          "normal":[],
+          "weeknumber":[],
+          "weekday":[],
+          "header":[],
+          "year":[],
+          "month":[]
+        }
+      },
+      "description":"",
+      "type":"table",
+      "section":"table",
+      "kind":"tables",
+      "args":"(year, month, yearheader, header, weekday, weeknumber, normal, focus)",
+      "tags":[],
+      "lineno":90
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"offset",
+        "2":"position",
+        "3":"screen",
+        "map":{
+          "position":" Two-character position of the calendar in the screen",
+          "offset":" Offset with respect to current month or year",
+          "screen":" Screen where to display the calendar"
+        }
+      },
+      "summary":"Call the calendar with offset",
+      "name":"call_calendar",
+      "modifiers":{
+        "return":[{
+            "type":"wibox"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"screen"
+          },
+          "position":{
+            "type":"string"
+          },
+          "offset":{
+            "type":"number"
+          },
+          "screen":{
+            "type":"screen"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"screen"
+          },
+          "position":{
+            "type":"string"
+          },
+          "offset":{
+            "type":"number"
+          },
+          "screen":{
+            "type":"screen"
+          }
+        }
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(offset, position, screen)",
+      "tags":[],
+      "lineno":230
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Toggle calendar visibility.",
+      "name":"toggle",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":259
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.on_hover"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"widget",
+        "2":"position",
+        "3":"args",
+        "map":{
+          "position":" Two characters string defining the position on the screen",
+          "widget":" Widget to attach the calendar",
+          "args.on_hover":" Show popup during mouse hover",
+          "args":" Additional options"
+        }
+      },
+      "summary":"Attach the calendar to a widget to display at a specific position.",
+      "name":"attach",
+      "modifiers":{
+        "return":[{
+            "type":"wibox"
+          }],
+        "param":{
+          "1":[],
+          "2":{
+            "optchain":"\"tr\"",
+            "type":"string",
+            "opt":"\"tr\""
+          },
+          "3":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "4":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "position":{
+            "optchain":"\"tr\"",
+            "type":"string",
+            "opt":"\"tr\""
+          },
+          "widget":[],
+          "args.on_hover":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "args":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          }
+        },
+        "field":{
+          "1":[],
+          "2":{
+            "optchain":"\"tr\"",
+            "type":"string",
+            "opt":"\"tr\""
+          },
+          "3":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "4":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "position":{
+            "optchain":"\"tr\"",
+            "type":"string",
+            "opt":"\"tr\""
+          },
+          "widget":[],
+          "args.on_hover":{
+            "type":"bool",
+            "opt":"true"
+          },
+          "args":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          }
+        }
+      },
+      "description":"\n\n    local mytextclock = wibox.widget.textclock()\n    local month_calendar = awful.widget.calendar_popup.month()\n    month_calendar:attach(mytextclock, 'tr')\n",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"(widget[, position=\"tr\"[, args={}]])",
+      "tags":[],
+      "lineno":276
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.position","args.screen","args.opacity","args.bg","args.font","args.spacing","args.margin","args.week_numbers","args.start_sunday","args.long_weekdays","args.style_month","args.style_header","args.style_weekday","args.style_weeknumber","args.style_normal","args.style_focus"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.style_header":" Cell style for the month calendar header (see `cell_properties`)",
+          "args.opacity":" Wibox opacity",
+          "args.style_weekday":" Cell style for the weekday cells (see `cell_properties`)",
+          "args.margin":" Margin around calendar widget",
+          "args.style_month":" Container style for the month calendar (see `cell_properties`)",
+          "args.style_weeknumber":" Cell style for the weeknumber cells (see `cell_properties`)",
+          "args.screen":" Screen where to display the calendar",
+          "args.style_normal":" Cell style for the normal day cells (see `cell_properties`)",
+          "args.start_sunday":" Start week on Sunday",
+          "args.style_focus":" Cell style for the current day cell (see `cell_properties`)",
+          "args.position":" Two-character position of the calendar in the screen",
+          "args":" Properties of the widget",
+          "args.bg":" Wibox background color",
+          "args.week_numbers":" Show weeknumbers",
+          "args.long_weekdays":" Format the weekdays with three characters instead of two",
+          "args.spacing":" Calendar spacing",
+          "args.font":" Calendar font"
+        }
+      },
+      "summary":"A month calendar wibox.",
+      "name":"month",
+      "modifiers":{
+        "return":[{
+            "type":"wibox"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"screen"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"string"
+          },
+          "6":{
+            "type":"string"
+          },
+          "7":{
+            "type":"number"
+          },
+          "8":{
+            "type":"number"
+          },
+          "9":{
+            "type":"boolean"
+          },
+          "10":{
+            "type":"boolean"
+          },
+          "11":{
+            "type":"boolean"
+          },
+          "12":{
+            "type":"table"
+          },
+          "13":{
+            "type":"table"
+          },
+          "14":{
+            "type":"table"
+          },
+          "15":{
+            "type":"table"
+          },
+          "16":{
+            "type":"table"
+          },
+          "17":{
+            "type":"table"
+          },
+          "args.style_header":{
+            "type":"table"
+          },
+          "args.opacity":{
+            "type":"number"
+          },
+          "args.style_weekday":{
+            "type":"table"
+          },
+          "args.margin":{
+            "type":"number"
+          },
+          "args.style_month":{
+            "type":"table"
+          },
+          "args.style_weeknumber":{
+            "type":"table"
+          },
+          "args.screen":{
+            "type":"screen"
+          },
+          "args.style_normal":{
+            "type":"table"
+          },
+          "args.start_sunday":{
+            "type":"boolean"
+          },
+          "args.style_focus":{
+            "type":"table"
+          },
+          "args.position":{
+            "type":"string"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.bg":{
+            "type":"string"
+          },
+          "args.week_numbers":{
+            "type":"boolean"
+          },
+          "args.long_weekdays":{
+            "type":"boolean"
+          },
+          "args.spacing":{
+            "type":"number"
+          },
+          "args.font":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"screen"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"string"
+          },
+          "6":{
+            "type":"string"
+          },
+          "7":{
+            "type":"number"
+          },
+          "8":{
+            "type":"number"
+          },
+          "9":{
+            "type":"boolean"
+          },
+          "10":{
+            "type":"boolean"
+          },
+          "11":{
+            "type":"boolean"
+          },
+          "12":{
+            "type":"table"
+          },
+          "13":{
+            "type":"table"
+          },
+          "14":{
+            "type":"table"
+          },
+          "15":{
+            "type":"table"
+          },
+          "16":{
+            "type":"table"
+          },
+          "17":{
+            "type":"table"
+          },
+          "args.style_header":{
+            "type":"table"
+          },
+          "args.opacity":{
+            "type":"number"
+          },
+          "args.style_weekday":{
+            "type":"table"
+          },
+          "args.margin":{
+            "type":"number"
+          },
+          "args.style_month":{
+            "type":"table"
+          },
+          "args.style_weeknumber":{
+            "type":"table"
+          },
+          "args.screen":{
+            "type":"screen"
+          },
+          "args.style_normal":{
+            "type":"table"
+          },
+          "args.start_sunday":{
+            "type":"boolean"
+          },
+          "args.style_focus":{
+            "type":"table"
+          },
+          "args.position":{
+            "type":"string"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.bg":{
+            "type":"string"
+          },
+          "args.week_numbers":{
+            "type":"boolean"
+          },
+          "args.long_weekdays":{
+            "type":"boolean"
+          },
+          "args.spacing":{
+            "type":"number"
+          },
+          "args.font":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n It is highly customizable using the same options as for the widgets.\n The options are set once and for all at creation, though.\n\n\n\n    local mytextclock = wibox.widget.textclock()\n    local month_calendar = awful.widget.calendar_popup.month()\n    month_calendar:attach( mytextclock, \"tr\" )\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(args)",
+      "tags":[],
+      "lineno":404
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.position","args.screen","args.opacity","args.bg","args.font","args.spacing","args.margin","args.week_numbers","args.start_sunday","args.long_weekdays","args.style_year","args.style_month","args.style_yearheader","args.style_header","args.style_weekday","args.style_weeknumber","args.style_normal","args.style_focus"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args.style_header":" Cell style for the month calendar header (see `cell_properties`)",
+          "args.spacing":" Calendar spacing",
+          "args.style_weekday":" Cell style for the weekday cells (see `cell_properties`)",
+          "args.margin":" Margin around calendar widget",
+          "args.style_month":" Container style for the month calendar (see `cell_properties`).\n This field can also be called `style_monthheader`.",
+          "args.style_weeknumber":" Cell style for the weeknumber cells (see `cell_properties`)",
+          "args.screen":" Screen where to display the calendar",
+          "args.style_normal":" Cell style for the normal day cells (see `cell_properties`)",
+          "args.style_focus":" Cell style for the current day cell (see `cell_properties`)",
+          "args.start_sunday":" Start week on Sunday",
+          "args.style_yearheader":" Cell style for the year calendar header (see `cell_properties`)",
+          "args.opacity":" Wibox opacity",
+          "args":" Properties of the widget",
+          "args.bg":" Wibox background color",
+          "args.week_numbers":" Show weeknumbers",
+          "args.style_year":" Container style for the year calendar (see `cell_properties`)",
+          "args.long_weekdays":" Format the weekdays with three characters instead of two",
+          "args.position":" Two-character position of the calendar in the screen",
+          "args.font":" Calendar font"
+        }
+      },
+      "summary":"A year calendar wibox.",
+      "name":"year",
+      "modifiers":{
+        "return":[{
+            "type":"wibox"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"screen"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"string"
+          },
+          "6":{
+            "type":"string"
+          },
+          "7":{
+            "type":"number"
+          },
+          "8":{
+            "type":"number"
+          },
+          "9":{
+            "type":"boolean"
+          },
+          "10":{
+            "type":"boolean"
+          },
+          "11":{
+            "type":"boolean"
+          },
+          "12":{
+            "type":"table"
+          },
+          "13":{
+            "type":"table"
+          },
+          "14":{
+            "type":"table"
+          },
+          "15":{
+            "type":"table"
+          },
+          "16":{
+            "type":"table"
+          },
+          "17":{
+            "type":"table"
+          },
+          "18":{
+            "type":"table"
+          },
+          "19":{
+            "type":"table"
+          },
+          "args.style_header":{
+            "type":"table"
+          },
+          "args.spacing":{
+            "type":"number"
+          },
+          "args.style_weekday":{
+            "type":"table"
+          },
+          "args.margin":{
+            "type":"number"
+          },
+          "args.style_month":{
+            "type":"table"
+          },
+          "args.style_weeknumber":{
+            "type":"table"
+          },
+          "args.screen":{
+            "type":"screen"
+          },
+          "args.style_normal":{
+            "type":"table"
+          },
+          "args.style_focus":{
+            "type":"table"
+          },
+          "args.start_sunday":{
+            "type":"boolean"
+          },
+          "args.style_yearheader":{
+            "type":"table"
+          },
+          "args.opacity":{
+            "type":"number"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.bg":{
+            "type":"string"
+          },
+          "args.week_numbers":{
+            "type":"boolean"
+          },
+          "args.style_year":{
+            "type":"table"
+          },
+          "args.long_weekdays":{
+            "type":"boolean"
+          },
+          "args.position":{
+            "type":"string"
+          },
+          "args.font":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"screen"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"string"
+          },
+          "6":{
+            "type":"string"
+          },
+          "7":{
+            "type":"number"
+          },
+          "8":{
+            "type":"number"
+          },
+          "9":{
+            "type":"boolean"
+          },
+          "10":{
+            "type":"boolean"
+          },
+          "11":{
+            "type":"boolean"
+          },
+          "12":{
+            "type":"table"
+          },
+          "13":{
+            "type":"table"
+          },
+          "14":{
+            "type":"table"
+          },
+          "15":{
+            "type":"table"
+          },
+          "16":{
+            "type":"table"
+          },
+          "17":{
+            "type":"table"
+          },
+          "18":{
+            "type":"table"
+          },
+          "19":{
+            "type":"table"
+          },
+          "args.style_header":{
+            "type":"table"
+          },
+          "args.spacing":{
+            "type":"number"
+          },
+          "args.style_weekday":{
+            "type":"table"
+          },
+          "args.margin":{
+            "type":"number"
+          },
+          "args.style_month":{
+            "type":"table"
+          },
+          "args.style_weeknumber":{
+            "type":"table"
+          },
+          "args.screen":{
+            "type":"screen"
+          },
+          "args.style_normal":{
+            "type":"table"
+          },
+          "args.style_focus":{
+            "type":"table"
+          },
+          "args.start_sunday":{
+            "type":"boolean"
+          },
+          "args.style_yearheader":{
+            "type":"table"
+          },
+          "args.opacity":{
+            "type":"number"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.bg":{
+            "type":"string"
+          },
+          "args.week_numbers":{
+            "type":"boolean"
+          },
+          "args.style_year":{
+            "type":"table"
+          },
+          "args.long_weekdays":{
+            "type":"boolean"
+          },
+          "args.position":{
+            "type":"string"
+          },
+          "args.font":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n It is highly customizable using the same options as for the widgets.\n The options are set once and for all at creation, though.\n\n\n\n    globalkeys = gears.table.join(globalkeys, awful.key(\n            { modkey, \"Control\" }, \"c\",  function () year_calendar:toggle() end))\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(args)",
+      "tags":[],
+      "lineno":440
+    }],
+  "type":"popupmod",
+  "file":"/home/cji/portless/awesome/build/lib/awful/widget/calendar_popup.lua",
+  "package":"",
+  "tags":{
+    "author":["getzze"],
+    "copyright":"2017 getzze"
+  },
+  "lineno":35
+}

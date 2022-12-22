@@ -1,0 +1,523 @@
+{
+  "kind":"libraries",
+  "name":"pl.data",
+  "mod_name":"data",
+  "inferred":true,
+  "description":"\n\n    data.read 'test.txt'\n    ==> {{10,20},{2,5},{40,50},fieldnames={'x','y'},delim=','}\n\n Provides a way of creating basic SQL-like queries.\n\n    require 'pl'\n    local d = data.read('xyz.txt')\n    local q = d:select('x,y,z where x > 3 and z < 2 sort by y')\n    for x,y,z in q do\n        print(x,y,z)\n    end\n\n See @{06-data.md.Reading_Columnar_Data|the Guide}\n\n Dependencies: `pl.utils`, `pl.array2d` (fallback methods)",
+  "file":"/home/cji/portless/Penlight/lua/pl/data.lua",
+  "summary":"Reading and querying simple tabular data.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":20,
+  "package":"pl",
+  "items":[{
+      "name":"Data.column_by_name",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "name":" either name of column, or numerical index."
+        },
+        "1":"name"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":130,
+      "summary":"return a particular column as a list of values (method).",
+      "args":"(name)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "name":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "condn":{
+            "type":"string"
+          }
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"return a query iterator on this data (method).",
+      "lineno":135,
+      "args":"(condn)",
+      "section":"function",
+      "name":"Data.select",
+      "kind":"functions",
+      "params":{
+        "map":{
+          "condn":" the query expression"
+        },
+        "1":"condn"
+      },
+      "tags":{
+        "see":[]
+      },
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "name":"Data.select_row",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "condn":" the query expression"
+        },
+        "1":"condn"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":139,
+      "summary":"return a row iterator on this data (method).",
+      "args":"(condn)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "condn":{
+            "type":"string"
+          }
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"Data.copy_select",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "condn":" the query expression"
+        },
+        "1":"condn"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":143,
+      "summary":"return a new data object based on this query (method).",
+      "args":"(condn)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "condn":{
+            "type":"string"
+          }
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"Data.column_names",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":146,
+      "summary":"return the field names of this data object (method).",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"Data.write_row",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "f":" file-like object"
+        },
+        "1":"f"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":150,
+      "summary":"write out a row (method).",
+      "args":"(f)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "f":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"Data.write",
+      "description":"",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":{
+          "f":" file-like object"
+        },
+        "1":"f"
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":155,
+      "summary":"write data out to file (method).",
+      "args":"(f)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "f":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":{
+        "cnfg":["cnfg.delim","cnfg.fieldnames","cnfg.no_convert","cnfg.convert","cnfg.numfields","cnfg.last_field_collect","cnfg.thousands_dot","cnfg.csv"]
+      },
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"tab"
+          },
+          "3":{
+            "type":"string"
+          },
+          "4":{
+            "type":"array"
+          },
+          "5":{
+            "type":"bool"
+          },
+          "6":{
+            "type":"tab"
+          },
+          "7":{
+            "type":"int"
+          },
+          "8":{
+            "type":"bool"
+          },
+          "9":{
+            "type":"int"
+          },
+          "10":{
+            "type":"bool"
+          },
+          "cnfg.delim":{
+            "type":"string"
+          },
+          "cnfg.numfields":{
+            "type":"int"
+          },
+          "cnfg.fieldnames":{
+            "type":"array"
+          },
+          "cnfg":{
+            "type":"tab"
+          },
+          "cnfg.last_field_collect":{
+            "type":"bool"
+          },
+          "cnfg.no_convert":{
+            "type":"bool"
+          },
+          "cnfg.thousands_dot":{
+            "type":"int"
+          },
+          "cnfg.csv":{
+            "type":"bool"
+          },
+          "file":[],
+          "cnfg.convert":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"read a delimited file in a Lua table.",
+      "lineno":208,
+      "retgroups":[{
+          "1":{
+            "text":"`data` object, or `nil`",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"error message. May be a file error, 'not a file-like object'\n or a conversion error",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(file, cnfg)",
+      "type":"function",
+      "name":"read",
+      "parameter":"param",
+      "params":{
+        "1":"file",
+        "2":"cnfg",
+        "map":{
+          "cnfg.delim":" a string pattern to split fields",
+          "cnfg.numfields":" indices of columns known to be numbers",
+          "cnfg.fieldnames":" (i.e. don't read from first line)",
+          "cnfg":" parsing options",
+          "cnfg.last_field_collect":" only split as many fields as fieldnames.",
+          "cnfg.no_convert":" (default is to try conversion on first data line)",
+          "cnfg.thousands_dot":" thousands separator in Excel CSV is '.'",
+          "cnfg.csv":" fields may be double-quoted and contain commas;\n Also, empty fields are considered to be equivalent to zero.",
+          "file":" a filename or a file-like object",
+          "cnfg.convert":" table of custom conversion functions with column keys"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n By default, attempts to treat first line as separated list of fieldnames.",
+      "ret":["`data` object, or `nil`","error message. May be a file error, 'not a file-like object'\n or a conversion error"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":{
+            "opt":true,
+            "type":"{string}",
+            "optchain":true
+          },
+          "4":{
+            "opt":"'\\t'",
+            "type":"string",
+            "optchain":"'\\t'"
+          },
+          "fieldnames":{
+            "opt":true,
+            "type":"{string}",
+            "optchain":true
+          },
+          "data":[],
+          "file":[],
+          "delim":{
+            "opt":"'\\t'",
+            "type":"string",
+            "optchain":"'\\t'"
+          }
+        }
+      },
+      "summary":"write 2D data to a file.",
+      "lineno":348,
+      "retgroups":[{
+          "1":{
+            "text":"true or nil, error",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(data, file[, fieldnames[, delim='\\t']])",
+      "type":"function",
+      "name":"write",
+      "parameter":"param",
+      "params":{
+        "1":"data",
+        "2":"file",
+        "3":"fieldnames",
+        "4":"delim",
+        "map":{
+          "fieldnames":" list of fields (optional)",
+          "data":" 2D array",
+          "file":" filename or file-like object",
+          "delim":" delimiter (default tab)"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Does not assume that the data has actually been\n generated with `new` or `read`.",
+      "ret":["true or nil, error"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":{
+            "opt":true,
+            "type":"{string}",
+            "optchain":true
+          },
+          "d":[],
+          "fieldnames":{
+            "opt":true,
+            "type":"{string}",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"create a new dataset from a table of rows.",
+      "lineno":389,
+      "retgroups":[{
+          "1":{
+            "text":"the table.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(d[, fieldnames])",
+      "type":"function",
+      "name":"new",
+      "parameter":"param",
+      "params":{
+        "1":"d",
+        "2":"fieldnames",
+        "map":{
+          "d":" the table.",
+          "fieldnames":" optional fieldnames"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Can specify the fieldnames, else the table must have a field called\n 'fieldnames', which is either a string of delimiter-separated names,\n or a table of names. <br>\n If the table does not have a field called 'delim', then an attempt will be\n made to guess it from the fieldnames string, defaults otherwise to tab.",
+      "ret":["the table."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "condn":[],
+          "data":[],
+          "context":[],
+          "return_row":[]
+        }
+      },
+      "summary":"create a query iterator from a select string.",
+      "lineno":537,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator over the specified fields, or nil",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"an error message",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(data, condn, context, return_row)",
+      "type":"function",
+      "name":"query",
+      "parameter":"param",
+      "params":{
+        "1":"data",
+        "2":"condn",
+        "3":"context",
+        "4":"return_row",
+        "map":{
+          "condn":" select string or table",
+          "data":" table produced by read",
+          "context":" a list of tables to be searched when resolving functions",
+          "return_row":" if true, wrap the results in a row table"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Select string has this format: <br>\n FIELDLIST [ where LUA-CONDN [ sort by FIELD] ]<br>\n FIELDLIST is a comma-separated list of valid fields, or '*'. <br> <br>\n The condition can also be a table, with fields 'fields' (comma-sep string or\n table), 'sort_by' (string) and 'where' (Lua expression string or function)",
+      "ret":["an iterator over the specified fields, or nil","an error message"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "3":[],
+          "4":{
+            "type":"bool"
+          },
+          "Q":{
+            "type":"string"
+          },
+          "dont_fail":{
+            "type":"bool"
+          },
+          "infile":[],
+          "outfile":[]
+        }
+      },
+      "summary":"Filter input using a query.",
+      "lineno":633,
+      "args":"(Q, infile, outfile, dont_fail)",
+      "section":"function",
+      "name":"filter",
+      "params":{
+        "1":"Q",
+        "2":"infile",
+        "3":"outfile",
+        "4":"dont_fail",
+        "map":{
+          "Q":" a query string",
+          "dont_fail":" true if you want to return an error, not just fail",
+          "infile":" filename or file-like object",
+          "outfile":" filename or file-like object"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

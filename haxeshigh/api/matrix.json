@@ -1,0 +1,1010 @@
+{
+  "inferred":true,
+  "kind":"classes",
+  "description":"",
+  "summary":"An implementation of matrices for describing and working with affine\n transformations.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"gears.matrix",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "tags":{
+    "author":["Uli Schlachter"],
+    "copyright":"2015 Uli Schlachter"
+  },
+  "type":"classmod",
+  "package":"gears",
+  "file":"/home/cji/portless/awesome/build/lib/gears/matrix.lua",
+  "mod_name":"matrix",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"xx",
+        "2":"yx",
+        "3":"xy",
+        "4":"yy",
+        "5":"x0",
+        "6":"y0",
+        "map":{
+          "yy":" The yy transformation part.",
+          "y0":" The y0 transformation part.",
+          "xx":" The xx transformation part.",
+          "x0":" The x0 transformation part.",
+          "xy":" The xy transformation part.",
+          "yx":" The yx transformation part."
+        }
+      },
+      "summary":"Create a new matrix instance",
+      "name":"gears.matrix.create",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "6":{
+            "type":"number"
+          },
+          "yy":{
+            "type":"number"
+          },
+          "y0":{
+            "type":"number"
+          },
+          "xx":{
+            "type":"number"
+          },
+          "x0":{
+            "type":"number"
+          },
+          "xy":{
+            "type":"number"
+          },
+          "yx":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "5":{
+            "type":"number"
+          },
+          "6":{
+            "type":"number"
+          },
+          "yy":{
+            "type":"number"
+          },
+          "y0":{
+            "type":"number"
+          },
+          "xx":{
+            "type":"number"
+          },
+          "x0":{
+            "type":"number"
+          },
+          "xy":{
+            "type":"number"
+          },
+          "yx":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(xx, yx, xy, yy, x0, y0)",
+      "tags":[],
+      "lineno":24
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "map":{
+          "y":" The translation in y direction.",
+          "x":" The translation in x direction."
+        }
+      },
+      "summary":"Create a new translation matrix",
+      "name":"gears.matrix.create_translate",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(x, y)",
+      "tags":[],
+      "lineno":36
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"sx",
+        "2":"sy",
+        "map":{
+          "sx":" The scaling in x direction.",
+          "sy":" The scaling in y direction."
+        }
+      },
+      "summary":"Create a new scaling matrix",
+      "name":"gears.matrix.create_scale",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "sx":{
+            "type":"number"
+          },
+          "sy":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "sx":{
+            "type":"number"
+          },
+          "sy":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(sx, sy)",
+      "tags":[],
+      "lineno":45
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"angle",
+        "map":{
+          "angle":" The angle of the rotation in radians."
+        }
+      },
+      "summary":"Create a new rotation matrix",
+      "name":"gears.matrix.create_rotate",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "angle":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "angle":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(angle)",
+      "tags":[],
+      "lineno":53
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "3":"angle",
+        "map":{
+          "y":" The vertical rotation point",
+          "angle":" The angle of the rotation in radians.",
+          "x":" The horizontal rotation point"
+        }
+      },
+      "summary":"Create a new rotation matrix rotating around a custom point",
+      "name":"gears.matrix.create_rotate_at",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "angle":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "angle":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(x, y, angle)",
+      "tags":[],
+      "lineno":64
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "map":{
+          "y":" The translation in y direction.",
+          "x":" The translation in x direction."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Translate this matrix",
+      "name":"gears.matrix:translate",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A new matrix describing the new transformation.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["A new matrix describing the new transformation."],
+      "args":"(x, y)",
+      "lineno":74
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"sx",
+        "2":"sy",
+        "map":{
+          "sx":" The scaling in x direction.",
+          "sy":" The scaling in y direction."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "sx":{
+            "type":"number"
+          },
+          "sy":{
+            "type":"number"
+          }
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Scale this matrix",
+      "name":"gears.matrix:scale",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A new matrix describing the new transformation.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["A new matrix describing the new transformation."],
+      "args":"(sx, sy)",
+      "lineno":82
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"angle",
+        "map":{
+          "angle":" The angle of the rotation in radians."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "angle":{
+            "type":"number"
+          }
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Rotate this matrix",
+      "name":"gears.matrix:rotate",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A new matrix describing the new transformation.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["A new matrix describing the new transformation."],
+      "args":"(angle)",
+      "lineno":89
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "3":"angle",
+        "map":{
+          "y":" The vertical rotation point",
+          "angle":" The angle (in radiant: -2*math.pi to 2*math.pi)",
+          "x":" The horizontal rotation point"
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "angle":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Rotate a shape from a custom point",
+      "name":"gears.matrix:rotate_at",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A transformation object",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["A transformation object"],
+      "args":"(x, y, angle)",
+      "lineno":98
+    },{
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Invert this matrix",
+      "name":"gears.matrix:invert",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A new matrix describing the inverse transformation.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["A new matrix describing the inverse transformation."],
+      "args":"()",
+      "lineno":104
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"other",
+        "map":{
+          "other":" The other matrix to multiply with."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"gears.matrix|cairo.Matrix"
+          },
+          "other":{
+            "type":"gears.matrix|cairo.Matrix"
+          }
+        },
+        "return":[[]]
+      },
+      "description":"\n The resulting matrix describes a transformation that is equivalent to first\n applying this transformation and then the transformation from `other`.\n Note that this function can also be called by directly multiplicating two\n matrix instances: `a * b == a:multiply(b)`.",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Multiply this matrix with another matrix.",
+      "name":"gears.matrix:multiply",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"The multiplication result.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["The multiplication result."],
+      "args":"(other)",
+      "lineno":120
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"other",
+        "map":{
+          "other":" The matrix to compare with."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"gears.matrix|cairo.Matrix"
+          },
+          "other":{
+            "type":"gears.matrix|cairo.Matrix"
+          }
+        },
+        "return":[[]]
+      },
+      "description":"\n Note that this function cal also be called by directly comparing two matrix\n instances: `a == b`.",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if two matrices are equal.",
+      "name":"gears.matrix:equals",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"True if this and the other matrix are equal.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["True if this and the other matrix are equal."],
+      "args":"(other)",
+      "lineno":136
+    },{
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get a string representation of this matrix",
+      "name":"gears.matrix:tostring",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A string showing this matrix in column form.",
+            "type":"",
+            "mods":[]
+          }
+        }],
+      "kind":"methods",
+      "ret":["A string showing this matrix in column form."],
+      "args":"()",
+      "lineno":147
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "map":{
+          "y":" The y coordinate of the point.",
+          "x":" The x coordinate of the point."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"number"
+          },{
+            "type":"number"
+          }]
+      },
+      "description":"\n The difference to @{matrix:transform_point} is that the translation part of\n this matrix is ignored.",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Transform a distance by this matrix.",
+      "name":"gears.matrix:transform_distance",
+      "retgroups":[{
+          "1":{
+            "text":"The x coordinate of the transformed point.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "2":{
+            "text":"The x coordinate of the transformed point.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "g":0
+        }],
+      "kind":"methods",
+      "ret":["The x coordinate of the transformed point.","The x coordinate of the transformed point."],
+      "args":"(x, y)",
+      "lineno":160
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "map":{
+          "y":" The y coordinate of the point.",
+          "x":" The x coordinate of the point."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"number"
+          },{
+            "type":"number"
+          }]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Transform a point by this matrix.",
+      "name":"gears.matrix:transform_point",
+      "retgroups":[{
+          "1":{
+            "text":"The x coordinate of the transformed point.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "2":{
+            "text":"The y coordinate of the transformed point.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "g":0
+        }],
+      "kind":"methods",
+      "ret":["The x coordinate of the transformed point.","The y coordinate of the transformed point."],
+      "args":"(x, y)",
+      "lineno":169
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "3":"width",
+        "4":"height",
+        "map":{
+          "y":" The y coordinate of the rectangle.",
+          "width":" The width of the rectangle.",
+          "height":" The height of the rectangle.",
+          "x":" The x coordinate of the rectangle."
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "2":{
+            "type":"number"
+          },
+          "3":{
+            "type":"number"
+          },
+          "4":{
+            "type":"number"
+          },
+          "y":{
+            "type":"number"
+          },
+          "width":{
+            "type":"number"
+          },
+          "height":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "return":[{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          },{
+            "type":"number"
+          }]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Calculate a bounding rectangle for transforming a rectangle by a matrix.",
+      "name":"gears.matrix:transform_rectangle",
+      "retgroups":[{
+          "1":{
+            "text":"X coordinate of the bounding rectangle.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "2":{
+            "text":"Y coordinate of the bounding rectangle.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "3":{
+            "text":"Width of the bounding rectangle.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "4":{
+            "text":"Height of the bounding rectangle.",
+            "type":"number",
+            "mods":{
+              "type":"number"
+            }
+          },
+          "g":0
+        }],
+      "kind":"methods",
+      "ret":["X coordinate of the bounding rectangle.","Y coordinate of the bounding rectangle.","Width of the bounding rectangle.","Height of the bounding rectangle."],
+      "args":"(x, y, width, height)",
+      "lineno":183
+    },{
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "param":[],
+        "return":[{
+            "type":"cairo.Matrix"
+          }]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Convert to a cairo matrix",
+      "name":"gears.matrix:to_cairo_matrix",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A cairo matrix describing the same transformation.",
+            "type":"cairo.Matrix",
+            "mods":{
+              "type":"cairo.Matrix"
+            }
+          }
+        }],
+      "kind":"methods",
+      "ret":["A cairo matrix describing the same transformation."],
+      "args":"()",
+      "lineno":200
+    },{
+      "parameter":"param",
+      "params":{
+        "1":"mat",
+        "map":{
+          "mat":" A cairo matrix describing the sought transformation"
+        }
+      },
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"cairo.Matrix"
+          },
+          "mat":{
+            "type":"cairo.Matrix"
+          }
+        },
+        "return":[{
+            "type":"gears.matrix"
+          }]
+      },
+      "description":"",
+      "type":"function",
+      "tags":{
+        "within":"Methods"
+      },
+      "section":"Methods",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Convert to a cairo matrix",
+      "name":"gears.matrix:from_cairo_matrix",
+      "retgroups":[{
+          "g":0,
+          "1":{
+            "text":"A matrix instance describing the same transformation.",
+            "type":"gears.matrix",
+            "mods":{
+              "type":"gears.matrix"
+            }
+          }
+        }],
+      "kind":"methods",
+      "ret":["A matrix instance describing the same transformation."],
+      "args":"(mat)",
+      "lineno":209
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"matrix",
+        "map":{
+          "matrix":""
+        }
+      },
+      "summary":"A constant for the identity matrix.",
+      "name":"gears.matrix.identity",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "matrix":[]
+        },
+        "field":{
+          "1":[],
+          "matrix":[]
+        }
+      },
+      "description":"",
+      "type":"field",
+      "section":"field",
+      "kind":"fields",
+      "args":"(matrix)",
+      "tags":[],
+      "lineno":221
+    }],
+  "lineno":9
+}

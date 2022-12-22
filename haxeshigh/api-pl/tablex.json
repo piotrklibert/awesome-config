@@ -1,0 +1,2341 @@
+{
+  "name":"pl.tablex",
+  "kind":"libraries",
+  "inferred":true,
+  "description":"\n\n See @{02-arrays.md.Useful_Operations_on_Tables|the Guide}\n\n Dependencies: `pl.utils`, `pl.types`",
+  "modifiers":[],
+  "summary":"Extended operations on Lua tables.",
+  "sections":{
+    "by_name":[]
+  },
+  "mod_name":"tablex",
+  "lineno":7,
+  "tags":[],
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "t2":{
+            "type":"tab"
+          },
+          "t1":{
+            "type":"tab"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"copy a table into another, in-place.",
+      "lineno":61,
+      "retgroups":[{
+          "1":{
+            "text":"first table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t1, t2)",
+      "type":"function",
+      "name":"update",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "t2":" source (actually any iterable object)",
+          "t1":" destination table"
+        }
+      },
+      "tags":{
+        "within":"Copying"
+      },
+      "kind":"copying",
+      "section":"Copying",
+      "description":"",
+      "ret":["first table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"total number of elements in this table.",
+      "lineno":78,
+      "retgroups":[{
+          "1":{
+            "text":"the size",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"size",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" a table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Note that this is distinct from `#t`, which is the number\n of values in the array part; this value will always\n be greater or equal. The difference gives the size of\n the hash part, for practical purposes. Works for any\n object with a __pairs metamethod.",
+      "ret":["the size"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"make a shallow copy of a table",
+      "lineno":89,
+      "retgroups":[{
+          "1":{
+            "text":"new table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"copy",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" an iterable source"
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Copying"
+      },
+      "kind":"copying",
+      "section":"Copying",
+      "description":"",
+      "ret":["new table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"make a deep copy of a table, recursively copying all the keys and fields.",
+      "lineno":120,
+      "retgroups":[{
+          "1":{
+            "text":"new table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"deepcopy",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" A table"
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Copying"
+      },
+      "kind":"copying",
+      "section":"Copying",
+      "description":"\n This supports cycles in tables; cycles will be reproduced in the copy.\n This will also set the copied table's metatable to that of the original.",
+      "ret":["new table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":{
+            "opt":true,
+            "type":"bool",
+            "optchain":true
+          },
+          "4":{
+            "opt":true,
+            "type":"number",
+            "optchain":true
+          },
+          "ignore_mt":{
+            "opt":true,
+            "type":"bool",
+            "optchain":true
+          },
+          "t1":[],
+          "t2":[],
+          "eps":{
+            "opt":true,
+            "type":"number",
+            "optchain":true
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"compare two values.",
+      "lineno":162,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t1, t2[, ignore_mt[, eps]])",
+      "type":"function",
+      "name":"deepcompare",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "3":"ignore_mt",
+        "4":"eps",
+        "map":{
+          "ignore_mt":" if true, ignore __eq metamethod (default false)",
+          "t1":" A value",
+          "t2":" A value",
+          "eps":" if defined, then used for any number comparisons"
+        }
+      },
+      "tags":{
+        "within":"Comparing"
+      },
+      "kind":"comparing",
+      "section":"Comparing",
+      "description":"\n if they are tables, then compare their keys and fields recursively.",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":{
+            "type":"func"
+          },
+          "cmp":{
+            "type":"func"
+          },
+          "t1":{
+            "type":"array"
+          },
+          "t2":{
+            "type":"array"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"compare two arrays using a predicate.",
+      "lineno":178,
+      "retgroups":[{
+          "1":{
+            "text":"true or false",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t1, t2, cmp)",
+      "usage":["assert(tablex.compare({ 1, 2, 3 }, { 1, 2, 3 }, \"==\"))\n\nassert(tablex.compare(\n   {1,2,3, hello = \"world\"},  -- fields are not compared!\n   {1,2,3}, function(v1, v2) return v1 == v2 end)\n"],
+      "type":"function",
+      "name":"compare",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "cmp":" A comparison function; `bool = cmp(t1_value, t2_value)`",
+          "t1":" an array",
+          "t2":" an array"
+        },
+        "3":"cmp"
+      },
+      "tags":{
+        "within":"Comparing"
+      },
+      "kind":"comparing",
+      "section":"Comparing",
+      "description":"",
+      "ret":["true or false"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":[],
+          "cmp":[],
+          "t1":{
+            "type":"array"
+          },
+          "t2":{
+            "type":"array"
+          }
+        },
+        "return":[]
+      },
+      "summary":"compare two list-like tables using an optional predicate, without regard for element order.",
+      "lineno":194,
+      "args":"(t1, t2, cmp)",
+      "section":"Comparing",
+      "name":"compare_no_order",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "cmp":" A comparison function (may be nil)",
+          "t1":" a list-like table",
+          "t2":" a list-like table"
+        },
+        "3":"cmp"
+      },
+      "tags":{
+        "within":"Comparing"
+      },
+      "kind":"comparing",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[],[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "3":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "idx":{
+            "type":"int"
+          },
+          "val":[]
+        },
+        "return":[[]]
+      },
+      "summary":"return the index of a value in a list.",
+      "lineno":230,
+      "retgroups":[{
+          "1":{
+            "text":"index of value or nil if not found",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, val, idx)",
+      "usage":["find({10,20,30},20) == 2\n","find({'a','b','a','c'},'a',2) == 3\n"],
+      "type":"function",
+      "name":"find",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"val",
+        "map":{
+          "t":" A list-like table",
+          "idx":" index to start; -1 means last element,etc (default 1)",
+          "val":" A value"
+        },
+        "3":"idx"
+      },
+      "tags":{
+        "within":"Finding"
+      },
+      "kind":"finding",
+      "section":"Finding",
+      "description":"\n Like string.find, there is an optional index to start searching,\n which can be negative.",
+      "ret":["index of value or nil if not found"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "3":[],
+          "t":{
+            "type":"array"
+          },
+          "idx":[],
+          "val":[]
+        },
+        "return":[[]]
+      },
+      "summary":"return the index of a value in a list, searching from the end.",
+      "lineno":249,
+      "retgroups":[{
+          "1":{
+            "text":"index of value or nil if not found",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, val, idx)",
+      "usage":["rfind({10,10,10},10) == 3\n"],
+      "type":"function",
+      "name":"rfind",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"val",
+        "map":{
+          "t":" A list-like table",
+          "idx":" index to start; -1 means last element,etc (default `#t`)",
+          "val":" A value"
+        },
+        "3":"idx"
+      },
+      "tags":{
+        "within":"Finding"
+      },
+      "kind":"finding",
+      "section":"Finding",
+      "description":"\n Like string.find, there is an optional index to start searching,\n which can be negative.",
+      "ret":["index of value or nil if not found"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"func"
+          },
+          "3":[],
+          "t":{
+            "type":"tab"
+          },
+          "cmp":{
+            "type":"func"
+          },
+          "arg":[]
+        },
+        "return":[[],[]]
+      },
+      "summary":"return the index (or key) of a value in a table using a comparison function.",
+      "lineno":293,
+      "retgroups":[{
+          "1":{
+            "text":"index of value, or nil if not found",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"value returned by comparison function (cannot be `false`!)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, cmp, arg)",
+      "usage":["-- using an operator\nlocal lst = { \"Rudolph\", true, false, 15 }\nlocal idx, cmp_result = tablex.rfind(lst, \"==\", \"Rudolph\")\nassert(idx == 1)\nassert(cmp_result == true)\n\nlocal idx, cmp_result = tablex.rfind(lst, \"==\", false)\nassert(idx == 3)\nassert(cmp_result == true)       -- looking up 'false' works!\n\n-- using a function returning the value looked up\nlocal cmp = function(v1, v2) return v1 == v2 and v2 end\nlocal idx, cmp_result = tablex.rfind(lst, cmp, \"Rudolph\")\nassert(idx == 1)\nassert(cmp_result == \"Rudolph\")  -- the value is returned\n\n-- NOTE: this fails, since 'false' cannot be returned!\nlocal idx, cmp_result = tablex.rfind(lst, cmp, false)\nassert(idx == nil)               -- looking up 'false' failed!\nassert(cmp_result == nil)\n"],
+      "type":"function",
+      "name":"find_if",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"cmp",
+        "map":{
+          "t":" A table",
+          "cmp":" A comparison function",
+          "arg":" an optional second argument to the function"
+        },
+        "3":"arg"
+      },
+      "tags":{
+        "within":"Finding"
+      },
+      "kind":"finding",
+      "section":"Finding",
+      "description":"\n\n *NOTE*: the 2nd return value of this function, the value returned\n by the comparison function, has a limitation that it cannot be `false`.\n Because if it is, then it indicates the comparison failed, and the\n function will continue the search. See examples.",
+      "ret":["index of value, or nil if not found","value returned by comparison function (cannot be `false`!)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[],[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"array"
+          },
+          "tbl":{
+            "type":"tab"
+          },
+          "idx":{
+            "type":"array"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"return a list of all values in a table indexed by another list.",
+      "lineno":309,
+      "retgroups":[{
+          "1":{
+            "text":"a list-like table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tbl, idx)",
+      "usage":["index_by({10,20,30,40},{2,4}) == {20,40}\n","index_by({one=1,two=2,three=3},{'one','three'}) == {1,3}\n"],
+      "type":"function",
+      "name":"index_by",
+      "parameter":"param",
+      "params":{
+        "1":"tbl",
+        "2":"idx",
+        "map":{
+          "tbl":" a table",
+          "idx":" an index table (a list of keys)"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a list-like table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":[],
+          "t":{
+            "type":"tab"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[],
+        "usage":[[]]
+      },
+      "summary":"apply a function to all values of a table.",
+      "lineno":327,
+      "args":"(fun, t, ...)",
+      "usage":["map(function(v) return v*v end, {10,20,30,fred=2}) is {100,400,900,fred=4}\n"],
+      "section":"MappingAndFiltering",
+      "name":"map",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"t",
+        "map":{
+          "t":" A table",
+          "fun":" A function that takes at least one argument",
+          "...":" optional arguments"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "description":"\n This returns a table of the results.\n Any extra arguments are passed to the function.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":[],
+          "t":{
+            "type":"array"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[[]]
+      },
+      "summary":"apply a function to all values of a list.",
+      "lineno":346,
+      "retgroups":[{
+          "1":{
+            "text":"a list-like table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun, t, ...)",
+      "usage":["imap(function(v) return v*v end, {10,20,30,fred=2}) is {100,400,900}\n"],
+      "type":"function",
+      "name":"imap",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"t",
+        "map":{
+          "t":" a table (applies to array part)",
+          "fun":" A function that takes at least one argument",
+          "...":" optional arguments"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "section":"MappingAndFiltering",
+      "description":"\n This returns a table of the results.\n Any extra arguments are passed to the function.",
+      "ret":["a list-like table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":[],
+          "t":{
+            "type":"array"
+          },
+          "name":{
+            "type":"string"
+          },
+          "...":[]
+        },
+        "return":[[]]
+      },
+      "summary":"apply a named method to values from a table.",
+      "lineno":383,
+      "retgroups":[{
+          "1":{
+            "text":"a `List` with the results of the method (1st result only)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(name, t, ...)",
+      "usage":["local Car = {}\nCar.__index = Car\nfunction Car.new(car)\n  return setmetatable(car or {}, Car)\nend\nCar.speed = 0\nfunction Car:faster(increase)\n  self.speed = self.speed + increase\n  return self.speed\nend\n\nlocal ferrari = Car.new{ name = \"Ferrari\" }\nlocal lamborghini = Car.new{ name = \"Lamborghini\", speed = 50 }\nlocal cars = { ferrari, lamborghini }\n\nassert(ferrari.speed == 0)\nassert(lamborghini.speed == 50)\ntablex.map_named_method(\"faster\", cars, 10)\nassert(ferrari.speed == 10)\nassert(lamborghini.speed == 60)\n"],
+      "type":"function",
+      "name":"map_named_method",
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"t",
+        "map":{
+          "t":" a list-like table",
+          "name":" the method name",
+          "...":" any extra arguments to the method"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "section":"MappingAndFiltering",
+      "description":"",
+      "ret":["a `List` with the results of the method (1st result only)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":[],
+          "t":{
+            "type":"tab"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"apply a function to all values of a table, in-place.",
+      "lineno":401,
+      "args":"(fun, t, ...)",
+      "section":"function",
+      "name":"transform",
+      "params":{
+        "1":"fun",
+        "2":"t",
+        "map":{
+          "t":" a table",
+          "fun":" A function that takes at least one argument",
+          "...":" extra arguments passed to `fun`"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "description":"\n Any extra arguments are passed to the function.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "step":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "start":{
+            "type":"int"
+          },
+          "finish":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"generate a table of all numbers in a range.",
+      "lineno":414,
+      "args":"(start, finish[, step=1])",
+      "section":"function",
+      "name":"range",
+      "params":{
+        "1":"start",
+        "2":"finish",
+        "map":{
+          "step":"  make this negative for start < finish",
+          "start":"  number",
+          "finish":" number"
+        },
+        "3":"step"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n This is consistent with a numerical for loop.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":{
+            "type":"tab"
+          },
+          "4":[],
+          "...":[],
+          "t1":{
+            "type":"tab"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "t2":{
+            "type":"tab"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"apply a function to values from two tables.",
+      "lineno":437,
+      "retgroups":[{
+          "1":{
+            "text":"a table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun, t1, t2, ...)",
+      "usage":["map2('+',{1,2,3,m=4},{10,20,30,m=40}) is {11,22,23,m=44}\n"],
+      "type":"function",
+      "name":"map2",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"t1",
+        "3":"t2",
+        "4":"...",
+        "map":{
+          "...":" extra arguments",
+          "t1":" a table",
+          "fun":" a function of at least two arguments",
+          "t2":" a table"
+        }
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "section":"MappingAndFiltering",
+      "description":"",
+      "ret":["a table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":{
+            "type":"array"
+          },
+          "4":[],
+          "...":[],
+          "t1":{
+            "type":"array"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "t2":{
+            "type":"array"
+          }
+        },
+        "return":[],
+        "usage":[[]]
+      },
+      "summary":"apply a function to values from two arrays.",
+      "lineno":456,
+      "args":"(fun, t1, t2, ...)",
+      "usage":["imap2('+',{1,2,3,m=4},{10,20,30,m=40}) is {11,22,23}\n"],
+      "section":"MappingAndFiltering",
+      "name":"imap2",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"t1",
+        "3":"t2",
+        "4":"...",
+        "map":{
+          "...":" extra arguments",
+          "t1":" a list-like table",
+          "fun":" a function of at least two arguments",
+          "t2":" a list-like table"
+        }
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "description":"\n The result will be the length of the shortest array.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":{
+            "type":"array"
+          },
+          "t":{
+            "type":"array"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "memo":{
+            "type":"array"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"'reduce' a list using a binary function.",
+      "lineno":473,
+      "retgroups":[{
+          "1":{
+            "text":"the result of the function",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(fun, t, memo)",
+      "usage":["reduce('+',{1,2,3,4}) == 10\n"],
+      "type":"function",
+      "name":"reduce",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"t",
+        "map":{
+          "t":" a list-like table",
+          "fun":" a function of two arguments",
+          "memo":" optional initial memo value. Defaults to first value in table."
+        },
+        "3":"memo"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the result of the function"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"func"
+          },
+          "3":[],
+          "t":{
+            "type":"tab"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"apply a function to all elements of a table.",
+      "lineno":496,
+      "args":"(t, fun, ...)",
+      "section":"Iterating",
+      "name":"foreach",
+      "params":{
+        "1":"t",
+        "2":"fun",
+        "map":{
+          "t":" a table",
+          "fun":" a function on the elements; `function(value, key, ...)`",
+          "...":" extra arguments passed to `fun`"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "see":[],
+        "within":"Iterating"
+      },
+      "kind":"iterating",
+      "description":"\n The arguments to the function will be the value,\n the key and _finally_ any extra arguments passed to this function.\n Note that the Lua 5.0 function table.foreach passed the _key_ first.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"func"
+          },
+          "3":[],
+          "t":{
+            "type":"array"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[]
+      },
+      "summary":"apply a function to all elements of a list-like table in order.",
+      "lineno":511,
+      "args":"(t, fun, ...)",
+      "section":"Iterating",
+      "name":"foreachi",
+      "params":{
+        "1":"t",
+        "2":"fun",
+        "map":{
+          "t":" a table",
+          "fun":" a function with at least one argument",
+          "...":" optional arguments"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "within":"Iterating"
+      },
+      "kind":"iterating",
+      "description":"\n The arguments to the function will be the value,\n the index and _finally_ any extra arguments passed to this function",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":[],
+          "fun":[],
+          "...":{
+            "type":"tab"
+          }
+        },
+        "return":[],
+        "usage":[[],[]]
+      },
+      "summary":"Apply a function to a number of tables.",
+      "lineno":529,
+      "args":"(fun, ..., fun)",
+      "usage":["mapn(function(x,y,z) return x+y+z end, {1,2,3},{10,20,30},{100,200,300}) is {111,222,333}\n","mapn(math.max, {1,20,300},{10,2,3},{100,200,100}) is    {100,200,300}\n"],
+      "section":"MappingAndFiltering",
+      "name":"mapn",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"...",
+        "map":{
+          "fun":" A function that takes as many arguments as there are tables",
+          "...":" n tables"
+        },
+        "3":"fun"
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "description":"\n A more general version of map\n The result is a table containing the result of applying that function to the\n ith value of each table. Length of output list is the minimum length of all the lists",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"func"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":[],
+          "t":{
+            "type":"tab"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "...":[]
+        },
+        "return":[],
+        "usage":[[],[]]
+      },
+      "summary":"call the function with the key and value pairs from a table.",
+      "lineno":558,
+      "args":"(fun, t, ...)",
+      "usage":["pairmap(function(k,v) return v end,{fred=10,bonzo=20}) is {10,20} _or_ {20,10}\n","pairmap(function(k,v) return {k,v},k end,{one=1,two=2}) is {one={'one',1},two={'two',2}}\n"],
+      "section":"MappingAndFiltering",
+      "name":"pairmap",
+      "parameter":"param",
+      "params":{
+        "1":"fun",
+        "2":"t",
+        "map":{
+          "t":" A table",
+          "fun":" A function which will be passed each key and value as arguments, plus any extra arguments to pairmap.",
+          "...":" optional arguments"
+        },
+        "3":"..."
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "description":"\n The function can return a value and a key (note the order!). If both\n are not nil, then this pair is inserted into the result: if the key already exists, we convert the value for that\n key into a table and append into it. If only value is not nil, then it is appended to the result.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        },
+        "return":[]
+      },
+      "summary":"return all the keys of a table in arbitrary order.",
+      "lineno":586,
+      "args":"(t)",
+      "section":"Extraction",
+      "name":"keys",
+      "params":{
+        "map":{
+          "t":" A list-like table where the values are the keys of the input table"
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Extraction"
+      },
+      "kind":"extraction",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        },
+        "return":[]
+      },
+      "summary":"return all the values of the table in arbitrary order",
+      "lineno":596,
+      "args":"(t)",
+      "section":"Extraction",
+      "name":"values",
+      "params":{
+        "map":{
+          "t":" A list-like table where the values are the values of the input table"
+        },
+        "1":"t"
+      },
+      "tags":{
+        "within":"Extraction"
+      },
+      "kind":"extraction",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "t":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"create an index map from a list-like table.",
+      "lineno":607,
+      "retgroups":[{
+          "1":{
+            "text":"a map-like table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"index_map",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" a list-like table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" The original values become keys,\n and the associated values are the indices into the original list.",
+      "ret":["a map-like table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "t":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"create a set from a list-like table.",
+      "lineno":618,
+      "retgroups":[{
+          "1":{
+            "text":"a set (a map-like table)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"makeset",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" a list-like table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" A set is a table where the original values\n become keys, and the associated values are all true.",
+      "ret":["a set (a map-like table)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "see":[[]],
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":{
+            "type":"bool"
+          },
+          "dup":{
+            "type":"bool"
+          },
+          "t1":{
+            "type":"tab"
+          },
+          "t2":{
+            "type":"tab"
+          }
+        },
+        "usage":[[],[]]
+      },
+      "summary":"combine two tables, either as union or intersection.",
+      "lineno":633,
+      "args":"(t1, t2, dup)",
+      "usage":["merge({alice=23,fred=34},{bob=25,fred=34}) is {fred=34}\n","merge({alice=23,fred=34},{bob=25,fred=34},true) is {bob=25,fred=34,alice=23}\n"],
+      "section":"Merging",
+      "name":"merge",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "dup":" true for a union, false for an intersection.",
+          "t1":" a table",
+          "t2":" a table"
+        },
+        "3":"dup"
+      },
+      "tags":{
+        "see":[],
+        "within":"Merging"
+      },
+      "kind":"merging",
+      "description":" Corresponds to\n set operations for sets () but more general. Not particularly\n useful for list-like tables.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "t2":{
+            "type":"tab"
+          },
+          "t1":{
+            "type":"tab"
+          }
+        },
+        "return":[{
+            "type":"tab"
+          }],
+        "see":[[]]
+      },
+      "summary":"the union of two map-like tables.",
+      "lineno":654,
+      "retgroups":[{
+          "1":{
+            "text":"",
+            "type":"tab",
+            "mods":{
+              "type":"tab"
+            }
+          },
+          "g":0
+        }],
+      "args":"(t1, t2)",
+      "type":"function",
+      "name":"union",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "t2":" a table",
+          "t1":" a table"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n If there are duplicate keys, the second table wins.",
+      "ret":[""]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "t2":{
+            "type":"tab"
+          },
+          "t1":{
+            "type":"tab"
+          }
+        },
+        "return":[{
+            "type":"tab"
+          }],
+        "see":[[]]
+      },
+      "summary":"the intersection of two map-like tables.",
+      "lineno":663,
+      "retgroups":[{
+          "1":{
+            "text":"",
+            "type":"tab",
+            "mods":{
+              "type":"tab"
+            }
+          },
+          "g":0
+        }],
+      "args":"(t1, t2)",
+      "type":"function",
+      "name":"intersection",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "t2":" a table",
+          "t1":" a table"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":[""]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"tab"
+          },
+          "3":{
+            "type":"bool"
+          },
+          "s2":{
+            "type":"tab"
+          },
+          "symm":{
+            "type":"bool"
+          },
+          "s1":{
+            "type":"tab"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"a new table which is the difference of two tables.",
+      "lineno":675,
+      "retgroups":[{
+          "1":{
+            "text":"a map-like table or set",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s1, s2, symm)",
+      "type":"function",
+      "name":"difference",
+      "parameter":"param",
+      "params":{
+        "1":"s1",
+        "2":"s2",
+        "map":{
+          "s2":" a map-like table or set",
+          "symm":" symmetric difference (default false)",
+          "s1":" a map-like table or set"
+        },
+        "3":"symm"
+      },
+      "tags":{
+        "within":"Merging"
+      },
+      "kind":"merging",
+      "section":"Merging",
+      "description":"\n With sets (where the values are all true) this is set difference and\n symmetric difference depending on the third parameter.",
+      "ret":["a map-like table or set"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"func"
+          },
+          "t":{
+            "type":"array"
+          },
+          "cmp":{
+            "type":"func"
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"A table where the key/values are the values and value counts of the table.",
+      "lineno":695,
+      "retgroups":[{
+          "1":{
+            "text":"a map-like table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, cmp)",
+      "type":"function",
+      "name":"count_map",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"cmp",
+        "map":{
+          "t":" a list-like table",
+          "cmp":" a function that defines equality (otherwise uses ==)"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a map-like table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"func"
+          },
+          "3":[],
+          "t":{
+            "type":"array"
+          },
+          "pred":{
+            "type":"func"
+          },
+          "arg":[]
+        },
+        "return":[]
+      },
+      "summary":"filter an array's values using a predicate function",
+      "lineno":724,
+      "args":"(t, pred, arg)",
+      "section":"MappingAndFiltering",
+      "name":"filter",
+      "params":{
+        "1":"t",
+        "2":"pred",
+        "map":{
+          "t":" a list-like table",
+          "pred":" a boolean function",
+          "arg":" optional argument to be passed as second argument of the predicate"
+        },
+        "3":"arg"
+      },
+      "tags":{
+        "within":"MappingAndFiltering"
+      },
+      "kind":"mappingandfiltering",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "...":{
+            "type":"array"
+          }
+        }
+      },
+      "summary":"return a table where each element is a table of the ith values of an arbitrary\n number of tables.",
+      "lineno":743,
+      "args":"(...)",
+      "usage":["zip({10,20,30},{100,200,300}) is {{10,100},{20,200},{30,300}}\n"],
+      "section":"Merging",
+      "name":"zip",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "...":" arrays to be zipped"
+        },
+        "1":"..."
+      },
+      "tags":{
+        "within":"Merging"
+      },
+      "kind":"merging",
+      "description":" It is equivalent to a matrix transpose.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "5":{
+            "opt":"#src",
+            "type":"int",
+            "optchain":"#src"
+          },
+          "idest":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "isrc":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "nsrc":{
+            "opt":"#src",
+            "type":"int",
+            "optchain":"#src"
+          },
+          "dest":{
+            "type":"array"
+          },
+          "src":{
+            "type":"array"
+          }
+        },
+        "return":[]
+      },
+      "summary":"copy an array into another one, clearing `dest` after `idest+nsrc`, if necessary.",
+      "lineno":781,
+      "args":"(dest, src[, idest=1[, isrc=1[, nsrc=#src]]])",
+      "section":"Copying",
+      "name":"icopy",
+      "params":{
+        "1":"dest",
+        "2":"src",
+        "3":"idest",
+        "4":"isrc",
+        "map":{
+          "idest":" where to start copying values into destination",
+          "isrc":" where to start copying values from source",
+          "nsrc":" number of elements to copy from source",
+          "dest":" a list-like table",
+          "src":" a list-like table"
+        },
+        "5":"nsrc"
+      },
+      "tags":{
+        "within":"Copying"
+      },
+      "kind":"copying",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"array"
+          },
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "5":{
+            "opt":"#src",
+            "type":"int",
+            "optchain":"#src"
+          },
+          "idest":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "isrc":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "nsrc":{
+            "opt":"#src",
+            "type":"int",
+            "optchain":"#src"
+          },
+          "dest":{
+            "type":"array"
+          },
+          "src":{
+            "type":"array"
+          }
+        },
+        "return":[]
+      },
+      "summary":"copy an array into another one.",
+      "lineno":794,
+      "args":"(dest, src[, idest=1[, isrc=1[, nsrc=#src]]])",
+      "section":"Copying",
+      "name":"move",
+      "params":{
+        "1":"dest",
+        "2":"src",
+        "3":"idest",
+        "4":"isrc",
+        "map":{
+          "idest":" where to start copying values into destination",
+          "isrc":" where to start copying values from source",
+          "nsrc":" number of elements to copy from source",
+          "dest":" a list-like table",
+          "src":" a list-like table"
+        },
+        "5":"nsrc"
+      },
+      "tags":{
+        "within":"Copying"
+      },
+      "kind":"copying",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "last":{
+            "type":"int"
+          },
+          "first":{
+            "type":"int"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Extract a range from a table, like  'string.sub'.",
+      "lineno":819,
+      "retgroups":[{
+          "1":{
+            "text":"a new List",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, first, last)",
+      "type":"function",
+      "name":"sub",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"first",
+        "map":{
+          "t":" a list-like table",
+          "last":" An index",
+          "first":" An index"
+        },
+        "3":"last"
+      },
+      "tags":{
+        "within":"Extraction"
+      },
+      "kind":"extraction",
+      "section":"Extraction",
+      "description":"\n If first or last are negative then they are relative to the end of the list\n eg. sub(t,-2) gives last 2 entries in a list, and\n sub(t,-4,-2) gives from -4th to -2nd",
+      "ret":["a new List"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "3":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "4":{
+            "opt":"#t",
+            "type":"int",
+            "optchain":"#t"
+          },
+          "t":{
+            "type":"array"
+          },
+          "val":[],
+          "i1":{
+            "opt":"1",
+            "type":"int",
+            "optchain":"1"
+          },
+          "i2":{
+            "opt":"#t",
+            "type":"int",
+            "optchain":"#t"
+          }
+        }
+      },
+      "summary":"set an array range to a value.",
+      "lineno":833,
+      "args":"(t, val[, i1=1[, i2=#t]])",
+      "section":"function",
+      "name":"set",
+      "params":{
+        "1":"t",
+        "2":"val",
+        "3":"i1",
+        "4":"i2",
+        "map":{
+          "t":" a list-like table",
+          "val":" a value",
+          "i1":" start range",
+          "i2":" end range"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" If it's a function we use the result\n of applying it to the indices.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"int"
+          },
+          "2":[],
+          "val":[],
+          "n":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"create a new array of specified size with initial value.",
+      "lineno":851,
+      "retgroups":[{
+          "1":{
+            "text":"the table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(n, val)",
+      "type":"function",
+      "name":"new",
+      "parameter":"param",
+      "params":{
+        "1":"n",
+        "2":"val",
+        "map":{
+          "val":" initial value (can be `nil`, but don't expect `#` to work!)",
+          "n":" size"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":[],
+          "t":{
+            "type":"array"
+          },
+          "istart":[]
+        }
+      },
+      "summary":"clear out the contents of a table.",
+      "lineno":860,
+      "args":"(t, istart)",
+      "section":"function",
+      "name":"clear",
+      "params":{
+        "1":"t",
+        "2":"istart",
+        "map":{
+          "t":" a list",
+          "istart":" optional start position"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int",
+            "opt":true
+          },
+          "3":{
+            "type":"array"
+          },
+          "t":{
+            "type":"array"
+          },
+          "position":{
+            "type":"int",
+            "opt":true
+          },
+          "values":{
+            "type":"array"
+          }
+        },
+        "return":[]
+      },
+      "summary":"insert values into a table.",
+      "lineno":872,
+      "args":"(t[, position], values)",
+      "section":"Copying",
+      "name":"insertvalues",
+      "params":{
+        "1":"t",
+        "2":"position",
+        "map":{
+          "t":" the list",
+          "position":" (default is at end)",
+          "values":""
+        },
+        "3":"values"
+      },
+      "tags":{
+        "within":"Copying"
+      },
+      "kind":"copying",
+      "description":"\n similar to `table.insert` but inserts values from given table `values`,\n not the object itself, into table `t` at position `pos`.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"array"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"int"
+          },
+          "t":{
+            "type":"array"
+          },
+          "i1":{
+            "type":"int"
+          },
+          "i2":{
+            "type":"int"
+          }
+        }
+      },
+      "summary":"remove a range of values from a table.",
+      "lineno":898,
+      "retgroups":[{
+          "1":{
+            "text":"the table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, i1, i2)",
+      "type":"function",
+      "name":"removevalues",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"i1",
+        "map":{
+          "t":" a list-like table",
+          "i1":" start index",
+          "i2":" end index"
+        },
+        "3":"i2"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n End of range may be negative.",
+      "ret":["the table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":[],
+          "3":{
+            "opt":true,
+            "type":"array",
+            "optchain":true
+          },
+          "t":{
+            "type":"tab"
+          },
+          "value":[],
+          "exclude":{
+            "opt":true,
+            "type":"array",
+            "optchain":true
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"find a value in a table by recursive search.",
+      "lineno":935,
+      "retgroups":[{
+          "1":{
+            "text":"a fieldspec, e.g. 'a.b' or 'math.sin'",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, value[, exclude])",
+      "usage":["search(_G,math.sin,{package.path}) == 'math.sin'\n"],
+      "type":"function",
+      "name":"search",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"value",
+        "map":{
+          "t":" the table",
+          "value":" the value",
+          "exclude":" any tables to avoid searching"
+        },
+        "3":"exclude"
+      },
+      "tags":{
+        "within":"Finding"
+      },
+      "kind":"finding",
+      "section":"Finding",
+      "description":"",
+      "ret":["a fieldspec, e.g. 'a.b' or 'math.sin'"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"func"
+          },
+          "t":{
+            "type":"tab"
+          },
+          "f":{
+            "type":"func"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"return an iterator to a table sorted by its keys",
+      "lineno":950,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator to traverse elements sorted by the keys",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, f)",
+      "usage":["for k,v in tablex.sort(t) do print(k,v) end\n"],
+      "type":"function",
+      "name":"sort",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"f",
+        "map":{
+          "t":" the table",
+          "f":" an optional comparison function (f(x,y) is true if x < y)"
+        }
+      },
+      "tags":{
+        "within":"Iterating"
+      },
+      "kind":"iterating",
+      "section":"Iterating",
+      "description":"",
+      "ret":["an iterator to traverse elements sorted by the keys"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "within":[],
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"func"
+          },
+          "t":{
+            "type":"tab"
+          },
+          "f":{
+            "type":"func"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"return an iterator to a table sorted by its values",
+      "lineno":967,
+      "retgroups":[{
+          "1":{
+            "text":"an iterator to traverse elements sorted by the values",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t, f)",
+      "usage":["for k,v in tablex.sortv(t) do print(k,v) end\n"],
+      "type":"function",
+      "name":"sortv",
+      "parameter":"param",
+      "params":{
+        "1":"t",
+        "2":"f",
+        "map":{
+          "t":" the table",
+          "f":" an optional comparison function (f(x,y) is true if x < y)"
+        }
+      },
+      "tags":{
+        "within":"Iterating"
+      },
+      "kind":"iterating",
+      "section":"Iterating",
+      "description":"",
+      "ret":["an iterator to traverse elements sorted by the values"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "t":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"modifies a table to be read only.",
+      "lineno":987,
+      "retgroups":[{
+          "1":{
+            "text":"the table read only (a proxy).",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"readonly",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" the table"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This only offers weak protection. Tables can still be modified with\n `table.insert` and `rawset`.\n\n *NOTE*: for Lua 5.1 length, pairs and ipairs will not work, since the\n equivalent metamethods are only available in Lua 5.2 and newer.",
+      "ret":["the table read only (a proxy)."]
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/Penlight/lua/pl/tablex.lua"
+}

@@ -1,0 +1,287 @@
+{
+  "kind":"libraries",
+  "name":"pl.lapp",
+  "mod_name":"lapp",
+  "inferred":true,
+  "description":"\n Supports GNU-style parameters.\n\n      lapp = require 'pl.lapp'\n      local args = lapp [[\n      Does some calculations\n        -o,--offset (default 0.0)  Offset to add to scaled number\n        -s,--scale  (number)  Scaling factor\n        <number> (number) Number to be scaled\n      ]]\n\n      print(args.offset + args.scale * args.number)\n\n Lines beginning with `'-'` are flags; there may be a short and a long name;\n lines beginning with `'<var>'` are arguments.  Anything in parens after\n the flag/argument is either a default, a type name or a range constraint.\n\n See @{08-additional.md.Command_line_Programs_with_Lapp|the Guide}\n\n Dependencies: `pl.sip`",
+  "file":"/home/cji/portless/Penlight/lua/pl/lapp.lua",
+  "summary":"Simple command-line parsing using human-readable specification.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":23,
+  "package":"pl",
+  "items":[{
+      "name":"show_usage_error",
+      "section":"field",
+      "inferred":true,
+      "description":"\n Defaults to true",
+      "kind":"fields",
+      "summary":"controls whether to dump usage on error.",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":50,
+      "subparams":[],
+      "args":"()",
+      "parameter":"field",
+      "type":"field",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      }
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"bool"
+          },
+          "no_usage":{
+            "type":"bool"
+          },
+          "msg":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"quit this script immediately.",
+      "lineno":55,
+      "args":"(msg, no_usage)",
+      "section":"function",
+      "name":"quit",
+      "params":{
+        "1":"msg",
+        "2":"no_usage",
+        "map":{
+          "no_usage":" suppress 'usage' display",
+          "msg":" optional message"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"bool"
+          },
+          "no_usage":{
+            "type":"bool"
+          },
+          "msg":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"print an error to stderr and quit.",
+      "lineno":71,
+      "args":"(msg, no_usage)",
+      "section":"function",
+      "name":"error",
+      "params":{
+        "1":"msg",
+        "2":"no_usage",
+        "map":{
+          "no_usage":" suppress 'usage' display",
+          "msg":" a message"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "file":{
+            "type":"string"
+          },
+          "opt":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          }
+        }
+      },
+      "summary":"open a file.",
+      "lineno":84,
+      "args":"(file[, opt])",
+      "section":"function",
+      "name":"open",
+      "params":{
+        "1":"file",
+        "2":"opt",
+        "map":{
+          "file":" filename",
+          "opt":" same as second parameter of `io.open`"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n This will quit on error, and keep a list of file objects for later cleanup.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"bool"
+          },
+          "2":{
+            "type":"string"
+          },
+          "condn":{
+            "type":"bool"
+          },
+          "msg":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"quit if the condition is false.",
+      "lineno":94,
+      "args":"(condn, msg)",
+      "section":"function",
+      "name":"assert",
+      "params":{
+        "1":"condn",
+        "2":"msg",
+        "map":{
+          "condn":" a condition",
+          "msg":" message text"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":[],
+          "3":{
+            "opt":true,
+            "type":"func",
+            "optchain":true
+          },
+          "constraint":{
+            "opt":true,
+            "type":"func",
+            "optchain":true
+          },
+          "name":{
+            "type":"string"
+          },
+          "converter":[]
+        }
+      },
+      "summary":"add a new type to Lapp.",
+      "lineno":137,
+      "args":"(name, converter[, constraint])",
+      "section":"function",
+      "name":"add_type",
+      "params":{
+        "1":"name",
+        "2":"converter",
+        "map":{
+          "constraint":" optional function to verify values, should use lapp.error\n if failed.",
+          "name":" name of type",
+          "converter":" either a function to convert values, or a Lua type name."
+        },
+        "3":"constraint"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" These appear in parens after the value like\n a range constraint, e.g. '<ival> (integer) Process PID'",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"{string}"
+          },
+          "args":{
+            "type":"{string}"
+          },
+          "str":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"process a Lapp options string.",
+      "lineno":182,
+      "retgroups":[{
+          "1":{
+            "text":"a table with parameter-value pairs",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(str, args)",
+      "type":"function",
+      "name":"process_options_string",
+      "parameter":"param",
+      "params":{
+        "1":"str",
+        "2":"args",
+        "map":{
+          "args":" a table of arguments (default is `_G.arg`)",
+          "str":" the options text"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Usually called as `lapp()`.",
+      "ret":["a table with parameter-value pairs"]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

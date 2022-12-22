@@ -1,0 +1,3980 @@
+{
+  "postprocess":<type 'function' is not supported by JSON.>,
+  "kind":"documentation",
+  "display_name":"My first Awesome",
+  "section":{
+    "display_name":"Further reading",
+    "lineno":1,
+    "type":"section",
+    "tags":[],
+    "file":{
+      "modules":[<reference cycle>],
+      "args":[],
+      "sections":{
+        "206":"Further_reading",
+        "181":"Add_widgets",
+        "101":"Personalize_your_layouts",
+        "154":"Some_global_settings",
+        "11":"Explore_Awesome",
+        "66":"Change_the_theme",
+        "131":"Personalize_your_tags",
+        "167":"Wrapping_up"
+      },
+      "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+      "items":[<reference cycle>,{
+          "display_name":"Explore Awesome",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Explore_Awesome",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"explore awesome ",
+          "type":"function",
+          "section":"Explore Awesome",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Change the theme",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Change_the_theme",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"change the theme ",
+          "type":"function",
+          "section":"Change the theme",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Personalize your layouts",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Personalize_your_layouts",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"personalize your layouts ",
+          "type":"function",
+          "section":"Personalize your layouts",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Personalize your tags",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Personalize_your_tags",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"personalize your tags ",
+          "type":"function",
+          "section":"Personalize your tags",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Some global settings",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Some_global_settings",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"some global settings ",
+          "type":"function",
+          "section":"Some global settings",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Wrapping up",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Wrapping_up",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"wrapping up ",
+          "type":"function",
+          "section":"Wrapping up",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },{
+          "display_name":"Add widgets",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Add_widgets",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"add widgets ",
+          "type":"function",
+          "section":"Add widgets",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },<reference cycle>,{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"further reading ",
+          "type":"function",
+          "section":"Further reading",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        }],
+      "display_name":"My first Awesome"
+    },
+    "summary":"",
+    "name":"Further_reading",
+    "modifiers":[]
+  },
+  "body":"# My first Awesome\n\nThis little tutorial is for people who never used a tiling window manager before\nand don't have fancy hacking skills. We will explore the awesome world of\nAwesome step by step and finally come up with a working desktop, providing some\nbasic knowledge on how to configure Awesome in the process. We will start with\nthe default `rc.lua` that comes with Awesome, play around a little and try to\nmake it more beautiful and useful with widgets. For this tutorial you don't need\nany programming skills besides using a text editor.\n\n## Explore Awesome\n\nI will assume that you properly installed Awesome through your distribution's\npackage manager or compiled it from source. You should now add `exec awesome` to\nyour `~/.xinitrc`. As already mentioned, Awesome provides a default config file\nwhich will be our starting point. You will usually find this `rc.lua` file in\n`/etc/xdg/awesome/`. Copy it to `~/.config/awesome/`, and then start X (for\nexample by running `startx`).\n\nMove your mouse to the upper left corner and click on the Awesome logo. A little\nmenu opens. Browse through the menu, then click the logo again to close it. Next\nto the Awesome menu you see numbers 1-9. These are your tags (or desktops if you\nwant). You can click on these to change them but nothing will happen because we\nhave not opened any programs. On the top right you see the time/date and a\nsymbol showing the current layout. You can also click on the symbol to change\nthe active layout.\n\nOne of the big advantages of Awesome over other tiling window managers is its\ngood mouse support. Awesome can act as a full floating window manager (almost\nlike openbox) if you want. For this basic tutorial we will mainly focus on\nkeyboard control, so let's learn some key bindings now.\n\nLet's open a terminal: press *Mod4+Enter*. Mod4 is your \"Windows key\", the key\nbetween Ctrl and Alt. You can change the modkey if you want, but we'll get to\nthat later. An `xterm` window will pop up. You can of course use your favourite\nterminal if you like. Again, more on that later. Now press *Mod4+Shift+c* to\nclose the terminal. This is the command which lets you close any application.\nAwesome has an elegant way to launch programs: press *Mod4+r*. Now you will\nsee a **Run:** prompt in the status bar. Start anything you like, it also\nfeatures Tab-completion!\n\nOpen more applications to see the tiling features.\nYou can now press *Mod4+Space* to cycle through all the possible tiling (and\nfloating) layouts. Note that the icon in the upper right changes.\n\nAlso try *Mod4+h*, *Mod4+l*, *Mod4+Shift+h* and *Mod4+Shift+l* to resize\nwindows. You can also resize with *Mod4+Button3* (right click). *Mod4+f* will\nmake your current window fullscreen.\n\nWith *Mod4+Number* (1-9) you can browse through your tags. With\n*Mod4+Shift+Number* (1-9) you can send a window to a specific tag. *Mod4+Left*\nand *Mod4+Right* moves to the next tag in the specified direction.\n\nUse *Mod4+k* and *Mod4+j* to change your focused client - moving your mouse will\nalso do that.\n\n*Mod4+Shift+q* quits Awesome, but don't do that now.\n\nFor an overview of all key bindings, press *Mod4+s*. Pressing any key closes\nthis overview again.\n\nIf you are a Vim user, try this: Press *Mod4+r* for the run prompt, enter\n`gvim` and press *Enter* to start it. Now press *Mod4+s*  again. The key binding\noverview now also provides a cheat sheet for controlling Vim.\n\n## Change the theme\n\nAwesome has multiple builtin themes you can choose from:\n\n* *default*\n* *gtk*\n* *sky*\n* *xresources*\n* *zenburn*\n\nTo change the theme, open your `rc.lua`, find this line near the beginning of\nthe file, and change `default` to one of the other values mentioned:\n\n    beautiful.init(gears.filesystem.get_themes_dir() .. \"default/theme.lua\")\n\nHowever, for this tutorial we will copy and customize the default theme.\nCopy `/usr/share/awesome/themes/default/theme.lua` to `~/.config/awesome/`\nand change the line shown above in `rc.lua` like this. Make sure to replace\n`USER` with your user name.\n\n    beautiful.init(\"/home/USER/.config/awesome/theme.lua\")\n\n### Change the background image\n\nYour desktop background image is handled in your theme file. To change it, edit\nthis line in your theme file:\n\n    theme.wallpaper = themes_path..\"default/background.png\"\n\nThe default uses a path relative to `themes_path` by using the `..` operator to\njoin two strings together. To just set it to an absolute path for example,\nyou could do:\n\n    theme.wallpaper = \"/usr/share/backgrounds/my-awesome-wallpaper.png\"\n\n## Personalize your layouts\n\nTo optimize our workflow, we now want to give names to our tags and set the\nspecific tiling or floating mode for each of them.\nOpen your `rc.lua` and find the layouts section. It should look like this:\n\n    awful.layout.layouts = {\n        awful.layout.suit.floating,\n        awful.layout.suit.tile,\n        awful.layout.suit.tile.left,\n        awful.layout.suit.tile.bottom,\n        awful.layout.suit.tile.top,\n        awful.layout.suit.fair,\n        awful.layout.suit.fair.horizontal,\n        awful.layout.suit.spiral,\n        awful.layout.suit.spiral.dwindle,\n        awful.layout.suit.max,\n        awful.layout.suit.max.fullscreen,\n        awful.layout.suit.magnifier,\n        awful.layout.suit.corner.nw,\n        -- awful.layout.suit.corner.ne,\n        -- awful.layout.suit.corner.sw,\n        -- awful.layout.suit.corner.se,\n    }\n\nThese are all possible tiling and floating layouts Awesome has. If you don't\nfind all of them useful, you can comment some of them out by adding \"--\"\nto the beginning of the line. Awesome already comes with three layouts which are\nnot used in the default config, as you can see above.\n\n## Personalize your tags\n\nNext, we want to name our tags. This is the default tag creation with numbers\nfrom 1 to 9:\n\n    -- Each screen has its own tag table.\n    awful.tag({ \"1\", \"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\" }, s, awful.layout.layouts[1])\n\nNow we want to change the tag names and assign a specific layout to each of\nthem. By default, each tag has a floating layout (the first entry in the\n`layouts` table). To change this, we define a specific layout for each tag.\n\nReplace the above with this code:\n\n    -- Each screen has its own tag table.\n    local names = { \"main\", \"www\", \"skype\", \"gimp\", \"office\", \"im\", \"7\", \"8\", \"9\" }\n    local l = awful.layout.suit  -- Just to save some typing: use an alias.\n    local layouts = { l.floating, l.tile, l.floating, l.fair, l.max,\n        l.floating, l.tile.left, l.floating, l.floating }\n    awful.tag(names, s, layouts)\n\nWe use `layouts` to set the layout for each tag. Edit this as you like.\n\n## Some global settings\n\nWhile we are at it, we can also change the default terminal, editor and assign\nthe modkey to a different key:\n\n    terminal = \"xterm\"\n    editor = os.getenv(\"EDITOR\") or \"nano\"\n    […]\n    modkey = \"Mod4\"\n\nChange these settings to your liking. They are pretty self-explanatory and\nwell-documented in the comments.\n\n## Wrapping up\n\nSave your `rc.lua` and restart awesome (*Mod4+Ctrl+r*). Now the modifications\ndone above should be applied.\n\nNote that any mistakes in your `rc.lua` can cause problems. You can save\nyourself some trouble by using `Xephyr` to test your changes.\n\nOpen a terminal and run the following command:\n\n    Xephyr :5 & sleep 1 ; DISPLAY=:5 awesome\n\nA new window will appear and a new awesome instance runs inside of it.\n\n## Add widgets\n\nBefore the following line:\n\n    mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,\n\nAdd this to create a new widget:\n\n    praisewidget = wibox.widget.textbox()\n    praisewidget.text = \"You are great!\"\n\nThe widget still needs to be added to a wibar. For this, find the definition of\nyour wibar and change it as follows:\n\n    { -- Left widgets\n        layout = wibox.layout.fixed.horizontal,\n        mylauncher,\n        praisewidget, -- This line is new\n        s.mytaglist,\n        s.mypromptbox,\n    },\n\nThis gives you a basic idea on how to add a widget. For an overview of available\nwidgets and how to arrange them, please read @{03-declarative-layout.md}.\n\n## Further reading\n\nTo learn more about the individual parts of the default configuration file,\nplease look at @{05-awesomerc.md}.\n",
+  "sections":{
+    "1":{
+      "display_name":"Explore Awesome",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Explore_Awesome",
+      "modifiers":[]
+    },
+    "2":{
+      "display_name":"Change the theme",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Change_the_theme",
+      "modifiers":[]
+    },
+    "3":{
+      "display_name":"Personalize your layouts",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Personalize_your_layouts",
+      "modifiers":[]
+    },
+    "4":{
+      "display_name":"Personalize your tags",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Personalize_your_tags",
+      "modifiers":[]
+    },
+    "5":{
+      "display_name":"Some global settings",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Some_global_settings",
+      "modifiers":[]
+    },
+    "6":{
+      "display_name":"Wrapping up",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Wrapping_up",
+      "modifiers":[]
+    },
+    "7":{
+      "display_name":"Add widgets",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Further reading",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Further_reading",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Add_widgets",
+      "modifiers":[]
+    },
+    "8":{
+      "display_name":"Further reading",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "206":"Further_reading",
+          "181":"Add_widgets",
+          "101":"Personalize_your_layouts",
+          "154":"Some_global_settings",
+          "11":"Explore_Awesome",
+          "66":"Change_the_theme",
+          "131":"Personalize_your_tags",
+          "167":"Wrapping_up"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+        "items":[<reference cycle>,{
+            "display_name":"Explore Awesome",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Explore_Awesome",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"explore awesome ",
+            "type":"function",
+            "section":"Explore Awesome",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Change the theme",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Change_the_theme",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"change the theme ",
+            "type":"function",
+            "section":"Change the theme",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your layouts ",
+            "type":"function",
+            "section":"Personalize your layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Personalize your tags",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Personalize_your_tags",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"personalize your tags ",
+            "type":"function",
+            "section":"Personalize your tags",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Some global settings",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Some_global_settings",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"some global settings ",
+            "type":"function",
+            "section":"Some global settings",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Wrapping up",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Wrapping_up",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"wrapping up ",
+            "type":"function",
+            "section":"Wrapping up",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Add widgets",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Add_widgets",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"add widgets ",
+            "type":"function",
+            "section":"Add widgets",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"further reading ",
+            "type":"function",
+            "section":"Further reading",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"My first Awesome"
+      },
+      "summary":"",
+      "name":"Further_reading",
+      "modifiers":[]
+    },
+    "by_name":{
+      "Further_reading":{
+        "display_name":"Further reading",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Further_reading",
+        "modifiers":[]
+      },
+      "Personalize_your_tags":{
+        "display_name":"Personalize your tags",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Personalize_your_tags",
+        "modifiers":[]
+      },
+      "Some_global_settings":{
+        "display_name":"Some global settings",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Some_global_settings",
+        "modifiers":[]
+      },
+      "Change_the_theme":{
+        "display_name":"Change the theme",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Change_the_theme",
+        "modifiers":[]
+      },
+      "Wrapping_up":{
+        "display_name":"Wrapping up",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Wrapping_up",
+        "modifiers":[]
+      },
+      "Explore_Awesome":{
+        "display_name":"Explore Awesome",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Explore_Awesome",
+        "modifiers":[]
+      },
+      "Add_widgets":{
+        "display_name":"Add widgets",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Add_widgets",
+        "modifiers":[]
+      },
+      "Personalize_your_layouts":{
+        "display_name":"Personalize your layouts",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "206":"Further_reading",
+            "181":"Add_widgets",
+            "101":"Personalize_your_layouts",
+            "154":"Some_global_settings",
+            "11":"Explore_Awesome",
+            "66":"Change_the_theme",
+            "131":"Personalize_your_tags",
+            "167":"Wrapping_up"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+          "items":[<reference cycle>,{
+              "display_name":"Explore Awesome",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Explore_Awesome",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"explore awesome ",
+              "type":"function",
+              "section":"Explore Awesome",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Change the theme",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Change_the_theme",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"change the theme ",
+              "type":"function",
+              "section":"Change the theme",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your layouts ",
+              "type":"function",
+              "section":"Personalize your layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Personalize your tags",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Personalize_your_tags",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"personalize your tags ",
+              "type":"function",
+              "section":"Personalize your tags",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Some global settings",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Some_global_settings",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"some global settings ",
+              "type":"function",
+              "section":"Some global settings",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Wrapping up",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Wrapping_up",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"wrapping up ",
+              "type":"function",
+              "section":"Wrapping up",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Add widgets",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Add_widgets",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"add widgets ",
+              "type":"function",
+              "section":"Add widgets",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Further reading",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Further_reading",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"further reading ",
+              "type":"function",
+              "section":"Further reading",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"My first Awesome"
+        },
+        "summary":"",
+        "name":"Personalize_your_layouts",
+        "modifiers":[]
+      }
+    }
+  },
+  "name":"07-my-first-awesome.md",
+  "modifiers":[],
+  "mod_name":"07-my-first-awesome.md",
+  "type":"topic",
+  "items":[{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"explore awesome ",
+      "type":"function",
+      "section":"Explore Awesome",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"change the theme ",
+      "type":"function",
+      "section":"Change the theme",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"personalize your layouts ",
+      "type":"function",
+      "section":"Personalize your layouts",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"personalize your tags ",
+      "type":"function",
+      "section":"Personalize your tags",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"some global settings ",
+      "type":"function",
+      "section":"Some global settings",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"wrapping up ",
+      "type":"function",
+      "section":"Wrapping up",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"add widgets ",
+      "type":"function",
+      "section":"Add widgets",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"further reading ",
+      "type":"function",
+      "section":"Further reading",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    }],
+  "file":"/home/cji/portless/awesome/build/docs/07-my-first-awesome.md",
+  "package":"",
+  "tags":[],
+  "lineno":1
+}

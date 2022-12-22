@@ -1,0 +1,17 @@
+{
+  "name":"which.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/which.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"which.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"-- a simple implementation of the which command. This looks for\n-- the given file on the path. On windows, it will assume an extension\n-- of .exe if no extension is given.\nlocal List = require 'pl.List'\nlocal path = require 'pl.path'\nlocal app = require 'pl.app'\n\nlocal pathl = List.split(os.getenv 'PATH',path.dirsep)\n\nlocal function which (file)\n    local res = pathl:map(path.join,file)\n    res = res:filter(path.exists)\n    if res then return res[1] end\nend\n\nlocal _,lua = app.lua()\nlocal file = arg[1] or lua -- i.e. location of lua executable\nlocal try\n\nif not file then return print 'must provide a filename' end\n\nif path.extension(file) == '' and path.is_windows then\n    try = which(file..'.exe')\nelse\n    try = which(file)\nend\n\nif try then print(try) else print 'cannot find on path' end\n\n\n"
+}

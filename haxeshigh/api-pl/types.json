@@ -1,0 +1,348 @@
+{
+  "kind":"libraries",
+  "name":"pl.types",
+  "mod_name":"types",
+  "old_style":false,
+  "description":"",
+  "file":"/home/cji/portless/Penlight/lua/pl/types.lua",
+  "summary":"Dealing with Detailed Type Information",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":11,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "obj":[]
+        }
+      },
+      "summary":"is the object either a function or a callable object?.",
+      "lineno":13,
+      "args":"(obj)",
+      "section":"function",
+      "name":"is_callable",
+      "params":{
+        "map":{
+          "obj":" Object to check."
+        },
+        "1":"obj"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":[],
+          "obj":[],
+          "tp":[]
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"is the object of the specified type?.",
+      "lineno":25,
+      "args":"(obj, tp)",
+      "section":"function",
+      "name":"is_type",
+      "kind":"functions",
+      "params":{
+        "1":"obj",
+        "2":"tp",
+        "map":{
+          "obj":" An object to check",
+          "tp":" The expected type"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "description":"\n If the type is a string, then use type, otherwise compare with metatable.\n\n NOTE: this function is imported from `utils.is_type`.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "obj":[]
+        }
+      },
+      "summary":"a string representation of a type.",
+      "lineno":36,
+      "retgroups":[{
+          "1":{
+            "text":"a string like 'number', 'table', 'file' or 'List'",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(obj)",
+      "type":"function",
+      "name":"type",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "obj":" an object"
+        },
+        "1":"obj"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n For tables and userdata with metatables, we assume that the metatable has a `_name`\n field. If the field is not present it will return 'unknown table' or\n 'unknown userdata'.\n Lua file objects return the type 'file'.",
+      "ret":["a string like 'number', 'table', 'file' or 'List'"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "x":[]
+        },
+        "raise":[],
+        "return":[[]]
+      },
+      "summary":"is this number an integer?",
+      "lineno":57,
+      "retgroups":[{
+          "1":{
+            "text":"boolean",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(x)",
+      "type":"function",
+      "name":"is_integer",
+      "params":{
+        "map":{
+          "x":" a number"
+        },
+        "1":"x"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "raise":"error if x is not a number",
+      "ret":["boolean"],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "ignore_spaces":[],
+          "o":[]
+        }
+      },
+      "summary":"Check if the object is \"empty\".",
+      "lineno":72,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if the object is empty, otherwise a falsy value.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(o, ignore_spaces)",
+      "type":"function",
+      "name":"is_empty",
+      "parameter":"param",
+      "params":{
+        "1":"o",
+        "2":"ignore_spaces",
+        "map":{
+          "ignore_spaces":" If the object is a string and this is true the string is\n considered empty if it only contains spaces.",
+          "o":" The object to check if it is empty."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n An object is considered empty if it is:\n\n - `nil`\n - a table without any items (key-value pairs or indexes)\n - a string with no content (\"\")\n - not a nil/table/string",
+      "ret":["`true` if the object is empty, otherwise a falsy value."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "val":[]
+        }
+      },
+      "summary":"is an object 'array-like'?",
+      "lineno":98,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if the object is array-like, otherwise a falsy value.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(val)",
+      "type":"function",
+      "name":"is_indexable",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "val":" any value."
+        },
+        "1":"val"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n An object is array like if:\n\n - it is a table, or\n - it has a metatable with `__len` and `__index` methods\n\n NOTE: since `__len` is 5.2+, on 5.1 is usually returns `false` for userdata",
+      "ret":["`true` if the object is array-like, otherwise a falsy value."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "val":[]
+        }
+      },
+      "summary":"can an object be iterated over with `pairs`?",
+      "lineno":113,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if the object is iterable, otherwise a falsy value.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(val)",
+      "type":"function",
+      "name":"is_iterable",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "val":" any value."
+        },
+        "1":"val"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n An object is iterable if:\n\n - it is a table, or\n - it has a metatable with a `__pairs` meta method\n\n NOTE: since `__pairs` is 5.2+, on 5.1 is usually returns `false` for userdata",
+      "ret":["`true` if the object is iterable, otherwise a falsy value."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "val":[]
+        }
+      },
+      "summary":"can an object accept new key/pair values?",
+      "lineno":127,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if the object is writeable, otherwise a falsy value.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(val)",
+      "type":"function",
+      "name":"is_writeable",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "val":" any value."
+        },
+        "1":"val"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n An object is iterable if:\n\n - it is a table, or\n - it has a metatable with a `__newindex` meta method\n",
+      "ret":["`true` if the object is writeable, otherwise a falsy value."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":{
+            "optchain":true,
+            "opt":true
+          },
+          "3":{
+            "optchain":true,
+            "opt":true
+          },
+          "check_objs":{
+            "optchain":true,
+            "opt":true
+          },
+          "o":[],
+          "true_strs":{
+            "optchain":true,
+            "opt":true
+          }
+        }
+      },
+      "summary":"Convert to a boolean value.",
+      "lineno":168,
+      "retgroups":[{
+          "1":{
+            "text":"true if the input evaluates to true, otherwise false.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(o[, true_strs[, check_objs]])",
+      "type":"function",
+      "name":"to_bool",
+      "parameter":"param",
+      "params":{
+        "1":"o",
+        "2":"true_strs",
+        "map":{
+          "check_objs":" True if objects should be evaluated.",
+          "o":" The object to evaluate.",
+          "true_strs":" optional Additional strings that when matched should evaluate to true. Comparison is case insensitive.\n This should be a List of strings. E.g. \"ja\" to support German."
+        },
+        "3":"check_objs"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n True values are:\n\n * boolean: true.\n * string: 'yes', 'y', 'true', 't', '1' or additional strings specified by `true_strs`.\n * number: Any non-zero value.\n * table: Is not empty and `check_objs` is true.\n * everything else: Is not `nil` and `check_objs` is true.\n",
+      "ret":["true if the input evaluates to true, otherwise false."]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

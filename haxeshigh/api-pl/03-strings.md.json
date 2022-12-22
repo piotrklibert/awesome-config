@@ -1,0 +1,1140 @@
+{
+  "kind":"manual",
+  "name":"03-strings.md",
+  "display_name":"Strings. Higher-level operations on strings.",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+  "section":{
+    "display_name":"File-style I/O on Strings",
+    "name":"File_style_I_O_on_Strings",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+      "items":["<reference cycle>",{
+          "display_name":"Extra String Methods",
+          "name":"Extra_String_Methods",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"extra string methods ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Extra String Methods",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"String Templates",
+          "name":"String_Templates",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"string templates ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"String Templates",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },{
+          "display_name":"Another Style of Template",
+          "name":"Another_Style_of_Template",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"another style of template ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Another Style of Template",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"file-style i/o on strings ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"File-style I/O on Strings",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Strings. Higher-level operations on strings.",
+      "sections":{
+        "46":"String_Templates",
+        "208":"File_style_I_O_on_Strings",
+        "122":"Another_Style_of_Template",
+        "3":"Extra_String_Methods"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Extra String Methods",
+      "name":"Extra_String_Methods",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"extra string methods ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Extra String Methods",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"String Templates",
+            "name":"String_Templates",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"string templates ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"String Templates",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Another Style of Template",
+            "name":"Another_Style_of_Template",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"another style of template ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Another Style of Template",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"File-style I/O on Strings",
+            "name":"File_style_I_O_on_Strings",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"file-style i/o on strings ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File-style I/O on Strings",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Strings. Higher-level operations on strings.",
+        "sections":{
+          "46":"String_Templates",
+          "208":"File_style_I_O_on_Strings",
+          "122":"Another_Style_of_Template",
+          "3":"Extra_String_Methods"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"String Templates",
+      "name":"String_Templates",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+        "items":["<reference cycle>",{
+            "display_name":"Extra String Methods",
+            "name":"Extra_String_Methods",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"extra string methods ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Extra String Methods",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"string templates ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"String Templates",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Another Style of Template",
+            "name":"Another_Style_of_Template",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"another style of template ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Another Style of Template",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"File-style I/O on Strings",
+            "name":"File_style_I_O_on_Strings",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"file-style i/o on strings ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File-style I/O on Strings",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Strings. Higher-level operations on strings.",
+        "sections":{
+          "46":"String_Templates",
+          "208":"File_style_I_O_on_Strings",
+          "122":"Another_Style_of_Template",
+          "3":"Extra_String_Methods"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "3":{
+      "display_name":"Another Style of Template",
+      "name":"Another_Style_of_Template",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+        "items":["<reference cycle>",{
+            "display_name":"Extra String Methods",
+            "name":"Extra_String_Methods",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"extra string methods ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Extra String Methods",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"String Templates",
+            "name":"String_Templates",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"string templates ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"String Templates",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"another style of template ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Another Style of Template",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"File-style I/O on Strings",
+            "name":"File_style_I_O_on_Strings",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"file-style i/o on strings ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File-style I/O on Strings",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Strings. Higher-level operations on strings.",
+        "sections":{
+          "46":"String_Templates",
+          "208":"File_style_I_O_on_Strings",
+          "122":"Another_Style_of_Template",
+          "3":"Extra_String_Methods"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "4":{
+      "display_name":"File-style I/O on Strings",
+      "name":"File_style_I_O_on_Strings",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+        "items":["<reference cycle>",{
+            "display_name":"Extra String Methods",
+            "name":"Extra_String_Methods",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"extra string methods ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Extra String Methods",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"String Templates",
+            "name":"String_Templates",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"string templates ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"String Templates",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Another Style of Template",
+            "name":"Another_Style_of_Template",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"another style of template ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Another Style of Template",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"file-style i/o on strings ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"File-style I/O on Strings",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Strings. Higher-level operations on strings.",
+        "sections":{
+          "46":"String_Templates",
+          "208":"File_style_I_O_on_Strings",
+          "122":"Another_Style_of_Template",
+          "3":"Extra_String_Methods"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "File_style_I_O_on_Strings":{
+        "display_name":"File-style I/O on Strings",
+        "name":"File_style_I_O_on_Strings",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+          "items":["<reference cycle>",{
+              "display_name":"Extra String Methods",
+              "name":"Extra_String_Methods",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"extra string methods ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Extra String Methods",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"String Templates",
+              "name":"String_Templates",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"string templates ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"String Templates",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Another Style of Template",
+              "name":"Another_Style_of_Template",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"another style of template ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Another Style of Template",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"file-style i/o on strings ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File-style I/O on Strings",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Strings. Higher-level operations on strings.",
+          "sections":{
+            "46":"String_Templates",
+            "208":"File_style_I_O_on_Strings",
+            "122":"Another_Style_of_Template",
+            "3":"Extra_String_Methods"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "String_Templates":{
+        "display_name":"String Templates",
+        "name":"String_Templates",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+          "items":["<reference cycle>",{
+              "display_name":"Extra String Methods",
+              "name":"Extra_String_Methods",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"extra string methods ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Extra String Methods",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"string templates ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"String Templates",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Another Style of Template",
+              "name":"Another_Style_of_Template",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"another style of template ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Another Style of Template",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"File-style I/O on Strings",
+              "name":"File_style_I_O_on_Strings",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"file-style i/o on strings ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File-style I/O on Strings",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Strings. Higher-level operations on strings.",
+          "sections":{
+            "46":"String_Templates",
+            "208":"File_style_I_O_on_Strings",
+            "122":"Another_Style_of_Template",
+            "3":"Extra_String_Methods"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Another_Style_of_Template":{
+        "display_name":"Another Style of Template",
+        "name":"Another_Style_of_Template",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+          "items":["<reference cycle>",{
+              "display_name":"Extra String Methods",
+              "name":"Extra_String_Methods",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"extra string methods ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Extra String Methods",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"String Templates",
+              "name":"String_Templates",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"string templates ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"String Templates",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"another style of template ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Another Style of Template",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"File-style I/O on Strings",
+              "name":"File_style_I_O_on_Strings",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"file-style i/o on strings ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File-style I/O on Strings",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Strings. Higher-level operations on strings.",
+          "sections":{
+            "46":"String_Templates",
+            "208":"File_style_I_O_on_Strings",
+            "122":"Another_Style_of_Template",
+            "3":"Extra_String_Methods"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Extra_String_Methods":{
+        "display_name":"Extra String Methods",
+        "name":"Extra_String_Methods",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/03-strings.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"extra string methods ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Extra String Methods",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"String Templates",
+              "name":"String_Templates",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"string templates ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"String Templates",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Another Style of Template",
+              "name":"Another_Style_of_Template",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"another style of template ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Another Style of Template",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"File-style I/O on Strings",
+              "name":"File_style_I_O_on_Strings",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"file-style i/o on strings ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"File-style I/O on Strings",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Strings. Higher-level operations on strings.",
+          "sections":{
+            "46":"String_Templates",
+            "208":"File_style_I_O_on_Strings",
+            "122":"Another_Style_of_Template",
+            "3":"Extra_String_Methods"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"extra string methods ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Extra String Methods",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"string templates ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"String Templates",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"another style of template ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Another Style of Template",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"file-style i/o on strings ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"File-style I/O on Strings",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"03-strings.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Strings. Higher-level operations on strings.\n\n### Extra String Methods\n\n@lookup pl.stringx\n\nThese are convenient borrowings from Python, as described in 3.6.1 of the Python\nreference, but note that indices in Lua always begin at one. `stringx` defines\nfunctions like `isalpha` and `isdigit`, which return `true` if s is only composed\nof letters or digits respectively. `startswith` and `endswith` are convenient\nways to find substrings. (`endswith` works as in Python 2.5, so that `f:endswith\n{'.bat','.exe','.cmd'}` will be true for any filename which ends with these\nextensions.) There are justify methods and whitespace trimming functions like\n`strip`.\n\n    > stringx.import()\n    > ('bonzo.dog'):endswith {'.dog','.cat'}\n    true\n    > ('bonzo.txt'):endswith {'.dog','.cat'}\n    false\n    > ('bonzo.cat'):endswith {'.dog','.cat'}\n    true\n    > (' stuff'):ljust(20,'+')\n    '++++++++++++++ stuff'\n    > ('  stuff '):lstrip()\n    'stuff '\n    > ('  stuff '):rstrip()\n    '  stuff'\n    > ('  stuff '):strip()\n    'stuff'\n    > for s in ('one\\ntwo\\nthree\\n'):lines() do print(s) end\n    one\n    two\n    three\n\nMost of these can be fairly easily implemented using the Lua string library,\nwhich is more general and powerful. But they are convenient operations to have\neasily at hand. Note that can be injected into the `string` table if you use\n`stringx.import`, but a simple alias like `local stringx = require 'pl.stringx'`\nis preferrable. This is the recommended practice when writing modules for\nconsumption by other people, since it is bad manners to change the global state\nof the rest of the system. Magic may be used for convenience, but there is always\na price.\n\n\n### String Templates\n\n@lookup pl.text\n\nAnother borrowing from Python, string templates allow you to substitute values\nlooked up in a table:\n\n    local Template = require ('pl.text').Template\n    t = Template('${here} is the $answer')\n    print(t:substitute {here = 'Lua', answer = 'best'})\n    ==>\n    Lua is the best\n\n'$ variables' can optionally have curly braces; this form is useful if you are\nglueing text together to make variables, e.g `${prefix}_name_${postfix}`. The\n`substitute` method will throw an error if a $ variable is not found in the\ntable, and the `safe_substitute` method will not.\n\nThe Lua implementation has an extra method, `indent_substitute` which is very\nuseful for inserting blocks of text, because it adjusts indentation. Consider\nthis example:\n\n    -- testtemplate.lua\n    local Template = require ('pl.text').Template\n\n    t = Template [[\n        for i = 1,#$t do\n            $body\n        end\n    ]]\n\n    body = Template [[\n    local row = $t[i]\n    for j = 1,#row do\n        fun(row[j])\n    end\n    ]]\n\n    print(t:indent_substitute {body=body,t='tbl'})\n\nAnd the output is:\n\n        for i = 1,#tbl do\n            local row = tbl[i]\n            for j = 1,#row do\n                fun(row[j])\n            end\n        end\n\n`indent_substitute` can substitute templates, and in which case they themselves\nwill be substituted using the given table. So in this case, `$t` was substituted\ntwice.\n\n`pl.text` also has a number of useful functions like `dedent`, which strips all\nthe initial indentation from a multiline string. As in Python, this is useful for\npreprocessing multiline strings if you like indenting them with your code. The\nfunction `wrap` is passed a long string (a _paragraph_) and returns a list of\nlines that fit into a desired line width. As an extension, there is also `indent`\nfor indenting multiline strings.\n\nNew in Penlight with the 0.9 series is `text.format_operator`. Calling this\nenables Python-style string formating using the modulo operator `%`:\n\n    > text.format_operator()\n    > = '%s[%d]' % {'dog',1}\n    dog[1]\n\nSo in its simplest form it saves the typing involved with `string.format`; it\nwill also expand `$` variables using named fields:\n\n    > = '$animal[$num]' % {animal='dog',num=1}\n    dog[1]\n\nAs with `stringx.import` you have to do this explicitly, since all strings share the same\nmetatable. But in your own scripts you can feel free to do this.\n\n### Another Style of Template\n\nA new module is `template`, which is a version of Rici Lake's [Lua\nPreprocessor](http://lua-users.org/wiki/SlightlyLessSimpleLuaPreprocessor).  This\nallows you to mix Lua code with your templates in a straightforward way. There\nare only two rules:\n\n  - Lines begining with `#` are Lua\n  - Otherwise, anything inside `$()` is a Lua expression.\n\nSo a template generating an HTML list would look like this:\n\n    <ul>\n    # for i,val in ipairs(T) do\n    <li>$(i) = $(val:upper())</li>\n    # end\n    </ul>\n\nAssume the text is inside `tmpl`, then the template can be expanded using:\n\n    local template = require 'pl.template'\n    local my_env = {\n      ipairs = ipairs,\n      T = {'one','two','three'}\n    }\n    res = template.substitute(tmpl, my_env)\n\nand we get\n\n    <ul>\n    <li>1 = ONE</li>\n    <li>2 = TWO</li>\n    <li>3 = THREE</li>\n    </ul>\n\nThere is a single function, `template.substitute` which is passed a template\nstring and an environment table.   This table may contain some special fields,\nlike `\\_parent` which can be set to a table representing a 'fallback' environment\nin case a symbol was not found. `\\_brackets` is usually '()' and `\\_escape` is\nusually '#' but it's sometimes necessary to redefine these if the defaults\ninterfere with the target language - for instance, `$(V)` has another meaning in\nMake, and `#` means a preprocessor line in C/C++.\n\nFinally, if something goes wrong, passing `_debug` will cause the intermediate\nLua code to be dumped if there's a problem.\n\nHere is a C code generation example; something that could easily be extended to\nbe a minimal Lua extension skeleton generator.\n\n    local subst = require 'pl.template'.substitute\n\n    local templ = [[\n    #include <lua.h>\n    #include <lauxlib.h>\n    #include <lualib.h>\n\n    > for _,f in ipairs(mod) do\n    static int l_$(f.name) (lua_State *L) {\n\n    }\n    > end\n\n    static const luaL_reg $(mod.name)[] = {\n    > for _,f in ipairs(mod) do\n        {\"$(f.name)\",l_$(f.name)},\n    > end\n        {NULL,NULL}\n    };\n\n    int luaopen_$(mod.name) {\n       luaL_register (L, \"$(mod.name)\", $(mod.name));\n        return 1;\n    }\n    ]]\n\n    print(subst(templ,{\n        _escape = '>',\n        ipairs = ipairs,\n        mod = {\n            name = 'baggins';\n            {name='frodo'},\n            {name='bilbo'}\n        }\n    }))\n\n\n### File-style I/O on Strings\n\n`pl.stringio`  provides just three functions; `stringio.open` is passed a string,\nand returns a file-like object for reading. It supports a `read` method, which\ntakes the same arguments as standard file objects:\n\n    > f = stringio.open 'first line\\n10 20 30\\n'\n    > = f:read()\n    first line\n    > = f:read('*n','*n','*n')\n    10\t20\t30\n\n`lines` and `seek` are also supported.\n\n`stringio.lines` is a useful short-cut for iterating over all the lines in a\nstring.\n\n`stringio.create` creates a writeable file-like object. You then use `write` to\nthis stream, and finally extract the builded string using `value`.  This 'string\nbuilder' pattern is useful for efficiently creating large strings.\n\n"
+}

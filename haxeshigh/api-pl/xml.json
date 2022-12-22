@@ -1,0 +1,1439 @@
+{
+  "kind":"libraries",
+  "name":"pl.xml",
+  "mod_name":"xml",
+  "inferred":true,
+  "description":"\n\n This implements some useful things on [LOM](http://matthewwild.co.uk/projects/luaexpat/lom.html) documents, such as returned by `lxp.lom.parse`.\n In particular, it can convert LOM back into XML text, with optional pretty-printing control.\n It is based on stanza.lua from [Prosody](http://hg.prosody.im/trunk/file/4621c92d2368/util/stanza.lua)\n\n     > d = xml.parse \"<nodes><node id='1'>alice</node></nodes>\"\n     > = d\n     <nodes><node id='1'>alice</node></nodes>\n     > = xml.tostring(d,'','  ')\n     <nodes>\n        <node id='1'>alice</node>\n     </nodes>\n\n Can be used as a lightweight one-stop-shop for simple XML processing; a simple XML parser is included\n but the default is to use `lxp.lom` if it can be found.\n <pre>\n Prosody IM\n Copyright (C) 2008-2010 Matthew Wild\n Copyright (C) 2008-2010 Waqas Hussain--\n classic Lua XML parser by Roberto Ierusalimschy.\n modified to output LOM format.\n http://lua-users.org/wiki/LuaXml\n </pre>\n See @{06-data.md.XML|the Guide}\n\n Dependencies: `pl.utils`\n\n Soft Dependencies: `lxp.lom` (fallback is to use basic Lua parser)",
+  "file":"/home/cji/portless/Penlight/lua/pl/xml.lua",
+  "summary":"XML LOM Utilities.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":32,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":"{}",
+            "type":"table",
+            "optchain":"{}"
+          },
+          "tag":{
+            "type":"string"
+          },
+          "attr":{
+            "opt":"{}",
+            "type":"table",
+            "optchain":"{}"
+          }
+        },
+        "see":[[]]
+      },
+      "summary":"create a new document node.",
+      "lineno":82,
+      "retgroups":[{
+          "1":{
+            "text":"the Node object",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tag[, attr={}])",
+      "usage":["local doc = xml.new(\"main\", { hello = \"world\", answer = \"42\" })\nprint(doc)  -->  <main hello='world' answer='42'/>\n"],
+      "type":"function",
+      "name":"new",
+      "parameter":"param",
+      "params":{
+        "1":"tag",
+        "2":"attr",
+        "map":{
+          "tag":" the tag name",
+          "attr":" attributes (table of name-value pairs)"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the Node object"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[],[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "is_file":[],
+          "use_basic":[],
+          "text_or_filename":[]
+        }
+      },
+      "summary":"parse an XML document.",
+      "lineno":103,
+      "retgroups":[{
+          "1":{
+            "text":"a parsed LOM document with the document metatatables set",
+            "type":"",
+            "mods":[]
+          },
+          "2":{
+            "text":"nil, error the error can either be a file error or a parse error",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(text_or_filename, is_file, use_basic)",
+      "type":"function",
+      "name":"parse",
+      "parameter":"param",
+      "params":{
+        "1":"text_or_filename",
+        "2":"is_file",
+        "map":{
+          "is_file":" whether text_or_file is a file name or not",
+          "use_basic":" do a basic parse",
+          "text_or_filename":"  file or string representation"
+        },
+        "3":"use_basic"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" By default, this uses lxp.lom.parse, but\n falls back to basic_parse, or if `use_basic` is truthy",
+      "ret":["a parsed LOM document with the document metatatables set","nil, error the error can either be a file error or a parse error"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"table|string"
+          },
+          "tag":{
+            "type":"string"
+          },
+          "items":{
+            "type":"table|string"
+          }
+        },
+        "see":[[],[]]
+      },
+      "summary":"Create a Node with a set of children (text or Nodes) and attributes.",
+      "lineno":159,
+      "retgroups":[{
+          "1":{
+            "text":"the new Node",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tag, items)",
+      "usage":["local doc = xml.elem(\"top\", \"hello world\")                -- <top>hello world</top>\nlocal doc = xml.elem(\"main\", xml.new(\"child\"))            -- <main><child/></main>\nlocal doc = xml.elem(\"main\", { \"this \", \"is \", \"nice\" })  -- <main>this is nice</main>\nlocal doc = xml.elem(\"main\", { xml.new \"this\",\n                               xml.new \"is\",\n                               xml.new \"nice\" })          -- <main><this/><is/><nice/></main>\nlocal doc = xml.elem(\"main\", { hello = \"world\" })         -- <main hello='world'/>\nlocal doc = xml.elem(\"main\", {\n  \"prefix\",\n  xml.elem(\"child\", { \"this \", \"is \", \"nice\"}),\n  \"postfix\",\n  attrib = \"value\"\n})   -- <main attrib='value'>prefix<child>this is nice</child>postfix</main>\"\n"],
+      "type":"function",
+      "name":"elem",
+      "parameter":"param",
+      "params":{
+        "1":"tag",
+        "2":"items",
+        "map":{
+          "tag":" a tag name",
+          "items":" either a single child (text or Node), or a table where the hash\n part is the attributes and the list part is the children (text or Nodes)."
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the new Node"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string|table"
+          },
+          "list":{
+            "type":"string|table"
+          }
+        },
+        "see":[[]]
+      },
+      "summary":"given a list of names, return a number of element constructors.",
+      "lineno":192,
+      "retgroups":[{
+          "1":{
+            "text":"(multiple) constructor functions; `function(items)`. For the `items`\n parameter see `xml.elem`.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(list)",
+      "usage":["local new_parent, new_child = xml.tags 'mom, kid'\ndoc = new_parent {new_child 'Bob', new_child 'Annie'}\n-- <mom><kid>Bob</kid><kid>Annie</kid></mom>\n"],
+      "type":"function",
+      "name":"tags",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "list":" a list of names, or a comma-separated string."
+        },
+        "1":"list"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n If passing a comma-separated string, then whitespace surrounding the values\n will be stripped.\n\n The returned constructor functions are a shortcut to `xml.elem` where you\n no longer provide the tag-name, but only the `items` table.",
+      "ret":["(multiple) constructor functions; `function(items)`. For the `items`\n parameter see `xml.elem`."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":"{}",
+            "type":"table",
+            "optchain":"{}"
+          },
+          "tag":{
+            "type":"string"
+          },
+          "attrs":{
+            "opt":"{}",
+            "type":"table",
+            "optchain":"{}"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Adds a document Node, at current position.",
+      "lineno":217,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tag[, attrs={}])",
+      "usage":["local doc = xml.new(\"main\")\ndoc:addtag(\"penlight\", { hello = \"world\"})\ndoc:addtag(\"expat\")  -- added to 'penlight' since position moved\nprint(doc)  -->  <main><penlight hello='world'><expat/></penlight></main>\n"],
+      "type":"function",
+      "name":"Doc:addtag",
+      "parameter":"param",
+      "params":{
+        "1":"tag",
+        "2":"attrs",
+        "map":{
+          "tag":" the tag name",
+          "attrs":" attributes (table of name-value pairs)"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This updates the last inserted position to the new Node.",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Adds a text node, at current position.",
+      "lineno":233,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(text)",
+      "usage":["local doc = xml.new(\"main\")\ndoc:text(\"penlight\")\ndoc:text(\"expat\")\nprint(doc)  -->  <main><penlightexpat</main>\n"],
+      "type":"function",
+      "name":"Doc:text",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "text":" a string"
+        },
+        "1":"text"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Moves current position up one level.",
+      "lineno":241,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"Doc:up",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Resets current position to top level.",
+      "lineno":250,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"Doc:reset",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Resets to the `self` node.",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "child":[]
+        },
+        "return":[[]]
+      },
+      "summary":"Append a child to the currrent Node (ignoring current position).",
+      "lineno":268,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(child)",
+      "usage":["local doc = xml.new(\"main\")\ndoc:add_direct_child(\"dog\")\ndoc:add_direct_child(xml.new(\"child\"))\ndoc:add_direct_child(\"cat\")\nprint(doc)  -->  <main>dog<child/>cat</main>\n"],
+      "type":"function",
+      "name":"Doc:add_direct_child",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "child":" a child node (either text or a document)"
+        },
+        "1":"child"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":[],
+          "child":[]
+        },
+        "return":[[]]
+      },
+      "summary":"Append a child at the current position (without changing position).",
+      "lineno":284,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(child)",
+      "usage":["local doc = xml.new(\"main\")\ndoc:addtag(\"one\")\ndoc:add_child(xml.new(\"item1\"))\ndoc:add_child(xml.new(\"item2\"))\ndoc:add_child(xml.new(\"item3\"))\nprint(doc)  -->  <main><one><item1/><item2/><item3/></one></main>\n"],
+      "type":"function",
+      "name":"Doc:add_child",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "child":" a child node (either text or a document)"
+        },
+        "1":"child"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        }
+      },
+      "summary":"Set attributes of a document node.",
+      "lineno":299,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(t)",
+      "type":"function",
+      "name":"Doc:set_attribs",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "t":" a table containing attribute/value pairs"
+        },
+        "1":"t"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Will add/overwite values, but will not remove existing ones.\n Operates on the Node itself, will not take position into account.",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "a":[],
+          "v":[]
+        }
+      },
+      "summary":"Set a single attribute of a document node.",
+      "lineno":313,
+      "retgroups":[{
+          "1":{
+            "text":"the current node (`self`)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(a, v)",
+      "type":"function",
+      "name":"Doc:set_attrib",
+      "parameter":"param",
+      "params":{
+        "1":"a",
+        "2":"v",
+        "map":{
+          "a":" attribute",
+          "v":" its value, pass in `nil` to delete the attribute"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Operates on the Node itself, will not take position into account.",
+      "ret":["the current node (`self`)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Gets the attributes of a document node.",
+      "lineno":323,
+      "retgroups":[{
+          "1":{
+            "text":"table with attributes (attribute/value pairs)",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"Doc:get_attribs",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Operates on the Node itself, will not take position into account.",
+      "ret":["table with attributes (attribute/value pairs)"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "template":[],
+          "data":[]
+        }
+      },
+      "summary":"create a substituted copy of a document,",
+      "lineno":377,
+      "retgroups":[{
+          "1":{
+            "text":"an XML document",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(template, data)",
+      "type":"function",
+      "name":"Doc.subst",
+      "parameter":"param",
+      "params":{
+        "1":"template",
+        "2":"data",
+        "map":{
+          "template":" may be a document or a string representation which will be parsed and cached",
+          "data":" a table of name-value pairs or a list of such tables"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["an XML document"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "tag":[]
+        }
+      },
+      "summary":"Return the first child with a given tag name (non-recursive).",
+      "lineno":418,
+      "retgroups":[{
+          "1":{
+            "text":"the child Node found or `nil` if not found",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tag)",
+      "type":"function",
+      "name":"Doc:child_with_name",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "tag":" the tag name"
+        },
+        "1":"tag"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the child Node found or `nil` if not found"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "opt":"false",
+            "type":"boolean",
+            "optchain":"false"
+          },
+          "tag":{
+            "type":"string"
+          },
+          "dont_recurse":{
+            "opt":"false",
+            "type":"boolean",
+            "optchain":"false"
+          }
+        }
+      },
+      "summary":"Returns all elements in a document that have a given tag.",
+      "lineno":450,
+      "retgroups":[{
+          "1":{
+            "text":"a list of elements found, list will be empty if none was found.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(tag[, dont_recurse=false])",
+      "type":"function",
+      "name":"Doc:get_elements_with_name",
+      "parameter":"param",
+      "params":{
+        "1":"tag",
+        "2":"dont_recurse",
+        "map":{
+          "tag":" a tag name",
+          "dont_recurse":" optionally only return the immediate children with this tag name"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a list of elements found, list will be empty if none was found."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Iterator over all children of a document node, including text nodes.",
+      "lineno":462,
+      "retgroups":[{
+          "1":{
+            "text":"iterator that returns a single Node per iteration.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"Doc:children",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This function is not recursive, so returns only direct child nodes.",
+      "ret":["iterator that returns a single Node per iteration."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Return the first child element of a node, if it exists.",
+      "lineno":474,
+      "retgroups":[{
+          "1":{
+            "text":"first child Node or `nil` if there is none.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"Doc:first_childtag",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n This will skip text nodes.",
+      "ret":["first child Node or `nil` if there is none."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "opt":"nil",
+            "type":"string",
+            "optchain":"nil"
+          },
+          "2":{
+            "opt":"nil",
+            "type":"string",
+            "optchain":"nil"
+          },
+          "tag":{
+            "opt":"nil",
+            "type":"string",
+            "optchain":"nil"
+          },
+          "xmlns":{
+            "opt":"nil",
+            "type":"string",
+            "optchain":"nil"
+          }
+        }
+      },
+      "summary":"Iterator that matches tag names, and a namespace (non-recursive).",
+      "lineno":491,
+      "retgroups":[{
+          "1":{
+            "text":"iterator that returns a single Node per iteration.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([tag=nil[, xmlns=nil]])",
+      "type":"function",
+      "name":"Doc:matching_tags",
+      "parameter":"param",
+      "params":{
+        "1":"tag",
+        "2":"xmlns",
+        "map":{
+          "tag":" tag names to return. Returns all tags if not provided.",
+          "xmlns":" the namespace value ('xmlns' attribute) to return. If not\n provided will match all namespaces."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["iterator that returns a single Node per iteration."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"Iterator over all child tags of a document node.",
+      "lineno":515,
+      "retgroups":[{
+          "1":{
+            "text":"iterator that returns a single Node per iteration.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "type":"function",
+      "name":"Doc:childtags",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":" This will skip over\n text nodes.",
+      "ret":["iterator that returns a single Node per iteration."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"function"
+          },
+          "callback":{
+            "type":"function"
+          }
+        }
+      },
+      "summary":"Visit child Nodes of a node and call a function, possibly modifying the document.",
+      "lineno":535,
+      "args":"(callback)",
+      "section":"function",
+      "name":"Doc:maptags",
+      "params":{
+        "map":{
+          "callback":" a function with signature `function(node)`, passed the node.\n The element will be updated with the returned value, or deleted if it returns `nil`."
+        },
+        "1":"callback"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Text elements will be skipped.\n This is not recursive, so only direct children will be passed.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Escapes a string for safe use in xml.",
+      "lineno":574,
+      "retgroups":[{
+          "1":{
+            "text":"escaped string",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(str)",
+      "usage":["local esc = xml.xml_escape([[\"'<>&]])  --> \"&quot;&apos;&lt;&gt;&amp;\"\n"],
+      "type":"function",
+      "name":"xml_escape",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "str":" string value to escape"
+        },
+        "1":"str"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Handles quotes(single+double), less-than, greater-than, and ampersand.",
+      "ret":["escaped string"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "str":{
+            "type":"string"
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"Unescapes a string from xml.",
+      "lineno":595,
+      "retgroups":[{
+          "1":{
+            "text":"unescaped string",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(str)",
+      "usage":["local unesc = xml.xml_escape(\"&quot;&apos;&lt;&gt;&amp;\")  --> [[\"'<>&]]\n"],
+      "type":"function",
+      "name":"xml_unescape",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "str":" string value to unescape"
+        },
+        "1":"str"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Handles quotes(single+double), less-than, greater-than, and ampersand.",
+      "ret":["unescaped string"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":[],
+          "2":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "4":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "5":{
+            "opt":true,
+            "type":"string|bool",
+            "optchain":true
+          },
+          "b_ind":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "a_ind":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "xml_preface":{
+            "opt":true,
+            "type":"string|bool",
+            "optchain":true
+          },
+          "doc":[],
+          "t_ind":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"Function to pretty-print an XML document.",
+      "lineno":677,
+      "retgroups":[{
+          "1":{
+            "text":"a string representation",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(doc[, b_ind[, t_ind[, a_ind[, xml_preface]]]])",
+      "type":"function",
+      "name":"tostring",
+      "parameter":"param",
+      "params":{
+        "1":"doc",
+        "2":"b_ind",
+        "3":"t_ind",
+        "4":"a_ind",
+        "map":{
+          "b_ind":" an initial block-indent (required when `t_ind` is set)",
+          "a_ind":" if given, indent each attribute pair and put on a separate line",
+          "xml_preface":" force prefacing with default or custom <?xml...>, if truthy then `&lt;?xml version='1.0'?&gt;` will be used as default.",
+          "doc":" an XML document",
+          "t_ind":" an tag-indent for each level (required when `a_ind` is set)"
+        },
+        "5":"xml_preface"
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a string representation"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "2":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "4":{
+            "opt":"\"&lt;?xml version='1.0'?&gt;\"",
+            "type":"string",
+            "optchain":"\"&lt;?xml version='1.0'?&gt;\""
+          },
+          "b_ind":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "a_ind":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "t_ind":{
+            "opt":true,
+            "type":"string|int",
+            "optchain":true
+          },
+          "xml_preface":{
+            "opt":"\"&lt;?xml version='1.0'?&gt;\"",
+            "type":"string",
+            "optchain":"\"&lt;?xml version='1.0'?&gt;\""
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"Method to pretty-print an XML document.",
+      "lineno":709,
+      "retgroups":[{
+          "1":{
+            "text":"a string representation",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([b_ind[, t_ind[, a_ind[, xml_preface=\"&lt;?xml version='1.0'?&gt;\"]]]])",
+      "type":"function",
+      "name":"Doc:tostring",
+      "parameter":"param",
+      "params":{
+        "1":"b_ind",
+        "2":"t_ind",
+        "3":"a_ind",
+        "4":"xml_preface",
+        "map":{
+          "b_ind":" an initial indent (required when `t_ind` is set)",
+          "a_ind":" if given, indent each attribute pair and put on a separate line",
+          "t_ind":" an indent for each level (required when `a_ind` is set)",
+          "xml_preface":" force prefacing with default or custom <?xml...>"
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Invokes `xml.tostring`.",
+      "ret":["a string representation"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":[],
+        "return":[[]]
+      },
+      "summary":"get the full text value of an element.",
+      "lineno":723,
+      "retgroups":[{
+          "1":{
+            "text":"a single string with all text elements concatenated",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"()",
+      "usage":["local doc = xml.new(\"main\")\ndoc:text(\"one\")\ndoc:add_child(xml.elem \"two\")\ndoc:text(\"three\")\n\nlocal t = doc:get_text()    -->  \"onethree\"\n"],
+      "type":"function",
+      "name":"Doc:get_text",
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["a single string with all text elements concatenated"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "type":"Node|string"
+          },
+          "2":{
+            "opt":true,
+            "type":"function",
+            "optchain":true
+          },
+          "doc":{
+            "type":"Node|string"
+          },
+          "strsubst":{
+            "opt":true,
+            "type":"function",
+            "optchain":true
+          }
+        },
+        "return":[[]],
+        "see":[[]]
+      },
+      "summary":"Returns a copy of a document.",
+      "lineno":788,
+      "retgroups":[{
+          "1":{
+            "text":"copy of the document",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(doc[, strsubst])",
+      "type":"function",
+      "name":"clone",
+      "parameter":"param",
+      "params":{
+        "1":"doc",
+        "2":"strsubst",
+        "map":{
+          "doc":" a Node object or string (text node)",
+          "strsubst":" an optional function for handling string copying\n which could do substitution, etc."
+        }
+      },
+      "tags":{
+        "see":[]
+      },
+      "kind":"functions",
+      "section":"function",
+      "description":"\n The `strsubst` parameter is a callback with signature `function(object, kind, parent)`.\n\n Param `kind` has the following values, and parameters:\n\n - `\"*TAG\"`: `object` is the tag-name, `parent` is the Node object. Returns the new tag name.\n\n - `\"*TEXT\"`: `object` is the text-element, `parent` is the Node object. Returns the new text value.\n\n - other strings not prefixed with `*`: `kind` is the attribute name, `object` is the\n   attribute value, `parent` is the Node object. Returns the new attribute value.\n",
+      "ret":["copy of the document"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":{
+          "1":{
+            "opt":true,
+            "type":"function",
+            "optchain":true
+          },
+          "strsubst":{
+            "opt":true,
+            "type":"function",
+            "optchain":true
+          }
+        },
+        "return":[],
+        "see":[[]]
+      },
+      "summary":"Returns a copy of a document.",
+      "lineno":799,
+      "args":"([strsubst])",
+      "section":"function",
+      "name":"Doc:filter",
+      "kind":"functions",
+      "params":{
+        "map":{
+          "strsubst":" an optional function for handling string copying"
+        },
+        "1":"strsubst"
+      },
+      "tags":{
+        "see":[]
+      },
+      "description":"\n This is the method version of `xml.clone`.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":{
+            "type":"Node|string"
+          },
+          "2":{
+            "type":"Node|string"
+          },
+          "t2":{
+            "type":"Node|string"
+          },
+          "t1":{
+            "type":"Node|string"
+          }
+        }
+      },
+      "summary":"Compare two documents or elements.",
+      "lineno":870,
+      "retgroups":[{
+          "1":{
+            "text":"`true` when the Nodes are equal.",
+            "type":"boolean",
+            "mods":{
+              "type":"boolean"
+            }
+          },
+          "g":0
+        }],
+      "args":"(t1, t2)",
+      "type":"function",
+      "name":"compare",
+      "parameter":"param",
+      "params":{
+        "1":"t1",
+        "2":"t2",
+        "map":{
+          "t2":" a Node object or string (text node)",
+          "t1":" a Node object or string (text node)"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"\n Equality is based on tag, child nodes (text and tags), attributes and order\n of those (order only fails if both are given, and not equal).",
+      "ret":["`true` when the Nodes are equal."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":[],
+          "d":[]
+        }
+      },
+      "summary":"is this value a document element?",
+      "lineno":880,
+      "retgroups":[{
+          "1":{
+            "text":"`true` if it is a `table` with property `tag` being a string value.",
+            "type":"boolean",
+            "mods":{
+              "type":"boolean"
+            }
+          },
+          "g":0
+        }],
+      "args":"(d)",
+      "section":"function",
+      "name":"is_tag",
+      "params":{
+        "map":{
+          "d":" any value"
+        },
+        "1":"d"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "ret":["`true` if it is a `table` with property `tag` being a string value."],
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"Node|string"
+          },
+          "2":{
+            "type":"boolean"
+          },
+          "3":{
+            "type":"function"
+          },
+          "operation":{
+            "type":"function"
+          },
+          "doc":{
+            "type":"Node|string"
+          },
+          "depth_first":{
+            "type":"boolean"
+          }
+        }
+      },
+      "summary":"Calls a function recursively over Nodes in the document.",
+      "lineno":902,
+      "args":"(doc, depth_first, operation)",
+      "section":"function",
+      "name":"walk",
+      "params":{
+        "1":"doc",
+        "2":"depth_first",
+        "map":{
+          "operation":" a function which will receive the current tag name and current node.",
+          "doc":" a Node object or string (text node)",
+          "depth_first":" visit child nodes first, then the current node"
+        },
+        "3":"operation"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Will only call on tags, it will skip text nodes.\n The function signature for `operation` is `function(tag_name, Node)`.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "s":[]
+        }
+      },
+      "summary":"Parse a well-formed HTML file as a string.",
+      "lineno":928,
+      "args":"(s)",
+      "section":"function",
+      "name":"parsehtml",
+      "params":{
+        "map":{
+          "s":" the HTML"
+        },
+        "1":"s"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n Tags are case-insenstive, DOCTYPE is ignored, and empty elements can be .. empty.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "html":[],
+          "s":[],
+          "all_text":[]
+        }
+      },
+      "summary":"Parse a simple XML document using a pure Lua parser based on Robero Ierusalimschy's original version.",
+      "lineno":936,
+      "args":"(s, all_text, html)",
+      "section":"function",
+      "name":"basic_parse",
+      "params":{
+        "1":"s",
+        "2":"all_text",
+        "map":{
+          "html":" if true, uses relaxed HTML rules for parsing",
+          "s":" the XML document to be parsed.",
+          "all_text":"  if true, preserves all whitespace. Otherwise only text containing non-whitespace is included."
+        },
+        "3":"html"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"does something...",
+      "lineno":1144,
+      "args":"(pat)",
+      "section":"function",
+      "name":"Doc:match",
+      "params":{
+        "map":{
+          "pat":""
+        },
+        "1":"pat"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

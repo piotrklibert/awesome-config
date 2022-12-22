@@ -1,0 +1,310 @@
+{
+  "kind":"libraries",
+  "name":"pl.test",
+  "mod_name":"test",
+  "inferred":true,
+  "description":"\n\n    test.asserteq({1,2},{1,2}) -- can compare tables\n    test.asserteq(1.2,1.19,0.02) -- compare FP numbers within precision\n    T = test.tuple -- used for comparing multiple results\n    test.asserteq(T(string.find(\" me\",\"me\")),T(2,3))\n\n Dependencies: `pl.utils`, `pl.tablex`, `pl.pretty`, `pl.path`, `debug`",
+  "file":"/home/cji/portless/Penlight/lua/pl/test.lua",
+  "summary":"Useful test utilities.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":11,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "summary":"error handling for test results.",
+      "lineno":35,
+      "args":"(file, line, got_text, needed_text, msg)",
+      "section":"function",
+      "name":"error_handler",
+      "params":{
+        "1":"file",
+        "2":"line",
+        "3":"got_text",
+        "4":"needed_text",
+        "map":{
+          "msg":"",
+          "got_text":"",
+          "needed_text":"",
+          "file":"",
+          "line":""
+        },
+        "5":"msg"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n By default, this writes to stderr and exits the program.\n Re-define this function to raise an error and/or redirect output",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "name":"complain",
+      "description":"\n Useful for composing new test functions (see tests/tablex.lua for an example)",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "3":"msg",
+        "4":"where",
+        "map":{
+          "where":" extra level offset for errors",
+          "msg":" message",
+          "y":" value to compare first value against",
+          "x":" a value"
+        }
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":55,
+      "summary":"general test complain message.",
+      "args":"(x, y, msg, where)",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "where":[],
+          "msg":[],
+          "y":[],
+          "x":[]
+        }
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "where":[],
+          "eps":[],
+          "y":[],
+          "x":[]
+        }
+      },
+      "summary":"like assert, except takes two arguments that must be equal and can be tables.",
+      "lineno":63,
+      "args":"(x, y, eps, where)",
+      "section":"function",
+      "name":"asserteq",
+      "params":{
+        "1":"x",
+        "2":"y",
+        "3":"eps",
+        "4":"where",
+        "map":{
+          "where":" extra level offset",
+          "eps":" an optional tolerance for numerical comparisons",
+          "y":" a value equal to x",
+          "x":" any value"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n If they are plain tables, it will use tablex.deepcompare.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "s2":[],
+          "where":[],
+          "s1":[]
+        }
+      },
+      "summary":"assert that the first string matches the second.",
+      "lineno":77,
+      "args":"(s1, s2, where)",
+      "section":"function",
+      "name":"assertmatch",
+      "params":{
+        "1":"s1",
+        "2":"s2",
+        "map":{
+          "s2":" a string",
+          "where":" extra level offset",
+          "s1":" a string"
+        },
+        "3":"where"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "where":[],
+          "fn":[],
+          "e":[]
+        }
+      },
+      "summary":"assert that the function raises a particular error.",
+      "lineno":87,
+      "args":"(fn, e, where)",
+      "section":"function",
+      "name":"assertraise",
+      "params":{
+        "1":"fn",
+        "2":"e",
+        "map":{
+          "where":" extra level offset",
+          "fn":" a function or a table of the form {function,arg1,...}",
+          "e":" a string to match the error against"
+        },
+        "3":"where"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "5":[],
+          "y2":[],
+          "where":[],
+          "x1":[],
+          "x2":[],
+          "y1":[]
+        }
+      },
+      "summary":"a version of asserteq that takes two pairs of values.",
+      "lineno":107,
+      "args":"(x1, x2, y1, y2, where)",
+      "section":"function",
+      "name":"asserteq2",
+      "params":{
+        "1":"x1",
+        "2":"x2",
+        "3":"y1",
+        "4":"y2",
+        "map":{
+          "y2":" any value",
+          "where":" extra level offset",
+          "x1":" any value",
+          "x2":" any value",
+          "y1":" any value"
+        },
+        "5":"where"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n <code>x1==y1 and x2==y2</code> must be true. Useful for functions that naturally\n return two values.",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":[],
+        "usage":[[]]
+      },
+      "summary":"encode an arbitrary argument list as a tuple.",
+      "lineno":148,
+      "args":"(...)",
+      "usage":["asserteq(tuple( ('ab'):find 'a'), tuple(1,1))\n"],
+      "section":"function",
+      "name":"tuple",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "...":""
+        },
+        "1":"..."
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n This can be used to compare to other argument lists, which is\n very useful for testing functions which return a number of values.\n Unlike regular array-like tables ('sequences') they may contain nils.\n Tuples understand equality and know how to print themselves out.\n The # operator is defined to be the size, irrespecive of any nils,\n and there is an `unpack` method.",
+      "type":"function"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"int"
+          },
+          "3":{
+            "type":"func"
+          },
+          "4":[],
+          "...":[],
+          "n":{
+            "type":"int"
+          },
+          "fun":{
+            "type":"func"
+          },
+          "msg":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Time a function.",
+      "lineno":158,
+      "args":"(msg, n, fun, ...)",
+      "section":"function",
+      "name":"timer",
+      "params":{
+        "1":"msg",
+        "2":"n",
+        "3":"fun",
+        "4":"...",
+        "map":{
+          "...":" optional arguments to fun",
+          "n":" number of times to call the function",
+          "fun":" the function",
+          "msg":" a descriptive message"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":" Call the function a given number of times, and report the number of seconds taken,\n together with a message.  Any extra arguments will be passed to the function.",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

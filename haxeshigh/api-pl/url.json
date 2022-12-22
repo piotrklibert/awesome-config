@@ -1,0 +1,104 @@
+{
+  "kind":"libraries",
+  "name":"pl.url",
+  "mod_name":"url",
+  "inferred":true,
+  "description":"",
+  "file":"/home/cji/portless/Penlight/lua/pl/url.lua",
+  "summary":"Python-style URL quoting library.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":5,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "2":{
+            "type":"bool"
+          },
+          "s":{
+            "type":"string"
+          },
+          "quote_plus":{
+            "type":"bool"
+          }
+        }
+      },
+      "summary":"Quote the url, replacing special characters using the '%xx' escape.",
+      "lineno":15,
+      "retgroups":[{
+          "1":{
+            "text":"The quoted string, or if `s` wasn't a string, just plain unaltered `s`.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s, quote_plus)",
+      "type":"function",
+      "name":"quote",
+      "parameter":"param",
+      "params":{
+        "1":"s",
+        "2":"quote_plus",
+        "map":{
+          "s":" the string",
+          "quote_plus":" Also escape slashes and replace spaces by plus signs."
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["The quoted string, or if `s` wasn't a string, just plain unaltered `s`."]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "s":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"Unquote the url, replacing '%xx' escapes and plus signs.",
+      "lineno":39,
+      "retgroups":[{
+          "1":{
+            "text":"The unquoted string, or if `s` wasn't a string, just plain unaltered `s`.",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"(s)",
+      "type":"function",
+      "name":"unquote",
+      "parameter":"param",
+      "params":{
+        "map":{
+          "s":" the string"
+        },
+        "1":"s"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["The unquoted string, or if `s` wasn't a string, just plain unaltered `s`."]
+    }],
+  "type":"module",
+  "modifiers":[]
+}

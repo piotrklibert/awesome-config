@@ -1,0 +1,17 @@
+{
+  "name":"sipscan.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/sipscan.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"sipscan.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"-- another SIP example, shows how an awkward log file format\n-- can be parsed. It also prints out the actual Lua string\n-- pattern generated:\n-- SYNC%s*%[([+%-%d]%d*)%]%s*([+%-%d]%d*)%s*([+%-%d]%d*)\n\nlocal sip = require 'pl.sip'\nlocal stringx = require 'pl.stringx'\n\nlocal s = [[\nSYNC [1] 0 547 (14679 sec)\nSYNC [2] 0 555 (14679 sec)\nSYNC [3] 0 563 (14679 sec)\nSYNC [4] 0 571 (14679 sec)\nSYNC [5] -1 580 (14679 sec)\nSYNC [6] 0 587 (14679 sec)\n]]\n\n\nlocal first = true\nlocal expected\nlocal res = {}\nlocal pat = 'SYNC [$i{seq}] $i{diff} $i{val}'\nprint(sip.create_pattern(pat))\nlocal match = sip.compile(pat)\nfor line in stringx.lines(s) do\n  if match(line,res) then\n    if first then\n      expected = res.val\n      first = false\n    end\n    print(res.val,expected - res.val)\n    expected = expected + 8\n  end\nend\n"
+}

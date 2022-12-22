@@ -1,0 +1,1488 @@
+{
+  "inferred":true,
+  "kind":"libraries",
+  "mod_name":"util",
+  "summary":"Utility module for awful.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"awful.util",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"string",
+        "map":{
+          "string":""
+        }
+      },
+      "summary":"The default shell used when spawning processes.",
+      "name":"shell",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "string":[]
+        },
+        "field":{
+          "1":[],
+          "string":[]
+        }
+      },
+      "description":"",
+      "type":"field",
+      "section":"field",
+      "kind":"fields",
+      "args":"(string)",
+      "tags":[],
+      "lineno":35
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Execute a system command and road the output.",
+      "name":"awful.util.pread",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"\n This function implementation **has been removed** and no longer\n do anything. Use `awful.spawn.easy_async`.",
+      "type":"deprecated",
+      "section":"deprecated",
+      "kind":"deprecated functions",
+      "args":"()",
+      "tags":[],
+      "lineno":42
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"see",
+        "2":"args",
+        "map":{
+          "see":" The message to a new method / function to use.",
+          "args":" Extra arguments",
+          "args.deprecated_in":" Print the message only when Awesome's\n   version is equal to or greater than deprecated_in.",
+          "args.raw":" Print the message as-is without the automatic\n   context (but only append a leading dot)."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "opt":true
+          },
+          "2":{
+            "type":"table"
+          },
+          "3":{
+            "type":"boolean"
+          },
+          "4":{
+            "type":"integer"
+          },
+          "see":{
+            "opt":true
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.deprecated_in":{
+            "type":"integer"
+          },
+          "args.raw":{
+            "type":"boolean"
+          }
+        },
+        "field":{
+          "1":{
+            "opt":true
+          },
+          "2":{
+            "type":"table"
+          },
+          "3":{
+            "type":"boolean"
+          },
+          "4":{
+            "type":"integer"
+          },
+          "see":{
+            "opt":true
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.deprecated_in":{
+            "type":"integer"
+          },
+          "args.raw":{
+            "type":"boolean"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":{
+        "args":["args.raw","args.deprecated_in"]
+      },
+      "summary":"Display a deprecation notice, but only once per traceback.",
+      "name":"deprecate",
+      "type":"deprecated",
+      "args":"([see], args)",
+      "kind":"deprecated functions",
+      "lineno":51
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"fallback",
+        "2":"old_name",
+        "3":"new_name",
+        "map":{
+          "old_name":" The old class name",
+          "fallback":" The new class",
+          "new_name":" The new class name"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "old_name":{
+            "type":"string"
+          },
+          "fallback":{
+            "type":"table"
+          },
+          "new_name":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"string"
+          },
+          "3":{
+            "type":"string"
+          },
+          "old_name":{
+            "type":"string"
+          },
+          "fallback":{
+            "type":"table"
+          },
+          "new_name":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n This is useful when a class has moved somewhere else.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Create a class proxy with deprecation messages.",
+      "name":"deprecate_class",
+      "type":"deprecated",
+      "args":"(fallback, old_name, new_name)",
+      "kind":"deprecated functions",
+      "lineno":64
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"color",
+        "2":"fallback",
+        "map":{
+          "color":" The color.",
+          "fallback":" The color to return if the first is invalid. (default: black)"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"string"
+          }],
+        "param":{
+          "1":[],
+          "2":{
+            "type":"string"
+          },
+          "color":[],
+          "fallback":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":[],
+          "2":{
+            "type":"string"
+          },
+          "color":[],
+          "fallback":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get a valid color for Pango markup",
+      "name":"ensure_pango_color",
+      "type":"deprecated",
+      "args":"(color, fallback)",
+      "kind":"deprecated functions",
+      "lineno":75
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"i",
+        "map":{
+          "i":" An absolute index to fit into #t.",
+          "t":" A length. Must be greater than zero."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "i":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "i":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Make i cycle.",
+      "name":"cycle",
+      "type":"deprecated",
+      "args":"(t, i)",
+      "kind":"deprecated functions",
+      "lineno":86
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"dir",
+        "map":{
+          "dir":" The directory."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "dir":[]
+        },
+        "field":{
+          "1":[],
+          "dir":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Create a directory",
+      "name":"mkdir",
+      "type":"deprecated",
+      "args":"(dir)",
+      "kind":"deprecated functions",
+      "lineno":96
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Eval Lua code.",
+      "name":"awful.util.eval",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":104
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" Text to escape."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "text":[]
+        },
+        "field":{
+          "1":[],
+          "text":[]
+        }
+      },
+      "description":"\n Useful to set raw text in textbox.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Escape a string from XML char.",
+      "name":"escape",
+      "type":"deprecated",
+      "args":"(text)",
+      "kind":"deprecated functions",
+      "lineno":114
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" Text to unescape."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "text":[]
+        },
+        "field":{
+          "1":[],
+          "text":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Unescape a string from entities.",
+      "name":"unescape",
+      "type":"deprecated",
+      "args":"(text)",
+      "kind":"deprecated functions",
+      "lineno":124
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"path",
+        "map":{
+          "path":" The file path."
+        }
+      },
+      "summary":"Check if a file is a Lua valid file.",
+      "name":"awful.util.checkfile",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "path":[]
+        },
+        "field":{
+          "1":[],
+          "path":[]
+        }
+      },
+      "description":"\n This is done by loading the content and compiling it with loadfile().",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(path)",
+      "tags":[],
+      "lineno":135
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Try to restart awesome.",
+      "name":"awful.util.restart",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"\n It checks if the configuration file is valid, and then restart if it's ok.\n If it's not ok, the error will be returned.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":147
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "field":[]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the config home according to the XDG basedir specification.",
+      "name":"get_xdg_config_home",
+      "type":"deprecated",
+      "args":"()",
+      "kind":"deprecated functions",
+      "lineno":161
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "field":[]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the cache home according to the XDG basedir specification.",
+      "name":"get_xdg_cache_home",
+      "type":"deprecated",
+      "args":"()",
+      "kind":"deprecated functions",
+      "lineno":170
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "field":[]
+      },
+      "description":"\n This is the directory containing the configuration file (\"rc.lua\").",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the path to the user's config dir.",
+      "name":"get_configuration_dir",
+      "type":"deprecated",
+      "args":"()",
+      "kind":"deprecated functions",
+      "lineno":180
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "field":[]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the path to a directory that should be used for caching data.",
+      "name":"get_cache_dir",
+      "type":"deprecated",
+      "args":"()",
+      "kind":"deprecated functions",
+      "lineno":189
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "field":[]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the path to the directory where themes are installed.",
+      "name":"get_themes_dir",
+      "type":"deprecated",
+      "args":"()",
+      "kind":"deprecated functions",
+      "lineno":198
+    },{
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "field":[]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the path to the directory where our icons are installed.",
+      "name":"get_awesome_icon_dir",
+      "type":"deprecated",
+      "args":"()",
+      "kind":"deprecated functions",
+      "lineno":207
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"d",
+        "map":{
+          "d":" The directory to get (either \"config\" or \"cache\")."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "d":[]
+        },
+        "field":{
+          "1":[],
+          "d":[]
+        }
+      },
+      "description":"\n It first checks XDG_CONFIG_HOME / XDG_CACHE_HOME, but then goes with the\n default paths.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the user's config or cache dir.",
+      "name":"getdir",
+      "type":"deprecated",
+      "args":"(d)",
+      "kind":"deprecated functions",
+      "lineno":219
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"iconname",
+        "2":"exts",
+        "3":"dirs",
+        "4":"size",
+        "map":{
+          "size":" The size. If this is specified, subdirectories `x`\n   of the dirs are searched first.",
+          "iconname":" The name of the icon to search for.",
+          "exts":" Table of image extensions allowed, otherwise { 'png', gif' }",
+          "dirs":" Table of dirs to search, otherwise { '/usr/share/pixmaps/' }"
+        }
+      },
+      "summary":"Search for an icon and return the full path.",
+      "name":"awful.util.geticonpath",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "size":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "iconname":[],
+          "exts":[],
+          "dirs":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "size":{
+            "optchain":true,
+            "type":"string",
+            "opt":true
+          },
+          "iconname":[],
+          "exts":[],
+          "dirs":[]
+        }
+      },
+      "description":"\n It searches for the icon path under the given directories with respect to the\n given extensions for the icon filename.",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(iconname, exts, dirs[, size])",
+      "tags":[],
+      "lineno":233
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"filename",
+        "map":{
+          "filename":" The file path."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "filename":[]
+        },
+        "field":{
+          "1":[],
+          "filename":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if a file exists, is readable and not a directory.",
+      "name":"file_readable",
+      "type":"deprecated",
+      "args":"(filename)",
+      "kind":"deprecated functions",
+      "lineno":262
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"path",
+        "map":{
+          "path":" The directory path."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"boolean"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "path":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "path":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if a path exists, is readable and is a directory.",
+      "name":"dir_readable",
+      "type":"deprecated",
+      "args":"(path)",
+      "kind":"deprecated functions",
+      "lineno":272
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"path",
+        "map":{
+          "path":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"bool"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "path":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "path":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if a path is a directory.",
+      "name":"is_dir",
+      "type":"deprecated",
+      "args":"(path)",
+      "kind":"deprecated functions",
+      "lineno":282
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"set",
+        "map":{
+          "set":" A set."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "set":[]
+        },
+        "field":{
+          "1":[],
+          "set":[]
+        }
+      },
+      "description":"\n This function, giving a set, will return all subset it.\n For example, if we consider a set with value { 10, 15, 34 },\n it will return a table containing 2^n set:\n { }, { 10 }, { 15 }, { 34 }, { 10, 15 }, { 10, 34 }, etc.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Return all subsets of a specific set.",
+      "name":"subsets",
+      "type":"deprecated",
+      "args":"(set)",
+      "kind":"deprecated functions",
+      "lineno":296
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"dir",
+        "2":"recttbl",
+        "3":"cur",
+        "map":{
+          "cur":" The current rectangle.",
+          "dir":" The direction, can be either \"up\", \"down\", \"left\" or \"right\".",
+          "recttbl":" A table of rectangle specifications."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "cur":[],
+          "dir":[],
+          "recttbl":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "cur":[],
+          "dir":[],
+          "recttbl":[]
+        }
+      },
+      "description":" Every rectangle is specified as a table\n with 'x', 'y', 'width', 'height' keys, the same as client or screen geometries.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the nearest rectangle in the given direction.",
+      "name":"awful.util.get_rectangle_in_direction",
+      "type":"deprecated",
+      "args":"(dir, recttbl, cur)",
+      "kind":"deprecated functions",
+      "lineno":309
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "map":{
+          "args":" A list of tables to join"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "args":[]
+        },
+        "field":{
+          "1":[],
+          "args":[]
+        }
+      },
+      "description":"\n This will iterate all tables and insert all their keys into a new table.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Join all tables given as parameters.",
+      "name":"util.table.join",
+      "type":"deprecated",
+      "args":"(args)",
+      "kind":"deprecated functions",
+      "lineno":320
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"set",
+        "3":"raw",
+        "map":{
+          "raw":" Use rawset (avoid the metatable)",
+          "set":" the table used to override members of `t`",
+          "t":" the table to be overridden"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"table"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "raw":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "set":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"table"
+          },
+          "3":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "raw":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "set":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"\n\n Note that this method doesn't copy entries found in `__index`.",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Override elements in the first table by the one in the second.",
+      "name":"util.table.crush",
+      "type":"deprecated",
+      "args":"(t, set[, raw=false])",
+      "kind":"deprecated functions",
+      "lineno":334
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "map":{
+          "t":" A potentially sparse table"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"\n\n This function remove any non numeric keys from the value set\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Pack all elements with an integer key into a new table\n While both lua and luajit implement __len over sparse\n table, the standard define it as an implementation\n detail.",
+      "name":"util.table.from_sparse",
+      "type":"deprecated",
+      "args":"(t)",
+      "kind":"deprecated functions",
+      "lineno":350
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"item",
+        "map":{
+          "item":" The item to look for in values of the table.",
+          "t":" The table."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "item":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "item":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Check if a table has an item and return its key.",
+      "name":"util.table.hasitem",
+      "type":"deprecated",
+      "args":"(t, item)",
+      "kind":"deprecated functions",
+      "lineno":361
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "2":"width",
+        "3":"indent",
+        "map":{
+          "text":" String to wrap.",
+          "indent":" Number of spaces added before each wrapped line. Default: 0.",
+          "width":" Maximum length of each line. Default: 72."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "text":[],
+          "indent":[],
+          "width":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "text":[],
+          "indent":[],
+          "width":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Split a string into multiple lines",
+      "name":"linewrap",
+      "type":"deprecated",
+      "args":"(text, width, indent)",
+      "kind":"deprecated functions",
+      "lineno":373
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"text",
+        "map":{
+          "text":" Input string."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"int"
+          }],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "text":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Count number of lines in a string",
+      "name":"linecount",
+      "type":"deprecated",
+      "args":"(text)",
+      "kind":"deprecated functions",
+      "lineno":383
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "map":{
+          "t":" the table for which the keys to get"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get a sorted table with all keys from a table.",
+      "name":"util.table.keys",
+      "type":"deprecated",
+      "args":"(t)",
+      "kind":"deprecated functions",
+      "lineno":393
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"...",
+        "map":{
+          "...":" the types to look for",
+          "t":" The table to retrieve the keys for"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "...":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "...":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Filter a tables keys for certain content types",
+      "name":"util.table.keys_filter",
+      "type":"deprecated",
+      "args":"(t, ...)",
+      "kind":"deprecated functions",
+      "lineno":404
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "map":{
+          "t":" the table to reverse"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Reverse a table",
+      "name":"util.table.reverse",
+      "type":"deprecated",
+      "args":"(t)",
+      "kind":"deprecated functions",
+      "lineno":414
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"deep",
+        "map":{
+          "deep":" Create a deep clone? (default: true)",
+          "t":" the table to clone"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[[]],
+        "param":{
+          "1":[],
+          "2":[],
+          "deep":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "deep":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Clone a table",
+      "name":"util.table.clone",
+      "type":"deprecated",
+      "args":"(t, deep)",
+      "kind":"deprecated functions",
+      "lineno":425
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"filter",
+        "3":"start",
+        "map":{
+          "start":"  what index to start iterating from.  Default is 1 (=> start of\n the table)",
+          "filter":" a function that returns true to indicate a positive match",
+          "t":"      the table to iterate"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "start":[],
+          "filter":[],
+          "t":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "start":[],
+          "filter":[],
+          "t":[]
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Returns an iterator to cycle through, starting from the first element or the\n given index, all elements of a table that match a given criteria.",
+      "name":"util.table.iterate",
+      "type":"deprecated",
+      "args":"(t, filter, start)",
+      "kind":"deprecated functions",
+      "lineno":440
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"t",
+        "2":"set",
+        "map":{
+          "set":" the mixin table",
+          "t":" the container table"
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"table"
+          },
+          "set":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"table"
+          },
+          "set":{
+            "type":"table"
+          },
+          "t":{
+            "type":"table"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Merge items from the one table to another one",
+      "name":"util.table.merge",
+      "type":"deprecated",
+      "args":"(t, set)",
+      "kind":"deprecated functions",
+      "lineno":452
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"x",
+        "map":{
+          "x":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[{
+            "type":"integer"
+          }],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "x":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"deprecated",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Round a number to an integer.",
+      "name":"round",
+      "type":"deprecated",
+      "args":"(x)",
+      "kind":"deprecated functions",
+      "lineno":482
+    }],
+  "type":"module",
+  "file":"/home/cji/portless/awesome/build/lib/awful/util.lua",
+  "package":"awful",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008 Julien Danjou"
+  },
+  "lineno":9
+}

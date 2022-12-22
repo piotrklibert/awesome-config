@@ -4,7 +4,9 @@ import lua.Lua;
 import lua.Table;
 import haxe.ds.Either;
 import haxe.Constraints;
+import tink.core.Future;
 
+using utils.lua.LuaTools;
 
 typedef SpawnResult = Either<Int, String>;
 
@@ -16,10 +18,17 @@ typedef SpawnLineCallbacks = {
   var ?exit: (Int) -> Void;
 }
 
+
+class Spawn {
+    public static function spawn(cmd: Array<String>): Future<String> {
+        return Future.irreversible(NativeSpawn.easy_async.bind(cmd.join(" ")));
+    }
+}
+
 @:luaRequire("awful.spawn")
-extern class Spawn {
+extern class NativeSpawn {
   // Spawn a program, and optionally apply properties and/or run a callback.
-  static function spawn(cmd: String, ?sn_rules: Bool = true, callback: Function): SpawnResult;
+    static function spawn(cmd: String, ?sn_rules: Null<{}>, ?callback: Function): SpawnResult;
 
   // Spawn a program using the shell.
   static function with_shell(cmd: String): Void;
@@ -28,7 +37,7 @@ extern class Spawn {
   static function with_line_callback(cmd: String, callbacks: AnyTable): SpawnResult;
 
   // Asynchronously spawn a program and capture its output.
-  static function easy_async(cmd: String, callback: (Dynamic) -> Void): SpawnResult;
+  static function easy_async(cmd: String, callback: (String) -> Void): SpawnResult;
 
   // Call spawn.easy_async with a shell.
   static function easy_async_with_shell(cmd: String, callback: (Dynamic) -> Void): SpawnResult;

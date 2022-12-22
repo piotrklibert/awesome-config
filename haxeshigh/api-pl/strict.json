@@ -1,0 +1,155 @@
+{
+  "kind":"libraries",
+  "name":"pl.strict",
+  "mod_name":"strict",
+  "inferred":true,
+  "description":"\n All global variables must be 'declared' through a regular assignment\n (even assigning `nil` will do) in a main chunk before being used\n anywhere or assigned to inside a function. Existing metatables `__newindex` and `__index`\n metamethods are respected.\n\n You can set any table to have strict behaviour using `strict.module`. Creating a new\n module with `strict.closed_module` makes the module immune to monkey-patching, if\n you don't wish to encourage monkey business.\n\n If the global `PENLIGHT_NO_GLOBAL_STRICT` is defined, then this module won't make the\n global environment strict - if you just want to explicitly set table strictness.\n",
+  "file":"/home/cji/portless/Penlight/lua/pl/strict.lua",
+  "summary":"Checks uses of undeclared global variables.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":16,
+  "package":"pl",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "usage":[[]],
+        "param":{
+          "1":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "2":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "3":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "mod":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          },
+          "name":{
+            "opt":true,
+            "type":"string",
+            "optchain":true
+          },
+          "predeclared":{
+            "opt":true,
+            "type":"tab",
+            "optchain":true
+          }
+        },
+        "return":[[]]
+      },
+      "summary":"make an existing table strict.",
+      "lineno":41,
+      "retgroups":[{
+          "1":{
+            "text":"the given table, or a new table",
+            "type":"",
+            "mods":[]
+          },
+          "g":0
+        }],
+      "args":"([name[, mod[, predeclared]]])",
+      "usage":["local M = { hello = \"world\" }\nstrict.module (\"Awesome_Module\", M, {\n  Lua = true,  -- defines allowed keys\n})\n\nassert(M.hello == \"world\")\nassert(M.Lua == nil)       -- access allowed, but has no value yet\nM.Lua = \"Rocks\"\nassert(M.Lua == \"Rocks\")\nM.not_allowed = \"bad boy\"  -- throws an error\n"],
+      "type":"function",
+      "name":"module",
+      "parameter":"param",
+      "params":{
+        "1":"name",
+        "2":"mod",
+        "map":{
+          "mod":" the table to protect - if `nil` then we'll return a new table",
+          "name":" name of table",
+          "predeclared":" - table of variables that are to be considered predeclared."
+        },
+        "3":"predeclared"
+      },
+      "tags":[],
+      "kind":"functions",
+      "section":"function",
+      "description":"",
+      "ret":["the given table, or a new table"]
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "T":{
+            "type":"tab"
+          }
+        }
+      },
+      "summary":"make all tables in a table strict.",
+      "lineno":107,
+      "args":"(T)",
+      "section":"function",
+      "name":"make_all_strict",
+      "params":{
+        "map":{
+          "T":" the table containing the tables to protect. Table `T` itself will NOT be protected."
+        },
+        "1":"T"
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"\n So `strict.make_all_strict(_G)` prevents monkey-patching\n of any global table",
+      "type":"function",
+      "parameter":"param"
+    },{
+      "inferred":true,
+      "subparams":[],
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"tab"
+          },
+          "2":{
+            "type":"string"
+          },
+          "mod":{
+            "type":"tab"
+          },
+          "name":{
+            "type":"string"
+          }
+        }
+      },
+      "summary":"make a new module table which is closed to further changes.",
+      "lineno":118,
+      "args":"(mod, name)",
+      "section":"function",
+      "name":"closed_module",
+      "params":{
+        "1":"mod",
+        "2":"name",
+        "map":{
+          "mod":" module table",
+          "name":" module name"
+        }
+      },
+      "tags":[],
+      "kind":"functions",
+      "description":"",
+      "type":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

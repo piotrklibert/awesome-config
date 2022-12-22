@@ -34,16 +34,24 @@ output/hx_pkg.lua: src/pkg/*.hx build/pkg.hxml $(common)
 output/hx_init.lua: src/init/*.hx build/init.hxml $(common)
 	./bin/build init
 
+output/hx_scripts.lua: src/scripts/*.hx build/scripts.hxml $(common)
+	./bin/build scripts
+
 output/hx_volume.lua: src/volume/*.hx build/volume.hxml $(common)
 	./bin/build volume
 
 output/hx_battery.lua: src/battery/*.hx build/battery.hxml $(common)
 	./bin/build battery
 
-
-.PHONY: test
-test:
+# src/test/*.hx src/test/penlight/*.hx src/test/awesome/*.hx
+.PHONY: output/hx_test.lua
+output/hx_test.lua:
 	./bin/build test
+
+.PHONY: output/hx_extgen.lua
+output/hx_extgen.lua:
+	./bin/build extgen
+
 
 
 .PHONY: pkg

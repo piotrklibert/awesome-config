@@ -1,0 +1,337 @@
+{
+  "inferred":true,
+  "kind":"core_components",
+  "mod_name":"root",
+  "summary":"awesome root window API.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"root",
+  "modifiers":{
+    "copyright":[],
+    "author":[[]]
+  },
+  "description":"",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"event_type",
+        "2":"detail",
+        "3":"x",
+        "4":"y",
+        "map":{
+          "event_type":" The event type: key\\_press, key\\_release, button\\_press,\n  button\\_release or motion\\_notify.",
+          "y":" In case of a motion event, this is the Y coordinate.",
+          "x":" In case of a motion event, this is the X coordinate.",
+          "detail":" The detail: in case of a key event, this is the keycode\n  to send, in case of a button event this is the number of the button. In\n  case of a motion event, this is a boolean value which if true makes the\n  coordinates relatives."
+        }
+      },
+      "summary":"Send fake keyboard or mouse events.",
+      "name":"fake_input",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "event_type":[],
+          "y":[],
+          "x":[],
+          "detail":[]
+        },
+        "field":{
+          "1":[],
+          "2":[],
+          "3":[],
+          "4":[],
+          "event_type":[],
+          "y":[],
+          "x":[],
+          "detail":[]
+        }
+      },
+      "description":"\n\n Usually the currently focused client or the keybindings will receive those\n events. If a `keygrabber` or `mousegrabber` is running, then it will get them.\n\n Some keys have different names compared to the ones generally used in\n Awesome. For example, Awesome uses \"modifier keys\" for keybindings using\n their X11 names such as \"Control\" or \"Mod1\" (for \"Alt\"). These are not the\n name of the key but is only the name of the modifier they represent. Some\n modifiers are even present twice on some keyboard like the left and right\n \"Shift\". Here is a list of the \"real\" key names matching the modifiers in\n `fake_input`:\n\n <table class='widget_list' border=1>\n  <tr style='font-weight: bold;'>\n   <th align='center'>Modifier name </th>\n   <th align='center'>Key name</th>\n   <th align='center'>Other key name</th>\n  </tr>\n  <tr><td> Mod4</td><td align='center'> Super_L </td><td align='center'> Super_R </td></tr>\n  <tr><td> Control </td><td align='center'> Control_L </td><td align='center'> Control_R </td></tr>\n  <tr><td> Shift </td><td align='center'> Shift_L </td><td align='center'> Shift_R </td></tr>\n  <tr><td> Mod1</td><td align='center'> Alt_L </td><td align='center'> Alt_R </td></tr>\n </table>\n\n Note that this is valid for most of the modern \"western\" keyboard layouts.\n Some older, custom or foreign layouts may break this convention.\n\n This function is very low level, to be more useful, it can be wrapped into\n higher level constructs such as:\n\n **Sending strings:**\n\n \n \n \n  \n    local function send_string_to_client(s, c)\n        local old_c = client.focus\n        client.focus = c\n        for i=1, #s do\n            local char = s:sub(i,i)\n            root.fake_input(&#34key_press&#34  , char)\n            root.fake_input(&#34key_release&#34, char)\n        end\n        client.focus = old_c\n    end\n   \n    send_string_to_client(&#34Hello world!&#34)\n\n Note that this example works for most ASCII inputs but may fail depending on\n how the string is encoded. Some multi-byte characters may not represent\n keys and some UTF-8 encoding format create characters by combining multiple\n elements such as accent + base character or various escape sequences. If you\n wish to use this example for \"real world\" i18n use cases, learning about\n XKB event and UTF-8 encoding is a prerequisites.\n\n **Clicking:**\n\n ![Client geometry](../images/mouse.svg)\n\n \n \n \n  \n    local function click(button_id, x, y)\n        mouse.coords {x = x, y = y}\n        root.fake_input(&#34button_press&#34 , button_id)\n        root.fake_input(&#34button_release&#34, button_id)\n    end\n   \n    click(1, 42, 42)\n",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(event_type, detail, x, y)",
+      "tags":[],
+      "lineno":290
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"table",
+        "map":{
+          "table":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":[],
+          "table":[]
+        },
+        "field":{
+          "1":[],
+          "table":[]
+        }
+      },
+      "description":"\n These bindings will be available when you press keys on the root window\n (the wallpaper).\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get or set global key bindings.",
+      "name":"keys",
+      "type":"property",
+      "args":"(table)",
+      "kind":"object properties",
+      "lineno":359
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"buttons",
+        "map":{
+          "buttons":" The list of buttons."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "buttons":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          },
+          "buttons":{
+            "optchain":"{}",
+            "type":"table",
+            "opt":"{}"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Store the list of mouse buttons to be applied on the wallpaper (also\n known as root window).",
+      "name":"buttons",
+      "kind":"object properties",
+      "usage":["root.buttons = {\n    awful.button({ }, 3, function () mymainmenu:toggle() end),\n    awful.button({ }, 4, awful.tag.viewnext),\n    awful.button({ }, 5, awful.tag.viewprev),\n}\n"],
+      "args":"([buttons={}])",
+      "type":"property",
+      "lineno":408
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"cursor_name",
+        "map":{
+          "cursor_name":" A X cursor name."
+        }
+      },
+      "summary":"Set the root cursor",
+      "name":"cursor",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":[],
+          "cursor_name":[]
+        },
+        "field":{
+          "1":[],
+          "cursor_name":[]
+        }
+      },
+      "description":" The possible values are:\n\n  <div class='flex-list'>\n <div>num\\_glyphs</div>\n <div>arrow</div>\n <div>based\\_arrow\\_down</div>\n <div>based\\_arrow\\_up</div>\n <div>boat</div>\n <div>bogosity</div>\n <div>bottom\\_left\\_corner</div>\n <div>bottom\\_right\\_corner</div>\n <div>bottom\\_side</div>\n <div>bottom\\_tee</div>\n <div>box\\_spiral</div>\n <div>center\\_ptr</div>\n <div>circle</div>\n <div>clock</div>\n <div>coffee\\_mug</div>\n <div>cross</div>\n <div>crosshair</div>\n <div>cross\\_reverse</div>\n <div>cursor</div>\n <div>diamond\\_cross</div>\n <div>dotbox</div>\n <div>dot</div>\n <div>double\\_arrow</div>\n <div>draft\\_large</div>\n <div>draft\\_small</div>\n <div>draped\\_box</div>\n <div>exchange</div>\n <div>fleur</div>\n <div>gobbler</div>\n <div>gumby</div>\n <div>hand</div>\n <div>hand</div>\n <div>heart</div>\n <div>icon</div>\n <div>iron\\_cross</div>\n <div>leftbutton</div>\n <div>left\\_ptr</div>\n <div>left\\_side</div>\n <div>left\\_tee</div>\n <div>ll\\_angle</div>\n <div>lr\\_angle</div>\n <div>man</div>\n <div>middlebutton</div>\n <div>mouse</div>\n <div>pencil</div>\n <div>pirate</div>\n <div>plus</div>\n <div>question\\_arrow</div>\n <div>rightbutton</div>\n <div>right\\_ptr</div>\n <div>right\\_side</div>\n <div>right\\_tee</div>\n <div>rtl\\_logo</div>\n <div>sailboat</div>\n <div>sb\\_down\\_arrow</div>\n <div>sb\\_h\\_double\\_arrow</div>\n <div>sb\\_left\\_arrow</div>\n <div>sb\\_right\\_arrow</div>\n <div>sb\\_up\\_arrow</div>\n <div>sb\\_v\\_double\\_arrow</div>\n <div>shuttle</div>\n <div>sizing</div>\n <div>spider</div>\n <div>spraycan</div>\n <div>star</div>\n <div>target</div>\n <div>tcross</div>\n <div>top\\_left\\_arrow</div>\n <div>top\\_left\\_corner</div>\n <div>top\\_right\\_corner</div>\n <div>top\\_side</div>\n <div>top\\_tee</div>\n <div>trek</div>\n <div>ul\\_angle</div>\n <div>umbrella</div>\n <div>ur\\_angle</div>\n <div>watch</div>\n <div>xterm</div>\n </div>\n",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(cursor_name)",
+      "tags":[],
+      "lineno":526
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the drawins attached to a screen.",
+      "name":"drawins",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":552
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"pattern",
+        "map":{
+          "pattern":" A cairo pattern as light userdata"
+        }
+      },
+      "summary":"Get the wallpaper as a cairo surface or set it as a cairo pattern.",
+      "name":"wallpaper",
+      "modifiers":{
+        "return":[[]],
+        "param":{
+          "1":[],
+          "pattern":[]
+        },
+        "field":{
+          "1":[],
+          "pattern":[]
+        }
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"(pattern)",
+      "tags":[],
+      "lineno":572
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"A",
+        "map":{
+          "A":" cairo surface with the root window content (aka the whole surface from every screens)."
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "return":[],
+        "param":{
+          "1":{
+            "type":"surface"
+          },
+          "A":{
+            "type":"surface"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"surface"
+          },
+          "A":{
+            "type":"surface"
+          }
+        }
+      },
+      "description":"",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Get the content of the root window as a cairo surface.",
+      "name":"content",
+      "type":"property",
+      "args":"(A)",
+      "kind":"object properties",
+      "lineno":603
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the size of the root window.",
+      "name":"size",
+      "modifiers":{
+        "field":[],
+        "return":[[],[]]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":625
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the physical size of the root window, in millimeter.",
+      "name":"size_mm",
+      "modifiers":{
+        "field":[],
+        "return":[[],[]]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":639
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Get the attached tags.",
+      "name":"tags",
+      "modifiers":{
+        "field":[],
+        "return":[[]]
+      },
+      "description":"",
+      "type":"staticfct",
+      "section":"staticfct",
+      "kind":"static module functions",
+      "args":"()",
+      "tags":[],
+      "lineno":651
+    }],
+  "type":"coreclassmod",
+  "file":"/home/cji/portless/awesome/build/root.c",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2008-2009 Julien Danjou"
+  },
+  "lineno":28
+}

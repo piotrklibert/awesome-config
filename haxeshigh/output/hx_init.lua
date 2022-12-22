@@ -193,14 +193,23 @@ local Bool = _hx_e();
 local Class = _hx_e();
 local Enum = _hx_e();
 
+local _hx_exports = _hx_exports or {}
+_hx_exports["init"] = _hx_exports["init"] or _hx_e()
 local Array = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local Math = _hx_e()
 local String = _hx_e()
 local Std = _hx_e()
+local __haxe_IMap = _hx_e()
+local __haxe_Log = _hx_e()
+local __haxe_ds_StringMap = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
-local __volume_Volume = _hx_e()
+local __init_Paths = _hx_e()
+local __init_Z2 = _hx_e()
+local __init_Z = _hx_e()
+local __init_Init = _hx_e()
+local __pkg_PackageManager = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
 local _hx_pcall_default = {};
@@ -725,6 +734,74 @@ Std.int = function(x)
   end;
 end
 
+__haxe_IMap.new = {}
+
+__haxe_Log.new = {}
+__haxe_Log.formatOutput = function(v,infos) 
+  local str = Std.string(v);
+  if (infos == nil) then 
+    do return str end;
+  end;
+  local pstr = infos.fileName .. ":" .. Std.string(infos.lineNumber);
+  if (infos.customParams ~= nil) then 
+    local _g = 0;
+    local _g1 = infos.customParams;
+    while (_g < _g1.length) do 
+      local v = _g1[_g];
+      _g = _g + 1;
+      str = str .. (", " .. Std.string(v));
+    end;
+  end;
+  do return pstr .. ": " .. str end;
+end
+__haxe_Log.trace = function(v,infos) 
+  local str = __haxe_Log.formatOutput(v, infos);
+  _hx_print(str);
+end
+
+__haxe_ds_StringMap.new = function() 
+  local self = _hx_new(__haxe_ds_StringMap.prototype)
+  __haxe_ds_StringMap.super(self)
+  return self
+end
+__haxe_ds_StringMap.super = function(self) 
+  self.h = ({});
+end
+__haxe_ds_StringMap.__interfaces__ = {__haxe_IMap}
+__haxe_ds_StringMap.prototype = _hx_e();
+__haxe_ds_StringMap.prototype.keys = function(self) 
+  local _gthis = self;
+  local next = _G.next;
+  local cur = next(self.h, nil);
+  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
+    local ret = cur;
+    cur = next(_gthis.h, cur);
+    do return ret end;
+  end,hasNext=function(self) 
+    do return cur ~= nil end;
+  end}) end
+end
+__haxe_ds_StringMap.prototype.toString = function(self) 
+  local s_b = ({});
+  _G.table.insert(s_b, "{");
+  local it = self:keys();
+  while (it:hasNext()) do 
+    local i = it:next();
+    _G.table.insert(s_b, Std.string(i));
+    _G.table.insert(s_b, " => ");
+    local ret = self.h[i];
+    if (ret == __haxe_ds_StringMap.tnull) then 
+      ret = nil;
+    end;
+    _G.table.insert(s_b, Std.string(ret));
+    if (it:hasNext()) then 
+      _G.table.insert(s_b, ", ");
+    end;
+  end;
+  _G.table.insert(s_b, "}");
+  do return _G.table.concat(s_b) end
+end
+
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -757,8 +834,115 @@ __haxe_iterators_ArrayKeyValueIterator.super = function(self,array)
   self.array = array;
 end
 
-__volume_Volume.new = {}
-__volume_Volume.main = function() 
+__init_Paths.new = {}
+_hx_exports["init"]["Paths"] = __init_Paths
+__init_Paths.set = function() 
+  _G.package.path = __init_Paths.path:join(";");
+  _G.package.cpath = __init_Paths.cpath:join(";");
+end
+
+__init_Z2.new = {}
+
+__init_Z.new = {}
+
+__init_Init.new = {}
+_hx_exports["init"]["Init"] = __init_Init
+__init_Init.unique = function(s) 
+  local m = __haxe_ds_StringMap.new();
+  local _g = 0;
+  local idx = 1;
+  local ret = _hx_tab_array({}, 0);
+  while (idx ~= nil) do 
+    local newidx = 0;
+    if (__lua_lib_luautf8_Utf8.len(";") > 0) then 
+      newidx = __lua_lib_luautf8_Utf8.find(s, ";", idx, true);
+    else
+      if (idx >= __lua_lib_luautf8_Utf8.len(s)) then 
+        newidx = nil;
+      else
+        newidx = idx + 1;
+      end;
+    end;
+    if (newidx ~= nil) then 
+      local match = __lua_lib_luautf8_Utf8.sub(s, idx, newidx - 1);
+      ret:push(match);
+      idx = newidx + __lua_lib_luautf8_Utf8.len(";");
+    else
+      ret:push(__lua_lib_luautf8_Utf8.sub(s, idx, __lua_lib_luautf8_Utf8.len(s)));
+      idx = nil;
+    end;
+  end;
+  while (_g < ret.length) do 
+    local p = ret[_g];
+    _g = _g + 1;
+    m.h[p] = 1;
+  end;
+  local p = m:keys();
+  while (p:hasNext()) do 
+    local p = p:next();
+    __haxe_Log.trace(p, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Init.hx",lineNumber=97,className="init.Init",methodName="unique"}));
+  end;
+end
+__init_Init.search = function(s) 
+  local tmp = __haxe_Log.trace;
+  local value = _G.package.searchpath(s, _G.package.path);
+  tmp("In path:\n\t" .. ((function() 
+    local _hx_1
+    if (value == nil) then 
+    _hx_1 = "<not found>"; else 
+    _hx_1 = value; end
+    return _hx_1
+  end )()), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Init.hx",lineNumber=102,className="init.Init",methodName="search"}));
+  local tmp = __haxe_Log.trace;
+  local value = _G.package.searchpath(s, _G.package.cpath);
+  tmp("In cpath:\n\t" .. ((function() 
+    local _hx_2
+    if (value == nil) then 
+    _hx_2 = "<not found>"; else 
+    _hx_2 = value; end
+    return _hx_2
+  end )()), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Init.hx",lineNumber=103,className="init.Init",methodName="search"}));
+end
+__init_Init.main = function() 
+  _G.print(__init_Z.A.a);
+  _G.print();
+  __init_Init.unique(_G.package.path);
+  local inlarr_0 = awful.layout.suit.tile;
+  local inlarr_1 = awful.layout.suit.floating;
+  local inlarr_2 = awful.layout.suit.tile.right;
+  local inlarr_3 = awful.layout.suit.tile.left;
+  local inlarr_4 = awful.layout.suit.tile.bottom;
+  local inlarr_5 = awful.layout.suit.tile.top;
+  __init_Init.unique(_G.package.cpath);
+  __init_Init.search("std.base");
+  __haxe_Log.trace("------", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Init.hx",lineNumber=123,className="init.Init",methodName="main"}));
+  __init_Init.search("ml");
+  local _g = __haxe_ds_StringMap.new();
+  _g.h.John = 26;
+  _g.h.Peter = 17;
+  _g.h.Mark = 32;
+  local m = _g;
+  if (m ~= nil) then 
+    __haxe_Log.trace((function() 
+      local _hx_1
+      if (m == nil) then 
+      _hx_1 = "null"; else 
+      _hx_1 = m:toString(); end
+      return _hx_1
+    end )(), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/init/Init.hx",lineNumber=131,className="init.Init",methodName="main"}));
+  end;
+end
+
+__pkg_PackageManager.new = function() 
+  local self = _hx_new(__pkg_PackageManager.prototype)
+  __pkg_PackageManager.super(self)
+  return self
+end
+__pkg_PackageManager.super = function(self) 
+end
+__pkg_PackageManager.prototype = _hx_e();
+__pkg_PackageManager.prototype.toString = function(self) 
+  do return "<PackageManager>" end
 end
 if _hx_bit_raw then
     _hx_bit_clamp = function(v)
@@ -799,10 +983,24 @@ else
 end
 local _hx_static_init = function()
   
+  _G.Paths = __init_Paths;__haxe_ds_StringMap.tnull = ({});
+  
+  __init_Paths.path = _hx_tab_array({[0]="/usr/local/share/awesome/lib/?.lua", "/usr/local/share/awesome/lib/?/init.lua", "/usr/local/share/lua/5.1/?.lua", "/usr/local/share/lua/5.1/?/init.lua", "/usr/local/share/luajit-2.1.0-beta3/?.lua", "./?.lua", "/etc/xdg/awesome/?.lua", "/etc/xdg/awesome/?/init.lua", "/home/cji/.config/awesome/?.lua", "/home/cji/.config/awesome/?/init.lua", "/home/cji/.config/awesome/widgets/?/?.lua", "/home/cji/.config/awesome/widgets/?/init.lua", "/home/cji/.luarocks/lib/lua/5.1/?.so", "/home/cji/.luarocks/lib/lua/5.1/lgi/?.so", "/home/cji/.luarocks/share/lua/5.1/?.lua", "/home/cji/.luarocks/share/lua/5.1/?/init.lua", "/home/cji/portless/lua/?.lua", "/home/cji/portless/lua/?/?.lua", "/home/cji/portless/lua/?/init.lua", "/home/cji/portless/lua/Microlight/?.lua", "/home/cji/portless/lua/Penlight/lua/?/", "/home/cji/portless/lua/Penlight/lua/?/init.lua", "/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua", "/home/cji/priv/moonscript/awesomescript/?.lua", "/home/cji/priv/moonscript/awesomescript/?.lua", "/home/cji/priv/moonscript/awesomescript/vendor/?.lua", "/home/cji/priv/moonscript/awesomescript/vendor/?/init.lua", "/home/cji/priv/moonscript/awesomescript/vendor/readline/?.lua"}, 28);
+  
+  __init_Paths.cpath = _hx_tab_array({[0]="/usr/local/lib/lua/5.1/loadall.so", "/home/cji/.config/awesome/?.so", "/home/cji/priv/moonscript/awesomescript/vendor/readline/?.so", "/usr/local/share/awesome/lib/?.so", "/home/cji/.luarocks/lib/lua/5.1/?.so", "/etc/xdg/awesome/?.so", "./?.so", "/usr/local/lib/lua/5.1/?.so"}, 8);
+  
+  __init_Z2.a = 2;
+  
+  __init_Z.A = __init_Z2;
+  
+  
 end
+
+_hx_print = print or (function() end)
 
 _hx_static_init();
 _G.xpcall(function() 
-  __volume_Volume.main();
+  __init_Init.main();
   _hx_luv.run();
 end, _hx_error)
+return _hx_exports

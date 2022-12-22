@@ -1,0 +1,178 @@
+{
+  "kind":"libraries",
+  "name":"pl.file",
+  "mod_name":"file",
+  "inferred":true,
+  "description":"\n\n This module wraps a number of functions from other modules into a\n file related module for convenience.\n\n Dependencies: `pl.utils`, `pl.dir`, `pl.path`",
+  "file":"/home/cji/portless/Penlight/lua/pl/file.lua",
+  "summary":"File manipulation functions: reading, writing, moving and copying.",
+  "sections":{
+    "by_name":[]
+  },
+  "tags":[],
+  "lineno":8,
+  "package":"pl",
+  "items":[{
+      "name":"read",
+      "description":"\n This function is a copy of `utils.readfile`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":18,
+      "summary":"return the contents of a file as a string.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"write",
+      "description":"\n This function is a copy of `utils.writefile`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":23,
+      "summary":"write a string to a file.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"copy",
+      "description":"\n This function is a copy of `dir.copyfile`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":28,
+      "summary":"copy a file.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"move",
+      "description":"\n This function is a copy of `dir.movefile`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":33,
+      "summary":"move a file.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"access_time",
+      "description":"\n This function is a copy of `path.getatime`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":38,
+      "summary":"Return the time of last access as the number of seconds since the epoch.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"creation_time",
+      "description":"\n This function is a copy of `path.getctime`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":43,
+      "summary":"Return when the file was created.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"modified_time",
+      "description":"\n This function is a copy of `path.getmtime`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":48,
+      "summary":"Return the time of last modification.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    },{
+      "name":"delete",
+      "description":"\n This function is a copy of `os.remove`.",
+      "inferred":true,
+      "subparams":[],
+      "kind":"functions",
+      "params":{
+        "map":[]
+      },
+      "type":"function",
+      "tags":[],
+      "lineno":53,
+      "summary":"Delete a file.",
+      "args":"()",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "section":"function",
+      "parameter":"param"
+    }],
+  "type":"module",
+  "modifiers":[]
+}

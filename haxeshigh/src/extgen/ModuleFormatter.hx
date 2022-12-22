@@ -1,0 +1,6 @@
+package extgen;
+
+
+class ModuleFormatter {
+
+}

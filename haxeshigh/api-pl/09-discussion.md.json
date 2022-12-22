@@ -1,0 +1,368 @@
+{
+  "kind":"manual",
+  "name":"09-discussion.md",
+  "display_name":"Technical Choices",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/09-discussion.md",
+  "section":{
+    "display_name":"Defining what is Callable",
+    "name":"Defining_what_is_Callable",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/09-discussion.md",
+      "items":["<reference cycle>",{
+          "display_name":"Modularity and Granularity",
+          "name":"Modularity_and_Granularity",
+          "lineno":1,
+          "tags":[],
+          "modifiers":[],
+          "file":"<reference cycle>",
+          "type":"section",
+          "summary":""
+        },{
+          "name":"dumbo",
+          "kind":"modularity and granularity ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Modularity and Granularity",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        },"<reference cycle>",{
+          "name":"dumbo",
+          "kind":"defining what is callable ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Defining what is Callable",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Technical Choices",
+      "sections":{
+        "69":"Defining_what_is_Callable",
+        "3":"Modularity_and_Granularity"
+      }
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "1":{
+      "display_name":"Modularity and Granularity",
+      "name":"Modularity_and_Granularity",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/09-discussion.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"modularity and granularity ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Modularity and Granularity",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },{
+            "display_name":"Defining what is Callable",
+            "name":"Defining_what_is_Callable",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"defining what is callable ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Defining what is Callable",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Technical Choices",
+        "sections":{
+          "69":"Defining_what_is_Callable",
+          "3":"Modularity_and_Granularity"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "2":{
+      "display_name":"Defining what is Callable",
+      "name":"Defining_what_is_Callable",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/09-discussion.md",
+        "items":["<reference cycle>",{
+            "display_name":"Modularity and Granularity",
+            "name":"Modularity_and_Granularity",
+            "lineno":1,
+            "tags":[],
+            "modifiers":[],
+            "file":"<reference cycle>",
+            "type":"section",
+            "summary":""
+          },{
+            "name":"dumbo",
+            "kind":"modularity and granularity ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Modularity and Granularity",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          },"<reference cycle>",{
+            "name":"dumbo",
+            "kind":"defining what is callable ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Defining what is Callable",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Technical Choices",
+        "sections":{
+          "69":"Defining_what_is_Callable",
+          "3":"Modularity_and_Granularity"
+        }
+      },
+      "type":"section",
+      "summary":""
+    },
+    "by_name":{
+      "Modularity_and_Granularity":{
+        "display_name":"Modularity and Granularity",
+        "name":"Modularity_and_Granularity",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/09-discussion.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"modularity and granularity ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Modularity and Granularity",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },{
+              "display_name":"Defining what is Callable",
+              "name":"Defining_what_is_Callable",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"defining what is callable ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Defining what is Callable",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Technical Choices",
+          "sections":{
+            "69":"Defining_what_is_Callable",
+            "3":"Modularity_and_Granularity"
+          }
+        },
+        "type":"section",
+        "summary":""
+      },
+      "Defining_what_is_Callable":{
+        "display_name":"Defining what is Callable",
+        "name":"Defining_what_is_Callable",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/09-discussion.md",
+          "items":["<reference cycle>",{
+              "display_name":"Modularity and Granularity",
+              "name":"Modularity_and_Granularity",
+              "lineno":1,
+              "tags":[],
+              "modifiers":[],
+              "file":"<reference cycle>",
+              "type":"section",
+              "summary":""
+            },{
+              "name":"dumbo",
+              "kind":"modularity and granularity ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Modularity and Granularity",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            },"<reference cycle>",{
+              "name":"dumbo",
+              "kind":"defining what is callable ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Defining what is Callable",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Technical Choices",
+          "sections":{
+            "69":"Defining_what_is_Callable",
+            "3":"Modularity_and_Granularity"
+          }
+        },
+        "type":"section",
+        "summary":""
+      }
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"modularity and granularity ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Modularity and Granularity",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    },{
+      "name":"dumbo",
+      "kind":"defining what is callable ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Defining what is Callable",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"09-discussion.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Technical Choices\n\n### Modularity and Granularity\n\nIn an ideal world, a program should only load the libraries it needs. Penlight is\nintended to work in situations where an extra 100Kb of bytecode could be a\nproblem. It is straightforward but tedious to load exactly what you need:\n\n    local data = require 'pl.data'\n    local List = require 'pl.List'\n    local array2d = require 'pl.array2d'\n    local seq = require 'pl.seq'\n    local utils = require 'pl.utils'\n\nThis is the style that I follow in Penlight itself, so that modules don't mess\nwith the global environment; also, `stringx.import()` is not used because it will\nupdate the global `string` table.\n\nBut `require 'pl'` is more convenient in scripts; the question is how to ensure\nthat one doesn't load the whole kitchen sink as the price of convenience. The\nstrategy is to only load modules when they are referenced. In 'init.lua' (which\nis loaded by `require 'pl'`) a metatable is attached to the global table with an\n`__index` metamethod. Any unknown name is looked up in the list of modules, and\nif found, we require it and make that module globally available. So when\n`tablex.deepcompare` is encountered, looking up `tablex` causes 'pl.tablex' to be\nrequired.  .\n\nModifying the behaviour of the global table has consequences. For instance, there\nis the famous module `strict` which comes with Lua itself (perhaps the only\nstandard Lua module written in Lua itself) which also does this modification so\nthat global variiables must be defined before use.  So the implementation in\n'init.lua' allows for a 'not found' hook, which 'pl.strict.lua' uses.  Other\nlibraries may install their own metatables for `_G`, but Penlight will now\nforward any unknown name to the `__index` defined by the original metatable.\n\nBut the strategy is worth the effort: the old 'kitchen sink' 'init.lua' would\npull in about 260K of bytecode, whereas now typical programs use about 100K less,\nand short scripts even better - for instance, if they were only needing\nfunctionality in `utils`.\n\nThere are some functions which mark their output table with a special metatable,\nwhen it seems particularly appropriate. For instance, `tablex.makeset` creates a\n`Set`, and `seq.copy` creates a `List`. But this does not automatically result in\nthe loading of `pl.Set` and `pl.List`; only if you try to access any of these\nmethods.  In 'utils.lua', there is an exported table called `stdmt`:\n\n    stdmt = { List = {}, Map = {}, Set = {}, MultiMap = {} }\n\nIf you go through 'init.lua', then these plain little 'identity' tables get an\n`__index` metamethod which forces the loading of the full functionality. Here is\nthe code from 'list.lua' which starts the ball rolling for lists:\n\n    List = utils.stdmt.List\n    List.__index = List\n    List._name = \"List\"\n    List._class = List\n\nThe 'load-on-demand' strategy helps to modularize the library.  Especially for\nmore casual use, `require 'pl'` is a good compromise between convenience and\nmodularity.\n\nIn this current version, I have generally reduced the amount of trickery\ninvolved. Previously, `Map` was defined in `pl.class`; now it is sensibly defined\nin `pl.Map`; `pl.class` only contains the basic class mechanism (and returns that\nfunction.) For consistency, `List` is returned directly by  `require 'pl.List'`\n(note the uppercase 'L'),  Also, the amount of module dependencies in the\nnon-core libraries like `pl.config` have been reduced.\n\n### Defining what is Callable\n\n'utils.lua' exports `function_arg` which is used extensively throughout Penlight.\nIt defines what is meant by 'callable'.  Obviously true functions are immediately\npassed back. But what about strings? The first option is that it represents an\noperator in 'operator.lua', so that '<' is just an alias for `operator.lt`.\n\nWe then check whether there is a _function factory_ defined for the metatable of\nthe value.\n\n(It is true that strings can be made callable, but in practice this turns out to\nbe a cute but dubious idea, since _all_ strings share the same metatable. A\ncommon programming error is to pass the wrong kind of object to a function, and\nit's better to get a nice clean 'attempting to call a string' message rather than\nsome obscure trace from the bowels of your library.)\n\nThe other module that registers a function factory is `pl.func`. Placeholder\nexpressions cannot be directly calleable, and so need to be instantiated and\ncached in as efficient way as possible.\n\n(An inconsistency is that `utils.is_callable` does not do this thorough check.)\n\n\n"
+}

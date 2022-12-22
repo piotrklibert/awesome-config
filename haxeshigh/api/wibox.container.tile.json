@@ -1,0 +1,346 @@
+{
+  "inferred":true,
+  "kind":"widget_containers",
+  "mod_name":"wibox.container.tile",
+  "summary":"Replicate the content of the widget over and over.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.container.tile",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n This contained is intended to be used for wallpapers. It currently doesn't\n support mouse input in the replicated tiles.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_defaults_tile.svg)\n",
+  "items":[{
+      "parameter":"field",
+      "params":{
+        "1":"horizontal_spacing",
+        "map":{
+          "horizontal_spacing":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "horizontal_spacing":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "horizontal_spacing":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_tile_horizontal_spacing.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The horizontal spacing between the tiled.",
+      "name":"horizontal_spacing",
+      "kind":"object properties",
+      "usage":["for _, i in ipairs {0, 2, 5, 10} do\n    local w = wibox.widget {\n        {\n            image         = beautiful.awesome_icon,\n            forced_height = 30,\n            forced_width  = 30,\n            widget        = wibox.widget.imagebox\n        },\n        valign             = &#34top&#34,\n        halign             = &#34left&#34,\n        horizontal_spacing = i,\n        widget             = wibox.container.tile\n    }\nend\n"],
+      "args":"(horizontal_spacing)",
+      "type":"property",
+      "lineno":120
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"vertical_spacing",
+        "map":{
+          "vertical_spacing":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "usage":[[]],
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "vertical_spacing":{
+            "type":"number"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "vertical_spacing":{
+            "type":"number"
+          }
+        },
+        "propemits":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_tile_vertical_spacing.svg)\n",
+      "tags":{
+        "propemits":["true false"],
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"The vertical spacing between the tiled.",
+      "name":"vertical_spacing",
+      "kind":"object properties",
+      "usage":["for _, i in ipairs {0, 2, 5, 10} do\n    local w = wibox.widget {\n        {\n            image         = beautiful.awesome_icon,\n            forced_height = 30,\n            forced_width  = 30,\n            widget        = wibox.widget.imagebox\n        },\n        valign             = &#34top&#34,\n        halign             = &#34left&#34,\n        vertical_spacing   = i,\n        widget             = wibox.container.tile\n    }\nend\n"],
+      "args":"(vertical_spacing)",
+      "type":"property",
+      "lineno":147
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"tiled",
+        "map":{
+          "tiled":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "tiled":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "tiled":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_tile_horizontal_crop.svg)\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Avoid painting incomplete horizontal tiles.",
+      "name":"horizontal_crop",
+      "kind":"object properties",
+      "usage":["for _, i in ipairs {true, false} do\n    local w = wibox.widget {\n        {\n            {\n                image         = beautiful.awesome_icon,\n                forced_height = 30,\n                forced_width  = 30,\n                widget        = wibox.widget.imagebox\n            },\n            horizontal_crop = i,\n            widget          = wibox.container.tile\n        },\n        bg     = beautiful.bg_normal,\n        widget = wibox.container.background\n    }\nend\n"],
+      "args":"([tiled=false])",
+      "type":"property",
+      "lineno":175
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"tiled",
+        "map":{
+          "tiled":""
+        }
+      },
+      "modifiers":{
+        "see":[[]],
+        "field":{
+          "1":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "tiled":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          },
+          "tiled":{
+            "optchain":"false",
+            "type":"boolean",
+            "opt":"false"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_tile_vertical_crop.svg)\n",
+      "tags":{
+        "see":[]
+      },
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Avoid painting incomplete vertical tiles.",
+      "name":"vertical_crop",
+      "kind":"object properties",
+      "usage":["for _, i in ipairs {true, false} do\n    local w = wibox.widget {\n        {\n            {\n                image         = beautiful.awesome_icon,\n                forced_height = 30,\n                forced_width  = 30,\n                widget        = wibox.widget.imagebox\n            },\n            vertical_crop  = i,\n            widget         = wibox.container.tile\n        },\n        bg     = beautiful.bg_normal,\n        widget = wibox.container.background\n    }\nend\n"],
+      "args":"([tiled=false])",
+      "type":"property",
+      "lineno":203
+    },{
+      "parameter":"field",
+      "params":{
+        "1":"tiled",
+        "map":{
+          "tiled":""
+        }
+      },
+      "modifiers":{
+        "field":{
+          "1":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          },
+          "tiled":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          }
+        },
+        "return":[],
+        "param":{
+          "1":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          },
+          "tiled":{
+            "optchain":"true",
+            "type":"boolean",
+            "opt":"true"
+          }
+        },
+        "usage":[[]]
+      },
+      "description":"\n\n When set to `false`, this container behaves exactly like\n `wibox.container.place`.\n\n\n\n![Usage example](../images/AUTOGEN_wibox_container_tile_tiled.svg)\n",
+      "tags":[],
+      "section":"property",
+      "inferred":true,
+      "subparams":[],
+      "summary":"Enable or disable the tiling.",
+      "name":"tiled",
+      "kind":"object properties",
+      "usage":["for _, i in ipairs {true, false} do\n    local w = wibox.widget {\n        {\n            image         = beautiful.awesome_icon,\n            forced_height = 30,\n            forced_width  = 30,\n            widget        = wibox.widget.imagebox\n        },\n        tiled  = i,\n        widget = wibox.container.tile\n    }\nend\n"],
+      "args":"([tiled=true])",
+      "type":"property",
+      "lineno":229
+    },{
+      "inferred":true,
+      "subparams":{
+        "args":["args.halign","args.valign"]
+      },
+      "parameter":"field",
+      "params":{
+        "1":"args",
+        "2":"widget",
+        "map":{
+          "args.valign":" Either `top`, `bottom` or `center`.",
+          "widget":" args.widget The widget to tile.",
+          "args":"",
+          "args.halign":" Either `left`, `right` or `center`."
+        }
+      },
+      "summary":"Create a new tile container.",
+      "name":"wibox.container.tile",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"wibox.widget"
+          },
+          "3":{
+            "type":"string"
+          },
+          "4":{
+            "type":"string"
+          },
+          "args.valign":{
+            "type":"string"
+          },
+          "widget":{
+            "type":"wibox.widget"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.halign":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"table"
+          },
+          "2":{
+            "type":"wibox.widget"
+          },
+          "3":{
+            "type":"string"
+          },
+          "4":{
+            "type":"string"
+          },
+          "args.valign":{
+            "type":"string"
+          },
+          "widget":{
+            "type":"wibox.widget"
+          },
+          "args":{
+            "type":"table"
+          },
+          "args.halign":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"(args, widget)",
+      "tags":[],
+      "lineno":301
+    }],
+  "type":"containermod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/container/tile.lua",
+  "package":"",
+  "tags":{
+    "author":["Emmanuel Lepage-Vallee"],
+    "copyright":"2021 Emmanuel Lepage-Vallee",
+    "supermodule":["wibox.container.place"]
+  },
+  "lineno":15
+}

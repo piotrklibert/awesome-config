@@ -145,7 +145,7 @@ extern class Moses {
   //  @param t a table
   //  @param ... A variable number of keys to collect values
   //  @return an array-list of values
-  public static function at(t: Dynamic, ...: Dynamic): Dynamic;
+  public static function at(t: Dynamic, ks: Rest<Dynamic>): Dynamic;
 
   //  Adjusts the value at a given key using a function or a value. In case `f` is a function,  it should be prototyped `f(v)`. It does not mutate the given table, but rather returns a new array. In case the given `key` does not exist in `t`, it throws an error.
   //  @param t a table

@@ -9,3 +9,4 @@ end
 print(g(0))
 -- could be used for threading (with light- cooperative -threads) implementation
 -- like in Io, or Racket.
+-- Why bother, though, if you have coroutines...

@@ -1,0 +1,138 @@
+{
+  "kind":"manual",
+  "name":"05-dates.md",
+  "display_name":"Date and Time",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "tags":[],
+  "file":"/home/cji/portless/Penlight/docs_topics/05-dates.md",
+  "section":{
+    "display_name":"Creating and Displaying Dates",
+    "name":"Creating_and_Displaying_Dates",
+    "lineno":1,
+    "tags":[],
+    "modifiers":[],
+    "file":{
+      "filename":"/home/cji/portless/Penlight/docs_topics/05-dates.md",
+      "items":["<reference cycle>","<reference cycle>",{
+          "name":"dumbo",
+          "kind":"creating and displaying dates ",
+          "subparams":[],
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "params":{
+            "map":[]
+          },
+          "tags":[],
+          "lineno":1,
+          "section":"Creating and Displaying Dates",
+          "args":"()",
+          "parameter":"param",
+          "type":"function"
+        }],
+      "modules":["<reference cycle>"],
+      "args":[],
+      "display_name":"Date and Time",
+      "sections":[null,null,null,null,null,null,"Creating_and_Displaying_Dates"]
+    },
+    "type":"section",
+    "summary":""
+  },
+  "sections":{
+    "by_name":{
+      "Creating_and_Displaying_Dates":{
+        "display_name":"Creating and Displaying Dates",
+        "name":"Creating_and_Displaying_Dates",
+        "lineno":1,
+        "tags":[],
+        "modifiers":[],
+        "file":{
+          "filename":"/home/cji/portless/Penlight/docs_topics/05-dates.md",
+          "items":["<reference cycle>","<reference cycle>",{
+              "name":"dumbo",
+              "kind":"creating and displaying dates ",
+              "subparams":[],
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "params":{
+                "map":[]
+              },
+              "tags":[],
+              "lineno":1,
+              "section":"Creating and Displaying Dates",
+              "args":"()",
+              "parameter":"param",
+              "type":"function"
+            }],
+          "modules":["<reference cycle>"],
+          "args":[],
+          "display_name":"Date and Time",
+          "sections":[null,null,null,null,null,null,"Creating_and_Displaying_Dates"]
+        },
+        "type":"section",
+        "summary":""
+      }
+    },
+    "1":{
+      "display_name":"Creating and Displaying Dates",
+      "name":"Creating_and_Displaying_Dates",
+      "lineno":1,
+      "tags":[],
+      "modifiers":[],
+      "file":{
+        "filename":"/home/cji/portless/Penlight/docs_topics/05-dates.md",
+        "items":["<reference cycle>","<reference cycle>",{
+            "name":"dumbo",
+            "kind":"creating and displaying dates ",
+            "subparams":[],
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "params":{
+              "map":[]
+            },
+            "tags":[],
+            "lineno":1,
+            "section":"Creating and Displaying Dates",
+            "args":"()",
+            "parameter":"param",
+            "type":"function"
+          }],
+        "modules":["<reference cycle>"],
+        "args":[],
+        "display_name":"Date and Time",
+        "sections":[null,null,null,null,null,null,"Creating_and_Displaying_Dates"]
+      },
+      "type":"section",
+      "summary":""
+    }
+  },
+  "items":[{
+      "name":"dumbo",
+      "kind":"creating and displaying dates ",
+      "subparams":[],
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "params":{
+        "map":[]
+      },
+      "tags":[],
+      "lineno":1,
+      "section":"Creating and Displaying Dates",
+      "args":"()",
+      "parameter":"param",
+      "type":"function"
+    }],
+  "lineno":1,
+  "mod_name":"05-dates.md",
+  "package":"",
+  "modifiers":[],
+  "type":"topic",
+  "body":"## Date and Time\n\n<a id=\"date\"></a>\n\nNOTE: the Date module is deprecated\n\n### Creating and Displaying Dates\n\nThe `Date` class provides a simplified way to work with [date and\ntime](http://www.lua.org/pil/22.1.html) in Lua; it leans heavily on the functions\n`os.date` and `os.time`.\n\nA `Date` object can be constructed from a table, just like with `os.time`.\nMethods are provided to get and set the various parts of the date.\n\n    > d = Date {year = 2011, month = 3, day = 2 }\n    > = d\n    2011-03-02 12:00:00\n    > = d:month(),d:year(),d:day()\n    3\t2011\t2\n    > d:month(4)\n    > = d\n    2011-04-02 12:00:00\n    > d:add {day=1}\n    > = d\n    2011-04-03 12:00:00\n\n`add` takes a table containing one of the date table fields.\n\n    > = d:weekday_name()\n    Sun\n    > = d:last_day()\n    2011-04-30 12:00:00\n    > = d:month_name(true)\n    April\n\nThere is a default conversion to text for date objects, but `Date.Format` gives\nyou full control of the format for both parsing and displaying dates:\n\n    > iso = Date.Format 'yyyy-mm-dd'\n    > d = iso:parse '2010-04-10'\n    > amer = Date.Format 'mm/dd/yyyy'\n    > = amer:tostring(d)\n    04/10/2010\n\nWith the 0.9.7 relase, the `Date` constructor has become more flexible. You may\nomit any of the 'year', 'month' or 'day' fields:\n\n    > = Date { year = 2008 }\n    2008-01-01 12:00:00\n    > = Date { month = 3 }\n    2011-03-01 12:00:00\n    > = Date { day = 20 }\n    2011-10-20 12:00:00\n    > = Date { hour = 14, min = 30 }\n    2011-10-13 14:30:00\n\nIf 'year' is omitted, then the current year is assumed, and likewise for 'month'.\n\nTo set the time on such a partial date, you can use the fact that the 'setter'\nmethods return the date object and so you can 'chain' these methods.\n\n    > d = Date { day = 03 }\n    > = d:hour(18):min(30)\n    2011-10-03 18:30:00\n\nFinally, `Date` also now accepts positional arguments:\n\n    > = Date(2011,10,3)\n    2011-10-03 12:00:00\n    > = Date(2011,10,3,18,30,23)\n    2011-10-03 18:30:23\n\n`Date.format` has been extended. If you construct an instance without a pattern,\nthen it will try to match against a set of known formats. This is useful for\nhuman-input dates since keeping to a strict format is not one of the strong\npoints of users. It assumes that there will be a date, and then a date.\n\n    > df = Date.Format()\n    > = df:parse '5.30pm'\n    2011-10-13 17:30:00\n    > = df:parse '1730'\n    nil     day out of range: 1730 is not between 1 and 31\n    > = df:parse '17.30'\n    2011-10-13 17:30:00\n    > = df:parse 'mar'\n    2011-03-01 12:00:00\n    > = df:parse '3 March'\n    2011-03-03 12:00:00\n    > = df:parse '15 March'\n    2011-03-15 12:00:00\n    > = df:parse '15 March 2008'\n    2008-03-15 12:00:00\n    > = df:parse '15 March 2008 1.30pm'\n    2008-03-15 13:30:00\n    > = df:parse '2008-10-03 15:30:23'\n    2008-10-03 15:30:23\n\nISO date format is of course a good idea if you need to deal with users from\ndifferent countries. Here is the default behaviour for 'short' dates:\n\n    > = df:parse '24/02/12'\n    2012-02-24 12:00:00\n\nThat's not what Americans expect! It's tricky to work out in a cross-platform way\nexactly what the expected format is, so there is an explicit flag:\n\n    > df:US_order(true)\n    > = df:parse '9/11/01'\n    2001-11-09 12:00:00\n\n"
+}

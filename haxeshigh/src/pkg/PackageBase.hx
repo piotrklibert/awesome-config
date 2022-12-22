@@ -10,7 +10,7 @@ class PackageCommand {
   public final PackageManager = Globals.PackageManager;
 
   public final argFilePath =
-    "/home/cji/portless/lua/awesome-config/haxeshigh/tmp/loading";
+    "/home/cji/priv/awesomescripts/haxeshigh/tmp/loading";
 
   public function getPackage(): String
     return sys.io.File.getContent(argFilePath).trim();

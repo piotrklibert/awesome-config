@@ -1,0 +1,252 @@
+{
+  "inferred":true,
+  "kind":"widgets",
+  "mod_name":"wibox.widget.textclock",
+  "summary":"Text clock widget.",
+  "sections":{
+    "by_name":[]
+  },
+  "name":"wibox.widget.textclock",
+  "modifiers":{
+    "author":[[]],
+    "supermodule":[[]],
+    "copyright":[]
+  },
+  "description":"\n\n The `wibox.widget.textclock` widget is part of the Awesome WM's widget\n system (see @{03-declarative-layout.md}).\n\n This widget displays a text clock formatted by the\n [GLib Date Time format](https://developer.gnome.org/glib/stable/glib-GDateTime.html#g-date-time-format)\n and [GTimeZone](https://developer.gnome.org/glib/stable/glib-GTimeZone.html#g-time-zone-new).\n\n The `wibox.widget.textclock` inherits from `wibox.widget.textbox`. It means\n that, once created, the user will receive a derivated instance of\n `wibox.widget.textbox` associated with a private `gears.timer` to manage\n timed updates of the displayed clock.\n\n Use a `wibox.widget.textclock`\n ---\n\n \n\n![Usage example](../images/AUTOGEN_wibox_widget_defaults_textclock.svg)\n\n \n     local my_textclock = wibox.widget.textclock('%a %b %d, %H:%M')\n\n Alternatively, you can declare the `textclock` widget using the\n declarative pattern (Both codes are strictly equivalent):\n\n \n\n\n \n     local my_textclock = wibox.widget {\n         format = '%a %b %d, %H:%M',\n         widget = wibox.widget.textclock\n     }\n\n The GLib DateTime format\n ---\n\n The time displayed by the textclock widget can be formated by the GLib\n DateTime format.\n\n Here is a short list with commonly used format specifiers (extracted from\n the Glib API references):\n\n<table class='widget_list' border=1>\n <tr>\n   <th align='center'>Format</th>\n   <th align='center'>Description</th>\n </tr>\n   <tr><td>%a</td><td>The abbreviated weekday name according to the current locale</td></tr>\n   <tr><td>%A</td><td>the full weekday name according to the current locale</td></tr>\n   <tr><td>%b</td><td>The abbreviated month name according to the current locale</td></tr>\n   <tr><td>%B</td><td>The full month name according to the current locale</td></tr>\n   <tr><td>%d</td><td>The day of the month as a decimal number (range 01 to 31)</td></tr>\n   <tr><td>%e</td><td>The day of the month as a decimal number (range 1 to 31)</td></tr>\n   <tr><td>%F</td><td>Equivalent to %Y-%m-%d (the ISO 8601 date format)</td></tr>\n   <tr><td>%H</td><td>The hour as a decimal number using a 24-hour clock (range 00 to 23)</td></tr>\n   <tr><td>%I</td><td>The hour as a decimal number using a 12-hour clock (range 01 to 12)</td></tr>\n   <tr><td>%k</td><td>The hour (24-hour clock) as a decimal number (range 0 to 23); single digits are preceded by a blank</td></tr>\n   <tr><td>%l</td><td>The hour (12-hour clock) as a decimal number (range 1 to 12); single digits are preceded by a blank</td></tr>\n   <tr><td>%m</td><td>The month as a decimal number (range 01 to 12)</td></tr>\n   <tr><td>%M</td><td>The minute as a decimal number (range 00 to 59)</td></tr>\n   <tr><td>%p</td><td>Either \\\"AM\\\" or \\\"PM\\\" according to the given time value, or the corresponding strings for the current locale. Noon is treated as \\\"PM\\\" and midnight as \\\"AM\\\".</td></tr>\n   <tr><td>%P</td><td>Like %p but lowercase: \\\"am\\\" or \\\"pm\\\" or a corresponding string for the current locale</td></tr>\n   <tr><td>%r</td><td>The time in a.m. or p.m. notation</td></tr>\n   <tr><td>%R</td><td>The time in 24-hour notation (%H:%M)</td></tr>\n   <tr><td>%S</td><td>The second as a decimal number (range 00 to 60)</td></tr>\n   <tr><td>%T</td><td>The time in 24-hour notation with seconds (%H:%M:%S)</td></tr>\n   <tr><td>%y</td><td>The year as a decimal number without the century</td></tr>\n   <tr><td>%Y</td><td>The year as a decimal number including the century</td></tr>\n   <tr><td>%%</td><td>A literal % character</td></tr>\n </table>\n\n You can read more on the GLib DateTime format in the\n [GLib documentation](https://developer.gnome.org/glib/stable/glib-GDateTime.html#g-date-time-format).\n",
+  "items":[{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"format",
+        "map":{
+          "format":" The new time format. This can contain pango markup."
+        }
+      },
+      "summary":"Set the clock's format.",
+      "name":"format",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "format":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "format":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n For information about the format specifiers, see\n [the GLib docs](https://developer.gnome.org/glib/stable/glib-GDateTime.html#g-date-time-format).",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(format)",
+      "tags":[],
+      "lineno":114
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"timezone",
+        "map":{
+          "timezone":""
+        }
+      },
+      "summary":"Set the clock's timezone.",
+      "name":"timezone",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"string"
+          },
+          "timezone":{
+            "type":"string"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"string"
+          },
+          "timezone":{
+            "type":"string"
+          }
+        }
+      },
+      "description":"\n\n e.g. \"Z\" for UTC, \"±hh:mm\" or \"Europe/Amsterdam\". See\n [GTimeZone](https://developer.gnome.org/glib/stable/glib-GTimeZone.html#g-time-zone-new).",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(timezone)",
+      "tags":[],
+      "lineno":130
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"refresh",
+        "map":{
+          "refresh":" How often the clock is updated, in seconds"
+        }
+      },
+      "summary":"Set the clock's refresh rate.",
+      "name":"refresh",
+      "modifiers":{
+        "return":[],
+        "param":{
+          "1":{
+            "type":"number"
+          },
+          "refresh":{
+            "type":"number"
+          }
+        },
+        "field":{
+          "1":{
+            "type":"number"
+          },
+          "refresh":{
+            "type":"number"
+          }
+        }
+      },
+      "description":"",
+      "type":"property",
+      "section":"property",
+      "kind":"object properties",
+      "args":"(refresh)",
+      "tags":[],
+      "lineno":145
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "map":[]
+      },
+      "summary":"Force a textclock to update now.",
+      "name":"force_update",
+      "modifiers":{
+        "field":[],
+        "return":[]
+      },
+      "description":"",
+      "type":"method",
+      "section":"method",
+      "kind":"object methods ",
+      "args":"()",
+      "tags":[],
+      "lineno":157
+    },{
+      "inferred":true,
+      "subparams":[],
+      "parameter":"field",
+      "params":{
+        "1":"format",
+        "2":"refresh",
+        "3":"timezone",
+        "map":{
+          "timezone":" The [timezone](#timezone) to use.",
+          "refresh":" How often to update the time (in seconds).",
+          "format":" The time [format](#format)."
+        }
+      },
+      "summary":"Create a textclock widget.",
+      "name":"wibox.widget.textclock",
+      "modifiers":{
+        "return":[{
+            "type":"table"
+          }],
+        "param":{
+          "1":{
+            "optchain":"\" %a %b %d&comma; %H:%M \"",
+            "type":"string",
+            "opt":"\" %a %b %d&comma; %H:%M \""
+          },
+          "2":{
+            "optchain":"60",
+            "type":"number",
+            "opt":"60"
+          },
+          "3":{
+            "optchain":"local timezone",
+            "type":"string",
+            "opt":"local timezone"
+          },
+          "timezone":{
+            "optchain":"local timezone",
+            "type":"string",
+            "opt":"local timezone"
+          },
+          "refresh":{
+            "optchain":"60",
+            "type":"number",
+            "opt":"60"
+          },
+          "format":{
+            "optchain":"\" %a %b %d&comma; %H:%M \"",
+            "type":"string",
+            "opt":"\" %a %b %d&comma; %H:%M \""
+          }
+        },
+        "field":{
+          "1":{
+            "optchain":"\" %a %b %d&comma; %H:%M \"",
+            "type":"string",
+            "opt":"\" %a %b %d&comma; %H:%M \""
+          },
+          "2":{
+            "optchain":"60",
+            "type":"number",
+            "opt":"60"
+          },
+          "3":{
+            "optchain":"local timezone",
+            "type":"string",
+            "opt":"local timezone"
+          },
+          "timezone":{
+            "optchain":"local timezone",
+            "type":"string",
+            "opt":"local timezone"
+          },
+          "refresh":{
+            "optchain":"60",
+            "type":"number",
+            "opt":"60"
+          },
+          "format":{
+            "optchain":"\" %a %b %d&comma; %H:%M \"",
+            "type":"string",
+            "opt":"\" %a %b %d&comma; %H:%M \""
+          }
+        }
+      },
+      "description":" It draws the time it is in a textbox.\n",
+      "type":"constructorfct",
+      "section":"constructorfct",
+      "kind":"constructors",
+      "args":"([format=\" %a %b %d&comma; %H:%M \"[, refresh=60[, timezone=local timezone]]])",
+      "tags":[],
+      "lineno":174
+    }],
+  "type":"widgetmod",
+  "file":"/home/cji/portless/awesome/build/lib/wibox/widget/textclock.lua",
+  "package":"",
+  "tags":{
+    "author":["Julien Danjou &lt;julien@danjou.info&gt;"],
+    "copyright":"2009 Julien Danjou",
+    "supermodule":["wibox.widget.textbox"]
+  },
+  "lineno":85
+}

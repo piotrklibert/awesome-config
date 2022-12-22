@@ -1,0 +1,17 @@
+{
+  "name":"test-cmp.lua",
+  "postprocess":"<type 'function' is not supported by JSON.>",
+  "kind":"examples",
+  "file":"/home/cji/portless/Penlight/examples/test-cmp.lua",
+  "tags":[],
+  "sections":{
+    "by_name":[]
+  },
+  "items":[],
+  "lineno":1,
+  "mod_name":"test-cmp.lua",
+  "package":"",
+  "modifiers":[],
+  "type":"example",
+  "body":"local A = require 'pl.tablex'\nprint(A.compare_no_order({1,2,3},{2,1,3}))\nprint(A.compare_no_order({1,2,3},{2,1,3},'=='))\n"
+}

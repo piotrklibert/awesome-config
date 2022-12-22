@@ -1,11 +1,41 @@
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 require("luarocks.loader")
-package.cpath = "/usr/local/lib/lua/5.1/lgi/?.so;"      .. package.cpath
+package.cpath = "/home/cji/portless/hx-lua-simdjson/?.so;" .. package.cpath
+package.cpath = "/usr/local/lib/lua/5.1/lgi/?.so;" .. package.cpath
+package.cpath = "/home/cji/portless/lrexlib/?.so;" .. package.cpath
+package.cpath = "/home/cji/portless/awesome/?.so;" .. package.cpath
+-- package.cpath = package.cpath .. ";/home/cji/portless/lua/?.so"
+package.cpath = package.cpath .. ";/home/cji/.luarocks/lib/lua/5.1/?.so"
+package.cpath = package.cpath .. ";/home/cji/.luarocks/lib/lua/5.1/lgi/?.so"
 
-package.path = "/usr/local/share/awesome/lib/?.lua;/usr/local/share/awesome/lib/?/init.lua;/usr/local/share/lua/5.1/?.lua;/usr/local/share/lua/5.1/?/init.lua;/usr/local/share/luajit-2.1.0-beta3/?.lua;./?.lua;/etc/xdg/awesome/?.lua;/etc/xdg/awesome/?/init.lua;/home/cji/.config/awesome/?.lua;/home/cji/.config/awesome/?/init.lua;/home/cji/.config/awesome/widgets/?/?.lua;/home/cji/.config/awesome/widgets/?/init.lua;/home/cji/.luarocks/lib/lua/5.1/?.so;/home/cji/.luarocks/lib/lua/5.1/lgi/?.so;/home/cji/.luarocks/share/lua/5.1/?.lua;/home/cji/.luarocks/share/lua/5.1/?/init.lua;/home/cji/portless/lua/?.lua;/home/cji/portless/lua/?/?.lua;/home/cji/portless/lua/?/init.lua;/home/cji/portless/lua/Microlight/?.lua;/home/cji/portless/lua/Penlight/lua/?/;/home/cji/portless/lua/Penlight/lua/?/init.lua;/home/cji/portless/lua/awesome-config/haxeshigh/output/?.lua;/home/cji/priv/moonscript/awesomescript/?.lua;/home/cji/priv/moonscript/awesomescript/?.lua;/home/cji/priv/moonscript/awesomescript/vendor/?.lua;/home/cji/priv/moonscript/awesomescript/vendor/?/init.lua;/home/cji/priv/moonscript/awesomescript/vendor/readline/?.lua"
 
-package.cpath = package.cpath .. ";/home/cji/portless/lua/?.lua"
+package.path = "/usr/local/share/awesome/lib/?.lua"
+package.path = package.path .. ";/usr/local/share/awesome/lib/?/init.lua"
+package.path = package.path .. ";/usr/local/share/lua/5.1/?.lua"
+package.path = package.path .. ";/usr/local/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";/usr/local/share/luajit-2.1.0-beta3/?.lua"
+package.path = package.path .. ";./?.lua"
+package.path = package.path .. ";/etc/xdg/awesome/?.lua"
+package.path = package.path .. ";/etc/xdg/awesome/?/init.lua"
+package.path = package.path .. ";/home/cji/.config/awesome/?.lua"
+package.path = package.path .. ";/home/cji/.config/awesome/?/init.lua"
+package.path = package.path .. ";/home/cji/.config/awesome/widgets/?/?.lua"
+package.path = package.path .. ";/home/cji/.config/awesome/widgets/?/init.lua"
+package.path = package.path .. ";/home/cji/.luarocks/share/lua/5.1/?.lua"
+package.path = package.path .. ";/home/cji/.luarocks/share/lua/5.1/?/init.lua"
+package.path = package.path .. ";/home/cji/portless/lua/?.lua"
+package.path = package.path .. ";/home/cji/portless/lua/?/?.lua"
+package.path = package.path .. ";/home/cji/portless/lua/?/init.lua"
+package.path = package.path .. ";/home/cji/portless/lua/Microlight/?.lua"
+package.path = package.path .. ";/home/cji/portless/lua/Penlight/lua/?/"
+package.path = package.path .. ";/home/cji/portless/lua/Penlight/lua/?/init.lua"
+package.path = package.path .. ";/home/cji/priv/awesomescripts/haxeshigh/output/?.lua"
+package.path = package.path .. ";/home/cji/priv/moonscript/awesomescript/?.lua"
+package.path = package.path .. ";/home/cji/priv/moonscript/awesomescript/?.lua"
+package.path = package.path .. ";/home/cji/priv/moonscript/awesomescript/vendor/?.lua"
+package.path = package.path .. ";/home/cji/priv/moonscript/awesomescript/vendor/?/init.lua"
+package.path = package.path .. ";/home/cji/priv/moonscript/awesomescript/vendor/readline/?.lua"
 
 dofile("/home/cji/priv/moonscript/awesomescript/runtime/init.lua")
 
@@ -208,24 +238,24 @@ mytextclock = wibox.widget.textclock("%b %d, %H:%M:%S", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
-                )
+    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+            if client.focus then
+                client.focus:move_to_tag(t)
+            end
+    end),
+    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+            if client.focus then
+                client.focus:toggle_tag(t)
+            end
+    end),
+    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+)
 
 
-dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/hx_pkg.lua")
+dofile("/home/cji/priv/awesomescripts/haxeshigh/output/hx_pkg.lua")
 
 screen_init.initialize()
 
@@ -245,7 +275,7 @@ root.buttons(gears.table.join(
         -- awful.key({                   }, "XF86AudioMute", function() awful.util.spawn("pamixer -t") end),
 
 
-tags = require "tags"
+-- tags = require "tags"
 
 local function run_rxvt()
     awful.spawn.spawn("urxvt256c-ml")
@@ -266,6 +296,8 @@ globalkeys = gears.table.join(
     awful.key({altkey, "Control"}, "Down",  function () Switcher.tag_down() end, {description = "view next", group = "tag"}),
     awful.key({altkey, "Control"}, "Left",  function () Switcher.tag_left() end, {description = "view previous", group = "tag"}),
     awful.key({altkey, "Control"}, "Right", function () Switcher.tag_right() end, {description = "view next", group = "tag"}),
+
+    awful.key({altkey, "Control"}, "q", function () MyPopup:toggle() end, {description = "view next", group = "tag"}),
 
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
     --           {description = "view previous", group = "tag"}),
@@ -692,4 +724,4 @@ client.connect_signal("unfocus", function(c)
 end)
 -- }}}
 
-dofile("/home/cji/portless/lua/awesome-config/haxeshigh/output/loader.lua")
+dofile("/home/cji/priv/awesomescripts/haxeshigh/output/loader.lua")

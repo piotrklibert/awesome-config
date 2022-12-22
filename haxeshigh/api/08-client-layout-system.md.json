@@ -1,0 +1,368 @@
+{
+  "postprocess":<type 'function' is not supported by JSON.>,
+  "kind":"documentation",
+  "display_name":"The AwesomeWM client layout system",
+  "section":{
+    "display_name":"Creating new client layouts",
+    "lineno":1,
+    "type":"section",
+    "tags":[],
+    "file":{
+      "modules":[<reference cycle>],
+      "args":[],
+      "sections":{
+        "50":"Creating_new_client_layouts",
+        "9":"Layouts_configuration"
+      },
+      "filename":"/home/cji/portless/awesome/build/docs/08-client-layout-system.md",
+      "items":[<reference cycle>,{
+          "display_name":"Layouts configuration",
+          "lineno":1,
+          "type":"section",
+          "tags":[],
+          "file":<reference cycle>,
+          "summary":"",
+          "name":"Layouts_configuration",
+          "modifiers":[]
+        },{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"layouts configuration ",
+          "type":"function",
+          "section":"Layouts configuration",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        },<reference cycle>,{
+          "subparams":[],
+          "parameter":"param",
+          "params":{
+            "map":[]
+          },
+          "name":"dumbo",
+          "modifiers":{
+            "param":[],
+            "return":[]
+          },
+          "kind":"creating new client layouts ",
+          "type":"function",
+          "section":"Creating new client layouts",
+          "args":"()",
+          "tags":[],
+          "lineno":1
+        }],
+      "display_name":"The AwesomeWM client layout system"
+    },
+    "summary":"",
+    "name":"Creating_new_client_layouts",
+    "modifiers":[]
+  },
+  "body":"# The AwesomeWM client layout system\n\nThis document explains how to use clients layouts and how awesome manage them.\n\n**Client layout**  refers to the mechanism awesome uses to place client on the screen. The layout definition can be a basic system where clients are all *floating* like in a normal *DE* (eg GNOME, KDE, ...) or tiled on the screen like in *tilled window manager* (eg i3, BSPWM, ...). It is also possible to define complex client layout mixing both concepts and even implementing a *[stateful](https://en.wikipedia.org/wiki/State_(computer_science)) placement strategy*.\n\nAwesome WM manages client layouts per tag. It means each tag has its own layout selection and uses them independently from other tags. When multiple tags are selected at once, Awesome uses only client layouts from the first selected tag and apply it to all current clients.\n\n## Layouts configuration\n\nLayout can be configured by setting properties from the tag instance.\n\nExample of creating a new tag with client layout parameters:\n```lua\nawful.tag.add(\"My Tag\", {\n    screen = screen.primary,\n    layout = awful.layout.suit.tile,\n    master_fill_policy = \"master_width_factor\",\n    gap_single_client = false,\n    gap = 15\n})\n```\n\nExample of changing client layout parameters on an existing tag:\n```lua\n-- Change the gap for the tag `my_tag`:\nmy_tag.useless_gap = 10\n\n-- Change the master_width_factor for the tag `my_tag`:\nmy_tag.master_width_factor = 0.5\n```\n\nHere is a list of common properties used to configure tags:\n\n<table class='widget_list' border=1>\n<tr>\n<th align='center'>Property</th>\n<th align='center'>Type</th>\n<th align='center'>Description</th>\n</tr>\n<tr><td>gap</td><td>number</td><td>The gap (spacing, also called useless_gap) between clients.</td></tr>\n<tr><td>gap_single_client</td><td>boolean</td><td>Enable gaps for a single client.</td></tr>\n<tr><td>master_fill_policy</td><td>string</td><td>Set size fill policy for the master client(s).</td></tr>\n<tr><td>master_count</td><td>integer</td><td>Set the number of master windows.</td></tr>\n<tr><td>icon</td><td>path or surface</td><td>Set the tag icon.</td></tr>\n<tr><td>column_count</td><td>integer</td><td>Set the number of columns.</td></tr>\n</table>\n\n\n## Creating new client layouts\n\n* arrange function (params definition)\n* needs a name property\n* mouse_resize_handler function\n",
+  "sections":{
+    "1":{
+      "display_name":"Layouts configuration",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "50":"Creating_new_client_layouts",
+          "9":"Layouts_configuration"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/08-client-layout-system.md",
+        "items":[<reference cycle>,<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"layouts configuration ",
+            "type":"function",
+            "section":"Layouts configuration",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },{
+            "display_name":"Creating new client layouts",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Creating_new_client_layouts",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"creating new client layouts ",
+            "type":"function",
+            "section":"Creating new client layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"The AwesomeWM client layout system"
+      },
+      "summary":"",
+      "name":"Layouts_configuration",
+      "modifiers":[]
+    },
+    "2":{
+      "display_name":"Creating new client layouts",
+      "lineno":1,
+      "type":"section",
+      "tags":[],
+      "file":{
+        "modules":[<reference cycle>],
+        "args":[],
+        "sections":{
+          "50":"Creating_new_client_layouts",
+          "9":"Layouts_configuration"
+        },
+        "filename":"/home/cji/portless/awesome/build/docs/08-client-layout-system.md",
+        "items":[<reference cycle>,{
+            "display_name":"Layouts configuration",
+            "lineno":1,
+            "type":"section",
+            "tags":[],
+            "file":<reference cycle>,
+            "summary":"",
+            "name":"Layouts_configuration",
+            "modifiers":[]
+          },{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"layouts configuration ",
+            "type":"function",
+            "section":"Layouts configuration",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          },<reference cycle>,{
+            "subparams":[],
+            "parameter":"param",
+            "params":{
+              "map":[]
+            },
+            "name":"dumbo",
+            "modifiers":{
+              "param":[],
+              "return":[]
+            },
+            "kind":"creating new client layouts ",
+            "type":"function",
+            "section":"Creating new client layouts",
+            "args":"()",
+            "tags":[],
+            "lineno":1
+          }],
+        "display_name":"The AwesomeWM client layout system"
+      },
+      "summary":"",
+      "name":"Creating_new_client_layouts",
+      "modifiers":[]
+    },
+    "by_name":{
+      "Creating_new_client_layouts":{
+        "display_name":"Creating new client layouts",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "50":"Creating_new_client_layouts",
+            "9":"Layouts_configuration"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/08-client-layout-system.md",
+          "items":[<reference cycle>,{
+              "display_name":"Layouts configuration",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Layouts_configuration",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"layouts configuration ",
+              "type":"function",
+              "section":"Layouts configuration",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"creating new client layouts ",
+              "type":"function",
+              "section":"Creating new client layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"The AwesomeWM client layout system"
+        },
+        "summary":"",
+        "name":"Creating_new_client_layouts",
+        "modifiers":[]
+      },
+      "Layouts_configuration":{
+        "display_name":"Layouts configuration",
+        "lineno":1,
+        "type":"section",
+        "tags":[],
+        "file":{
+          "modules":[<reference cycle>],
+          "args":[],
+          "sections":{
+            "50":"Creating_new_client_layouts",
+            "9":"Layouts_configuration"
+          },
+          "filename":"/home/cji/portless/awesome/build/docs/08-client-layout-system.md",
+          "items":[<reference cycle>,<reference cycle>,{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"layouts configuration ",
+              "type":"function",
+              "section":"Layouts configuration",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            },{
+              "display_name":"Creating new client layouts",
+              "lineno":1,
+              "type":"section",
+              "tags":[],
+              "file":<reference cycle>,
+              "summary":"",
+              "name":"Creating_new_client_layouts",
+              "modifiers":[]
+            },{
+              "subparams":[],
+              "parameter":"param",
+              "params":{
+                "map":[]
+              },
+              "name":"dumbo",
+              "modifiers":{
+                "param":[],
+                "return":[]
+              },
+              "kind":"creating new client layouts ",
+              "type":"function",
+              "section":"Creating new client layouts",
+              "args":"()",
+              "tags":[],
+              "lineno":1
+            }],
+          "display_name":"The AwesomeWM client layout system"
+        },
+        "summary":"",
+        "name":"Layouts_configuration",
+        "modifiers":[]
+      }
+    }
+  },
+  "name":"08-client-layout-system.md",
+  "modifiers":[],
+  "mod_name":"08-client-layout-system.md",
+  "type":"topic",
+  "items":[{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"layouts configuration ",
+      "type":"function",
+      "section":"Layouts configuration",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    },{
+      "subparams":[],
+      "parameter":"param",
+      "params":{
+        "map":[]
+      },
+      "name":"dumbo",
+      "modifiers":{
+        "param":[],
+        "return":[]
+      },
+      "kind":"creating new client layouts ",
+      "type":"function",
+      "section":"Creating new client layouts",
+      "args":"()",
+      "tags":[],
+      "lineno":1
+    }],
+  "file":"/home/cji/portless/awesome/build/docs/08-client-layout-system.md",
+  "package":"",
+  "tags":[],
+  "lineno":1
+}
