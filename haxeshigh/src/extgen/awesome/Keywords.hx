@@ -1,5 +1,6 @@
 package extgen.awesome;
 
+@:publicFields
 class Keywords {
     static final keywords = [
         'continue',
@@ -46,8 +47,8 @@ class Keywords {
         'function',
         'return',
         'operator',
-        'extern'
-        "'continue',
+        'extern',
+        'continue',
         'catch',
         'typedef',
         'cast',

@@ -7,6 +7,14 @@ class Test {
     }
 }
 
+// case ["-macro"]:
+//     trace(extgen.JsonTools.ffff());
+// case ["-timeit"]: haxe.Timer.measure(() -> {
+//     for (x in 0...1000) {
+//         xx.let(i -> {println(i); i;});
+//     }
+// });
+
 // public static function main4() {
 //     final x = Coroutine.create(someFun);
 //     Coroutine.resume(x, 2);

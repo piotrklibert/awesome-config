@@ -1,6 +1,15 @@
 package lib;
 
-import lua.Table;
+import haxe.macro.Context;
+import haxe.macro.Expr;
+import haxe.macro.Expr.ExprOf;
+import haxe.macro.Context.*;
+import haxe.macro.TypeTools.*;
+import haxe.macro.MacroStringTools.*;
+import haxe.Constraints;
+
+using haxe.macro.ExprTools;
+
 using Lambda;
 using lib.LambdaTools;
 
@@ -11,7 +20,6 @@ class LambdaTools {
         return [for (x in it) x];
     }
 
-
     static function hasAnyOf<T>(it: Iterable<T>, elts: Array<T>): Bool {
         final res = it.find((item) -> elts.has(item));
         return res != null;
@@ -21,13 +29,13 @@ class LambdaTools {
         return it.keys().toArray();
     }
 
-    static function not(b: Bool): Bool return !b;
+    static inline function not(b: Bool): Bool return !b;
 
     static function capitalize(s: String): String {
         return s.substr(0, 1).toUpperCase() + s.substr(1);
     }
 
-    static function first<T>(it: Iterable<T>): T {
+    static inline function first<T>(it: Iterable<T>): T {
         return it.iterator().next();
     }
 
@@ -42,8 +50,19 @@ class LambdaTools {
         return arr;
     }
 
-
     static inline function each<T, R>(it: Iterable<T>, func: (T)->R): Void {
         for (x in it) func(x);
+    }
+
+    static macro function iterIt<T>(it: ExprOf<Iterable<T>>, expr: Expr) {
+        return macro Lambda.iter($it, (it) -> { $expr; });
+    }
+
+    static macro function mapIt<T>(it: ExprOf<Iterable<T>>, expr: Expr) {
+        return macro Lambda.map($it, (it) -> $expr);
+    }
+
+    static macro function filterIt<T>(it: ExprOf<Iterable<T>>, expr: Expr) {
+        return macro Lambda.filter($it, (it) -> $expr);
     }
 }

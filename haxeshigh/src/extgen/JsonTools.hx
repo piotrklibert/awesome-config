@@ -15,7 +15,7 @@ typedef I = {a: Int};
 
 @:publicFields
 class JsonTools {
-    static macro function test(ee: Expr) {}
+    static macro function test(ee: Expr) { return macro null;}
 
     static macro function zzz(ee: ExprOf<TypePath>) {
         trace(ee);

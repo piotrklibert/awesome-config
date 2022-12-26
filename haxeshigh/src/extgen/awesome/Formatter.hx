@@ -1,143 +1,156 @@
 package extgen.awesome;
 
-import extgen.awesome.AwesomeDocExterns.Document;
-import extgen.awesome.AwesomeDocExterns.Item;
-import extgen.awesome.AwesomeDocExterns.Params;
-import extgen.awesome.AwesomeDocExterns.RawParams;
-import extgen.awesome.AwesomeDocExterns.ArgData;
-import extgen.awesome.AwesomeDocExterns.MethodData;
-
-
-typedef ClassName = { pkg: String, name: String, native: Null<String> };
-typedef AttributeName = { name: String, native: Null<String> };
-
+import extgen.awesome.Data.Argument;
+import extgen.awesome.Data.Method;
+import extgen.awesome.Data.Module;
+import extgen.awesome.Data.Identifier;
+import extgen.awesome.Data.Attribute;
 
 
 @:tink
 @:publicFields
 class Formatter {
-    var className: ClassName;
+    var moduleData: Module;
+    var className: Identifier;
     var filename: String;
     var outputPath: String;
+    var prefix: String;
 
-    function new(json: Document) {
-        filename = json.file.replace("/home/cji/portless/awesome/build/", "");
-        className = getClassName(json.name);
-        outputPath = className.pkg
+    private var _output: Null<haxe.io.Output> = null;
+    var output(get, never): haxe.io.Output;
+    function get_output()
+        return _output ?? (_output = sys.io.File.write(prefix + outputPath));
+
+
+    function new(json: Module, prefix: String) {
+        this.moduleData = json;
+        this.prefix = prefix;
+        filename = json.source;
+        className = moduleData.cls.cname;
+        outputPath = moduleData.pkg
             .split(".")
-            .concat([className.name])
+            .concat([moduleData.cls.cname.name])
             .join("/") + ".hx";
     }
 
-    function formatClass(json: Document) : String {
+    function println(str: String){
+        output.writeString(str + "\n");
+    };
+
+    function saveFile() {
+        trace(outputPath);
+        println(formatModule());
+    }
+
+
+    function formatModule(): String {
+        final json = this.moduleData;
         final out = [];
-        final parent: Null<Array<String>> = json.tags["supermodule"];
-        final extds = parent.or([])
-            .join(",")
-            .let(x -> {
-                if (x == "") "" else {
-                    final x = getClassName(x);
-                    ' extends ${x.pkg}.${x.name}';
-                }
-            }) ;
-
-        out.push('package ${className.pkg};\n\n');
-        out.push('@:luaRequire("${json.name}")');
-        out.push('extern class ${className.name}${extds} {');
-        out.push('/** ${json.summary}');
-        out.push(' * $filename:${json.lineno}');
-        out.push(" */");
-        return out.filter(s -> s != "").join("\n");
+        final parent = json.cls.parent.let(p -> '${p.pkg}.${p.name}');
+        final extds = parent.let(p -> ' extends ${parent}') ?? "";
+        out.push('package ${json.pkg};\n\n');
+        var pkg = json.pkg.replace("externs", "");
+        if (pkg.startsWith(".")) pkg = pkg.substring(1);
+        if (pkg.length > 0) pkg = pkg + ".";
+        final cname = json.cls.cname.name.toLowerCase();
+        final require = pkg + cname;
+        out.push('@:luaRequire("$require")');
+        out.push('extern class ${json.cls.cname.name}${extds} {');
+        out.push('    /** ${json.cls.summary}');
+        out.push('     * @see ${json.source}');
+        out.push("     */\n");
+        for (attr in json.cls.attributes) {
+            formatAttribute(attr, out);
+        }
+        for (meth in json.cls.methods) {
+            formatMethod(meth, out);
+        }
+        return out.filter(s -> s != "").join("\n") + "}\n";
     }
 
-    private function getClassName(name: String) {
-        final parts = ["externs"].concat(name.split("."));
-        final name = parts.last().capitalize();
-        final pkg = parts.dropRight(1).array().join(".");
-        return {pkg: pkg, name: name};
-    }
+    function formatMethod(item: Method, out2: Array<String>) {
+        final data = item;
+        var docstring = [];
+        var out = [];
+        docstring.push("/** " + formatSummary(item.summary));
+        docstring.push(" *");
+        docstring.push(" * " + '@see ${moduleData.file}:${item.line}');
+        for (arg in data.arguments) {
+            docstring.push(" * @param " + arg.argName.name + " " + arg.typeName + " " + formatSummary(arg.argDoc));
+        }
+        docstring.push(" */");
+        out.push(docstring.mapIt('    $it').join("\n") + "\n");
+        var decl = [];
+        decl.push('    ${data.declarator} ${data.name.name}(');
+        for (arg in data.arguments) {
+            decl.push(arg.argName.name + ": " + arg.typeName);
+            decl.push(", ");
+        }
+        if (", " == decl.last()) {
+            decl = decl.dropRight(1).array();
+        }
+        decl.push(")");
 
-    function formatField(item: Item) {
-        final data = Extractor.getFieldData(item);
-        final out = [];
-        out.push(formatDescription(item, []));
-        out.push("var ");
-        out.push(data.name);
-        out.push(": ");
-        out.push(formatType(data.args[0].let(x -> x.typeName).or("Dynamic")));
-        out.push(";");
-        return out.join("");
-    }
-
-    function formatMethod(item: Item) {
-        final data = Extractor.getMethodData(item);
-        var out = ['${data.kind} ${data.name}('];
-        for (arg in data.args) {
-            out.push(arg.argName);
-            out.push(": ");
-            out.push(arg.typeName);
-            out.push(", ");
+        if (data.returnType != null) {
+            decl.push(": ");
+            decl.push(Types.formatType(data.returnType));
         }
-        if (", " == out.last()) {
-            out = out.dropRight(1).array();
+        else {
+            decl.push(": Void");
         }
-        out.push(")");
-        if (data.retType != null) {
-            out.push(": ");
-            out.push(Extractor.typeMap[data.retType] ?? data.retType ?? "Dynamic");
-        }
-        out.push(";");
-        out = [formatDescription(item, data.args)].concat(out);
-        return out.join("");
+        decl.push(";");
+        out.push(decl.join(""));
+        out2.push(out.join("") + "\n");
+        return out2;
     }
 
     private function formatSummary(desc: String) {
         return (desc != "")
-            ? (~/  +/.replace(desc, " ").replace("\n", "") : String)
+            ? (~/  +/g.replace(desc, " ").replace("\n", "") : String)
             : " <no desc>";
     }
 
 
-    private function formatDescription(item: Item, args: Array<ArgData>) {
-        final out = [];
-        out.push("/**\n * ");
-        out.push(formatSummary(item.summary));
-        out.push("\n");
-        if (item.lineno != null && filename != null) {
-            out.push(" * @see " + filename + ":" + item.lineno + "\n");
+    private function formatAttribute(item: Attribute, out: Array<String>) {
+        out.push("    /**\n     * " + formatSummary(item.summary));
+        if (item.line != null && moduleData.file != null) {
+            out.push("     * @see " + moduleData.file + ":" + item.line);
         }
-        for ({argName: a, argDoc: b, typeName: c} in args)
-            out.push(' * @param $a $c $b\n');
-        out.push(" */\n");
-        return out.join("");
+        out.push("     */");
+        final decl = ["    "];
+        if (item.name.native != null)
+            decl.push('@:native("${item.name.native}") ');
+        decl.push(item.declarator);
+        decl.push(" ");
+        decl.push(item.name.name);
+        decl.push(": "+ item.type);
+        decl.push(";");
+        out.push(decl.join("") + "\n");
+        return out;
     }
 
-    private function formatType(typeName: String) {
-        function tMap(t: String) return Extractor.typeMap[t] ?? t ?? "Dynamic";
-        final t = tMap(typeName);
-        if (t.contains("|")) {
-            var tt = t.split("|");
-            final nullable =
-                if (tt.has("nil")) {
-                    tt = tt.filter(x -> x != "nil");
-                    true;
-                }
-                else {
-                    false;
-                };
-            if (tt.length == 1) {
-                if (nullable) {
-                    return 'Null<${tMap(tt[0])}>';
-                }
-                else {
-                    return tt[0];
-                }
-            }
-            else {
-                final ts = tt.map(tMap).join(", ");
-                return 'haxe.extern.EitherType<$ts>';
-            }
-        }
-        return t;
-    }
+    // private function formatMethod(item: Method, out: Array<String>) {
+        // out.push("    /**\n     * " + formatSummary(item.summary));
+        // if (item.line != null && moduleData.file != null) {
+        //     out.push("     * @see " + moduleData.file + ":" + item.line);
+        // }
+        // out.push("     */");
+        // final decl = ["    "];
+        // if (item.name.native != null) decl.push('@:native("${item.name.native}") ');
+        // decl.push(item.declarator);
+        // decl.push(" ");
+        // decl.push(item.name.name);
+        // decl.push(": "+ item.type);
+        // decl.push(";");
+        // out.push(decl.join(""));
+    // return
+    // }
+        // for ({argName: a, argDoc: b, typeName: c} in args)
+        //     out.push(' * @param $a $c $b\n');
+
+
 }
+
+// Local Variables:
+// haxe-module: "hx_extgen"
+// End:

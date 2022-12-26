@@ -1,25 +1,6 @@
 package extgen.awesome;
 
 
-typedef ArgData = {
-    argName: String,
-    typeName: String,
-    argDoc: String,
-};
-
-
-typedef MethodData = {
-    args: Array<ArgData>,
-    name: String,
-    summary: String,
-    retType: String,
-    kind: String,
-    line: Int,
-    isConstructor: Bool,
-};
-
-
-
 extern class FieldType extends Table<String, String> {
     var type: String;
 }
@@ -78,6 +59,12 @@ extern class Item extends Table<String, Dynamic> {
     var ret: Array<String>;
 }
 
+extern class DocumentTags extends lua.Table<String, Dynamic> implements ArrayAccess<Dynamic> {
+    var author: Array<String>;
+    var copyright: Array<String>;
+    var supermodule: Array<String>;
+}
+
 extern class Document {
     var inferred: Bool;
     var kind: String;
@@ -92,9 +79,9 @@ extern class Document {
     var usage: String;
     @:native("package")
     var pkg: String;
-    var tags: LuaTable<String, Dynamic>;
+    var tags: DocumentTags;
     var items: Array<Item>;
     var description: String;
 }
 
-class AwesomeDocExterns {}
+class Externs {}
