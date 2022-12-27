@@ -142,6 +142,5 @@ extern class Graph extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/graph.lua:1195
      * @param args lua.Table<String, Dynamic>  Standard widget() arguments.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

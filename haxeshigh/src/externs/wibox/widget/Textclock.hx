@@ -38,6 +38,5 @@ extern class Textclock extends externs.wibox.widget.Textbox {
      * @param refresh Float  How often to update the time (in seconds).
      * @param timezone String  The [timezone](#timezone) to use.
      */
-    @:selfCall function new(format: String, refresh: Float, timezone: String): Void;
+    @:selfCall function new(format: String, refresh: Float, timezone: String = null);
 }
-

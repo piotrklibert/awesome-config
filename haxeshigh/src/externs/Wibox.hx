@@ -2,7 +2,7 @@ package externs;
 
 
 @:luaRequire("wibox")
-extern class Wibox {
+extern class Wibox<T: externs.wibox.widget.Base> {
     /**
      * @see lib/wibox/init.lua:7
      */
@@ -89,7 +89,7 @@ extern class Wibox {
      * The widget that the `wibox` displays.
      * @see lib/wibox/init.lua:154
      */
-    var widget: externs.wibox.Widget;
+    var widget: T;
 
     /**
      * The X window id.

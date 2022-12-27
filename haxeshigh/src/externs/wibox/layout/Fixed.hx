@@ -69,14 +69,14 @@ extern class Fixed extends externs.wibox.widget.Base {
      * @see lib/wibox/layout/fixed.lua:489
      * @param ...rest externs.wibox.Widget  Widgets that should be added to the layout.
      */
-    @:selfCall function new(...rest: externs.wibox.Widget): Void;
+    static function horizontal(...rest: externs.wibox.Widget): Fixed;
 
     /** Creates and returns a new vertical fixed layout.
      *
      * @see lib/wibox/layout/fixed.lua:497
      * @param ...rest externs.wibox.Widget  Widgets that should be added to the layout.
      */
-    static function vertical(...rest: externs.wibox.Widget): Void;
+    static function vertical(...rest: externs.wibox.Widget): Fixed;
 
     /** Set a widget at a specific index, replacing the current one.
      *
@@ -109,4 +109,3 @@ extern class Fixed extends externs.wibox.widget.Base {
      */
     function reset(): Void;
 }
-

@@ -5,31 +5,39 @@ import utils.lua.Macro.T;
 import utils.lua.Macro.unwrapCallbacks;
 
 import externs.Overrides;
+import externs.Wibox;
+import externs.Screen;
+import externs.awful.Spawn;
+import externs.gears.Timer;
+import externs.wibox.container.Constraint;
 
+
+@:nullSafety(Strict)
 class Test {
     public static function main() {
-        final w = new externs.Wibox({width: 100, height: 400});
+        final w = new Wibox({width: 100, height: 400});
         w.x = 300;
         w.y = 30;
         w.visible = true;
         w.border_width = 10;
+        w.widget = new externs.wibox.widget.Textbox("");
 
-        externs.awful.Spawn.spawn("xterm", null, null);
+        var c = 1;
+
         final f = () -> {
-            final s = externs.Screen.focused();
-            $type(s.padding);
-            trace(s.outputs);
-            final c = s.clients[1];
-            $type(c);
-            final g = c.geometry();
-            c.geometry({x: g.x + 10});
+            final s = Screen.focused();
+            s.clients[1].let(c -> {
+                final g = c.geometry();
+                c.geometry({x: g.x + 10});
+            });
+            w.widget.text = 'Asdasd${c++}';
         };
 
-        new externs.gears.Timer(unwrapCallbacks({
+        new Timer(unwrapCallbacks({
             timeout: 0.3,
             autostart: true,
             callback: f,
-            single_shot: true
+            single_shot: false
         }));
     }
 }

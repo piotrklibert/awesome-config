@@ -92,7 +92,7 @@ extern class Textbox extends externs.wibox.widget.Base {
      * @param text String  The textbox content
      * @param ignore_markup Bool  Ignore the pango/HTML markup
      */
-    @:selfCall function new(text: String, ignore_markup: Bool): Void;
+    @:selfCall function new(text: String, ignore_markup: Bool = false);
 
     /** Get geometry of text label, as if textbox would be created for it on the screen.
      *
@@ -103,4 +103,3 @@ extern class Textbox extends externs.wibox.widget.Base {
      */
     static function get_markup_geometry(text: String, s: extype.extern.Mixed.Mixed2<Int, externs.Screen>, font: String): lua.Table<String, Dynamic>;
 }
-

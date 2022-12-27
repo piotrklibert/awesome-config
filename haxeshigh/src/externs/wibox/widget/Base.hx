@@ -3,7 +3,7 @@ package externs.wibox.widget;
 
 @:luaRequire("wibox.widget.base")
 extern class Base extends externs.gears.Object {
-    /** 
+    /**
      * @see lib/wibox/widget/base.lua:8
      */
 
@@ -219,7 +219,7 @@ extern class Base extends externs.gears.Object {
      * @see lib/wibox/widget/base.lua:807
      * @param args lua.Table<String, Dynamic>  A table containing the widgets disposition.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Create a widget from an undetermined value.
      *
@@ -250,4 +250,3 @@ extern class Base extends externs.gears.Object {
      */
     static function check_widget(): Void;
 }
-

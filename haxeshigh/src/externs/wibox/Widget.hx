@@ -1,9 +1,12 @@
 package externs.wibox;
 
 
+typedef Widget = externs.wibox.widget.Base;
+
+
 @:luaRequire("wibox.widget")
-extern class Widget {
-    /** 
+extern class WidgetTools {
+    /**
      * @see lib/wibox/widget/init.lua:7
      */
 
@@ -40,4 +43,3 @@ extern class Widget {
      */
     static function draw_to_image_surface(wdg: externs.wibox.Widget, width: Float, height: Float, format: Dynamic, context: lua.Table<String, Dynamic>): Void;
 }
-

@@ -11,7 +11,7 @@ extern class Screen {
      * The screen coordinates.
      * @see objects/screen.c:211
      */
-    var geometry: lua.Table<String, Dynamic>;
+    var geometry: externs.Overrides.Geometry;
 
     /**
      * The internal screen number.
@@ -53,25 +53,25 @@ extern class Screen {
      * The list of visible clients for the screen.
      * @see objects/screen.c:463
      */
-    var clients: lua.Table<String, externs.Client>;
+    var clients: lua.Table<String, Null<externs.Client>>;
 
     /**
      * Get the list of clients assigned to the screen but not currently visible.
      * @see objects/screen.c:491
      */
-    var hidden_clients: lua.Table<String, externs.Client>;
+    var hidden_clients: lua.Table<String, Null<externs.Client>>;
 
     /**
      * All clients assigned to the screen.
      * @see objects/screen.c:510
      */
-    var all_clients: lua.Table<String, externs.Client>;
+    var all_clients: lua.Table<String, Null<externs.Client>>;
 
     /**
      * Tiled clients for the screen.
      * @see objects/screen.c:537
      */
-    var tiled_clients: lua.Table<String, externs.Client>;
+    var tiled_clients: lua.Table<String, Null<externs.Client>>;
 
     /**
      * A list of all tags on the screen.

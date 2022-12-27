@@ -79,6 +79,5 @@ extern class Checkbox extends externs.wibox.widget.Base {
      * @param checked Bool  <no desc>
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(checked: Bool, args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(checked: Bool, args: Null<{color: externs.gears.Color}> = null);
 }
-

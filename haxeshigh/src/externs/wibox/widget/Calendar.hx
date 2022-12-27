@@ -1,6 +1,13 @@
 package externs.wibox.widget;
 
 
+typedef CalendarDate = {
+    @:optional var day: Int;
+    @:optional var month: Int;
+    var year: Int;
+}
+
+
 @:luaRequire("wibox.widget.calendar")
 extern class Calendar {
     /** A calendar widget.
@@ -11,7 +18,7 @@ extern class Calendar {
      * The calendar date.
      * @see lib/wibox/widget/calendar.lua:85
      */
-    var date: lua.Table<String, Dynamic>;
+    var date: CalendarDate;
 
     /**
      * The calendar font.
@@ -61,7 +68,7 @@ extern class Calendar {
      * @param date lua.Table<String, Dynamic>  Date of the calendar
      * @param font String  Font of the calendar
      */
-    @:selfCall function new(date: lua.Table<String, Dynamic>, font: String): Void;
+    static function month(date: lua.Table<String, Dynamic>, font: String): externs.wibox.widget.Base;
 
     /** A year calendar widget.
      *
@@ -69,6 +76,5 @@ extern class Calendar {
      * @param date lua.Table<String, Dynamic>  Date of the calendar
      * @param font String  Font of the calendar
      */
-    static function year(date: lua.Table<String, Dynamic>, font: String): externs.wibox.Widget;
+    static function year(date: lua.Table<String, Dynamic>, font: String): externs.wibox.widget.Base;
 }
-

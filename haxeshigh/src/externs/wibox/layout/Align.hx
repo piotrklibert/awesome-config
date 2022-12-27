@@ -38,7 +38,7 @@ extern class Align extends externs.wibox.widget.Base {
      * @param middle externs.wibox.Widget  Widget to be put in slot two.
      * @param right externs.wibox.Widget  Widget to be put in slot three.
      */
-    @:selfCall function new(left: externs.wibox.Widget, middle: externs.wibox.Widget, right: externs.wibox.Widget): Void;
+    static function horizontal(left: externs.wibox.Widget, middle: externs.wibox.Widget, right: externs.wibox.Widget): Align;
 
     /** Returns a new vertical align layout.
      *
@@ -47,7 +47,7 @@ extern class Align extends externs.wibox.widget.Base {
      * @param middle externs.wibox.Widget  Widget to be put in slot two.
      * @param bottom externs.wibox.Widget  Widget to be put in slot three.
      */
-    static function vertical(top: externs.wibox.Widget, middle: externs.wibox.Widget, bottom: externs.wibox.Widget): Void;
+    static function vertical(top: externs.wibox.Widget, middle: externs.wibox.Widget, bottom: externs.wibox.Widget): Align;
 
     /** Set a widget at a specific index, replacing the current one.
      *
@@ -89,4 +89,3 @@ extern class Align extends externs.wibox.widget.Base {
      */
     function reset(): Void;
 }
-
