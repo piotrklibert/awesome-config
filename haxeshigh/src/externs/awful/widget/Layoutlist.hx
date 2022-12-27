@@ -11,43 +11,43 @@ extern class Layoutlist extends externs.wibox.widget.Base {
      * The layoutlist default widget layout.
      * @see lib/awful/widget/layoutlist.lua:340
      */
-    var base_layout: Dynamic;
+    var base_layout: externs.wibox.Widget;
 
     /**
      * The delegate widget template.
      * @see lib/awful/widget/layoutlist.lua:345
      */
-    var widget_template: Dynamic;
+    var widget_template: lua.Table<String, Dynamic>;
 
     /**
      * The layoutlist screen.
      * @see lib/awful/widget/layoutlist.lua:349
      */
-    var screen: Dynamic;
+    var screen: externs.Screen;
 
     /**
      * A function that returns the list of layout to display.
      * @see lib/awful/widget/layoutlist.lua:354
      */
-    var source: Dynamic;
+    var source: haxe.Constraints.Function;
 
     /**
      * The layoutlist filter function.
      * @see lib/awful/widget/layoutlist.lua:358
      */
-    var filter: Dynamic;
+    var filter: haxe.Constraints.Function;
 
     /**
      * The currenly displayed layouts.
      * @see lib/awful/widget/layoutlist.lua:432
      */
-    var layouts: Dynamic;
+    var layouts: lua.Table<String, Dynamic>;
 
     /**
      * The currently selected layout.
      * @see lib/awful/widget/layoutlist.lua:436
      */
-    var current_layout: Dynamic;
+    var current_layout: externs.awful.Layout;
 
     /** Create a layout list.
      *

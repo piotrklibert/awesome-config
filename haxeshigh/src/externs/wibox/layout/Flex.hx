@@ -24,13 +24,13 @@ extern class Flex extends externs.wibox.layout.Fixed {
      * The amount of space inserted between the child widgets.
      * @see lib/wibox/layout/flex.lua:171
      */
-    var spacing: Int;
+    var spacing: Float;
 
     /**
      * Set the maximum size the widgets in this layout will take.
      * @see lib/wibox/layout/flex.lua:268
      */
-    var max_widget_size: Int;
+    var max_widget_size: Float;
 
     /** Add some widgets to the given fixed layout.
      *
@@ -56,10 +56,10 @@ extern class Flex extends externs.wibox.layout.Fixed {
     /** Insert a new widget in the layout at position `index`.
      *
      * @see lib/wibox/layout/flex.lua:89
-     * @param index Int  The position
+     * @param index Float  The position
      * @param widget externs.wibox.Widget  The widget
      */
-    function insert(index: Int, widget: externs.wibox.Widget): Bool;
+    function insert(index: Float, widget: externs.wibox.Widget): Bool;
 
     /** Creates and returns a new horizontal flex layout.
      *
@@ -78,10 +78,10 @@ extern class Flex extends externs.wibox.layout.Fixed {
     /** Set a widget at a specific index, replacing the current one.
      *
      * @see lib/wibox/layout/flex.lua:316
-     * @param index Int  A widget or a widget index
+     * @param index Float  A widget or a widget index
      * @param widget2 externs.wibox.Widget  The widget to replace the previous one with
      */
-    function set(index: Int, widget2: externs.wibox.Widget): Bool;
+    function set(index: Float, widget2: externs.wibox.Widget): Bool;
 
     /** Replace the first instance of `widget` in the layout with `widget2`.
      *
@@ -95,10 +95,10 @@ extern class Flex extends externs.wibox.layout.Fixed {
     /** Swap 2 widgets in a layout.
      *
      * @see lib/wibox/layout/flex.lua:347
-     * @param index1 Int  The first widget index
-     * @param index2 Int  The second widget index
+     * @param index1 Float  The first widget index
+     * @param index2 Float  The second widget index
      */
-    function swap(index1: Int, index2: Int): Bool;
+    function swap(index1: Float, index2: Float): Bool;
 
     /** Swap 2 widgets in a layout.
      *

@@ -16,17 +16,17 @@ extern class Beautiful {
     /** Get a font description.
      *
      * @see lib/beautiful/init.lua:216
-     * @param name haxe.extern.EitherType<String, lgi.Pango.FontDescription>  The name of the font.
+     * @param name extype.extern.Mixed.Mixed2<String, lgi.Pango.FontDescription>  The name of the font.
      */
-    static function get_font(name: haxe.extern.EitherType<String, lgi.Pango.FontDescription>): lgi.Pango.FontDescription;
+    static function get_font(name: extype.extern.Mixed.Mixed2<String, lgi.Pango.FontDescription>): lgi.Pango.FontDescription;
 
     /** Get a new font with merged attributes, based on another one.
      *
      * @see lib/beautiful/init.lua:227
-     * @param name haxe.extern.EitherType<String, Pango.FontDescription>  The base font.
+     * @param name extype.extern.Mixed.Mixed2<String, Pango.FontDescription>  The base font.
      * @param merge String  Attributes that should be merged, e.g. "bold".
      */
-    static function get_merged_font(name: haxe.extern.EitherType<String, Pango.FontDescription>, merge: String): lgi.Pango.FontDescription;
+    static function get_merged_font(name: extype.extern.Mixed.Mixed2<String, Pango.FontDescription>, merge: String): lgi.Pango.FontDescription;
 
     /** Get the height of a font.
      *
@@ -38,9 +38,9 @@ extern class Beautiful {
     /** Function that initializes the theme settings.
      *
      * @see lib/beautiful/init.lua:272
-     * @param config haxe.extern.EitherType<String, lua.Table<String, Dynamic>>  The theme to load. It can be either the path to the theme file (which should return a table) or directly a table containing all the theme values.
+     * @param config extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>  The theme to load. It can be either the path to the theme file (which should return a table) or directly a table containing all the theme values.
      */
-    static function init(config: haxe.extern.EitherType<String, lua.Table<String, Dynamic>>): Null<true>;
+    static function init(config: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>): Null<true>;
 
     /** Get the current theme.
      *
@@ -51,49 +51,49 @@ extern class Beautiful {
     /** Generate selected taglist square.
      *
      * @see lib/beautiful/init.lua:23
-     * @param size Int  Size.
+     * @param size Float  Size.
      * @param fg externs.gears.Color  Background color.
      */
-    static function taglist_squares_sel(size: Int, fg: externs.gears.Color): Void;
+    static function taglist_squares_sel(size: Float, fg: externs.gears.Color): Void;
 
     /** Generate unselected taglist square.
      *
      * @see lib/beautiful/init.lua:36
-     * @param size Int  Size.
+     * @param size Float  Size.
      * @param fg externs.gears.Color  Background color.
      */
-    static function taglist_squares_unsel(size: Int, fg: externs.gears.Color): Void;
+    static function taglist_squares_unsel(size: Float, fg: externs.gears.Color): Void;
 
     /** Put Awesome WM name onto cairo surface.
      *
      * @see lib/beautiful/init.lua:90
      * @param cr Dynamic  Cairo surface.
-     * @param height Int  Height.
+     * @param height Float  Height.
      * @param bg externs.gears.Color  Background color.
      * @param fg externs.gears.Color  Main foreground color.
      * @param alt_fg externs.gears.Color  Accent foreground color.
      */
-    static function gen_awesome_name(cr: Dynamic, height: Int, bg: externs.gears.Color, fg: externs.gears.Color, alt_fg: externs.gears.Color): Void;
+    static function gen_awesome_name(cr: Dynamic, height: Float, bg: externs.gears.Color, fg: externs.gears.Color, alt_fg: externs.gears.Color): Void;
 
     /** Put Awesome WM logo onto cairo surface.
      *
      * @see lib/beautiful/init.lua:159
      * @param cr Dynamic  Cairo surface.
-     * @param width Int  Width.
-     * @param height Int  Height.
+     * @param width Float  Width.
+     * @param height Float  Height.
      * @param bg externs.gears.Color  Background color.
      * @param fg externs.gears.Color  Foreground color.
      */
-    static function gen_logo(cr: Dynamic, width: Int, height: Int, bg: externs.gears.Color, fg: externs.gears.Color): Void;
+    static function gen_logo(cr: Dynamic, width: Float, height: Float, bg: externs.gears.Color, fg: externs.gears.Color): Void;
 
     /** Generate Awesome WM logo.
      *
      * @see lib/beautiful/init.lua:182
-     * @param size Int  Size.
+     * @param size Float  Size.
      * @param bg externs.gears.Color  Background color.
      * @param fg externs.gears.Color  Background color.
      */
-    static function awesome_icon(size: Int, bg: externs.gears.Color, fg: externs.gears.Color): Void;
+    static function awesome_icon(size: Float, bg: externs.gears.Color, fg: externs.gears.Color): Void;
 
     /** Generate Awesome WM wallpaper.
      *
@@ -133,17 +133,17 @@ extern class Beautiful {
     /** Set DPI for a given screen (defaults to global).
      *
      * @see lib/beautiful/init.lua:123
-     * @param dpi Int  DPI value.
+     * @param dpi Float  DPI value.
      * @param s Int  Screen.
      */
-    static function set_dpi(dpi: Int, s: Int): Void;
+    static function set_dpi(dpi: Float, s: Int): Void;
 
     /** Compute resulting size applying current DPI value (optionally per screen).
      *
      * @see lib/beautiful/init.lua:138
-     * @param size Int  Size
-     * @param s haxe.extern.EitherType<Int, externs.Screen>  The screen.
+     * @param size Float  Size
+     * @param s extype.extern.Mixed.Mixed2<Int, externs.Screen>  The screen.
      */
-    static function apply_dpi(size: Int, s: haxe.extern.EitherType<Int, externs.Screen>): Int;
+    static function apply_dpi(size: Float, s: extype.extern.Mixed.Mixed2<Int, externs.Screen>): Int;
 }
 

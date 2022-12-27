@@ -35,7 +35,7 @@ extern class Base extends externs.gears.Object {
      * The widget opacity (transparency).
      * @see lib/wibox/widget/base.lua:52
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -47,7 +47,7 @@ extern class Base extends externs.gears.Object {
      * The widget buttons.
      * @see lib/wibox/widget/base.lua:65
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Set a widget's visibility.
      *
@@ -72,41 +72,41 @@ extern class Base extends externs.gears.Object {
     /** Set a widget's opacity.
      *
      * @see lib/wibox/widget/base.lua:260
-     * @param o Int  The opacity to use (a number from 0 (transparent) to 1 (opaque)).
+     * @param o Float  The opacity to use (a number from 0 (transparent) to 1 (opaque)).
      */
-    function set_opacity(o: Int): Void;
+    function set_opacity(o: Float): Void;
 
     /** Get the widget's opacity.
      *
      * @see lib/wibox/widget/base.lua:271
      */
-    function get_opacity(): Int;
+    function get_opacity(): Float;
 
     /** Set the widget's forced width.
      *
      * @see lib/wibox/widget/base.lua:281
-     * @param width Int  With `nil` the default mechanism of calling the `:fit` method is used.
+     * @param width Float  With `nil` the default mechanism of calling the `:fit` method is used.
      */
-    function set_forced_width(width: Int): Void;
+    function set_forced_width(width: Float): Void;
 
     /** Get the widget's forced width.
      *
      * @see lib/wibox/widget/base.lua:298
      */
-    function get_forced_width(): Int;
+    function get_forced_width(): Float;
 
     /** Set the widget's forced height.
      *
      * @see lib/wibox/widget/base.lua:308
-     * @param height Int  With `nil` the default mechanism of calling the `:fit` method is used.
+     * @param height Float  With `nil` the default mechanism of calling the `:fit` method is used.
      */
-    function set_height(height: Int): Void;
+    function set_height(height: Float): Void;
 
     /** Get the widget's forced height.
      *
      * @see lib/wibox/widget/base.lua:324
      */
-    function get_forced_height(): Int;
+    function get_forced_height(): Float;
 
     /** Get the widget's direct children widgets.
      *
@@ -150,7 +150,7 @@ extern class Base extends externs.gears.Object {
      * @param recursive Bool  Recursively check accross the sub-widgets hierarchy.
      * @param ...rest externs.wibox.Widget  Additional widgets to add at the end of the sub-widgets hierarchy "path".
      */
-    function index(widget: externs.wibox.Widget, recursive: Bool, ...rest: externs.wibox.Widget): Int;
+    function index(widget: externs.wibox.Widget, recursive: Bool, ...rest: externs.wibox.Widget): Float;
 
     /** Figure out the geometry in the device coordinate space.
      *
@@ -164,10 +164,10 @@ extern class Base extends externs.gears.Object {
      * @param parent externs.wibox.Widget  The parent widget which requests this information.
      * @param context lua.Table<String, Dynamic>  The context in which we are fit.
      * @param widget externs.wibox.Widget  The widget to fit (this uses `widget:fit(context, width, height)`).
-     * @param width Int  The available width for the widget.
-     * @param height Int  The available height for the widget.
+     * @param width Float  The available width for the widget.
+     * @param height Float  The available height for the widget.
      */
-    static function fit_widget(parent: externs.wibox.Widget, context: lua.Table<String, Dynamic>, widget: externs.wibox.Widget, width: Int, height: Int): Int;
+    static function fit_widget(parent: externs.wibox.Widget, context: lua.Table<String, Dynamic>, widget: externs.wibox.Widget, width: Float, height: Float): Float;
 
     /** Lay out a widget for the given available width and height.
      *
@@ -175,10 +175,10 @@ extern class Base extends externs.gears.Object {
      * @param parent externs.wibox.Widget  The parent widget which requests this information.
      * @param context lua.Table<String, Dynamic>  The context in which we are laid out.
      * @param widget externs.wibox.Widget  The widget to layout (this uses `widget:layout(context, width, height)`).
-     * @param width Int  The available width for the widget.
-     * @param height Int  The available height for the widget.
+     * @param width Float  The available width for the widget.
+     * @param height Float  The available height for the widget.
      */
-    static function layout_widget(parent: externs.wibox.Widget, context: lua.Table<String, Dynamic>, widget: externs.wibox.Widget, width: Int, height: Int): lua.Table<String, Dynamic>;
+    static function layout_widget(parent: externs.wibox.Widget, context: lua.Table<String, Dynamic>, widget: externs.wibox.Widget, width: Float, height: Float): lua.Table<String, Dynamic>;
 
     /** Handle a button event on a widget.
      *
@@ -191,21 +191,21 @@ extern class Base extends externs.gears.Object {
      * @see lib/wibox/widget/base.lua:635
      * @param widget externs.wibox.Widget  The widget that should be placed.
      * @param mat Dynamic  A matrix transforming from the parent widget's coordinate system. For example, use matrix.create_translate(1, 2) to draw a widget at position (1, 2) relative to the parent widget.
-     * @param width Int  The width of the widget in its own coordinate system. That is, after applying the transformation matrix.
-     * @param height Int  The height of the widget in its own coordinate system. That is, after applying the transformation matrix.
+     * @param width Float  The width of the widget in its own coordinate system. That is, after applying the transformation matrix.
+     * @param height Float  The height of the widget in its own coordinate system. That is, after applying the transformation matrix.
      */
-    static function place_widget_via_matrix(widget: externs.wibox.Widget, mat: Dynamic, width: Int, height: Int): lua.Table<String, Dynamic>;
+    static function place_widget_via_matrix(widget: externs.wibox.Widget, mat: Dynamic, width: Float, height: Float): lua.Table<String, Dynamic>;
 
     /** Create widget placement information.
      *
      * @see lib/wibox/widget/base.lua:657
      * @param widget externs.wibox.Widget  The widget that should be placed.
-     * @param x Int  The x coordinate for the widget.
-     * @param y Int  The y coordinate for the widget.
-     * @param width Int  The width of the widget in its own coordinate system. That is, after applying the transformation matrix.
-     * @param height Int  The height of the widget in its own coordinate system. That is, after applying the transformation matrix.
+     * @param x Float  The x coordinate for the widget.
+     * @param y Float  The y coordinate for the widget.
+     * @param width Float  The width of the widget in its own coordinate system. That is, after applying the transformation matrix.
+     * @param height Float  The height of the widget in its own coordinate system. That is, after applying the transformation matrix.
      */
-    static function place_widget_at(widget: externs.wibox.Widget, x: Int, y: Int, width: Int, height: Int): lua.Table<String, Dynamic>;
+    static function place_widget_at(widget: externs.wibox.Widget, x: Float, y: Float, width: Float, height: Float): lua.Table<String, Dynamic>;
 
     /** Set a declarative widget hierarchy description.
      *

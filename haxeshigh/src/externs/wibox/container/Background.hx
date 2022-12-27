@@ -30,7 +30,7 @@ extern class Background extends externs.wibox.widget.Base {
      * The background shape.
      * @see lib/wibox/container/background.lua:409
      */
-    var shape: haxe.extern.EitherType<externs.gears.Shape, haxe.Constraints.Function>;
+    var shape: extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>;
 
     /**
      * Add a border of a specific width.
@@ -54,22 +54,22 @@ extern class Background extends externs.wibox.widget.Base {
      * The background image to use.
      * @see lib/wibox/container/background.lua:564
      */
-    var bgimage: haxe.extern.EitherType<String, externs.gears.Surface, haxe.Constraints.Function>;
+    var bgimage: extype.extern.Mixed.Mixed3<String, externs.gears.Surface, haxe.Constraints.Function>;
 
     /** Set the background shape.
      *
      * @see lib/wibox/container/background.lua:418
-     * @param shape haxe.extern.EitherType<externs.gears.Shape, haxe.Constraints.Function>  A function taking a context, width and height as arguments
+     * @param shape extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>  A function taking a context, width and height as arguments
      */
-    function set_shape(shape: haxe.extern.EitherType<externs.gears.Shape, haxe.Constraints.Function>): Void;
+    function set_shape(shape: extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>): Void;
 
     /** Returns a new background container.
      *
      * @see lib/wibox/container/background.lua:584
      * @param widget externs.wibox.Widget  The widget to display.
      * @param bg externs.gears.Color  The background to use for that widget.
-     * @param shape haxe.extern.EitherType<externs.gears.Shape, haxe.Constraints.Function>  A `gears.shape` compatible shape function
+     * @param shape extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>  A `gears.shape` compatible shape function
      */
-    @:selfCall function new(widget: externs.wibox.Widget, bg: externs.gears.Color, shape: haxe.extern.EitherType<externs.gears.Shape, haxe.Constraints.Function>): Void;
+    @:selfCall function new(widget: externs.wibox.Widget, bg: externs.gears.Color, shape: extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>): Void;
 }
 

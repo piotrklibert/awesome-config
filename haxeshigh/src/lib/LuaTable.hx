@@ -16,18 +16,25 @@ typedef MixedTable<V> = Table<TableKey, V>;
 
 typedef TMacro = utils.lua.Macro;
 
+
+
+typedef LuaList<V> = LuaTable<Int, V>;
+typedef LuaMap<K, V> = LuaTable<K, V>;
+typedef LuaStringMap<V> = LuaTable<String, V>;
+
+
 @:publicFields
-abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<Dynamic, Dynamic> {
+abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
 
     inline function fields() {
         return Reflect.fields(this);
     }
 
-    inline function merge<K1, V1>(other: LuaTable<K1, V1>) {
-        for (f in other.fields())
-            untyped this[f] = other[f];
-        return this;
-    }
+    // inline function merge(other: LuaTable<K, V>) {
+    //     for (f in other.fields())
+    //         this.arrayWrite(f, other.arrayRead(cast f));
+    //     return this;
+    // }
 
     inline function without(...args: K) {
         final t = this;
@@ -44,17 +51,11 @@ abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<Dynamic, Dynamic>
 
 
     // Accessors
-    @:op([ ]) public function arrayRead(n: TableKey): V
+    @:op([ ]) public function arrayRead(n: Dynamic): V
         return untyped this[n];
 
-    @:op([ ]) public function arrayWrite(n: TableKey, val: V)
+    @:op([ ]) public function arrayWrite(n: Dynamic, val: V)
         return untyped this[n] = val;
-
-    @:op(a.b) public function fieldRead(name: String): V
-        return untyped this[name];
-
-    @:op(a.b) public function fieldWrite<T>(name: String, val: T): T
-        return untyped this[name] = val;
 
 
     // Implicit casts (order matters!!)

@@ -11,7 +11,7 @@ extern class Graph extends externs.wibox.widget.Base {
      * Set the graph border_width.
      * @see lib/wibox/widget/graph.lua:62
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * Set the graph border color.
@@ -41,13 +41,13 @@ extern class Graph extends externs.wibox.widget.Base {
      * The maximum value the graph should handle.
      * @see lib/wibox/widget/graph.lua:204
      */
-    var max_value: Int;
+    var max_value: Float;
 
     /**
      * The minimum value the graph should handle.
      * @see lib/wibox/widget/graph.lua:231
      */
-    var min_value: Int;
+    var min_value: Float;
 
     /**
      * Set the graph to automatically scale its values.
@@ -65,25 +65,25 @@ extern class Graph extends externs.wibox.widget.Base {
      * The value corresponding to the starting point of graph bars.
      * @see lib/wibox/widget/graph.lua:331
      */
-    var baseline_value: Int;
+    var baseline_value: Float;
 
     /**
      * Set the width or the individual steps.
      * @see lib/wibox/widget/graph.lua:353
      */
-    var step_width: Int;
+    var step_width: Float;
 
     /**
      * Set the spacing between the steps.
      * @see lib/wibox/widget/graph.lua:371
      */
-    var step_spacing: Int;
+    var step_spacing: Float;
 
     /**
      * The step shape.
      * @see lib/wibox/widget/graph.lua:400
      */
-    var step_shape: haxe.extern.EitherType<externs.gears.Shape, haxe.Constraints.Function>;
+    var step_shape: extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>;
 
     /**
      * Set the graph to draw stacks.
@@ -112,24 +112,24 @@ extern class Graph extends externs.wibox.widget.Base {
     /** Determine the color to paint a data group with.
      *
      * @see lib/wibox/widget/graph.lua:689
-     * @param group_idx Int  The index of the data group.
+     * @param group_idx Float  The index of the data group.
      */
-    function pick_data_group_color(group_idx: Int): externs.gears.Color;
+    function pick_data_group_color(group_idx: Float): externs.gears.Color;
 
     /** Determine how many values should be drawn for a given widget width.
      *
      * @see lib/wibox/widget/graph.lua:983
-     * @param usable_width Int  <no desc>
+     * @param usable_width Float  <no desc>
      */
-    function compute_drawn_values_num(usable_width: Int): Void;
+    function compute_drawn_values_num(usable_width: Float): Void;
 
     /** Add a value to the graph.
      *
      * @see lib/wibox/widget/graph.lua:1029
-     * @param value Int  The value to be added to a graph's data group.
+     * @param value Float  The value to be added to a graph's data group.
      * @param group Int  The index of the data group.
      */
-    function add_value(value: Int, group: Int): Void;
+    function add_value(value: Float, group: Int): Void;
 
     /** Clear the graph.
      *

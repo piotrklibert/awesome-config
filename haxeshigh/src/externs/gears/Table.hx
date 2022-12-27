@@ -36,7 +36,7 @@ extern class Table {
      * @param t lua.Table<String, Dynamic>  The table.
      * @param item Dynamic  The item to look for in values of the table.
      */
-    static function hasitem(t: lua.Table<String, Dynamic>, item: Dynamic): haxe.extern.EitherType<String, Int>;
+    static function hasitem(t: lua.Table<String, Dynamic>, item: Dynamic): extype.extern.Mixed.Mixed2<String, Float>;
 
     /** Get all matching table keys for a `matcher` function.
      *
@@ -44,9 +44,9 @@ extern class Table {
      * @param t lua.Table<String, Dynamic>  The table.
      * @param matcher haxe.Constraints.Function  A function taking the key and value as arguments and returning a boolean.
      * @param ordered Bool  If true, only look for continuous numeric keys.
-     * @param max Int  The maximum number of entries to find.
+     * @param max Float  The maximum number of entries to find.
      */
-    static function find_keys(t: lua.Table<String, Dynamic>, matcher: haxe.Constraints.Function, ordered: Bool, max: Int): Null<lua.Table<String, Dynamic>>;
+    static function find_keys(t: lua.Table<String, Dynamic>, matcher: haxe.Constraints.Function, ordered: Bool, max: Float): Null<lua.Table<String, Dynamic>>;
 
     /** Find the first key that matches a function.
      *
@@ -69,7 +69,7 @@ extern class Table {
      * @see lib/gears/table.lua:210
      * @param t lua.Table<String, Dynamic>  The table for which to count the keys.
      */
-    static function count_keys(t: lua.Table<String, Dynamic>): Int;
+    static function count_keys(t: lua.Table<String, Dynamic>): Float;
 
     /** Filter a table's keys for certain content type.
      *
@@ -99,11 +99,11 @@ extern class Table {
      * @see lib/gears/table.lua:295
      * @param t lua.Table<String, Dynamic>  The input table.
      * @param value Dynamic  The start value. Must be an element of the input table `t`.
-     * @param step_size Int  The amount to increment the index by. When this is negative, the function will cycle through the table backwards.
+     * @param step_size Float  The amount to increment the index by. When this is negative, the function will cycle through the table backwards.
      * @param filter haxe.Constraints.Function  An optional filter function. It receives a value from the table as parameter and should return a boolean. If it returns `false`, the value is skipped and `cycle_value` tries the next one.
-     * @param start_at Int  Where to start the lookup from.
+     * @param start_at Float  Where to start the lookup from.
      */
-    static function cycle_value(t: lua.Table<String, Dynamic>, value: Dynamic, step_size: Int, filter: haxe.Constraints.Function, start_at: Int): Void;
+    static function cycle_value(t: lua.Table<String, Dynamic>, value: Dynamic, step_size: Float, filter: haxe.Constraints.Function, start_at: Float): Void;
 
     /** Iterate over a table.
      *

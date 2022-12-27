@@ -42,6 +42,9 @@ class Formatter {
         println(formatModule());
     }
 
+    static final modMap = [
+        "screen" => "awful.screen",
+    ];
 
     function formatModule(): String {
         final json = this.moduleData;
@@ -53,7 +56,7 @@ class Formatter {
         if (pkg.startsWith(".")) pkg = pkg.substring(1);
         if (pkg.length > 0) pkg = pkg + ".";
         final cname = json.cls.cname.name.toLowerCase();
-        final require = pkg + cname;
+        final require = modMap[pkg + cname] ?? pkg + cname;
         out.push('@:luaRequire("$require")');
         out.push('extern class ${json.cls.cname.name}${extds} {');
         out.push('    /** ${json.cls.summary}');
@@ -76,15 +79,23 @@ class Formatter {
         docstring.push(" *");
         docstring.push(" * " + '@see ${moduleData.file}:${item.line}');
         for (arg in data.arguments) {
-            docstring.push(" * @param " + arg.argName.name + " " + arg.typeName + " " + formatSummary(arg.argDoc));
+            switch (arg) {
+                case SimpleArgument(arg):
+                    docstring.push(" * @param " + arg.name.name + " " + arg.type + " " + formatSummary(arg.doc));
+                default:
+            }
         }
         docstring.push(" */");
         out.push(docstring.mapIt('    $it').join("\n") + "\n");
         var decl = [];
         decl.push('    ${data.declarator} ${data.name.name}(');
         for (arg in data.arguments) {
-            decl.push(arg.argName.name + ": " + arg.typeName);
-            decl.push(", ");
+            switch (arg) {
+                case SimpleArgument(arg):
+                    decl.push(arg.name.name + ": " + arg.type);
+                    decl.push(", ");
+                default:
+            }
         }
         if (", " == decl.last()) {
             decl = decl.dropRight(1).array();
@@ -123,7 +134,7 @@ class Formatter {
         decl.push(item.declarator);
         decl.push(" ");
         decl.push(item.name.name);
-        decl.push(": "+ item.type);
+        decl.push(": " + (item.type ?? "Dynamic"));
         decl.push(";");
         out.push(decl.join("") + "\n");
         return out;

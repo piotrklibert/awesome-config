@@ -131,7 +131,7 @@ extern class Client {
      * The client opacity.
      * @see objects/client.c:1016
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The client is on top of every other windows.
@@ -377,10 +377,10 @@ extern class Client {
     /** Get all clients into a table.
      *
      * @see objects/client.c:3129
-     * @param screen haxe.extern.EitherType<Int, externs.Screen>  A screen number to filter clients on.
+     * @param screen extype.extern.Mixed.Mixed2<Int, externs.Screen>  A screen number to filter clients on.
      * @param stacked Bool  Return clients in stacking order? (ordered from top to bottom).
      */
-    static function get(screen: haxe.extern.EitherType<Int, externs.Screen>, stacked: Bool): lua.Table<String, Dynamic>;
+    static function get(screen: extype.extern.Mixed.Mixed2<Int, externs.Screen>, stacked: Bool): lua.Table<String, Dynamic>;
 
     /** Check if a client is visible on its screen.
      *
@@ -431,7 +431,8 @@ extern class Client {
      * @see objects/client.c:3783
      * @param geo Null<lua.Table<String, Dynamic>>  A table with new coordinates, or nil.
      */
-    function geometry(geo: Null<lua.Table<String, Dynamic>>): lua.Table<String, Dynamic>;
+
+    function geometry(geo: externs.Overrides.Geometry = null): lua.Table<String, Dynamic>;
 
     /** Apply size hints to a size.
      *
@@ -475,9 +476,9 @@ extern class Client {
     /** Jump to the given client.
      *
      * @see objects/client.c:295
-     * @param merge haxe.extern.EitherType<Bool, haxe.Constraints.Function>  If true then merge tags (select the client's first tag additionally) when the client is not visible. If it is a function, it will be called with the client and its first tag as arguments.
+     * @param merge extype.extern.Mixed.Mixed2<Bool, haxe.Constraints.Function>  If true then merge tags (select the client's first tag additionally) when the client is not visible. If it is a function, it will be called with the client and its first tag as arguments.
      */
-    function jump_to(merge: haxe.extern.EitherType<Bool, haxe.Constraints.Function>): Void;
+    function jump_to(merge: extype.extern.Mixed.Mixed2<Bool, haxe.Constraints.Function>): Void;
 
     /** Get a client by its relative index to another client.
      *
@@ -663,9 +664,9 @@ extern class Client {
     /** Jump to the client that received the urgent hint first.
      *
      * @see objects/client.c:2217
-     * @param merge haxe.extern.EitherType<Bool, haxe.Constraints.Function>  If true then merge tags (select the client's first tag additionally) when the client is not visible. If it is a function, it will be called with the client as argument.
+     * @param merge extype.extern.Mixed.Mixed2<Bool, haxe.Constraints.Function>  If true then merge tags (select the client's first tag additionally) when the client is not visible. If it is a function, it will be called with the client as argument.
      */
-    static function jumpto(merge: haxe.extern.EitherType<Bool, haxe.Constraints.Function>): Void;
+    static function jumpto(merge: extype.extern.Mixed.Mixed2<Bool, haxe.Constraints.Function>): Void;
 
     /** Connect to a signal weakly.
      *
@@ -720,4 +721,3 @@ extern class Client {
      */
     static function disable_tracking(): Int;
 }
-

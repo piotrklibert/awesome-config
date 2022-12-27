@@ -11,7 +11,7 @@ extern class Mouse {
      * The `screen` under the cursor
      * @see mouse.c:80
      */
-    var screen: Dynamic;
+    var screen: externs.Screen;
 
     /**
      * Get the client currently under the mouse cursor.
@@ -35,7 +35,7 @@ extern class Mouse {
      * Get the topmost widget currently under the mouse cursor.
      * @see mouse.c:169
      */
-    var current_widget: Null<externs.wibox.Widget>;
+    var current_widget: externs.wibox.Widget;
 
     /**
      * Get the current widget geometry.

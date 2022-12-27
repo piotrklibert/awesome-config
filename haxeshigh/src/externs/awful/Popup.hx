@@ -11,13 +11,13 @@ extern class Popup extends externs.Wibox {
      * Set the preferred popup position relative to its parent.
      * @see lib/awful/popup.lua:284
      */
-    var preferred_positions: haxe.extern.EitherType<lua.Table<String, Dynamic>, String>;
+    var preferred_positions: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, String>;
 
     /**
      * Set the preferred popup anchors relative to the parent.
      * @see lib/awful/popup.lua:338
      */
-    var preferred_anchors: haxe.extern.EitherType<lua.Table<String, Dynamic>, String>;
+    var preferred_anchors: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, String>;
 
     /**
      * The current position relative to the parent object.
@@ -41,31 +41,31 @@ extern class Popup extends externs.Wibox {
      * The popup minimum width.
      * @see lib/awful/popup.lua:441
      */
-    var minimum_width: Int;
+    var minimum_width: Float;
 
     /**
      * The popup minimum height.
      * @see lib/awful/popup.lua:447
      */
-    var minimum_height: Int;
+    var minimum_height: Float;
 
     /**
      * The popup maximum width.
      * @see lib/awful/popup.lua:453
      */
-    var maximum_width: Int;
+    var maximum_width: Float;
 
     /**
      * The popup maximum height.
      * @see lib/awful/popup.lua:459
      */
-    var maximum_height: Int;
+    var maximum_height: Float;
 
     /**
      * The distance between the popup and its parent (if any).
      * @see lib/awful/popup.lua:508
      */
-    var offset: haxe.extern.EitherType<lua.Table<String, Dynamic>, Int>;
+    var offset: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, Float>;
 
     /**
      * Set the placement function.
@@ -107,7 +107,7 @@ extern class Popup extends externs.Wibox {
      * The opacity of the wibox, between 0 and 1.
      * @see lib/awful/popup.lua:739
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The window type (desktop, normal, dock, ...).
@@ -143,19 +143,19 @@ extern class Popup extends externs.Wibox {
      * The wibox screen.
      * @see lib/awful/popup.lua:782
      */
-    var screen: Dynamic;
+    var screen: externs.Screen;
 
     /**
      * The wibox's `drawable`.
      * @see lib/awful/popup.lua:789
      */
-    var drawable: drawable;
+    var drawable: externs.wibox.Drawable;
 
     /**
      * The widget that the `wibox` displays.
      * @see lib/awful/popup.lua:795
      */
-    var widget: Dynamic;
+    var widget: externs.wibox.Widget;
 
     /**
      * The X window id.
@@ -209,7 +209,7 @@ extern class Popup extends externs.Wibox {
      * The background image of the drawable.
      * @see lib/awful/popup.lua:945
      */
-    var bgimage: haxe.extern.EitherType<externs.gears.Surface, String, haxe.Constraints.Function>;
+    var bgimage: extype.extern.Mixed.Mixed3<externs.gears.Surface, String, haxe.Constraints.Function>;
 
     /**
      * The foreground (text) of the wibox.
@@ -228,9 +228,9 @@ extern class Popup extends externs.Wibox {
      *
      * @see lib/awful/popup.lua:406
      * @param widget externs.wibox.Widget  The widget
-     * @param button Int  The button index
+     * @param button Float  The button index
      */
-    function bind_to_widget(widget: externs.wibox.Widget, button: Int): Void;
+    function bind_to_widget(widget: externs.wibox.Widget, button: Float): Void;
 
     /** Unbind the popup from a widget button.
      *
@@ -270,9 +270,9 @@ extern class Popup extends externs.Wibox {
     /** Find a widget by a point.
      *
      * @see lib/awful/popup.lua:965
-     * @param x Int  X coordinate of the point
-     * @param y Int  Y coordinate of the point
+     * @param x Float  X coordinate of the point
+     * @param y Float  Y coordinate of the point
      */
-    function find_widgets(x: Int, y: Int): lua.Table<String, Dynamic>;
+    function find_widgets(x: Float, y: Float): lua.Table<String, Dynamic>;
 }
 

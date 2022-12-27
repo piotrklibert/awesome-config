@@ -65,7 +65,7 @@ extern class Notifications {
      * The widget opacity (transparency).
      * @see lib/naughty/list/notifications.lua:496
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -77,7 +77,7 @@ extern class Notifications {
      * The widget buttons.
      * @see lib/naughty/list/notifications.lua:510
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create an notification list.
      *

@@ -24,12 +24,12 @@ extern class Modifiers extends Table<String, Dynamic> {
 }
 
 extern class RawParams extends lua.Table<String, Dynamic> {
-    var map: LuaTable<String, Dynamic>;
+    var map: LuaTable<String, String>;
 }
 
 @:notNull
 abstract Params(RawParams) to RawParams from RawParams {
-    public var map(get, never): LuaTable<String, Dynamic>;
+    public var map(get, never): LuaTable<String, String>;
     function get_map() { return this.map; }
 
     @:op([]) public function fieldRead(name: String): Any
@@ -51,7 +51,7 @@ extern class Item extends Table<String, Dynamic> {
     var parameter: String;
     var params: Params;
     var section: String;
-    var subparams: Dynamic;
+    var subparams: LuaTable<String, Table<Int, String>>;
     var summary: String;
     var tags: Null<LuaTable<String, Dynamic>>;
     var type: String;
@@ -63,6 +63,8 @@ extern class DocumentTags extends lua.Table<String, Dynamic> implements ArrayAcc
     var author: Array<String>;
     var copyright: Array<String>;
     var supermodule: Array<String>;
+    var readonly: Null<Array<String>>;
+    var see: Null<Array<String>>;
 }
 
 extern class Document {

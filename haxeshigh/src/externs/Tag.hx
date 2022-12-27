@@ -41,13 +41,13 @@ extern class Tag {
      * The tag master width factor.
      * @see objects/tag.c:803
      */
-    var master_width_factor: Int;
+    var master_width_factor: Float;
 
     /**
      * The tag client layout.
      * @see objects/tag.c:920
      */
-    var layout: haxe.extern.EitherType<externs.awful.Layout, haxe.Constraints.Function>;
+    var layout: externs.awful.Layout;
 
     /**
      * The (proposed) list of available layouts for this tag.
@@ -65,7 +65,7 @@ extern class Tag {
      * The gap (spacing, also called `useless_gap`) between clients.
      * @see objects/tag.c:1214
      */
-    var gap: Int;
+    var gap: Float;
 
     /**
      * Enable gaps for a single client.
@@ -89,7 +89,7 @@ extern class Tag {
      * Set the tag icon.
      * @see objects/tag.c:1534
      */
-    var icon: haxe.extern.EitherType<Dynamic, externs.gears.Surface>;
+    var icon: extype.extern.Mixed.Mixed2<Dynamic, externs.gears.Surface>;
 
     /**
      * Set the number of columns.
@@ -153,10 +153,10 @@ extern class Tag {
      *
      * @see objects/tag.c:364
      * @param names lua.Table<String, Dynamic>  The tag name, in a table
-     * @param screen haxe.extern.EitherType<externs.Screen, Int>  The tag screen (defaults to screen 1).
+     * @param screen extype.extern.Mixed.Mixed2<externs.Screen, Float>  The tag screen (defaults to screen 1).
      * @param layout lua.Table<String, Dynamic>  The layout or layout table to set for this tags by default.
      */
-    static function _new(names: lua.Table<String, Dynamic>, screen: haxe.extern.EitherType<externs.Screen, Int>, layout: lua.Table<String, Dynamic>): lua.Table<String, Dynamic>;
+    static function _new(names: lua.Table<String, Dynamic>, screen: extype.extern.Mixed.Mixed2<externs.Screen, Float>, layout: lua.Table<String, Dynamic>): lua.Table<String, Dynamic>;
 
     /** Find a suitable fallback tag.
      *
@@ -192,9 +192,9 @@ extern class Tag {
      *
      * @see objects/tag.c:599
      * @param screen externs.Screen  The screen.
-     * @param idx Int  Index in history. Defaults to "previous" which is a special index toggling between last two selected sets of tags. Number (eg 1) will go back to the given index in history.
+     * @param idx Float  Index in history. Defaults to "previous" which is a special index toggling between last two selected sets of tags. Number (eg 1) will go back to the given index in history.
      */
-    static function restore(screen: externs.Screen, idx: Int): Void;
+    static function restore(screen: externs.Screen, idx: Float): Void;
 
     /** Find a tag by name.
      *
@@ -207,18 +207,18 @@ extern class Tag {
     /** Increase master width factor.
      *
      * @see objects/tag.c:833
-     * @param add Int  Value to add to master width factor.
+     * @param add Float  Value to add to master width factor.
      * @param t externs.Tag  The tag to modify, if null tag.selected() is used.
      */
-    static function incmwfact(add: Int, t: externs.Tag): Void;
+    static function incmwfact(add: Float, t: externs.Tag): Void;
 
     /** Increase the spacing between clients
      *
      * @see objects/tag.c:1242
-     * @param add Int  Value to add to the spacing between clients
+     * @param add Float  Value to add to the spacing between clients
      * @param t externs.Tag  The tag to modify, if null tag.selected() is used.
      */
-    static function incgap(add: Int, t: externs.Tag): Void;
+    static function incgap(add: Float, t: externs.Tag): Void;
 
     /** Toggle size fill policy for the master client(s) between "expand" and "master_width_factor".
      *
@@ -230,35 +230,35 @@ extern class Tag {
     /** Increase the number of master windows.
      *
      * @see objects/tag.c:1490
-     * @param add Int  Value to add to number of master windows.
+     * @param add Float  Value to add to number of master windows.
      * @param t externs.Tag  The tag to modify, if null tag.selected() is used.
      * @param sensible Bool  Limit nmaster based on the number of visible tiled windows?
      */
-    static function incnmaster(add: Int, t: externs.Tag, sensible: Bool): Void;
+    static function incnmaster(add: Float, t: externs.Tag, sensible: Bool): Void;
 
     /** Increase number of column windows.
      *
      * @see objects/tag.c:1649
-     * @param add Int  Value to add to number of column windows.
+     * @param add Float  Value to add to number of column windows.
      * @param t externs.Tag  The tag to modify, if null tag.selected() is used.
      * @param sensible Bool  Limit column_count based on the number of visible tiled windows?
      */
-    static function incncol(add: Int, t: externs.Tag, sensible: Bool): Void;
+    static function incncol(add: Float, t: externs.Tag, sensible: Bool): Void;
 
     /** View no tag.
      *
      * @see objects/tag.c:1693
-     * @param screen haxe.extern.EitherType<Int, externs.Screen>  The screen.
+     * @param screen extype.extern.Mixed.Mixed2<Int, externs.Screen>  The screen.
      */
-    static function viewnone(screen: haxe.extern.EitherType<Int, externs.Screen>): Void;
+    static function viewnone(screen: extype.extern.Mixed.Mixed2<Int, externs.Screen>): Void;
 
     /** Select a tag relative to the currently selected one.
      *
      * @see objects/tag.c:1728
-     * @param i Int  The **relative** index to see.
+     * @param i Float  The **relative** index to see.
      * @param screen externs.Screen  The screen.
      */
-    static function viewidx(i: Int, screen: externs.Screen): Void;
+    static function viewidx(i: Float, screen: externs.Screen): Void;
 
     /** View next tag.
      *
@@ -285,9 +285,9 @@ extern class Tag {
      * @see objects/tag.c:1869
      * @param tags lua.Table<String, Dynamic>  A table with tags to view only.
      * @param screen externs.Screen  The screen of the tags.
-     * @param maximum Int  The maximum number of tags to select.
+     * @param maximum Float  The maximum number of tags to select.
      */
-    static function viewmore(tags: lua.Table<String, Dynamic>, screen: externs.Screen, maximum: Int): Void;
+    static function viewmore(tags: lua.Table<String, Dynamic>, screen: externs.Screen, maximum: Float): Void;
 
     /** Toggle selection of a tag
      *

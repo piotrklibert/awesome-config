@@ -11,28 +11,28 @@ extern class Geometry {
      *
      * @see lib/gears/geometry.lua:26
      * @param geom lua.Table<String, Dynamic>  A rectangle
-     * @param x Int  X coordinate of point
-     * @param y Int  Y coordinate of point
+     * @param x Float  X coordinate of point
+     * @param y Float  Y coordinate of point
      */
-    static function get_square_distance(geom: lua.Table<String, Dynamic>, x: Int, y: Int): Int;
+    static function get_square_distance(geom: lua.Table<String, Dynamic>, x: Float, y: Float): Float;
 
     /** Return the closest rectangle from `list` for a given point.
      *
      * @see lib/gears/geometry.lua:47
      * @param list lua.Table<String, Dynamic>  A list of geometry tables.
-     * @param x Int  The x coordinate
-     * @param y Int  The y coordinate
+     * @param x Float  The x coordinate
+     * @param y Float  The y coordinate
      */
-    static function get_closest_by_coord(list: lua.Table<String, Dynamic>, x: Int, y: Int): Void;
+    static function get_closest_by_coord(list: lua.Table<String, Dynamic>, x: Float, y: Float): Void;
 
     /** Return the rectangle containing the [x, y] point.
      *
      * @see lib/gears/geometry.lua:72
      * @param list lua.Table<String, Dynamic>  A list of geometry tables.
-     * @param x Int  The x coordinate
-     * @param y Int  The y coordinate
+     * @param x Float  The x coordinate
+     * @param y Float  The y coordinate
      */
-    static function get_by_coord(list: lua.Table<String, Dynamic>, x: Int, y: Int): Void;
+    static function get_by_coord(list: lua.Table<String, Dynamic>, x: Float, y: Float): Void;
 
     /** Get the nearest rectangle in the given direction.
      *

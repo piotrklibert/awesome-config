@@ -29,7 +29,7 @@ extern class Piechart extends externs.wibox.widget.Base {
      * The pie elements border width.
      * @see lib/wibox/widget/piechart.lua:196
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * The pie chart colors.

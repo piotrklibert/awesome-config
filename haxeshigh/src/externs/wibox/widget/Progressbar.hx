@@ -17,7 +17,7 @@ extern class Progressbar extends externs.wibox.widget.Base {
      * The progressbar border width.
      * @see lib/wibox/widget/progressbar.lua:202
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * The progressbar inner border color.
@@ -29,7 +29,7 @@ extern class Progressbar extends externs.wibox.widget.Base {
      * The progressbar inner border width.
      * @see lib/wibox/widget/progressbar.lua:247
      */
-    var bar_border_width: Int;
+    var bar_border_width: Float;
 
     /**
      * The progressbar foreground color.
@@ -71,37 +71,37 @@ extern class Progressbar extends externs.wibox.widget.Base {
      * The progressbar ticks gap.
      * @see lib/wibox/widget/progressbar.lua:417
      */
-    var ticks_gap: Int;
+    var ticks_gap: Float;
 
     /**
      * The progressbar ticks size.
      * @see lib/wibox/widget/progressbar.lua:495
      */
-    var ticks_size: Int;
+    var ticks_size: Float;
 
     /**
      * The maximum value the progressbar should handle.
      * @see lib/wibox/widget/progressbar.lua:518
      */
-    var max_value: Int;
+    var max_value: Float;
 
     /**
      * The progressbar margins.
      * @see lib/wibox/widget/progressbar.lua:620
      */
-    var margins: haxe.extern.EitherType<(table, Int, nil)>;
+    var margins: extype.extern.Mixed.Mixed3<(table, Float, nil)>;
 
     /**
      * The progressbar padding.
      * @see lib/wibox/widget/progressbar.lua:675
      */
-    var paddings: haxe.extern.EitherType<(table, Int, nil)>;
+    var paddings: extype.extern.Mixed.Mixed3<(table, Float, nil)>;
 
     /**
      * Set the progressbar value.
      * @see lib/wibox/widget/progressbar.lua:930
      */
-    var value: Int;
+    var value: Float;
 
     /** Create a progressbar widget.
      *

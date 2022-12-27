@@ -35,7 +35,7 @@ extern class Keyboardlayout {
      * The widget opacity (transparency).
      * @see lib/awful/widget/keyboardlayout.lua:361
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -47,7 +47,7 @@ extern class Keyboardlayout {
      * The widget buttons.
      * @see lib/awful/widget/keyboardlayout.lua:375
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Auxiliary function for the local function update_layout().
      *

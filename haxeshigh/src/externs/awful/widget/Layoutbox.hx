@@ -35,7 +35,7 @@ extern class Layoutbox extends externs.wibox.layout.Fixed {
      * The widget opacity (transparency).
      * @see lib/awful/widget/layoutbox.lua:193
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -47,7 +47,7 @@ extern class Layoutbox extends externs.wibox.layout.Fixed {
      * The widget buttons.
      * @see lib/awful/widget/layoutbox.lua:207
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a layoutbox widget.
      *

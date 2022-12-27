@@ -17,7 +17,7 @@ extern class Notification {
      * Time in seconds after which popup expires.
      * @see lib/naughty/notification.lua:110
      */
-    var timeout: Int;
+    var timeout: Float;
 
     /**
      * The notification urgency level.
@@ -41,13 +41,13 @@ extern class Notification {
      * Delay in seconds after which hovered popup disappears.
      * @see lib/naughty/notification.lua:184
      */
-    var hover_timeout: Int;
+    var hover_timeout: Float;
 
     /**
      * Target screen for the notification.
      * @see lib/naughty/notification.lua:189
      */
-    var screen: Dynamic;
+    var screen: externs.Screen;
 
     /**
      * Corner of the workarea displaying the popups.
@@ -65,13 +65,13 @@ extern class Notification {
      * Popup height.
      * @see lib/naughty/notification.lua:259
      */
-    var height: Int;
+    var height: Float;
 
     /**
      * Popup width.
      * @see lib/naughty/notification.lua:265
      */
-    var width: Int;
+    var width: Float;
 
     /**
      * Notification font.
@@ -83,13 +83,13 @@ extern class Notification {
      * "All in one" way to access the default image or icon.
      * @see lib/naughty/notification.lua:309
      */
-    var icon: haxe.extern.EitherType<String, externs.gears.Surface>;
+    var icon: extype.extern.Mixed.Mixed2<String, externs.gears.Surface>;
 
     /**
      * Desired icon size in px.
      * @see lib/naughty/notification.lua:314
      */
-    var icon_size: Int;
+    var icon_size: Float;
 
     /**
      * The icon provided in the `app_icon` field of the DBus notification.
@@ -101,7 +101,7 @@ extern class Notification {
      * The notification image.
      * @see lib/naughty/notification.lua:333
      */
-    var image: haxe.extern.EitherType<String, externs.gears.Surface>;
+    var image: extype.extern.Mixed.Mixed2<String, externs.gears.Surface>;
 
     /**
      * The notification (animated) images.
@@ -113,19 +113,19 @@ extern class Notification {
      * Foreground color.
      * @see lib/naughty/notification.lua:376
      */
-    var fg: haxe.extern.EitherType<String, externs.gears.Color, pattern>;
+    var fg: extype.extern.Mixed.Mixed3<String, externs.gears.Color, pattern>;
 
     /**
      * Background color.
      * @see lib/naughty/notification.lua:406
      */
-    var bg: haxe.extern.EitherType<String, externs.gears.Color, pattern>;
+    var bg: extype.extern.Mixed.Mixed3<String, externs.gears.Color, pattern>;
 
     /**
      * Border width.
      * @see lib/naughty/notification.lua:411
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * Border color.
@@ -143,31 +143,31 @@ extern class Notification {
      * Widget opacity.
      * @see lib/naughty/notification.lua:518
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * Widget margin.
      * @see lib/naughty/notification.lua:554
      */
-    var margin: haxe.extern.EitherType<Int, lua.Table<String, Dynamic>>;
+    var margin: extype.extern.Mixed.Mixed2<Float, lua.Table<String, Dynamic>>;
 
     /**
      * Table with any of the above parameters.
      * @see lib/naughty/notification.lua:577
      */
-    var preset: Dynamic;
+    var preset: lua.Table<String, Dynamic>;
 
     /**
      * Function that will be called with all arguments.
      * @see lib/naughty/notification.lua:584
      */
-    var callback: Dynamic;
+    var callback: haxe.Constraints.Function;
 
     /**
      * A table containing strings that represents actions to buttons.
      * @see lib/naughty/notification.lua:592
      */
-    var actions: Dynamic;
+    var actions: lua.Table<String, Dynamic>;
 
     /**
      * Ignore this notification, do not display.
@@ -197,13 +197,13 @@ extern class Notification {
      * A list of clients associated with this notification.
      * @see lib/naughty/notification.lua:644
      */
-    var clients: Dynamic;
+    var clients: lua.Table<String, Dynamic>;
 
     /**
      * The maximum popup width.
      * @see lib/naughty/notification.lua:654
      */
-    var max_width: Int;
+    var max_width: Float;
 
     /**
      * The application name specified by the notification.
@@ -215,7 +215,7 @@ extern class Notification {
      * The widget template used to represent the notification.
      * @see lib/naughty/notification.lua:672
      */
-    var widget_template: Dynamic;
+    var widget_template: lua.Table<String, Dynamic>;
 
     /** Destroy notification by notification object.
      *
@@ -228,9 +228,9 @@ extern class Notification {
     /** Set new notification timeout.
      *
      * @see lib/naughty/notification.lua:702
-     * @param new_timeout Int  Time in seconds after which notification disappears.
+     * @param new_timeout Float  Time in seconds after which notification disappears.
      */
-    function reset_timeout(new_timeout: Int): Void;
+    function reset_timeout(new_timeout: Float): Void;
 
     /** Add more actions to the notification.
      *

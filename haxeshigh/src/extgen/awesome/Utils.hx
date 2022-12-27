@@ -15,3 +15,7 @@ class Utils {
         }
     }
 }
+
+// Local Variables:
+// haxe-module: "hx_extgen"
+// End:

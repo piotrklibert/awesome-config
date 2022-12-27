@@ -35,7 +35,7 @@ extern class Watch {
      * The widget opacity (transparency).
      * @see lib/awful/widget/watch.lua:146
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -47,17 +47,17 @@ extern class Watch {
      * The widget buttons.
      * @see lib/awful/widget/watch.lua:160
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a textbox that shows the output of a command and updates it at a given time interval.
      *
      * @see lib/awful/widget/watch.lua:78
-     * @param command haxe.extern.EitherType<String, lua.Table<String, Dynamic>>  The command.
+     * @param command extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>  The command.
      * @param timeout Int  The time interval at which the textbox will be updated.
      * @param callback haxe.Constraints.Function  The function that will be called after the command output will be received. it is shown in the textbox. Defaults to: function(widget, stdout, stderr, exitreason, exitcode) widget:set_text(stdout) end
      * @param base_widget Dynamic  Base widget.
      */
-    @:selfCall function new(command: haxe.extern.EitherType<String, lua.Table<String, Dynamic>>, timeout: Int, callback: haxe.Constraints.Function, base_widget: Dynamic): Void;
+    @:selfCall function new(command: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>, timeout: Int, callback: haxe.Constraints.Function, base_widget: Dynamic): Void;
 
     /** Set a declarative widget hierarchy description.
      *

@@ -48,30 +48,30 @@ extern class Scroll extends externs.wibox.widget.Base {
     /** Set the number of frames per second that this widget should draw.
      *
      * @see lib/wibox/container/scroll.lua:321
-     * @param fps Int  The number of frames per second
+     * @param fps Float  The number of frames per second
      */
-    function set_fps(fps: Int): Void;
+    function set_fps(fps: Float): Void;
 
     /** Set the amount of extra space that should be included in the scrolling.
      *
      * @see lib/wibox/container/scroll.lua:335
-     * @param extra_space Int  The amount of extra space
+     * @param extra_space Float  The amount of extra space
      */
-    function set_extra_space(extra_space: Int): Void;
+    function set_extra_space(extra_space: Float): Void;
 
     /** Set the speed of the scrolling animation.
      *
      * @see lib/wibox/container/scroll.lua:348
-     * @param speed Int  The speed for the animation
+     * @param speed Float  The speed for the animation
      */
-    function set_speed(speed: Int): Void;
+    function set_speed(speed: Float): Void;
 
     /** Set the maximum size of this widget in the direction set by @{set_direction}.
      *
      * @see lib/wibox/container/scroll.lua:362
-     * @param max_size Int  The maximum size of this widget or nil for unlimited.
+     * @param max_size Float  The maximum size of this widget or nil for unlimited.
      */
-    function set_max_size(max_size: Int): Void;
+    function set_max_size(max_size: Float): Void;
 
     /** Set the step function that determines the exact behaviour of the scrolling animation.
      *
@@ -83,9 +83,9 @@ extern class Scroll extends externs.wibox.widget.Base {
     /** Set an upper limit for the space for scrolling.
      *
      * @see lib/wibox/container/scroll.lua:402
-     * @param space_for_scrolling Int  The space for scrolling
+     * @param space_for_scrolling Float  The space for scrolling
      */
-    function set_space_for_scrolling(space_for_scrolling: Int): Void;
+    function set_space_for_scrolling(space_for_scrolling: Float): Void;
 
     /** Get a new horizontal scrolling container.
      *

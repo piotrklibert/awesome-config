@@ -11,7 +11,7 @@ extern class Clienticon extends externs.wibox.widget.Base {
      * The widget's @{client}.
      * @see lib/awful/widget/clienticon.lua:92
      */
-    var client: Dynamic;
+    var client: externs.Client;
 
     /** Returns a new clienticon.
      *

@@ -23,43 +23,43 @@ extern class Grid extends externs.wibox.widget.Base {
      * Force the number of rows of the layout.
      * @see lib/wibox/layout/grid.lua:113
      */
-    var forced_num_rows: Int;
+    var forced_num_rows: Float;
 
     /**
      * Force the number of columns of the layout.
      * @see lib/wibox/layout/grid.lua:117
      */
-    var forced_num_cols: Int;
+    var forced_num_cols: Float;
 
     /**
      * Set the minimum size for the columns.
      * @see lib/wibox/layout/grid.lua:126
      */
-    var min_cols_size: Int;
+    var min_cols_size: Float;
 
     /**
      * Set the minimum size for the rows.
      * @see lib/wibox/layout/grid.lua:130
      */
-    var min_rows_size: Int;
+    var min_rows_size: Float;
 
     /**
      * The spacing between columns.
      * @see lib/wibox/layout/grid.lua:137
      */
-    var horizontal_spacing: Int;
+    var horizontal_spacing: Float;
 
     /**
      * The spacing between rows.
      * @see lib/wibox/layout/grid.lua:144
      */
-    var vertical_spacing: Int;
+    var vertical_spacing: Float;
 
     /**
      * The spacing between rows and columns.
      * @see lib/wibox/layout/grid.lua:156
      */
-    var spacing: Int;
+    var spacing: Float;
 
     /**
      * Controls if the columns are expanded to use all the available width.
@@ -106,10 +106,10 @@ extern class Grid extends externs.wibox.widget.Base {
     /** Find the next available cell to insert a widget.
      *
      * @see lib/wibox/layout/grid.lua:312
-     * @param hint_row Int  The row coordinate of the last occupied cell.
-     * @param hint_column Int  The column coordinate of the last occupied cell.
+     * @param hint_row Float  The row coordinate of the last occupied cell.
+     * @param hint_column Float  The column coordinate of the last occupied cell.
      */
-    function get_next_empty(hint_row: Int, hint_column: Int): Void;
+    function get_next_empty(hint_row: Float, hint_column: Float): Void;
 
     /** Add some widgets to the given grid layout.
      *
@@ -122,12 +122,12 @@ extern class Grid extends externs.wibox.widget.Base {
      *
      * @see lib/wibox/layout/grid.lua:376
      * @param child Dynamic  Widget that should be added
-     * @param row Int  Row number for the top left corner of the widget
-     * @param col Int  Column number for the top left corner of the widget
-     * @param row_span Int  The number of rows the widget spans.
-     * @param col_span Int  The number of columns the widget spans.
+     * @param row Float  Row number for the top left corner of the widget
+     * @param col Float  Column number for the top left corner of the widget
+     * @param row_span Float  The number of rows the widget spans.
+     * @param col_span Float  The number of columns the widget spans.
      */
-    function add_widget_at(child: Dynamic, row: Int, col: Int, row_span: Int, col_span: Int): Bool;
+    function add_widget_at(child: Dynamic, row: Float, col: Float, row_span: Float, col_span: Float): Bool;
 
     /** Remove one or more widgets from the layout.
      *
@@ -139,12 +139,12 @@ extern class Grid extends externs.wibox.widget.Base {
     /** Remove widgets at the coordinates.
      *
      * @see lib/wibox/layout/grid.lua:454
-     * @param row Int  The row coordinate of the widget to remove
-     * @param col Int  The column coordinate of the widget to remove
-     * @param row_span Int  The number of rows the area to remove spans.
-     * @param col_span Int  The number of columns the area to remove spans.
+     * @param row Float  The row coordinate of the widget to remove
+     * @param col Float  The column coordinate of the widget to remove
+     * @param row_span Float  The number of rows the area to remove spans.
+     * @param col_span Float  The number of columns the area to remove spans.
      */
-    function remove_widgets_at(row: Int, col: Int, row_span: Int, col_span: Int): Bool;
+    function remove_widgets_at(row: Float, col: Float, row_span: Float, col_span: Float): Bool;
 
     /** Return the coordinates of the widget.
      *
@@ -156,12 +156,12 @@ extern class Grid extends externs.wibox.widget.Base {
     /** Return the widgets at the coordinates.
      *
      * @see lib/wibox/layout/grid.lua:495
-     * @param row Int  The row coordinate of the widget
-     * @param col Int  The column coordinate of the widget
-     * @param row_span Int  The number of rows to span.
-     * @param col_span Int  The number of columns to span.
+     * @param row Float  The row coordinate of the widget
+     * @param col Float  The column coordinate of the widget
+     * @param row_span Float  The number of rows to span.
+     * @param col_span Float  The number of columns to span.
      */
-    function get_widgets_at(row: Int, col: Int, row_span: Int, col_span: Int): lua.Table<String, Dynamic>;
+    function get_widgets_at(row: Float, col: Float, row_span: Float, col_span: Float): lua.Table<String, Dynamic>;
 
     /** Replace old widget by new widget, spanning the same columns and rows.
      *
@@ -174,44 +174,44 @@ extern class Grid extends externs.wibox.widget.Base {
     /** Insert column at index.
      *
      * @see lib/wibox/layout/grid.lua:591
-     * @param index Null<Int>  Insert the new column at index. If `nil`, the column is added at the end.
+     * @param index Null<Float>  Insert the new column at index. If `nil`, the column is added at the end.
      */
-    function insert_column(index: Null<Int>): Int;
+    function insert_column(index: Null<Float>): Float;
 
     /** Extend column at index.
      *
      * @see lib/wibox/layout/grid.lua:615
-     * @param index Null<Int>  Extend the column at index. If `nil`, the last column is extended.
+     * @param index Null<Float>  Extend the column at index. If `nil`, the last column is extended.
      */
-    function extend_column(index: Null<Int>): Int;
+    function extend_column(index: Null<Float>): Float;
 
     /** Remove column at index.
      *
      * @see lib/wibox/layout/grid.lua:640
-     * @param index Null<Int>  Remove column at index. If `nil`, the last column is removed.
+     * @param index Null<Float>  Remove column at index. If `nil`, the last column is removed.
      */
-    function remove_column(index: Null<Int>): Int;
+    function remove_column(index: Null<Float>): Float;
 
     /** Insert row at index.
      *
      * @see lib/wibox/layout/grid.lua:658
-     * @param index Null<Int>  Insert the new row at index. If `nil`, the row is added at the end.
+     * @param index Null<Float>  Insert the new row at index. If `nil`, the row is added at the end.
      */
-    function insert_row(index: Null<Int>): Int;
+    function insert_row(index: Null<Float>): Float;
 
     /** Extend row at index.
      *
      * @see lib/wibox/layout/grid.lua:676
-     * @param index Null<Int>  Extend the row at index. If `nil`, the last row is extended.
+     * @param index Null<Float>  Extend the row at index. If `nil`, the last row is extended.
      */
-    function extend_row(index: Null<Int>): Int;
+    function extend_row(index: Null<Float>): Float;
 
     /** Remove row at index.
      *
      * @see lib/wibox/layout/grid.lua:694
-     * @param index Null<Int>  Remove row at index. If `nil`, the last row is removed.
+     * @param index Null<Float>  Remove row at index. If `nil`, the last row is removed.
      */
-    function remove_row(index: Null<Int>): Int;
+    function remove_row(index: Null<Float>): Float;
 
     /** Reset the grid layout.
      *
@@ -229,34 +229,34 @@ extern class Grid extends externs.wibox.widget.Base {
     /** Return a new horizontal grid layout.
      *
      * @see lib/wibox/layout/grid.lua:1019
-     * @param forced_num_rows Null<Int>  Forced number of rows (`nil` for automatic).
+     * @param forced_num_rows Null<Float>  Forced number of rows (`nil` for automatic).
      * @param ...rest externs.wibox.Widget  Widgets that should be added to the layout.
      */
-    static function horizontal(forced_num_rows: Null<Int>, ...rest: externs.wibox.Widget): Void;
+    static function horizontal(forced_num_rows: Null<Float>, ...rest: externs.wibox.Widget): Void;
 
     /** Return a new vertical grid layout.
      *
      * @see lib/wibox/layout/grid.lua:1037
-     * @param forced_num_cols Null<Int>  Forced number of columns (`nil` for automatic).
+     * @param forced_num_cols Null<Float>  Forced number of columns (`nil` for automatic).
      * @param ...rest externs.wibox.Widget  Widgets that should be added to the layout.
      */
-    static function vertical(forced_num_cols: Null<Int>, ...rest: externs.wibox.Widget): Void;
+    static function vertical(forced_num_cols: Null<Float>, ...rest: externs.wibox.Widget): Void;
 
     /** Set a widget at a specific index, replacing the current one.
      *
      * @see lib/wibox/layout/grid.lua:1067
-     * @param index Int  A widget or a widget index
+     * @param index Float  A widget or a widget index
      * @param widget2 externs.wibox.Widget  The widget to replace the previous one with
      */
-    function set(index: Int, widget2: externs.wibox.Widget): Bool;
+    function set(index: Float, widget2: externs.wibox.Widget): Bool;
 
     /** Swap 2 widgets in a layout.
      *
      * @see lib/wibox/layout/grid.lua:1098
-     * @param index1 Int  The first widget index
-     * @param index2 Int  The second widget index
+     * @param index1 Float  The first widget index
+     * @param index2 Float  The second widget index
      */
-    function swap(index1: Int, index2: Int): Bool;
+    function swap(index1: Float, index2: Float): Bool;
 
     /** Swap 2 widgets in a layout.
      *

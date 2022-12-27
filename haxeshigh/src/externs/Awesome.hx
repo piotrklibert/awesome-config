@@ -104,9 +104,8 @@ extern class Awesome {
      * @param stdout Bool  Return a fd for stdout?
      * @param stderr Bool  Return a fd for stderr?
      * @param exit_callback haxe.Constraints.Function  Function to call on process exit. The function arguments will be type of exit ("exit" or "signal") and the exit code / the signal number causing process termination.
-     * @param cmd lua.Table<String, Dynamic>  The environment to use for the spawned program. Without this the spawned process inherits awesome's environment.
      */
-    static function spawn(cmd: lua.Table<String, Dynamic>, use_sn: Bool, stdin: Bool, stdout: Bool, stderr: Bool, exit_callback: haxe.Constraints.Function, cmd: lua.Table<String, Dynamic>): Int;
+    static function spawn(cmd: lua.Table<String, Dynamic>, use_sn: Bool, stdin: Bool, stdout: Bool, stderr: Bool, exit_callback: haxe.Constraints.Function): Int;
 
     /** Switch keyboard layout.
      *

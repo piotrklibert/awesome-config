@@ -11,13 +11,13 @@ extern class Action {
      * The action position (index).
      * @see lib/naughty/action.lua:46
      */
-    var position: Int;
+    var position: Float;
 
     /**
      * The action icon.
      * @see lib/naughty/action.lua:51
      */
-    var icon: haxe.extern.EitherType<externs.gears.Surface, String>;
+    var icon: extype.extern.Mixed.Mixed2<externs.gears.Surface, String>;
 
     /**
      * If the action should hide the label and only display the icon.

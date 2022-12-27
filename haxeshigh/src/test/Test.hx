@@ -1,9 +1,36 @@
 package test;
 
+import utils.lua.Macro.A;
+import utils.lua.Macro.T;
+import utils.lua.Macro.unwrapCallbacks;
+
+import externs.Overrides;
 
 class Test {
     public static function main() {
-        externs.Client.iterate((x) -> trace(x), 1, null);
+        final w = new externs.Wibox({width: 100, height: 400});
+        w.x = 300;
+        w.y = 30;
+        w.visible = true;
+        w.border_width = 10;
+
+        externs.awful.Spawn.spawn("xterm", null, null);
+        final f = () -> {
+            final s = externs.Screen.focused();
+            $type(s.padding);
+            trace(s.outputs);
+            final c = s.clients[1];
+            $type(c);
+            final g = c.geometry();
+            c.geometry({x: g.x + 10});
+        };
+
+        new externs.gears.Timer(unwrapCallbacks({
+            timeout: 0.3,
+            autostart: true,
+            callback: f,
+            single_shot: true
+        }));
     }
 }
 
@@ -36,3 +63,7 @@ class Test {
 //             trace(p);
 //     }
 // }
+
+// Local Variables:
+// haxe-module: "hx_test"
+// End:

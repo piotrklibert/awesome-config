@@ -24,7 +24,7 @@ extern class Fixed extends externs.wibox.widget.Base {
      * The amount of space inserted between the child widgets.
      * @see lib/wibox/layout/fixed.lua:525
      */
-    var spacing: Int;
+    var spacing: Float;
 
     /** Add some widgets to the given layout.
      *
@@ -36,9 +36,9 @@ extern class Fixed extends externs.wibox.widget.Base {
     /** Remove a widget from the layout.
      *
      * @see lib/wibox/layout/fixed.lua:167
-     * @param index Int  The widget index to remove
+     * @param index Float  The widget index to remove
      */
-    function remove(index: Int): Bool;
+    function remove(index: Float): Bool;
 
     /** Remove one or more widgets from the layout.
      *
@@ -59,10 +59,10 @@ extern class Fixed extends externs.wibox.widget.Base {
     /** Insert a new widget in the layout at position `index`.
      *
      * @see lib/wibox/layout/fixed.lua:373
-     * @param index Int  The position.
+     * @param index Float  The position.
      * @param widget externs.wibox.Widget  The widget.
      */
-    function insert(index: Int, widget: externs.wibox.Widget): Bool;
+    function insert(index: Float, widget: externs.wibox.Widget): Bool;
 
     /** Creates and returns a new horizontal fixed layout.
      *
@@ -81,18 +81,18 @@ extern class Fixed extends externs.wibox.widget.Base {
     /** Set a widget at a specific index, replacing the current one.
      *
      * @see lib/wibox/layout/fixed.lua:551
-     * @param index Int  A widget or a widget index
+     * @param index Float  A widget or a widget index
      * @param widget2 externs.wibox.Widget  The widget to replace the previous one with
      */
-    function set(index: Int, widget2: externs.wibox.Widget): Bool;
+    function set(index: Float, widget2: externs.wibox.Widget): Bool;
 
     /** Swap 2 widgets in a layout.
      *
      * @see lib/wibox/layout/fixed.lua:582
-     * @param index1 Int  The first widget index
-     * @param index2 Int  The second widget index
+     * @param index1 Float  The first widget index
+     * @param index2 Float  The second widget index
      */
-    function swap(index1: Int, index2: Int): Bool;
+    function swap(index1: Float, index2: Float): Bool;
 
     /** Swap 2 widgets in a layout.
      *

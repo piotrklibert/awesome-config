@@ -12,7 +12,7 @@ extern class Color {
      * @see lib/gears/color.lua:73
      * @param col Dynamic  The color to parse
      */
-    static function parse_color(col: Dynamic): Int;
+    static function parse_color(col: Dynamic): Float;
 
     /** Create a solid pattern
      *
@@ -31,16 +31,16 @@ extern class Color {
     /** Create a linear pattern object.
      *
      * @see lib/gears/color.lua:201
-     * @param arg haxe.extern.EitherType<String, lua.Table<String, Dynamic>>  The argument describing the pattern.
+     * @param arg extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>  The argument describing the pattern.
      */
-    static function create_linear_pattern(arg: haxe.extern.EitherType<String, lua.Table<String, Dynamic>>): Void;
+    static function create_linear_pattern(arg: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>): Void;
 
     /** Create a radial pattern object.
      *
      * @see lib/gears/color.lua:227
-     * @param arg haxe.extern.EitherType<String, lua.Table<String, Dynamic>>  The argument describing the pattern
+     * @param arg extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>  The argument describing the pattern
      */
-    static function create_radial_pattern(arg: haxe.extern.EitherType<String, lua.Table<String, Dynamic>>): Void;
+    static function create_radial_pattern(arg: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>): Void;
 
     /** Create a pattern from a given string.
      *

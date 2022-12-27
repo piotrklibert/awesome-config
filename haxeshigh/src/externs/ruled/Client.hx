@@ -78,9 +78,9 @@ extern class Client {
     /** Remove a new rule to the default set.
      *
      * @see lib/ruled/client.lua:395
-     * @param rule haxe.extern.EitherType<lua.Table<String, Dynamic>, String>  A valid rule or a name passed in the `id` value when calling `append_rule`.
+     * @param rule extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, String>  A valid rule or a name passed in the `id` value when calling `append_rule`.
      */
-    static function remove_rule(rule: haxe.extern.EitherType<lua.Table<String, Dynamic>, String>): Void;
+    static function remove_rule(rule: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, String>): Void;
 
     /** Add a new rule source.
      *

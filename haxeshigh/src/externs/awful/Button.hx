@@ -41,13 +41,13 @@ extern class Button {
      * The callback when this button is pressed.
      * @see lib/awful/button.lua:101
      */
-    var on_press: Dynamic;
+    var on_press: haxe.Constraints.Function;
 
     /**
      * The callback when this button is released.
      * @see lib/awful/button.lua:106
      */
-    var on_release: Dynamic;
+    var on_release: haxe.Constraints.Function;
 
     /** Execute this mousebinding.
      *

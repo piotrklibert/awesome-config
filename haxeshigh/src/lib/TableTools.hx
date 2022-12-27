@@ -5,11 +5,21 @@ using Lambda;
 using lib.LambdaTools;
 using Safety;
 
+
+@:tink
 @:publicFields
 class TableTools {
-    static function keys<K, V>(table: Table<K, V>): Iterator<K> {
+    static function keys<K, V>(table: Table<K, V>): Array<K> {
         final m : Map<K, Dynamic> = Table.toMap(table);
-        return m.keys();
+        return [ for (k in m.keys()) k ];
+    }
+
+    static inline function iter<K, V>(table: Table<K, V>): Iterator<{index: K, value: V}> {
+        return lua.PairTools.pairsIterator(table);
+    }
+
+    static inline function iteri<V>(table: Table<Int, V>): Iterator<{index: Int, value: V}> {
+        return lua.PairTools.ipairsIterator(table);
     }
 
     // static function without<K, V>(table: Table<K, V>, ...args: K): Table<K, V> {
@@ -22,7 +32,6 @@ class TableTools {
     static function numericKeys<V>(table: Table<Dynamic, V>): Array<String> {
         final pp : Table<String, V> = cast table;
         final nums = TableTools.keys(pp)
-            .toArray()
             .filter(x -> Std.parseInt(x) != null)
             .map(x -> Std.parseInt(x).sure());
         nums.sort(Reflect.compare);
@@ -32,7 +41,6 @@ class TableTools {
     static function stringKeys<V>(table: Table<Dynamic, V>): Array<String> {
         final pp : Table<String, V> = cast table;
         final nums = TableTools.keys(pp)
-            .toArray()
             .filter(x -> Std.parseInt(x) == null);
         // nums.sort(Reflect.compare);
         return nums.map(Std.string);
@@ -48,7 +56,7 @@ class TableTools {
     }
 
     static inline function keysArray<K, V>(it: Table<K, V>): Array<K> {
-        return TableTools.keys(it).toArray();
+        return TableTools.keys(it);
     }
 
     static function values<K, V>(it: Table<K, V>): Array<V> {

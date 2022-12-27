@@ -11,7 +11,7 @@ extern class Keygrabber {
      * The keygrabber timeout.
      * @see lib/awful/keygrabber.lua:361
      */
-    var timeout: Int;
+    var timeout: Float;
 
     /**
      * The key on which the keygrabber listen to terminate itself.
@@ -47,13 +47,13 @@ extern class Keygrabber {
      * The root (global) keybinding to start this keygrabber.
      * @see lib/awful/keygrabber.lua:497
      */
-    var root_keybindings: Dynamic;
+    var root_keybindings: lua.Table<String, Dynamic>;
 
     /**
      * The keybindings associated with this keygrabber.
      * @see lib/awful/keygrabber.lua:507
      */
-    var keybindings: Dynamic;
+    var keybindings: lua.Table<String, Dynamic>;
 
     /**
      * If any key is pressed that is not in this list, the keygrabber is stopped.

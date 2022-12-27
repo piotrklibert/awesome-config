@@ -35,7 +35,7 @@ extern class Taglist {
      * The widget opacity (transparency).
      * @see lib/awful/widget/taglist.lua:728
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -47,7 +47,7 @@ extern class Taglist {
      * The widget buttons.
      * @see lib/awful/widget/taglist.lua:742
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a new taglist widget.
      *

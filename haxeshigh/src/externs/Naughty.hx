@@ -23,7 +23,7 @@ extern class Naughty {
      * A table with all active notifications.
      * @see lib/naughty/core.lua:131
      */
-    var active: Dynamic;
+    var active: lua.Table<String, Dynamic>;
 
     /**
      * True when there is a handler connected to `request::display`.

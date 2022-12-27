@@ -41,7 +41,7 @@ extern class Message {
      * The widget opacity (transparency).
      * @see lib/naughty/widget/message.lua:147
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -53,7 +53,7 @@ extern class Message {
      * The widget buttons.
      * @see lib/naughty/widget/message.lua:161
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a new naughty.widget.message.
      *

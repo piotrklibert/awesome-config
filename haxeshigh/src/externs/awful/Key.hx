@@ -41,13 +41,13 @@ extern class Key {
      * The callback when this key is pressed.
      * @see lib/awful/key.lua:134
      */
-    var on_press: Dynamic;
+    var on_press: haxe.Constraints.Function;
 
     /**
      * The callback when this key is released.
      * @see lib/awful/key.lua:139
      */
-    var on_release: Dynamic;
+    var on_release: haxe.Constraints.Function;
 
     /** Execute this keybinding.
      *

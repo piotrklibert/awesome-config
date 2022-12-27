@@ -47,7 +47,7 @@ extern class Icon {
      * The widget opacity (transparency).
      * @see lib/naughty/widget/icon.lua:242
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -59,7 +59,7 @@ extern class Icon {
      * The widget buttons.
      * @see lib/naughty/widget/icon.lua:256
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a new naughty.widget.icon.
      *

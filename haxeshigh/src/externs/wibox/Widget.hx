@@ -12,32 +12,32 @@ extern class Widget {
      * @see lib/wibox/widget/init.lua:41
      * @param wdg externs.wibox.Widget  A widget to draw
      * @param cr Dynamic  The cairo context to draw the widget on
-     * @param width Int  The width of the widget
-     * @param height Int  The height of the widget
+     * @param width Float  The width of the widget
+     * @param height Float  The height of the widget
      * @param context lua.Table<String, Dynamic>  The context information to give to the widget.
      */
-    static function draw_to_cairo_context(wdg: externs.wibox.Widget, cr: Dynamic, width: Int, height: Int, context: lua.Table<String, Dynamic>): Void;
+    static function draw_to_cairo_context(wdg: externs.wibox.Widget, cr: Dynamic, width: Float, height: Float, context: lua.Table<String, Dynamic>): Void;
 
     /** Create an SVG file showing this widget.
      *
      * @see lib/wibox/widget/init.lua:55
      * @param wdg externs.wibox.Widget  A widget
      * @param path String  The output file path
-     * @param width Int  The surface width
-     * @param height Int  The surface height
+     * @param width Float  The surface width
+     * @param height Float  The surface height
      * @param context lua.Table<String, Dynamic>  The context information to give to the widget.
      */
-    static function draw_to_svg_file(wdg: externs.wibox.Widget, path: String, width: Int, height: Int, context: lua.Table<String, Dynamic>): Void;
+    static function draw_to_svg_file(wdg: externs.wibox.Widget, path: String, width: Float, height: Float, context: lua.Table<String, Dynamic>): Void;
 
     /** Create a cairo image surface showing this widget.
      *
      * @see lib/wibox/widget/init.lua:70
      * @param wdg externs.wibox.Widget  A widget
-     * @param width Int  The surface width
-     * @param height Int  The surface height
+     * @param width Float  The surface width
+     * @param height Float  The surface height
      * @param format Dynamic  The surface format
      * @param context lua.Table<String, Dynamic>  The context information to give to the widget.
      */
-    static function draw_to_image_surface(wdg: externs.wibox.Widget, width: Int, height: Int, format: Dynamic, context: lua.Table<String, Dynamic>): Void;
+    static function draw_to_image_surface(wdg: externs.wibox.Widget, width: Float, height: Float, format: Dynamic, context: lua.Table<String, Dynamic>): Void;
 }
 

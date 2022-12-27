@@ -17,7 +17,7 @@ extern class Separator extends externs.wibox.widget.Base {
      * The separator's thickness.
      * @see lib/wibox/widget/separator.lua:68
      */
-    var thickness: Int;
+    var thickness: Float;
 
     /**
      * The separator's shape.
@@ -47,7 +47,7 @@ extern class Separator extends externs.wibox.widget.Base {
      * The separator's border width.
      * @see lib/wibox/widget/separator.lua:129
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /** Create a new separator.
      *

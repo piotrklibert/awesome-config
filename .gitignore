@@ -6,3 +6,5 @@ haxeshigh/logs/
 haxeshigh/tmp/
 logs
 /haxeshigh/shadow/
+/haxeshigh/output/*clean*
+/haxeshigh/out/

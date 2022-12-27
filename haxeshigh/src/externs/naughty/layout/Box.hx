@@ -17,7 +17,7 @@ extern class Box extends externs.awful.Popup {
      * The widget template to construct the box content.
      * @see lib/naughty/layout/box.lua:221
      */
-    var widget_template: Dynamic;
+    var widget_template: externs.wibox.Widget;
 
     /**
      * Border width.
@@ -53,7 +53,7 @@ extern class Box extends externs.awful.Popup {
      * The opacity of the wibox, between 0 and 1.
      * @see lib/naughty/layout/box.lua:485
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The window type (desktop, normal, dock, ...).
@@ -89,19 +89,19 @@ extern class Box extends externs.awful.Popup {
      * The wibox screen.
      * @see lib/naughty/layout/box.lua:528
      */
-    var screen: Dynamic;
+    var screen: externs.Screen;
 
     /**
      * The wibox's `drawable`.
      * @see lib/naughty/layout/box.lua:535
      */
-    var drawable: drawable;
+    var drawable: externs.wibox.Drawable;
 
     /**
      * The widget that the `wibox` displays.
      * @see lib/naughty/layout/box.lua:541
      */
-    var widget: Dynamic;
+    var widget: externs.wibox.Widget;
 
     /**
      * The X window id.
@@ -155,7 +155,7 @@ extern class Box extends externs.awful.Popup {
      * The background image of the drawable.
      * @see lib/naughty/layout/box.lua:691
      */
-    var bgimage: haxe.extern.EitherType<externs.gears.Surface, String, haxe.Constraints.Function>;
+    var bgimage: extype.extern.Mixed.Mixed3<externs.gears.Surface, String, haxe.Constraints.Function>;
 
     /**
      * The foreground (text) of the wibox.
@@ -194,9 +194,9 @@ extern class Box extends externs.awful.Popup {
     /** Find a widget by a point.
      *
      * @see lib/naughty/layout/box.lua:711
-     * @param x Int  X coordinate of the point
-     * @param y Int  Y coordinate of the point
+     * @param x Float  X coordinate of the point
+     * @param y Float  Y coordinate of the point
      */
-    function find_widgets(x: Int, y: Int): lua.Table<String, Dynamic>;
+    function find_widgets(x: Float, y: Float): lua.Table<String, Dynamic>;
 }
 

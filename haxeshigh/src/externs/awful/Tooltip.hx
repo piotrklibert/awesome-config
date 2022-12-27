@@ -65,43 +65,43 @@ extern class Tooltip extends externs.Wibox {
      * Change the tooltip's update interval.
      * @see lib/awful/tooltip.lua:533
      */
-    var timeout: Int;
+    var timeout: Float;
 
     /**
      * Set all margins around the tooltip textbox.
      * @see lib/awful/tooltip.lua:551
      */
-    var margins: New;
+    var margins: extype.extern.Mixed.Mixed2<Float, lua.Table<String, Dynamic>>;
 
     /**
      * The border width.
      * @see lib/awful/tooltip.lua:568
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * The border color.
      * @see lib/awful/tooltip.lua:584
      */
-    var border_color: Dynamic;
+    var border_color: externs.gears.Color;
 
     /**
      * Set the margins around the left and right of the tooltip textbox.
      * @see lib/awful/tooltip.lua:600
      */
-    var margins_leftright: New;
+    var margins_leftright: Float;
 
     /**
      * Set the margins around the top and bottom of the tooltip textbox.
      * @see lib/awful/tooltip.lua:622
      */
-    var margins_topbottom: New;
+    var margins_topbottom: Float;
 
     /**
      * Set the margins between the tooltip and its parent.
      * @see lib/awful/tooltip.lua:644
      */
-    var gaps: New;
+    var gaps: extype.extern.Mixed.Mixed2<Float, lua.Table<String, Dynamic>>;
 
     /** Add tooltip to an object.
      *

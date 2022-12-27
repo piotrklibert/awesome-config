@@ -11,7 +11,7 @@ extern class Stack extends externs.wibox.layout.Fixed {
      * Add spacing around the widget, similar to the margin container.
      * @see lib/wibox/layout/stack.lua:90
      */
-    var spacing: Int;
+    var spacing: Float;
 
     /**
      * If only the first stack widget is drawn.
@@ -23,13 +23,13 @@ extern class Stack extends externs.wibox.layout.Fixed {
      * Add an horizontal offset to each layers.
      * @see lib/wibox/layout/stack.lua:195
      */
-    var horizontal_offset: Int;
+    var horizontal_offset: Float;
 
     /**
      * Add an vertical offset to each layers.
      * @see lib/wibox/layout/stack.lua:205
      */
-    var vertial_offset: Int;
+    var vertial_offset: Float;
 
     /** Add some widgets to the given stack layout.
      *
@@ -48,10 +48,10 @@ extern class Stack extends externs.wibox.layout.Fixed {
     /** Insert a new widget in the layout at position `index`.
      *
      * @see lib/wibox/layout/stack.lua:61
-     * @param index Int  The position
+     * @param index Float  The position
      * @param widget externs.wibox.Widget  The widget
      */
-    function insert(index: Int, widget: externs.wibox.Widget): Bool;
+    function insert(index: Float, widget: externs.wibox.Widget): Bool;
 
     /** Remove one or more widgets from the layout.
      *
@@ -63,9 +63,9 @@ extern class Stack extends externs.wibox.layout.Fixed {
     /** Raise a widget at `index` to the top of the stack.
      *
      * @see lib/wibox/layout/stack.lua:140
-     * @param index Int  the widget index to raise
+     * @param index Float  the widget index to raise
      */
-    function raise(index: Int): Void;
+    function raise(index: Float): Void;
 
     /** Raise the first instance of `widget`.
      *
@@ -84,10 +84,10 @@ extern class Stack extends externs.wibox.layout.Fixed {
     /** Set a widget at a specific index, replacing the current one.
      *
      * @see lib/wibox/layout/stack.lua:259
-     * @param index Int  A widget or a widget index
+     * @param index Float  A widget or a widget index
      * @param widget2 externs.wibox.Widget  The widget to replace the previous one with
      */
-    function set(index: Int, widget2: externs.wibox.Widget): Bool;
+    function set(index: Float, widget2: externs.wibox.Widget): Bool;
 
     /** Replace the first instance of `widget` in the layout with `widget2`.
      *
@@ -101,10 +101,10 @@ extern class Stack extends externs.wibox.layout.Fixed {
     /** Swap 2 widgets in a layout.
      *
      * @see lib/wibox/layout/stack.lua:290
-     * @param index1 Int  The first widget index
-     * @param index2 Int  The second widget index
+     * @param index1 Float  The first widget index
+     * @param index2 Float  The second widget index
      */
-    function swap(index1: Int, index2: Int): Bool;
+    function swap(index1: Float, index2: Float): Bool;
 
     /** Swap 2 widgets in a layout.
      *

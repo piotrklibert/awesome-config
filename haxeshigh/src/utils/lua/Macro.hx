@@ -1,10 +1,11 @@
 package utils.lua;
 
 import haxe.macro.Expr;
-// import utils.lua.LuaTools.LuaTable;
+import haxe.macro.Context;
 
-using haxe.macro.ExprTools;
 using Lambda;
+using haxe.macro.ExprTools;
+using haxe.macro.TypeTools;
 
 @:tink
 class Macro {
@@ -19,7 +20,7 @@ class Macro {
     }
 
     public static macro function T(x: Expr) {
-        return macro (untyped __lua_table__($e{x}) : lua.Table.AnyTable);
+        return macro untyped __lua_table__($e{x});
     }
 
     public static macro function A(x: Expr) {
@@ -42,6 +43,31 @@ class Macro {
 
     public static macro function AT(x: Expr, y: Expr) {
         return macro (untyped __lua_table__($e{y}, $e{x}) : lua.Table.AnyTable);
+    }
+
+
+    public static macro function unwrapCallbacks(expr: Expr) {
+        final funs = [];
+        switch (expr){
+            case {expr: EObjectDecl(fields)}:
+            for (field in fields) switch (Context.typeof(field.expr)) {
+                case TFun(_, _): funs.push(field);
+                default:
+            }
+            default:
+        }
+        final out = [];
+        final name = '_unwrap${counter++}';
+        out.push(macro final $name = ${expr});
+        for (ff in funs) {
+            final sf = EConst(CString(ff.field, DoubleQuotes));
+            final sf = {expr: sf, pos: Context.currentPos()};
+            out.push(macro Reflect.setField($i{name}, $sf, $e{ff.expr}));
+        }
+        out.push(macro $i{name});
+        // trace((macro {$b{out}}).toString());
+
+        return macro {$b{out}};
     }
 
     public static macro function wrap1(attrs: Expr, w: Expr) {

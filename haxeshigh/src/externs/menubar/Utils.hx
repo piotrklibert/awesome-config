@@ -19,7 +19,7 @@ extern class Utils {
      * @see lib/menubar/utils.lua:216
      * @param icon_file String  Short or full name of the icon.
      */
-    static function lookup_icon_uncached(icon_file: String): haxe.extern.EitherType<String, Bool>;
+    static function lookup_icon_uncached(icon_file: String): extype.extern.Mixed.Mixed2<String, Bool>;
 
     /** Lookup an icon in different folders of the filesystem (cached).
      *

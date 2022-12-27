@@ -41,7 +41,7 @@ extern class Background {
      * The widget opacity (transparency).
      * @see lib/naughty/container/background.lua:148
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -53,7 +53,7 @@ extern class Background {
      * The widget buttons.
      * @see lib/naughty/container/background.lua:162
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a new naughty.container.background.
      *

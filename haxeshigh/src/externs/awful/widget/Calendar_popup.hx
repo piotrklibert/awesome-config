@@ -10,11 +10,11 @@ extern class Calendar_popup {
     /** Call the calendar with offset
      *
      * @see lib/awful/widget/calendar_popup.lua:230
-     * @param offset Int  Offset with respect to current month or year
+     * @param offset Float  Offset with respect to current month or year
      * @param position String  Two-character position of the calendar in the screen
      * @param screen externs.Screen  Screen where to display the calendar
      */
-    function call_calendar(offset: Int, position: String, screen: externs.Screen): wibox;
+    function call_calendar(offset: Float, position: String, screen: externs.Screen): wibox;
 
     /** Toggle calendar visibility.
      *

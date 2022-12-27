@@ -17,13 +17,13 @@ extern class Margin extends externs.wibox.widget.Base {
      * Set all the margins to val.
      * @see lib/wibox/container/margin.lua:104
      */
-    var margins: haxe.extern.EitherType<Int, lua.Table<String, Dynamic>>;
+    var margins: extype.extern.Mixed.Mixed2<Float, lua.Table<String, Dynamic>>;
 
     /**
      * Set the margins color to create a border.
      * @see lib/wibox/container/margin.lua:135
      */
-    var color: Dynamic;
+    var color: externs.gears.Color;
 
     /**
      * Draw the margin even if the content size is 0x0.
@@ -35,25 +35,25 @@ extern class Margin extends externs.wibox.widget.Base {
      * Set the left margin that this layout adds to its widget.
      * @see lib/wibox/container/margin.lua:178
      */
-    var left: Int;
+    var left: Float;
 
     /**
      * Set the right margin that this layout adds to its widget.
      * @see lib/wibox/container/margin.lua:184
      */
-    var right: Int;
+    var right: Float;
 
     /**
      * Set the top margin that this layout adds to its widget.
      * @see lib/wibox/container/margin.lua:190
      */
-    var top: Int;
+    var top: Float;
 
     /**
      * Set the bottom margin that this layout adds to its widget.
      * @see lib/wibox/container/margin.lua:196
      */
-    var bottom: Int;
+    var bottom: Float;
 
     /** Reset this layout.
      *

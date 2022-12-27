@@ -54,13 +54,13 @@ extern class Surface {
     /** Create a surface from a `gears.shape` Any additional parameters will be passed to the shape function
      *
      * @see lib/gears/surface.lua:176
-     * @param width Int  The surface width
-     * @param height Int  The surface height
+     * @param width Float  The surface width
+     * @param height Float  The surface height
      * @param shape Dynamic  A `gears.shape` compatible function
      * @param shape_color Dynamic  The shape color or pattern
      * @param bg_color Dynamic  The surface background color
      */
-    static function load_from_shape(width: Int, height: Int, shape: Dynamic, shape_color: Dynamic, bg_color: Dynamic): Dynamic;
+    static function load_from_shape(width: Float, height: Float, shape: Dynamic, shape_color: Dynamic, bg_color: Dynamic): Dynamic;
 
     /** Apply a shape to a client or a wibox.
      *

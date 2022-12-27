@@ -7,7 +7,6 @@ enum abstract MethodDeclarator(String) {
     var Constructor = "@:selfCall function";
 }
 
-
 typedef Package = {
     path: Array<String>,
     name: String,
@@ -19,11 +18,18 @@ typedef Identifier = {
     @:optional var native: Null<String>;
 };
 
-typedef Argument = {
-    argName: Identifier,
-    typeName: String,
-    argDoc: String,
+
+typedef ArgumentDesc = {
+    name: Identifier,
+    type: String,
+    doc: String,
 };
+
+enum Argument {
+    SimpleArgument(a: ArgumentDesc);
+    ComplexArgument(a: ArgumentDesc & {structure: Map<String, String>});
+}
+
 
 typedef Attribute = {
     declarator: String,
@@ -62,6 +68,7 @@ typedef Class = {
 typedef Module = {
     pkg: String,
     imports: Array<String>,
+    types: Array<String>,
     cls: Class,
     source: String,
     file: String,

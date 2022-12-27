@@ -25,15 +25,15 @@ extern class Math {
     /** Round a number to an integer.
      *
      * @see lib/gears/math.lua:75
-     * @param x Int  <no desc>
+     * @param x Float  <no desc>
      */
-    static function round(x: Int): Int;
+    static function round(x: Float): Int;
 
     /** Return the sign of the number x return 1 if x is positive, -1 if negative and 0 if x is 0
      *
      * @see lib/gears/math.lua:84
-     * @param x Int  <no desc>
+     * @param x Float  <no desc>
      */
-    static function sign(x: Int): Int;
+    static function sign(x: Float): Int;
 }
 

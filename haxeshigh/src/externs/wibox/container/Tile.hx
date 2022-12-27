@@ -11,13 +11,13 @@ extern class Tile extends externs.wibox.container.Place {
      * The horizontal spacing between the tiled.
      * @see lib/wibox/container/tile.lua:120
      */
-    var horizontal_spacing: Int;
+    var horizontal_spacing: Float;
 
     /**
      * The vertical spacing between the tiled.
      * @see lib/wibox/container/tile.lua:147
      */
-    var vertical_spacing: Int;
+    var vertical_spacing: Float;
 
     /**
      * Avoid painting incomplete horizontal tiles.

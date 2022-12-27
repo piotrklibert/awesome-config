@@ -17,17 +17,17 @@ extern class Manual extends externs.wibox.widget.Base {
     /** Remove a widget from the layout.
      *
      * @see lib/wibox/layout/manual.lua:53
-     * @param index Int  The widget index to remove
+     * @param index Float  The widget index to remove
      */
-    function remove(index: Int): Bool;
+    function remove(index: Float): Bool;
 
     /** Insert a new widget in the layout at position `index`.
      *
      * @see lib/wibox/layout/manual.lua:64
-     * @param index Int  The position
+     * @param index Float  The position
      * @param widget externs.wibox.Widget  The widget
      */
-    function insert(index: Int, widget: externs.wibox.Widget): Bool;
+    function insert(index: Float, widget: externs.wibox.Widget): Bool;
 
     /** Remove one or more widgets from the layout.
      *
@@ -40,25 +40,25 @@ extern class Manual extends externs.wibox.widget.Base {
      *
      * @see lib/wibox/layout/manual.lua:230
      * @param widget externs.wibox.Widget  The widget.
-     * @param point haxe.extern.EitherType<lua.Table<String, Dynamic>, haxe.Constraints.Function>  Either an `{x=x,y=y}` table or a function returning the new geometry.
+     * @param point extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>  Either an `{x=x,y=y}` table or a function returning the new geometry.
      */
-    function add_at(widget: externs.wibox.Widget, point: haxe.extern.EitherType<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
+    function add_at(widget: externs.wibox.Widget, point: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
 
     /** Move a widget (by index).
      *
      * @see lib/wibox/layout/manual.lua:254
-     * @param index Int  The widget index.
-     * @param point haxe.extern.EitherType<lua.Table<String, Dynamic>, haxe.Constraints.Function>  A new point value.
+     * @param index Float  The widget index.
+     * @param point extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>  A new point value.
      */
-    function move(index: Int, point: haxe.extern.EitherType<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
+    function move(index: Float, point: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
 
     /** Move a widget.
      *
      * @see lib/wibox/layout/manual.lua:282
      * @param widget externs.wibox.Widget  The widget.
-     * @param point haxe.extern.EitherType<lua.Table<String, Dynamic>, haxe.Constraints.Function>  A new point value.
+     * @param point extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>  A new point value.
      */
-    function move_widget(widget: externs.wibox.Widget, point: haxe.extern.EitherType<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
+    function move_widget(widget: externs.wibox.Widget, point: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
 
     /** Create a manual layout.
      *
@@ -70,10 +70,10 @@ extern class Manual extends externs.wibox.widget.Base {
     /** Set a widget at a specific index, replacing the current one.
      *
      * @see lib/wibox/layout/manual.lua:336
-     * @param index Int  A widget or a widget index
+     * @param index Float  A widget or a widget index
      * @param widget2 externs.wibox.Widget  The widget to replace the previous one with
      */
-    function set(index: Int, widget2: externs.wibox.Widget): Bool;
+    function set(index: Float, widget2: externs.wibox.Widget): Bool;
 
     /** Replace the first instance of `widget` in the layout with `widget2`.
      *
@@ -87,10 +87,10 @@ extern class Manual extends externs.wibox.widget.Base {
     /** Swap 2 widgets in a layout.
      *
      * @see lib/wibox/layout/manual.lua:367
-     * @param index1 Int  The first widget index
-     * @param index2 Int  The second widget index
+     * @param index1 Float  The first widget index
+     * @param index2 Float  The second widget index
      */
-    function swap(index1: Int, index2: Int): Bool;
+    function swap(index1: Float, index2: Float): Bool;
 
     /** Swap 2 widgets in a layout.
      *

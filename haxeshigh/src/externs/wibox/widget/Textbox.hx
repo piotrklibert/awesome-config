@@ -52,32 +52,32 @@ extern class Textbox extends externs.wibox.widget.Base {
     /** Get the preferred size of a textbox.
      *
      * @see lib/wibox/widget/textbox.lua:94
-     * @param s haxe.extern.EitherType<Int, externs.Screen>  The screen on which the textbox will be displayed.
+     * @param s extype.extern.Mixed.Mixed2<Int, externs.Screen>  The screen on which the textbox will be displayed.
      */
-    function get_preferred_size(s: haxe.extern.EitherType<Int, externs.Screen>): Int;
+    function get_preferred_size(s: extype.extern.Mixed.Mixed2<Int, externs.Screen>): Float;
 
     /** Get the preferred height of a textbox at a given width.
      *
      * @see lib/wibox/widget/textbox.lua:115
-     * @param width Int  The available width.
-     * @param s haxe.extern.EitherType<Int, externs.Screen>  The screen on which the textbox will be displayed.
+     * @param width Float  The available width.
+     * @param s extype.extern.Mixed.Mixed2<Int, externs.Screen>  The screen on which the textbox will be displayed.
      */
-    function get_height_for_width(width: Int, s: haxe.extern.EitherType<Int, externs.Screen>): Int;
+    function get_height_for_width(width: Float, s: extype.extern.Mixed.Mixed2<Int, externs.Screen>): Float;
 
     /** Get the preferred size of a textbox.
      *
      * @see lib/wibox/widget/textbox.lua:135
-     * @param dpi Int  The DPI value to render at.
+     * @param dpi Float  The DPI value to render at.
      */
-    function get_preferred_size_at_dpi(dpi: Int): Int;
+    function get_preferred_size_at_dpi(dpi: Float): Float;
 
     /** Get the preferred height of a textbox at a given width.
      *
      * @see lib/wibox/widget/textbox.lua:152
-     * @param width Int  The available width.
-     * @param dpi Int  The DPI value to render at.
+     * @param width Float  The available width.
+     * @param dpi Float  The DPI value to render at.
      */
-    function get_height_for_width_at_dpi(width: Int, dpi: Int): Int;
+    function get_height_for_width_at_dpi(width: Float, dpi: Float): Float;
 
     /** Set the text of the textbox.(with [Pango markup](https://docs.gtk.org/Pango/pango_markup.html)).
      *
@@ -98,9 +98,9 @@ extern class Textbox extends externs.wibox.widget.Base {
      *
      * @see lib/wibox/widget/textbox.lua:617
      * @param text String  The text content, pango markup supported.
-     * @param s haxe.extern.EitherType<Int, externs.Screen>  The screen on which the textbox would be displayed.
+     * @param s extype.extern.Mixed.Mixed2<Int, externs.Screen>  The screen on which the textbox would be displayed.
      * @param font String  The font description as string.
      */
-    static function get_markup_geometry(text: String, s: haxe.extern.EitherType<Int, externs.Screen>, font: String): lua.Table<String, Dynamic>;
+    static function get_markup_geometry(text: String, s: extype.extern.Mixed.Mixed2<Int, externs.Screen>, font: String): lua.Table<String, Dynamic>;
 }
 

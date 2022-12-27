@@ -725,3 +725,4 @@ end)
 -- }}}
 
 dofile("/home/cji/priv/awesomescripts/haxeshigh/output/loader.lua")
+dofile("/home/cji/priv/awesomescripts/haxeshigh/output/hx_test_clean.lua")

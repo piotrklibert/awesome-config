@@ -11,7 +11,7 @@ extern class Checkbox extends externs.wibox.widget.Base {
      * The outer (unchecked area) border width.
      * @see lib/wibox/widget/checkbox.lua:129
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * The outer (unchecked area) background color, pattern or gradient.
@@ -35,7 +35,7 @@ extern class Checkbox extends externs.wibox.widget.Base {
      * The checked part border width.
      * @see lib/wibox/widget/checkbox.lua:174
      */
-    var check_border_width: Int;
+    var check_border_width: Float;
 
     /**
      * The checked part filling color.
@@ -59,7 +59,7 @@ extern class Checkbox extends externs.wibox.widget.Base {
      * The padding between the outline and the progressbar.
      * @see lib/wibox/widget/checkbox.lua:237
      */
-    var paddings: haxe.extern.EitherType<lua.Table<String, Dynamic>, Int>;
+    var paddings: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, Float>;
 
     /**
      * The checkbox color.

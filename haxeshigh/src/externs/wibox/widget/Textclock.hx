@@ -23,7 +23,7 @@ extern class Textclock extends externs.wibox.widget.Textbox {
      * Set the clock's refresh rate.
      * @see lib/wibox/widget/textclock.lua:145
      */
-    var refresh: Int;
+    var refresh: Float;
 
     /** Force a textclock to update now.
      *
@@ -35,9 +35,9 @@ extern class Textclock extends externs.wibox.widget.Textbox {
      *
      * @see lib/wibox/widget/textclock.lua:174
      * @param format String  The time [format](#format).
-     * @param refresh Int  How often to update the time (in seconds).
+     * @param refresh Float  How often to update the time (in seconds).
      * @param timezone String  The [timezone](#timezone) to use.
      */
-    @:selfCall function new(format: String, refresh: Int, timezone: String): Void;
+    @:selfCall function new(format: String, refresh: Float, timezone: String): Void;
 }
 

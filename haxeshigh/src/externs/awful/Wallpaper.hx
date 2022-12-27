@@ -11,13 +11,13 @@ extern class Wallpaper {
      * The wallpaper widget.
      * @see lib/awful/wallpaper.lua:742
      */
-    var widget: wibox.widget;
+    var widget: externs.wibox.Widget;
 
     /**
      * The wallpaper DPI (dots per inch).
      * @see lib/awful/wallpaper.lua:780
      */
-    var dpi: Int;
+    var dpi: Float;
 
     /**
      * The wallpaper screen.
@@ -71,7 +71,7 @@ extern class Wallpaper {
      * Defines where the wallpaper is placed when there is multiple screens.
      * @see lib/awful/wallpaper.lua:1062
      */
-    var panning_area: haxe.extern.EitherType<haxe.Constraints.Function, String>;
+    var panning_area: extype.extern.Mixed.Mixed2<haxe.Constraints.Function, String>;
 
     /** Add another screen (enable panning).
      *

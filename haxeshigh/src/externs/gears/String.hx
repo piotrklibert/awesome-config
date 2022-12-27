@@ -32,10 +32,10 @@ extern class String {
      *
      * @see lib/gears/string.lua:74
      * @param text String  String to wrap.
-     * @param width Int  Maximum length of each line. Default: 72.
-     * @param indent Int  Number of spaces added before each wrapped line. Default: 0.
+     * @param width Float  Maximum length of each line. Default: 72.
+     * @param indent Float  Number of spaces added before each wrapped line. Default: 0.
      */
-    static function linewrap(text: String, width: Int, indent: Int): String;
+    static function linewrap(text: String, width: Float, indent: Float): String;
 
     /** Escape all special pattern-matching characters so that lua interprets them literally instead of as a character class.
      *

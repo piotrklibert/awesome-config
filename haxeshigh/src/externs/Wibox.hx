@@ -3,7 +3,7 @@ package externs;
 
 @:luaRequire("wibox")
 extern class Wibox {
-    /** 
+    /**
      * @see lib/wibox/init.lua:7
      */
 
@@ -41,7 +41,7 @@ extern class Wibox {
      * The opacity of the wibox, between 0 and 1.
      * @see lib/wibox/init.lua:98
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The window type (desktop, normal, dock, ...).
@@ -77,19 +77,19 @@ extern class Wibox {
      * The wibox screen.
      * @see lib/wibox/init.lua:141
      */
-    var screen: Dynamic;
+    var screen: externs.Screen;
 
     /**
      * The wibox's `drawable`.
      * @see lib/wibox/init.lua:148
      */
-    var drawable: drawable;
+    var drawable: externs.wibox.Drawable;
 
     /**
      * The widget that the `wibox` displays.
      * @see lib/wibox/init.lua:154
      */
-    var widget: Dynamic;
+    var widget: externs.wibox.Widget;
 
     /**
      * The X window id.
@@ -143,7 +143,7 @@ extern class Wibox {
      * The background image of the drawable.
      * @see lib/wibox/init.lua:304
      */
-    var bgimage: haxe.extern.EitherType<externs.gears.Surface, String, haxe.Constraints.Function>;
+    var bgimage: extype.extern.Mixed.Mixed3<externs.gears.Surface, String, haxe.Constraints.Function>;
 
     /**
      * The foreground (text) of the wibox.
@@ -175,10 +175,10 @@ extern class Wibox {
     /** Find a widget by a point.
      *
      * @see lib/wibox/init.lua:324
-     * @param x Int  X coordinate of the point
-     * @param y Int  Y coordinate of the point
+     * @param x Float  X coordinate of the point
+     * @param y Float  Y coordinate of the point
      */
-    function find_widgets(x: Int, y: Int): lua.Table<String, Dynamic>;
+    function find_widgets(x: Float, y: Float): lua.Table<String, Dynamic>;
 
     /** Create a widget that reflects the current state of this wibox.
      *
@@ -199,7 +199,7 @@ extern class Wibox {
      * @see lib/wibox/init.lua:595
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: externs.Overrides.WiboxArgs);
 
     /** Redraw a wibox.
      *
@@ -232,4 +232,3 @@ extern class Wibox {
      */
     static function disconnect_signal(name: String, func: haxe.Constraints.Function): Bool;
 }
-

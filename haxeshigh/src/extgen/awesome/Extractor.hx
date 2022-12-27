@@ -11,10 +11,16 @@ import extgen.awesome.Data.Module;
 import extgen.awesome.Data.Identifier;
 
 import extgen.awesome.Utils.returnIfPresent;
+using Reflect;
 
 
+@:tink
 @:publicFields
 class Extractor {
+    static final modMap = [
+        "screen" => "awful.screen",
+    ];
+
     static final argMap = [
         "..." => "...rest",
     ];
@@ -29,7 +35,7 @@ class Extractor {
 
     var data: Document;
     var module: Module;
-    var attributeNames: extype.Set<String> = new extype.Set();
+    private var attributeNames: extype.Set<String> = new extype.Set();
 
     function toString() { return Std.string(module); }
 
@@ -64,7 +70,7 @@ class Extractor {
 
     function extractModule(): Module {
         final parent = data.tags.supermodule.let(x -> x[0]);
-        final parentId = parent.let(p -> ({name: p} : Identifier));
+        final parentId: Identifier = parent.let(p -> cast {name: p});
         final sourcePath = convertPath(data.file);
         final clsName = getClassAndPackage(data.name);
         // trace(parent.let(p -> getClassAndPackage(p)));
@@ -73,10 +79,11 @@ class Extractor {
             source: '${sourcePath}:${data.lineno}',
             file: sourcePath,
             imports: [],
+            types: [],
             cls: {
                 signals: [],
                 parent: parent.let(parent -> getClassAndPackage(parent)),
-                cname: {name: clsName.name, native: clsName.native },
+                cname: { name: clsName.name, native: clsName.native },
                 summary: data.summary,
                 attributes: [],
                 methods: [],
@@ -88,23 +95,11 @@ class Extractor {
         final methodName = sanitizeName(item.name);
         returnIfPresent(attributeNames, methodName);
 
-        final params: Params = item.params;
-        final args: Array<Argument> = [];
-
-        for (arg in params.numericKeys()) {
-            final argName = params[arg];
-            final argMods: LuaTable<String, String> = item.modifiers.param[argName];
-            final typeName = argMods.let(x -> x["type"]);
-            final argDoc = params.map[argName];
-            final argName = getFieldName(argMap[argName] ?? argName);
-            final typeName = Types.formatType(typeName);
-            args.push({
-                argName: argName, argDoc: argDoc, typeName: typeName
-            });
-        }
-        final retType =
-            item.modifiers?.ret.let(x -> x[0]).let(x -> x.type);
+        final args = extractMethodArguments(item);
+        final retType = item.modifiers?.ret.let(x -> x[0]).let(x -> x.type);
+        // trace(Types.formatType(retType));
         final isConstructor = item.type == "constructorfct";
+
         module.cls.methods.push({
             declarator: kindMap[item.type] ?? "",
             arguments: args,
@@ -116,21 +111,64 @@ class Extractor {
         });
     }
 
+    function extractMethodArguments(item: Item) {
+        final args: Array<Argument> = [];
+        final argNames: extype.Set<String> = new extype.Set();
+
+        final argumentNames =
+            [ for (arg in item.params.numericKeys()) item.params[arg] ];
+
+        // TODO: extract structures of table arguments, make typedefs for them
+        //
+        // for (argName in argumentNames) {
+        //     if (argNames.exists(argName)) continue;
+        //     argNames.add(argName);
+        //     final argToSub: Map<String, {a: String, b: String}> = new Map();
+        //     final keys: Array<String> = item.params.map.keys();
+        //     for (k in keys) {
+        //         if (k.startsWith(argName) && k != argName)
+        //             argToSub[k] = {b: formatSummary(item.params.map[k]), a: ""};
+        //     }
+        //     final keys: Array<String> = item.modifiers.param.keys();
+        //     for (k in keys) {
+        //         if (k.startsWith(argName) && k != argName){
+        //             final a = argToSub[k].sure();
+        //             argToSub[k] = {a: item.modifiers.param[k].type, b: a.b};
+        //         }
+        //     }
+        //     for (a => b in argToSub)
+        //         trace(a, b.a, b.b);
+        // }
+
+        for (arg in item.params.numericKeys()) {
+            final argName = item.params[arg];
+            if (argNames.exists(argName)) continue;
+            argNames.add(argName);
+
+            final argMods: LuaTable<String, String> = item.modifiers.param[argName];
+            final typeName = argMods.let(x -> x["type"]);
+            final argDoc = item.params.map[argName];
+            final argName = getFieldName(argMap[argName] ?? argName);
+            final typeName = Types.formatType(typeName) ?? "Dynamic";
+            args.push(
+                SimpleArgument({name: argName, doc: argDoc, type: typeName})
+            );
+        }
+        return args;
+    }
+
     function extractProperty(item: Item) {
         final propertyName = sanitizeName(item.name);
         returnIfPresent(attributeNames, propertyName);
 
-        final params: Params = item.params;
-        final args: Array<Argument> = [];
+        final type = item.params["1"];
+        final modifiers = item.modifiers.field["1"];
+        final mappedType = Types.formatType(type);
+        final typeName =
+            (type != mappedType) ? mappedType : Types.formatType(modifiers.type);
+        final argDoc = item.params.map[type];
+        final type = argMap[type] ?? type;
 
-        final argName = params["1"];
-        final argMods = item.modifiers.field["1"];
-        final tt = Types.formatType(item.params["1"]);
-        final typeName = (~/^[A-Z]/.match(tt)) ? tt : argMods.type;
-        final argDoc = params.map[argName];
-        final argName = argMap[argName] ?? argName;
-        final typeName = Types.formatType(typeName);
-        args.push({argName: argName, argDoc: argDoc, typeName: typeName});
         module.cls.attributes.push({
             name: getFieldName(sanitizeName(item.name)),
             summary: item.summary,
@@ -187,6 +225,12 @@ class Extractor {
 
     static function convertPath(path: String) {
         return path.replace("/home/cji/portless/awesome/build/", "");
+    }
+
+    static function formatSummary(desc: String) {
+        return (desc != "")
+            ? (~/  +/g.replace(desc, " ").replace("\n", "") : String)
+            : " <no desc>";
     }
 }
 

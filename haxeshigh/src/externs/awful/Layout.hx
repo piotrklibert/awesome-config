@@ -12,7 +12,7 @@ extern class Layout {
      * @see lib/awful/layout/init.lua:77
      * @param t externs.Tag  The tag.
      */
-    static function get_tag_layout_index(t: externs.Tag): Null<Int>;
+    static function get_tag_layout_index(t: externs.Tag): Null<Float>;
 
     /** Get the current layout.
      *

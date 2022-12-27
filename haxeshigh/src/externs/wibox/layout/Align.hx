@@ -52,10 +52,10 @@ extern class Align extends externs.wibox.widget.Base {
     /** Set a widget at a specific index, replacing the current one.
      *
      * @see lib/wibox/layout/align.lua:380
-     * @param index Int  A widget or a widget index
+     * @param index Float  A widget or a widget index
      * @param widget2 externs.wibox.Widget  The widget to replace the previous one with
      */
-    function set(index: Int, widget2: externs.wibox.Widget): Bool;
+    function set(index: Float, widget2: externs.wibox.Widget): Bool;
 
     /** Replace the first instance of `widget` in the layout with `widget2`.
      *
@@ -69,10 +69,10 @@ extern class Align extends externs.wibox.widget.Base {
     /** Swap 2 widgets in a layout.
      *
      * @see lib/wibox/layout/align.lua:411
-     * @param index1 Int  The first widget index
-     * @param index2 Int  The second widget index
+     * @param index1 Float  The first widget index
+     * @param index2 Float  The second widget index
      */
-    function swap(index1: Int, index2: Int): Bool;
+    function swap(index1: Float, index2: Float): Bool;
 
     /** Swap 2 widgets in a layout.
      *

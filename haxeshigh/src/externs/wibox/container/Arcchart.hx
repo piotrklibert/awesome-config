@@ -17,7 +17,7 @@ extern class Arcchart extends externs.wibox.widget.Base {
      * The padding between the outline and the progressbar.
      * @see lib/wibox/container/arcchart.lua:244
      */
-    var paddings: haxe.extern.EitherType<lua.Table<String, Dynamic>, Int>;
+    var paddings: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, Float>;
 
     /**
      * The border background color.
@@ -35,19 +35,19 @@ extern class Arcchart extends externs.wibox.widget.Base {
      * The border width.
      * @see lib/wibox/container/arcchart.lua:270
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * The minimum value.
      * @see lib/wibox/container/arcchart.lua:275
      */
-    var min_value: Int;
+    var min_value: Float;
 
     /**
      * The maximum value.
      * @see lib/wibox/container/arcchart.lua:280
      */
-    var max_value: Int;
+    var max_value: Float;
 
     /**
      * The radial background.
@@ -59,7 +59,7 @@ extern class Arcchart extends externs.wibox.widget.Base {
      * The value.
      * @see lib/wibox/container/arcchart.lua:301
      */
-    var value: Int;
+    var value: Float;
 
     /**
      * The values.
@@ -77,13 +77,13 @@ extern class Arcchart extends externs.wibox.widget.Base {
      * The arc thickness.
      * @see lib/wibox/container/arcchart.lua:328
      */
-    var thickness: Int;
+    var thickness: Float;
 
     /**
      * The (radiant) angle where the first value start.
      * @see lib/wibox/container/arcchart.lua:337
      */
-    var start_angle: Int;
+    var start_angle: Float;
 
     /** Reset this layout.
      *

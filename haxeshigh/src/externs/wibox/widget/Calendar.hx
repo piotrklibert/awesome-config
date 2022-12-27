@@ -11,7 +11,7 @@ extern class Calendar {
      * The calendar date.
      * @see lib/wibox/widget/calendar.lua:85
      */
-    var date: date;
+    var date: lua.Table<String, Dynamic>;
 
     /**
      * The calendar font.
@@ -23,7 +23,7 @@ extern class Calendar {
      * The calendar spacing.
      * @see lib/wibox/widget/calendar.lua:105
      */
-    var spacing: Int;
+    var spacing: Float;
 
     /**
      * Display the calendar week numbers.
@@ -47,7 +47,7 @@ extern class Calendar {
      * The widget encapsulating function.
      * @see lib/wibox/widget/calendar.lua:234
      */
-    var fn_embed: Dynamic;
+    var fn_embed: haxe.Constraints.Function;
 
     /**
      * Allow cells to have flexible height

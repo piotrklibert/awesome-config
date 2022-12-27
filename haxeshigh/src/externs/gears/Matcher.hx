@@ -101,9 +101,9 @@ extern class Matcher {
      *
      * @see lib/gears/matcher.lua:704
      * @param source String  The source name.
-     * @param rule haxe.extern.EitherType<String, lua.Table<String, Dynamic>>  An existing rule or its `id`.
+     * @param rule extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>  An existing rule or its `id`.
      */
-    function remove_rule(source: String, rule: haxe.extern.EitherType<String, lua.Table<String, Dynamic>>): Bool;
+    function remove_rule(source: String, rule: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>): Bool;
 
     /** Create a new rule solver object.
      *

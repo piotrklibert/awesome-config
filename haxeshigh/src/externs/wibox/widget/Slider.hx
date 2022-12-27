@@ -29,7 +29,7 @@ extern class Slider extends externs.wibox.widget.Base {
      * The slider handle width.
      * @see lib/wibox/widget/slider.lua:101
      */
-    var handle_width: Int;
+    var handle_width: Float;
 
     /**
      * The handle border_color.
@@ -41,7 +41,7 @@ extern class Slider extends externs.wibox.widget.Base {
      * The handle border width.
      * @see lib/wibox/widget/slider.lua:119
      */
-    var handle_border_width: Int;
+    var handle_border_width: Float;
 
     /**
      * The bar (background) shape.
@@ -53,7 +53,7 @@ extern class Slider extends externs.wibox.widget.Base {
      * The bar (background) height.
      * @see lib/wibox/widget/slider.lua:144
      */
-    var bar_height: Int;
+    var bar_height: Float;
 
     /**
      * The bar (background) color.
@@ -77,7 +77,7 @@ extern class Slider extends externs.wibox.widget.Base {
      * The bar (background) border width.
      * @see lib/wibox/widget/slider.lua:190
      */
-    var bar_border_width: Int;
+    var bar_border_width: Float;
 
     /**
      * The bar (background) border_color.
@@ -89,19 +89,19 @@ extern class Slider extends externs.wibox.widget.Base {
      * The slider value.
      * @see lib/wibox/widget/slider.lua:215
      */
-    var value: Int;
+    var value: Float;
 
     /**
      * The slider minimum value.
      * @see lib/wibox/widget/slider.lua:221
      */
-    var minimum: Int;
+    var minimum: Float;
 
     /**
      * The slider maximum value.
      * @see lib/wibox/widget/slider.lua:227
      */
-    var maximum: Int;
+    var maximum: Float;
 
     /** Create a slider widget.
      *

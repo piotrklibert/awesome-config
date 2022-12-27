@@ -11,7 +11,7 @@ extern class Root {
      * Get or set global key bindings.
      * @see root.c:359
      */
-    var keys: Dynamic;
+    var keys: lua.Table<String, Dynamic>;
 
     /**
      * Store the list of mouse buttons to be applied on the wallpaper (also known as root window).

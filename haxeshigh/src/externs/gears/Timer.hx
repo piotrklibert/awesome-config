@@ -1,5 +1,12 @@
 package externs.gears;
 
+typedef TimerDef = {
+    var timeout: Float;                     // Timeout in seconds (e.g. 1.5).                        -- Not applicable
+    @:optional var autostart: Bool;         // Automatically start the timer.                        -- false
+    @:optional var call_now: Bool;          // Call the callback at timer creation.                  -- false
+    @:optional var callback: () -> Dynamic; // Callback function to connect to the "timeout" signal. -- Undefined
+    @:optional var single_shot: Bool;       // Run only once then stop.                              -- false
+}
 
 @:luaRequire("gears.timer")
 extern class Timer {
@@ -42,7 +49,7 @@ extern class Timer {
      * @see lib/gears/timer.lua:182
      * @param args lua.Table<String, Dynamic>  Arguments.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: TimerDef): Void;
 
     /** Create a simple timer for calling the `callback` function continuously.
      *
@@ -50,7 +57,7 @@ extern class Timer {
      * @param timeout Int  Timeout in seconds (e.g. 1.5).
      * @param callback haxe.Constraints.Function  Function to run.
      */
-    static function start_new(timeout: Int, callback: haxe.Constraints.Function): timer;
+    static function start_new(timeout: Int, callback: haxe.Constraints.Function): externs.gears.Timer;
 
     /** Create a simple timer for calling the `callback` function continuously.
      *
@@ -58,7 +65,7 @@ extern class Timer {
      * @param timeout Int  Timeout in seconds (e.g. 1.5).
      * @param callback haxe.Constraints.Function  Function to start.
      */
-    static function weak_start_new(timeout: Int, callback: haxe.Constraints.Function): timer;
+    static function weak_start_new(timeout: Int, callback: haxe.Constraints.Function): externs.gears.Timer;
 
     /** Run all pending delayed calls now.
      *
@@ -98,4 +105,3 @@ extern class Timer {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

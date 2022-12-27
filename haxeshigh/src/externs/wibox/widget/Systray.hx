@@ -29,7 +29,7 @@ extern class Systray extends externs.wibox.widget.Base {
      * Set the screen that the systray should be displayed on.
      * @see lib/wibox/widget/systray.lua:195
      */
-    var screen: haxe.extern.EitherType<externs.Screen, "primary">;
+    var screen: extype.extern.Mixed.Mixed2<externs.Screen, "primary">;
 
     /** Create the systray widget.
      *

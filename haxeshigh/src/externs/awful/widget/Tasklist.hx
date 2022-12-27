@@ -35,7 +35,7 @@ extern class Tasklist {
      * The widget opacity (transparency).
      * @see lib/awful/widget/tasklist.lua:969
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -47,7 +47,7 @@ extern class Tasklist {
      * The widget buttons.
      * @see lib/awful/widget/tasklist.lua:983
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create a new tasklist widget.
      *

@@ -9,7 +9,7 @@ using Lambda;
 @:tink
 class Generator {
     public static function parseOne() {
-        parseFile("wibox.widget.calendar");
+        parseFile("screen");
     }
 
     public static function parseAll() {

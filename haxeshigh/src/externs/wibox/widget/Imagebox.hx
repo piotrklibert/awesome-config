@@ -17,7 +17,7 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * Set a clip shape for this imagebox.
      * @see lib/wibox/widget/imagebox.lua:412
      */
-    var clip_shape: haxe.extern.EitherType<haxe.Constraints.Function, externs.gears.Shape>;
+    var clip_shape: extype.extern.Mixed.Mixed2<haxe.Constraints.Function, externs.gears.Shape>;
 
     /**
      * Should the image be resized to fit into the available space?
@@ -47,7 +47,7 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * Set the SVG DPI (dot per inch).
      * @see lib/wibox/widget/imagebox.lua:547
      */
-    var dpi: haxe.extern.EitherType<Int, lua.Table<String, Dynamic>>;
+    var dpi: extype.extern.Mixed.Mixed2<Float, lua.Table<String, Dynamic>>;
 
     /**
      * Use the object DPI when rendering the SVG.
@@ -83,7 +83,7 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * The maximum scaling factor.
      * @see lib/wibox/widget/imagebox.lua:746
      */
-    var max_scaling_factor: Int;
+    var max_scaling_factor: Float;
 
     /**
      * Set the scaling aligorithm.
@@ -101,9 +101,9 @@ extern class Imagebox extends externs.wibox.widget.Base {
     /** Set a clip shape for this imagebox.
      *
      * @see lib/wibox/widget/imagebox.lua:424
-     * @param clip_shape haxe.extern.EitherType<haxe.Constraints.Function, externs.gears.Shape>  A `gears_shape` compatible shape function.
+     * @param clip_shape extype.extern.Mixed.Mixed2<haxe.Constraints.Function, externs.gears.Shape>  A `gears_shape` compatible shape function.
      */
-    function set_clip_shape(clip_shape: haxe.extern.EitherType<haxe.Constraints.Function, externs.gears.Shape>): Void;
+    function set_clip_shape(clip_shape: extype.extern.Mixed.Mixed2<haxe.Constraints.Function, externs.gears.Shape>): Void;
 
     /** Returns a new `wibox.widget.imagebox` instance.
      *

@@ -17,7 +17,7 @@ extern class Only_on_screen extends externs.wibox.widget.Base {
      * The screen to display on.
      * @see lib/awful/widget/only_on_screen.lua:74
      */
-    var screen: haxe.extern.EitherType<externs.Screen, String, Int>;
+    var screen: externs.Screen;
 
     /** Returns a new only_on_screen container.
      *

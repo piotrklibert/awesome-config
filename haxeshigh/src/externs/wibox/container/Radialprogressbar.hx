@@ -17,13 +17,13 @@ extern class Radialprogressbar extends externs.wibox.widget.Base {
      * The padding between the outline and the progressbar.
      * @see lib/wibox/container/radialprogressbar.lua:196
      */
-    var paddings: haxe.extern.EitherType<lua.Table<String, Dynamic>, Int>;
+    var paddings: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, Float>;
 
     /**
      * The progressbar value.
      * @see lib/wibox/container/radialprogressbar.lua:206
      */
-    var value: Int;
+    var value: Float;
 
     /**
      * The border background color.
@@ -41,19 +41,19 @@ extern class Radialprogressbar extends externs.wibox.widget.Base {
      * The border width.
      * @see lib/wibox/container/radialprogressbar.lua:255
      */
-    var border_width: Int;
+    var border_width: Float;
 
     /**
      * The minimum value.
      * @see lib/wibox/container/radialprogressbar.lua:261
      */
-    var min_value: Int;
+    var min_value: Float;
 
     /**
      * The maximum value.
      * @see lib/wibox/container/radialprogressbar.lua:267
      */
-    var max_value: Int;
+    var max_value: Float;
 
     /** Reset this container.
      *

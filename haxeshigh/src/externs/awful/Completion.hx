@@ -18,11 +18,11 @@ extern class Completion {
      *
      * @see lib/awful/completion.lua:75
      * @param command String  The command line.
-     * @param cur_pos Int  The cursor position.
-     * @param ncomp Int  The element number to complete.
+     * @param cur_pos Float  The cursor position.
+     * @param ncomp Float  The element number to complete.
      * @param shell String  The shell to use for completion. Supports "bash" and "zsh".
      */
-    static function shell(command: String, cur_pos: Int, ncomp: Int, shell: String): String;
+    static function shell(command: String, cur_pos: Float, ncomp: Float, shell: String): String;
 
     /** Run a generic completion.
      *

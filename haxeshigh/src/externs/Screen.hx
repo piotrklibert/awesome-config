@@ -1,7 +1,7 @@
 package externs;
 
 
-@:luaRequire("screen")
+@:luaRequire("awful.screen")
 extern class Screen {
     /** awesome screen API.
      * @see objects/screen.c:54
@@ -11,7 +11,7 @@ extern class Screen {
      * The screen coordinates.
      * @see objects/screen.c:211
      */
-    var geometry: Int;
+    var geometry: lua.Table<String, Dynamic>;
 
     /**
      * The internal screen number.
@@ -23,13 +23,13 @@ extern class Screen {
      * The screen workarea.
      * @see objects/screen.c:262
      */
-    var workarea: Int;
+    var workarea: externs.Overrides.Geometry;
 
     /**
      * The area where clients can be tiled.
      * @see objects/screen.c:203
      */
-    var tiling_area: lua.Table<String, Dynamic>;
+    var tiling_area: externs.Overrides.Geometry;
 
     /**
      * Take a screenshot of the physical screen.
@@ -41,103 +41,103 @@ extern class Screen {
      * The screen padding.
      * @see objects/screen.c:279
      */
-    var padding: Int;
+    var padding: externs.Overrides.Padding;
 
     /**
      * A list of outputs for this screen with their size in mm.
      * @see objects/screen.c:332
      */
-    var outputs: lua.Table<String, Dynamic>;
+    var outputs: lua.Table<String, externs.Overrides.Output>;
 
     /**
      * The list of visible clients for the screen.
      * @see objects/screen.c:463
      */
-    var clients: Dynamic;
+    var clients: lua.Table<String, externs.Client>;
 
     /**
      * Get the list of clients assigned to the screen but not currently visible.
      * @see objects/screen.c:491
      */
-    var hidden_clients: Dynamic;
+    var hidden_clients: lua.Table<String, externs.Client>;
 
     /**
      * All clients assigned to the screen.
      * @see objects/screen.c:510
      */
-    var all_clients: Dynamic;
+    var all_clients: lua.Table<String, externs.Client>;
 
     /**
      * Tiled clients for the screen.
      * @see objects/screen.c:537
      */
-    var tiled_clients: Dynamic;
+    var tiled_clients: lua.Table<String, externs.Client>;
 
     /**
      * A list of all tags on the screen.
      * @see objects/screen.c:587
      */
-    var tags: Dynamic;
+    var tags: lua.Table<String, externs.Tag>;
 
     /**
      * A list of all selected tags on the screen.
      * @see objects/screen.c:613
      */
-    var selected_tags: Dynamic;
+    var selected_tags: lua.Table<String, externs.Tag>;
 
     /**
      * The first selected tag.
      * @see objects/screen.c:633
      */
-    var selected_tag: Dynamic;
+    var selected_tag: externs.Tag;
 
     /**
      * The number of pixels per inch of the screen.
      * @see objects/screen.c:787
      */
-    var dpi: Int;
+    var dpi: Float;
 
     /**
      * The lowest density DPI from all of the (physical) outputs.
      * @see objects/screen.c:792
      */
-    var minimum_dpi: Int;
+    var minimum_dpi: Float;
 
     /**
      * The highest density DPI from all of the (physical) outputs.
      * @see objects/screen.c:797
      */
-    var maximum_dpi: Int;
+    var maximum_dpi: Float;
 
     /**
      * The preferred DPI from all of the (physical) outputs.
      * @see objects/screen.c:806
      */
-    var preferred_dpi: Int;
+    var preferred_dpi: Float;
 
     /**
      * The maximum diagonal size in millimeters.
      * @see objects/screen.c:811
      */
-    var mm_maximum_size: Int;
+    var mm_maximum_size: Float;
 
     /**
      * The minimum diagonal size in millimeters.
      * @see objects/screen.c:816
      */
-    var mm_minimum_size: Int;
+    var mm_minimum_size: Float;
 
     /**
      * The maximum diagonal size in inches.
      * @see objects/screen.c:821
      */
-    var inch_maximum_size: Int;
+    var inch_maximum_size: Float;
 
     /**
      * The minimum diagonal size in inches.
      * @see objects/screen.c:826
      */
-    var inch_minimum_size: Int;
+    var inch_minimum_size: Float;
 
     /** Get the number of instances.
      *
@@ -165,7 +165,7 @@ extern class Screen {
      * @param width Int  width for screen.
      * @param height Int  height for screen.
      */
-    @:selfCall function new(x: Int, y: Int, width: Int, height: Int): Void;
+    @:selfCall function new(x: Int, y: Int, width: Int, height: Int);
 
     /** Remove a screen.
      *
@@ -217,18 +217,18 @@ extern class Screen {
     /** Get the square distance between a `screen` and a point.
      *
      * @see objects/screen.c:67
-     * @param x Int  X coordinate of point
-     * @param y Int  Y coordinate of point
+     * @param x Float  X coordinate of point
+     * @param y Float  Y coordinate of point
      */
-    function get_square_distance(x: Int, y: Int): Int;
+    function get_square_distance(x: Float, y: Float): Float;
 
     /** Return the screen index corresponding to the given (pixel) coordinates.
      *
      * @see objects/screen.c:79
-     * @param x Int  The x coordinate
-     * @param y Int  The y coordinate
+     * @param x Float  The x coordinate
+     * @param y Float  The y coordinate
      */
-    static function getbycoord(x: Int, y: Int): Int;
+    static function getbycoord(x: Float, y: Float): Float;
 
     /** Move the focus to a screen.
      *
@@ -272,7 +272,7 @@ extern class Screen {
      * @see objects/screen.c:387
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    static function focused(args: lua.Table<String, Dynamic>): externs.Screen;
+    static function focused(args: Null<externs.Overrides.FocusedOptions> = null): externs.Screen;
 
     /** Get a placement bounding geometry.
      *
@@ -339,4 +339,3 @@ extern class Screen {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

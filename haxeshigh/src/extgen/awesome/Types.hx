@@ -4,8 +4,9 @@ package extgen.awesome;
 @:publicFields
 class Types {
     static final typeMap = [
-        "number" => "Int",
+        "number" => "Float",
         "integer" => "Int",
+        "Integer" => "Int",
         "int" => "Int",
         "boolean" => "Bool",
         "bool" => "Bool",
@@ -17,6 +18,7 @@ class Types {
         "width" => "Int",
         "The" => "Dynamic",
         "A" => "Dynamic",
+        "drawable" => "externs.wibox.Drawable",
         "gears.shape" => "externs.gears.Shape",
         "gears.surface" => "externs.gears.Surface",
         "gears.suface" => "externs.gears.Surface",
@@ -37,10 +39,13 @@ class Types {
         "?number" => "Null<Int>",
         "layout" => "externs.awful.Layout",
         "path" => "Dynamic",
+        "Gio.InputStream" => "Dynamic",
+        "timer" => "externs.gears.Timer",
     ];
 
 
-    static function formatType(typeName: String) {
+    static function formatType(typeName: Null<String>) {
+        if (typeName == null) return "Dynamic";
         function tMap(t: String) return typeMap[t] ?? t ?? "Dynamic";
         if (typeName.or("").startsWith("?")) {
             typeName = typeName.substring(1);
@@ -51,7 +56,7 @@ class Types {
         if (t.contains("|")) {
             var tt = t.split("|");
             final nullable =
-                if (tt.has("nil")) {
+                if (tt.contains("nil")) {
                     tt = tt.filter(x -> x != "nil");
                     true;
                 }
@@ -68,7 +73,7 @@ class Types {
             }
             else {
                 final ts = tt.map(tMap).join(", ");
-                return 'haxe.extern.EitherType<$ts>';
+                return 'extype.extern.Mixed.Mixed${tt.length}<$ts>';
             }
         }
         return t;

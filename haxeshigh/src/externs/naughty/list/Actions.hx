@@ -59,7 +59,7 @@ extern class Actions {
      * The widget opacity (transparency).
      * @see lib/naughty/list/actions.lua:527
      */
-    var opacity: Int;
+    var opacity: Float;
 
     /**
      * The widget visibility.
@@ -71,7 +71,7 @@ extern class Actions {
      * The widget buttons.
      * @see lib/naughty/list/actions.lua:541
      */
-    var buttons: Dynamic;
+    var buttons: lua.Table<String, Dynamic>;
 
     /** Create an action list.
      *
