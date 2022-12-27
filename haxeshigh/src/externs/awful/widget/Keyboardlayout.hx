@@ -3,7 +3,7 @@ package externs.awful.widget;
 
 @:luaRequire("awful.widget.keyboardlayout")
 extern class Keyboardlayout {
-    /** 
+    /**
      * @see lib/awful/widget/keyboardlayout.lua:7
      */
 
@@ -66,7 +66,7 @@ extern class Keyboardlayout {
      *
      * @see lib/awful/widget/keyboardlayout.lua:264
      */
-    @:selfCall function new(): Void;
+    @:selfCall function new();
 
     /** Set a declarative widget hierarchy description.
      *
@@ -114,4 +114,3 @@ extern class Keyboardlayout {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

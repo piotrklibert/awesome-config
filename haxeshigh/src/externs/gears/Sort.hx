@@ -46,6 +46,5 @@ extern class Sort {
      *
      * @see lib/gears/sort/init.lua:137
      */
-    @:selfCall function new(): Void;
+    @:selfCall function new();
 }
-

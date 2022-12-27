@@ -3,7 +3,7 @@ package externs.wibox.widget;
 
 @:luaRequire("wibox.widget.systray")
 extern class Systray extends externs.wibox.widget.Base {
-    /** 
+    /**
      * @see lib/wibox/widget/systray.lua:8
      */
 
@@ -36,6 +36,5 @@ extern class Systray extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/systray.lua:211
      * @param revers Bool  Show in the opposite direction
      */
-    @:selfCall function new(revers: Bool): Void;
+    @:selfCall function new(revers: Bool);
 }
-

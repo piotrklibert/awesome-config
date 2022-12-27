@@ -43,6 +43,5 @@ extern class Tile extends externs.wibox.container.Place {
      * @param args lua.Table<String, Dynamic>  <no desc>
      * @param widget wibox.widget  args.widget The widget to tile.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>, widget: wibox.widget): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>, widget: wibox.widget);
 }
-

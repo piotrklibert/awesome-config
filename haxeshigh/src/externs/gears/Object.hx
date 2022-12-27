@@ -45,7 +45,7 @@ extern class Object {
      * @see lib/gears/object.lua:322
      * @param args lua.Table<String, Dynamic>  The arguments
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Helper function to get the module name out of `debug.getinfo`.
      *
@@ -62,4 +62,3 @@ extern class Object {
      */
     static function capi_index_fallback(_class: Dynamic, args: lua.Table<String, Dynamic>): Void;
 }
-

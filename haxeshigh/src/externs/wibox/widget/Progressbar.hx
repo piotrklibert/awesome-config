@@ -108,6 +108,5 @@ extern class Progressbar extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/progressbar.lua:1002
      * @param args lua.Table<String, Dynamic>  Standard widget() arguments. You should add width and height constructor parameters to set progressbar geometry.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

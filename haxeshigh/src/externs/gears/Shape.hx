@@ -20,7 +20,7 @@ extern class Shape {
      * @param rate Float  The "squareness" of the squircle, should be greater than 1
      * @param delta Float  The "smoothness" of the shape, delta must be greater than 0.01 and will be reset to 0.01 if not
      */
-    static function partial_squircle(cr: Dynamic, width: Float, height: Float, tl: Bool, tr: Bool, br: Bool, bl: Bool, rate: Float, delta: Float): Void;
+    static function partial_squircle(cr: Dynamic, width: Int, height: Int, tl: Bool, tr: Bool, br: Bool, bl: Bool, rate: Float, delta: Float): Void;
 
     /** Add a squircle shape to the current path.
      *
@@ -31,7 +31,7 @@ extern class Shape {
      * @param rate Float  The "squareness" of the squircle, should be greater than 1
      * @param delta Float  The "smoothness" of the shape, delta must be greater than 0.01 and will be reset to 0.01 if not
      */
-    static function squircle(cr: Dynamic, width: Float, height: Float, rate: Float, delta: Float): Void;
+    static function squircle(cr: Dynamic, width: Int, height: Int, rate: Float, delta: Float): Void;
 
     /** Add a star shape to the current path.
      *
@@ -41,7 +41,7 @@ extern class Shape {
      * @param height Float  The height constraint
      * @param n Float  Number of grams (default n = 5 -> pentagram)
      */
-    static function star(cr: Dynamic, width: Float, height: Float, n: Float): Void;
+    static function star(cr: Dynamic, width: Int, height: Int, n: Float): Void;
 
     /** Add a rounded rectangle to the current path.
      *
@@ -51,7 +51,7 @@ extern class Shape {
      * @param height Float  The rectangle height
      * @param radius Float  the corner radius
      */
-    static function rounded_rect(cr: Dynamic, width: Float, height: Float, radius: Float): Void;
+    static function rounded_rect(cr: Dynamic, width: Int, height: Int, radius: Float): Void;
 
     /** Add a rectangle delimited by 2 180 degree arcs to the path.
      *
@@ -74,7 +74,7 @@ extern class Shape {
      * @param bl Bool  If the bottom left corner is rounded
      * @param rad Float  The corner radius
      */
-    static function partially_rounded_rect(cr: Dynamic, width: Float, height: Float, tl: Bool, tr: Bool, br: Bool, bl: Bool, rad: Float): Void;
+    static function partially_rounded_rect(cr: Dynamic, width: Int, height: Int, tl: Bool, tr: Bool, br: Bool, bl: Bool, rad: Float): Void;
 
     /** A rounded rectangle with a triangle at the top.
      *
@@ -86,7 +86,7 @@ extern class Shape {
      * @param arrow_size Float  The width and height of the arrow
      * @param arrow_position Float  The position of the arrow
      */
-    static function infobubble(cr: Dynamic, width: Float, height: Float, corner_radius: Float, arrow_size: Float, arrow_position: Float): Void;
+    static function infobubble(cr: Dynamic, width: Int, height: Int, corner_radius: Float, arrow_size: Float, arrow_position: Float): Void;
 
     /** A rectangle terminated by an arrow.
      *
@@ -96,7 +96,7 @@ extern class Shape {
      * @param height Float  The shape height
      * @param arrow_length Float  The length of the arrow part
      */
-    static function rectangular_tag(cr: Dynamic, width: Float, height: Float, arrow_length: Float): Void;
+    static function rectangular_tag(cr: Dynamic, width: Int, height: Int, arrow_length: Float): Void;
 
     /** A simple arrow shape.
      *
@@ -108,7 +108,7 @@ extern class Shape {
      * @param shaft_width Float  The width of the shaft of the arrow
      * @param shaft_length Float  The head_length of the shaft (the rest is the head)
      */
-    static function arrow(cr: Dynamic, width: Float, height: Float, head_width: Float, shaft_width: Float, shaft_length: Float): Void;
+    static function arrow(cr: Dynamic, width: Int, height: Int, head_width: Float, shaft_width: Float, shaft_length: Float): Void;
 
     /** A squeezed hexagon filling the rectangle.
      *
@@ -117,7 +117,7 @@ extern class Shape {
      * @param width Float  The shape width
      * @param height Float  The shape height
      */
-    static function hexagon(cr: Dynamic, width: Float, height: Float): Void;
+    static function hexagon(cr: Dynamic, width: Int, height: Int): Void;
 
     /** Double arrow popularized by the vim-powerline module.
      *
@@ -127,7 +127,7 @@ extern class Shape {
      * @param height Float  The shape height
      * @param arrow_depth Float  The width of the arrow part of the shape
      */
-    static function powerline(cr: Dynamic, width: Float, height: Float, arrow_depth: Float): Void;
+    static function powerline(cr: Dynamic, width: Int, height: Int, arrow_depth: Float): Void;
 
     /** An isosceles triangle.
      *
@@ -136,7 +136,7 @@ extern class Shape {
      * @param width Float  The shape width
      * @param height Float  The shape height
      */
-    static function isosceles_triangle(cr: Dynamic, width: Float, height: Float): Void;
+    static function isosceles_triangle(cr: Dynamic, width: Int, height: Int): Void;
 
     /** A cross (**+**) symbol.
      *
@@ -146,7 +146,7 @@ extern class Shape {
      * @param height Float  The shape height
      * @param thickness Float  The cross section thickness
      */
-    static function cross(cr: Dynamic, width: Float, height: Float, thickness: Float): Void;
+    static function cross(cr: Dynamic, width: Int, height: Int, thickness: Float): Void;
 
     /** A similar shape to the `rounded_rect`, but with sharp corners.
      *
@@ -156,7 +156,7 @@ extern class Shape {
      * @param height Float  The shape height
      * @param corner_radius Float  <no desc>
      */
-    static function octogon(cr: Dynamic, width: Float, height: Float, corner_radius: Float): Void;
+    static function octogon(cr: Dynamic, width: Int, height: Int, corner_radius: Float): Void;
 
     /** A circle shape.
      *
@@ -166,7 +166,7 @@ extern class Shape {
      * @param height Float  The shape height
      * @param radius Float  The radius
      */
-    static function circle(cr: Dynamic, width: Float, height: Float, radius: Float): Void;
+    static function circle(cr: Dynamic, width: Int, height: Int, radius: Float): Void;
 
     /** A simple rectangle.
      *
@@ -175,7 +175,7 @@ extern class Shape {
      * @param width Float  The shape width
      * @param height Float  The shape height
      */
-    static function rectangle(cr: Dynamic, width: Float, height: Float): Void;
+    static function rectangle(cr: Dynamic, width: Int, height: Int): Void;
 
     /** A diagonal parallelogram with the bottom left corner at x=0 and top right at x=width.
      *
@@ -185,7 +185,7 @@ extern class Shape {
      * @param height Float  The shape height
      * @param base_width Float  The parallelogram base width
      */
-    static function parallelogram(cr: Dynamic, width: Float, height: Float, base_width: Float): Void;
+    static function parallelogram(cr: Dynamic, width: Int, height: Int, base_width: Float): Void;
 
     /** A losange.
      *
@@ -194,7 +194,7 @@ extern class Shape {
      * @param width Float  The shape width
      * @param height Float  The shape height
      */
-    static function losange(cr: Dynamic, width: Float, height: Float): Void;
+    static function losange(cr: Dynamic, width: Int, height: Int): Void;
 
     /** A pie.
      *
@@ -206,7 +206,7 @@ extern class Shape {
      * @param end_angle Float  The end angle (in radian)
      * @param radius Float  The shape height
      */
-    static function pie(cr: Dynamic, width: Float, height: Float, start_angle: Float, end_angle: Float, radius: Float): Void;
+    static function pie(cr: Dynamic, width: Int, height: Int, start_angle: Float, end_angle: Float, radius: Float): Void;
 
     /** A rounded arc.
      *
@@ -220,7 +220,7 @@ extern class Shape {
      * @param start_rounded Bool  if the arc start rounded
      * @param end_rounded Bool  if the arc end rounded
      */
-    static function arc(cr: Dynamic, width: Float, height: Float, thickness: Float, start_angle: Float, end_angle: Float, start_rounded: Bool, end_rounded: Bool): Void;
+    static function arc(cr: Dynamic, width: Int, height: Int, thickness: Float, start_angle: Float, end_angle: Float, start_rounded: Bool, end_rounded: Bool): Void;
 
     /** A partial rounded bar.
      *
@@ -240,4 +240,3 @@ extern class Shape {
      */
     static function transform(shape: Dynamic): Void;
 }
-

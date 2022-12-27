@@ -61,7 +61,7 @@ extern class Menu {
      * @param item_args lua.Table<String, Dynamic>  Table that will be merged into each item, see `new()` for more information.
      * @param filter func  A function taking a client as an argument and returning `true` or `false` to indicate whether the client should be included in the menu.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>, item_args: lua.Table<String, Dynamic>, filter: func): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>, item_args: lua.Table<String, Dynamic>, filter: func);
 
     /** Use menu.clients to build and open the client menu if it isn't already open.
      *
@@ -88,4 +88,3 @@ extern class Menu {
      */
     static function menu(args: Dynamic, parent: Dynamic): Void;
 }
-

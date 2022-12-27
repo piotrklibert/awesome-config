@@ -60,7 +60,7 @@ extern class Message {
      * @see lib/naughty/widget/message.lua:71
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Set a declarative widget hierarchy description.
      *
@@ -108,4 +108,3 @@ extern class Message {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

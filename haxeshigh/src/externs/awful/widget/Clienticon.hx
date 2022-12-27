@@ -18,6 +18,5 @@ extern class Clienticon extends externs.wibox.widget.Base {
      * @see lib/awful/widget/clienticon.lua:108
      * @param c externs.Client  The client whose icon should be displayed.
      */
-    @:selfCall function new(c: externs.Client): Void;
+    @:selfCall function new(c: externs.Client);
 }
-

@@ -49,7 +49,7 @@ extern class Timer {
      * @see lib/gears/timer.lua:182
      * @param args lua.Table<String, Dynamic>  Arguments.
      */
-    @:selfCall function new(args: TimerDef): Void;
+    @:selfCall function new(args: TimerDef);
 
     /** Create a simple timer for calling the `callback` function continuously.
      *

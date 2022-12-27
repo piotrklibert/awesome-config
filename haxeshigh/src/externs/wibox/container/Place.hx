@@ -62,6 +62,5 @@ extern class Place extends externs.wibox.widget.Base {
      * @param halign String  The horizontal alignment
      * @param valign String  The vertical alignment
      */
-    @:selfCall function new(widget: externs.wibox.Widget, halign: String, valign: String): Void;
+    @:selfCall function new(widget: externs.wibox.Widget, halign: String, valign: String);
 }
-

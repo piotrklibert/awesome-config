@@ -31,6 +31,5 @@ extern class Mirror extends externs.wibox.widget.Base {
      * @param widget externs.wibox.Widget  The widget to display.
      * @param reflection lua.Table<String, Dynamic>  A table describing the reflection to apply.
      */
-    @:selfCall function new(widget: externs.wibox.Widget, reflection: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(widget: externs.wibox.Widget, reflection: lua.Table<String, Dynamic>);
 }
-

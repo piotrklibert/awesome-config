@@ -91,7 +91,7 @@ extern class Keygrabber {
      * @see lib/awful/keygrabber.lua:820
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Connect to a signal for all keygrabbers at once.
      *
@@ -125,4 +125,3 @@ extern class Keygrabber {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

@@ -18,7 +18,7 @@ extern class Matrix {
      * @param x0 Float  The x0 transformation part.
      * @param y0 Float  The y0 transformation part.
      */
-    @:selfCall function new(xx: Float, yx: Float, xy: Float, yy: Float, x0: Float, y0: Float): Void;
+    @:selfCall function new(xx: Float, yx: Float, xy: Float, yy: Float, x0: Float, y0: Float);
 
     /** Create a new translation matrix
      *
@@ -149,4 +149,3 @@ extern class Matrix {
      */
     static function from_cairo_matrix(mat: cairo.Matrix): gears.matrix;
 }
-

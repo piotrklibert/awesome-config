@@ -224,7 +224,7 @@ extern class Grid extends externs.wibox.widget.Base {
      * @see lib/wibox/layout/grid.lua:980
      * @param orientation String  The preferred grid extension direction.
      */
-    @:selfCall function new(orientation: String): Void;
+    @:selfCall function new(orientation: String);
 
     /** Return a new horizontal grid layout.
      *
@@ -267,4 +267,3 @@ extern class Grid extends externs.wibox.widget.Base {
      */
     function swap_widgets(widget1: externs.wibox.Widget, widget2: externs.wibox.Widget, recursive: Bool): Bool;
 }
-

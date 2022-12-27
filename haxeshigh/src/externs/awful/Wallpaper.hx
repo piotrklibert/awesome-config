@@ -104,6 +104,5 @@ extern class Wallpaper {
      * @see lib/awful/wallpaper.lua:1318
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

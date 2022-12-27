@@ -99,7 +99,7 @@ extern class Scroll extends externs.wibox.widget.Base {
      * @param step_function Dynamic  The step function to be used
      * @param space_for_scrolling Dynamic  The space for scrolling
      */
-    @:selfCall function new(widget: Dynamic, fps: Dynamic, speed: Dynamic, extra_space: Dynamic, expand: Bool, max_size: Dynamic, step_function: Dynamic, space_for_scrolling: Dynamic): Void;
+    @:selfCall function new(widget: Dynamic, fps: Dynamic, speed: Dynamic, extra_space: Dynamic, expand: Bool, max_size: Dynamic, step_function: Dynamic, space_for_scrolling: Dynamic);
 
     /** Get a new vertical scrolling container.
      *
@@ -115,4 +115,3 @@ extern class Scroll extends externs.wibox.widget.Base {
      */
     static function vertical(widget: Dynamic, fps: Dynamic, speed: Dynamic, extra_space: Dynamic, expand: Bool, max_size: Dynamic, step_function: Dynamic, space_for_scrolling: Dynamic): Void;
 }
-

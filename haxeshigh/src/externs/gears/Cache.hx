@@ -19,6 +19,5 @@ extern class Cache {
      * @see lib/gears/cache.lua:110
      * @param creation_cb Dynamic  Callback that is used for creating missing cache entries.
      */
-    @:selfCall function new(creation_cb: Dynamic): Void;
+    @:selfCall function new(creation_cb: Dynamic);
 }
-

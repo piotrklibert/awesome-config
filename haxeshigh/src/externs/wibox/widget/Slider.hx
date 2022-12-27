@@ -108,6 +108,5 @@ extern class Slider extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/slider.lua:582
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

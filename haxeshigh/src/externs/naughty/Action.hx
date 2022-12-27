@@ -30,7 +30,7 @@ extern class Action {
      * @see lib/naughty/action.lua:27
      * @param args lua.Table<String, Dynamic>  The arguments.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Execute this action.
      *
@@ -63,4 +63,3 @@ extern class Action {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

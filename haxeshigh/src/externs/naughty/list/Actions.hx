@@ -79,7 +79,7 @@ extern class Actions {
      * @param args lua.Table<String, Dynamic>  <no desc>
      * @param widget_template lua.Table<String, Dynamic>  A custom widget to be used for each action.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>, widget_template: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>, widget_template: lua.Table<String, Dynamic>);
 
     /** Set a declarative widget hierarchy description.
      *
@@ -127,4 +127,3 @@ extern class Actions {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

@@ -36,7 +36,7 @@ extern class Calendar_popup {
      * @see lib/awful/widget/calendar_popup.lua:404
      * @param args lua.Table<String, Dynamic>  Properties of the widget
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** A year calendar wibox.
      *
@@ -45,4 +45,3 @@ extern class Calendar_popup {
      */
     static function year(args: lua.Table<String, Dynamic>): wibox;
 }
-

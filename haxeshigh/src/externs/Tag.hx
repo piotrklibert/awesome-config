@@ -147,7 +147,7 @@ extern class Tag {
      * @param name String  The tag name, a string
      * @param props Null<lua.Table<String, Dynamic>>  The tags initial properties, a table
      */
-    @:selfCall function new(name: String, props: Null<lua.Table<String, Dynamic>>): Void;
+    @:selfCall function new(name: String, props: Null<lua.Table<String, Dynamic>>);
 
     /** Create a set of tags and attach it to a screen.
      *
@@ -313,4 +313,3 @@ extern class Tag {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

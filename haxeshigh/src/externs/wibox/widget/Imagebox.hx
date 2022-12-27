@@ -112,6 +112,5 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * @param resize_allowed Bool  If `false`, the image will be clipped, else it will be resized to fit into the available space.
      * @param clip_shape haxe.Constraints.Function  A `gears.shape` compatible function.
      */
-    @:selfCall function new(image: image, resize_allowed: Bool, clip_shape: haxe.Constraints.Function): Void;
+    @:selfCall function new(image: image, resize_allowed: Bool, clip_shape: haxe.Constraints.Function);
 }
-

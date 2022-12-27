@@ -12,7 +12,7 @@ extern class Widget {
      * @see lib/awful/hotkeys_popup/widget.lua:251
      * @param args lua.Table<String, Dynamic>  Configuration options for the widget.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Show popup with hotkeys help.
      *
@@ -38,4 +38,3 @@ extern class Widget {
      */
     function add_group_rules(group: String, data: lua.Table<String, Dynamic>): Void;
 }
-

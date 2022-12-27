@@ -66,7 +66,7 @@ extern class Flex extends externs.wibox.layout.Fixed {
      * @see lib/wibox/layout/flex.lua:290
      * @param ...rest externs.wibox.Widget  Widgets that should be added to the layout.
      */
-    @:selfCall function new(...rest: externs.wibox.Widget): Void;
+    @:selfCall function new(...rest: externs.wibox.Widget);
 
     /** Creates and returns a new vertical flex layout.
      *
@@ -115,4 +115,3 @@ extern class Flex extends externs.wibox.layout.Fixed {
      */
     function reset(): Void;
 }
-

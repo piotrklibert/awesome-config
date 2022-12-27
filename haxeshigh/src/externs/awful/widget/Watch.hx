@@ -57,7 +57,7 @@ extern class Watch {
      * @param callback haxe.Constraints.Function  The function that will be called after the command output will be received. it is shown in the textbox. Defaults to: function(widget, stdout, stderr, exitreason, exitcode) widget:set_text(stdout) end
      * @param base_widget Dynamic  Base widget.
      */
-    @:selfCall function new(command: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>, timeout: Int, callback: haxe.Constraints.Function, base_widget: Dynamic): Void;
+    @:selfCall function new(command: extype.extern.Mixed.Mixed2<String, lua.Table<String, Dynamic>>, timeout: Int, callback: haxe.Constraints.Function, base_widget: Dynamic);
 
     /** Set a declarative widget hierarchy description.
      *
@@ -105,4 +105,3 @@ extern class Watch {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

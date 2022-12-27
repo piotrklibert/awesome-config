@@ -66,6 +66,5 @@ extern class Radialprogressbar extends externs.wibox.widget.Base {
      * @see lib/wibox/container/radialprogressbar.lua:298
      * @param widget externs.wibox.Widget  The widget to display.
      */
-    @:selfCall function new(widget: externs.wibox.Widget): Void;
+    @:selfCall function new(widget: externs.wibox.Widget);
 }
-

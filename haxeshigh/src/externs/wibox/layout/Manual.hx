@@ -65,7 +65,7 @@ extern class Manual extends externs.wibox.widget.Base {
      * @see lib/wibox/layout/manual.lua:310
      * @param ...rest lua.Table<String, Dynamic>  Widgets to add to the layout.
      */
-    @:selfCall function new(...rest: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(...rest: lua.Table<String, Dynamic>);
 
     /** Set a widget at a specific index, replacing the current one.
      *
@@ -107,4 +107,3 @@ extern class Manual extends externs.wibox.widget.Base {
      */
     function reset(): Void;
 }
-

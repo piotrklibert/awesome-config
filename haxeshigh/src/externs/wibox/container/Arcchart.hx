@@ -96,6 +96,5 @@ extern class Arcchart extends externs.wibox.widget.Base {
      * @see lib/wibox/container/arcchart.lua:369
      * @param widget wibox.widget  The widget to display.
      */
-    @:selfCall function new(widget: wibox.widget): Void;
+    @:selfCall function new(widget: wibox.widget);
 }
-

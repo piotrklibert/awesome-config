@@ -124,7 +124,7 @@ extern class Tooltip extends externs.Wibox {
      * @see lib/awful/tooltip.lua:716
      * @param args lua.Table<String, Dynamic>  Arguments for tooltip creation.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Emit a signal.
      *
@@ -150,4 +150,3 @@ extern class Tooltip extends externs.Wibox {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

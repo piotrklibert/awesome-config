@@ -25,6 +25,5 @@ extern class Only_on_screen extends externs.wibox.widget.Base {
      * @param widget Dynamic  The widget to display.
      * @param s Dynamic  The screen to display on.
      */
-    @:selfCall function new(widget: Dynamic, s: Dynamic): Void;
+    @:selfCall function new(widget: Dynamic, s: Dynamic);
 }
-

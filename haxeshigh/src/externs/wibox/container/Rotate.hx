@@ -31,6 +31,5 @@ extern class Rotate extends externs.wibox.widget.Base {
      * @param widget externs.wibox.Widget  The widget to display.
      * @param dir String  The direction to rotate to.
      */
-    @:selfCall function new(widget: externs.wibox.Widget, dir: String): Void;
+    @:selfCall function new(widget: externs.wibox.Widget, dir: String);
 }
-

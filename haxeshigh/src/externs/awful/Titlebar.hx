@@ -20,7 +20,7 @@ extern class Titlebar {
      * @param c externs.Client  The client the titlebar will be attached to.
      * @param args lua.Table<String, Dynamic>  A table with extra arguments for the titlebar.
      */
-    @:selfCall function new(c: externs.Client, args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(c: externs.Client, args: lua.Table<String, Dynamic>);
 
     /** Show the client's titlebar.
      *
@@ -112,4 +112,3 @@ extern class Titlebar {
      */
     static function stickybutton(c: Dynamic): Void;
 }
-

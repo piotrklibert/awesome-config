@@ -244,7 +244,7 @@ extern class Popup extends externs.Wibox {
      * @see lib/awful/popup.lua:613
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Get or set wibox geometry.
      *
@@ -275,4 +275,3 @@ extern class Popup extends externs.Wibox {
      */
     function find_widgets(x: Float, y: Float): lua.Table<String, Dynamic>;
 }
-

@@ -214,9 +214,8 @@ local String = _hx_e()
 local Std = _hx_e()
 local __externs_Screen = _G.require("awful.screen")
 local __externs_Wibox = _G.require("wibox")
-local __externs_awful_Spawn = _G.require("awful.spawn")
 local __externs_gears_Timer = _G.require("gears.timer")
-local __haxe_Log = _hx_e()
+local __externs_wibox_widget_Textbox = _G.require("wibox.widget.textbox")
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
 local __test_Test = _hx_e()
@@ -744,29 +743,6 @@ Std.int = function(x)
   end;
 end
 
-__haxe_Log.new = {}
-__haxe_Log.formatOutput = function(v,infos) 
-  local str = Std.string(v);
-  if (infos == nil) then 
-    do return str end;
-  end;
-  local pstr = infos.fileName .. ":" .. Std.string(infos.lineNumber);
-  if (infos.customParams ~= nil) then 
-    local _g = 0;
-    local _g1 = infos.customParams;
-    while (_g < _g1.length) do 
-      local v = _g1[_g];
-      _g = _g + 1;
-      str = str .. (", " .. Std.string(v));
-    end;
-  end;
-  do return pstr .. ": " .. str end;
-end
-__haxe_Log.trace = function(v,infos) 
-  local str = __haxe_Log.formatOutput(v, infos);
-  _hx_print(str);
-end
-
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
   __haxe_iterators_ArrayIterator.super(self,array)
@@ -806,15 +782,19 @@ __test_Test.main = function()
   w.y = 30;
   w.visible = true;
   w.border_width = 10;
-  __externs_awful_Spawn.spawn("xterm", nil, nil);
+  w.widget = __externs_wibox_widget_Textbox("");
+  local c = 1;
   local f = function() 
     local s = __externs_Screen.focused();
-    __haxe_Log.trace(s.outputs, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/Test.hx",lineNumber=21,className="test.Test",methodName="main"}));
-    local c = s.clients[1];
-    local g = c:geometry();
-    do return c:geometry(_hx_o({__fields__={x=true},x=g.x + 10})) end;
+    local value = s.clients[1];
+    if (value ~= nil) then 
+      local g = value:geometry();
+      value:geometry(_hx_o({__fields__={x=true},x=g.x + 10}));
+    end;
+    c = c + 1;
+    w.widget.text = "Asdasd" .. Std.string((c - 1)) do return w.widget.text end;
   end;
-  local _unwrap0 = _hx_o({__fields__={timeout=true,autostart=true,callback=true,single_shot=true},timeout=0.3,autostart=true,callback=function(_,...) return f(...) end,single_shot=true});
+  local _unwrap0 = _hx_o({__fields__={timeout=true,autostart=true,callback=true,single_shot=true},timeout=0.3,autostart=true,callback=function(_,...) return f(...) end,single_shot=false});
   _unwrap0.callback = f;
   __externs_gears_Timer(_unwrap0);
 end
@@ -858,8 +838,6 @@ end
 local _hx_static_init = function()
   
 end
-
-_hx_print = print or (function() end)
 
 _hx_static_init();
 _G.xpcall(function() 

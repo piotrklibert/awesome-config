@@ -54,6 +54,5 @@ extern class Layoutlist extends externs.wibox.widget.Base {
      * @see lib/awful/widget/layoutlist.lua:545
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

@@ -192,7 +192,7 @@ extern class Wibar extends externs.awful.Popup {
      * @see lib/awful/wibar.lua:753
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Get or set wibox geometry.
      *
@@ -247,4 +247,3 @@ extern class Wibar extends externs.awful.Popup {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

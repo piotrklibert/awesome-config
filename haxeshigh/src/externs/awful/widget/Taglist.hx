@@ -59,7 +59,7 @@ extern class Taglist {
      * @param update_function Dynamic  **DEPRECATED** use args.update_function
      * @param base_widget Dynamic  **DEPRECATED** use args.base_widget
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>, filter: Dynamic, buttons: Dynamic, style: Dynamic, update_function: Dynamic, base_widget: Dynamic): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>, filter: Dynamic, buttons: Dynamic, style: Dynamic, update_function: Dynamic, base_widget: Dynamic);
 
     /** Set a declarative widget hierarchy description.
      *
@@ -107,4 +107,3 @@ extern class Taglist {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

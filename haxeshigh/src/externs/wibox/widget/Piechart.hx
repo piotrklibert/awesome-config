@@ -48,6 +48,5 @@ extern class Piechart extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/piechart.lua:275
      * @param data_list lua.Table<String, Dynamic>  The data.
      */
-    @:selfCall function new(data_list: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(data_list: lua.Table<String, Dynamic>);
 }
-

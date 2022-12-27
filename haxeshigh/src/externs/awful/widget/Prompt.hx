@@ -18,6 +18,5 @@ extern class Prompt extends externs.wibox.container.Background {
      * @see lib/awful/widget/prompt.lua:127
      * @param args lua.Table<String, Dynamic>  Prompt arguments.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

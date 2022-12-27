@@ -109,7 +109,7 @@ extern class Matcher {
      *
      * @see lib/gears/matcher.lua:724
      */
-    @:selfCall function new(): Void;
+    @:selfCall function new();
 
     /** Emit a signal.
      *
@@ -135,4 +135,3 @@ extern class Matcher {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

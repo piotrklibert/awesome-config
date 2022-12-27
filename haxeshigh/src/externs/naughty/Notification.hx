@@ -245,7 +245,7 @@ extern class Notification {
      * @param args lua.Table<String, Dynamic>  The argument table containing any of the arguments below.
      * @param opt String =`beautiful.notification_border_color` or `beautiful.border_color_active` or `'#535d6c'`] args.border_color Border color.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>, opt: String): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>, opt: String);
 
     /** Grant a permission for a notification.
      *
@@ -287,4 +287,3 @@ extern class Notification {
      */
     function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
 }
-

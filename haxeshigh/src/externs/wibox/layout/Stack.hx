@@ -79,7 +79,7 @@ extern class Stack extends externs.wibox.layout.Fixed {
      *
      * @see lib/wibox/layout/stack.lua:230
      */
-    @:selfCall function new(): Void;
+    @:selfCall function new();
 
     /** Set a widget at a specific index, replacing the current one.
      *
@@ -121,4 +121,3 @@ extern class Stack extends externs.wibox.layout.Fixed {
      */
     function reset(): Void;
 }
-

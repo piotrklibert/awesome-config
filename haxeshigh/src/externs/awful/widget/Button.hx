@@ -12,6 +12,5 @@ extern class Button extends externs.wibox.widget.Imagebox {
      * @see lib/awful/widget/button.lua:43
      * @param args lua.Table<String, Dynamic>  Widget arguments.
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

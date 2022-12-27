@@ -111,7 +111,7 @@ extern class Ratio extends externs.wibox.layout.Flex {
      * @see lib/wibox/layout/ratio.lua:623
      * @param ...rest externs.wibox.Widget  Widgets that should be added to the layout.
      */
-    @:selfCall function new(...rest: externs.wibox.Widget): Void;
+    @:selfCall function new(...rest: externs.wibox.Widget);
 
     /** Returns a new vertical ratio layout.
      *
@@ -160,4 +160,3 @@ extern class Ratio extends externs.wibox.layout.Flex {
      */
     function reset(): Void;
 }
-

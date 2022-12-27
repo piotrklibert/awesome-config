@@ -54,6 +54,5 @@ extern class Separator extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/separator.lua:238
      * @param args lua.Table<String, Dynamic>  The arguments (all properties are available).
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

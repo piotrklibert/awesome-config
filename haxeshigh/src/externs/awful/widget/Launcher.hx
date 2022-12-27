@@ -12,6 +12,5 @@ extern class Launcher extends externs.awful.widget.Button {
      * @see lib/awful/widget/launcher.lua:70
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 }
-

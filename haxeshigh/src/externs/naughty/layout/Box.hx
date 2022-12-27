@@ -168,7 +168,7 @@ extern class Box extends externs.awful.Popup {
      * @see lib/naughty/layout/box.lua:361
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>): Void;
+    @:selfCall function new(args: lua.Table<String, Dynamic>);
 
     /** Get or set wibox geometry.
      *
@@ -199,4 +199,3 @@ extern class Box extends externs.awful.Popup {
      */
     function find_widgets(x: Float, y: Float): lua.Table<String, Dynamic>;
 }
-

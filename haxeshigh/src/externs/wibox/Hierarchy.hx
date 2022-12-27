@@ -25,7 +25,7 @@ extern class Hierarchy {
      * @param layout_callback Dynamic  Callback that is called with the corresponding widget hierarchy on widget::layout_changed on some widget.
      * @param callback_arg Dynamic  A second argument that is given to the above callbacks.
      */
-    @:selfCall function new(context: Dynamic, widget: Dynamic, width: Dynamic, height: Dynamic, redraw_callback: Dynamic, layout_callback: Dynamic, callback_arg: Dynamic): Void;
+    @:selfCall function new(context: Dynamic, widget: Dynamic, width: Dynamic, height: Dynamic, redraw_callback: Dynamic, layout_callback: Dynamic, callback_arg: Dynamic);
 
     /** Update a widget hierarchy with some new state.
      *
@@ -101,4 +101,3 @@ extern class Hierarchy {
      */
     function draw(context: Dynamic, cr: Dynamic): Void;
 }
-
