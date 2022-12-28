@@ -4,17 +4,22 @@ import lua.Table;
 import haxe.ds.Option;
 import haxe.extern.Rest;
 
-import awful.*;
 import utils.Common;
 import utils.lua.LuaTools;
 import taglist.Pkg;
 import log.Log;
+import externs.Tag;
+import externs.Screen;
+import externs.Wibox;
+import externs.wibox.Widget;
+import externs.Overrides.WiboxArgs;
+import externs.awful.widget.Taglist in TaglistWidget;
 
 using Lambda;
 using Safety;
 
 using utils.OptionTools;
-using utils.lua.LuaTools;
+// using utils.lua.LuaTools;
 import utils.lua.Macro as M;
 import taglist.Switcher;
 
@@ -56,7 +61,6 @@ class TaglistRow {
 
     function makeTaglist(s: Screen): LuaTable {
         final button = awful.Button.make(cast {}, 1, function (x: Dynamic) {
-            trace("asdasda");
             final sel = Screen.focused().selected_tag;
             Tag.viewtoggle(x);
             Tag.viewtoggle(sel);
@@ -66,9 +70,8 @@ class TaglistRow {
             filter: this.makeFilterFun(),
             buttons: M.castTable([button])
         });
-        return Widget.taglist(conf);
+        return new TaglistWidget(conf);
     }
-
 
     function makeFilterFun() {
         return function (tag: tink.core.Named<Any>) {
@@ -81,7 +84,7 @@ class TaglistRow {
 @:expose
 @:nullSafety(Strict)
 class Taglist {
-    public var tagListBox: Option<Wibox> = None;
+    public var tagListBox: Option<Wibox<Widget>> = None;
     var animator: Option<TaglistAnimator> = None;
     public static function __init__() {
         untyped __lua__("_G.Switcher = {0}", Switcher);
@@ -91,7 +94,7 @@ class Taglist {
     public function autoHide() this.animator.sure().autoHide(4);
     public function show() this.animator.sure().show();
 
-    static final wiboxConfig: Wibox.WiboxArgs = {
+    static final wiboxConfig: WiboxArgs = {
         x: 1820, y: 240, height: 115, width: 95,
         ontop: true, opacity: 0.7,
     }
@@ -112,12 +115,11 @@ class Taglist {
         return this;
     }
 
-    public function setup(wibox: Wibox, widget: Widget): Wibox {
+    public function setup<W: Widget>(wibox: Wibox<W>, widget: Widget): Wibox<W> {
         final widgetTable = M.withProps([widget], {
             margins: 15,
             layout: Wibox.container.margin,
         });
-
         final setupTable = M.withProps([widgetTable], {
             id: "bg",
             border_color: "#919191",
@@ -142,17 +144,15 @@ class Taglist {
             new TaglistRow(["4", "5", "6"]),
             new TaglistRow(["1", "2", "3"]),
         ];
-
         final ret = M.castTable({
             id: "grid",
             spacing: 6,
             layout: Wibox.layout.fixed.vertical
         });
-
         for (row in rows)
             Table.insert(cast ret, row.toLua(s));
 
-        return Widget.widget(ret);
+        return WidgetTools.widget(ret);
     }
 }
 

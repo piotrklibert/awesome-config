@@ -218,6 +218,7 @@ local __externs_gears_Timer = _G.require("gears.timer")
 local __externs_wibox_widget_Textbox = _G.require("wibox.widget.textbox")
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
+local __pkg_PackageManager = _hx_e()
 local __test_Test = _hx_e()
 
 local _hx_bind, _hx_bit, _hx_staticToInstance, _hx_funcToField, _hx_maxn, _hx_print, _hx_apply_self, _hx_box_mr, _hx_bit_clamp, _hx_table, _hx_bit_raw
@@ -773,6 +774,18 @@ __haxe_iterators_ArrayKeyValueIterator.new = function(array)
 end
 __haxe_iterators_ArrayKeyValueIterator.super = function(self,array) 
   self.array = array;
+end
+
+__pkg_PackageManager.new = function() 
+  local self = _hx_new(__pkg_PackageManager.prototype)
+  __pkg_PackageManager.super(self)
+  return self
+end
+__pkg_PackageManager.super = function(self) 
+end
+__pkg_PackageManager.prototype = _hx_e();
+__pkg_PackageManager.prototype.toString = function(self) 
+  do return "<PackageManager>" end
 end
 
 __test_Test.new = {}

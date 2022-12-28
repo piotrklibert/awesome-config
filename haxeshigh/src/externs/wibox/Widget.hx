@@ -10,6 +10,8 @@ extern class WidgetTools {
      * @see lib/wibox/widget/init.lua:7
      */
 
+    @:selfCall static function widget(arg: lib.LuaTable<String, Dynamic>): Widget;
+
     /** Draw a widget directly to a given cairo context.
      *
      * @see lib/wibox/widget/init.lua:41

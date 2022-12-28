@@ -59,7 +59,14 @@ extern class Taglist {
      * @param update_function Dynamic  **DEPRECATED** use args.update_function
      * @param base_widget Dynamic  **DEPRECATED** use args.base_widget
      */
-    @:selfCall function new(args: lua.Table<String, Dynamic>, filter: Dynamic, buttons: Dynamic, style: Dynamic, update_function: Dynamic, base_widget: Dynamic);
+    @:selfCall function new(
+        args: lua.Table<String, Dynamic>,
+        filter: Null<Dynamic> = null,
+        buttons: Null<Dynamic> = null,
+        style: Null<Dynamic> = null,
+        update_function: Null<Dynamic> = null,
+        base_widget: Null<Dynamic> = null
+    );
 
     /** Set a declarative widget hierarchy description.
      *

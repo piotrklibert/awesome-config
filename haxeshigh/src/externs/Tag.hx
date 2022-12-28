@@ -1,7 +1,7 @@
 package externs;
 
 
-@:luaRequire("tag")
+@:luaRequire("awful.tag")
 extern class Tag {
     /** awesome tag API.
      * @see objects/tag.c:203
@@ -153,7 +153,7 @@ extern class Tag {
      *
      * @see objects/tag.c:364
      * @param names lua.Table<String, Dynamic>  The tag name, in a table
-     * @param screen extype.extern.Mixed.Mixed2<externs.Screen, Float>  The tag screen (defaults to screen 1).
+     * @param screen extype.extern.Mixed.Mixed2<externs.Screen, Int>  The tag screen (defaults to screen 1).
      * @param layout lua.Table<String, Dynamic>  The layout or layout table to set for this tags by default.
      */
     static function _new(names: lua.Table<String, Dynamic>, screen: extype.extern.Mixed.Mixed2<externs.Screen, Float>, layout: lua.Table<String, Dynamic>): lua.Table<String, Dynamic>;
@@ -258,21 +258,21 @@ extern class Tag {
      * @param i Float  The **relative** index to see.
      * @param screen externs.Screen  The screen.
      */
-    static function viewidx(i: Float, screen: externs.Screen): Void;
+    static function viewidx(i: Float, screen: Null<externs.Screen> = null): Void;
 
     /** View next tag.
      *
      * @see objects/tag.c:1783
-     * @param screen externs.Screen  The screen.
+     * @param screen Null<externs.Screen>  The screen.
      */
-    static function viewnext(screen: externs.Screen): Void;
+    static function viewnext(screen: Null<externs.Screen> = null): Void;
 
     /** View previous tag.
      *
      * @see objects/tag.c:1811
-     * @param screen externs.Screen  The screen.
+     * @param screen Null<externs.Screen>  The screen.
      */
-    static function viewprev(screen: externs.Screen): Void;
+    static function viewprev(screen: Null<externs.Screen> = null): Void;
 
     /** View only a tag.
      *

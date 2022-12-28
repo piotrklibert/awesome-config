@@ -16,7 +16,7 @@ class Macro {
     }
 
     public static inline macro function castTable(x: Expr) {
-        return macro (untyped __lua_table__($e{x}) : lua.Table.AnyTable);
+        return macro (untyped __lua_table__($e{x}));
     }
 
     public static macro function T(x: Expr) {

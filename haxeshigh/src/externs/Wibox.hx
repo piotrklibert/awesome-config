@@ -1,6 +1,33 @@
 package externs;
 
 
+extern class WiboxStatic {
+    /** Connect a global signal on the wibox class.
+     *
+     * @see lib/wibox/init.lua:725
+     * @param name String  The name of the signal
+     * @param func haxe.Constraints.Function  The function to attach
+     */
+    static function connect_signal(name: String, func: haxe.Constraints.Function): Void;
+
+    /** Emit a wibox signal.
+     *
+     * @see lib/wibox/init.lua:730
+     * @param name String  The signal name.
+     * @param ...rest Dynamic  The signal callback arguments
+     */
+    static function emit_signal(name: String, ...rest: Dynamic): Void;
+
+    /** Disconnect a signal from a source.
+     *
+     * @see lib/wibox/init.lua:736
+     * @param name String  The name of the signal
+     * @param func haxe.Constraints.Function  The attached function
+     */
+    static function disconnect_signal(name: String, func: haxe.Constraints.Function): Bool;
+}
+
+
 @:luaRequire("wibox")
 extern class Wibox<T: externs.wibox.widget.Base> {
     /**
@@ -214,7 +241,7 @@ extern class Wibox<T: externs.wibox.widget.Base> {
      * @param name String  The name of the signal
      * @param func haxe.Constraints.Function  The function to attach
      */
-    static function connect_signal(name: String, func: haxe.Constraints.Function): Void;
+    function connect_signal(name: String, func: haxe.Constraints.Function): Void;
 
     /** Emit a wibox signal.
      *
@@ -222,7 +249,7 @@ extern class Wibox<T: externs.wibox.widget.Base> {
      * @param name String  The signal name.
      * @param ...rest Dynamic  The signal callback arguments
      */
-    static function emit_signal(name: String, ...rest: Dynamic): Void;
+    function emit_signal(name: String, ...rest: Dynamic): Void;
 
     /** Disconnect a signal from a source.
      *
@@ -230,5 +257,5 @@ extern class Wibox<T: externs.wibox.widget.Base> {
      * @param name String  The name of the signal
      * @param func haxe.Constraints.Function  The attached function
      */
-    static function disconnect_signal(name: String, func: haxe.Constraints.Function): Bool;
+    function disconnect_signal(name: String, func: haxe.Constraints.Function): Bool;
 }

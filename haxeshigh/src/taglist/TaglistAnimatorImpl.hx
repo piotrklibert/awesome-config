@@ -2,7 +2,10 @@ package taglist;
 
 import haxe.ds.Option;
 import awful.Timer;
-import awful.Wibox;
+import externs.wibox.Widget;
+
+import externs.Wibox;
+
 import lua.Coroutine;
 
 using utils.OptionTools;
@@ -26,9 +29,9 @@ class TaglistAnimatorImpl implements TaglistAnimator {
   final taglist: Taglist;
 
   @:nullSafety(Off)
-  var tagListBox(get, null): Wibox;
+  var tagListBox(get, null): Wibox<Widget>;
 
-  function get_tagListBox(): Wibox {
+  function get_tagListBox(): Wibox<Widget> {
     switch (this.taglist.tagListBox) {
       case Some(wb): return wb;
       case None: throw "Cannot animate nonexistent widget";
@@ -117,3 +120,7 @@ class Timers {
   public var hide_timer: Option<Timer> = None;
   public function new() {}
 }
+
+// Local Variables:
+// haxe-module: "hx_taglist"
+// End:

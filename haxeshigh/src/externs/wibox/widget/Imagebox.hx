@@ -11,7 +11,7 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * The image rendered by the `imagebox`.
      * @see lib/wibox/widget/imagebox.lua:323
      */
-    var image: image;
+    var image: Dynamic; // String as path | Cairo Surface
 
     /**
      * Set a clip shape for this imagebox.
