@@ -1530,7 +1530,7 @@ __taglist_Switcher.tag_right = function()
     __taglist_Switcher.move(1);
   end;
 end
-__taglist_Switcher.move = function(dest) 
+__taglist_Switcher.move = function(offset) 
   local value = _G.Taglist.animator;
   local animator;
   local animator1 = value[1];
@@ -1539,7 +1539,7 @@ __taglist_Switcher.move = function(dest)
   elseif (animator1) == 1 then 
     _G.error(__haxe_Exception.thrown("None in OptionTools.sure() call"),0); end;
   animator:show();
-  __externs_Tag.viewidx(dest);
+  __externs_Tag.viewidx(offset);
   animator:autoHide(4);
 end
 
@@ -1926,7 +1926,7 @@ local _hx_static_init = function()
   
   __log_Log.defaults = _hx_o({__fields__={fg=true,bg=true,font=true,icon=true,width=true,position=true,timeout=true,hover_timeout=true},fg="black",bg="#96413F",font="mono 10",icon="" .. __log_Log.res_path .. "/bang2.png",width=720,position="bottom_right",timeout=12,hover_timeout=0.2});
   
-  __taglist_Pkg.ver = "1672192360";
+  __taglist_Pkg.ver = "1672249293";
   
   __taglist_TaglistManager.taglist = __haxe_ds_Option.None;
   

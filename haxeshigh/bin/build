@@ -7,7 +7,6 @@ hxml_file="build/$ARG.hxml"
 export LIBRARIES="$(cat build/include/libs.txt)"
 export OPTIONS="$(cat build/include/opts.txt)"
 
-
 cat $hxml_file | envsubst > $ARG.hxml
 
 # printf "Executing ./$ARG.hxml\n\t:::\n"

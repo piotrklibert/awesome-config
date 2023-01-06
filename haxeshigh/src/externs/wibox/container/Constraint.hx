@@ -45,7 +45,7 @@ extern class Constraint extends externs.wibox.widget.Base {
      * @param width Dynamic  The maximum width of the widget. nil for no limit.
      * @param height Dynamic  The maximum height of the widget. nil for no limit.
      */
-    @:selfCall function new(widget: externs.wibox.Widget, strategy: ConstraintStrategy, width: Null<Int> = null, height: Null<Int> = null);
+    @:selfCall function new(widget: externs.wibox.Widget, strategy: ConstraintStrategy = CMax, width: Null<Int> = null, height: Null<Int> = null);
 }
 
 enum abstract ConstraintStrategy(String) from String {

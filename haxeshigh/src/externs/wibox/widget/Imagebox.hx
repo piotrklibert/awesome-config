@@ -96,7 +96,7 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * @see lib/wibox/widget/imagebox.lua:334
      * @param image image  The image to render.
      */
-    function set_image(image: image): Bool;
+    function set_image<T : EitherType<String, Dynamic>>(image: T): Bool;
 
     /** Set a clip shape for this imagebox.
      *
@@ -112,5 +112,5 @@ extern class Imagebox extends externs.wibox.widget.Base {
      * @param resize_allowed Bool  If `false`, the image will be clipped, else it will be resized to fit into the available space.
      * @param clip_shape haxe.Constraints.Function  A `gears.shape` compatible function.
      */
-    @:selfCall function new(image: image, resize_allowed: Bool, clip_shape: haxe.Constraints.Function);
+    @:selfCall function new<F: haxe.Constraints.Function>(image: Dynamic, resize_allowed: Bool = false, ?clip_shape: F = null);
 }

@@ -112,18 +112,18 @@ extern class Wibox extends Widget {
 
 
     @:native("widget")
-    public static function makeWidget(t: LuaTable): Widget;
+    public static function makeWidget(t: AnyTable): Widget;
 
 
-    public function setup(table: LuaTable): Void;
+    public function setup(table: AnyTable): Void;
     public function connect_signal(s: String, f: Function): Void;
 
     @:overload(function (): Geometry {})
     public function geometry(table: PartialGeometry): Void;
 
-    public function buttons(buttons_table: LuaTable): LuaTable;          // Get or set mouse buttons bindings to a wibox.
+    public function buttons(buttons_table: AnyTable): AnyTable;          // Get or set mouse buttons bindings to a wibox.
     public function struts(?strut: Struts): Struts;                      // Get or set wibox struts.
     public function find_widgets(x: Int, y: Int): Widget;                // Find a widget by a point.
     public function to_widget(): Widget;                                 // Create a widget that reflects the current state of this wibox.
-    public function save_to_svg(path: String, ?context: LuaTable): Void; // Save a screenshot of the wibox to path.
+    public function save_to_svg(path: String, ?context: AnyTable): Void; // Save a screenshot of the wibox to path.
 }

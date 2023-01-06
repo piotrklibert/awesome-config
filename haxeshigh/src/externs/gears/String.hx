@@ -2,7 +2,7 @@ package externs.gears;
 
 
 @:luaRequire("gears.string")
-extern class String {
+extern class _String {
     /** String module for gears.
      * @see lib/gears/string.lua:7
      */
@@ -75,4 +75,3 @@ extern class String {
      */
     static function endswith(str: String, sub: String): Bool;
 }
-

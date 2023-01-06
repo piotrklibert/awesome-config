@@ -6,13 +6,12 @@ using Safety;
 
 #if !macro
 import lua.Table;
-import lua.Table.AnyTable;
-import utils.lua.Macro.A;
-import utils.lua.Macro.T;
+import lib.LuaMacros.A;
+import lib.LuaMacros.T;
 import lib.Globals.Prelude.*;
 import lib.LuaTable;
 import lib.Inspect;
-// import Console;
+import Console;
 
 using lib.LambdaTools;
 using lua.PairTools;

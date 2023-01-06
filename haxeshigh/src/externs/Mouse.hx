@@ -139,7 +139,7 @@ extern class Mouse {
      * @param coords_table lua.Table<String, Dynamic>  None or a table with x and y keys as mouse coordinates.
      * @param silent Bool  Disable mouse::enter or mouse::leave events that could be triggered by the pointer when moving.
      */
-    static function coords(coords_table: lua.Table<String, Dynamic>, silent: Bool): Int;
+    static function coords(?coords_table: lua.Table<String, Dynamic>, ?silent: Bool): {x: Int, y: Int, buttons: lua.Table<Int, Bool>};
 
     /** Set the resize mode.
      *
@@ -184,4 +184,3 @@ extern class Mouse {
      */
     static function snap(c: Dynamic, snap: Dynamic, x: Dynamic, y: Dynamic, fixed_x: Dynamic, fixed_y: Dynamic): Void;
 }
-

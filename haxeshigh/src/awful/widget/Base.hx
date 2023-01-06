@@ -16,7 +16,7 @@ extern class Base {
     public var is_widget: Bool;
     public function add_button(button: Dynamic): Void;
     public function emit_signal_recursive(signal_name: String, args: Rest<Dynamic>): Void;     // Emit a signal and ensure all parent widgets in the hierarchies also forward the signal.
-    public function get_all_children(): utils.lua.LuaTable;     // Get all direct and indirect children widgets.
+    public function get_all_children<W:Base>(): lib.LuaTable<Int, W>;     // Get all direct and indirect children widgets.
     public function get_children(): Array<awful.Widget>;     // Get the widgets direct children widgets.
     public function get_children_by_id(id: String): Array<awful.Widget>;     // Get the widgets direct children widgets.
     public function get_forced_height(): Int;     // Get the widgets forced height.
@@ -32,10 +32,10 @@ extern class Base {
     public function setup(args: Dynamic): Widget;     // Set a declarative widget hierarchy description.
     public function set_widget_common(widget: Widget): Dynamic;
 
-    public static function check_widget(widget: LuaTable): Dynamic;
+    public static function check_widget(widget: Base): Dynamic;
     public static function empty_widget(): Dynamic;
     public static function fit_widget(parent: Dynamic, context: Dynamic, widget: Dynamic, width: Int, height: Int): Dynamic;
-    public static function handle_button(event: Dynamic, widget: Dynamic, x: Int, y: Int, button: Dynamic, modifiers: Dynamic, geometry: LuaTable): Dynamic;
+    public static function handle_button(event: Dynamic, widget: Dynamic, x: Int, y: Int, button: Dynamic, modifiers: Dynamic, geometry: LuaTable<String, Int>): Dynamic;
     public static function layout_widget(parent: Dynamic, context: Dynamic, widget: Dynamic, width: Int, height: Int): Dynamic;
     public static function make_widget(proxy: Dynamic, widget_name: Dynamic, args: Rest<Dynamic>): Dynamic;
     public static function make_widget_declarative(args: Rest<Dynamic>): Dynamic;

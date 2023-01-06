@@ -1,11 +1,12 @@
 package externs.wibox;
 
 
+/** Management of widget hierarchies.
+ *
+ * @see lib/wibox/hierarchy.lua:11
+ */
 @:luaRequire("wibox.hierarchy")
 extern class Hierarchy {
-    /** Management of widget hierarchies.
-     * @see lib/wibox/hierarchy.lua:11
-     */
 
     /** Add a widget to the list of widgets for which hierarchies should count their occurrences.
      *
@@ -25,18 +26,19 @@ extern class Hierarchy {
      * @param layout_callback Dynamic  Callback that is called with the corresponding widget hierarchy on widget::layout_changed on some widget.
      * @param callback_arg Dynamic  A second argument that is given to the above callbacks.
      */
-    @:selfCall function new(context: Dynamic, widget: Dynamic, width: Dynamic, height: Dynamic, redraw_callback: Dynamic, layout_callback: Dynamic, callback_arg: Dynamic);
+    @:native("new")
+    static function create(context: Dynamic, widget: Dynamic, width: Dynamic, height: Dynamic, redraw_callback: Dynamic, layout_callback: Dynamic, callback_arg: Dynamic);
 
     /** Update a widget hierarchy with some new state.
      *
      * @see lib/wibox/hierarchy.lua:227
      * @param context Dynamic  The context in which we are laid out.
      * @param widget Dynamic  The widget that is at the base of the hierarchy.
-     * @param width Dynamic  The available width for this hierarchy.
-     * @param height Dynamic  The available height for this hierarchy.
+     * @param width Int  The available width for this hierarchy.
+     * @param height Int  The available height for this hierarchy.
      * @param region Dynamic  A region to use for accumulating changed parts
      */
-    function update(context: Dynamic, widget: Dynamic, width: Dynamic, height: Dynamic, region: Dynamic): Void;
+    function update(context: Dynamic, widget: Dynamic, width: Int, height: Int, region: Dynamic): Void;
 
     /** Get the widget that this hierarchy manages.
      *
@@ -84,19 +86,19 @@ extern class Hierarchy {
      *
      * @see lib/wibox/hierarchy.lua:296
      */
-    function get_children(): Void;
+    function get_children<W: externs.wibox.Widget>(): lua.Table<Int, W>;
 
     /** Count how often this widget is visible inside this hierarchy.
      *
      * @see lib/wibox/hierarchy.lua:305
-     * @param widget Dynamic  The widget that should be counted
+     * @param widget externs.wibox.Widget  The widget that should be counted
      */
-    function get_count(widget: Dynamic): Void;
+    function get_count(widget: externs.wibox.Widget): Int;
 
     /** Draw a hierarchy to some cairo context.
      *
      * @see lib/wibox/hierarchy.lua:321
-     * @param context Dynamic  The context in which widgets are drawn.
+     * @param context externs.wibox.Widget  The context in which widgets are drawn.
      * @param cr Dynamic  The cairo context that is used for drawing.
      */
     function draw(context: Dynamic, cr: Dynamic): Void;

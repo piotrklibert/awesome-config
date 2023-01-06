@@ -4,14 +4,29 @@ import lua.Table;
 using Lambda;
 using lib.LambdaTools;
 using Safety;
-
+using StringTools;
 
 @:tink
 @:publicFields
 class TableTools {
-    static function keys<K, V>(table: Table<K, V>): Array<K> {
-        final m : Map<K, Dynamic> = Table.toMap(table);
-        return [ for (k in m.keys()) k ];
+    static inline function last<K, V>(it: Table<K, V>): V {
+        return untyped __lua__("{0}[#{0}]", it, it);
+    }
+
+    static inline function first<K, V>(it: Table<K, V>): V {
+        return untyped __lua__("{0}[1]", it);
+    }
+
+    static inline function at<K, V>(it: Table<K, V>, pos: Int): V {
+        return untyped __lua__("{0}[{1}]", it, pos+1);
+    }
+
+    static inline function keys<K, V>(table: Table<K, V>): Array<K> {
+        return [ for ({index: k} in lua.PairTools.pairsIterator(table)) k ];
+    }
+
+    static inline function values<K, V>(table: Table<K, V>): Array<V> {
+        return [ for ({value: v} in lua.PairTools.pairsIterator(table)) v ];
     }
 
     static inline function iter<K, V>(table: Table<K, V>): Iterator<{index: K, value: V}> {
@@ -44,23 +59,5 @@ class TableTools {
             .filter(x -> Std.parseInt(x) == null);
         // nums.sort(Reflect.compare);
         return nums.map(Std.string);
-    }
-
-
-    static inline function last<K, V>(it: Table<K, V>): V {
-        return untyped __lua__("{0}[#{0}]", it, it);
-    }
-
-    static inline function first<K, V>(it: Table<K, V>): V {
-        return untyped __lua__("{0}[1]", it);
-    }
-
-    static inline function keysArray<K, V>(it: Table<K, V>): Array<K> {
-        return TableTools.keys(it);
-    }
-
-    static function values<K, V>(it: Table<K, V>): Array<V> {
-        final m : Map<K, V> = Table.toMap(it);
-        return [ for(v in m) v ];
     }
 }

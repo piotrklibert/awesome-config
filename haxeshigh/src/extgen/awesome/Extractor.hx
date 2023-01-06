@@ -56,7 +56,7 @@ class Extractor {
                 extractMethod(item);
             case "property":
                 extractProperty(item);
-            case "constructorfct":
+            case "constructorfct" | "constructorfct2":
                 if (constructors++ < 1)
                     extractMethod(item);
                 else {

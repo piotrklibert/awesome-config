@@ -1,19 +1,19 @@
 package externs.wibox;
 
 
+/** Handling of drawables.
+ *
+ * @see lib/wibox/drawable.lua:9
+ */
 @:luaRequire("wibox.drawable")
 extern class Drawable {
-    /** Handling of drawables.
-     * @see lib/wibox/drawable.lua:9
-     */
-
     /** Find a widget by a point.
      *
      * @see lib/wibox/drawable.lua:214
-     * @param x Dynamic  X coordinate of the point
-     * @param y Dynamic  Y coordinate of the point
+     * @param x Int  X coordinate of the point
+     * @param y Int  Y coordinate of the point
      */
-    static function find_widgets(x: Dynamic, y: Dynamic): lua.Table<String, Dynamic>;
+    static function find_widgets(x: Int, y: Int): lua.Table<String, Dynamic>;
 
     /** Set the widget that the drawable displays
      *
@@ -43,4 +43,3 @@ extern class Drawable {
      */
     static function set_fg(c: Dynamic): Void;
 }
-

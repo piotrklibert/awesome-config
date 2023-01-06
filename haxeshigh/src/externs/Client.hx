@@ -432,7 +432,7 @@ extern class Client {
      * @param geo Null<lua.Table<String, Dynamic>>  A table with new coordinates, or nil.
      */
 
-    function geometry(geo: externs.Overrides.Geometry = null): lua.Table<String, Dynamic>;
+    function geometry(geo: externs.Types.Geometry = null): lua.Table<String, Dynamic>;
 
     /** Apply size hints to a size.
      *

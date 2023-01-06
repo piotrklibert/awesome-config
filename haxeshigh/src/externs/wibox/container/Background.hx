@@ -70,5 +70,5 @@ extern class Background extends externs.wibox.widget.Base {
      * @param bg externs.gears.Color  The background to use for that widget.
      * @param shape extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>  A `gears.shape` compatible shape function
      */
-    @:selfCall function new(widget: externs.wibox.Widget, bg: externs.gears.Color, shape: extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>);
+    @:selfCall function new(widget: externs.wibox.Widget, bg: externs.gears.Color, ?shape: extype.extern.Mixed.Mixed2<externs.gears.Shape, haxe.Constraints.Function>);
 }

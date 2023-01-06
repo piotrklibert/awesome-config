@@ -14,7 +14,7 @@ extern class Object {
      * @param name String  The name of the signal.
      * @param func haxe.Constraints.Function  The callback to call when the signal is emitted.
      */
-    function connect_signal(name: String, func: haxe.Constraints.Function): Void;
+    function connect_signal<F: haxe.Constraints.Function>(name: String, func: F): Void;
 
     /** Connect to a signal weakly.
      *
@@ -22,7 +22,7 @@ extern class Object {
      * @param name String  The name of the signal.
      * @param func haxe.Constraints.Function  The callback to call when the signal is emitted.
      */
-    function weak_connect_signal(name: String, func: haxe.Constraints.Function): Void;
+    function weak_connect_signal<F: haxe.Constraints.Function>(name: String, func: F): Void;
 
     /** Disonnect from a signal.
      *
@@ -30,7 +30,7 @@ extern class Object {
      * @param name String  The name of the signal.
      * @param func haxe.Constraints.Function  The callback that should be disconnected.
      */
-    function disconnect_signal(name: String, func: haxe.Constraints.Function): Void;
+    function disconnect_signal<F: haxe.Constraints.Function>(name: String, func: F): Void;
 
     /** Emit a signal.
      *

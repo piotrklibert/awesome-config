@@ -1,6 +1,14 @@
 package externs;
 
 
+class WiboxTools {
+    public static function widget(args: Dynamic) {
+        externs.wibox.widget.Base.make_widget_declarative(args);
+    }
+}
+
+
+@:luaRequire("wibox")
 extern class WiboxStatic {
     /** Connect a global signal on the wibox class.
      *
@@ -8,7 +16,7 @@ extern class WiboxStatic {
      * @param name String  The name of the signal
      * @param func haxe.Constraints.Function  The function to attach
      */
-    static function connect_signal(name: String, func: haxe.Constraints.Function): Void;
+    static function connect_signal<F: haxe.Constraints.Function>(name: String, func: F): Void;
 
     /** Emit a wibox signal.
      *
@@ -28,12 +36,12 @@ extern class WiboxStatic {
 }
 
 
+/** Box where widget can be displayed.
+ *
+ * @see lib/wibox/init.lua:7
+ */
 @:luaRequire("wibox")
 extern class Wibox<T: externs.wibox.widget.Base> {
-    /**
-     * @see lib/wibox/init.lua:7
-     */
-
     /**
      * Border width.
      * @see lib/wibox/init.lua:46
@@ -116,7 +124,7 @@ extern class Wibox<T: externs.wibox.widget.Base> {
      * The widget that the `wibox` displays.
      * @see lib/wibox/init.lua:154
      */
-    var widget: T;
+    var widget: Null<T>;
 
     /**
      * The X window id.
@@ -181,16 +189,16 @@ extern class Wibox<T: externs.wibox.widget.Base> {
     /** Get or set wibox geometry.
      *
      * @see lib/wibox/init.lua:236
-     * @param A Dynamic  table with coordinates to modify.
+     * @param geom A table with coordinates to modify.
      */
-    function geometry(A: Dynamic): Void;
+    function geometry(geom: externs.Types.Geometry): Void;
 
     /** Get or set wibox struts.
      *
      * @see lib/wibox/init.lua:252
-     * @param strut Dynamic  A table with new strut, or nothing
+     * @param strut Struts A table with new strut, or nothing
      */
-    function struts(strut: Dynamic): Void;
+    function struts(strut: externs.Types.Struts): Void;
 
     /** Set a declarative widget hierarchy description.
      *
@@ -226,14 +234,21 @@ extern class Wibox<T: externs.wibox.widget.Base> {
      * @see lib/wibox/init.lua:595
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    @:selfCall function new(args: externs.Overrides.WiboxArgs);
+    @:selfCall function new(args: externs.Types.WiboxArgs);
 
+    inline function redraw() {
+        this.visible = false;
+        this.visible = true;
+    }
+
+    #if !display
     /** Redraw a wibox.
      *
      * @see lib/wibox/init.lua:710
      * @param wibox Dynamic  <no desc>
      */
     function draw(wibox: Dynamic): Void;
+    #end
 
     /** Connect a global signal on the wibox class.
      *

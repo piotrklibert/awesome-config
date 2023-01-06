@@ -1,11 +1,12 @@
 package log;
 
-import awful.Naughty;
+import externs.Naughty;
 import lib.Inspect;
 import lib.Globals;
 
-import utils.lua.Macro;
-import utils.lua.Macro.castTable as A;
+import lib.LuaMacros;
+import lib.LuaMacros.T;
+import lib.LuaMacros.castTable as A;
 
 using Safety;
 
@@ -17,14 +18,10 @@ enum abstract LogLevel(String) {
     var Error;
 }
 
-// #ff8080  - lososiowy
-// #55ffff  -  mietowy
-function f() {
-    "ad".substring(1, 2);
-}
 
 @:tink
 @:nullSafety(Strict)
+@:build(log.Builder.build())
 class Log {
     static final level = Debug;
     static final backgrounds = [
@@ -55,18 +52,19 @@ class Log {
         for (f in Reflect.fields(opts))
             Reflect.setField(defs, f, Reflect.field(opts, f));
         Reflect.setField(defs, "text", s);
-        Naughty.notify(defs);
+        Naughty.notification(defs);
     }
 
 
     static function formatInfos(i: Null<haxe.PosInfos>): String {
         switch i {
-        case null: return "    ERROR: no pos info!\n";
-        case i:
-            return lua.Table.concat(A([
-                '    ${i.fileName}:${i.lineNumber}',
-                '    ${i.className}.${i.methodName}'
-            ]), "\n");
+            case null:
+                return "    ERROR: no pos info!\n";
+            case i:
+                return lua.Table.concat(A([
+                    '    ${i.fileName}:${i.lineNumber}',
+                    '    ${i.className}.${i.methodName}'
+                ]), "\n");
         }
     }
 
@@ -97,18 +95,11 @@ class Log {
     // @:keep
     public static function log(x: Any, ?opts: NaughtyOptions = {}, ?infos: haxe.PosInfos): Void {
         switch (x) {
-        case (s : String):
-            final infos = formatInfos(infos);
-            display('${infos}\n    -----------------------\n\n${s}\n', opts);
-        default:
-            log(Inspect.haxe(x, Macro.asUntypedTable({depth: 2})), opts, infos);
+            case (s : String):
+                final infos = formatInfos(infos);
+                display('${infos}\n    -----------------------\n\n${s}\n', opts);
+            default:
+                log(Inspect.haxe(x, cast T({depth: 2})), opts, infos);
         }
     }
-
-    // @:keep
-    // public static function __init__() {
-    //   untyped {
-    //     Globals.Logger = Log;
-    //   }
-    // }
 }

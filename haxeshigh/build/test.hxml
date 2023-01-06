@@ -7,6 +7,7 @@
 -D analyzer-local_dce
 -D analyzer-fusion
 -D analyzer-purity_inference
+-D awesome
 --debug
 # --times
 
@@ -17,6 +18,6 @@ $LIBRARIES
 -lua output/hx_test.lua
 # --interp
 # --resource run.sh@argh
--main test.Test
+-main test.Main
 
-test.Test
+test.Main

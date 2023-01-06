@@ -1,3 +1,3 @@
 #if !macro
-import utils.lua.LuaTools;
+import lib.LuaTable;
 #end

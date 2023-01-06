@@ -4,7 +4,7 @@ typedef TimerDef = {
     var timeout: Float;                     // Timeout in seconds (e.g. 1.5).                        -- Not applicable
     @:optional var autostart: Bool;         // Automatically start the timer.                        -- false
     @:optional var call_now: Bool;          // Call the callback at timer creation.                  -- false
-    @:optional var callback: () -> Dynamic; // Callback function to connect to the "timeout" signal. -- Undefined
+    @:optional var callback: (t: Timer) -> Void; // Callback function to connect to the "timeout" signal. -- Undefined
     @:optional var single_shot: Bool;       // Run only once then stop.                              -- false
 }
 

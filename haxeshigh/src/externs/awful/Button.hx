@@ -1,4 +1,5 @@
 package externs.awful;
+import haxe.Constraints;
 
 
 @:luaRequire("awful.button")
@@ -54,5 +55,10 @@ extern class Button {
      * @see lib/awful/button.lua:109
      */
     function trigger(): Void;
-}
 
+    @:selfCall function new();
+
+    inline static function make(mods: Array<String>, n: Int, callback: Function): Button {
+        return untyped __lua__('awful.button({0}, {1}, {2})', mods, n, callback);
+    }
+}

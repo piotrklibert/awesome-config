@@ -1,64 +1,120 @@
 package lib;
-// import log.Log;
-import lua.Table.AnyTable;
+
 import lib.Inspect;
-import haxe.extern.EitherType;
+import lib.LuaTable;
+import haxe.Constraints.Function;
 
-@:nullSafety(Strict)
+using Safety;
+
+
 @:publicFields
+@:nullSafety(Strict)
 class Env {
-    static function set(name: String, val: Dynamic) {
-        untyped Globals[name] = val;
+    static function getBool<K, V>(table: LuaTable<K, V>, name: String): Bool {
+        final val = table[name];
+        return cast(val.sure(), Bool);
     }
 
-    static function get(name: String): Dynamic {
-        return untyped Globals[name];
+    static function getFloat<K, V>(table: LuaTable<K, V>, name: String): Float {
+        final val = table[name];
+        return cast(val.sure(), Float);
     }
 
-    static function globals(): Map<String, Null<Dynamic>> {
-        final x = (untyped __lua__("_G") : lua.Table<String, Dynamic>);
-        return lua.Table.toMap(x);
+    static function getInt<K, V>(table: LuaTable<K, V>, name: String): Int {
+        final val = table[name];
+        return cast(val.sure(), Int);
+    }
+
+    static function getTable<K, V, B>(table: LuaTable<K, V>, name: String): Table<K, B> {
+        final val = table[name];
+        return cast val.sure();
+    }
+
+    static function getString<K, V>(table: LuaTable<K, V>, name: String): String {
+        final val = table[name];
+        return cast(val.sure(), String);
     }
 }
 
 
 @:publicFields
 class Prelude {
-    static function print<T>(x: T) { untyped _G["print"](x); }
-    static function println<T>(x: T) { untyped _G["print"](x); }
+    /** native Lua print */
+    static inline function print<T>(x: T) { untyped _G["print"](x); }
+    /** native Lua print (alias)*/
+    static inline function println<T>(x: T) { untyped _G["print"](x); }
 
+    /** inspect from inspect.lua */
     static function inspect(x: Any, ?opts: InspectOpts): String {
         return Inspect.haxe(x, opts);
     }
+
+    static inline function environ(): Map<String, String> {
+        return new LuaTable(lua.lib.luv.Os.environ()).toMap();
+    }
+
+    static inline function yield<T, D>(arg: D): T {
+        return lua.Coroutine.yield(arg);
+    }
+
+    static inline function yields<T, D>(...args: D): T {
+        return lua.Coroutine.yield(...args);
+    }
+
+    static inline function coro_wrap<F: Function, G: Function>(f: F, _: G): G {
+        return cast lua.Coroutine.wrap(f);
+    }
+
+    static inline function globals(?name: String, ?val: Dynamic) {
+        return Globals.get();
+    }
+
+    /** Variables local to current module */
+    static inline function locals(?name: String, ?val: Dynamic) {
+        return Locals.get();
+    }
 }
+
+
+@:native("_M")
+extern class Locals implements Dynamic {
+    static inline function get(): LuaTable<String, Dynamic> {
+        return untyped Locals;
+    }
+}
+
 
 @:native("_G")
 extern class Globals implements Dynamic {
-    public static final gtk: Dynamic;
-    public static final lgi: Dynamic;
+    static inline function get(): LuaTable<String, Any> {
+        return untyped Globals;
+    }
+
+    static final gtk: Dynamic;
+    static final lgi: Dynamic;
 
 
-    public static function s(obj: Any): Void; // show_summary
-    public static function st(obj: Any): Void; // show_summary + tabular
+    static function s(obj: Any): Void; // show_summary
+    static function st(obj: Any): Void; // show_summary + tabular
 
-    public static function gs(obj: Any): String; // get_summary
+    static function gs(obj: Any): String; // get_summary
 
-    public static function ss(obj: Any): Void; // show_full
+    static function ss(obj: Any): Void; // show_full
 
-    public static function i(obj: Any, opts: Any): String; // show_full
+    static function i(obj: Any, opts: Any): String; // show_full
 
-    // public static function sil(obj: Any): Void; // show_inspect depth=3
+    //static function sil(obj: Any): Void; // show_inspect depth=3
     @:native("sil")
-    public static function si(obj: Any): Void; // show_inspect
+    static function si(obj: Any): Void; // show_inspect
 
-    public static function sf(obj: Any): Void; // show_file
+    static function sf(obj: Any): Void; // show_file
 
-    public static var Taglist: Dynamic;
+    static var Taglist: Dynamic;
 
-    #if pkg
-    public static var PackageManager: Null<pkg.PackageManager>;
-    #end
-    // public static var Logger: Null<Class<Log>>;
+    // #if pkg
+    static var PackageManager: Null<pkg.PackageManager>;
+    // #end
+    //static var Logger: Null<Class<Log>>;
 
-    public static function clone<T>(x: T): T;
+    static function clone<T>(x: T): T;
 }

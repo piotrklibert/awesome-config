@@ -38,10 +38,6 @@ class Generator {
         final ext = Extractor.get(json).extract();
         final fmt = new Formatter(ext.module, "out/");
         fmt.saveFile();
-        // trace(inspect(ext.module));
-        // trace([1,2,3].mapIt({ final x = it; x * 2; }));
-        // final fmt = new Formatter(json, "out/");
-        // fmt.saveFile();
     }
 }
 

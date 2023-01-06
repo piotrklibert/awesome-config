@@ -1,4 +1,4 @@
-package utils.lua;
+package lib;
 
 import haxe.macro.Expr;
 import haxe.macro.Context;
@@ -8,52 +8,53 @@ using haxe.macro.ExprTools;
 using haxe.macro.TypeTools;
 
 @:tink
-class Macro {
-    public static var counter = 0;
+@:publicFields
+class LuaMacros {
+    static var counter = 0;
 
-    public static macro function asUntypedTable(x: Expr) {
+    static macro function asUntypedTable(x: Expr) {
         return macro untyped __lua_table__($e{x});
     }
 
-    public static inline macro function castTable(x: Expr) {
-        return macro (untyped __lua_table__($e{x}));
-    }
-
-    public static macro function T(x: Expr) {
+    static inline macro function castTable(x: Expr) {
         return macro untyped __lua_table__($e{x});
     }
 
-    public static macro function A(x: Expr) {
-        return macro (untyped __lua_table__($e{x}) : lua.Table.AnyTable);
+    static macro function T(x: Expr) {
+        return macro untyped __lua_table__($e{x});
     }
 
-    public static macro function TA(x: Expr, y: Expr) {
-        final c =
-            switch y.expr {
+    static macro function A(x: Expr) {
+        return macro untyped __lua_table__($e{x});
+    }
+
+    static macro function TA(x: Expr, y: Expr) {
+        final c = switch y.expr {
             case EArrayDecl(content):
                 content.map((c) -> switch c.expr {
-                    case EObjectDecl(_): macro T($c);
-                    default: macro $c;
+                    case EObjectDecl(_):
+                        macro T($c);
+                    default:
+                        macro $c;
                 });
             default:
                 [];
-            };
+        };
         return macro (untyped __lua_table__($e{x}, $a{c}));
     }
 
-    public static macro function AT(x: Expr, y: Expr) {
+    static macro function AT(x: Expr, y: Expr) {
         return macro (untyped __lua_table__($e{y}, $e{x}) : lua.Table.AnyTable);
     }
 
-
-    public static macro function unwrapCallbacks(expr: Expr) {
+    static macro function unwrapCallbacks(expr: Expr) {
         final funs = [];
-        switch (expr){
+        switch (expr) {
             case {expr: EObjectDecl(fields)}:
-            for (field in fields) switch (Context.typeof(field.expr)) {
-                case TFun(_, _): funs.push(field);
-                default:
-            }
+                for (field in fields) switch (Context.typeof(field.expr)) {
+                    case TFun(_, _): funs.push(field);
+                    default:
+                }
             default:
         }
         final out = [];
@@ -70,62 +71,61 @@ class Macro {
         return macro {$b{out}};
     }
 
-    public static macro function wrap1(attrs: Expr, w: Expr) {
+    static macro function wrap1(attrs: Expr, w: Expr) {
         final argh = [
             switch w.expr {
-            case EObjectDecl(_):
-                macro T($e{w});
-            default:
-                macro $w;
+                case EObjectDecl(_):
+                    macro T($e{w});
+                default:
+                    macro $w;
             }
         ];
         return macro (untyped __lua_table__($e{attrs}, $a{argh}));
     }
 
-    public static macro function wrap2(attrs: Expr, w1: Expr, w2: Expr) {
+    static macro function wrap2(attrs: Expr, w1: Expr, w2: Expr) {
         final argh = [
             switch w1.expr {
-            case EObjectDecl(_):
-                macro T($e{w1});
-            default:
-                macro $w1;
+                case EObjectDecl(_):
+                    macro T($e{w1});
+                default:
+                    macro $w1;
             },
             switch w2.expr {
-            case EObjectDecl(_):
-                macro T($e{w2});
-            default:
-                macro $w2;
+                case EObjectDecl(_):
+                    macro T($e{w2});
+                default:
+                    macro $w2;
             }
         ];
         return macro (untyped __lua_table__($e{attrs}, $a{argh}));
     }
 
-    public static macro function wrapN(attrs: Expr, ws: Array<Expr>) {
+    static macro function wrapN(attrs: Expr, ws: Array<Expr>) {
         final argh = [
-            for(w in ws)
-                switch w.expr {
+            for(w in ws) switch w.expr {
                 case EObjectDecl(_):
                     macro T($w);
                 default:
                     macro $w;
-                }
-            ];
+            }
+        ];
         return macro (untyped __lua_table__($e{attrs}, $a{argh}));
     }
 
     // pair
-    public static macro function P(obj1, obj2) {
+    static macro function P(obj1, obj2) {
         // trace(obj1, obj2);
         return macro (untyped __lua_table__([$e{obj1}, $e{obj2}]) : utils.lua.LuaTools.LuaTable);
     }
 
 
-    public static macro function widget(obj: Expr): Expr {
+    static macro function widget(obj: Expr): Expr {
         return macro awful.Wibox.makeWidget(utils.lua.Macro.declareWidget($obj));
 
     }
 
-    public static macro function declareWidget(obj: Expr): Expr {
+    static macro function declareWidget(obj: Expr): Expr {
         final pos = haxe.macro.Context.currentPos();
         return toLua(pos, obj);
     }
@@ -179,25 +179,25 @@ class Macro {
             }
     }
 
-    public static macro function withArray(props: Expr, ?array: Expr) {
+    static macro function withArray(props: Expr, ?array: Expr) {
         return macro withProps($e{array}, $e{props});
     }
 
-    public static macro function withProps(array: Expr, ?props: Expr) {
+    static macro function withProps(array: Expr, ?props: Expr) {
         switch [array.expr, props] {
-        case [EObjectDecl(_), null]:
-            props = array;
-            array = macro [];
-        case [EArrayDecl(_), null]:
-            props = macro {};
-        default:
+            case [EObjectDecl(_), null]:
+                props = array;
+                array = macro [];
+            case [EArrayDecl(_), null]:
+                props = macro {};
+            default:
         }
         final array = macro utils.lua.Macro.castTable($array);
 
         final tmpName = "_tmp_" + (counter++);
         final tmpConst = EConst(CIdent(tmpName));
         inline function here(ed: ExprDef): Expr
-        return {pos: haxe.macro.Context.currentPos(), expr: ed};
+            return {pos: haxe.macro.Context.currentPos(), expr: ed};
         final vDecl = {
             name: tmpName, expr: here(array.expr),
             isFinal: false, type: null
@@ -221,7 +221,7 @@ class Macro {
     }
 
 
-    public static macro function timestamp() {
+    static macro function timestamp() {
         final ts = Std.int(Date.now().getTime()/1000);
         return macro Std.string($v{ts});
     }

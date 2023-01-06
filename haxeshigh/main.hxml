@@ -13,5 +13,6 @@
 -L safety
 -L thx.core
 -L HaxeContracts
+-L console.hx
 
 -cp src

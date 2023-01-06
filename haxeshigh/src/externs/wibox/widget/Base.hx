@@ -7,6 +7,7 @@ extern class Base extends externs.gears.Object {
      * @see lib/wibox/widget/base.lua:8
      */
 
+    var point: externs.Types.Point;
     /**
      * Get or set the children elements.
      * @see lib/wibox/widget/base.lua:28
@@ -220,6 +221,7 @@ extern class Base extends externs.gears.Object {
      * @param args lua.Table<String, Dynamic>  A table containing the widgets disposition.
      */
     @:selfCall function new(args: lua.Table<String, Dynamic>);
+    static function make_widget_declarative(args: lua.Table<String, Dynamic>): Base;
 
     /** Create a widget from an undetermined value.
      *

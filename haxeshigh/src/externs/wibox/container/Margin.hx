@@ -72,5 +72,5 @@ extern class Margin extends externs.wibox.widget.Base {
      * @param color Dynamic  A color for the margins.
      * @param draw_empty Dynamic  whether or not to draw the margin when the content is empty
      */
-    @:selfCall function new(widget: Dynamic, left: Dynamic, right: Dynamic, top: Dynamic, bottom: Dynamic, color: Dynamic, draw_empty: Dynamic);
+    @:selfCall function new(widget: externs.wibox.Widget, left: Int, right: Int, top: Int, bottom: Int, ?color: Dynamic, ?draw_empty: Dynamic);
 }

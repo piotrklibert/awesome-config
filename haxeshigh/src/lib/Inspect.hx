@@ -1,8 +1,10 @@
 package lib;
+
 import lua.Table;
-import utils.lua.Macro.T;
-using lib.TableTools;
+import lib.LuaMacros.T;
+
 using Reflect;
+using lib.TableTools;
 
 typedef InspectProcessor = (Dynamic, Null<Table<String, Dynamic>>) -> String;
 

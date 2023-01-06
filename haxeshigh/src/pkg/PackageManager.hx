@@ -14,9 +14,6 @@ using StringTools;
 using Safety;
 
 
-#if pkg
-@:keep
-#end
 @:nullSafety(Strict)
 class PackageManager {
   private function new() {}
@@ -122,6 +119,5 @@ class PackageManager {
     Log.info('PKGMAN: Loaded! We have ${len} packages.');
   }
 
-  @:keep
   public function toString() return "<PackageManager>";
 }

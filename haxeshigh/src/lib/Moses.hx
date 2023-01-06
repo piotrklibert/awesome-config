@@ -1196,5 +1196,4 @@ extern class ChainingCalls implements Dynamic {
   //  Extracts the value of a wrapped object. Must be called on an chained object (see @{chain}).
   //  @return the value previously wrapped
   public function value(): Dynamic;
-
 }

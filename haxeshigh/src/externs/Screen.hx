@@ -11,7 +11,7 @@ extern class Screen {
      * The screen coordinates.
      * @see objects/screen.c:211
      */
-    var geometry: externs.Overrides.Geometry;
+    var geometry: externs.Types.Geometry;
 
     /**
      * The internal screen number.
@@ -23,13 +23,13 @@ extern class Screen {
      * The screen workarea.
      * @see objects/screen.c:262
      */
-    var workarea: externs.Overrides.Geometry;
+    var workarea: externs.Types.Geometry;
 
     /**
      * The area where clients can be tiled.
      * @see objects/screen.c:203
      */
-    var tiling_area: externs.Overrides.Geometry;
+    var tiling_area: externs.Types.Geometry;
 
     /**
      * Take a screenshot of the physical screen.
@@ -41,13 +41,13 @@ extern class Screen {
      * The screen padding.
      * @see objects/screen.c:279
      */
-    var padding: externs.Overrides.Padding;
+    var padding: externs.Types.Padding;
 
     /**
      * A list of outputs for this screen with their size in mm.
      * @see objects/screen.c:332
      */
-    var outputs: lua.Table<String, externs.Overrides.Output>;
+    var outputs: lua.Table<String, externs.Types.Output>;
 
     /**
      * The list of visible clients for the screen.
@@ -272,7 +272,7 @@ extern class Screen {
      * @see objects/screen.c:387
      * @param args lua.Table<String, Dynamic>  <no desc>
      */
-    static function focused(args: Null<externs.Overrides.FocusedOptions> = null): externs.Screen;
+    static function focused(args: Null<externs.Types.FocusedOptions> = null): externs.Screen;
 
     /** Get a placement bounding geometry.
      *

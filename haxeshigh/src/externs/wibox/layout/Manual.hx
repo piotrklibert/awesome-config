@@ -50,7 +50,7 @@ extern class Manual extends externs.wibox.widget.Base {
      * @param index Float  The widget index.
      * @param point extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>  A new point value.
      */
-    function move(index: Float, point: extype.extern.Mixed.Mixed2<lua.Table<String, Dynamic>, haxe.Constraints.Function>): Void;
+    function move(index: Int, point: lib.TypedTable<{x: Int, y: Int}>): Dynamic;
 
     /** Move a widget.
      *
