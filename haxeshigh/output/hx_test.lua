@@ -147,7 +147,7 @@ function _hx_tostring(obj, depth)
     else
         local i = require("inspect")
         if i ~= nil then
-            return i(obj)
+            return "#Lua:(" .. i(obj) .. ")"
         else
             _G.error("Unknown Lua type", 0)
             return ""
@@ -229,29 +229,17 @@ local __lua_Boot = _hx_e()
 local __lua_lib_luautf8_Utf8 = _G.require("lua-utf8")
 local String = _hx_e()
 local Std = _hx_e()
+local __haxe_IMap = _hx_e()
+local __haxe_ds_ObjectMap = _hx_e()
+local __lua_PairTools = _hx_e()
 local Math = _hx_e()
-local __externs_Mouse = _G.require("mouse")
-local __externs_Wibox = _G.require("wibox")
-local __externs_wibox_widget_Imagebox = _G.require("wibox.widget.imagebox")
-local __externs_gears_Timer = _G.require("gears.timer")
-local __externs_wibox_container_Background = _G.require("wibox.container.background")
-local __externs_wibox_container_Margin = _G.require("wibox.container.margin")
-local __externs_wibox_layout_Fixed = _G.require("wibox.layout.fixed")
-local __externs_wibox_layout_Manual = _G.require("wibox.layout.manual")
-local __externs_wibox_widget_Textbox = _G.require("wibox.widget.textbox")
-local __haxe_Exception = _hx_e()
 local __haxe_Log = _hx_e()
-local __haxe_NativeStackTrace = _hx_e()
-local __haxe_ValueException = _hx_e()
 local __haxe_iterators_ArrayIterator = _hx_e()
 local __haxe_iterators_ArrayKeyValueIterator = _hx_e()
-local __lib_Env = _hx_e()
+local __lib__LuaTable_LuaTable_Impl_ = _hx_e()
+local __lib_TableTools = _hx_e()
 local __lua_Thread = _hx_e()
 local __lua_UserData = _hx_e()
-local __safety_SafetyException = _hx_e()
-local __safety_NullPointerException = _hx_e()
-local __test__AwesomeTest_Const = _hx_e()
-local __test_G = _hx_e()
 local __test_AwesomeTest = _hx_e()
 local __test_Main = _hx_e()
 
@@ -656,13 +644,6 @@ __lua_Boot.isArray = function(o)
     do return false end;
   end;
 end
-__lua_Boot.__cast = function(o,t) 
-  if ((o == nil) or __lua_Boot.__instanceof(o, t)) then 
-    do return o end;
-  else
-    _G.error(__haxe_Exception.thrown("Cannot cast " .. Std.string(o) .. " to " .. Std.string(t)),0);
-  end;
-end
 __lua_Boot.extendsOrImplements = function(cl1,cl2) 
   while (true) do 
     if ((cl1 == nil) or (cl2 == nil)) then 
@@ -883,6 +864,66 @@ Std.int = function(x)
   end;
 end
 
+__haxe_IMap.new = {}
+__haxe_IMap.__name__ = true
+
+__haxe_ds_ObjectMap.new = function() 
+  local self = _hx_new(__haxe_ds_ObjectMap.prototype)
+  __haxe_ds_ObjectMap.super(self)
+  return self
+end
+__haxe_ds_ObjectMap.super = function(self) 
+  self.h = ({});
+  self.k = ({});
+end
+__haxe_ds_ObjectMap.__name__ = true
+__haxe_ds_ObjectMap.__interfaces__ = {__haxe_IMap}
+__haxe_ds_ObjectMap.prototype = _hx_e();
+__haxe_ds_ObjectMap.prototype.keys = function(self) 
+  local _gthis = self;
+  local cur = next(self.h, nil);
+  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
+    local ret = cur;
+    cur = next(_gthis.k, cur);
+    do return ret end;
+  end,hasNext=function(self) 
+    do return cur ~= nil end;
+  end}) end
+end
+__haxe_ds_ObjectMap.prototype.toString = function(self) 
+  local s_b = ({});
+  _G.table.insert(s_b, "{");
+  local it = self:keys();
+  while (it:hasNext()) do 
+    local i = it:next();
+    _G.table.insert(s_b, Std.string(i));
+    _G.table.insert(s_b, " => ");
+    _G.table.insert(s_b, Std.string(self.h[i]));
+    if (it:hasNext()) then 
+      _G.table.insert(s_b, ", ");
+    end;
+  end;
+  _G.table.insert(s_b, "}");
+  do return _G.table.concat(s_b) end
+end
+
+__haxe_ds_ObjectMap.prototype.__class__ =  __haxe_ds_ObjectMap
+
+__lua_PairTools.new = {}
+__lua_PairTools.__name__ = true
+__lua_PairTools.pairsIterator = function(table) 
+  local _hx_1_p_next, _hx_1_p_table, _hx_1_p_index = _G.pairs(table);
+  local next = _hx_1_p_next;
+  local i = _hx_1_p_index;
+  do return _hx_o({__fields__={next=true,hasNext=true},next=function(self) 
+    local _hx_2_res_index, _hx_2_res_value = next(table, i);
+    i = _hx_2_res_index;
+    do return _hx_o({__fields__={index=true,value=true},index=_hx_2_res_index,value=_hx_2_res_value}) end;
+  end,hasNext=function(self) 
+    do return _G.select(2, _G.next(table, i)) ~= nil end;
+  end}) end;
+end
+
 Math.new = {}
 Math.__name__ = true
 Math.isNaN = function(f) 
@@ -902,54 +943,6 @@ Math.min = function(a,b)
     do return _G.math.min(a, b) end;
   end;
 end
-
-__haxe_Exception.new = function(message,previous,native) 
-  local self = _hx_new(__haxe_Exception.prototype)
-  __haxe_Exception.super(self,message,previous,native)
-  return self
-end
-__haxe_Exception.super = function(self,message,previous,native) 
-  self.__skipStack = 0;
-  self.__exceptionMessage = message;
-  self.__previousException = previous;
-  if (native ~= nil) then 
-    self.__nativeException = native;
-    self.__nativeStack = __haxe_NativeStackTrace.exceptionStack();
-  else
-    self.__nativeException = self;
-    self.__nativeStack = __haxe_NativeStackTrace.callStack();
-    self.__skipStack = 1;
-  end;
-end
-__haxe_Exception.__name__ = true
-__haxe_Exception.caught = function(value) 
-  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
-    do return value end;
-  else
-    do return __haxe_ValueException.new(value, nil, value) end;
-  end;
-end
-__haxe_Exception.thrown = function(value) 
-  if (__lua_Boot.__instanceof(value, __haxe_Exception)) then 
-    do return value:get_native() end;
-  else
-    local e = __haxe_ValueException.new(value);
-    e.__skipStack = e.__skipStack + 1;
-    do return e end;
-  end;
-end
-__haxe_Exception.prototype = _hx_e();
-__haxe_Exception.prototype.toString = function(self) 
-  do return self:get_message() end
-end
-__haxe_Exception.prototype.get_message = function(self) 
-  do return self.__exceptionMessage end
-end
-__haxe_Exception.prototype.get_native = function(self) 
-  do return self.__nativeException end
-end
-
-__haxe_Exception.prototype.__class__ =  __haxe_Exception
 
 __haxe_Log.new = {}
 __haxe_Log.__name__ = true
@@ -974,66 +967,6 @@ __haxe_Log.trace = function(v,infos)
   local str = __haxe_Log.formatOutput(v, infos);
   _hx_print(str);
 end
-
-__haxe_NativeStackTrace.new = {}
-__haxe_NativeStackTrace.__name__ = true
-__haxe_NativeStackTrace.saveStack = function(exception) 
-end
-__haxe_NativeStackTrace.callStack = function() 
-  local _g = debug.traceback();
-  if (_g == nil) then 
-    do return _hx_tab_array({}, 0) end;
-  else
-    local idx = 1;
-    local ret = _hx_tab_array({}, 0);
-    while (idx ~= nil) do 
-      local newidx = 0;
-      if (__lua_lib_luautf8_Utf8.len("\n") > 0) then 
-        newidx = __lua_lib_luautf8_Utf8.find(_g, "\n", idx, true);
-      else
-        if (idx >= __lua_lib_luautf8_Utf8.len(_g)) then 
-          newidx = nil;
-        else
-          newidx = idx + 1;
-        end;
-      end;
-      if (newidx ~= nil) then 
-        local match = __lua_lib_luautf8_Utf8.sub(_g, idx, newidx - 1);
-        ret:push(match);
-        idx = newidx + __lua_lib_luautf8_Utf8.len("\n");
-      else
-        ret:push(__lua_lib_luautf8_Utf8.sub(_g, idx, __lua_lib_luautf8_Utf8.len(_g)));
-        idx = nil;
-      end;
-    end;
-    do return ret:slice(3) end;
-  end;
-end
-__haxe_NativeStackTrace.exceptionStack = function() 
-  do return _hx_tab_array({}, 0) end;
-end
-
-__haxe_ValueException.new = function(value,previous,native) 
-  local self = _hx_new(__haxe_ValueException.prototype)
-  __haxe_ValueException.super(self,value,previous,native)
-  return self
-end
-__haxe_ValueException.super = function(self,value,previous,native) 
-  __haxe_Exception.super(self,(function() 
-    local _hx_1
-    if (value == nil) then 
-    _hx_1 = "null"; else 
-    _hx_1 = Std.string(value); end
-    return _hx_1
-  end )(),previous,native);
-  self.value = value;
-end
-__haxe_ValueException.__name__ = true
-__haxe_ValueException.prototype = _hx_e();
-
-__haxe_ValueException.prototype.__class__ =  __haxe_ValueException
-__haxe_ValueException.__super__ = __haxe_Exception
-setmetatable(__haxe_ValueException.prototype,{__index=__haxe_Exception.prototype})
 
 __haxe_iterators_ArrayIterator.new = function(array) 
   local self = _hx_new(__haxe_iterators_ArrayIterator.prototype)
@@ -1074,14 +1007,32 @@ __haxe_iterators_ArrayKeyValueIterator.prototype = _hx_e();
 
 __haxe_iterators_ArrayKeyValueIterator.prototype.__class__ =  __haxe_iterators_ArrayKeyValueIterator
 
-__lib_Env.new = {}
-__lib_Env.__name__ = true
-__lib_Env.getBool = function(table,name) 
-  local val = table[name];
-  if (val == nil) then 
-    _G.error(__safety_NullPointerException.new("Null pointer in .sure() call"),0);
+__lib__LuaTable_LuaTable_Impl_.new = {}
+__lib__LuaTable_LuaTable_Impl_.__name__ = true
+__lib__LuaTable_LuaTable_Impl_.toMap = function(this1) 
+  local ret = __haxe_ds_ObjectMap.new();
+  local o = __lua_PairTools.pairsIterator(this1);
+  while (o:hasNext()) do 
+    local o = o:next();
+    local key = o.index;
+    ret.h[key] = o.value;
+    ret.k[key] = true;
   end;
-  do return __lua_Boot.__cast(val , Bool) end;
+  do return ret end;
+end
+
+__lib_TableTools.new = {}
+__lib_TableTools.__name__ = true
+__lib_TableTools.pop = function(tbl) 
+  local pos = nil;
+  local fst = _hx_box_mr(_hx_table.pack(next(tbl)), {"key", "val"});
+  if (fst == nil) then 
+    do return nil end;
+  else
+    local fst1 = fst;
+    _G.table.remove(tbl, fst1.key);
+    do return fst1.val end;
+  end;
 end
 
 __lua_Thread.new = {}
@@ -1090,161 +1041,67 @@ __lua_Thread.__name__ = true
 __lua_UserData.new = {}
 __lua_UserData.__name__ = true
 
-__safety_SafetyException.new = function(message,previous,native) 
-  local self = _hx_new(__safety_SafetyException.prototype)
-  __safety_SafetyException.super(self,message,previous,native)
-  return self
-end
-__safety_SafetyException.super = function(self,message,previous,native) 
-  __haxe_Exception.super(self,message,previous,native);
-end
-__safety_SafetyException.__name__ = true
-__safety_SafetyException.prototype = _hx_e();
-
-__safety_SafetyException.prototype.__class__ =  __safety_SafetyException
-__safety_SafetyException.__super__ = __haxe_Exception
-setmetatable(__safety_SafetyException.prototype,{__index=__haxe_Exception.prototype})
-
-__safety_NullPointerException.new = function(message,previous,native) 
-  local self = _hx_new(__safety_NullPointerException.prototype)
-  __safety_NullPointerException.super(self,message,previous,native)
-  return self
-end
-__safety_NullPointerException.super = function(self,message,previous,native) 
-  __safety_SafetyException.super(self,message,previous,native);
-end
-__safety_NullPointerException.__name__ = true
-__safety_NullPointerException.prototype = _hx_e();
-
-__safety_NullPointerException.prototype.__class__ =  __safety_NullPointerException
-__safety_NullPointerException.__super__ = __safety_SafetyException
-setmetatable(__safety_NullPointerException.prototype,{__index=__safety_SafetyException.prototype})
-
-__test__AwesomeTest_Const.new = {}
-__test__AwesomeTest_Const.__name__ = true
-__test__AwesomeTest_Const.timerDef = function(timeout,clb) 
-  local _unwrap0 = _hx_o({__fields__={callback=true,timeout=true,autostart=true,single_shot=true},callback=function(_,...) return clb(...) end,timeout=timeout,autostart=true,single_shot=false});
-  _unwrap0.callback = clb;
-  do return _unwrap0 end;
-end
-
-__test_G.new = {}
-__test_G.__name__ = true
-__test_G.gen = function() 
-  local f = function() 
-    while (true) do 
-      local _g = -180;
-      while (_g < 475) do 
-        _g = _g + 1;
-        _G.coroutine.yield(_g - 1);
-      end;
-      local _g = 0;
-      while (_g < 735) do 
-        _g = _g + 1;
-        _G.coroutine.yield(475 - (_g - 1));
-      end;
-    end;
-  end;
-  do return _G.coroutine.wrap(f) end;
-end
-
 __test_AwesomeTest.new = {}
 __test_AwesomeTest.__name__ = true
 __test_AwesomeTest.main = function() 
-  local env = _G;
-  if (not __lib_Env.getBool(env, "go_on")) then 
-    env.go_on = true;
+  local t = ({2,3,4,5});
+  __haxe_Log.trace(__lib_TableTools.pop(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=68,className="test.AwesomeTest",methodName="main"}));
+  local tmp = __haxe_Log.trace;
+  local tmp1;
+  local pos = nil;
+  if (_hx_box_mr(_hx_table.pack(next(t)), {"key", "val"}) == nil) then 
+    tmp1 = _hx_tab_array({}, 0);
+  else
+    local ret = ({});
+    for k,v in pairs(t) do _G.table.insert(ret, v); end;
+    local len = #ret;
+    ret[0] = __lib_TableTools.pop(ret);
+    tmp1 = _hx_tab_array(ret, len);
   end;
-  local previous = env.test_widget;
-  if (previous ~= nil) then 
-    previous.visible = false;
+  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=69,className="test.AwesomeTest",methodName="main"}));
+  _G.table.insert(t, 45);
+  local tmp = __haxe_Log.trace;
+  local tmp1;
+  local pos = nil;
+  if (_hx_box_mr(_hx_table.pack(next(t)), {"key", "val"}) == nil) then 
+    tmp1 = _hx_tab_array({}, 0);
+  else
+    local ret = ({});
+    for k,v in pairs(t) do _G.table.insert(ret, k); end;
+    local len = #ret;
+    ret[0] = __lib_TableTools.pop(ret);
+    tmp1 = _hx_tab_array(ret, len);
   end;
-  local val = nil;
-  env.test_widget = val;
-  local w = __externs_Wibox(__test__AwesomeTest_Const.wibox);
-  env.test_widget = w;
-  local c = 1;
-  local textb1 = __externs_wibox_widget_Textbox("text " .. Std.string(c) .. " --->", false);
-  textb1.font = "Monospace 30";
-  textb1.forced_width = 120;
-  local layout = __externs_wibox_layout_Manual();
-  local vertical = __externs_wibox_layout_Fixed.vertical();
-  local btn = __externs_wibox_widget_Imagebox(env.beautiful.awesome_icon, true);
-  btn.forced_height = 30;
-  btn.forced_width = 90;
-  btn.horizontal_fit_policy = "fit";
-  btn.vertical_fit_policy = "fit";
-  local h = __externs_wibox_layout_Fixed.horizontal();
-  h.forced_height = 60;
-  h.forced_width = 10;
-  h:add(btn);
-  h:add(textb1);
-  h:add(btn);
-  h.spacing = 20;
-  local h = __externs_wibox_container_Margin(h, 5, 5, 5, 5);
-  local h = __externs_wibox_container_Background(h, "#FF0000");
-  local btn1 = __externs_wibox_widget_Imagebox("/home/cji/morda1.jpg");
-  btn1.forced_width = 90;
-  btn1.horizontal_fit_policy = "fit";
-  btn1.vertical_fit_policy = "fit";
-  btn1:connect_signal("button::press", function() 
-    __haxe_Log.trace("click", _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=127,className="test.AwesomeTest",methodName="main"}));
-  end);
-  local btn2 = __externs_wibox_widget_Imagebox("/home/cji/morda1.jpg");
-  btn2.forced_height = 40;
-  layout:add_at(btn1, _hx_o({__fields__={x=true,y=true},x=0,y=0}));
-  layout:add_at(btn2, _hx_o({__fields__={x=true,y=true},x=90,y=5}));
-  layout.forced_height = 50;
-  local layout = __externs_wibox_container_Background(layout, "#00FF00");
-  vertical:add(layout);
-  vertical:add(h);
-  vertical:add(layout);
-  w.widget = vertical;
-  local clb = function() 
-    env.go_on = false;
-    _G.print("shutttting down...");
-    w.visible = false do return w.visible end;
+  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=71,className="test.AwesomeTest",methodName="main"}));
+  local vs;
+  local pos = nil;
+  if (_hx_box_mr(_hx_table.pack(next(t)), {"key", "val"}) == nil) then 
+    vs = _hx_tab_array({}, 0);
+  else
+    local ret = ({});
+    for k,v in pairs(t) do _G.table.insert(ret, v); end;
+    local len = #ret;
+    ret[0] = __lib_TableTools.pop(ret);
+    vs = _hx_tab_array(ret, len);
   end;
-  w.widget:add_button(awful.button(_hx_tab_array({}, 0), 3, clb));
-  w:connect_signal("mouse::move", function(_w,x,y) 
-    local c = __externs_Mouse.coords();
-    if (c.buttons[1]) then 
-      awful.mouse.wibox.move(w);
-    end;
-  end);
-  w.visible = false;
-  w.visible = true;
-  local offsets = __test_G.gen();
-  local f = function(t) 
-  end;
-  local t2 = __externs_gears_Timer(__test__AwesomeTest_Const.timerDef(0.01, f));
-  local f = function(t) 
-    local _hx_status, _hx_result = pcall(function() 
-    
-        local go_on = __lib_Env.getBool(env, "go_on");
-        if (not go_on) then 
-          t:stop();
-          t2:stop();
-          w.visible = false;
-          w.widget = nil;
-          local val = nil;
-          env.test_widget = val;
-          do return end;
-        end;
-      return _hx_pcall_default
-    end)
-    if not _hx_status and _hx_result == "_hx_pcall_break" then
-    elseif not _hx_status then 
-      local _g = _hx_result;
-      local ex = __haxe_Exception.caught(_g);
-      _G.print(ex);
-      t:stop();
-      w.visible = false;
-    elseif _hx_result ~= _hx_pcall_default then
-      return _hx_result
+  if (vs ~= nil) then 
+    local _g = _hx_tab_array({}, 0);
+    local _g1 = 0;
+    local _g2 = vs;
+    while (_g1 < _g2.length) do 
+      local i = _g2[_g1];
+      _g1 = _g1 + 1;
+      _G.print(_hx_tostring(i));
+      _g:push(3);
     end;
   end;
-  __externs_gears_Timer(__test__AwesomeTest_Const.timerDef(1.0, f));
+  local tmp = __haxe_Log.trace;
+  local ret = false;
+  for _,v in pairs(t) do if v == 4 then ret = true; end end;
+  tmp(ret, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=73,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(__lib__LuaTable_LuaTable_Impl_.toMap(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=74,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(__lua_Boot.__instanceof(t, _G.table), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=75,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(_hx_o({__fields__={a=true},a=3}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=76,className="test.AwesomeTest",methodName="main"}));
 end
 
 __test_Main.new = {}
@@ -1292,12 +1149,18 @@ end
 local _hx_static_init = function()
   
   String.__name__ = true;
-  Array.__name__ = true;__test__AwesomeTest_Const.wibox = _hx_o({__fields__={ontop=true,width=true,height=true,x=true,y=true,border_width=true,border_color=true},ontop=true,width=450,height=160,x=850,y=85,border_width=4,border_color="#FF0000"});
-  
-  
+  Array.__name__ = true;
 end
 
 _hx_print = print or (function() end)
+
+_hx_box_mr = function(x,nt)
+    res = _hx_o({__fields__={}})
+    for i,v in ipairs(nt) do
+      res[v] = x[i]
+    end
+    return res
+end
 
 _hx_table = {}
 _hx_table.pack = _G.table.pack or function(...)

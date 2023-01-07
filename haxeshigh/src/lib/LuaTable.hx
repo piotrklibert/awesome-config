@@ -2,7 +2,7 @@ package lib;
 
 typedef TableKey = EitherType<String, Int>;
 
-// TODO
+
 typedef LuaList<V> = LuaTable<Int, V>;
 typedef LuaMap<K, V> = LuaTable<K, V>;
 typedef LuaStringMap<V> = LuaTable<String, V>;
@@ -15,9 +15,17 @@ abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
 
     function new(t: Table<K, V>) this = t;
 
-    function toMap(): Map<String, V> {
+    function toMap(): haxe.ds.ObjectMap<K, V> {
+        final ret = new haxe.ds.ObjectMap();
+        for (o in lua.PairTools.pairsIterator(this))
+            ret.set(o.index, o.value);
+        return ret;
+    }
+
+    function toStringMap(): Map<String, V> {
         final iter = lua.PairTools.pairsIterator(this);
-        return [ for (o in iter) (cast o.index : String) => o.value ];
+        final tos: (Dynamic) -> String = lib.Globals.get()["tostring"];
+        return [ for (o in iter) tos(o.index) => o.value ];
     }
 
     function toArray(): Array<V> {
@@ -32,12 +40,6 @@ abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
         return Reflect.fields(this);
     }
 
-    // inline function merge(other: LuaTable<K, V>) {
-    //     for (f in other.fields())
-    //         this.arrayWrite(f, other.arrayRead(cast f));
-    //     return this;
-    // }
-
     inline function without(...args: K) {
         final t = this;
         for (x in args)
@@ -48,10 +50,12 @@ abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
     // Accessors
     @:op([])
     public inline function arrayRead<T: TableKey>(n: T): Null<V>
+        // TODO: maybe add 1 if n is Int?
         return untyped this[n];
 
     @:op([])
     public inline function arrayWrite<T: TableKey>(n: T, val: V): V
+        // TODO: maybe add 1 if n is Int?
         return untyped this[n] = val;
 
 

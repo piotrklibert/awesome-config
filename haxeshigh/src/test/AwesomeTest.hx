@@ -63,11 +63,20 @@ class G {
 @:nullSafety(Strict)
 class AwesomeTest {
 
-    public static function main2() {
-
+    public static function main() {
+        final t: LuaTable<Int, Int> = lua.Table.create([2, 3, 4, 5]);
+        trace(t.pop());
+        trace(t.values());
+        t.push(45);
+        trace(t.keys());
+        t.mapValues((x) -> {prints(x); 3;});
+        trace(t.has(4));
+        trace(t.toMap());
+        trace(t is lua.Table);
+        trace({a: 3});
     }
 
-    public static function main() {
+    public static function main2() {
         final env = globals();
         if (!env.getBool("go_on")) env["go_on"] = true;
 

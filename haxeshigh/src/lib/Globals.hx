@@ -44,6 +44,9 @@ class Prelude {
     /** native Lua print (alias)*/
     static inline function println<T>(x: T) { untyped _G["print"](x); }
 
+    /** native Lua print with Haxe formatting */
+    static inline function prints<T>(x: T) { untyped _G["print"](_hx_tostring(x)); }
+
     /** inspect from inspect.lua */
     static function inspect(x: Any, ?opts: InspectOpts): String {
         return Inspect.haxe(x, opts);
