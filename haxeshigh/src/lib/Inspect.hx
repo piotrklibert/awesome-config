@@ -47,7 +47,7 @@ extern class NativeInspect {
 
 @:nullSafety(Strict)
 class Inspect {
-    public static inline function lua(x: Any, ?opts: InspectOpts) {
+    public static inline function lua<T>(x: T, ?opts: InspectOpts) {
         final o: Table<String, Dynamic> =
             untyped __lua_table__({process: InspectFilters.metatables});
         o.setField("process", InspectFilters.metatables);

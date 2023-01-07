@@ -54,6 +54,12 @@ class LambdaTools {
         for (x in it) func(x);
     }
 
+    static inline function sorted<T>(it: Iterable<T>): Array<T> {
+        final a = it.array();
+        a.sort(Reflect.compare);
+        return a;
+    }
+
     static macro function iterIt<T>(it: ExprOf<Iterable<T>>, expr: Expr) {
         return macro Lambda.iter($it, (it) -> { $expr; });
     }

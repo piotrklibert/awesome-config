@@ -7,6 +7,9 @@ extern class Base extends externs.gears.Object {
      * @see lib/wibox/widget/base.lua:8
      */
 
+    var is_widget: Bool;
+    var widget_name: String;
+
     var point: externs.Types.Point;
     /**
      * Get or set the children elements.
@@ -113,7 +116,7 @@ extern class Base extends externs.gears.Object {
      *
      * @see lib/wibox/widget/base.lua:334
      */
-    function get_children(): lua.Table<String, Dynamic>;
+    function get_children<T : Base>(): lua.Table<String, T>;
 
     /** Replace the layout children.
      *
@@ -126,7 +129,7 @@ extern class Base extends externs.gears.Object {
      *
      * @see lib/wibox/widget/base.lua:366
      */
-    function get_all_children(): lua.Table<String, Dynamic>;
+    function get_all_children<T: Base>(): lua.Table<String, T>;
 
     /** Common implementation of the `:set_widget()` method exposed by many other widgets.
      *
@@ -221,6 +224,7 @@ extern class Base extends externs.gears.Object {
      * @param args lua.Table<String, Dynamic>  A table containing the widgets disposition.
      */
     @:selfCall function new(args: lua.Table<String, Dynamic>);
+
     static function make_widget_declarative(args: lua.Table<String, Dynamic>): Base;
 
     /** Create a widget from an undetermined value.

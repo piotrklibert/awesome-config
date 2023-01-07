@@ -46,6 +46,10 @@ class TableTools {
         return untyped __lua__("next({0}, {1})", tbl, pos);
     }
 
+    /** Return a Haxe Array with values from given table.
+     *
+     * NOTE: order of returned elements is unspecified.
+     * */
     static inline function values<K, V>(tbl: Table<K, V>): Array<V> {
         if (tbl.next() == null) return [];
         var ret = lua.Table.create();
@@ -60,6 +64,10 @@ class TableTools {
         return untyped __lua__("_hx_tab_array({0}, {1})", ret, len);
     }
 
+    /** Return a Haxe Array with keys from given table.
+     *
+     * NOTE: order of returned elements is unspecified.
+     * */
     static inline function keys<K, V>(tbl: Table<K, V>): Array<K> {
         if (tbl.next() == null) return [];
         var ret = lua.Table.create();

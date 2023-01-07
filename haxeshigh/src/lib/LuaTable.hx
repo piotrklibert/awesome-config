@@ -7,14 +7,52 @@ typedef LuaList<V> = LuaTable<Int, V>;
 typedef LuaMap<K, V> = LuaTable<K, V>;
 typedef LuaStringMap<V> = LuaTable<String, V>;
 
-
+#if !macro
+typedef Table<K, V> = lua.Table<K, V>;
+#else
+typedef Table<K, V> = Dynamic;
+#end
 @:tink
 @:publicFields
 @:nullSafety(Strict)
+#if !macro
 abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
-
+#else
+abstract LuaTable<K, V>(Dynamic)  {
+#end
     function new(t: Table<K, V>) this = t;
 
+    public macro function arrayOf(_this: Expr, type: Expr) {
+        final tname = switch (type) {
+            case {expr: EConst(CIdent(x))}:
+                {pack: [], name: x};
+            case {expr: EField(a, b, c)}:
+                final x = getPath(type);
+                final pack = x.slice(1);
+                pack.reverse();
+                {pack: pack, name: x[0]};
+            default:
+                {pack: [], name: type.toString()};
+        }
+        trace(tname);
+        final type = TPath(tname);
+        return macro (cast $_this : Array< $type >);
+    }
+
+    #if macro
+    static function getPath(ex: Expr) {
+        switch (ex) {
+            case {expr: EField(a, b, c)}:
+                return [b].concat(getPath(a));
+            case {expr: EConst(CIdent(x))}:
+                return [x];
+            default:
+                return [];
+        }
+    }
+    #end
+
+    #if !macro
     function toMap(): haxe.ds.ObjectMap<K, V> {
         final ret = new haxe.ds.ObjectMap();
         for (o in lua.PairTools.pairsIterator(this))
@@ -31,7 +69,6 @@ abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
     function toArray(): Array<V> {
         return lua.Table.toArray(cast this);
     }
-
     function toObject() {
         return lua.Table.toObject(cast this);
     }
@@ -78,4 +115,5 @@ abstract LuaTable<K, V>(Table<K, V>) from Table<K, V> to Table<K, V> {
             obj;
         };
     }
+    #end
 }
