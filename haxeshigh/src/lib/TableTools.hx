@@ -25,8 +25,8 @@ class TableTools {
         return untyped __lua__("{0}[1]", it);
     }
 
-    static inline function at<K, V>(it: Table<K, V>, pos: Int): Null<V> {
-        return Reflect.field(it, cast pos); //__lua__("{0}[{1}]", it, pos+1);
+    static inline function at<K, V>(it: Table<K, V>, pos: K): Null<V> {
+        return Reflect.field(it, cast pos); // => __lua__("{0}[{1}]", it, pos);
     }
 
     static inline function has<K, V>(it: Table<K, V>, el: V): Bool {
@@ -43,34 +43,43 @@ class TableTools {
     }
 
     static extern inline function next<K, V>(tbl: Table<K, V>, ?pos: K): Next<K, V> {
-        return untyped __lua__("next({0})", tbl, pos);
+        return untyped __lua__("next({0}, {1})", tbl, pos);
     }
 
     static inline function values<K, V>(tbl: Table<K, V>): Array<V> {
         if (tbl.next() == null) return [];
-        @:keep var ret = lua.Table.create();
-        untyped __lua__("for k,v in pairs({0}) do _G.table.insert(ret, v); end", tbl);
+        var ret = lua.Table.create();
+        untyped __lua__(
+            "for k,v in pairs({0}) do _G.table.insert({1}, v); end",
+            tbl, ret
+        );
         final len = ret.count();
+        // safe, checked at the start
         final fst: V = Safety.unsafe(ret.pop());
         ret[0] = fst.unsafe();
         return untyped __lua__("_hx_tab_array({0}, {1})", ret, len);
-    }
-
-    static inline function mapValues<K, V, T: Dynamic>(tbl: Table<K, V>, f: (V) -> T): Array<T> {
-        final vs = tbl.values();
-        return vs != null ? vs.map(f) : [];
     }
 
     static inline function keys<K, V>(tbl: Table<K, V>): Array<K> {
         if (tbl.next() == null) return [];
-        @:keep var ret = lua.Table.create();
-        untyped __lua__("for k,v in pairs({0}) do _G.table.insert(ret, k); end", tbl);
+        var ret = lua.Table.create();
+        untyped __lua__(
+            "for k,v in pairs({0}) do _G.table.insert({1}, k); end",
+            tbl, ret
+        );
         final len = ret.count();
+        // safe, checked at the start
         final fst: V = Safety.unsafe(ret.pop());
         ret[0] = fst.unsafe();
         return untyped __lua__("_hx_tab_array({0}, {1})", ret, len);
     }
 
+    /** Remove first element from array-like table and return it.
+      *
+      * This is inefficient but required due to tables and Haxe array being
+      * indexed differently (1-based vs 0-based). Would be better to compile
+      * Arrays as slices (ie. with beg and end indexes) on top of tables...
+      */
     static function pop<K, V>(tbl: Table<K, V>): Null<V> {
         final fst = tbl.next();
         if (fst == null)
@@ -95,18 +104,11 @@ class TableTools {
         return lua.PairTools.ipairsIterator(tbl);
     }
 
-    // static function without<K, V>(tbl: Table<K, V>, ...args: K): Table<K, V> {
-    //     final t = tbl;
-    //     for (x in args)
-    //         untyped t[x] = null;
-    //     return t;
-    // }
-
     static function numericKeys<V>(tbl: Table<Dynamic, V>): Array<String> {
         final pp : Table<String, V> = cast tbl;
         final nums = TableTools.keys(pp)
             .filter(x -> Std.parseInt(x) != null)
-            .map(x -> Std.parseInt(x).sure());
+            .map(x -> Std.parseInt(x).unsafe());
         nums.sort(Reflect.compare);
         return nums.map(Std.string);
     }
@@ -117,5 +119,12 @@ class TableTools {
             .filter(x -> Std.parseInt(x) == null);
         // nums.sort(Reflect.compare);
         return nums.map(Std.string);
+    }
+
+    static inline function mapValues<K, V, T: Dynamic>(
+        tbl: Table<K, V>, func: (V) -> T
+    ): Array<T> {
+        final vs = tbl.values();
+        return vs != null ? vs.map(func) : [];
     }
 }
