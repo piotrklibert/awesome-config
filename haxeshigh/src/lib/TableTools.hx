@@ -30,12 +30,12 @@ class TableTools {
     }
 
     static inline function has<K, V>(it: Table<K, V>, el: V): Bool {
-        @:keep var ret: Bool = false;
+        var ret: Bool = false;
         untyped __lua__(
-            "for _,v in pairs({0}) do if v == {1} then {2} = true; end end",
+            "for _,v in pairs({0}) do if v == {1} then {2} = true; break; end end",
             it, el, ret
         );
-        return untyped ret;
+        return ret;
     }
 
     static inline function count<K, V>(tbl: Table<K, V>): Int {

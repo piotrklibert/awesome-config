@@ -60,6 +60,7 @@ class G {
     }
 }
 
+@:tink
 @:nullSafety(Strict)
 class AwesomeTest {
 
@@ -69,14 +70,15 @@ class AwesomeTest {
         trace(t.values());
         t.push(45);
         trace(t.keys());
-        t.mapValues((x) -> {prints(x); 3;});
+        trace(t.mapValues((x) -> {prints(x); 3;}));
         trace(t.has(4));
         trace(t.toMap());
+        trace(t.arrayOf(Dynamic));
         trace(t is lua.Table);
         trace({a: 3});
     }
 
-    public static function main2() {
+    public static function main3() {
         final env = globals();
         if (!env.getBool("go_on")) env["go_on"] = true;
 
@@ -87,7 +89,6 @@ class AwesomeTest {
         final w = new Wibox<ButtonWidget>(Const.wibox);
         // w.opacity = 0.6;
         env["test_widget"] = w;
-
         var c = 1;
 
         // final textb2 = new Textbox("text 2");
@@ -180,8 +181,8 @@ class AwesomeTest {
                     t.stop();
                     t2.stop();
                     w.visible = false;
-                    w.widget = null;
-                    env["test_widget"] = null;
+                    // w.widget = null;
+                    // env["test_widget"] = null;
                     return;
                 }
                 // textb1.text = 'text ${c++}';
@@ -195,6 +196,20 @@ class AwesomeTest {
         }
 
         new Timer(Const.timerDef(1.0, f));
+
+        function f(x: externs.wibox.Widget, depth: Int = 0) {
+            final s = (0...depth).toArray().map((_) -> "  ").join("");
+            trace(s, x.widget_name, Reflect.fields(x).sorted().join(", "));
+            x.get_children().values().each((x) -> f(x, depth+1));
+        }
+
+        f(w.widget.unsafe(), 0);
+
+        for (x in w.widget.unsafe().get_all_children().iter()) {
+            // print(x.value.widget_name);
+            // print(Inspect.lua(x, {depth: 2}));
+        };
+        // final wdg: LuaTable<Int, Dynamic> = w.widget.get_children();
     }
 }
 
