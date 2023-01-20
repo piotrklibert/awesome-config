@@ -27,3 +27,7 @@ class CardData {
     // }
 
 }
+
+// Local Variables:
+// haxe-module: "hx_spacerep"
+// End:

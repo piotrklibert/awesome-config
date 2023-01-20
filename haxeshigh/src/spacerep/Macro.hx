@@ -10,3 +10,7 @@ class Macro {
         return macro "";
     }
 }
+
+// Local Variables:
+// haxe-module: "hx_spacerep"
+// End:

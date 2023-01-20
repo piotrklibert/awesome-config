@@ -30,3 +30,7 @@ class ReminderHistory {
         return (last + repeatTimeout) < Sys.time();
     }
 }
+
+// Local Variables:
+// haxe-module: "hx_spacerep"
+// End:

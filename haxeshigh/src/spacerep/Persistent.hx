@@ -50,3 +50,7 @@ class Persistent<T> {
         this.prev = null;
     }
 }
+
+// Local Variables:
+// haxe-module: "hx_spacerep"
+// End:

@@ -133,3 +133,7 @@ class Builder {
         return [ field, getter ];
     }
 }
+
+// Local Variables:
+// haxe-module: "hx_spacerep"
+// End:
