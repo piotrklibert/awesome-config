@@ -83,4 +83,3 @@ extern class Geometry {
      */
     static function area_remove(areas: lua.Table<String, Dynamic>, elem: lua.Table<String, Dynamic>): Void;
 }
-

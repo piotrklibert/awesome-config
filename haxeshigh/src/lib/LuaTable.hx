@@ -12,6 +12,7 @@ typedef Table<K, V> = lua.Table<K, V>;
 #else
 typedef Table<K, V> = Dynamic;
 #end
+
 @:tink
 @:publicFields
 @:nullSafety(Strict)
@@ -36,7 +37,7 @@ abstract LuaTable<K, V>(Dynamic)  {
         }
         trace(tname);
         final type = TPath(tname);
-        return macro (cast $_this : Array< $type >);
+        return macro (cast $_this.toArray() : Array< $type >);
     }
 
     #if macro

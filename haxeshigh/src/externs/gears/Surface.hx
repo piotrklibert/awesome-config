@@ -1,11 +1,20 @@
 package externs.gears;
 
 
+@:multiReturn
+extern class SurfaceGeometry {
+    final width: Int;
+    final height: Int;
+}
+
+
 @:luaRequire("gears.surface")
 extern class Surface {
-    /** 
+    /**
      * @see lib/gears/surface.lua:7
      */
+
+
 
     /** Try to convert the argument into an lgi cairo surface.
      *
@@ -35,14 +44,15 @@ extern class Surface {
      * @see lib/gears/surface.lua:122
      * @param _surface Dynamic  The surface to load or nil
      */
-    static function surface(_surface: Dynamic): Void;
+    @:native("load")
+    static function surface(_surface: Dynamic): Surface;
 
     /** Get the size of a cairo surface
      *
      * @see lib/gears/surface.lua:134
      * @param surf Dynamic  The surface you are interested in
      */
-    static function get_size(surf: Dynamic): Void;
+    static function get_size(surf: Surface): SurfaceGeometry;
 
     /** Create a copy of a cairo surface.
      *
@@ -71,4 +81,3 @@ extern class Surface {
      */
     static function apply_shape_bounding(draw: Dynamic, shape: Dynamic, Any: Dynamic): Void;
 }
-

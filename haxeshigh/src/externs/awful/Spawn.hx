@@ -17,7 +17,7 @@ extern class Spawn {
      * @param callback haxe.Constraints.Function  A callback function to be run after startup.
      */
     @:overload(function (cmd: LuaTable<Int, String>, sn_rules: Mixed2<lua.Table<String, Dynamic>, Bool> = null, callback: haxe.Constraints.Function = null): Int {})
-    static function spawn(cmd: String, sn_rules: Mixed2<lua.Table<String, Dynamic>, Bool> = null, callback: haxe.Constraints.Function = null): Int;
+    static function spawn<F : haxe.Constraints.Function>(cmd: String, sn_rules: Mixed2<lua.Table<String, Dynamic>, Bool> = null, callback: F = null): Int;
 
     /** Spawn a program using the shell.
      *

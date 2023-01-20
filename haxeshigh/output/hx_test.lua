@@ -911,6 +911,11 @@ __haxe_ds_ObjectMap.prototype.__class__ =  __haxe_ds_ObjectMap
 
 __lua_PairTools.new = {}
 __lua_PairTools.__name__ = true
+__lua_PairTools.copy = function(table1) 
+  local ret = ({});
+  for k,v in _G.pairs(table1) do ret[k] = v end;
+  do return ret end;
+end
 __lua_PairTools.pairsIterator = function(table) 
   local _hx_1_p_next, _hx_1_p_table, _hx_1_p_index = _G.pairs(table);
   local next = _hx_1_p_next;
@@ -1020,12 +1025,30 @@ __lib__LuaTable_LuaTable_Impl_.toMap = function(this1)
   end;
   do return ret end;
 end
+__lib__LuaTable_LuaTable_Impl_.toArray = function(this1) 
+  local length = nil;
+  local tab = __lua_PairTools.copy(this1);
+  local length = length;
+  if (length == nil) then 
+    length = _hx_table.maxn(tab);
+    if (length > 0) then 
+      local head = tab[1];
+      _G.table.remove(tab, 1);
+      tab[0] = head;
+      do return _hx_tab_array(tab, length) end;
+    else
+      do return _hx_tab_array({}, 0) end;
+    end;
+  else
+    do return _hx_tab_array(tab, length) end;
+  end;
+end
 
 __lib_TableTools.new = {}
 __lib_TableTools.__name__ = true
 __lib_TableTools.pop = function(tbl) 
   local pos = nil;
-  local fst = _hx_box_mr(_hx_table.pack(next(tbl)), {"key", "val"});
+  local fst = _hx_box_mr(_hx_table.pack(next(tbl, pos)), {"key", "val"});
   if (fst == nil) then 
     do return nil end;
   else
@@ -1045,11 +1068,11 @@ __test_AwesomeTest.new = {}
 __test_AwesomeTest.__name__ = true
 __test_AwesomeTest.main = function() 
   local t = ({2,3,4,5});
-  __haxe_Log.trace(__lib_TableTools.pop(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=68,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(__lib_TableTools.pop(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=35,className="test.AwesomeTest",methodName="main"}));
   local tmp = __haxe_Log.trace;
   local tmp1;
   local pos = nil;
-  if (_hx_box_mr(_hx_table.pack(next(t)), {"key", "val"}) == nil) then 
+  if (_hx_box_mr(_hx_table.pack(next(t, pos)), {"key", "val"}) == nil) then 
     tmp1 = _hx_tab_array({}, 0);
   else
     local ret = ({});
@@ -1058,12 +1081,12 @@ __test_AwesomeTest.main = function()
     ret[0] = __lib_TableTools.pop(ret);
     tmp1 = _hx_tab_array(ret, len);
   end;
-  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=69,className="test.AwesomeTest",methodName="main"}));
+  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=36,className="test.AwesomeTest",methodName="main"}));
   _G.table.insert(t, 45);
   local tmp = __haxe_Log.trace;
   local tmp1;
   local pos = nil;
-  if (_hx_box_mr(_hx_table.pack(next(t)), {"key", "val"}) == nil) then 
+  if (_hx_box_mr(_hx_table.pack(next(t, pos)), {"key", "val"}) == nil) then 
     tmp1 = _hx_tab_array({}, 0);
   else
     local ret = ({});
@@ -1072,10 +1095,11 @@ __test_AwesomeTest.main = function()
     ret[0] = __lib_TableTools.pop(ret);
     tmp1 = _hx_tab_array(ret, len);
   end;
-  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=71,className="test.AwesomeTest",methodName="main"}));
+  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=38,className="test.AwesomeTest",methodName="main"}));
+  local tmp = __haxe_Log.trace;
   local vs;
   local pos = nil;
-  if (_hx_box_mr(_hx_table.pack(next(t)), {"key", "val"}) == nil) then 
+  if (_hx_box_mr(_hx_table.pack(next(t, pos)), {"key", "val"}) == nil) then 
     vs = _hx_tab_array({}, 0);
   else
     local ret = ({});
@@ -1084,6 +1108,7 @@ __test_AwesomeTest.main = function()
     ret[0] = __lib_TableTools.pop(ret);
     vs = _hx_tab_array(ret, len);
   end;
+  local tmp1;
   if (vs ~= nil) then 
     local _g = _hx_tab_array({}, 0);
     local _g1 = 0;
@@ -1094,14 +1119,19 @@ __test_AwesomeTest.main = function()
       _G.print(_hx_tostring(i));
       _g:push(3);
     end;
+    tmp1 = _g;
+  else
+    tmp1 = _hx_tab_array({}, 0);
   end;
+  tmp(tmp1, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=39,className="test.AwesomeTest",methodName="main"}));
   local tmp = __haxe_Log.trace;
   local ret = false;
-  for _,v in pairs(t) do if v == 4 then ret = true; end end;
-  tmp(ret, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=73,className="test.AwesomeTest",methodName="main"}));
-  __haxe_Log.trace(__lib__LuaTable_LuaTable_Impl_.toMap(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=74,className="test.AwesomeTest",methodName="main"}));
-  __haxe_Log.trace(__lua_Boot.__instanceof(t, _G.table), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=75,className="test.AwesomeTest",methodName="main"}));
-  __haxe_Log.trace(_hx_o({__fields__={a=true},a=3}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=76,className="test.AwesomeTest",methodName="main"}));
+  for _,v in pairs(t) do if v == 4 then ret = true; break; end end;
+  tmp(ret, _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=40,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(__lib__LuaTable_LuaTable_Impl_.toMap(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=41,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(__lib__LuaTable_LuaTable_Impl_.toArray(t), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=42,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(__lua_Boot.__instanceof(t, _G.table), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=43,className="test.AwesomeTest",methodName="main"}));
+  __haxe_Log.trace(_hx_o({__fields__={a=true},a=3}), _hx_o({__fields__={fileName=true,lineNumber=true,className=true,methodName=true},fileName="src/test/AwesomeTest.hx",lineNumber=44,className="test.AwesomeTest",methodName="main"}));
 end
 
 __test_Main.new = {}

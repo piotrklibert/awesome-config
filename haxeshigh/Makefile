@@ -52,6 +52,9 @@ output/hx_test.lua:
 output/hx_extgen.lua:
 	./bin/build extgen
 
+.PHONY: output/hx_spacerep.lua
+output/hx_spacerep.lua:
+	./bin/build extgen
 
 
 .PHONY: pkg

@@ -52,6 +52,10 @@ class Prelude {
         return Inspect.haxe(x, opts);
     }
 
+    static inline function now() {
+        return DateTools.format(Date.now(), "%Y-%m-%d %H:%M:%S");
+    }
+
     static inline function environ(): Map<String, String> {
         return new LuaTable(lua.lib.luv.Os.environ()).toMap();
     }
@@ -75,6 +79,10 @@ class Prelude {
     /** Variables local to current module */
     static inline function locals(?name: String, ?val: Dynamic) {
         return Locals.get();
+    }
+
+    static inline function readJson(fname: String) {
+        return haxe.Json.parse(sys.io.File.getContent(fname));
     }
 }
 

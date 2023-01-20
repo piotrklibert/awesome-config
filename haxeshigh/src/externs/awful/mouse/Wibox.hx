@@ -5,4 +5,5 @@ package externs.awful.mouse;
 extern class Wibox {
     @:native("move")
     public static function move<T: externs.wibox.Widget>(w: externs.Wibox<T>): Void;
+    public static function resize<T: externs.wibox.Widget>(w: externs.Wibox<T>): Void;
 }
