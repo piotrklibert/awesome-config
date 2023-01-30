@@ -3,23 +3,19 @@ package spacerep;
 
 @:publicFields
 class ReminderHistory {
-    static var instance(get, never): ReminderHistory;
-    static function get_instance(): ReminderHistory {
-        final env = globals();
-        final hist: Null<ReminderHistory> = env["reminder_history"];
-        if (hist == null) {
-            return env["reminder_history"] = new ReminderHistory();
-        }
-        else {
-            return hist;
-        }
-    }
-
     static final repeatTimeout = 60 * 60 * 24; // 24h in seconds
 
-    final hist: Map<String, Float>  = new Map();
+    var hist: Map<String, Float>  = new Map();
 
     function new() {}
+
+    function upgrade(old: ReminderHistory) {
+        trace("Upgrade method called");
+        this.hist = old.hist;
+        trace(old);
+        trace(this);
+        return this;
+    }
 
     function add(snippet: String) {
         this.hist[snippet] = Sys.time();

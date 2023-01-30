@@ -3,7 +3,7 @@ package spacerep;
 using Reflect;
 
 @:publicFields
-class Persistent<T> {
+class Persistent<T: { function upgrade(arg: T): T; }> {
     private var prev: Null<T>;
     final vname: String;
 
@@ -11,10 +11,12 @@ class Persistent<T> {
         this.vname = vname;
     }
 
-    function get(): Null<T> {
-        final env = globals();
-        final obj: Null<T> = env[vname];
-        return obj;
+    function get(): T {
+        return globals()[vname].sure();
+    }
+
+    function getOrNull(): Null<T> {
+        return globals()[vname];
     }
 
     function set(obj: T): T {
@@ -31,12 +33,17 @@ class Persistent<T> {
     }
 
     function upgrade(obj: T) {
-        final val: Null<T> = this.get();
-        if (val == null)
-            return this.set(val);
-        final fun: Null<Dynamic> = val.field("upgrade");
-        if (fun != null)
-            return this.set(val.callMethod(fun, [prev]));
+        trace("Starting upgrade");
+        final old: Null<T> = this.getOrNull();
+        if (old == null) {
+            trace("Upgrade aborted; setting instead");
+            return this.set(obj);
+        }
+        final fun: Null<(T) -> T> = obj.field("upgrade");
+        if (fun != null) {
+            trace('Upgrade function: $fun');
+            return this.set(obj.callMethod(fun, [old]));
+        }
         throw new haxe.Exception("Upgrade failed");
     }
 

@@ -1,10 +1,11 @@
 package spacerep;
 
+typedef CardJson = LuaTable<String, LuaTable<String, Dynamic>>;
 
 @:nullSafety(Strict)
 @:publicFields
 class CardData {
-    var data: LuaTable<String, LuaTable<String, Dynamic>>;
+    var data: CardJson;
 
     function new() {
         this.data = readJson("/home/cji/priv/programming-idioms/by-hash.json");

@@ -2,24 +2,22 @@ package spacerep;
 
 import externs.gears.Timer;
 
-
 @:publicFields
 class ReminderScheduler {
-
-    public static var instance(get, never): Null<ReminderScheduler>;
-    public static function get_instance(): Null<ReminderScheduler> {
-        return globals()["Scheduler"];
-    }
-
+    static final repeat_interval = 60.0 * 4.5;
     var timer: Null<Timer>;
 
-    function new() {}
+    function new() {
+        trace("Creating a new ReminderScheduler");
+        this.timer = Utils.repeat(
+            repeat_interval, (t) -> this.showReminder(t), true, true
+        );
+    }
 
-    function callback(t: Timer) {
-        trace(now(), "ping");
-        final reminder = ReminderData.reminder;
+    function showReminder(t: Timer) {
+        trace(now(), "showReminder called");
         if (!reminder.active)
-            ReminderData.reminder = new Reminder();
+            ReminderData.reminder.upgrade(new Reminder());
     }
 
     function stop() {
@@ -27,10 +25,8 @@ class ReminderScheduler {
     }
 
     function upgrade(old: ReminderScheduler): ReminderScheduler {
-        trace(now(), "reset");
-        final env = globals();
         if (old != null) old.stop();
-        this.timer = Utils.repeat(60.0 * 7, (t) -> this.callback(t), true, true);
+        trace(now(), "ReminderScheduler upgraded");
         return this;
     }
 }

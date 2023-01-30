@@ -19,7 +19,7 @@ import lua.Table;
 import lua.Coroutine as Coro;
 
 import lib.LuaTable;
-import lib.Globals.Prelude.*;
+import lib.Prelude.*;
 
 using lua.PairTools;
 using lib.LambdaTools;

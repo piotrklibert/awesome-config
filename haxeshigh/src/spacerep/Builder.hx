@@ -4,18 +4,19 @@ import haxe.macro.Printer;
 
 
 class Builder {
-    static function exp(x: Any) return { pos: Context.currentPos(), expr: x };
-
-    static function str(s: String) return exp(EConst(CString(s)));
-
     public static macro function build(): Array<Field> {
-
         final fields = Context.getBuildFields();
         var generated = [];
         for (field in fields)
             generated = generated.concat(processField(field));
         return generated;
     }
+
+    #if macro
+    static function exp(x: Any) return { pos: Context.currentPos(), expr: x };
+
+    static function str(s: String) return exp(EConst(CString(s)));
+
 
     static function processField(field: Field) {
         switch (field.meta[0]) {
@@ -83,8 +84,8 @@ class Builder {
         final setter = c.fields[0];
         setter.name = 'set_${fname}';
 
-        trace(new Printer().printField(getter));
-        trace(new Printer().printField(setter));
+        // trace(new Printer().printField(getter));
+        // trace(new Printer().printField(setter));
 
         return [ field, getter, setter ];
     }
@@ -114,12 +115,6 @@ class Builder {
             thisType.toString().replace(".", "__") + "__" + fname
         );
 
-        final fieldTypePath =
-            switch (fieldType) {
-                case TPath(fieldTypePath): fieldTypePath;
-                default:
-                    throw "fuck";
-            }
         final c = macro class {
             static function get(): $fieldType {
                 return new Persistent($mangled); // TODO: maybe cache instances
@@ -128,10 +123,11 @@ class Builder {
         final getter = c.fields[0];
         getter.name = 'get_${fname}';
 
-        trace(new Printer().printField(getter));
+        // trace(new Printer().printField(getter));
 
         return [ field, getter ];
     }
+    #end
 }
 
 // Local Variables:
